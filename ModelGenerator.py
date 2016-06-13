@@ -21,13 +21,13 @@ ANDs are encased in ()
 OR is encased by {}
 LOOP is denoted by []
 
-An OR has two associated probabilities: {A::<0.1>,B::<0.9>}
-A loop has one-stated associated probability for taking the loop: [A]::<0.3>. The probability of breaking the loop is therefore just 1 - 0.3 = 0.7.
+An OR has two associated probabilities: {A:<0.1>,B:<0.9>}
+A loop has one-stated associated probability for taking the loop: [A]:<0.3>. The probability of breaking the loop is therefore just 1 - 0.3 = 0.7.
 
 
 Note that only OR and LOOP may have any associated probability; AND-splits require both edges to be traversed.
 
-ABC(E+F)[AB]::<>
+ABC(E+F)[AB]:<>
 
 
 
@@ -119,11 +119,11 @@ class ModelGenerator(object):
 		
 	def _or(self,n1,n2):
 		p = self._getNormalOrProb()
-		return "{"+self._createModel(n1)+"::<"+str(p)+">|" + self._createModel(n2)+"::<"+str(1.0-p)+">}"
+		return "("+self._createModel(n1)+":<"+str(p)+">|" + self._createModel(n2)+":<"+str(1.0-p)+">)"
 		
 	def _loop(self,n1,n2):
 		p = self._getNormalLoopProb()
-		return "["+self._seq(n1,n2)+"]::<"+str(p)+">"
+		return "["+self._seq(n1,n2)+"]:<"+str(p)+">"
 	####### End of the grammar rules
 		
 	"""
@@ -150,7 +150,7 @@ class ModelGenerator(object):
 	transforming the model.
 	"""
 	def _postProcessing(self):
-		#Replace ^^ (sequential empty activities) with nil
+		#Replace ^^ (consecutive empty activities) with nil
 		self.model = self.model.replace("^^","")
 	
 	
@@ -181,8 +181,8 @@ class ModelGenerator(object):
 	
 	"""
 	def _createModel(self,n):
-		print("n="+str(n))
-		print("model: "+self.model)
+		#print("n="+str(n))
+		#print("model: "+self.model)
 	
 		if n == 0:
 			return "^"  #Effectively null; note this means that any OR, AND, or LOOP may contain an empty branch or subprocess, effectively allowing jumps/skips
