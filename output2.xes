@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<!--Created by Python XES https://pypi.python.org/pypi/xes-->
+<!--(c) Jonathan Sumrall - http://www.sumrall.nl-->
+<log xes.creator="Python XES v1.2" xes.version="1.0" xmlns="http://www.xes-standard.org">
+  <extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+  <extension name="Lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext"/>
+  <extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+  <extension name="Organizational" prefix="org" uri="http://www.xes-standard.org/org.xesext"/>
+  <global scope="trace">
+    <string key="concept:name" value="string"/>
+  </global>
+  <global scope="event">
+    <string key="concept:name" value="string"/>
+    <string key="Activity" value="string"/>
+    <string key="org:resource" value="string"/>
+    <string key="Actor" value="string"/>
+  </global>
+  <classifier keys="org:resource" name="org:resource"/>
+  <classifier keys="concept:name" name="concept:name"/>
+  <string key="creator" value="Python XES v1.2"/>
+  <trace>
+    <string key="concept:name" value="996"/>
+    <event>
+      <string key="concept:name" value="Order"/>
+      <string key="Activity" value="Order"/>
+      <string key="org:resource" value="Customer"/>
+      <string key="Actor" value="Customer"/>
+    </event>
+    <event>
+      <string key="concept:name" value="InternalOrder"/>
+      <string key="Activity" value="InternalOrder"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="FirstAction"/>
+      <string key="Activity" value="FirstAction"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="DeliveryNote"/>
+      <string key="Activity" value="DeliveryNote"/>
+      <string key="org:resource" value="Warehouse"/>
+      <string key="Actor" value="Warehouse"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="997"/>
+    <event>
+      <string key="concept:name" value="Order"/>
+      <string key="Activity" value="Order"/>
+      <string key="org:resource" value="Customer"/>
+      <string key="Actor" value="Customer"/>
+    </event>
+    <event>
+      <string key="concept:name" value="SecondAction"/>
+      <string key="Activity" value="SecondAction"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="OrderAcknowledgement"/>
+      <string key="Activity" value="OrderAcknowledgement"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="DeliveryNote"/>
+      <string key="Activity" value="DeliveryNote"/>
+      <string key="org:resource" value="Warehouse"/>
+      <string key="Actor" value="Warehouse"/>
+    </event>
+  </trace>
+  <trace>
+    <string key="concept:name" value="998"/>
+    <event>
+      <string key="concept:name" value="Order"/>
+      <string key="Activity" value="Order"/>
+      <string key="org:resource" value="Customer"/>
+      <string key="Actor" value="Customer"/>
+    </event>
+    <event>
+      <string key="concept:name" value="ThirdAction"/>
+      <string key="Activity" value="ThirdAction"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="OrderAcknowledgement"/>
+      <string key="Activity" value="OrderAcknowledgement"/>
+      <string key="org:resource" value="Sales"/>
+      <string key="Actor" value="Sales"/>
+    </event>
+    <event>
+      <string key="concept:name" value="DeliveryNote"/>
+      <string key="Activity" value="DeliveryNote"/>
+      <string key="org:resource" value="Warehouse"/>
+      <string key="Actor" value="Warehouse"/>
+    </event>
+  </trace>
+</log>
