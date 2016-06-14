@@ -11,15 +11,7 @@ and serializing graphs.
 Input: a process-model string as described by ModelGenerator.py
 Ouput: a directed, edge-weighted graph in graphML. Such a graph can then be transferred to any
 other object for generating data.
-
-"""
-
-class TreeNode(object):
-	def __init__(self):
-		self.IsOperator #if true, this node is just symbolic, holding the split for some sub activities
-		self.subProcess = "" #if IsOperator is true, this is meaningless
-		self.
-		
+"""		
 		
 class ModelConverter(object):
 	def __init__(self):
@@ -43,8 +35,9 @@ class ModelConverter(object):
 	"""
 	def _parseAndOrExpr(self,modelString):
 		if modelString[0] != "(":
-			print("ERROR non-AND/OR substring passed to be parsed by _parseAndOrExpr(): "+modelString)
-			return []
+			print("PARSE ERROR non-AND/OR substring passed to be parsed by _parseAndOrExpr(): "+modelString)
+			print("Exiting disgracefully")
+			exit()
 	
 		#find open/close parens of expr, and the position of the operator (& or |)
 		i = 0
@@ -72,48 +65,17 @@ class ModelConverter(object):
 		rightArg = modelString[operatorIndex+1:i]
 		operator = modelString[operatorIndex]
 		remainder = modelString[i:]
-	
+
 		return (leftArg,rightArg,operator,remainder)
-	
-	
-	
-	
-	def _buildTree(self,modelString):
-		a = modelString[0]
-		
-		#find all top-level expressions
-		while i < len(modelString):
-			
-			
-			i += 1
-		
-	
-	
-	def _buildTree(self,modelString):
-		a = modelString[0]
-		i = 1
-		while i < len(modelString):
-			if modelString[i] in self.activities:
-				add_edge(a,modelString[i])
-				
-			
-			
-			i += 1
-	
-	
-		
-		
-		
-		
 
 	"""
 	Builds the graph up from a recursive tree according to the model-generator grammar.
+
 	
-	Returns: a list of nodes, to which the current node should point.
-	
+
 	"""
 	def _convert(self,outerModelString,lastOutputs):
-		#silly copying since Python does not store variables on a recursive frame
+		#silly copying, since Python's execution model does not store function param values on a true recursive frame
 		modelString = copy.deepcopy(outerModelString)
 		lastActivities = copy.deepcopy(lastOutputs)
 		
@@ -129,15 +91,14 @@ class ModelConverter(object):
 			#AND/OR opening expression detected; so parse its args and recurse on them
 			elif "(" == modelString[0]:
 				leftExpr,rightExpr,opString,remainder = _parseAndOr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
-				isOr = (opString == "|") #detect if the expression is an OR, which has probability labels
-				if isOr: #parse the probablity data for each branch
+				if opString == "|": #parse the probablity data for each branch
 					pLeft = float(leftExpr.split(":")[1].replace("<","").replace(">",""))
 					pRight = float(rightExpr[1].split(":")[1].replace("<","").replace(">",""))
-				else: #else, this is an AND split, so assign probability 1.0 to both branches. 
+				elif opString == "&": #else, this is an AND split, so assign probability 1.0 to both branches. 
 					pLeft = 0.0
 					pRight = 0.0
-				(in1,out1) = _convert(leftExpr) #recurse on left-expr
-				(in2,out2) = _convert(righExpr) #recurse on right-expr
+				(in1,out1) = _convert(leftExpr,lastActivities) #recurse on left-expr
+				(in2,out2) = _convert(rightExpr,lastActivities) #recurse on right-expr
 				
 				#configure the input nodes of this subprocess
 				for inputActivity in [in1 + in2]:
@@ -149,12 +110,13 @@ class ModelConverter(object):
 
 			elif "[" == modelString[0]:
 				loopExpr, loopProb, modelString = _parseLoopExpr(modelString)	# return tuple
-				
+				loopEndActivities = _convert(loopExpr, lastActivities)
+				#configure edges from end of loop back to current processes
+				for lastActivity in lastActivities:
+					for loopEndActivity in loopEndActivities:
+						self._addEdge(loopEndActivity, lastActivity)
 
-				
-				
 			return lastActivities
-	
 	
 	"""
 	Given a string prefixed with a loop-expression, returns a tuple: (loopExpr, loopProbability, remainderString)
