@@ -119,13 +119,13 @@ class ModelGenerator(object):
 		
 	def _or(self,n1,n2):
 		p = self._getNormalOrProb()
-		return "("+self._createModel(n1)+":<"+str(p)+">|" + self._createModel(n2)+":<"+str(1.0-p)+">)"
+		return "("+self._createModel(n1)+"|" + self._createModel(n2)+"):<"+str(p)+","+str(1.0-p)+">"
 		
 	def _loop(self,n1,n2):
 		p = self._getNormalLoopProb()
 		return "["+self._seq(n1,n2)+"]:<"+str(p)+">"
 	####### End of the grammar rules
-		
+
 	"""
 	Just the outer driver for the recursive calls
 	"""

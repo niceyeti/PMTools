@@ -1,5 +1,6 @@
 from ModelGenerator import ModelGenerator
 import igraph
+import copy
 
 
 """
@@ -13,6 +14,13 @@ other object for generating data.
 
 """
 
+class TreeNode(object):
+	def __init__(self):
+		self.IsOperator #if true, this node is just symbolic, holding the split for some sub activities
+		self.subProcess = "" #if IsOperator is true, this is meaningless
+		self.
+		
+		
 class ModelConverter(object):
 	def __init__(self):
 		self.graph = None
@@ -68,39 +76,119 @@ class ModelConverter(object):
 		return (leftArg,rightArg,operator,remainder)
 	
 	
+	
+	
+	def _buildTree(self,modelString):
+		a = modelString[0]
+		
+		#find all top-level expressions
+		while i < len(modelString):
+			
+			
+			i += 1
+		
+	
+	
+	def _buildTree(self,modelString):
+		a = modelString[0]
+		i = 1
+		while i < len(modelString):
+			if modelString[i] in self.activities:
+				add_edge(a,modelString[i])
+				
+			
+			
+			i += 1
+	
+	
+		
+		
+		
+		
+
 	"""
 	Builds the graph up from a recursive tree according to the model-generator grammar.
 	
 	Returns: a list of nodes, to which the current node should point.
 	
 	"""
-	def _convert(self,modelString):
-		if len(modelString) == 0:
-			return []
-	
-		#activity detected; so just recurse linearly
-		if modelString[0] in self.activities:
-			leftId = _getNodeId(modelString[0])
-			for v in _convert(modelString[1:]):
-				self.graph.add_edge((leftId,v["id"]))
-			return [modelString[0]]
-	
-		#AND/OR opening expression detected; so parse its args and recurse on them
-		if "(" == modelString[0]:
-			exprTup = _andOr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
-			isOr = (exprTup[2] == "|") #detect if the expression is an OR, which has probability labels
-			if isOr: #parse the probablity data for each branch
-				pLeft = float(exprTup[0].split(":")[1].replace("<","").replace(">",""))
-				pRight = float(exprTup[1].split(":")[1].replace("<","").replace(">",""))
-			
-			for 
-			
+	def _convert(self,outerModelString,lastOutputs):
+		#silly copying since Python does not store variables on a recursive frame
+		modelString = copy.deepcopy(outerModelString)
+		lastActivities = copy.deepcopy(lastOutputs)
+		
+		while len(modelString) > 0:  #modelString is recursively eaten
+			#base case: current activity is just a simple linear activity transition: A->B
+			if modelString[0] in self.activities:
+				for lastActivity in lastActivities:
+					self._addEdge(lastActivity, modelString[0])
+				#update last-activities list and modelString
+				lastActivities = [modelString[0]]
+				modelString = modelString[1:]
 				
-		if "[" == modelString[0]:
-			exprTup = _loop(modelString)	# return tuple
-			pLoop = float(exprTup[0].split(":")[1].replace("<","").replace(">","")
-			
+			#AND/OR opening expression detected; so parse its args and recurse on them
+			elif "(" == modelString[0]:
+				leftExpr,rightExpr,opString,remainder = _parseAndOr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
+				isOr = (opString == "|") #detect if the expression is an OR, which has probability labels
+				if isOr: #parse the probablity data for each branch
+					pLeft = float(leftExpr.split(":")[1].replace("<","").replace(">",""))
+					pRight = float(rightExpr[1].split(":")[1].replace("<","").replace(">",""))
+				else: #else, this is an AND split, so assign probability 1.0 to both branches. 
+					pLeft = 0.0
+					pRight = 0.0
+				(in1,out1) = _convert(leftExpr) #recurse on left-expr
+				(in2,out2) = _convert(righExpr) #recurse on right-expr
+				
+				#configure the input nodes of this subprocess
+				for inputActivity in [in1 + in2]:
+					for lastActivity in lastActivities:
+						self._addEdge(lastActivity, inputActivity)
+				#save the outputs for the next iteration
+				lastActivities = out1 + out2
+				modelString = remainder
+
+			elif "[" == modelString[0]:
+				loopExpr, loopProb, modelString = _parseLoopExpr(modelString)	# return tuple
+				
+
+				
+				
+			return lastActivities
 	
+	
+	"""
+	Given a string prefixed with a loop-expression, returns a tuple: (loopExpr, loopProbability, remainderString)
+	Example: 
+		input: "[ABC(F + G)HJK]:<0.6>WEY..."
+		returns: ("ABC(F + G)HJK", 0.6, "WEY...")
+	"""
+	def _parseLoopExpr(self, modelString)
+		if modelString[0] != "[":
+			print("ERROR non-LOOP expr substring passed to be parsed by _parseLoopExpr(): "+modelString)
+			print("Exiting")
+			exit()
+	
+		#find closing bracket of loop expr
+		i = 0
+		unmatchedBrackets = 1
+		while unmatchedBrackets > 0: #find span of left and right parens
+			if modelString[i] == "[":
+				unmatchedBrackets += 1
+			if modelString[i] == "]":
+				unmatchedBrackets -= 1
+			if unmatchedBrackets > 0:
+				i += 1
+		#post loop: i points to index of closing bracket for this expression
+		
+		#get the loop expression
+		loopExpr = modelString[1:i]
+		#get the loop probability
+		loopProb = float( modelString[i+2:].split(">")[0].replace("<","") )
+		#get the remainder string, after the loop expression "[ABC...]:<0.23>"
+		remainder = modelString[modelString.find(begin=i, ">")+1:]
+	
+		return (loopExpr,loopProb,remainder)
+
 	"""
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
