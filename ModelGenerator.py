@@ -29,7 +29,7 @@ Note that only OR and LOOP may have any associated probability; AND-splits requi
 
 ABC(E+F)[AB]:<>
 
-
+Any structure with a ":<>" parameter is tagged with "Anomaly=True/False", such as (ABC|DEF):<0.2/False,0.8/True>
 
 """
 
@@ -53,9 +53,10 @@ class ModelGenerator(object):
 	"""
 	def _rndSplit(self,n):
 		if n <= 1:
+			print("WARNING: ERROR, n <= 1 in _rndSplit(). n must be >= 2, s.t. n1, n2 can both be positive.")
 			return 0,1
 		else:
-			r = random.randint(0,n)
+			r = random.randint(1,n)
 			return r,n-r
 		
 	"""
@@ -107,30 +108,71 @@ class ModelGenerator(object):
 	def _getAbnormalLoopProb(self):
 		return self._getRandomProb(0.001,0.1)
 
-	###### The grammar rules
 	"""
-	AND is the simplest, creating two branches, both of which shall be taken so there are no associated probs.
+	Builds and returns a probability expression string, given a probability and whether or not this is an anomalous event.
+	
+	Given: 0.2, True, returns "0.2/True"
+	"""
+	def _buildProbExpr(self,p,isAnomalous):
+		return str(p)+"/"+str(isAnomalous)	
+		
+	###### The grammar rules. Note the ones that are always prepended with a non-empty activity, as a requirement.
+	"""
+	AND is the simplest, creating two branches, both of which shall be taken so there are no associated probs, and neither branch may be empty.
 	"""
 	def _and(self,n1,n2):
-		return "("+self._createModel(n1)+"&"+self._createModel(n2)+")"
+		return "("+self._randomActivity()+self._createModel(n1-1)+"&"+self._randomActivity()+self._createModel(n2-1)+")"
 		
-	def _seq(self,n1,n2):
-		return self._createModel(n1)+self._createModel(n2)
+	"""
+	Composes a basic sequence of subprocesse.
+	
+	@preventLoop: Whether or not to prevent a loop from starting at the left subprocess. This is a structural constraint imposed at certain
+	points in the model generation.
+	"""
+	def _seq(self,n1,n2,preventLoop=False):
+		#print("seq n1/n2: "+str(n1)+" "+str(n2))
+		#print("preventLoop: "+str(preventLoop))
+		s = self._createModel(n1,preventLoop)+self._createModel(n2)
+		#print("s: "+s)
+		return s #elf._createModel(n1,preventLoop)+self._createModel(n2)
 		
-	def _or(self,n1,n2):
+	"""
+	OR has a few subtle constraints. We cannot allow both branches to be empty, and neither may start with
+	a loop or consist only of a loop.
+	
+	@n1: approximate number of subprocesses to create on left branch
+	@n2: approximate number of subprocesses to create on right branch; if 0, make an empty branch
+	"""
+	def _or(self,n1,n2,isLeftBranchAnomalous=False,isRightBranchAnomalous=False):
 		p = self._getNormalOrProb()
-		return "("+self._createModel(n1)+"|" + self._createModel(n2)+"):<"+str(p)+","+str(1.0-p)+">"
+		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
+		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
+		probExpr = ":<"+leftProbExpr+","+rightProbExpr+">"
 		
-	def _loop(self,n1,n2):
-		p = self._getNormalLoopProb()
-		return "["+self._seq(n1,n2)+"]:<"+str(p)+">"
+		if n2 > 0:
+			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
+			orExpr = "("+self._randomActivity()+self._createModel(n1-1)+"|" + self._createModel(n2,True)+")"+probExpr
+		else:
+			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
+			orExpr = "("+self._randomActivity()+self._createModel(n1-1)+"|^)"+probExpr
+			
+		return orExpr
+		
+	def _loop(self,n1,n2,isAnomalousLoop=False):
+		if isAnomalousLoop:
+			p = self._getAbnormalLoopProb()
+		else:
+			p = self._getNormalLoopProb()
+		probExpr = ":<"+self._buildProbExpr(p,isAnomalousLoop)+">"
+		
+		return "["+self._seq(n1,n2,True)+"]"+probExpr #preventLoop=True prevents invalid double loops: [[AB]GHFJ]
 	####### End of the grammar rules
 
 	"""
 	Just the outer driver for the recursive calls
 	"""
 	def CreateModel(self,n):
-		self.model = self._createModel(n)
+		self.model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 		self._postProcessing() # a bandaid
 		return self.model
 
@@ -143,7 +185,7 @@ class ModelGenerator(object):
 				l += c
 				i += 1
 		print(str(i)+" total activities, "+str(len(set(l)))+" unique activities")
-		
+
 	"""
 	Cleans up model string after construction. Any potential errors should be fixed
 	in the construction definition, not here. This is simply a bandaid for filtering and
@@ -152,7 +194,6 @@ class ModelGenerator(object):
 	def _postProcessing(self):
 		#Replace ^^ (consecutive empty activities) with nil
 		self.model = self.model.replace("^^","")
-	
 	
 		#Remove empty activities in sequences. AB^C becomes ABC. It is a defect with Bezerra's algorithm
 		#that it generates models with empty activities in sequence, which can simply be removed.
@@ -165,11 +206,11 @@ class ModelGenerator(object):
 			i += 1
 		self.model = temp
 		
-		#given above algorithm, an activity sequence may still start with '^', so no remove those too
+		#given above algorithm, an activity sequence may still start with '^', so remove those too
 		temp = ""
 		i = 0
 		while i < len(self.model) - 1:
-			#apped current char if pattern is not ^A
+			#append current char if pattern is not ^A
 			if not (self.model[i] == "^" and self.model[i+1] in self.symbols):
 				temp += self.model[i]
 			i+=1
@@ -179,58 +220,73 @@ class ModelGenerator(object):
 	"""
 	Directly implements Algorithm 4 from "Algorithms for anomaly detection from traces..." by Bezerra.
 	
+	An important modification, just for the sake of documenting my change, is that Bezerra'a paper calls 
+	_randSplit(n-1) in multiple spots. I changed this in the locations noted below to _randSplit(n). The reason
+	for the change is that _createModel() can be called (and is often) with a parameter of 2. Therefore, _randSplit(n-1)
+	is _randSplit(1), which is invalid, since _randSplit() must return two positive numbers, and cannot do so for 1.
+	Likewise, _randSplit() cannot return something like (0,1), since this gives rise to invalid empty loops and other bad structures.
+	I just thought it was important to note the change, and document it clearly.
+	
+	@preventLoop: Whether or not this call of _createModel should be allowed to create a loop. Preventing loops for this recursive call
+	is just a structural constraint imposed at certain points, such as preventing OR branches from starting with a loop.
 	"""
-	def _createModel(self,n):
-		#print("n="+str(n))
+	def _createModel(self,n,preventLoop=False):
+		#print("n="+str(n)+" preventLoop="+str(preventLoop))
 		#print("model: "+self.model)
 	
-		if n == 0:
-			return "^"  #Effectively null; note this means that any OR, AND, or LOOP may contain an empty branch or subprocess, effectively allowing jumps/skips
+		if n <= 0:
+			#print("EMPTY TRANSITION")
+			model =  ""
 		elif n == 1:
-			return self._randomActivity()
+			model = self._randomActivity()
 		else:
 			r = random.randint(1,100)
-
 			#taken with prob 0.6: sequential workflows
 			if r <= 60:
-				n1,n2 = self._rndSplit(n-1)
-				return self._seq(n1, n2)
+				n1,n2 = self._rndSplit(n) #in Bezerra's algorithm, this is n-1; which is problematic if n == 2, since _rndSplit cannot return two positive ints if its param is < 2.
+				s = self._seq(n1, n2, preventLoop)
+				model = s #elf._seq(n1, n2)
 
 			#taken with prob 0.4
-			r = random.randint(1,100)
-			#taken with prob 0.4 insert a single Activity
-			if r >= 61:
-				a = self._randomActivity()
-				return a+self._createModel(n-1)
-
-			#taken with prob 0.3 insert OR
-			elif r >= 31 and r <= 60:
-					r = random.randint(1,100)
-					#taken with prob 0.3: an OR with an empty branch
-					if r >= 71:
-						return self._or(n-1,0)
-					#taken with prob 0.7
-					n1,n2 = self._rndSplit(n-1)
-					return self._or(n1, n2)
-
-			#taken with prob 0.2 insert a LOOP
-			elif r >= 11 and r <= 30:
-				r = random.randint(1,100)
-				#taken with prob 0.3
-				if r >= 71:
-					return self._loop(n-1, 0)
-				#taken with prob 0.7
-				n1,n2 = self._rndSplit(n-1)
-				return self._loop(n1-1, n2-1)
-			
-			#taken with prob 0.1 insert AND
 			else:
-				n1,n2 = self._rndSplit(n-1)
-				return self._and(n1-1, n2-1)				
+				r = random.randint(1,100)
+				#taken with prob 0.4 insert a single Activity
+				if r >= 61:
+					a = self._randomActivity()
+					model = a + self._createModel(n-1)
+					
+				#taken with prob 0.3 insert OR-join
+				elif r >= 31 and r <= 60:
+					r = random.randint(1,100)
+					#taken with prob 0.3: an OR-join with an empty branch
+					if r >= 71:
+						model = self._or(n-1,0)
+					else:
+						#taken with prob 0.7
+						n1,n2 = self._rndSplit(n)  #left arg was n-1 in Bezerra's (see header comment)
+						model = self._or(n1, n2)
+
+				#taken with prob 0.2 insert a LOOP, which shall always be prepended with an acitvity so we don't end up with loops configured to the end of multiple outputs: ((A|B)|(C|D))[ABC]
+				elif r >= 11 and r <= 30 and not preventLoop:
+					r = random.randint(1,100)
+					#taken with prob 0.3
+					if r >= 71:
+						model = self._randomActivity()+self._loop(n-1, 0)
+					else:
+						#taken with prob 0.7
+						n1,n2 = self._rndSplit(n)  #n was n-1 in Bezerra's (see header comment)
+						model = self._randomActivity()+self._loop(n1, n2)
+					
+				#taken with prob 0.1 insert AND-join
+				else:
+					n1,n2 = self._rndSplit(n) #n was n-1 in Bezerra's (see header comment)
+					model = self._and(n1, n2)
+				
+		return model
 
 def usage():
 	print("python ./ModelGenerator -n=(some integer) [-file=(path to output file)]")
-				
+
 def main():
 	if len(sys.argv) < 2:
 		print("ERROR insufficient number of parameters")

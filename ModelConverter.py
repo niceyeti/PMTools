@@ -12,12 +12,12 @@ Input: a process-model string as described by ModelGenerator.py
 Ouput: a directed, edge-weighted graph in graphML. Such a graph can then be transferred to any
 other object for generating data.
 """		
-		
+
 class ModelConverter(object):
 	def __init__(self):
 		self.graph = None
 		self.operators = "()&|[]"
-		self.activities = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321"
+		self.validActivityChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321_^"
 
 	"""
 	Looks up the nodeId (usually just its numeric index) in the igraph vs container.
@@ -36,7 +36,7 @@ class ModelConverter(object):
 	Given a string beginning with an AND/OR expression "(", this parses the expr arguments and operator,
 	returning a tuple of (leftArg,rightArg,operator,remainder).
 	
-	Given: "(A | (B | C))ABC..." this function returns (A,(B|C),"|","ABC...")
+	Given: "(A | (B | C))ABC..." this function returns a tuple (A,(B|C),"|","ABC...")
 	Returns: leftExpr, pLeft, rightExpr, pRigh, opString, remainderString
 	
 	"""
@@ -63,93 +63,68 @@ class ModelConverter(object):
 			if unmatchedParens > 0:
 				i += 1
 		#post loop: i points to index of closing paren for this expression, operatorIndex points to index of operator (| or &)
-
-		#grab the probability tuple "(...):<0.2,0.8>"
+		print("MODEL STRING: "+modelString)
+		print("REMAINDER: "+modelString[i:])
+		
+		operator = modelString[operatorIndex]
 		j = i
-		while modelString[j] != ">":
-			j+=1
-		#post-loop: j points to index of ">"
-		probs = modelString[i+1:j].replace(">","").replace(":","").replace("<","").split(",")
-		pLeft = float(probs[0])
-		pRight = float(probs[1])
-		print("pleft,pright: "+str(pLeft)+"  "+str(pRight))
+		if operator == "|":
+			#next, for OR exprs only, grab the probability tuple "(...):<0.2,0.8>"
+			while modelString[j] != ">":
+				j+=1
+			#post-loop: j points to index of ">"
+			
+			#get the probability expressions: "<0.2/True,0.8/False>"  -->  ["0.2/True","0.8/False"]
+			probExprs = modelString[i+1:j].replace(">","").replace(":","").replace("<","").split(",")
+			pLeft,isLeftAnomaly = self._parseBranchAttributes(probExprs[0])
+			pRight,isRightAnomaly = self._parseBranchAttributes(probExprs[1])
+		else: #else this is an AND expression, which have no probabilities or anomalous characteristics
+			pLeft = 1.0
+			pRight = 1.0
+			isLeftAnomaly = False
+			isRightAnomaly = False
+			
 		leftArg = modelString[1:operatorIndex]
 		rightArg = modelString[operatorIndex+1:i]
 		operator = modelString[operatorIndex]
 		remainder = modelString[j+1:]
+		print("pleft,pright: "+str(pLeft)+"  "+str(pRight))
 		print("leftArg: "+leftArg)
 		print("rightArg: "+rightArg)
 		print("operator: "+operator)
 		print("remainder: "+remainder)
 		
-		return (leftArg,pLeft,rightArg,pRight,operator,remainder)
+		return (leftArg,pLeft,isLeftAnomaly,rightArg,pRight,isRightAnomaly,operator,remainder)
 
 	"""
-	Builds the graph up from a recursive tree according to the model-generator grammar.
-
-	
-
-
-	def _convert(self,outerModelString,lastOutputs):
-		#silly copying, since Python's execution model does not store function param values on a true recursive frame
-		modelString = copy.deepcopy(outerModelString)
-		lastActivities = copy.deepcopy(lastOutputs)
+	Given branch attributes, returns probability and isAnomaly as a tuple.
+	Example: "0.2/False" returns a tuple (0.2,False)
+	"""
+	def _parseBranchAttributes(self,expr):
+		pBranch = float(expr.split("/")[0])
+		isAnomaly = expr.split("/")[1] == "True"
+		return pBranch,isAnomaly
 		
-		while len(modelString) > 0:  #modelString is recursively eaten
-			#base case: current activity is just a simple linear activity transition: A->B
-			if modelString[0] in self.activities:
-				for lastActivity in lastActivities:
-					self._addEdge(lastActivity, modelString[0])
-				#update last-activities list and modelString
-				lastActivities = [modelString[0]]
-				modelString = modelString[1:]
-				
-			#AND/OR opening expression detected; so parse its args and recurse on them
-			elif "(" == modelString[0]:
-				leftExpr,rightExpr,opString,remainder = _parseAndOrExpr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
-				if opString == "|": #parse the probablity data for each branch
-					pLeft = float(leftExpr.split(":")[1].replace("<","").replace(">",""))
-					pRight = float(rightExpr[1].split(":")[1].replace("<","").replace(">",""))
-				elif opString == "&": #else, this is an AND split, so assign probability 1.0 to both branches. 
-					pLeft = 0.0
-					pRight = 0.0
-				(in1,out1) = _convert(leftExpr,lastActivities) #recurse on left-expr
-				(in2,out2) = _convert(rightExpr,lastActivities) #recurse on right-expr
-				
-				#configure the input nodes of this subprocess
-				for inputActivity in [in1 + in2]:
-					for lastActivity in lastActivities:
-						self._addEdge(lastActivity, inputActivity)
-				#save the outputs for the next iteration
-				lastActivities = out1 + out2
-				modelString = remainder
-
-			eli f "[" == modelString[0]:
-				loopExpr, loopProb, modelString = _parseLoopExpr(modelString)	# return tuple
-				loopEndActivities = _convert(loopExpr, lastActivities)
-				#configure edges from end of loop back to current processes
-				for lastActivity in lastActivities:
-					for loopEndActivity in loopEndActivities:
-						self._addEdge(loopEndActivity, lastActivity)
-
-			return lastActivities
-	"""
 	"""
 	The recursive expression parser. For any subprocess/expression, this returns the input and output
 	activities/nodes for threading them together.
 	"""
 	def _convert(self,rModelString, rLastActivities):
-		#save the first activity, to be returned as this subprocesses input
+	
+		#base case
+		if len(rModelString) == 0:
+			return ([],[])
+	
+		#save the first activity, to be returned as this subprocess' input
 		firstActivities = []
 		#foolish method to deep copy the recursive args
-		modelString = rModelString.strip()
+		modelString = rModelString + ""
 		lastActivities = rLastActivities + []
 		
-		if len(modelString) == 0:
-			return ([],[])
+		#print("CONVERT modelstr: "+modelString)
 		
 		if modelString[0] in self.activities:
-			firstActivities = modelString[0]
+			firstActivities = [modelString[0]]
 			#lastActivities = []
 			i = 0
 			while i < len(modelString):
@@ -158,69 +133,82 @@ class ModelConverter(object):
 					for lastActivity in lastActivities:
 						self._addEdge(lastActivity, modelString[i])
 					lastActivities = [modelString[i]]
-
+					i += 1
 				elif modelString[i] == "(":
-					leftExpr, pLeft, rightExpr, pRight, opString, modelString = self._parseAndOrExpr(modelString[i:])
+					leftExpr, pLeft, isLeftAnomaly, rightExpr, pRight, isRightAnomaly, opString, modelString = self._parseAndOrExpr(modelString[i:])
 					leftInputs, leftOutputs = self._convert(leftExpr,lastActivities)
 					rightInputs, rightOutputs = self._convert(rightExpr,lastActivities)
-					print("POST expr: "+modelString)
+					#print("POST expr: "+modelString)
+					""" #done inside _convert
 					#configure the inputs for the left branch
 					for activity in leftInputs:
 						for lastActivity in lastActivities:
 							self._addEdge(lastActivity,activity,pLeft)
-
 					#configure the inputs to the right branch
 					for activity in rightInputs:
 						for lastActivity in lastActivities:
 							self._addEdge(lastActivity, activity, pRight)
+					"""
 					lastActivities = leftOutputs + rightOutputs
-					
+					#print("LAST: "+str(lastActivities))
+					i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
 				elif modelString[i] == "[":
-					loopExpr, pLoop, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
+					loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
 					#print("POST parseLoopExpr: "+modelString)
 					loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
+					"""
 					#configure edges from current activities into the loop
 					for lastActivity in lastActivities:
 						for loopStartActivity in loopStartActivities:
 							self._addEdge(lastActivity,loopStartActivity,pLoop)
+					"""
 					#configure edges from end of loop back to current processes
 					for lastActivity in lastActivities:
 						for loopEndActivity in loopEndActivities:
 							self._addEdge(loopEndActivity, lastActivity,pLoop)
+					i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
 				else:
 					print("WARNING: unknown activity or operator char in model string: "+modelString[i])
-				i += 1
-				#end-while
+					print("Remaining model string: "+modelString)
+					i += 1
+			#end-while
 		
 		#AND/OR opening expression detected; so parse its args and recurse on them
 		elif "(" == modelString[0]:
-			leftExpr,pLeft,rightExpr,pRight,opString,remainder = self._parseAndOrExpr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
+			leftExpr,pLeft,isLeftAnomaly,rightExpr,pRight,isRightAnomaly,opString,remainder = self._parseAndOrExpr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
 			leftInputs, leftOutputs = self._convert(leftExpr, lastActivities) #recurse on left-expr
+			print("Left in/out: "+str(leftInputs)+"  "+str(leftOutputs))
 			rightInputs, rightOutputs = self._convert(rightExpr, lastActivities) #recurse on right-expr
-			
+			print("Right in/out: "+str(rightInputs)+"  "+str(rightOutputs))
 			#configure the inputs for the left branch
 			for activity in leftInputs:
 				for lastActivity in lastActivities:
 					self._addEdge(lastActivity,activity,pLeft)
-
 			#configure the inputs to the right branch
 			for activity in rightInputs:
 				for lastActivity in lastActivities:
-					self._addEdge(lastActivity, activity, pRight)			#save the outputs for the next iteration
-			
-			lastActivities = leftOutputs + rightOutputs
+					self._addEdge(lastActivity, activity, pRight)	#save the outputs for the next iteration
 			firstActivities = leftInputs + rightInputs
+			lastActivities = leftOutputs + rightOutputs
+			print("FIRST ACTS: "+str(firstActivities))
+			print("LAST ACTS: "+str(lastActivities))
 			
 		elif "[" == modelString[0]:
-			loopExpr, pLoop, modelString = self._parseLoopExpr(modelString)	# return tuple
+			loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString)	# return tuple
 			loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
 			#configure edges from end of loop back to current processes
 			for lastActivity in lastActivities:
+				for loopStartActivity in loopStartActivities:
+					self._addEdge(lastActivity,loopStartActivity,pLoop)
+			#configure edges from end of loop back to current processes
+			for lastActivity in lastActivities:
 				for loopEndActivity in loopEndActivities:
-					self._addEdge(loopEndActivity, lastActivity, pLoop)
+					self._addEdge(loopEndActivity, lastActivity,pLoop)
 			firstActivities = loopStartActivities
 			lastActivities = loopEndActivities
-
+			print("LOOP FIRST ACTS: "+str(firstActivities))
+			print("LOOP LAST ACTS: "+str(lastActivities))
+			
 		return (firstActivities,lastActivities)
 			
 	"""
@@ -253,16 +241,40 @@ class ModelConverter(object):
 		
 		#get the loop expression
 		loopExpr = modelString[1:i]
-		#get the loop probability
-		loopProb = float( modelString[i+2:].split(">")[0].replace("<","") )
+		#get the loop probability exression: "0.2/False"
+		loopProbExpr = modelString[i+2:].split(">")[0].replace("<","")
+		loopProb,isAnomalous = self._parseBranchAttributes(loopProbExpr)
 		#get the remainder string, after the loop expression "[ABC...]:<0.23>"
 		remIndex = modelString.find(">",i) + 1
 		remainder = modelString[remIndex:]
 		print("remainder: "+remainder)
 		print("loopExpr: "+loopExpr)
 	
-		return (loopExpr,loopProb,remainder)
+		return (loopExpr,loopProb,isAnomalous,remainder)
 
+	"""
+	Given a model string, returns all activities in the string (non-operators in expr scope).
+	"""
+	def _getActivities(self,modelString):
+		#get the activity set from the model string
+		i = 0
+		exprChars = ""
+		while i < len(modelString):
+			if modelString[i] == "<":
+				while i < len(modelString) and modelString[i] != ">":
+					i += 1
+				i+=1
+			if i < len(modelString) and modelString[i] in self.validActivityChars:
+				exprChars += modelString[i]
+			i+=1
+		
+		activities = ""
+		for c in set(list(exprChars)):
+			activities += c
+		print("My activities: "+activities)		
+	
+		return [c for c in activities]
+		
 	"""
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
@@ -270,20 +282,23 @@ class ModelConverter(object):
 	def ConvertModel(self,modelString):
 		self.graph = igraph.Graph(directed=True)
 		
-		activities = set([c for c in modelString if c in self.activities])
-		self.activities = ""
-		for c in activities:
-			self.activities += c
-		print("My activities: "+self.activities)
-		
+		#get the activity set from the model string
+		self.activities = self._getActivities(modelString)
+		self.activities += ["START","END"]
 		#add the activities as graph vertices
 		self.graph.add_vertices(self.activities)
 		self.graph.vs["label"] = self.activities
 
 		#recursively add nodes to the graph
-		self._convert(modelString,[])
-	
-		igraph.plot(self.graph)
+		startActivities, endActivities = self._convert(modelString,[])
+		for activity in startActivities:
+			self._addEdge("START",activity)
+		for activity in endActivities:
+			self._addEdge(activity,"END")	
+		layout = self.graph.layout("sugiyama")
+		#layout = self.graph.layout("kk") #options: kk, fr, tree, rt
+		#seee: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
+		igraph.plot(self.graph, layout=layout)
 	
 def usage():
 	print("python ./ModelConverter.py [modelFile]")
