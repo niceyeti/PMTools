@@ -80,9 +80,21 @@ class ModelConverter(object):
 			print("ERROR v1Id < 0 in _addEdge()")
 		if v2Id < 0:
 			print("ERROR v2Id < 0 in _addEdge()")
-		
-		self._graph.add_edge(v1Id, v2Id,probability=pEdge)
+	
+		#only add a directed edge if it doesn't already exist. Note this prevents multigraphs.
+		if not self._edgeExists(v1Id,v2Id):
+			self._graph.add_edge(v1Id, v2Id,probability=pEdge)
 
+	"""
+	Check if an edge exists, based on their integer id's.
+	"""
+	def _edgeExists(self,v1Id,v2Id):
+		try:
+			hasEdge = self._graph.get_eid(v1Id,v2Id) >= 0
+		except igraph._igraph.InternalError:
+			hasEdge = False
+		
+		return hasEdge
 	"""
 	Given a string beginning with an AND/OR expression "(", this parses the expr arguments and operator,
 	returning a tuple of (leftArg,rightArg,operator,remainder).
@@ -110,7 +122,7 @@ class ModelConverter(object):
 			#when unmatchedParens==1, an operator is in scope of this expression
 			if unmatchedParens == 1 and modelString[i] in "|&":
 				operatorIndex = i
-				
+
 			if unmatchedParens > 0:
 				i += 1
 		#post loop: i points to index of closing paren for this expression, operatorIndex points to index of operator (| or &)
@@ -164,11 +176,101 @@ class ModelConverter(object):
 		activity1 = self._getActivityLabel(act1)
 		activity2 = self._getActivityLabel(act2)
 		self._addEdge(activity1,activity2,pLink)
+	
+	"""
+	Detects whether or not this alpha is an activity: either a base activity or "^".
+	"""
+	def _isActivity(self,alpha):
+		return alpha in self._activities or alpha == "^"
+	
+	"""
+	The recursive model string parser.
+	"""
+	def _convert(self,rModelString, rLastActivities):
+		#base case
+		if len(rModelString) == 0:
+			return ([],[])
+	
+		firstActivities = []
+		#foolish pythonic method to deep copy the recursive args
+		modelString = rModelString + ""
+		lastActivities = rLastActivities + []
+		#print("CONVERT modelstr: "+modelString)
 		
+		#if self._isActivity(modelString[0]):
+		#	#save the first activity, to be returned as this subprocess' input
+		#	activity = self._getActivityLabel(modelString[0])
+		#	firstActivities = [activity]
+
+		i = 0			
+		while i < len(modelString):
+			if self._isActivity(modelString[i]):
+				activity = self._getActivityLabel(modelString[i])
+				#connect simple, linear activities: A->B
+				for lastActivity in lastActivities:
+					self._link(lastActivity, activity)
+				lastActivities = [activity]
+				#initialize the input activities, if not yet inited
+				if len(firstActivities) == 0:
+					firstActivities = [activity]
+				
+				i += 1
+				
+			elif modelString[i] == "(":
+				leftExpr, pLeft, isLeftAnomaly, rightExpr, pRight, isRightAnomaly, opString, modelString = self._parseAndOrExpr(modelString[i:])
+				leftInputs, leftOutputs = self._convert(leftExpr,lastActivities)
+				rightInputs, rightOutputs = self._convert(rightExpr,lastActivities)
+				print("lefties: "+str(leftInputs)+" outputs: "+str(leftOutputs))
+				print("righties: "+str(rightInputs)+" outputs: "+str(rightOutputs))
+				#configure the inputs for the left branch
+				for activity in leftInputs:
+					for lastActivity in lastActivities:
+						self._link(lastActivity,activity,pLeft)
+				#configure the inputs to the right branch
+				for activity in rightInputs:
+					for lastActivity in lastActivities:
+						self._link(lastActivity, activity, pRight)
+				#update last activities
+				lastActivities = [self._getActivityLabel(activity) for activity in leftOutputs + rightOutputs]
+				#set firstActivities, if empty. This is a small exception, is this function was called on a subexpr, eg "((AB...". The same exception does not apply to loops ("["), since they are constained to start with some activity
+				if len(firstActivities) == 0:
+					firstActivities = [self._getActivityLabel(activity) for activity in leftInputs + rightInputs]
+				#print("LAST: "+str(lastActivities))
+				i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
+				
+			elif modelString[i] == "[":
+				loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
+				#print("POST parseLoopExpr: "+modelString)
+				loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
+				print("START: "+str(loopStartActivities))
+				print("END: "+str(loopEndActivities))
+				#configure edges from current processes to end of loop processes
+				for lastActivity in lastActivities:
+					for loopStartActivity in loopStartActivities:
+						self._link(lastActivity,loopStartActivity,pLoop)
+				#configure edges from end of loop back to current processes
+				for lastActivity in lastActivities:
+					for loopEndActivity in loopEndActivities:
+						self._link(loopEndActivity, lastActivity,pLoop)
+				if len(firstActivities) == 0:
+					print("WARNING: setting firstActivities in loop-expr builder of _convert(). This should not occur, unless model string is not properly constrained")
+					print("such that loops must be preceded by a base activity.")
+					firstActivities = [self._getActivityLabel(activity) for activity in loopStartActivities]
+				i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
+				
+			else:
+				print("WARNING: unknown activity or operator char in model string: >"+modelString[i]+"<")
+				print("Remaining model string: "+modelString)
+				i += 1
+		#end-while
+			
+		return (firstActivities,lastActivities)
+
+	
 	"""
 	The recursive expression parser. For any subprocess/expression, this returns the input and output
 	activities/nodes for threading them together.
-	"""
+	
 	def _convert(self,rModelString, rLastActivities):
 	
 		#base case
@@ -182,13 +284,13 @@ class ModelConverter(object):
 		
 		#print("CONVERT modelstr: "+modelString)
 		
-		if modelString[0] in self._activities:
+		if self._isActivity(modelString[0]):
 			#save the first activity, to be returned as this subprocess' input
 			activity = self._getActivityLabel(modelString[0])
 			firstActivities = [activity]
 			i = 0
 			while i < len(modelString):
-				if modelString[i] in self._activities:
+				if self._isActivity(modelString[i]):
 					activity = self._getActivityLabel(modelString[i])
 					#connect simple, linear activities: A->B
 					for lastActivity in lastActivities:
@@ -221,9 +323,9 @@ class ModelConverter(object):
 		elif "(" == modelString[0]:
 			leftExpr,pLeft,isLeftAnomaly,rightExpr,pRight,isRightAnomaly,opString,remainder = self._parseAndOrExpr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
 			leftInputs, leftOutputs = self._convert(leftExpr, lastActivities) #recurse on left-expr
-			print("Left in/out: "+str(leftInputs)+"  "+str(leftOutputs))
+			#print("Left in/out: "+str(leftInputs)+"  "+str(leftOutputs))
 			rightInputs, rightOutputs = self._convert(rightExpr, lastActivities) #recurse on right-expr
-			print("Right in/out: "+str(rightInputs)+"  "+str(rightOutputs))
+			#print("Right in/out: "+str(rightInputs)+"  "+str(rightOutputs))
 			#configure the inputs for the left branch
 			for activity in leftInputs:
 				for lastActivity in lastActivities:
@@ -254,7 +356,9 @@ class ModelConverter(object):
 			#print("LOOP LAST ACTS: "+str(lastActivities))
 			
 		return (firstActivities,lastActivities)
-			
+	"""
+		
+		
 	"""
 	Given a string prefixed with a loop-expression, returns a tuple: (loopExpr, loopProbability, remainderString)
 	Example: 
@@ -313,7 +417,8 @@ class ModelConverter(object):
 			if i < len(modelString) and modelString[i] in self._validActivityChars:
 				exprChars += modelString[i]
 			i+=1
-		exprChars.replace("^","")
+			
+		exprChars = exprChars.replace("^","")
 		
 		return [c for c in set(list(exprChars))]
 		
@@ -322,7 +427,10 @@ class ModelConverter(object):
 	in the object itself.
 	"""
 	def ConvertModel(self,modelString):
+		#create the graph
 		self._graph = igraph.Graph(directed=True)
+		
+		modelString = modelString.strip()
 		
 		#get the activity set from the model string; empty branch '^' is not included
 		self._activities = self._getActivities(modelString)
@@ -330,7 +438,7 @@ class ModelConverter(object):
 		#add the activities as graph vertices
 		self._graph.add_vertices(self._activities)
 		self._graph.vs["label"] = self._activities
-		self._activities.append("^")
+		#print("ACTIVITIES: "+str(self._activities))
 
 		#recursively add nodes to the graph
 		startActivities, endActivities = self._convert(modelString,[])
@@ -352,7 +460,7 @@ def main():
 		usage()
 		exit()
 	ifile = open(sys.argv[1],"r")
-	modelString = ifile.read(-1)
+	modelString = ifile.read(-1).strip()
 	ifile.close()
 	
 	converter = ModelConverter()
