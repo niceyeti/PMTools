@@ -1,0 +1,3 @@
+echo Building process model with appr 5 activities...
+python ModelGenerator.py -n=5 -file=junk.txt
+python ModelConverter.py junk.txt
