@@ -17,9 +17,15 @@ class ModelConverter(object):
 	def __init__(self):
 		self._graph = None
 		self._operators = "()&|[]"
-		self._validActivityChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321_^"
+		self._validActivityChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321_^$!"
+		#Unique characters for tracking the start and end node. These must not exist in the symbols of the input model string.
+		self._startNodeName = "$"
+		self._endNodeName = "!"
 		#The number of empty branches encountered, allowing them to be labelled uniquely. This is so different '^' branches don't resolve to the same node.
 		self._emptyBranchCtr = 0
+		#plotting colors for anomalous/normal edges
+		self._anomalyColor = "orange"
+		self._normalColor = "black"
 		
 	"""
 	Looks up the nodeId (usually just its numeric index) in the igraph vs container.
@@ -66,7 +72,9 @@ class ModelConverter(object):
 	Utility for adding edges etween activities. This also handles the corner case of empty branches '^', vertices which are labelled uniquely
 	as they are encountered. This preserves the uniqueness of each empty branch, so they don't all collapse to the same ambiguous '^' node.
 	"""
-	def _addEdge(self,v1,v2,pEdge=1.0):
+	def _addEdge(self,activity1,activity2,pEdge=1.0,isAnomalousEdge=False):
+		v1 = self._getActivityLabel(activity1)
+		v2 = self._getActivityLabel(activity2)
 		v1Id = self._getNodeId(v1)
 		#if node is not found, create it. The only path here is when unique empty branches are created as they stream in, hence these vertices weren't made beforehand.
 		if v1Id < 0:
@@ -80,11 +88,26 @@ class ModelConverter(object):
 			print("ERROR v1Id < 0 in _addEdge()")
 		if v2Id < 0:
 			print("ERROR v2Id < 0 in _addEdge()")
-	
+			
 		#only add a directed edge if it doesn't already exist. Note this prevents multigraphs.
 		if not self._edgeExists(v1Id,v2Id):
-			self._graph.add_edge(v1Id, v2Id,probability=pEdge)
+			if isAnomalousEdge:
+				color = self._anomalyColor
+			else:
+				color = self._normalColor
 
+			self._graph.add_edge(v1Id, v2Id,probability=pEdge,isAnomalous=isAnomalousEdge,color=color)
+			#set the anomalous flag
+			#eid = self._graph.get_eid(v1Id,v2Id)
+			#self._graph.es[eid]["isAnomalous"] = bool(isAnomalous)
+			#if isAnomalous:
+			#	self._graph.es[eid]["color"] = "yellow"
+			#else:
+			#	self._graph.es[eid]["color"] = "black"
+		else:
+			#this should be unreachable; notify if not
+			print("WARNING edge already exists: "+activity1+" -> "+activity2)
+			
 	"""
 	Check if an edge exists, based on their integer id's.
 	"""
@@ -167,15 +190,17 @@ class ModelConverter(object):
 		pBranch = float(expr.split("/")[0])
 		isAnomaly = expr.split("/")[1] == "True"
 		return pBranch,isAnomaly
-		
+
 	"""
 	Utility for linking two activities, a1 and a2. This utility is more or less a wrapper to contain
 	the handling of empty branches '^'.
 	"""
-	def _link(self, act1, act2, pLink=1.0):
+	def _link(self, act1, act2, pLink=1.0,isAnomalousLink=False):
 		activity1 = self._getActivityLabel(act1)
 		activity2 = self._getActivityLabel(act2)
-		self._addEdge(activity1,activity2,pLink)
+		#if isAnomalousLink:
+		#	print("ANOMALOUS IN LINK(): "+act1+"->"+act2)
+		self._addEdge(activity1,activity2,pLink,isAnomalousLink)
 	
 	"""
 	Detects whether or not this alpha is an activity: either a base activity or "^".
@@ -202,13 +227,13 @@ class ModelConverter(object):
 		#	activity = self._getActivityLabel(modelString[0])
 		#	firstActivities = [activity]
 
-		i = 0			
+		i = 0
 		while i < len(modelString):
 			if self._isActivity(modelString[i]):
 				activity = self._getActivityLabel(modelString[i])
 				#connect simple, linear activities: A->B
 				for lastActivity in lastActivities:
-					self._link(lastActivity, activity)
+					self._addEdge(lastActivity, activity, 1.0, False)
 				lastActivities = [activity]
 				#initialize the input activities, if not yet inited
 				if len(firstActivities) == 0:
@@ -218,18 +243,22 @@ class ModelConverter(object):
 				
 			elif modelString[i] == "(":
 				leftExpr, pLeft, isLeftAnomaly, rightExpr, pRight, isRightAnomaly, opString, modelString = self._parseAndOrExpr(modelString[i:])
-				leftInputs, leftOutputs = self._convert(leftExpr,lastActivities)
-				rightInputs, rightOutputs = self._convert(rightExpr,lastActivities)
+				leftInputs, leftOutputs = self._convert(leftExpr,[])#lastActivities)
+				rightInputs, rightOutputs = self._convert(rightExpr,[])#lastActivities)
 				print("lefties: "+str(leftInputs)+" outputs: "+str(leftOutputs))
 				print("righties: "+str(rightInputs)+" outputs: "+str(rightOutputs))
+				if isLeftAnomaly:
+					print("LEFT NAOMALOYLYY!!")
+				if isRightAnomaly:
+					print("RIGHT NAOMALOYLYY!!")
 				#configure the inputs for the left branch
 				for activity in leftInputs:
 					for lastActivity in lastActivities:
-						self._link(lastActivity,activity,pLeft)
+						self._addEdge(lastActivity, activity, pLeft, isLeftAnomaly)
 				#configure the inputs to the right branch
 				for activity in rightInputs:
 					for lastActivity in lastActivities:
-						self._link(lastActivity, activity, pRight)
+						self._addEdge(lastActivity, activity, pRight, isRightAnomaly)
 				#update last activities
 				lastActivities = [self._getActivityLabel(activity) for activity in leftOutputs + rightOutputs]
 				#set firstActivities, if empty. This is a small exception, is this function was called on a subexpr, eg "((AB...". The same exception does not apply to loops ("["), since they are constained to start with some activity
@@ -241,17 +270,17 @@ class ModelConverter(object):
 			elif modelString[i] == "[":
 				loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
 				#print("POST parseLoopExpr: "+modelString)
-				loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
-				print("START: "+str(loopStartActivities))
-				print("END: "+str(loopEndActivities))
+				loopStartActivities, loopEndActivities = self._convert(loopExpr, [])#lastActivities)
+				#print("START: "+str(loopStartActivities))
+				#print("END: "+str(loopEndActivities))
 				#configure edges from current processes to end of loop processes
 				for lastActivity in lastActivities:
 					for loopStartActivity in loopStartActivities:
-						self._link(lastActivity,loopStartActivity,pLoop)
+						self._addEdge(lastActivity, loopStartActivity, pLoop, isLoopAnomaly)
 				#configure edges from end of loop back to current processes
 				for lastActivity in lastActivities:
 					for loopEndActivity in loopEndActivities:
-						self._link(loopEndActivity, lastActivity,pLoop)
+						self._addEdge(loopEndActivity, lastActivity, pLoop, False) #loop-exit anomaly status is not considered
 				if len(firstActivities) == 0:
 					print("WARNING: setting firstActivities in loop-expr builder of _convert(). This should not occur, unless model string is not properly constrained")
 					print("such that loops must be preceded by a base activity.")
@@ -265,99 +294,6 @@ class ModelConverter(object):
 		#end-while
 			
 		return (firstActivities,lastActivities)
-
-	
-	"""
-	The recursive expression parser. For any subprocess/expression, this returns the input and output
-	activities/nodes for threading them together.
-	
-	def _convert(self,rModelString, rLastActivities):
-	
-		#base case
-		if len(rModelString) == 0:
-			return ([],[])
-	
-		firstActivities = []
-		#foolish pythonic method to deep copy the recursive args
-		modelString = rModelString + ""
-		lastActivities = rLastActivities + []
-		
-		#print("CONVERT modelstr: "+modelString)
-		
-		if self._isActivity(modelString[0]):
-			#save the first activity, to be returned as this subprocess' input
-			activity = self._getActivityLabel(modelString[0])
-			firstActivities = [activity]
-			i = 0
-			while i < len(modelString):
-				if self._isActivity(modelString[i]):
-					activity = self._getActivityLabel(modelString[i])
-					#connect simple, linear activities: A->B
-					for lastActivity in lastActivities:
-						self._link(lastActivity, activity)
-					lastActivities = [activity]
-					i += 1
-				elif modelString[i] == "(":
-					leftExpr, pLeft, isLeftAnomaly, rightExpr, pRight, isRightAnomaly, opString, modelString = self._parseAndOrExpr(modelString[i:])
-					leftInputs, leftOutputs = self._convert(leftExpr,lastActivities)
-					rightInputs, rightOutputs = self._convert(rightExpr,lastActivities)
-					lastActivities = leftOutputs + rightOutputs
-					#print("LAST: "+str(lastActivities))
-					i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
-				elif modelString[i] == "[":
-					loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
-					#print("POST parseLoopExpr: "+modelString)
-					loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
-					#configure edges from end of loop back to current processes
-					for lastActivity in lastActivities:
-						for loopEndActivity in loopEndActivities:
-							self._link(loopEndActivity, lastActivity,pLoop)
-					i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
-				else:
-					print("WARNING: unknown activity or operator char in model string: "+modelString[i])
-					print("Remaining model string: "+modelString)
-					i += 1
-			#end-while
-		
-		#AND/OR opening expression detected; so parse its args and recurse on them
-		elif "(" == modelString[0]:
-			leftExpr,pLeft,isLeftAnomaly,rightExpr,pRight,isRightAnomaly,opString,remainder = self._parseAndOrExpr(modelString) #returns a tuple: (leftExpr, rightExpr, operator, remainder)
-			leftInputs, leftOutputs = self._convert(leftExpr, lastActivities) #recurse on left-expr
-			#print("Left in/out: "+str(leftInputs)+"  "+str(leftOutputs))
-			rightInputs, rightOutputs = self._convert(rightExpr, lastActivities) #recurse on right-expr
-			#print("Right in/out: "+str(rightInputs)+"  "+str(rightOutputs))
-			#configure the inputs for the left branch
-			for activity in leftInputs:
-				for lastActivity in lastActivities:
-					self._link(lastActivity,activity,pLeft)
-			#configure the inputs to the right branch
-			for activity in rightInputs:
-				for lastActivity in lastActivities:
-					self._link(lastActivity, activity, pRight)
-			firstActivities = leftInputs + rightInputs
-			lastActivities = leftOutputs + rightOutputs
-			#print("FIRST ACTS: "+str(firstActivities))
-			#print("LAST ACTS: "+str(lastActivities))
-			
-		elif "[" == modelString[0]:
-			loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString)	# return tuple
-			loopStartActivities, loopEndActivities = self._convert(loopExpr, lastActivities)
-			#configure edges from end of loop back to current processes
-			for lastActivity in lastActivities:
-				for loopStartActivity in loopStartActivities:
-					self._link(lastActivity,loopStartActivity,pLoop)
-			#configure edges from end of loop back to current processes
-			for lastActivity in lastActivities:
-				for loopEndActivity in loopEndActivities:
-					self._link(loopEndActivity, lastActivity,pLoop)
-			firstActivities = loopStartActivities
-			lastActivities = loopEndActivities
-			#print("LOOP FIRST ACTS: "+str(firstActivities))
-			#print("LOOP LAST ACTS: "+str(lastActivities))
-			
-		return (firstActivities,lastActivities)
-	"""
-		
 		
 	"""
 	Given a string prefixed with a loop-expression, returns a tuple: (loopExpr, loopProbability, remainderString)
@@ -426,31 +362,60 @@ class ModelConverter(object):
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
 	"""
-	def ConvertModel(self,modelString):
+	def ConvertModel(self,modelString,graphFile = "model.graphml"):
 		#create the graph
 		self._graph = igraph.Graph(directed=True)
+		#add the edge attributes
+		self._graph.es["color"] = "black"
+		self._graph.es["isAnomalous"] = False
+		self._graph.es["probability"] = 1.0
 		
 		modelString = modelString.strip()
+		#append start and end activity flags to modelString; these are just identifiers that are replaced with START and END once the recursion completes
+		modelString = self._startNodeName + modelString + self._endNodeName
 		
 		#get the activity set from the model string; empty branch '^' is not included
 		self._activities = self._getActivities(modelString)
-		self._activities += ["START","END"]
 		#add the activities as graph vertices
 		self._graph.add_vertices(self._activities)
 		self._graph.vs["label"] = self._activities
 		#print("ACTIVITIES: "+str(self._activities))
 
 		#recursively add nodes to the graph
-		startActivities, endActivities = self._convert(modelString,[])
-		for activity in startActivities:
-			self._link("START",activity)
-		for activity in endActivities:
-			self._link(activity,"END")	
+		startNodes, endNodes = self._convert(modelString,[])
+		startId = self._getNodeId(startNodes[0])
+		self._graph.vs[startId]["name"] = "START"
+		self._graph.vs[startId]["label"] = "START"
+		endId = self._getNodeId(endNodes[0])
+		self._graph.vs[endId]["name"] = "END"
+		self._graph.vs[endId]["label"] = "END"
+		#print("START: "+str(startNodes)+"  END: "+str(endNodes))
+
+		#plot the graph for verification
+		self._plot()
+		#output the graph to some reproducible format; graphml is nice because it preserves all edge/node attributes (isAnomalous, etc.)
+		self._graph.write_graphml(graphFile)
+		
+	"""
+	Utility for plotting the generated graph, detecting anomalous edges and the like.
+	"""
+	def _plot(self):
+		"""
+		i=0
+		while i < len(self._graph.es):
+			#print(self._graph.es[i]["isAnomalous"])
+			if self._graph.es[i]["isAnomalous"]:
+				print("ANOMALOUS EDGE FOUND")
+			print(str(self._graph.es[i]))
+			i+=1
+		"""
+		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph, if imperfect
 		layout = self._graph.layout("sugiyama")
 		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
-		#seee: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
-		igraph.plot(self._graph, layout=layout)
+		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
+		igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 	
+		
 def usage():
 	print("python ./ModelConverter.py [modelFile]")
 

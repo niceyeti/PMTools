@@ -37,15 +37,18 @@ class ModelGenerator(object):
 	def __init__(self):
 		#activity dictionary; let activities be defined by simple symbols in Sigma, each with some label
 		#self.activities = {'A':"PullLever",'B':"PushButton",'C':"SpinWheel",'D':"TwistKnob",'E':"PullSpring",'F':"TootWhistle",'G':"RingBell",'H':"TapGauge",'I':"WipeForehead",'J':"ReadGauge",'K':"SmellSmoke",'L':"TapKeys",'M':"PushPedal"}
-		self.symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		self.symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 		self.model = ""
 		
 	"""
-	Returns a random activity from the activity set.
+	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
 	"""
-	def _randomActivity(self):
+	def _generateRandomActivity(self):
 		randomIndex = random.randint(0,len(self.symbols)-1)
-		return self.symbols[randomIndex]
+		alpha = self.symbols[randomIndex]
+		#delete the old activity, preventing them from being repeated
+		self.symbols = self.symbols.replace(alpha,"")
+		return alpha
 
 	"""
 	Implements the rndSplit() function, directly from Bezerra. Generates two numbers in Z+,
@@ -121,7 +124,7 @@ class ModelGenerator(object):
 	AND is the simplest, creating two branches, both of which shall be taken so there are no associated probs, and neither branch may be empty.
 	"""
 	def _and(self,n1,n2):
-		return "("+self._randomActivity()+self._createModel(n1-1)+"&"+self._randomActivity()+self._createModel(n2-1)+")"
+		return "("+self._generateRandomActivity()+self._createModel(n1-1)+"&"+self._generateRandomActivity()+self._createModel(n2-1)+")"
 		
 	"""
 	Composes a basic sequence of subprocesse.
@@ -135,7 +138,7 @@ class ModelGenerator(object):
 		s = self._createModel(n1,preventLoop)+self._createModel(n2)
 		#print("s: "+s)
 		return s #elf._createModel(n1,preventLoop)+self._createModel(n2)
-		
+
 	"""
 	OR has a few subtle constraints. We cannot allow both branches to be empty, and neither may start with
 	a loop or consist only of a loop.
@@ -143,7 +146,7 @@ class ModelGenerator(object):
 	@n1: approximate number of subprocesses to create on left branch
 	@n2: approximate number of subprocesses to create on right branch; if 0, make an empty branch
 	"""
-	def _or(self,n1,n2,isLeftBranchAnomalous=False,isRightBranchAnomalous=False):
+	def _or(self,n1,n2,isLeftBranchAnomalous=False,isRightBranchAnomalous=True):
 		p = self._getNormalOrProb()
 		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
 		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
@@ -151,10 +154,10 @@ class ModelGenerator(object):
 		
 		if n2 > 0:
 			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
-			orExpr = "("+self._randomActivity()+self._createModel(n1-1)+"|" + self._createModel(n2,True)+")"+probExpr
+			orExpr = "("+self._generateRandomActivity()+self._createModel(n1-1)+"|" + self._createModel(n2,True)+")"+probExpr
 		else:
 			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
-			orExpr = "("+self._randomActivity()+self._createModel(n1-1)+"|^)"+probExpr
+			orExpr = "("+self._generateRandomActivity()+self._createModel(n1-1)+"|^)"+probExpr
 			
 		return orExpr
 		
@@ -238,7 +241,7 @@ class ModelGenerator(object):
 			#print("EMPTY TRANSITION")
 			model =  ""
 		elif n == 1:
-			model = self._randomActivity()
+			model = self._generateRandomActivity()
 		else:
 			r = random.randint(1,100)
 			#taken with prob 0.6: sequential workflows
@@ -252,7 +255,7 @@ class ModelGenerator(object):
 				r = random.randint(1,100)
 				#taken with prob 0.4 insert a single Activity
 				if r >= 61:
-					a = self._randomActivity()
+					a = self._generateRandomActivity()
 					model = a + self._createModel(n-1)
 					
 				#taken with prob 0.3 insert OR-join
@@ -271,11 +274,11 @@ class ModelGenerator(object):
 					r = random.randint(1,100)
 					#taken with prob 0.3
 					if r >= 71:
-						model = self._randomActivity()+self._loop(n-1, 0)
+						model = self._generateRandomActivity()+self._loop(n-1, 0)
 					else:
 						#taken with prob 0.7
 						n1,n2 = self._rndSplit(n)  #n was n-1 in Bezerra's (see header comment)
-						model = self._randomActivity()+self._loop(n1, n2)
+						model = self._generateRandomActivity()+self._loop(n1, n2)
 					
 				#taken with prob 0.1 insert AND-join
 				else:
@@ -285,7 +288,7 @@ class ModelGenerator(object):
 		return model
 
 def usage():
-	print("python ./ModelGenerator -n=(some integer) [-file=(path to output file)]")
+	print("python ./ModelGenerator -n=(some +integer <= 62) [-file=(path to output file)]")
 
 def main():
 	if len(sys.argv) < 2:
@@ -297,7 +300,13 @@ def main():
 		exit()
 
 	n = int(sys.argv[1].split("=")[1])
-
+	#verify no more than 62 activities are specified; this constraint only exists because I'm using single-char, alphanumeric activity id's.
+	#In the future, any arbitrary number of activities could be used, I would just need to delimit/parse the activity names.
+	if n > 62: # 62 = all upper and lowercase alphanumeric chars
+		print("ERROR too many activities specified. No more than 62 allowed.")
+		usage()
+		exit()
+	
 	ofile = None
 	if len(sys.argv) > 2 and "-file=" in sys.argv[2]:
 		ofile = open(sys.argv[2].split("=")[1], "w")
