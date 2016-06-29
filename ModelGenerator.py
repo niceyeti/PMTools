@@ -13,6 +13,11 @@ in the edges of the workflows. These embedded probabilities are then used to gen
 can implement Bezerra's generation method in the base-case, but can extend it by incorporating probability data
 into workflow edges.
 
+Input:  print("python ./ModelGenerator -n=(some +integer <= 62) [-config=configPath] [-file=(path to output file)]")
+
+
+
+
 Output: A graph in graphML format, with probabilistic edges.
 
 A is a subproc, which may be an activity or any composition of the following.
@@ -34,22 +39,73 @@ Any structure with a ":<>" parameter is tagged with "Anomaly=True/False", such a
 """
 
 class ModelGenerator(object):
-	def __init__(self):
+	def __init__(self, configPath):
 		#activity dictionary; let activities be defined by simple symbols in Sigma, each with some label
 		#self.activities = {'A':"PullLever",'B':"PushButton",'C':"SpinWheel",'D':"TwistKnob",'E':"PullSpring",'F':"TootWhistle",'G':"RingBell",'H':"TapGauge",'I':"WipeForehead",'J':"ReadGauge",'K':"SmellSmoke",'L':"TapKeys",'M':"PushPedal"}
-		self.symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-		self.model = ""
+		self._symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		self._model = ""
+		self._abnormalOrProbRange = (-1.0,-1.0)
+		self._normalOrProbRange = (-1.0,-1.0)
+		self._abnormalLoopProbRange = (-1.0,-1.0)
+		self._normalLoopProbRange = (-1.0,-1.0)
+		self._anomalousOrBranchProb = 0.0
+		self._anomalousLoopProb=0.0
+		self._parseConfig(configPath)
+		
+
+	"""
+	Parses in the parameters/vals of the config file. All are required.
+	Note no error checking is done on the file's existence or its format.
+	"""
+	def _parseConfig(self,configPath):
+		self._anomalousOrBranchProb = 0.0
+		self._anomalousLoopProb=0.0
+		self._abnormalOrProbRange = (-1.0,-1.0)
+		self._normalOrProbRange = (-1.0,-1.0)
+		self._abnormalLoopProbRange = (-1.0,-1.0)
+		self._normalLoopProbRange = (-1.0,-1.0)
+	
+		config = open(configPath,"r")
+		for line in config.readlines():
+			if "anomalousLoopProb=" in line:
+				self._anomalousLoopProb = float(line.split("=")[1])
+			if "anomalousOrBranchProb=" in line:
+				self._anomalousOrBranchProb = float(line.split("=")[1])
+			if "abnormalOrProbRange=" in line:
+				vals = line.split("=")[1].split(",")
+				self._abnormalOrProbRange = (float(vals[0]),float(vals[1]))
+			if "normalOrProbRange=" in line:
+				vals = line.split("=")[1].split(",")
+				self._normalOrProbRange = (float(vals[0]),float(vals[1]))
+			if "abnormalLoopProbRange=" in line:
+				vals = line.split("=")[1].split(",")
+				self._abnormalLoopProbRange = (float(vals[0]),float(vals[1]))
+			if "normalLoopProbRange=" in line:
+				vals = line.split("=")[1].split(",")
+				self._normalLoopProbRange = (float(vals[0]),float(vals[1]))
+
+		if self._abnormalOrProbRange[0] < 0.0:
+			print("ERROR config did not contain abnormalOrProbRange")
+		if self._normalOrProbRange[0] < 0.0:
+			print("ERROR config did not contain normalOrProbRange")
+		if self._abnormalLoopProbRange[0] < 0.0:
+			print("ERROR config did not contain abnormalLoopProbRange")
+		if self._normalLoopProbRange[0] < 0.0:
+			print("ERROR config did not contain normalLoopProbRange")
 		
 	"""
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
 	"""
 	def _generateRandomActivity(self):
-		randomIndex = random.randint(0,len(self.symbols)-1)
-		alpha = self.symbols[randomIndex]
+		randomIndex = random.randint(0,len(self._symbols)-1)
+		alpha = self._symbols[randomIndex]
 		#delete the old activity, preventing them from being repeated
-		self.symbols = self.symbols.replace(alpha,"")
+		self._symbols = self._symbols.replace(alpha,"")
 		return alpha
 
+	def GetModel(self):
+		return self._model
+		
 	"""
 	Implements the rndSplit() function, directly from Bezerra. Generates two numbers in Z+,
 	such that n1 + n2 = n
@@ -58,6 +114,8 @@ class ModelGenerator(object):
 		if n <= 1:
 			print("WARNING: ERROR, n <= 1 in _rndSplit(). n must be >= 2, s.t. n1, n2 can both be positive.")
 			return 0,1
+		if n== 2: #randint() will throw an exception for this degenerate case, so return 1,1 directly
+			return 1,1
 		else:
 			r = random.randint(1,n)
 			return r,n-r
@@ -94,22 +152,22 @@ class ModelGenerator(object):
 	"""
 	def _getNormalOrProb(self):
 		#generate a random probability number in range 0.2 to 0.8
-		return self._getRandomProb(0.2, 0.8)
+		return self._getRandomProb(self._normalOrProbRange[0], self._normalOrProbRange[1] )
 
 	"""
 	Inverse of previous. Returns a randomly-chosen non-zero probability bounded to some very low, outlier range, such as 0.0-0.1.
 	"""
 	def _getAbnormalOrProb(self):
-		return self._getRandomProb(0.0, 0.1)
+		return self._getRandomProb( self._abnormalOrProbRange[0], self._abnormalOrProbRange[1] )
 		
 	"""
 	Returns the probability of traversing some sub-loop, under normal (non-anomalous) behavioral conditions for the model. 
 	"""
 	def _getNormalLoopProb(self):
-		return self._getRandomProb(0.2,0.8)
+		return self._getRandomProb( self._normalLoopProbRange[0], self._normalLoopProbRange[1] )
 		
 	def _getAbnormalLoopProb(self):
-		return self._getRandomProb(0.001,0.1)
+		return self._getRandomProb( self._abnormalLoopProbRange[0], self._abnormalLoopProbRange[1] )
 
 	"""
 	Builds and returns a probability expression string, given a probability and whether or not this is an anomalous event.
@@ -122,9 +180,10 @@ class ModelGenerator(object):
 	###### The grammar rules. Note the ones that are always prepended with a non-empty activity, as a requirement.
 	"""
 	AND is the simplest, creating two branches, both of which shall be taken so there are no associated probs, and neither branch may be empty.
+	AND must be followed by some activity and not an AND, OR, or LOOP, so some random activity is appended.
 	"""
 	def _and(self,n1,n2):
-		return "("+self._generateRandomActivity()+self._createModel(n1-1)+"&"+self._generateRandomActivity()+self._createModel(n2-1)+")"
+		return "("+self._generateRandomActivity()+self._createModel(n1-1)+"&"+self._generateRandomActivity()+self._createModel(n2-1)+")"+self._generateRandomActivity()
 		
 	"""
 	Composes a basic sequence of subprocesse.
@@ -140,14 +199,41 @@ class ModelGenerator(object):
 		return s #elf._createModel(n1,preventLoop)+self._createModel(n2)
 
 	"""
+	Returns the number of anomalies in the current model, which is just the number of "True" attributes on OR and LOOP structres.
+	"""
+	def _countAnomalies(self):
+		return self._model.count("True")
+		
+	
+		
+	"""
 	OR has a few subtle constraints. We cannot allow both branches to be empty, and neither may start with
 	a loop or consist only of a loop.
 	
 	@n1: approximate number of subprocesses to create on left branch
 	@n2: approximate number of subprocesses to create on right branch; if 0, make an empty branch
 	"""
-	def _or(self,n1,n2,isLeftBranchAnomalous=False,isRightBranchAnomalous=True):
-		p = self._getNormalOrProb()
+	def _or(self,n1,n2):
+		
+		######################################################
+		#TODO: figure out distribution for choosing when to label branches as anomalies, and subsequently what probabilities to assign to them		
+		isLeftBranchAnomalous = False
+		isRightBranchAnomalous = False
+		#declare an anomalous branch with prob 0.30
+		if (float(random.randint(1,100)) / 100.0) <= self._anomalousOrBranchProb:
+			#flip a coin to choose the anomalous branch
+			if random.randint(1,2) % 2 == 0:
+				isLeftBranchAnomalous=True
+			else:
+				isRightBranchAnomalous = True
+
+		if not (isLeftBranchAnomalous or isRightBranchAnomalous):
+			p = self._getNormalOrProb()
+		else:
+			p = self._getAbnormalOrProb()
+		##### End of TODO
+		
+		
 		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
 		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
 		probExpr = ":<"+leftProbExpr+","+rightProbExpr+">"
@@ -161,7 +247,13 @@ class ModelGenerator(object):
 			
 		return orExpr
 		
-	def _loop(self,n1,n2,isAnomalousLoop=False):
+	def _loop(self,n1,n2):
+		### TODO As for _or(), define when/how to declare anomalous loops, and what probs to assign them
+		isAnomalousLoop=False
+		if (float(random.randint(1,100)) / 100.0) < self._anomalousLoopProb:
+			isAnomalousLoop = True
+		### End of TODO
+	
 		if isAnomalousLoop:
 			p = self._getAbnormalLoopProb()
 		else:
@@ -172,19 +264,26 @@ class ModelGenerator(object):
 	####### End of the grammar rules
 
 	"""
-	Just the outer driver for the recursive calls
+	Just the outer driver for the recursive calls. Note that models are generated until one meets the num-anomalies requirement.
+	An alternative is to generate models with LOOP and OR constructs, and then to flip their anomaly status to True, but the lazy way
+	here is just clearer and easier, despite being less efficient.
 	"""
-	def CreateModel(self,n):
-		self.model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
-		self._postProcessing() # a bandaid
-		return self.model
+	def CreateModel(self,n,a):
+		if a > 3:
+			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate")
+
+		while self._countAnomalies() != a:
+			self._model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
+			self._postProcessing() # a bandaid
+
+		return self._model
 
 	def PrintModel(self):
-		print("Model:\n"+self.model)
+		print("Model:\n"+self._model)
 		i = 0
 		l = []
-		for c in self.model:
-			if c in self.symbols:
+		for c in self._model:
+			if c in self._symbols:
 				l += c
 				i += 1
 		print(str(i)+" total activities, "+str(len(set(l)))+" unique activities")
@@ -196,29 +295,29 @@ class ModelGenerator(object):
 	"""
 	def _postProcessing(self):
 		#Replace ^^ (consecutive empty activities) with nil
-		self.model = self.model.replace("^^","")
+		self._model = self._model.replace("^^","")
 	
 		#Remove empty activities in sequences. AB^C becomes ABC. It is a defect with Bezerra's algorithm
 		#that it generates models with empty activities in sequence, which can simply be removed.
-		temp = self.model[0]
+		temp = self._model[0]
 		i = 1
-		while i < len(self.model):
+		while i < len(self._model):
 			#if pattern is not A^ or ^A, append current char to output model
-			if not (self.model[i] == "^" and self.model[i-1] in self.symbols):
-				temp += self.model[i]
+			if not (self._model[i] == "^" and self._model[i-1] in self._symbols):
+				temp += self._model[i]
 			i += 1
-		self.model = temp
+		self._model = temp
 		
 		#given above algorithm, an activity sequence may still start with '^', so remove those too
 		temp = ""
 		i = 0
-		while i < len(self.model) - 1:
+		while i < len(self._model) - 1:
 			#append current char if pattern is not ^A
-			if not (self.model[i] == "^" and self.model[i+1] in self.symbols):
-				temp += self.model[i]
+			if not (self._model[i] == "^" and self._model[i+1] in self._symbols):
+				temp += self._model[i]
 			i+=1
-		temp += self.model[i]
-		self.model = temp
+		temp += self._model[i]
+		self._model = temp
 		
 	"""
 	Directly implements Algorithm 4 from "Algorithms for anomaly detection from traces..." by Bezerra.
@@ -235,10 +334,9 @@ class ModelGenerator(object):
 	"""
 	def _createModel(self,n,preventLoop=False):
 		#print("n="+str(n)+" preventLoop="+str(preventLoop))
-		#print("model: "+self.model)
+		#print("model: "+self._model)
 	
 		if n <= 0:
-			#print("EMPTY TRANSITION")
 			model =  ""
 		elif n == 1:
 			model = self._generateRandomActivity()
@@ -250,13 +348,12 @@ class ModelGenerator(object):
 				s = self._seq(n1, n2, preventLoop)
 				model = s #elf._seq(n1, n2)
 
-			#taken with prob 0.4
+			#taken with prob 0.4: add a substructure such as AND, OR, or LOOP
 			else:
 				r = random.randint(1,100)
 				#taken with prob 0.4 insert a single Activity
 				if r >= 61:
-					a = self._generateRandomActivity()
-					model = a + self._createModel(n-1)
+					model = self._generateRandomActivity() + self._createModel(n-1)
 					
 				#taken with prob 0.3 insert OR-join
 				elif r >= 31 and r <= 60:
@@ -269,7 +366,8 @@ class ModelGenerator(object):
 						n1,n2 = self._rndSplit(n)  #left arg was n-1 in Bezerra's (see header comment)
 						model = self._or(n1, n2)
 
-				#taken with prob 0.2 insert a LOOP, which shall always be prepended with an acitvity so we don't end up with loops configured to the end of multiple outputs: ((A|B)|(C|D))[ABC]
+				#Taken with prob 0.2 insert a LOOP, which shall always be prepended with an acitvity so we don't end up with loops configured to the end of multiple outputs: ((A|B)|(C|D))[ABC].
+				#They can, however, occur multiply just before an AND/OR, such as AB[C](F|G), resulting in > 2 output edges on B
 				elif r >= 11 and r <= 30 and not preventLoop:
 					r = random.randint(1,100)
 					#taken with prob 0.3
@@ -288,35 +386,50 @@ class ModelGenerator(object):
 		return model
 
 def usage():
-	print("python ./ModelGenerator -n=(some +integer <= 62) [-file=(path to output file)]")
+	print("python ./ModelGenerator -n=(some +integer <= 60) -a=(number of anomalies to include) -config=configPath [-file=(path to output file)]")
 
 def main():
-	if len(sys.argv) < 2:
+	if len(sys.argv) < 4:
 		print("ERROR insufficient number of parameters")
 		usage()
 		exit()
 	if "-n=" not in sys.argv[1]:
 		print("ERROR no n parameter passed")
+		usage()
 		exit()
-
+	if "-a=" not in sys.argv[2]:
+		print("ERROR no num-anomalies param passed")
+		usage()
+		exit()
+	if "-config=" not in sys.argv[3]:
+		print("ERROR no config path parameter passed")
+		for arg in sys.argv:
+			print(arg)
+		usage()
+		exit()
+	configPath = sys.argv[3].split("=")[1].strip()
+	
+	a = int(sys.argv[2].split("=")[1])
+		
+	#get n, the approximate number of activities to generate
 	n = int(sys.argv[1].split("=")[1])
 	#verify no more than 62 activities are specified; this constraint only exists because I'm using single-char, alphanumeric activity id's.
 	#In the future, any arbitrary number of activities could be used, I would just need to delimit/parse the activity names.
-	if n > 62: # 62 = all upper and lowercase alphanumeric chars
-		print("ERROR too many activities specified. No more than 62 allowed.")
+	if n > 60: # 60 < all upper and lowercase alphanumeric chars minus some expected number of AND's, which used two activities
+		print("ERROR too many activities specified. No more than 60 allowed.")
 		usage()
 		exit()
-	
+
 	ofile = None
-	if len(sys.argv) > 2 and "-file=" in sys.argv[2]:
-		ofile = open(sys.argv[2].split("=")[1], "w")
-		
-	generator = ModelGenerator()
-	generator.CreateModel(n)
+	if len(sys.argv) > 4 and "-file=" in sys.argv[4]:
+		ofile = open(sys.argv[4].split("=")[1], "w+")
+
+	generator = ModelGenerator(configPath)
+	generator.CreateModel(n,a)
 	generator.PrintModel()
 
 	if ofile != None:
-		ofile.write(generator.model)
+		ofile.write(generator.GetModel())
 		ofile.close()
 
 if __name__ == "__main__":

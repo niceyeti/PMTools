@@ -1,0 +1,361 @@
+"""
+Given some graphml file parameter, reads the graph into an igraph object and generates stochastic traces
+by walking the graph from START node to END node according to the distribution parameters defined in the
+graph itself.
+
+The graphml file is expected to contain a graph defined by the output of ModelConverter.py, which outputs
+a (possibly cyclic) left to right graph with probability distribution parameters on all edges (although only
+the parameters at LOOP and OR nodes are meaningful, since all other edge probabiliies are 1.0).
+
+Output: A number of traces of the graph, labelled +/-1 to demark whether or not a particular walk is traversed any
+anomalous edge one or more times.
+
+Usage:
+	python DataGenerator.py [path to graphml file] -n=[number of traces to generate]
+	
+TODO:
+	What are the parameters that should be included? We could instead pass a config file with a bunch
+	of required fields: type of statistical distribution to follow, number of traces, anomaly distributions, etc.
+
+"""
+import random
+import igraph
+import sys
+import math
+
+class DataGenerator(object):
+	def __init__(self):
+		self._startNode = None
+		self._endNode = None
+
+	def _selectNextEdge(self,outEdges):
+		edge = None
+		#select the next edge to follow, first checking if any outgoing edges are LOOP edges
+		if "LOOP" in [type for edge["type"] in outEdges]:
+			#stochastically select to follow loop edge or not
+			r = random.randint(1,100)
+			edge = kljkl
+		
+		
+		if numEdges > 3:
+			#notify of bad structure; max number of out-edges is three, since you can have OR-clauses which end with a LOOP (draw it)
+			print("ERROR More than three outgoing edges detected for node "+curNode["label"]+". Structurally, no node may have more than 3 outgoing edges,")
+			print("or there is an issue with the ModelGenerator/Converter.")
+			edge = self._selectRandomEdge(outEdges)
+		elif numEdges >= 2:
+			#Current node has two or more outgoing edges, which means there could be either an AND or an OR, and possibly 1-2 LOOP edges
+			edge = self._selectRandomEdge(outEdges)
+		elif numEdges == 1:
+			#simple case: current node has only one outgoing edge
+			edge = outEdges[0]
+		else:
+			#should be unreachable. The only node with zero out-edge is the END node, which should be caught by the loop condition
+			print("ERROR numEdges == 0 in _generateTrace")
+
+	"""
+	The utility for generating a single trace from the input graph. This encapsulates a graph walk,
+	and hence the probabilistic logic/parameters for choosing walks.
+	
+	Notes: This method requires that every activity in the model is unique. Also, every AND must be appended with some activity,
+	to guarantee that a recusrive search down the AND-branches recombine at some node, which can then be found by chopping off
+	the non-matching prefixes of these searches. For example, the left and right searches for (ABC&EFG)H gives "ABCH..." and "EFGH...". 
+	Given the constraints, the joining node of the AND is H, and can be detected as such, as the first matching char in the left and right strings.
+	
+	Returns: A string of the concatenated chars of each node visited. The string is appended with ",+1" for anomalous traces, ",-1" for non-anomalous traces.
+	Also returns a list of nodes, where the index for each node corresponds with its index in the concatenated char string.
+	
+	Returns: A list of (src,dest) igraph-edge pairs, representing all transitions for this trace. Th reason for this construction is we need to preserve some of the
+	edge info for post-processing analysis, but primarily because AND splits (parallel paths) can't be represented as a string.
+	"""
+	def _generateTrace(self,startNode):
+		curNode = startNode
+		isAnomalousTrace = False
+		transitionList = []
+		
+		while curNode["label"] != "END":
+			#randomly select and follow an outgoing edge from the current node, until we reach the last node; there should be at most 2 outgoing edges for any node
+			outEdges = [outEdge for outEdge in self._graph.es if outEdge.source == curNode.index]
+			numEdges = len(outEdges)
+			
+			#first, if a LOOP subprocess is represented by one of the edges, probabilistically take it first, since the loop will end back at the current source node, and the probabilistic choice repeats
+			#Note: This gives only uniform preference to the LOOP according to its edge-probability; it may be better to define this exponentially, such that the probability of taking the loop decreases exponentially after each iteration
+			edgeTypes = [e["type"] for e in outEdges]
+			if "LOOP" in edgeTypes:
+				for e in outEdges:
+					if e["type"] == "LOOP":
+						loopEdge = edge
+						break
+				pLoop = float(loopEdge["probability"])
+				r = float(random.randint(1,100)) / 100.0
+				if r <= pLoop:
+					transitionList.append(loopEdge)
+					curNode = loopEdge.target			
+			#continue	
+			
+			#after loops, outgoing edges are exclusively AND or OR or SEQ
+			if "AND" in edgeTypes:
+				andEdges = [edge for edge in outEdges if edge["type"] == "AND"]
+				#For AND splits, go down both branches, then glue their shared prefixes to get the re-join point of the branches
+				leftPath = _generateTrace(andEdges[0].target)
+				rightPath = _generateTrace(andEdges[1].target)
+				#MAKE THIS A FUNCTION
+				#make sure this whole search returns index of END node if no match is found; although, we do guarantee each AND split is appended with an alpha
+				#find the first char at which the two strings match; this is the node (via its name/label) at which the AND rejoined
+				i = 0
+				matchFound = False
+				matchIndex = len(leftPrefix)
+				#for each char in leftPrefix, search for match in right prefix
+				while i < len(leftPath) and not matchFound:
+					j = 0
+					while j < len(rightPath) and not matchFound:
+						if leftPath[i].source["label"] == rightPath[j].source["label"]:
+							matchFound = True
+							leftJoinIndex = i
+							rightJoinIndex = j
+							j += 1
+						i += 1
+				#return index of first matching char
+				transitionList.append(leftPath[0:leftJoinIndex])
+				transitionList.append(rightPath[0:rightJoinIndex])
+				#restart walk from the Join node, at which the two AND branches rejoined
+				curNode = self._graph.vs[leftPath[leftJoinIndex].source]
+				
+				#this should be unreachable, since every AND is appended with some char. Should never reach END node.
+				if matchIndex >= len(leftPrefix):
+					print("ERROR matchIndex >= len(leftPrefix) in _generate()")
+			
+			#OR split detected, so stochastically choose an edge to follow
+			elif "OR" in edgeTypes:
+				outEdges = [edge for edge in outEdges if edge["type"] == "OR"]
+				r = float(random.randint(1,100)) / 100.0 #generates a random float in range 0.01-1.00
+				pLeft = float(outEdges[0]["probability"])
+				pRight = float(outEdges[1]["probability"])
+				#detect and notify if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
+				if math.fabs((pLeft + pRight) - 1.0) > 0.01:
+					print("WARNING possibly invalid probabilities detected. Edge probabilities do not sum to 1.0: "+str(pLeft)+" "+str(pRight))
+
+				#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
+				if r < pLeft: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
+					transitionList.append(outEdges[0])
+					curNode = self._graph.vs[outEdges[0].target]
+				else:
+					transitionList.append(outEdges[1])
+					curNode = self._graph.vs[outEdges[1].target]
+			
+			#lastly, only one option left: current node has only one outgoing "SEQ edge"
+			elif "SEQ" in edgeTypes:
+				outEdges = [edge for edge in outEdges if edge["type"] == "SEQ"]
+				#detect and notify of more than one SEQ out-edge for a particular node, which is an invalid topology
+				if len(outEdges) > 1:
+					print("WARNING more than one SEQ edge in _generateTrace(). Num edges: "+str(outEdges))
+				transitionList.append(outEdges[0])
+				curNode = self._graph.vs[outEdges[0].target]
+			else:
+				#this else should be unreachable, so notify if not
+				print("ERROR unreachable else reached in _generateTrace() for edgeTypes: "+str(edgeTypes))
+				transitionList.append(outEdges[0])
+				curNode = self._graph.vs[outEdges[0].target]
+
+		return transitionList
+
+	"""
+	
+	#select the next edge to follow, first checking if any outgoing edges are LOOP edges
+	if "LOOP" in [type for edge["type"] in outEdges]:
+		#stochastically select to follow loop edge or not
+		
+		edge = kljkl
+	
+	
+	if numEdges > 3:
+		#notify of bad structure; max number of out-edges is three, since you can have OR-clauses which end with a LOOP (draw it)
+		print("ERROR More than three outgoing edges detected for node "+curNode["label"]+". Structurally, no node may have more than 3 outgoing edges,")
+		print("or there is an issue with the ModelGenerator/Converter.")
+		edge = self._selectRandomEdge(outEdges)
+	elif numEdges >= 2:
+		#Current node has two or more outgoing edges, which means there could be either an AND or an OR, and possibly 1-2 LOOP edges
+		edge = self._selectRandomEdge(outEdges)
+	elif numEdges == 1:
+		#simple case: current node has only one outgoing edge
+		edge = outEdges[0]
+	else:
+		#should be unreachable. The only node with zero out-edge is the END node, which should be caught by the loop condition
+		print("ERROR numEdges == 0 in _generateTrace")
+						
+	"""
+		
+		
+	"""
+	For a node with 2 out-edges, selects one of them at random according to their respective probability labels.
+	As such, the probability labels must sum to 1.0, within some reasonable tolerance.
+	
+	TODO: Assign a probability distribution, instead of uniform? Eg, Poisson, Bernoulli, etc
+	def _selectRandomEdge(self, edges):
+	
+		#first, if a LOOP subprocess is represented by one of the edges, probabilistically take it first, since the loop will end back at the current source node, and the probabilistic choice repeats
+		#Note: This gives only uniform preference to the LOOP according to its edge-probability; it may be better to define this exponentially, such that the probability of taking the loop decreases exponentially after each iteration
+		if "LOOP" in [type for edge["type"] in edges]:
+			for edge in edges:
+				if edge["type"] == "LOOP":
+					loopEdge = edge
+					break
+			pLoop = float(loopEdge["probability"])
+			r = float(random.randint(1,100)) / 100.0
+			if r <= pLoop:
+				return loopEdge
+
+		
+		if "AND" in [type for edge["type"] in edges]:
+				
+		r = float(random.randint(1,100)) / 100 #generates a random float in range 0.01-1.00
+		pLeft = float(edges[0]["probability"])
+		pRight = float(edges[1]["probability"])
+		#detect if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
+		#Remove the following: AND splits have both branches' probability labelled as 1.0
+		#if math.fabs((pLeft + pRight) - 1.0) > 0.01:
+		#	print("WARNING possibly invalid probabilities detect. Edge probabilities do not sum to 1.0: "+str(pLeft)+" "+str(pRight))
+		
+		#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
+		if r < pLeft: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
+			edge = edges[0]
+		else:
+			edge = edges[1]
+			
+		return edge
+	"""
+	
+	"""
+	Builds the graph and stores some of its basic info for querying.
+	"""
+	def _buildGraph(self, graphmlPath):
+	
+		self._graph = igraph.Graph.Read(graphmlPath)
+		#find and store the start and end nodes, so we don't have to look them up constantly
+		for v in self._graph.vs:
+			if v["label"] == "START":
+				self._startNode = v
+			if v["label"] == "END":
+				self._endNode = v
+	
+	"""
+	Given a list of igraph-edge tuples, performs post-processing after _generateTrace() has completed.
+	For now, this only includes resolving empty transitions. The output of _generateTrace() may include walks
+	over empty edges (eg, edges labeled "^_123"). This unifies the entry node with the exit node of some empty edge
+	transition. An example of an empty transition for three nodes would be A-> ^_123 -> B. This would then unify this
+	empty transition to only (A,B), from (A,^_123) and (^_123, B)
+	
+	@edges: a list of igraph-edges defining this walk; treat these edges as unordered
+	
+	Returns: a list of tuples representing the node labels for the walk.
+	"""
+	def _postProcessEdges(self,edges):
+		scrubbed = []
+
+		while len(edges) > 0:
+			#not an empty transition edge, so just add it to the output
+			if "^" not in [edges[0].source["label"], edges[0].target["label"]]:
+				scrubbed += (edges[0].source["label"],edges[0].target["label"])
+				edges = edges[1:] #discard the edge after copying it to scrubbed
+					
+			#empty transition found, so find the end points of the transition, add these endpoints to the scrubbed list, and remove the empty transitions from edges
+			elif "^" in edges[0].target["label"]:
+				lambdaLabel = edges[0].target["label"]
+				#find the first terminal node for this branch
+				for edge in edges:
+					if edge.source["label"] == lambdaLabel:
+						source = edge
+						#warn of contiguous empty branches, which I'm not handling
+						if "^" in edge.target["label"]:
+							print("WARN contiguous empty branch encountered in _postProcessEdges() of DataGenerator, unhandled")		
+				#post-for: have both the start and end points of the empty transition. So add them to scrubbed, and remove them from edges
+				scrubbed += (source["label"], edges[0].target["label"])
+				temp = []
+				for edge in edges:
+					#filter edges matching the empty transition we just handled
+					if lambdaLabel not in [edge.target["label"], edge.source["label"]]:
+						temp += edge
+				edges = temp
+				
+			#same case as prior, but with source/dest reversed. unfortunately this can't be merged with the code in the previous elif
+			elif "^" in edges[0].source["label"]:
+				sourceLabel = edges[0].source["label"]
+				#find the first terminal node for this branch
+				for edge in edges:
+					if edge.target["label"] == sourceLabel:
+						source = edge
+						#warn of contiguous empty branches, which I'm not handling
+						if "^" in edge.source["label"]:
+							print("WARN contiguous empty branch encountered in _postProcessEdges() of DataGenerator, unhandled")		
+				#post-for: have both the start and end points of the empty transition. So add them to scrubbed, and remove them from edges
+				scrubbed += (source.target["label"], edges[0].target["label"])
+				temp = []
+				for edge in edges:
+					if edge["label"] not in [edges[0].source["label"], dest["label"]]:
+						temp += edge
+				edges = temp
+				
+			else:
+				print("WARNING unreachable case in _postProcessEdges for edge: "+str(edges[0]))
+				scrubbed += (edge.source["label"],edge.target["label"])
+
+		return scrubbed
+	
+	"""
+	Just calls the inner recursive driver, then does some basic cleanup and postprocessing on the returned list of edges.
+	
+	Returns: List of edge-label tuples representing all source-dest transitions: [(A,B), (B,C) ... ]
+	"""
+	def GenerateTrace(self):
+		edges = self._generate(self._startNode)
+		edges = self._postProcessEges(edges)
+		edgeLabels = [(edge.source["label"],edge.target["label"])]
+		
+	def GenerateTraces(self, graphmlPath, n, outputFile="traces.txt"):
+		if not graphmlPath.endswith(".graphml"):
+			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
+			return
+	
+		print("Generating traces...")
+		ofile = open(outputFile, "w+")
+		self._buildGraph(graphmlPath)
+		i = 0
+		while i < n:
+			trace = self._generateTrace(self._startNode)
+			ofile.write(str(trace)+"\n")
+			i += 1
+		print("Trace generation completed and output to "+outputFile+".")
+		ofile.close()
+
+def usage():
+	print("python ./DataGenerator [-file=(path to graphml file)] -n=500 [optional: path to output trace file]")
+
+
+def main():
+	if len(sys.argv) < 3:
+		print("ERROR insufficient number of parameters")
+		usage()
+		exit()
+	if "-n=" not in sys.argv[2]:
+		print("ERROR no n parameter passed")
+		exit()
+
+	graphFile = sys.argv[1]
+		
+	n = int(sys.argv[2].split("=")[1])
+	if n <= 1:
+		print("ERROR n too small.")
+		usage()
+		exit()
+		
+	ofile = "traces.txt"
+	if len(sys.argv) == 4:
+		ofile = sys.argv[3]
+	
+	print("JESSE TODO: Figure out how to represent AND transitions; are these representable in xes format? Currently, these are just represented sequentially: leftBranch+rightBranch.")
+	generator = DataGenerator()
+	generator.GenerateTraces(graphFile, n, ofile)
+	
+if __name__ == "__main__":
+	main()
+
+
