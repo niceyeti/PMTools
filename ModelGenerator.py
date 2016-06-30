@@ -15,9 +15,6 @@ into workflow edges.
 
 Input:  print("python ./ModelGenerator -n=(some +integer <= 62) [-config=configPath] [-file=(path to output file)]")
 
-
-
-
 Output: A graph in graphML format, with probabilistic edges.
 
 A is a subproc, which may be an activity or any composition of the following.
@@ -42,7 +39,8 @@ class ModelGenerator(object):
 	def __init__(self, configPath):
 		#activity dictionary; let activities be defined by simple symbols in Sigma, each with some label
 		#self.activities = {'A':"PullLever",'B':"PushButton",'C':"SpinWheel",'D':"TwistKnob",'E':"PullSpring",'F':"TootWhistle",'G':"RingBell",'H':"TapGauge",'I':"WipeForehead",'J':"ReadGauge",'K':"SmellSmoke",'L':"TapKeys",'M':"PushPedal"}
-		self._symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		self._remainingActivities = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		self._activities = self._remainingActivities.strip() # a pseudo deep copy
 		self._model = ""
 		self._abnormalOrProbRange = (-1.0,-1.0)
 		self._normalOrProbRange = (-1.0,-1.0)
@@ -50,8 +48,9 @@ class ModelGenerator(object):
 		self._normalLoopProbRange = (-1.0,-1.0)
 		self._anomalousOrBranchProb = 0.0
 		self._anomalousLoopProb=0.0
+		self._anomalyCount = 0
+		self._requiredAnomalies = 999
 		self._parseConfig(configPath)
-		
 
 	"""
 	Parses in the parameters/vals of the config file. All are required.
@@ -64,6 +63,7 @@ class ModelGenerator(object):
 		self._normalOrProbRange = (-1.0,-1.0)
 		self._abnormalLoopProbRange = (-1.0,-1.0)
 		self._normalLoopProbRange = (-1.0,-1.0)
+		self._requiredAnomalies = -1
 	
 		config = open(configPath,"r")
 		for line in config.readlines():
@@ -83,7 +83,11 @@ class ModelGenerator(object):
 			if "normalLoopProbRange=" in line:
 				vals = line.split("=")[1].split(",")
 				self._normalLoopProbRange = (float(vals[0]),float(vals[1]))
-
+			if "numAnomalies=" in line:
+				self._requiredAnomalies = int(line.split("=")[1])
+				
+		if self._requiredAnomalies < 0:
+			print("ERROR config did not contain numAnomalies")
 		if self._abnormalOrProbRange[0] < 0.0:
 			print("ERROR config did not contain abnormalOrProbRange")
 		if self._normalOrProbRange[0] < 0.0:
@@ -97,10 +101,17 @@ class ModelGenerator(object):
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
 	"""
 	def _generateRandomActivity(self):
-		randomIndex = random.randint(0,len(self._symbols)-1)
-		alpha = self._symbols[randomIndex]
-		#delete the old activity, preventing them from being repeated
-		self._symbols = self._symbols.replace(alpha,"")
+		if len(self._remainingActivities) == 0:
+			alpha = ""
+		elif len(self._remainingActivities) == 1: #this and the prior conditional are both degenerate cases
+			alpha = self._remainingActivities[0]
+			self._remainingActivities = ""
+		else:
+			randomIndex = random.randint(0,len(self._remainingActivities)-1) #symbols remaining, so randomly choose one
+			alpha = self._remainingActivities[randomIndex]
+			#delete the old activity, preventing them from being repeated
+			self._remainingActivities = self._remainingActivities.replace(alpha,"")
+
 		return alpha
 
 	def GetModel(self):
@@ -199,14 +210,6 @@ class ModelGenerator(object):
 		return s #elf._createModel(n1,preventLoop)+self._createModel(n2)
 
 	"""
-	Returns the number of anomalies in the current model, which is just the number of "True" attributes on OR and LOOP structres.
-	"""
-	def _countAnomalies(self):
-		return self._model.count("True")
-		
-	
-		
-	"""
 	OR has a few subtle constraints. We cannot allow both branches to be empty, and neither may start with
 	a loop or consist only of a loop.
 	
@@ -214,13 +217,12 @@ class ModelGenerator(object):
 	@n2: approximate number of subprocesses to create on right branch; if 0, make an empty branch
 	"""
 	def _or(self,n1,n2):
-		
-		######################################################
-		#TODO: figure out distribution for choosing when to label branches as anomalies, and subsequently what probabilities to assign to them		
+		#first, determine whether or not a branch should be anomalous, and assign branch probabilities
 		isLeftBranchAnomalous = False
 		isRightBranchAnomalous = False
 		#declare an anomalous branch with prob 0.30
-		if (float(random.randint(1,100)) / 100.0) <= self._anomalousOrBranchProb:
+		if (float(random.randint(1,100)) / 100.0) <= self._anomalousOrBranchProb and self._anomalyCount < self._requiredAnomalies:
+			self._anomalyCount += 1
 			#flip a coin to choose the anomalous branch
 			if random.randint(1,2) % 2 == 0:
 				isLeftBranchAnomalous=True
@@ -231,8 +233,6 @@ class ModelGenerator(object):
 			p = self._getNormalOrProb()
 		else:
 			p = self._getAbnormalOrProb()
-		##### End of TODO
-		
 		
 		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
 		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
@@ -250,8 +250,9 @@ class ModelGenerator(object):
 	def _loop(self,n1,n2):
 		### TODO As for _or(), define when/how to declare anomalous loops, and what probs to assign them
 		isAnomalousLoop=False
-		if (float(random.randint(1,100)) / 100.0) < self._anomalousLoopProb:
+		if (float(random.randint(1,100)) / 100.0) < self._anomalousLoopProb and self._anomalyCount < self._requiredAnomalies:
 			isAnomalousLoop = True
+			self._anomalyCount += 1
 		### End of TODO
 	
 		if isAnomalousLoop:
@@ -260,9 +261,18 @@ class ModelGenerator(object):
 			p = self._getNormalLoopProb()
 		probExpr = ":<"+self._buildProbExpr(p,isAnomalousLoop)+">"
 		
-		return "["+self._seq(n1,n2,True)+"]"+probExpr #preventLoop=True prevents invalid double loops: [[AB]GHFJ]
+		#Note the shoe-horned activity in the LOOP construct, to force there to be at least one activity in a loop
+		return "["+self._generateRandomActivity()+self._seq(n1,n2,True)+"]"+probExpr #preventLoop=True prevents invalid double loops: [[AB]GHFJ]
 	####### End of the grammar rules
 
+	"""
+	Resets the object state such that we're redy to create a fresh model
+	"""
+	def _reset(self):
+		self._model = ""
+		self._remainingActivities = self._activities.strip() #python pseudo deep copy
+		self._anomalyCount = 0
+	
 	"""
 	Just the outer driver for the recursive calls. Note that models are generated until one meets the num-anomalies requirement.
 	An alternative is to generate models with LOOP and OR constructs, and then to flip their anomaly status to True, but the lazy way
@@ -272,21 +282,59 @@ class ModelGenerator(object):
 		if a > 3:
 			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate")
 
-		while self._countAnomalies() != a:
+		#while invalid models are generated, or models without enough anomalies, create and test a new one
+		isValidModel = False
+		while self._anomalyCount != a or not isValidModel:
+			self._reset()
 			self._model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
+			print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
+			isValidModel = self._isValidModel()
 
 		return self._model
 
 	def PrintModel(self):
 		print("Model:\n"+self._model)
+		ct = 0
 		i = 0
-		l = []
-		for c in self._model:
-			if c in self._symbols:
-				l += c
-				i += 1
-		print(str(i)+" total activities, "+str(len(set(l)))+" unique activities")
+		leftBraces = 0
+		while i < len(self._model):
+			if self._model[i] == "<":
+				leftBraces += 1
+			if self._model[i] == ">":
+				leftBraces -= 1
+			if leftBraces == 0 and self._model[i] in self._activities:
+				ct += 1
+			i += 1
+
+		print(str(ct)+" total activities, "+str(self._anomalyCount)+" anomalies")
+
+	"""
+	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
+	other bad structures.
+	"""
+	def _isValidModel(self):
+		#check for an approximate minimum valid length
+		if len(self._model) < 3:
+			print("ERROR model length too small: "+self._model)
+			return False
+			
+		#check for empty expressions
+		if self._model.find("(|)") >= 0 or self._model.find("()") >= 0:
+			print("ERROR model contains empty OR expr: "+self._model)
+			return False
+		if self._model.find("(&)") >= 0 or self._model.find("()") >= 0:
+			print("ERROR model contains empty AND expr: "+self._model)
+			return False
+		if self._model.find("[]") >= 0:
+			print("ERROR model contains empty loop expr: "+self._model)
+			return False
+		
+		#check for consecutive empty transitions: ^^, but treat these as a warning
+		if self._model.find("^^") >= 0:
+			print("ERROR model string contains consecutive empty branches: "+self._model)
+			
+		return True
 
 	"""
 	Cleans up model string after construction. Any potential errors should be fixed
@@ -296,28 +344,29 @@ class ModelGenerator(object):
 	def _postProcessing(self):
 		#Replace ^^ (consecutive empty activities) with nil
 		self._model = self._model.replace("^^","")
-	
-		#Remove empty activities in sequences. AB^C becomes ABC. It is a defect with Bezerra's algorithm
-		#that it generates models with empty activities in sequence, which can simply be removed.
-		temp = self._model[0]
-		i = 1
-		while i < len(self._model):
-			#if pattern is not A^ or ^A, append current char to output model
-			if not (self._model[i] == "^" and self._model[i-1] in self._symbols):
-				temp += self._model[i]
-			i += 1
-		self._model = temp
 		
-		#given above algorithm, an activity sequence may still start with '^', so remove those too
-		temp = ""
-		i = 0
-		while i < len(self._model) - 1:
-			#append current char if pattern is not ^A
-			if not (self._model[i] == "^" and self._model[i+1] in self._symbols):
-				temp += self._model[i]
-			i+=1
-		temp += self._model[i]
-		self._model = temp
+		if len(self._model) > 0:
+			#Removes empty activities in sequences. AB^C becomes ABC. It is a defect with Bezerra's algorithm
+			#that it generates models with empty activities in sequence, which can simply be removed.
+			temp = self._model[0]
+			i = 1
+			while i < len(self._model):
+				#if pattern is not A^ or ^A, append current char to output model
+				if not (self._model[i] == "^" and self._model[i-1] in self._activities):
+					temp += self._model[i]
+				i += 1
+			self._model = temp
+			
+			#given above algorithm, an activity sequence may still start with '^', so remove those too
+			temp = ""
+			i = 0
+			while i < len(self._model) - 1:
+				#append current char if pattern is not ^A
+				if not (self._model[i] == "^" and self._model[i+1] in self._remainingActivities):
+					temp += self._model[i]
+				i+=1
+			temp += self._model[i]
+			self._model = temp
 		
 	"""
 	Directly implements Algorithm 4 from "Algorithms for anomaly detection from traces..." by Bezerra.

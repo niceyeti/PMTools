@@ -238,16 +238,20 @@ class ModelConverter(object):
 				
 			elif modelString[i] == "(":
 				leftExpr, pLeft, isLeftAnomaly, rightExpr, pRight, isRightAnomaly, opString, modelString = self._parseAndOrExpr(modelString[i:])
-				leftInputs, leftOutputs = self._convert(leftExpr,[])#lastActivities)
-				rightInputs, rightOutputs = self._convert(rightExpr,[])#lastActivities)
+				leftInputs, leftOutputs = self._convert(leftExpr,[])
+				rightInputs, rightOutputs = self._convert(rightExpr,[])
+				if opString == "|":
+					opLabel = "OR"
+				else:
+					opLabel = "AND"
 				#configure the inputs for the left branch
 				for activity in leftInputs:
 					for lastActivity in lastActivities:
-						self._addEdge(lastActivity, activity, pLeft, isLeftAnomaly,"OR") #only the input edges are marked as OR-type
+						self._addEdge(lastActivity, activity, pLeft, isLeftAnomaly, opLabel) #only the input edges are marked as OR-type
 				#configure the inputs to the right branch
 				for activity in rightInputs:
 					for lastActivity in lastActivities:
-						self._addEdge(lastActivity, activity, pRight, isRightAnomaly, "OR")
+						self._addEdge(lastActivity, activity, pRight, isRightAnomaly, opLabel)
 				#update last activities
 				lastActivities = [self._getActivityLabel(activity) for activity in leftOutputs + rightOutputs]
 				#set firstActivities, if empty. This is a small exception, is this function was called on a subexpr, eg "((AB...". The same exception does not apply to loops ("["), since they are constained to start with some activity
@@ -257,11 +261,8 @@ class ModelConverter(object):
 				i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
 				
 			elif modelString[i] == "[":
-				loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# return tuple
-				#print("POST parseLoopExpr: "+modelString)
-				loopStartActivities, loopEndActivities = self._convert(loopExpr, [])#lastActivities)
-				#print("START: "+str(loopStartActivities))
-				#print("END: "+str(loopEndActivities))
+				loopExpr, pLoop, isLoopAnomaly, modelString = self._parseLoopExpr(modelString[i:])	# get the loop expression
+				loopStartActivities, loopEndActivities = self._convert(loopExpr, []) #build the loop subprocess
 				#configure edges from current processes to end of loop processes
 				for lastActivity in lastActivities:
 					for loopStartActivity in loopStartActivities:
@@ -271,7 +272,7 @@ class ModelConverter(object):
 					for loopEndActivity in loopEndActivities:
 						self._addEdge(loopEndActivity, lastActivity, pLoop, False, "SEQ") #loop-exit anomaly status is not considered; and the return edges are just SEQ-type
 				if len(firstActivities) == 0:
-					print("WARNING: setting firstActivities in loop-expr builder of _convert(). This should not occur, unless model string is not properly constrained")
+					print("WARNING: firstActivities empty in loop-expr builder of _convert(). This should not occur, unless model string is not properly constrained,")
 					print("such that loops must be preceded by a base activity.")
 					firstActivities = [self._getActivityLabel(activity) for activity in loopStartActivities]
 				i = 0 #reset to zero, since modelString is reset to remainder of string after sub-expr
@@ -402,8 +403,7 @@ class ModelConverter(object):
 		layout = self._graph.layout("sugiyama")
 		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
-		igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
-	
+		igraph.plot(self._graph, "plot.png", layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
 def usage():
 	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'")
