@@ -404,6 +404,7 @@ class ModelConverter(object):
 		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
 		igraph.plot(self._graph, "plot.png", layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+		igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
 def usage():
 	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'")

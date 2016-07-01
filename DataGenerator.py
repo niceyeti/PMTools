@@ -28,31 +28,9 @@ class DataGenerator(object):
 		self._startNode = None
 		self._endNode = None
 
-	def _selectNextEdge(self,outEdges):
-		edge = None
-		#select the next edge to follow, first checking if any outgoing edges are LOOP edges
-		if "LOOP" in [type for edge["type"] in outEdges]:
-			#stochastically select to follow loop edge or not
-			r = random.randint(1,100)
-			edge = kljkl
-		
-		
-		if numEdges > 3:
-			#notify of bad structure; max number of out-edges is three, since you can have OR-clauses which end with a LOOP (draw it)
-			print("ERROR More than three outgoing edges detected for node "+curNode["label"]+". Structurally, no node may have more than 3 outgoing edges,")
-			print("or there is an issue with the ModelGenerator/Converter.")
-			edge = self._selectRandomEdge(outEdges)
-		elif numEdges >= 2:
-			#Current node has two or more outgoing edges, which means there could be either an AND or an OR, and possibly 1-2 LOOP edges
-			edge = self._selectRandomEdge(outEdges)
-		elif numEdges == 1:
-			#simple case: current node has only one outgoing edge
-			edge = outEdges[0]
-		else:
-			#should be unreachable. The only node with zero out-edge is the END node, which should be caught by the loop condition
-			print("ERROR numEdges == 0 in _generateTrace")
-
-			
+	"""
+	Given some nodeId, returns the igraph-vertex.
+	"""
 	def _getNode(self,nodeIndex):
 		return self._graph.vs[nodeIndex]
 			
@@ -199,6 +177,9 @@ class DataGenerator(object):
 		self._graph.es["isTraversed"] = False #mark all edges as not having been walked
 	
 	"""
+	TODO: This function is no longer used, empty transition nodes are just preserved, which shouldn't effect graph compression since the
+	pattern will be the same for all edges. If used, this func needs to be re-tested.
+	
 	Given a list of igraph-edge tuples, performs post-processing after _generateTrace() has completed.
 	For now, this only includes resolving empty transitions. The output of _generateTrace() may include walks
 	over empty edges (eg, edges labeled "^_123"). This unifies the entry node with the exit node of some empty edge
@@ -221,22 +202,22 @@ class DataGenerator(object):
 			#empty transition found, so find the end points of the transition, add these endpoints to the scrubbed list, and remove the empty transitions from edges
 			elif "^" in edges[0].target["label"]:
 				lambdaLabel = edges[0].target["label"]
-				#find the first terminal node for this branch
+				#find the terminal node for the empty branch
 				for edge in edges:
 					if edge.source["label"] == lambdaLabel:
-						source = edge
+						sourceEdge = edge
 						#warn of contiguous empty branches, which I'm not handling
 						if "^" in edge.target["label"]:
 							print("WARN contiguous empty branch encountered in _postProcessEdges() of DataGenerator, unhandled")		
-				#post-for: have both the start and end points of the empty transition. So add them to scrubbed, and remove them from edges
-				scrubbed += (source["label"], edges[0].target["label"])
+				#post-for: have both the start and end points of the empty transition. So add them to scrubbed, and remove them from edge list
+				scrubbed += (self._getNode(sourceEdge.source)["label"], self._getNode(edges[0].source)["label"])
 				temp = []
+				#now filter the edges matching the empty transition we just reconciled
 				for edge in edges:
-					#filter edges matching the empty transition we just handled
 					if lambdaLabel not in [edge.target["label"], edge.source["label"]]:
 						temp += edge
 				edges = temp
-				
+
 			#same case as prior, but with source/dest reversed. unfortunately this can't be merged with the code in the previous elif
 			elif "^" in edges[0].source["label"]:
 				sourceLabel = edges[0].source["label"]
@@ -265,11 +246,11 @@ class DataGenerator(object):
 	Just calls the inner recursive driver, then does some basic cleanup and postprocessing on the returned list of edges.
 	
 	Returns: List of edge-label tuples representing all source-dest transitions: [(A,B), (B,C) ... ]
-	"""
 	def GenerateTrace(self):
 		edges = self._generate(self._startNode)
 		edges = self._postProcessEges(edges)
 		edgeLabels = [(edge.source["label"],edge.target["label"])]
+	"""
 
 	"""
 	A trace is a uordered list of i-graph edges, representing a walk on a graph. The list must be considered unordered
@@ -277,24 +258,71 @@ class DataGenerator(object):
 	there is no linear order to the edges.
 	
 	Output format:
-		The entire edge list is output in no particular order but the edges do form a DAG.
-		Each trace is prepended with + or - to indicate if it is anomalous or not.
+		Outputs the trace (a graph) in .g format, which is consumable by SUBDUE/GBAD.  The format includes 
+		an XP/XN representing a negative/positive anomaly trace (positive if trace contains an anomaly), followed
+		by a bunch of vertex declarations, then definitions for directed edges. The data generator does not
+		produce named edges, so these do not have edge labels.
+		
 	Example:
-		+
-		A B
-		B C
-		B D
-		...
-	
-	@traces: an unordered list of igraph-edges
+		XP
+		v 1 A
+		v 2 B
+		d 1 2
+		d 1 3
+		....
+		
+	@trace: an unordered list of igraph-edges
 	@ofile: the output file handle
 	"""
-	def _writeTrace(self,traces,ofile):
-		ofile.write("+\n")
-		for t in traces:
-			ofile.write(self._getNode(t.source)["label"]+"\t"+self._getNode(t.target)["label"]+"\n")
+	def _writeTrace(self,trace,ofile):
+		hasAnomaly = False
+		ostr = ""
+		for e in trace:
+			if e["isAnomalous"]:
+				hasAnomaly = True
+	
+		"""	#outputs a simple edge format
+		if hasAnomaly:
+			ostr += "+\n" #print a plus to indicate an anomalous trace
+		else:
+			ostr += "-\n"
+
+		for edge in trace:
+			ofile.write(self._getNode(edge.source)["label"]+"\t"+self._getNode(edge.target)["label"]+"\n")
 		ofile.write("\n")
+		"""
 		
+		if hasAnomaly:
+			ostr += "XP\n"
+		else:
+			ostr += "XN\n"
+			
+		#vertex declarations; here I preserve the igraph vertex id's a the .g indices
+		vertexDict = {}
+		for edge in trace:
+			if edge.source not in vertexDict:
+				vertexDict[edge.source] = self._getNode(edge.source)["label"]
+			if edge.target not in vertexDict:
+				vertexDict[edge.target] = self._getNode(edge.target)["label"]
+		for k in vertexDict.iterkeys():
+			ostr += ("v "+str(k)+" "+vertexDict[k]+"\n")
+			
+		#output the edges
+		for edge in trace:
+			ostr += ("d "+str(edge.source)+" "+str(edge.target)+"\n")
+		ostr += "\n"
+		
+		ofile.write(ostr)
+		
+	"""
+	Once a trace has been generated, this resets the state of the generator so it is ready to generate a new trace.
+	"""
+	def _reset(self):
+		self._graph.es["isTraversed"] = False #in igraph, this assignmnet is applied to all edges
+		
+	"""
+	Main driver for generating traces.
+	"""
 	def GenerateTraces(self, graphmlPath, n, outputFile="traces.txt"):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
@@ -307,14 +335,18 @@ class DataGenerator(object):
 		while i < n:
 			trace = self._generateTrace(self._startNode)
 			self._writeTrace(trace,ofile)
+			self._reset()
 			i += 1
 		print("Trace generation completed and output to "+outputFile+".")
 		ofile.close()
 
 def usage():
-	print("python ./DataGenerator [-file=(path to graphml file)] -n=500 [optional: path to output trace file]")
+	print("python ./DataGenerator -file=(path to graphml file) -n=500 [-ofile=(path to output file; defaults to traces.txt if not passed)]")
 
 
+"""
+
+"""
 def main():
 	if len(sys.argv) < 3:
 		print("ERROR insufficient number of parameters")
@@ -331,10 +363,10 @@ def main():
 		print("ERROR n too small.")
 		usage()
 		exit()
-
+		
 	ofile = "traces.txt"
-	if len(sys.argv) == 4:
-		ofile = sys.argv[3]
+	if "-ofile=" in sys.argv[3]:
+		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
 	generator.GenerateTraces(graphFile, n, ofile)

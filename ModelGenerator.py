@@ -287,7 +287,7 @@ class ModelGenerator(object):
 		while self._anomalyCount != a or not isValidModel:
 			self._reset()
 			self._model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
-			print('Before post-processing, model is: \n'+self._model)
+			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
 			isValidModel = self._isValidModel()
 
