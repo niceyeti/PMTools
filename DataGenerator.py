@@ -43,18 +43,21 @@ class DataGenerator(object):
 	the non-matching prefixes of these searches. For example, the left and right searches for (ABC&EFG)H gives "ABCH..." and "EFGH...". 
 	Given the constraints, the joining node of the AND is H, and can be detected as such, as the first matching char in the left and right strings.
 	
-	Returns: A string of the concatenated chars of each node visited. The string is appended with ",+1" for anomalous traces, ",-1" for non-anomalous traces.
-	Also returns a list of nodes, where the index for each node corresponds with its index in the concatenated char string.
-	
-	Returns: A list of (src,dest) igraph-edge pairs, representing all transitions for this trace. Th reason for this construction is we need to preserve some of the
-	edge info for post-processing analysis, but primarily because AND splits (parallel paths) can't be represented as a string.
+	Returns: A list of (igraph-edge,time) tuples, representing all transitions for this trace. The reason for this construction is we need to preserve some of the
+	edge info for post-processing analysis, but primarily because AND splits (parallel paths) can't be represented as a string. The 'time' member of the tuple
+	represents the discrete time at which the edge was walked; since an edge may be walked multiple times (for loops only), an edge may occur multiple times
+	in the returned list, albeit with different time-stamps.
 	
 	TODO: This may need to be simplified with BFS queue or stack-based implementation.
+	
+	@startNode: The node from which to start the walk.
+	@startTime: The discrete time step (some integer) representing the start time for this walk.
 	"""
-	def _generateTrace(self,startNode):
+	def _generateTrace(self,startNode, startTime):
 		curNode = startNode
 		isAnomalousTrace = False
 		transitionList = []
+		currentTime = startTime
 		
 		while curNode["label"] != "END":
 			#randomly select and follow an outgoing edge from the current node, until we reach the last node; there should be at most 2 outgoing edges for any node
@@ -70,13 +73,13 @@ class DataGenerator(object):
 				for e in outEdges:
 					if e["type"] == "LOOP":
 						loopEdge = e
-						break
 				if not loopEdge["isTraversed"]:
 					loopEdge["isTraversed"] = True #mark the loop edge as traversed; this is only required on loop edges, to prevent endless recursion
 					pLoop = float(loopEdge["probability"])
 					r = float(random.randint(1,100)) / 100.0
 					if r <= pLoop:
-						transitionList.append(loopEdge)
+						transitionList.append((loopEdge, currentTime))
+						currentTime += 1
 						curNode = self._graph.vs[loopEdge.target]
 						loopTaken = True
 			#continue
@@ -85,16 +88,16 @@ class DataGenerator(object):
 				#after loops, outgoing edges are exclusively AND or OR or SEQ
 				if "AND" in edgeTypes:
 					outEdges = [edge for edge in outEdges if edge["type"] == "AND"]
-					if len(outEdges) < 2:
+					if len(outEdges) < 2: #unrecoverable; all AND splits must have two or more outgoing edges, or something is broken in the model
 						print("ERROR out edges for split node < 2: "+str(outEdges)+" model: "+self._model)
 						raw_input()
 					#For AND splits, go down both branches, then glue their shared prefixes to get the re-join point of the branches
 					leftNode = self._graph.vs[outEdges[0].target]
-					leftPath = self._generateTrace(leftNode)
+					leftPath = self._generateTrace(leftNode,currentTime)
 					rightNode = self._graph.vs[outEdges[1].target]
-					rightPath = self._generateTrace(rightNode)
-					#print(str(rightPath))
-					#MAKE THIS A FUNCTION
+					rightPath = self._generateTrace(rightNode, currentTime)
+
+					#TODO: MAKE THIS A FUNCTION
 					#make sure this whole search returns index of END node if no match is found; although, we do guarantee each AND split is appended with an alpha
 					#find the first char at which the two strings match; this is the node (via its name/label) at which the AND rejoined
 					i = 0
@@ -103,11 +106,7 @@ class DataGenerator(object):
 					while i < len(leftPath) and not matchFound:
 						j = 0
 						while j < len(rightPath) and not matchFound:
-							#print("LEFT: "+str(leftPath))
-							#print "Left: "+str(leftPath[i])
-							#print "Right: "+str(rightPath[j])
-							#print("RIGHT: "+str(rightPath))
-							if self._getNode(leftPath[i].source)["label"] == self._getNode(rightPath[j].source)["label"]:
+							if self._getNode(leftPath[i][0].source)["label"] == self._getNode(rightPath[j][0].source)["label"]:
 								matchFound = True
 								leftJoinIndex = i
 								rightJoinIndex = j
@@ -121,7 +120,9 @@ class DataGenerator(object):
 					if len(rightPrefix) > 0:
 						transitionList += rightPath[0:rightJoinIndex]
 					#restart walk from the Join node, at which the two AND branches rejoined
-					curNode = self._graph.vs[leftPath[leftJoinIndex].source]
+					curNode = self._graph.vs[leftPath[leftJoinIndex][0].source]
+					#for AND splits, the join point of the two paths will occur at time max(time-at-end-of-right-path, time-at-end-of-left-path) + 1
+					currentTime = max(rightPath[rightJoinIndex][1], leftPath[leftJoinIndex][1]) + 1
 					
 					#this should be unreachable, since every AND is appended with some char. Should never reach END node.
 					if not matchFound:
@@ -139,24 +140,28 @@ class DataGenerator(object):
 
 					#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
 					if r < pLeft: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
-						transitionList.append(outEdges[0])
-						curNode = self._graph.vs[outEdges[0].target]
+						randomEdge = outEdges[0]
 					else:
-						transitionList.append(outEdges[1])
-						curNode = self._graph.vs[outEdges[1].target]
-				
+						randomEdge = outEdges[1]
+						
+					transitionList.append((randomEdge,currentTime))
+					currentTime += 1
+					curNode = self._graph.vs[randomEdge.target]
+
 				#lastly, only one option left: current node has only one outgoing "SEQ edge"
 				elif "SEQ" in edgeTypes:
 					outEdges = [edge for edge in outEdges if edge["type"] == "SEQ"]
 					#detect and notify of more than one SEQ out-edge for a particular node, which is an invalid topology
 					if len(outEdges) > 1:
 						print("WARNING more than one SEQ edge in _generateTrace(). Num edges: "+str(outEdges))
-					transitionList.append(outEdges[0])
+					transitionList.append((outEdges[0],currentTime))
+					currentTime += 1		
 					curNode = self._graph.vs[outEdges[0].target]
 				else:
 					#this else should be unreachable, so notify if not
 					print("ERROR unreachable else reached in _generateTrace() for edgeTypes: "+str(edgeTypes))
-					transitionList.append(outEdges[0])
+					transitionList.append((outEdges[0],currentTime))
+					currentTime += 1
 					curNode = self._graph.vs[outEdges[0].target]
 					
 		return transitionList
@@ -271,14 +276,15 @@ class DataGenerator(object):
 		d 1 3
 		....
 		
-	@trace: an unordered list of igraph-edges
+	@trace: a (potentially unordered) list of (igraph-edges,timeStamp) tuples
 	@ofile: the output file handle
 	"""
 	def _writeTrace(self,trace,ofile):
 		hasAnomaly = False
 		ostr = ""
-		for e in trace:
-			if e["isAnomalous"]:
+
+		for tup in trace:
+			if tup[0]["isAnomalous"]:
 				hasAnomaly = True
 	
 		"""	#outputs a simple edge format
@@ -297,19 +303,20 @@ class DataGenerator(object):
 		else:
 			ostr += "XN\n"
 			
-		#vertex declarations; here I preserve the igraph vertex id's a the .g indices
+		#vertex declarations; here I preserve the igraph vertex id's as the .g indices
 		vertexDict = {}
-		for edge in trace:
-			if edge.source not in vertexDict:
-				vertexDict[edge.source] = self._getNode(edge.source)["label"]
-			if edge.target not in vertexDict:
-				vertexDict[edge.target] = self._getNode(edge.target)["label"]
+		for tup in trace:
+			if tup[0].source not in vertexDict:
+				vertexDict[tup[0].source] = self._getNode(tup[0].source)["label"]
+			if tup[0].target not in vertexDict:
+				vertexDict[tup[0].target] = self._getNode(tup[0].target)["label"]
 		for k in vertexDict.iterkeys():
 			ostr += ("v "+str(k)+" "+vertexDict[k]+"\n")
 			
 		#output the edges
 		for edge in trace:
-			ostr += ("d "+str(edge.source)+" "+str(edge.target)+"\n")
+			#each edge is output as: "srcId destId timestamp"
+			ostr += ("d "+str(edge[0].source)+" "+str(edge[0].target)+" "+str(edge[1])+"\n")
 		ostr += "\n"
 		
 		ofile.write(ostr)
@@ -333,7 +340,7 @@ class DataGenerator(object):
 		self._buildGraph(graphmlPath)
 		i = 0
 		while i < n:
-			trace = self._generateTrace(self._startNode)
+			trace = self._generateTrace(self._startNode, 0)
 			self._writeTrace(trace,ofile)
 			self._reset()
 			i += 1
