@@ -1,0 +1,13 @@
+System.out.println("Loading log");
+log = open_xes_log_file("myLog.xes");
+
+System.out.println("Mining model");
+net_and_marking = alpha_miner(log);
+net = net_and_marking[0];
+marking = net_and_marking[1];
+
+System.out.println("Saving net");
+File net_file = new File("mined_net.pnml");
+pnml_export_petri_net_(net, net_file);
+
+System.out.println("done.");
