@@ -246,18 +246,103 @@ class DataGenerator(object):
 				scrubbed += (edge.source["label"],edge.target["label"])
 
 		return scrubbed
-	
-	"""
-	Just calls the inner recursive driver, then does some basic cleanup and postprocessing on the returned list of edges.
-	
-	Returns: List of edge-label tuples representing all source-dest transitions: [(A,B), (B,C) ... ]
-	def GenerateTrace(self):
-		edges = self._generate(self._startNode)
-		edges = self._postProcessEges(edges)
-		edgeLabels = [(edge.source["label"],edge.target["label"])]
-	"""
 
 	"""
+	This method sorts activities in traces by their timestep, but does so in a manner that deliberately randomizes
+	the order of activities with equal time steps. As noted in _writeTrace() header, this is critical so that we aren'take
+	implicitly transmitting model information, such as if a stable sort was used.
+	
+	The algorithm, however, is very simple:
+		0) Completely randomize (shuffle) the traceList T to get R
+		1) Stable sort the tracelist R to get S
+	Since (0) achieves randomness wrt all activities with equal time-steps, stable-sorting in (1) is not a problem.
+		
+	@trace: A trace list, which is a list of <igraph-edge,integer timestep> tuples.
+	
+	Returns: None. The list is sorted in place.
+	"""
+	def _randomizedSort(self, trace):
+		#randomize the traces
+		random.shuffle(trace)
+		#stable sort the traces
+		trace.sort(key=lambda tup : tup[1])
+		
+	"""
+	A trace is a unordered list of <i-graph edges, int> pairs, representing a single walk on a process graph from start
+	to complete state. The list must be considered unordered	since a walk may incude concurrent AND paths which
+	split and rejoin, hence those edges are concurrent and there is no linear order to the edges.
+	
+	The edges in the trace are sorted by the time-step of their traversal, which gives the 'ordered' linear output
+	of the events, for which the underlying model (the activity edges) is still unknown. THIS IS CRITICALLY IMPORTANT.
+	AND-branches represent concurrent subprocesses, for which we MUST assume the underlying structure is unknown.
+	For instance, the AND split-join ABC&DEF can emit any permutation of ABCDEF that preserves the order relations
+	A<B<C and D<E<F in terms of ordering. Thus, the order of the emitted sequence, eg ADBEFC, contains implicit time step
+	data.
+	
+	Accordingly, this function attempts to make the sequences for concurrent activites as random as possible, using a deliberately
+	non-stable sort for activities with equal time step values (representing concurrent/parallel activities). This is required so that
+	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
+	traces. *****From a research perspective, this is a very important disclosure*****
+	
+	Output format:
+	To keep the DataGenerator.py cohesive, the traces are output in raw text in the following format. The client
+	will have to convert the traces into a target format, such as XES.
+	Format:
+		+/-,ABCDEF....
+	Where the + or - indicates the trace contains at least one anomaly (no other anomaly information is output).
+	
+	Example trace file:
+		-,ABCkhfhsrit
+		+,ABCeogjh
+		-,ABCdjg
+		...
+	
+	
+	Input:
+	@trace: a (potentially unordered) list of (igraph-edges,timeStep) tuples
+	@ofile: the output file handle
+	"""
+	def _writeTrace(self,trace,ofile):
+		ostr = ""
+
+		hasAnomaly = False
+		for tup in trace:
+			if tup[0]["isAnomalous"]:
+				hasAnomaly = True
+	
+		if hasAnomaly:
+			ostr += "+,"
+		else:
+			ostr += "-,"
+			
+		for edge in trace:
+			
+			
+			
+			
+		#vertex declarations; here I preserve the igraph vertex id's as the .g indices
+		vertexDict = {}
+		for tup in trace:
+			if tup[0].source not in vertexDict:
+				vertexDict[tup[0].source] = self._getNode(tup[0].source)["label"]
+			if tup[0].target not in vertexDict:
+				vertexDict[tup[0].target] = self._getNode(tup[0].target)["label"]
+		for k in vertexDict.iterkeys():
+			ostr += ("v "+str(k)+" "+vertexDict[k]+"\n")
+			
+		#output the edges
+		for edge in trace:
+			#each edge is output as: "srcId destId timestamp"
+			ostr += ("d "+str(edge[0].source)+" "+str(edge[0].target)+" "+str(edge[1])+"\n")
+		ostr += "\n"
+		
+		ofile.write(ostr)
+		
+		
+	"""
+	This version outputs the ground-truth edge transitions, which is cheating, since this is what we're assuming we do not
+	have. The ground truth is defined as the activity relations, eg A->B. But this may be useful in the future. 
+	
 	A trace is a uordered list of i-graph edges, representing a walk on a graph. The list must be considered unordered
 	since a walk may incude concurrent AND paths which split and rejoin, hence those edges are concurrent and
 	there is no linear order to the edges.
@@ -276,9 +361,8 @@ class DataGenerator(object):
 		d 1 3
 		....
 		
-	@trace: a (potentially unordered) list of (igraph-edges,timeStamp) tuples
+	@trace: a (potentially unordered) list of (igraph-edges,timeStep) tuples
 	@ofile: the output file handle
-	"""
 	def _writeTrace(self,trace,ofile):
 		hasAnomaly = False
 		ostr = ""
@@ -287,16 +371,15 @@ class DataGenerator(object):
 			if tup[0]["isAnomalous"]:
 				hasAnomaly = True
 	
-		"""	#outputs a simple edge format
-		if hasAnomaly:
-			ostr += "+\n" #print a plus to indicate an anomalous trace
-		else:
-			ostr += "-\n"
-
-		for edge in trace:
-			ofile.write(self._getNode(edge.source)["label"]+"\t"+self._getNode(edge.target)["label"]+"\n")
-		ofile.write("\n")
-		"""
+		#outputs a simple edge format
+		#if hasAnomaly:
+		#	ostr += "+\n" #print a plus to indicate an anomalous trace
+		#else:
+		#	ostr += "-\n"
+        #
+		#for edge in trace:
+		#	ofile.write(self._getNode(edge.source)["label"]+"\t"+self._getNode(edge.target)["label"]+"\n")
+		#ofile.write("\n")
 		
 		if hasAnomaly:
 			ostr += "XP\n"
@@ -320,6 +403,8 @@ class DataGenerator(object):
 		ostr += "\n"
 		
 		ofile.write(ostr)
+	"""
+		
 		
 	"""
 	Once a trace has been generated, this resets the state of the generator so it is ready to generate a new trace.
@@ -341,6 +426,8 @@ class DataGenerator(object):
 		i = 0
 		while i < n:
 			trace = self._generateTrace(self._startNode, 0)
+			#sort the activities in the trace, such that activities with equal timesteps are randomized wrt eachother
+			self._randomizedSort(trace)
 			self._writeTrace(trace,ofile)
 			self._reset()
 			i += 1
