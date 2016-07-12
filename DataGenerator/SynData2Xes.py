@@ -106,6 +106,7 @@ their concurrent counterparts. These activities become the 'event' items in the 
 as ordered within the scope of some trace.
 """
 def ToXes(ipath,opath):
+	print("Building xes log from synthetic data file "+ipath+". Xes will be written to "+opath)
 	traces = BuildTraces(ipath)
 	log = BuildXesLog(traces)
 	WriteLog(log,opath)
@@ -126,11 +127,11 @@ if "-ofile=" not in sys.argv[2]:
 	print("ERROR no output file parameter passed")
 	usage()
 	exit()
-	
+
 ipath = sys.argv[1].split("=")[1]
 opath = sys.argv[2].split("=")[1]
 
-
+ToXes(ipath,opath)
 
 
 
