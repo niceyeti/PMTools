@@ -1,5 +1,5 @@
 """
-Small script for converting a graph in .g format to XES, the eXtenible Event Stream format
+Small script for converting an activity information-flow graph in .g format to XES, the eXtenible Event Stream format
 consumable by many process mining applications.
 
 ".g" files have the following format (this is o2g output):

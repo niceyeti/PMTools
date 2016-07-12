@@ -1,17 +1,17 @@
 """
 Given some graphml file parameter, reads the graph into an igraph object and generates stochastic traces
 by walking the graph from START node to END node according to the distribution parameters defined in the
-graph itself.
+graph.
 
 The graphml file is expected to contain a graph defined by the output of ModelConverter.py, which outputs
 a (possibly cyclic) left to right graph with probability distribution parameters on all edges (although only
 the parameters at LOOP and OR nodes are meaningful, since all other edge probabiliies are 1.0).
 
-Output: A number of traces of the graph, labelled +/-1 to demark whether or not a particular walk is traversed any
+Output: A number of traces of the graph, labelled +/-1 to demark whether or not a particular walk traversed any
 anomalous edge one or more times.
 
 Usage:
-	python DataGenerator.py [path to graphml file] -n=[number of traces to generate]
+	print("python ./DataGenerator -file=(path to graphml file) -n=[number of traces to generate] -ofile=(path to output file; defaults to traces.txt if not passed)]")
 	
 TODO:
 	What are the parameters that should be included? We could instead pass a config file with a bunch
@@ -268,21 +268,7 @@ class DataGenerator(object):
 		trace.sort(key=lambda tup : tup[1])
 		
 	"""
-	A trace is a unordered list of <i-graph edges, int> pairs, representing a single walk on a process graph from start
-	to complete state. The list must be considered unordered	since a walk may incude concurrent AND paths which
-	split and rejoin, hence those edges are concurrent and there is no linear order to the edges.
-	
-	The edges in the trace are sorted by the time-step of their traversal, which gives the 'ordered' linear output
-	of the events, for which the underlying model (the activity edges) is still unknown. THIS IS CRITICALLY IMPORTANT.
-	AND-branches represent concurrent subprocesses, for which we MUST assume the underlying structure is unknown.
-	For instance, the AND split-join ABC&DEF can emit any permutation of ABCDEF that preserves the order relations
-	A<B<C and D<E<F in terms of ordering. Thus, the order of the emitted sequence, eg ADBEFC, contains implicit time step
-	data.
-	
-	Accordingly, this function attempts to make the sequences for concurrent activites as random as possible, using a deliberately
-	non-stable sort for activities with equal time step values (representing concurrent/parallel activities). This is required so that
-	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
-	traces. *****From a research perspective, this is a very important disclosure*****
+	Iterates over the activities in a trace and writes the sequence. The traces are assumed to be sorted already.
 	
 	Output format:
 	To keep the DataGenerator.py cohesive, the traces are output in raw text in the following format. The client
@@ -299,47 +285,33 @@ class DataGenerator(object):
 	
 	
 	Input:
+	@traceNo: The trace number
 	@trace: a (potentially unordered) list of (igraph-edges,timeStep) tuples
 	@ofile: the output file handle
 	"""
-	def _writeTrace(self,trace,ofile):
-		ostr = ""
-
+	def _writeTrace(self,traceNo,trace,ofile):
 		hasAnomaly = False
 		for tup in trace:
 			if tup[0]["isAnomalous"]:
 				hasAnomaly = True
 	
+		ostr = str(traceNo)
 		if hasAnomaly:
-			ostr += "+,"
+			ostr += ",+,"
 		else:
-			ostr += "-,"
+			ostr += ",-,"
 			
+		#output all the src nodes as the activities that occurred at time t, except for the START node of course
 		for edge in trace:
-			
-			
-			
-			
-		#vertex declarations; here I preserve the igraph vertex id's as the .g indices
-		vertexDict = {}
-		for tup in trace:
-			if tup[0].source not in vertexDict:
-				vertexDict[tup[0].source] = self._getNode(tup[0].source)["label"]
-			if tup[0].target not in vertexDict:
-				vertexDict[tup[0].target] = self._getNode(tup[0].target)["label"]
-		for k in vertexDict.iterkeys():
-			ostr += ("v "+str(k)+" "+vertexDict[k]+"\n")
-			
-		#output the edges
-		for edge in trace:
-			#each edge is output as: "srcId destId timestamp"
-			ostr += ("d "+str(edge[0].source)+" "+str(edge[0].target)+" "+str(edge[1])+"\n")
-		ostr += "\n"
+			if edge[0]["label"] != "START":
+				ostr += edge[0]["label"]
 		
-		ofile.write(ostr)
+		ofile.write(ostr+"\n")
 		
 		
 	"""
+	Old.
+	
 	This version outputs the ground-truth edge transitions, which is cheating, since this is what we're assuming we do not
 	have. The ground truth is defined as the activity relations, eg A->B. But this may be useful in the future. 
 	
@@ -414,8 +386,25 @@ class DataGenerator(object):
 		
 	"""
 	Main driver for generating traces.
+	
+	A trace is a unordered list of <i-graph edges, int> pairs, representing a single walk on a process graph from start
+	to complete state. The list must be considered unordered	since a walk may incude concurrent AND paths which
+	split and rejoin, hence those edges are concurrent and there is no linear order to the edges.
+	
+	The edges in the trace are sorted by the time-step of their traversal, which gives the 'ordered' linear output
+	of the events, for which the underlying model (the activity edges) is still unknown. THIS IS CRITICALLY IMPORTANT.
+	AND-branches represent concurrent subprocesses, for which we MUST assume the underlying structure is unknown.
+	For instance, the AND split-join ABC&DEF can emit any permutation of ABCDEF that preserves the order relations
+	A<B<C and D<E<F in terms of ordering. Thus, the order of the emitted sequence, eg ADBEFC, contains implicit time step
+	data.
+	
+	Accordingly, this function attempts to make the sequences for concurrent activites as random as possible, using a deliberately
+	non-stable sort for activities with equal time step values (representing concurrent/parallel activities). This is required so that
+	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
+	traces. *****From a research perspective, this is a very important disclosure*****
+	
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputFile="traces.txt"):
+	def GenerateTraces(self, graphmlPath, n, outputFile="traces.log"):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -437,7 +426,7 @@ class DataGenerator(object):
 def usage():
 	print("python ./DataGenerator -file=(path to graphml file) -n=500 [-ofile=(path to output file; defaults to traces.txt if not passed)]")
 
-
+	
 """
 
 """
