@@ -110,6 +110,7 @@ def ToXes(ipath,opath):
 	traces = BuildTraces(ipath)
 	log = BuildXesLog(traces)
 	WriteLog(log,opath)
+	print("Complete.")
 
 def usage():
 	print("Usage: python ./SynData2Xes.py -ifile=[path to input file of synthetic data] -ofile=[output path for xes log file]")	
@@ -132,9 +133,3 @@ ipath = sys.argv[1].split("=")[1]
 opath = sys.argv[2].split("=")[1]
 
 ToXes(ipath,opath)
-
-
-
-
-
-
