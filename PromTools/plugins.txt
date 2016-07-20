@@ -1,0 +1,969 @@
+calling runCli.bat with -l and 
+(make sure the above path is correct, and likewise the ProM version)
+
+C:\Users\jesse\ProM 6.6>call java -da -Xmx1G -XX:MaxPermSize=256m -classpath ProM66.jar -Djava.util.Arrays.useLegacyMergeSort=true org.processmining.contexts.cli.CLI -l  
+Starting script execution engine...
+[-l]
+initializing all plugins
+_00_visualize_dcnet(DCNet) -> JComponent
+_0_log_summary(XLog, XLogInfo, String) -> JComponent
+_0_show_animation(Animation) -> JComponent
+_0_show_mined_transition_system(TransitionSystem) -> JComponent
+_0_transition_system_annotation_visualization(AnnotatedTransitionSystem) -> JComponent
+_0_visualize_epc(ConfigurableEPC) -> JComponent
+_0_visualize_epc(EPC) -> JComponent
+_0_visualize_epc(InstanceEPC) -> JComponent
+_0_visualize_petri_net(ResetInhibitorNet) -> JComponent
+_0_visualize_petri_net(Petrinet, Marking) -> JComponent
+_0_visualize_petri_net(InhibitorNet) -> JComponent
+_0_visualize_petri_net(ResetNet, Marking) -> JComponent
+_0_visualize_petri_net(InhibitorNet, Marking) -> JComponent
+_0_visualize_petri_net(ResetInhibitorNet, Marking) -> JComponent
+_0_visualize_petri_net(ResetNet) -> JComponent
+_0_visualize_petri_net(Petrinet) -> JComponent
+_0_visualize_pompom_view(PomPomView) -> JComponent
+_0_visualize_yawl_net(NetGraph) -> JComponent
+_0compliance_wabo3_post_processor_to_excel(XLog, ResultReplay) -> String
+_1_log_summary(XLog, XLogInfo) -> JComponent
+_1_log_summary(XLog, String) -> JComponent
+_1_show_fuzzy_model(MetricsRepository) -> JComponent
+_1_show_transition_system(TransitionSystem) -> JComponent
+_2_log_summary(XLog) -> JComponent
+_2_show_default_fuzzy_instance(MutableFuzzyGraph) -> JComponent
+_2_show_default_fuzzy_instance(MetricsRepository) -> JComponent
+_3_show_fuzzy_unary_metrics(MetricsRepository) -> JComponent
+_4_show_fuzzy_binary_metrics(MetricsRepository) -> JComponent
+_alignments_grouped_by_variant(AlignmentCollection) -> JComponent
+_dat_export_for_r_log_likelihoods_(CaseStatisticsList, File) -> 
+_debug_call_miner_and_replayer_headless(XLog) -> FlexPerfRepInfo
+_json_export_of_anomalies(AnomalyIntervals, File) -> 
+_model_log_alignment_in_presence_of_data(AlignmentCollection) -> JComponent
+_project_precision_measurement_on_net(PrecisionResult) -> JComponent
+_projection_on_the_net(ResultReplayPetriNetWithData) -> JComponent
+_show_observed_possible_per_trace(PrecisionResult) -> JComponent
+_statistics_about_the_computation(BalancedReplayResult) -> JComponent
+aca_export_activity_cluster_array_(ActivityClusterArray, File) -> 
+add_artificial_end_event_filter(XLog, XEvent) -> XLog
+add_artificial_end_transition(Petrinet, String) -> (Petrinet, Marking)
+add_artificial_end_transition(Petrinet) -> (Petrinet, Marking)
+add_artificial_end_transition_variant(Petrinet, String) -> (Petrinet, Marking)
+add_artificial_end_transition_variant(Petrinet) -> (Petrinet, Marking)
+add_artificial_start_event_filter(XLog, XEvent) -> XLog
+add_change_concept_name_of_event_from_classifier(XLog, AddConceptNameParameters) -> XLog
+add_end_artificial_events(XLog) -> XLog
+add_identity_attribute(XLog) -> XLog
+add_mapping_of_activity_names(XLog, ActivityMappingParameters) -> XLog
+align_log_to_model(XLog, Petrinet) -> XLog
+alignetcresult_visualizer(AlignETCResult) -> JComponent
+alignment_tree_visualization(AlignmentTree) -> JComponent
+alpha_miner(XLog, XEventClassifier, AlphaMinerParameters) -> (Petrinet, Marking)
+alpha_miner(XLog, XEventClassifier) -> (Petrinet, Marking)
+analyze_behavioral_property_of_petri_net(Petrinet, Marking, PetrinetSemantics, AnalysisTypes[]) -> Petrinet
+analyze_boundedness(Petrinet, Marking) -> (BOUNDEDNESS, UnboundedPlacesSet, UnboundedSequences)
+analyze_boundedness(Petrinet, Marking, CoverabilitySet) -> (BOUNDEDNESS, UnboundedPlacesSet, UnboundedSequences)
+analyze_boundedness(Petrinet, Marking, PetrinetSemantics) -> (BOUNDEDNESS, UnboundedPlacesSet, UnboundedSequences)
+analyze_boundedness(Petrinet) -> (BOUNDEDNESS, UnboundedPlacesSet, UnboundedSequences)
+analyze_boundedness_with_lola(Petrinet, Marking) -> (BOUNDEDNESS, UnboundedPlacesSet, LoLADiagnosis)
+analyze_boundedness_with_lola(Petrinet) -> (BOUNDEDNESS, UnboundedPlacesSet, LoLADiagnosis)
+analyze_free_choice_property_and_extended_free_choice(Petrinet) -> (FREECHOICE, EXTFREECHOICE, NonFreeChoiceClustersSet, NonExtendedFreeChoiceClustersSet)
+analyze_free_choice_property_and_extended_free_choice(ResetNet) -> (FREECHOICE, EXTFREECHOICE, NonFreeChoiceClustersSet, NonExtendedFreeChoiceClustersSet)
+analyze_free_choice_property_and_extended_free_choice(InhibitorNet) -> (FREECHOICE, EXTFREECHOICE, NonFreeChoiceClustersSet, NonExtendedFreeChoiceClustersSet)
+analyze_free_choice_property_and_extended_free_choice(ResetInhibitorNet) -> (FREECHOICE, EXTFREECHOICE, NonFreeChoiceClustersSet, NonExtendedFreeChoiceClustersSet)
+analyze_home_marking(ResetNet, Marking, ReachabilityGraph) -> HomeMarkingSet
+analyze_home_marking(Petrinet, Marking, ReachabilityGraph) -> HomeMarkingSet
+analyze_home_marking(InhibitorNet, Marking, ReachabilityGraph) -> HomeMarkingSet
+analyze_home_marking(ResetInhibitorNet, Marking, ReachabilityGraph) -> HomeMarkingSet
+analyze_home_marking(ResetInhibitorNet, Marking, ResetInhibitorNetSemantics) -> HomeMarkingSet
+analyze_home_marking(Petrinet, Marking) -> HomeMarkingSet
+analyze_home_marking(ResetNet, Marking, ResetNetSemantics) -> HomeMarkingSet
+analyze_home_marking(ResetNet, Marking) -> HomeMarkingSet
+analyze_home_marking(ResetInhibitorNet, Marking) -> HomeMarkingSet
+analyze_home_marking(Petrinet, Marking, PetrinetSemantics) -> HomeMarkingSet
+analyze_home_marking(InhibitorNet, Marking) -> HomeMarkingSet
+analyze_home_marking(InhibitorNet, Marking, InhibitorNetSemantics) -> HomeMarkingSet
+analyze_liveness(Petrinet, Marking, ReachabilityGraph) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetNet, Marking, ResetNetSemantics) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(InhibitorNet, Marking, InhibitorNetSemantics) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetInhibitorNet, Marking, ResetInhibitorNetSemantics) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetNet, Marking) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(InhibitorNet, Marking, ReachabilityGraph) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetNet, Marking, ReachabilityGraph) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(Petrinet, Marking, PetrinetSemantics) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetInhibitorNet, Marking, ReachabilityGraph) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(ResetInhibitorNet, Marking) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(Petrinet, Marking) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness(InhibitorNet, Marking) -> (LIVENESS, NonLiveTransitionsSet)
+analyze_liveness_with_sequences(Petrinet, Marking, ReachabilityGraph, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetInhibitorNet, Marking, ReachabilityGraph, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetInhibitorNet, Marking, ResetInhibitorNetSemantics, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetNet, Marking, ResetNetSemantics, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(InhibitorNet, Marking, ReachabilityGraph, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetNet, Marking, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(InhibitorNet, Marking, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(InhibitorNet, Marking, InhibitorNetSemantics, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetNet, Marking, ReachabilityGraph, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(Petrinet, Marking, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(ResetInhibitorNet, Marking, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_liveness_with_sequences(Petrinet, Marking, PetrinetSemantics, Marking[]) -> (LIVENESS, NonLiveTransitionsSet, NonLiveSequences)
+analyze_model_using_uma(Petrinet, Marking, UnfoldingConfiguration) -> Petrinet
+analyze_relaxed_soundness_using_lola_for_windows_(Petrinet, Marking) -> (RELAXEDSOUND, NonRelaxedSoundTransitionsSet)
+analyze_relaxed_soundness_using_lola_for_windows_(Petrinet, Marking, PetrinetSemantics) -> (RELAXEDSOUND, NonRelaxedSoundTransitionsSet)
+analyze_structural_property_of_petri_net(Petrinet, AnalysisTypes[]) -> Petrinet
+analyze_transition_system(EventPayloadTransitionSystem, XLog) -> AnnotatedTransitionSystem
+analyze_with_woflan(Petrinet) -> WoflanDiagnosis
+and_event_classifier(XEventClassifier[]) -> XEventAndClassifier
+animate_transition_system(EventPayloadTransitionSystem, XLog) -> TSAnimation
+apna_export_accepting_petri_net_array_(AcceptingPetriNetArray, File) -> 
+apply_context(ProcessTreeContext, ProcessTree) -> ProcessTree
+automaton_visualizer(Automaton) -> JComponent
+basic_event_classifier() -> XEventAttributeClassifier
+bpmn_analysis(XLog, Flex) -> (BPMNDiagram, BPMNDiagram, BPMNAnalysisDataList)
+bpmn_analysis_using_causal_net_miner_(XLog) -> (BPMNDiagram, BPMNDiagram, BPMNAnalysisDataList)
+bpmn_analysis_using_heuristics_miner_(XLog) -> (BPMNDiagram, BPMNDiagram, BPMNAnalysisDataList)
+bpmn_analysis_visualization(BPMNDiagram) -> JComponent
+bpmn_analysis_visualization(BPMNAnalysisDataList) -> JComponent
+bpmn_analysis_xpdl_2_0_export(BPMNDiagram, File) -> 
+bpmn_measures_with_analisys_details(Petrinet, PerformanceResult) -> BPMNDiagramExt
+bpmn_measures_with_analisys_details(TotalPerformanceResult) -> BPMNDiagramExt
+bpmn_measures_with_analisys_details(Petrinet, ConformanceResult) -> BPMNDiagramExt
+bpmn_measures_with_analisys_details(TotalConformanceResult) -> BPMNDiagramExt
+bpmn_to_petrinet(BPMNDiagram) -> (Petrinet, Marking, String)
+bpmn_xml_2_0_export(BpmnDefinitions, File) -> 
+bpmn_xml_2_0_export(BPMNDiagram, File) -> 
+bpmnmanalisysdetailsintometricsconformance(TotalConformanceResult) -> LinkedList
+bpmnmanalisysdetailsintometricsperformance(TotalPerformanceResult) -> LinkedList
+bpsim_export(BPSim, File) -> 
+cag_export_causal_activity_graph_(CausalActivityGraph, File) -> 
+calculate_graph_edit_distance_similarity(Petrinet, Petrinet) -> Double
+cam_export_causal_activity_matrix_(CausalActivityMatrix, File) -> 
+change_visualisation_analysis(JTabbedPane) -> JTabbedPane
+check_log(XLog) -> HTMLToString
+check_soundness_of_flexible_model(Flex) -> (SOUNDNESS, StartTaskNodesSet, EndTaskNodesSet)
+check_soundness_of_flexible_model(Flex, StartTaskNodesSet, EndTaskNodesSet) -> (SOUNDNESS, StartTaskNodesSet, EndTaskNodesSet)
+compare_event_logs_levenshtein_distance_(XLog, XLog) -> LogComparisonResult
+compare_two_alignments(ResultReplay, ResultReplay) -> AlignmentComparisonResult
+compute_ptraces(XLog) -> PLog
+concatenate_event_logs_log_1_log_2_log_n_(XLog[]) -> XLog
+concept_drift_visualization(ConceptDriftOutput) -> JComponent
+configure_petri_net_completely(ConfigurableResetInhibitorNet, List) -> (ResetInhibitorNet, Marking)
+configure_petri_net_partially(ConfigurableResetInhibitorNet, List) -> ConfigurableResetInhibitorNet
+conformance_checking_of_dpn(PetrinetGraph, XLog, BalancedProcessorConfiguration) -> BalancedReplayResult
+conformance_checking_of_dpn_live_view_(LiveBalancedDataConformancePanel) -> JComponent
+conformance_checking_of_dpn_xlog_(PetrinetGraph, XLog, BalancedProcessorConfiguration) -> XLog
+conformance_result_visualizer(TotalConformanceResult) -> JComponent
+construct_basis_of_semi_positive_place_invariants(Petrinet) -> PlaceInvariantSet
+construct_basis_of_semi_positive_place_invariants(InhibitorNet) -> PlaceInvariantSet
+construct_basis_of_semi_positive_transition_invariants(Petrinet) -> TransitionInvariantSet
+construct_basis_of_semi_positive_transition_invariants(InhibitorNet) -> TransitionInvariantSet
+construct_codec_of_flexible_model(Flex) -> FlexCodec
+construct_coverability_graph_of_a_petri_net(Petrinet, Marking, PetrinetSemantics) -> (CoverabilityGraph, CoverabilitySet, StartStateSet, AcceptStateSet)
+construct_coverability_graph_of_a_petri_net(Petrinet, Marking) -> (CoverabilityGraph, CoverabilitySet, StartStateSet, AcceptStateSet)
+construct_coverability_graph_of_a_petri_net(InhibitorNet, Marking) -> (CoverabilityGraph, CoverabilitySet, StartStateSet, AcceptStateSet)
+construct_coverability_graph_of_a_petri_net(InhibitorNet, Marking, InhibitorNetSemantics) -> (CoverabilityGraph, CoverabilitySet, StartStateSet, AcceptStateSet)
+construct_flexible_model_from_another_flexible_model_for_replay(Flex, FlexSpecialNodes, XLog, StartTaskNodesSet, EndTaskNodesSet, Map) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, FlexToFlexMapping, OriginalFlexToILifecycleMap, FlexCodec, FlexSpecialNodes)
+construct_log_relations(XLog) -> LogRelations
+construct_log_relations(XLog, XLogInfo) -> LogRelations
+construct_reachability_graph_of_a_petri_net(InhibitorNet, Marking, InhibitorNetSemantics) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(Petrinet, Marking) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetNet, Marking, ResetNetSemantics) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(InhibitorNet, Marking, CoverabilityGraph) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetNet, Marking, CoverabilityGraph) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetInhibitorNet, Marking, ResetInhibitorNetSemantics) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(Petrinet, Marking, PetrinetSemantics) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(InhibitorNet, Marking) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetInhibitorNet, Marking, CoverabilityGraph) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetNet, Marking) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(Petrinet, Marking, CoverabilityGraph) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+construct_reachability_graph_of_a_petri_net(ResetInhibitorNet, Marking) -> (ReachabilityGraph, ReachabilitySet, StartStateSet, AcceptStateSet)
+convert_bpmn_diagram_to_data_petri_net(BPMNDiagram, BPMN2PetriNetWithDataConverter_Configuration) -> (DataPetriNet, Marking)
+convert_bpmn_diagram_to_petri_net_control_flow_(BPMNDiagram, BPMN2PetriNetConverter_Configuration) -> (Petrinet, Marking)
+convert_c_net_to_bpmn(Flex) -> BPMNDiagram
+convert_causal_net_to_cpf_model(Flex) -> AprModel
+convert_cheetah_log(XLog) -> XLog
+convert_cnet_to_petrinet_bvd_(CNet) -> (Petrinet, Marking)
+convert_cpf_model_to_causal_net(AprModel) -> (Flex, StartTaskNodesSet)
+convert_data_alignment_to_event_log_with_xalignmentextension(AlignmentCollection) -> XLog
+convert_distributions_in_stochastic_petri_net(StochasticNet) -> (StochasticNet, Marking)
+convert_epc_to_cpf_model(EPCGraph) -> AprModel
+convert_flexible_model_to_petri_net(Flex) -> (Petrinet, Marking)
+convert_flexible_model_to_petri_net(Flex, StartTaskNodesSet) -> (Petrinet, Marking)
+convert_heuristics_net_into_petri_net(HeuristicsNet) -> (Petrinet, Marking)
+convert_petri_net_to_bpmn_diagram(PetrinetGraph) -> (BPMNDiagram, Map, Map)
+convert_petri_net_to_cpf_model(PetrinetGraph) -> AprModel
+convert_petri_net_to_flexible_model(Petrinet, Marking) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, FlexSpecialNodes)
+convert_petri_net_to_flexible_model(Petrinet) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, FlexSpecialNodes)
+convert_process_tree_and_configruation_to_a_yawl_model_domain_configuration_and_a_cmapping(ProcessTree, Configuration) -> (SpecificationModel, DomainConfiguration, CMapping)
+convert_process_tree_to_bpmn_diagram(ProcessTree, boolean) -> (BPMNDiagram, Map)
+convert_process_tree_to_bpmn_diagram(ProcessTree) -> (BPMNDiagram, Map)
+convert_process_tree_to_cpn_model(ProcessTree) -> PetriNet
+convert_process_tree_to_epc(ProcessTree) -> ConfigurableEPC
+convert_process_tree_to_petri_net(ProcessTree) -> (Petrinet, Marking, Marking)
+convert_process_tree_to_petri_net_keep_structure(ProcessTree) -> (Petrinet, Marking, Marking)
+convert_process_tree_to_yawl_model(ProcessTree) -> SpecificationModel
+convert_process_tree_to_yawlorgdata(ProcessTree) -> YAWLOrgData
+convert_to_inhibitor_net(ResetNet, Marking) -> (InhibitorNet, Marking)
+convert_to_inhibitor_net(ResetNet) -> (InhibitorNet, Marking)
+convert_to_inhibitor_net(ResetInhibitorNet) -> (InhibitorNet, Marking)
+convert_to_inhibitor_net(Petrinet) -> (InhibitorNet, Marking)
+convert_to_inhibitor_net(Petrinet, Marking) -> (InhibitorNet, Marking)
+convert_to_inhibitor_net(ResetInhibitorNet, Marking) -> (InhibitorNet, Marking)
+convert_to_log_alignments(EventLogArray, AcceptingPetriNetArray, ReplayResultArray, ReplayCostFactor, ConvertReplayResultToLogAlignmentParameters) -> LogAlignmentArray
+convert_to_log_alignments(EventLogArray, AcceptingPetriNetArray, ReplayResultArray, ConvertReplayResultToLogAlignmentParameters) -> LogAlignmentArray
+convert_to_log_alignments(EventLogArray, AcceptingPetriNetArray, ReplayResultArray, ReplayCostFactor) -> LogAlignmentArray
+convert_to_log_alignments(EventLogArray, AcceptingPetriNetArray, ReplayResultArray) -> LogAlignmentArray
+convert_to_replay_results(LogAlignment, AcceptingPetriNet, XLog, ConvertLogAlignmentToReplayResultParameters) -> PNRepResult
+convert_to_replay_results(LogAlignment, AcceptingPetriNet, XLog) -> PNRepResult
+convert_to_reset_inhibitor_net(Petrinet, Marking) -> (ResetInhibitorNet, Marking)
+convert_to_reset_inhibitor_net(Petrinet) -> (ResetInhibitorNet, Marking)
+convert_to_reset_inhibitor_net(InhibitorNet, Marking) -> (ResetInhibitorNet, Marking)
+convert_to_reset_inhibitor_net(ResetNet, Marking) -> (ResetInhibitorNet, Marking)
+convert_to_reset_inhibitor_net(ResetNet) -> (ResetInhibitorNet, Marking)
+convert_to_reset_inhibitor_net(InhibitorNet) -> (ResetInhibitorNet, Marking)
+convert_to_reset_net(Petrinet, Marking) -> (ResetNet, Marking)
+convert_to_reset_net(Petrinet) -> (ResetNet, Marking)
+convert_yawl_model_to_flexible_model(NetGraph) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CancellationRegion, YAWLNodeInstanceMapping, FlexCodec, FlexSpecialNodes)
+convert_yawl_to_cpf_model(NetGraph) -> AprModel
+copy_trace_attributes_to_the_1st_event_in_place_(XLog) -> 
+cosimulate_cpn_model_with_prom_plugins(ColouredPetriNet, State, CosimulationSetup, int, int, boolean, File) -> CosimulationSetup
+cosimulate_cpn_model_with_prom_plugins(ColouredPetriNet, State, CosimulationSetup, int, int, boolean, Calendar, long, File) -> CosimulationSetup
+cpn_tools_model(URL) -> ColouredPetriNet
+cpn_tools_model(String) -> ColouredPetriNet
+cpn_tools_model(File) -> ColouredPetriNet
+cpn_tools_model(URI) -> ColouredPetriNet
+create_accepting_petri_net(Petrinet, ConvertPetriNetToAcceptingPetriNetParameters) -> AcceptingPetriNet
+create_accepting_petri_net(Petrinet) -> AcceptingPetriNet
+create_accepting_petri_net_array(AcceptingPetriNet[]) -> AcceptingPetriNetArray
+create_activity_clusters(AcceptingPetriNetArray, ExtractActivityClusterArrayFromAcceptingPetriNetArrayParameters) -> ActivityClusterArray
+create_activity_clusters(AcceptingPetriNetArray) -> ActivityClusterArray
+create_clusters(CausalActivityGraph, ConvertCausalActivityGraphToActivityClusterArrayParameters) -> ActivityClusterArray
+create_clusters(CausalActivityGraph) -> ActivityClusterArray
+create_data_context_array(ProcessTreeDataContext[]) -> ProcessTreeDataContextArray
+create_dpn_text_language_based_() -> DPNTextEditor
+create_edit_configurable_petri_net(ResetInhibitorNet, Marking, List) -> ConfigurableResetInhibitorNet
+create_environment_context_array(ProcessTreeEnvironmentContext[]) -> ProcessTreeEnvironmentContextArray
+create_frequency_distribution(XLog) -> LogFrequency
+create_frequency_distributions(EventLogArray) -> LogFrequencyArray
+create_graph(CausalActivityMatrix) -> CausalActivityGraph
+create_graph_using_creator(CausalActivityMatrix) -> CausalActivityGraph
+create_happifiable_log(XLog, LogCentralityParameters) -> LogCentrality
+create_happifiable_log(XLog) -> LogCentrality
+create_matrix(AcceptingPetriNet, CreateFromAcceptingPetriNetParameters) -> CausalActivityMatrix
+create_matrix(AcceptingPetriNet) -> CausalActivityMatrix
+create_matrix(AcceptingPetriNet, XLog) -> CausalActivityMatrix
+create_originator_context_array(ProcessTreeOriginatorContext[]) -> ProcessTreeOriginatorContextArray
+create_petri_net_list(Petrinet[]) -> PetriNetList
+create_process_tree_array(ProcessTree[]) -> ProcessTreeArray
+create_simulation_context_array(ProcessTreeSimulationContext[]) -> ProcessTreeSimulationContextArray
+create_temporal_pattern_for_compliance_checking(XLog, TemporalComplianceRequirement) -> (PetriNetWithData, Marking, Marking, TemporalComplianceRequirement)
+data_aware_explorer(DataAwareExplorer) -> JComponent
+data_petri_net_graphviz_(PetriNetWithData) -> JComponent
+data_petri_net_graphviz_(DataPetriNet) -> JComponent
+data_petri_net_jgraph_(PetriNetWithData) -> JComponent
+day_abstraction_log_editor(XLog) -> XLog
+default_log_filter(XLog, String[], String[]) -> XLog
+default_simple_visualization(PNMatchInstancesRepResult) -> JComponent
+determine_activity_costs(ActivityClusterArray, CreateReplayCostFactorFromActivityClusterArrayParameters) -> ReplayCostFactor
+determine_activity_costs(ActivityClusterArray) -> ReplayCostFactor
+discover_accepting_petri_nets(EventLogArray, DiscoverAcceptingPetriNetArrayFromEventLogArrayParameters) -> AcceptingPetriNetArray
+discover_accepting_petri_nets(EventLogArray) -> AcceptingPetriNetArray
+discover_clusters(XLog, DiscoverClustersFromEventLogParameters) -> ActivityClusterArray
+discover_clusters(XLog) -> ActivityClusterArray
+discover_graph(XLog) -> CausalActivityGraph
+discover_matrix(XLog, DiscoverFromEventLogParameters) -> CausalActivityMatrix
+discover_matrix(XLog) -> CausalActivityMatrix
+discover_using_decomposition(XLog, DecomposedDiscoveryParameters) -> AcceptingPetriNet
+discover_using_decomposition(XLog) -> AcceptingPetriNet
+dot_visualization(Dot) -> JComponent
+dpn_text_editor(DPNTextEditor) -> JComponent
+duplicate_event_log_filter(XLog, XEventClasses) -> XLog
+edit_dpn_text_language_based_(PetrinetGraph) -> DPNTextEditor
+egraph_mapping(XLog) -> EGraphsWithMappings
+ela_export_event_log_array_(EventLogArray, File) -> 
+ela_export_event_log_array_(EventLogArray, File) -> 
+enrich_log_for_temporal_compliance_checking(XLog, TemporalComplianceRequirement) -> XLog
+epc_to_configurable_epc(EPC) -> ConfigurableEPC
+epnml_export(ConfigurableEPC, File) -> 
+epnml_export_petri_net_(ConfigurableResetInhibitorNet, File) -> 
+epnml_export_petri_net_(ResetInhibitorNet, File) -> 
+epnml_export_petri_net_(InhibitorNet, File) -> 
+epnml_export_petri_net_(ResetNet, File) -> 
+epnml_export_petri_net_(OpenNet, File) -> 
+epnml_export_petri_net_(Petrinet, File) -> 
+etconformance(XLog, Petrinet, Marking, TransEvClassMapping, ETCResults) -> (ETCResults, XLog)
+etconformance(XLog, Petrinet, Marking, EvClassLogPetrinetConnection, ETCResults) -> (ETCResults, XLog)
+etcresults_visualizer(ETCResults) -> JComponent
+evaluate_process_tree(XLog, ProcessTree) -> TreeFitness
+evaluate_process_tree_returns_string(XLog, ProcessTree) -> String
+evaluate_process_tree_with_provided_classifier_(XLog, ProcessTree, XEventClassifier) -> TreeFitness
+evaluate_process_tree_with_provided_classifier_returns_string(XLog, ProcessTree, XEventClassifier) -> String
+event_log_filter(XLog, XEventClasses, XEventClass[], Double) -> XLog
+event_log_filter(XLog, XEventClasses, XEventClass[], Double, Double, Boolean) -> XLog
+event_log_filter(XLog, XEventClasses, XEventClass[]) -> XLog
+example_provider(OSService) -> AbstractProvider
+execution_graph_fusion(EGraphsWithMappings) -> RepEGraphs
+explore_event_log_trace_variants_searchable_sortable_(XLog) -> JComponent
+export_alignments_as_csv_csv_(AlignmentCollection, File) -> 
+export_alignments_as_xes_xes_(AlignmentCollection, File) -> 
+export_as_causal_net_cnet_(CNet, File) -> 
+export_csv(CSVFile, File) -> 
+export_of_data_petri_nets(DataPetriNet, File) -> 
+export_plg_process_collection_plg_(PLGProcessCollection, File) -> 
+extract_augmented_log(Predictor) -> XLog
+filter_in_high_frequency_traces_multiple_logs_(EventLogArray) -> EventLogArray
+filter_in_high_frequency_traces_single_log_(XLog) -> XLog
+filter_log_alignments(LogAlignmentArray, AcceptingPetriNetArray) -> LogAlignmentArray
+filter_log_by_attributes(XLog, AttributeLogFilter) -> XLog
+filter_log_on_event_attribute_values(XLog) -> XLog
+filter_log_on_first_six_months_per_trace(XLog) -> XLog
+filter_log_on_trace_attribute_values(XLog) -> XLog
+filter_out_low_frequency_traces_multiple_logs_(EventLogArray) -> EventLogArray
+filter_out_low_frequency_traces_single_log_(XLog) -> XLog
+filter_out_low_occurrence_traces_multiple_logs_(EventLogArray) -> EventLogArray
+filter_out_low_occurrence_traces_single_log_(XLog) -> XLog
+filter_out_unmapped_event_classes(TransEvClassMapping, XLog[]) -> 
+filter_using_matrix_multiple_logs_(EventLogArray, CausalActivityMatrix, FilterLogUsingMatrixParameters) -> EventLogArray
+filter_using_matrix_multiple_logs_(EventLogArray, CausalActivityMatrix) -> EventLogArray
+filter_using_matrix_single_log_(XLog, CausalActivityMatrix, FilterLogUsingMatrixParameters) -> XLog
+filter_using_matrix_single_log_(XLog, CausalActivityMatrix) -> XLog
+final_event_log_filter(XLog, XEventClassifier, String[]) -> XLog
+final_event_log_filter(XLog, XEventClasses) -> XLog
+find_dead_transition(Petrinet, Marking, CoverabilityGraph) -> DeadTransitionsSet
+find_dead_transition(Petrinet, Marking, PetrinetSemantics) -> DeadTransitionsSet
+find_dead_transition(Petrinet, Marking) -> DeadTransitionsSet
+fitness_visualizer(ReplayFitness) -> JComponent
+fitnesssuggestsettings(XLog, Petrinet) -> ReplayFitnessSetting
+generalized_miner_visualizer(GeneralizedMiner) -> JComponent
+generate_random_process_tree() -> ProcessTree
+generate_referencing_test_object(RefObject) -> RefObject
+generate_serialization_test_object() -> RefObject
+generate_serialization_updating_object() -> RefObject
+genet_k_bounded_synthesis_mining_(PetrifyDotSG) -> PetrifyDotG
+ger_extractor(TransitionSystem) -> GeneralizedExitationRegions
+get_activity_specific_timestamps(XLog) -> XLog
+get_compliance_diagnostics_from_alignment(PNRepResult) -> PNRepResult
+get_log_from_best_matching_alignments(PNMatchInstancesRepResult) -> XLog
+get_log_from_control_flow_alignment(PNRepResult) -> XLog
+graphviz_directly_follows_graph_visualisation(Dfg) -> JComponent
+graphviz_petri_net_visualisation(Petrinet) -> JComponent
+graphviz_process_tree_visualisation(ProcessTree) -> JComponent
+guide_tree_visualization(GuideTree) -> JComponent
+happify_log(LogCentrality, LogCentralityFilterParameters) -> XLog
+happify_log(LogCentrality) -> XLog
+identify_minimal_siphons(Petrinet) -> SiphonSet
+identify_minimal_siphons(InhibitorNet) -> SiphonSet
+identify_minimal_traps(InhibitorNet) -> TrapSet
+identify_minimal_traps(Petrinet) -> TrapSet
+identify_p_t_handles(ResetInhibitorNet) -> PTHandles
+identify_p_t_handles(ResetNet) -> PTHandles
+identify_p_t_handles(InhibitorNet) -> PTHandles
+identify_p_t_handles(Petrinet) -> PTHandles
+identify_s_components(Petrinet, PlaceInvariantSet) -> SComponentSet
+identify_s_components(Petrinet) -> SComponentSet
+identify_s_components(InhibitorNet) -> SComponentSet
+identify_s_components(InhibitorNet, PlaceInvariantSet) -> SComponentSet
+identify_t_components(Petrinet, TransitionInvariantSet) -> TComponentSet
+identify_t_components(Petrinet) -> TComponentSet
+identify_t_components(InhibitorNet) -> TComponentSet
+identify_t_components(InhibitorNet, TransitionInvariantSet) -> TComponentSet
+identify_t_p_handles(ResetNet) -> TPHandles
+identify_t_p_handles(ResetInhibitorNet) -> TPHandles
+identify_t_p_handles(Petrinet) -> TPHandles
+identify_t_p_handles(InhibitorNet) -> TPHandles
+ilp_based_process_discovery(XLog, XLogHybridILPMinerParametersImpl) -> (Petrinet, Marking)
+ilp_based_process_discovery(XLog, LPMinerConfiguration) -> (Petrinet, Marking)
+ilp_miner(XLog, XLogInfo, ILPMinerSettings) -> (Petrinet, Marking)
+import_a_csv_file_and_convert_it_to_dfg(URL) -> Dfg
+import_a_csv_file_and_convert_it_to_dfg(String) -> Dfg
+import_a_csv_file_and_convert_it_to_dfg(File) -> Dfg
+import_a_csv_file_and_convert_it_to_dfg(URI) -> Dfg
+import_a_csv_file_and_convert_it_to_xes(URL) -> CSVFile
+import_a_csv_file_and_convert_it_to_xes(String) -> CSVFile
+import_a_csv_file_and_convert_it_to_xes(File) -> CSVFile
+import_a_csv_file_and_convert_it_to_xes(URI) -> CSVFile
+import_accepting_petri_net_array_from_apna_file(URL) -> AcceptingPetriNetArray
+import_accepting_petri_net_array_from_apna_file(String) -> AcceptingPetriNetArray
+import_accepting_petri_net_array_from_apna_file(File) -> AcceptingPetriNetArray
+import_accepting_petri_net_array_from_apna_file(URI) -> AcceptingPetriNetArray
+import_accepting_petri_net_from_pnml_file(URL) -> AcceptingPetriNet
+import_accepting_petri_net_from_pnml_file(String) -> AcceptingPetriNet
+import_accepting_petri_net_from_pnml_file(File) -> AcceptingPetriNet
+import_accepting_petri_net_from_pnml_file(URI) -> AcceptingPetriNet
+import_activity_cluster_array_from_aca_file(URL) -> ActivityClusterArray
+import_activity_cluster_array_from_aca_file(String) -> ActivityClusterArray
+import_activity_cluster_array_from_aca_file(File) -> ActivityClusterArray
+import_activity_cluster_array_from_aca_file(URI) -> ActivityClusterArray
+import_bpmn_model_from_bpmn_2_0_file(URL) -> Bpmn
+import_bpmn_model_from_bpmn_2_0_file(String) -> Bpmn
+import_bpmn_model_from_bpmn_2_0_file(File) -> Bpmn
+import_bpmn_model_from_bpmn_2_0_file(URI) -> Bpmn
+import_bpmn_model_from_bpmn_2_0_file_with_xslt(URL) -> BPMNDiagram
+import_bpmn_model_from_bpmn_2_0_file_with_xslt(String) -> BPMNDiagram
+import_bpmn_model_from_bpmn_2_0_file_with_xslt(File) -> BPMNDiagram
+import_bpmn_model_from_bpmn_2_0_file_with_xslt(URI) -> BPMNDiagram
+import_bpmn_model_from_xpdl_2_2_file(URL) -> BPMNDiagram
+import_bpmn_model_from_xpdl_2_2_file(String) -> BPMNDiagram
+import_bpmn_model_from_xpdl_2_2_file(File) -> BPMNDiagram
+import_bpmn_model_from_xpdl_2_2_file(URI) -> BPMNDiagram
+import_c_epc_from_epml_file(URL) -> ConfigurableEPC
+import_c_epc_from_epml_file(String) -> ConfigurableEPC
+import_c_epc_from_epml_file(File) -> ConfigurableEPC
+import_c_epc_from_epml_file(URI) -> ConfigurableEPC
+import_c_epc_from_epml_file_use_preprocess_(URL) -> ConfigurableEPC
+import_c_epc_from_epml_file_use_preprocess_(String) -> ConfigurableEPC
+import_c_epc_from_epml_file_use_preprocess_(File) -> ConfigurableEPC
+import_c_epc_from_epml_file_use_preprocess_(URI) -> ConfigurableEPC
+import_causal_activity_graph_from_cag_file(URL) -> CausalActivityGraph
+import_causal_activity_graph_from_cag_file(String) -> CausalActivityGraph
+import_causal_activity_graph_from_cag_file(File) -> CausalActivityGraph
+import_causal_activity_graph_from_cag_file(URI) -> CausalActivityGraph
+import_causal_activity_matrix_from_cam_file(URL) -> CausalActivityMatrix
+import_causal_activity_matrix_from_cam_file(String) -> CausalActivityMatrix
+import_causal_activity_matrix_from_cam_file(File) -> CausalActivityMatrix
+import_causal_activity_matrix_from_cam_file(URI) -> CausalActivityMatrix
+import_compliance_dashboard(URL) -> ComplianceDashboard
+import_compliance_dashboard(String) -> ComplianceDashboard
+import_compliance_dashboard(File) -> ComplianceDashboard
+import_compliance_dashboard(URI) -> ComplianceDashboard
+import_compliance_guide_from_xml(URL) -> RuleSelectGuide
+import_compliance_guide_from_xml(String) -> RuleSelectGuide
+import_compliance_guide_from_xml(File) -> RuleSelectGuide
+import_compliance_guide_from_xml(URI) -> RuleSelectGuide
+import_configurable_petri_net_from_annotated_pnml_file(URL) -> ConfigurableResetInhibitorNet
+import_configurable_petri_net_from_annotated_pnml_file(String) -> ConfigurableResetInhibitorNet
+import_configurable_petri_net_from_annotated_pnml_file(File) -> ConfigurableResetInhibitorNet
+import_configurable_petri_net_from_annotated_pnml_file(URI) -> ConfigurableResetInhibitorNet
+import_configurable_reset_inhibitor_net_from_pnml_file(URL) -> (ConfigurableResetInhibitorNet, Marking)
+import_configurable_reset_inhibitor_net_from_pnml_file(String) -> (ConfigurableResetInhibitorNet, Marking)
+import_configurable_reset_inhibitor_net_from_pnml_file(File) -> (ConfigurableResetInhibitorNet, Marking)
+import_configurable_reset_inhibitor_net_from_pnml_file(URI) -> (ConfigurableResetInhibitorNet, Marking)
+import_configuration_guide_from_xml(URL) -> ConfigurationGuide
+import_configuration_guide_from_xml(String) -> ConfigurationGuide
+import_configuration_guide_from_xml(File) -> ConfigurationGuide
+import_configuration_guide_from_xml(URI) -> ConfigurationGuide
+import_cpf_from_cpf_file(URL) -> AprModel
+import_cpf_from_cpf_file(String) -> AprModel
+import_cpf_from_cpf_file(File) -> AprModel
+import_cpf_from_cpf_file(URI) -> AprModel
+import_data_petri_net_from_pnml_file(URL) -> PetriNetWithData
+import_data_petri_net_from_pnml_file(String) -> PetriNetWithData
+import_data_petri_net_from_pnml_file(File) -> PetriNetWithData
+import_data_petri_net_from_pnml_file(URI) -> PetriNetWithData
+import_event_log_array_from_ela_file(URL) -> EventLogArray
+import_event_log_array_from_ela_file(String) -> EventLogArray
+import_event_log_array_from_ela_file(File) -> EventLogArray
+import_event_log_array_from_ela_file(URI) -> EventLogArray
+import_inhibitor_net_from_pnml_file(URL) -> (InhibitorNet, Marking)
+import_inhibitor_net_from_pnml_file(String) -> (InhibitorNet, Marking)
+import_inhibitor_net_from_pnml_file(File) -> (InhibitorNet, Marking)
+import_inhibitor_net_from_pnml_file(URI) -> (InhibitorNet, Marking)
+import_log_alignment_array_from_lala_file(URL) -> LogAlignmentArray
+import_log_alignment_array_from_lala_file(String) -> LogAlignmentArray
+import_log_alignment_array_from_lala_file(File) -> LogAlignmentArray
+import_log_alignment_array_from_lala_file(URI) -> LogAlignmentArray
+import_log_alignment_from_lal_file(URL) -> LogAlignment
+import_log_alignment_from_lal_file(String) -> LogAlignment
+import_log_alignment_from_lal_file(File) -> LogAlignment
+import_log_alignment_from_lal_file(URI) -> LogAlignment
+import_lola_coverability_graph_from_lola_cover_file(URL) -> CoverabilityGraph
+import_lola_coverability_graph_from_lola_cover_file(String) -> CoverabilityGraph
+import_lola_coverability_graph_from_lola_cover_file(File) -> CoverabilityGraph
+import_lola_coverability_graph_from_lola_cover_file(URI) -> CoverabilityGraph
+import_open_net_from_pnml_file(URL) -> (OpenNet, Marking)
+import_open_net_from_pnml_file(String) -> (OpenNet, Marking)
+import_open_net_from_pnml_file(File) -> (OpenNet, Marking)
+import_open_net_from_pnml_file(URI) -> (OpenNet, Marking)
+import_petri_net_from_cfg_file(URL) -> (OpenNet, Marking)
+import_petri_net_from_cfg_file(String) -> (OpenNet, Marking)
+import_petri_net_from_cfg_file(File) -> (OpenNet, Marking)
+import_petri_net_from_cfg_file(URI) -> (OpenNet, Marking)
+import_petri_net_from_cosa_file(File) -> (Petrinet, Marking)
+import_petri_net_from_cosa_file(URL) -> (Petrinet, Marking)
+import_petri_net_from_cosa_file(String) -> (Petrinet, Marking)
+import_petri_net_from_cosa_file(URI) -> (Petrinet, Marking)
+import_petri_net_from_pnml_file(URL) -> (Petrinet, Marking)
+import_petri_net_from_pnml_file(String) -> (Petrinet, Marking)
+import_petri_net_from_pnml_file(File) -> (Petrinet, Marking)
+import_petri_net_from_pnml_file(URI) -> (Petrinet, Marking)
+import_petri_net_list_from_pnlist_file(URL) -> PetriNetList
+import_petri_net_list_from_pnlist_file(String) -> PetriNetList
+import_petri_net_list_from_pnlist_file(File) -> PetriNetList
+import_petri_net_list_from_pnlist_file(URI) -> PetriNetList
+import_plg_process_collection_plg_(URL) -> PLGProcessCollection
+import_plg_process_collection_plg_(String) -> PLGProcessCollection
+import_plg_process_collection_plg_(File) -> PLGProcessCollection
+import_plg_process_collection_plg_(URI) -> PLGProcessCollection
+import_process_tree_array(URL) -> ProcessTreeArray
+import_process_tree_array(String) -> ProcessTreeArray
+import_process_tree_array(File) -> ProcessTreeArray
+import_process_tree_array(URI) -> ProcessTreeArray
+import_process_tree_configuration(URL) -> Configuration
+import_process_tree_configuration(String) -> Configuration
+import_process_tree_configuration(File) -> Configuration
+import_process_tree_configuration(URI) -> Configuration
+import_process_tree_data_context_array(URL) -> ProcessTreeDataContextArray
+import_process_tree_data_context_array(String) -> ProcessTreeDataContextArray
+import_process_tree_data_context_array(File) -> ProcessTreeDataContextArray
+import_process_tree_data_context_array(URI) -> ProcessTreeDataContextArray
+import_process_tree_data_context_from_ptdcf_file(URL) -> ProcessTreeDataContext
+import_process_tree_data_context_from_ptdcf_file(String) -> ProcessTreeDataContext
+import_process_tree_data_context_from_ptdcf_file(File) -> ProcessTreeDataContext
+import_process_tree_data_context_from_ptdcf_file(URI) -> ProcessTreeDataContext
+import_process_tree_environment_context_array(URL) -> ProcessTreeEnvironmentContextArray
+import_process_tree_environment_context_array(String) -> ProcessTreeEnvironmentContextArray
+import_process_tree_environment_context_array(File) -> ProcessTreeEnvironmentContextArray
+import_process_tree_environment_context_array(URI) -> ProcessTreeEnvironmentContextArray
+import_process_tree_environment_context_from_ptecf_file(URL) -> ProcessTreeEnvironmentContext
+import_process_tree_environment_context_from_ptecf_file(String) -> ProcessTreeEnvironmentContext
+import_process_tree_environment_context_from_ptecf_file(File) -> ProcessTreeEnvironmentContext
+import_process_tree_environment_context_from_ptecf_file(URI) -> ProcessTreeEnvironmentContext
+import_process_tree_from_ptml_file(URL) -> ProcessTree
+import_process_tree_from_ptml_file(String) -> ProcessTree
+import_process_tree_from_ptml_file(File) -> ProcessTree
+import_process_tree_from_ptml_file(URI) -> ProcessTree
+import_process_tree_originator_context_array(URL) -> ProcessTreeOriginatorContextArray
+import_process_tree_originator_context_array(String) -> ProcessTreeOriginatorContextArray
+import_process_tree_originator_context_array(File) -> ProcessTreeOriginatorContextArray
+import_process_tree_originator_context_array(URI) -> ProcessTreeOriginatorContextArray
+import_process_tree_originator_context_from_ptocf_file(URL) -> ProcessTreeOriginatorContext
+import_process_tree_originator_context_from_ptocf_file(String) -> ProcessTreeOriginatorContext
+import_process_tree_originator_context_from_ptocf_file(File) -> ProcessTreeOriginatorContext
+import_process_tree_originator_context_from_ptocf_file(URI) -> ProcessTreeOriginatorContext
+import_process_tree_simulation_context_array(URL) -> ProcessTreeSimulationContextArray
+import_process_tree_simulation_context_array(String) -> ProcessTreeSimulationContextArray
+import_process_tree_simulation_context_array(File) -> ProcessTreeSimulationContextArray
+import_process_tree_simulation_context_array(URI) -> ProcessTreeSimulationContextArray
+import_process_tree_simulation_context_from_ptscf_file(URL) -> ProcessTreeSimulationContext
+import_process_tree_simulation_context_from_ptscf_file(String) -> ProcessTreeSimulationContext
+import_process_tree_simulation_context_from_ptscf_file(File) -> ProcessTreeSimulationContext
+import_process_tree_simulation_context_from_ptscf_file(URI) -> ProcessTreeSimulationContext
+import_pt_pareto_front_from_pareto_file(URL) -> ParetoFront
+import_pt_pareto_front_from_pareto_file(String) -> ParetoFront
+import_pt_pareto_front_from_pareto_file(File) -> ParetoFront
+import_pt_pareto_front_from_pareto_file(URI) -> ParetoFront
+import_replay_result_array_from_rra_file(File) -> ReplayResultArray
+import_replay_result_array_from_rra_file(URL) -> ReplayResultArray
+import_replay_result_array_from_rra_file(String) -> ReplayResultArray
+import_replay_result_array_from_rra_file(URI) -> ReplayResultArray
+import_reset_inhibitor_net_from_pnml_file(URL) -> (ResetInhibitorNet, Marking)
+import_reset_inhibitor_net_from_pnml_file(String) -> (ResetInhibitorNet, Marking)
+import_reset_inhibitor_net_from_pnml_file(File) -> (ResetInhibitorNet, Marking)
+import_reset_inhibitor_net_from_pnml_file(URI) -> (ResetInhibitorNet, Marking)
+import_reset_net_from_pnml_file(URL) -> (ResetNet, Marking)
+import_reset_net_from_pnml_file(String) -> (ResetNet, Marking)
+import_reset_net_from_pnml_file(File) -> (ResetNet, Marking)
+import_reset_net_from_pnml_file(URI) -> (ResetNet, Marking)
+import_stochastic_petri_nets_from_pnml_file(URL) -> (StochasticNet, Marking, Marking)
+import_stochastic_petri_nets_from_pnml_file(String) -> (StochasticNet, Marking, Marking)
+import_stochastic_petri_nets_from_pnml_file(File) -> (StochasticNet, Marking, Marking)
+import_stochastic_petri_nets_from_pnml_file(URI) -> (StochasticNet, Marking, Marking)
+import_transition_system_from_tsml_file(URL) -> (TransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+import_transition_system_from_tsml_file(String) -> (TransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+import_transition_system_from_tsml_file(File) -> (TransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+import_transition_system_from_tsml_file(URI) -> (TransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+import_xevent_classifiers_list_form_event_log(URL) -> XEventClassifierList
+import_xevent_classifiers_list_form_event_log(String) -> XEventClassifierList
+import_xevent_classifiers_list_form_event_log(File) -> XEventClassifierList
+import_xevent_classifiers_list_form_event_log(URI) -> XEventClassifierList
+import_yawl_specification_from_yawl_file(URL) -> SpecificationModel
+import_yawl_specification_from_yawl_file(String) -> SpecificationModel
+import_yawl_specification_from_yawl_file(File) -> SpecificationModel
+import_yawl_specification_from_yawl_file(URI) -> SpecificationModel
+inductive_visual_miner(InductiveVisualMinerLauncher, ProMCanceller) -> JComponent
+inductive_visual_miner(XLog, ProMCanceller) -> JComponent
+inhibitor_semantics_provider() -> InhibitorNetSemantics
+initial_marking_connection_factory(ResetNet, Marking) -> InitialMarkingConnection
+initial_marking_connection_factory(ResetInhibitorNet, Marking) -> InitialMarkingConnection
+initial_marking_connection_factory(InhibitorNet, Marking) -> InitialMarkingConnection
+initial_marking_connection_factory(Petrinet, Marking) -> InitialMarkingConnection
+insert_comprehension_phases_in_cheetah_log(XLog) -> XLog
+instance_epc_to_configurable_epc(InstanceEPC) -> ConfigurableEPC
+instance_epc_to_epc(InstanceEPC) -> EPC
+instantiate_process_tree_with_a_configuration(ProcessTree, Configuration) -> ProcessTree
+interactive_relabeling(XLog) -> RelabelVisModel
+lal_export_log_alignment_(LogAlignment, File) -> 
+lala_export_log_alignment_array_(LogAlignmentArray, File) -> 
+leemans_episode_miner(XLog) -> EpisodeModel
+load_cpn_model_from_cpn_tools() -> ColouredPetriNet
+log_abstraction_connection_factory(XLog, LogRelations) -> LogAbstractionConnection
+log_comparison_visualizer(LogComparisonResult) -> JComponent
+log_flexible_model_connection_factory(XLog, XEventClasses, Flex, Collection) -> FlexLogConnection
+log_spd_connection_factory(XLog, XEventClasses, SPD, Collection) -> LogSPDConnection
+log_summary(LogCentrality) -> JComponent
+log_transition() -> TransitionPlugin
+log_visualizer(AddStVisualizer) -> XLog
+log_with_alignmentextension(XLog) -> JComponent
+log_with_alignmentextension_grouped_(XLog) -> JComponent
+log_yawl_net_connection_factory(XLog, XEventClasses, NetGraph, Object[]) -> YawlNetConnection
+merge_accepting_petri_nets(AcceptingPetriNetArray, MergeAcceptingPetriNetArrayIntoAcceptingPetriNetParameters) -> AcceptingPetriNet
+merge_accepting_petri_nets(AcceptingPetriNetArray) -> AcceptingPetriNet
+merge_log_alignments(XLog, LogAlignmentArray, AcceptingPetriNetArray, MergeLogAlignmentArrayIntoLogAlignmentParameters) -> LogAlignment
+merge_log_alignments(XLog, LogAlignmentArray, AcceptingPetriNetArray) -> LogAlignment
+merge_logs(XLog, XLog, MergeLogsParameters) -> XLog
+merge_logs(XLog, XLog) -> XLog
+merge_process_trees_activity_map(ProcessTree, ProcessTree) -> ProcessTree
+merge_process_trees_activity_map_pta_(ProcessTreeArray) -> ProcessTree
+merge_process_trees_extended_map(ProcessTree, ProcessTree) -> ProcessTree
+merge_process_trees_extended_map_pta_(ProcessTreeArray) -> ProcessTree
+mine_a_process_tree_with_etmd(XLog, ETMParam) -> ProcessTree
+mine_a_process_tree_with_etmd_using_parameters_and_classifier(XLog, XEventClassifier) -> ProcessTree
+mine_a_process_tree_with_etmd_using_parameters_and_classifier(XLog, XEventClassifier, ETMParam) -> ProcessTree
+mine_best_log_model_pair_based_on_trust(XLog, ProcessTree) -> GeneralizedMiner
+mine_for_a_causal_net_using_heuristics_miner_bpmnanalysis_(XLog) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CausalNetAnnotations)
+mine_for_a_causal_net_using_heuristics_miner_bpmnanalysis_(XLog, FlexibleHeuristicsMinerSettings) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CausalNetAnnotations)
+mine_for_a_heuristics_net_using_heuristics_miner(XLog, XLogInfo) -> HeuristicsNet
+mine_for_a_heuristics_net_using_heuristics_miner(XLog, HeuristicsMinerSettings) -> HeuristicsNet
+mine_for_a_heuristics_net_using_heuristics_miner(XLog, HeuristicsMinerSettings, XLogInfo) -> HeuristicsNet
+mine_for_a_heuristics_net_using_heuristics_miner(XLog) -> HeuristicsNet
+mine_for_a_heuristics_net_using_heuristics_miner_bpmnanalysis_(XLog, HeuristicsMinerSettings) -> HeuristicsNet
+mine_for_a_heuristics_net_using_heuristics_miner_bpmnanalysis_(XLog) -> HeuristicsNet
+mine_fuzzy_model(XLog) -> MetricsRepository
+mine_fuzzy_model(XLog, MetricsRepository, Attenuation, Integer) -> MetricsRepository
+mine_petri_net_using_flower_miner(XLog) -> (Petrinet, Marking, Marking)
+mine_petri_net_with_inductive_miner_with_parameters(XLog, MiningParameters) -> (Petrinet, Marking, Marking)
+mine_process_tree_using_flower_miner_directly_follows(Dfg) -> ProcessTree
+mine_process_tree_with_inductive_miner_with_parameters(XLog, MiningParameters) -> ProcessTree
+mine_spd_model(XLog, Integer) -> SPD
+mine_spd_model(XLog, XLogInfo, Integer) -> SPD
+mine_transition_system(XLog, TSMinerInput) -> (TSMinerTransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+mine_transition_system(XLog, XEventClassifier[], XEventClassifier) -> (TSMinerTransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+mine_transition_system(XLog, XEventClassifier[], XEventClassifier, TSMinerInput) -> (TSMinerTransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+mine_transition_system(XLog) -> (TSMinerTransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+mine_with_inductive_visual_miner(XLog) -> InductiveVisualMinerLauncher
+minimal_region_extractor(TransitionSystem) -> RegionSet
+model_projected_with_alignments(PNRepResult) -> JComponent
+modify_clusters(ActivityClusterArray, CausalActivityGraph, ModifyActivityClusterArrayParameters) -> ActivityClusterArray
+modify_clusters(ActivityClusterArray, CausalActivityGraph) -> ActivityClusterArray
+modify_matrix(CausalActivityMatrix, ModifyCausalActivityMatrixParameters) -> CausalActivityMatrix
+modify_matrix(CausalActivityMatrix) -> CausalActivityMatrix
+mollify_transition_system(TSMinerTransitionSystem) -> (PayloadTransitionSystem, DirectedGraphElementWeights, StartStateSet, AcceptStateSet)
+multi_perspective_process_explorer(PetrinetGraph, XLog) -> DataAwareExplorer
+multietcresult_visualizer(MultiETCResult) -> JComponent
+nfm(EventRelations) -> JComponent
+not_another_workflow_language(SimpleWorkflowSystem) -> JComponent
+open_cnet_file(URL) -> CNet
+open_cnet_file(String) -> CNet
+open_cnet_file(File) -> CNet
+open_cnet_file(URI) -> CNet
+open_flexible_model_file(URL) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CancellationRegion)
+open_flexible_model_file(String) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CancellationRegion)
+open_flexible_model_file(File) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CancellationRegion)
+open_flexible_model_file(URI) -> (Flex, StartTaskNodesSet, EndTaskNodesSet, CancellationRegion)
+open_map_visualization_file(URL) -> MapVisData
+open_map_visualization_file(String) -> MapVisData
+open_map_visualization_file(File) -> MapVisData
+open_map_visualization_file(URI) -> MapVisData
+open_petrify_g_file(PetrifyDotG) -> (Petrinet, Marking)
+open_petrify_g_file(URL) -> (Petrinet, Marking)
+open_petrify_g_file(String) -> (Petrinet, Marking)
+open_petrify_g_file(File) -> (Petrinet, Marking)
+open_petrify_g_file(URI) -> (Petrinet, Marking)
+open_petrify_sg_file(PetrifyDotSG) -> (TransitionSystem, StartStateSet, AcceptStateSet)
+open_petrify_sg_file(URL) -> (TransitionSystem, StartStateSet, AcceptStateSet)
+open_petrify_sg_file(String) -> (TransitionSystem, StartStateSet, AcceptStateSet)
+open_petrify_sg_file(File) -> (TransitionSystem, StartStateSet, AcceptStateSet)
+open_petrify_sg_file(URI) -> (TransitionSystem, StartStateSet, AcceptStateSet)
+open_replayed_visualization(URL) -> VisData
+open_replayed_visualization(String) -> VisData
+open_replayed_visualization(File) -> VisData
+open_replayed_visualization(URI) -> VisData
+open_tpn_file(URL) -> (Petrinet, Marking)
+open_tpn_file(String) -> (Petrinet, Marking)
+open_tpn_file(File) -> (Petrinet, Marking)
+open_tpn_file(URI) -> (Petrinet, Marking)
+open_xes_log_file(URL) -> XLog
+open_xes_log_file(String) -> XLog
+open_xes_log_file(File) -> XLog
+open_xes_log_file(URI) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_(URL) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_(String) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_(File) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_(URI) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_(URL) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_(String) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_(File) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_(URI) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_w_o_cache_(URL) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_w_o_cache_(String) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_w_o_cache_(File) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_sequential_access_w_o_cache_(URI) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_w_o_cache_(URL) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_w_o_cache_(String) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_w_o_cache_(File) -> XLog
+open_xes_log_file_disk_buffered_by_mapdb_w_o_cache_(URI) -> XLog
+open_xes_log_file_lightweight_sequential_ids_(URL) -> XLog
+open_xes_log_file_lightweight_sequential_ids_(String) -> XLog
+open_xes_log_file_lightweight_sequential_ids_(File) -> XLog
+open_xes_log_file_lightweight_sequential_ids_(URI) -> XLog
+open_xes_log_file_naive_(URL) -> XLog
+open_xes_log_file_naive_(String) -> XLog
+open_xes_log_file_naive_(File) -> XLog
+open_xes_log_file_naive_(URI) -> XLog
+operational_support_annotation_provider(OSService, AnnotatedTransitionSystem) -> AbstractProvider
+operational_support_client(XLog) -> OSClient
+operational_support_service() -> OSService
+operational_support_service_manager(OSService) -> 
+originator_log_filter(XLog, String[]) -> XLog
+originator_log_filter(XLog, String[], String[], String[]) -> XLog
+originator_log_filter(XLog, String[], String[]) -> XLog
+outlier_visualizer(CaseStatisticsList) -> JComponent
+overview(OSService) -> JComponent
+overview(OSClient) -> JComponent
+pack_petri_net(Petrinet, PackPetrinetParameters) -> AcceptingPetriNet
+pack_petri_net(Petrinet) -> AcceptingPetriNet
+pareto_front_of_pt_export(ParetoFront, File) -> 
+partial_aware_replay(Petrinet, XLog, TransEvClassMapping, IPNPartialOrderAwareReplayAlgorithm, PartialOrderBuilder) -> PNRepResult
+partial_visualize_case_replay_result(CaseReplayResult) -> JComponent
+perform_predictions_of_business_process_features(XLog) -> Predictor
+perform_predictions_of_business_process_features(XLog, ResultReplay) -> Predictor
+performance_projection_to_model(Manifest) -> JComponent
+performance_result_visualizer(TotalPerformanceResult) -> JComponent
+petri_net_list_export_pnlist_(PetriNetList, File) -> 
+petrify_export_sg_file_(TransitionSystem) -> PetrifyDotSG
+petrify_export_sg_file_(TransitionSystem, File) -> PetrifyDotSG
+petrinet_log_connection_factory(TotalConformanceResult, XLog, Petrinet) -> ReplayAnalysisConnection
+petrinet_log_connection_factory(TotalPerformanceResult, XLog, Petrinet) -> ReplayAnalysisConnection
+petrinet_semantics_provider() -> PetrinetSemantics
+plg_log_generator(PlgProcess, PLGLogGeneratorConfiguration) -> XLog
+plg_process_generator(PLGProcessGeneratorConfiguration) -> PlgProcess
+pn_conformace_analysis(XLog, Petrinet) -> TotalConformanceResult
+pn_conformace_analysis(XLog, Petrinet, ReplayFitnessSetting) -> TotalConformanceResult
+pn_conformace_analysis(XLog, Petrinet, ReplayFitnessSetting, Marking) -> TotalConformanceResult
+pn_performance_analysis(XLog, Petrinet, ReplayFitnessSetting, Marking) -> TotalPerformanceResult
+pn_performance_analysis(XLog, Petrinet) -> TotalPerformanceResult
+pn_performance_analysis(XLog, Petrinet, ReplayFitnessSetting) -> TotalPerformanceResult
+pnml_export_accepting_petri_net_(AcceptingPetriNet, File) -> 
+pnml_export_petri_net_(StochasticNet, File) -> 
+pnml_export_petri_net_(ConfigurableResetInhibitorNet, File) -> 
+pnml_export_petri_net_(OpenNet, File) -> 
+pnml_export_petri_net_(Petrinet, File) -> 
+ppmchart_analysis(XLog) -> PPMChartModel
+ppmchart_visualization(PPMChartModel) -> PPMChartAnalysis
+prediction(Predictor) -> JComponent
+process_models_collection_visualization(PLGProcessCollection) -> JComponent
+process_tree_array(ProcessTreeArray, File) -> 
+process_tree_data_context_array(ProcessTreeDataContextArray, File) -> 
+process_tree_environment_context_array(ProcessTreeEnvironmentContextArray, File) -> 
+process_tree_generator() -> ProcessTree
+process_tree_originator_context_array(ProcessTreeOriginatorContextArray, File) -> 
+process_tree_simulation_context_array(ProcessTreeSimulationContextArray, File) -> 
+process_tree_to_bpsim_converter(ProcessTree) -> BPSim
+process_tree_visualisation_inductive_visual_miner_(ProcessTree) -> JComponent
+produce_apromore_model() -> AprModel
+produce_apromore_model_2() -> AprModel
+produce_apromore_model_3() -> AprModel
+produce_flexible_model_for_validation() -> (Flex, StartTaskNodesSet)
+project_alignment_to_log(PNRepResult) -> JComponent
+project_all_alignments_to_log(PNMatchInstancesRepResult) -> JComponent
+project_data_compliance_attributes_to_log(DashboardResultReplay) -> JComponent
+project_data_compliance_to_log(PNRepResult) -> JComponent
+project_log_as_dottedchart(XLog) -> JComponent
+project_log_on_dottedchart(XLog) -> LogView
+project_manifest_to_log(Manifest) -> JComponent
+project_manifest_to_model_for_conformance(Manifest) -> JComponent
+projection_of_the_alignment_onto_casual_nets(ResultReplayDCNet) -> JComponent
+prom_orchestration() -> TransitionPlugin
+re_sort_by_length_of_trace_longest_first_in_place_(XLog) -> 
+re_sort_by_length_of_trace_shortest_first_in_place_(XLog) -> 
+reduce_all_transitions(Petrinet) -> Petrinet
+reduce_all_transitions_retain_sink_source_places(Petrinet) -> Petrinet
+reduce_collapsed_process_tree_language_equivalently(ProcessTree) -> ProcessTree
+reduce_process_tree_language_equivalently(ProcessTree) -> ProcessTree
+reduce_silent_transitions(Petrinet, Marking) -> (Petrinet, Marking)
+reduce_silent_transitions_preserve_behavior(Petrinet, Marking) -> (Petrinet, Marking)
+reduce_silent_transitions_preserve_soundness(Petrinet, Marking) -> (Petrinet, Marking)
+reduce_using_murata_rules(AcceptingPetriNet, ReduceUsingMurataRulesParameters) -> AcceptingPetriNet
+reduce_using_murata_rules(AcceptingPetriNet) -> AcceptingPetriNet
+region_visualizer(GeneralizedExitationRegions) -> JLabel
+region_visualizer(RegionSet) -> JLabel
+remove_all_attributes_with_value_empty_in_place_(XLog) -> 
+remove_all_attributes_with_value_not_set_(XLog) -> 
+remove_all_attributes_with_value_null_(XLog) -> 
+remove_all_non_standard_attributes_in_place_(XLog) -> 
+remove_edgepoints(Object) -> 
+remove_start_and_end_transitions(AcceptingPetriNet, RemoveStartEndTransitionsParameters) -> AcceptingPetriNet
+remove_start_and_end_transitions(AcceptingPetriNet) -> AcceptingPetriNet
+remove_stochastic_information_from_petri_net(StochasticNet) -> (Petrinet, Marking)
+remove_structural_redundant_places_from_accepting_petri_net(AcceptingPetriNet, RemoveStructuralRedundantPlacesParameters) -> AcceptingPetriNet
+remove_structural_redundant_places_from_accepting_petri_net(AcceptingPetriNet) -> AcceptingPetriNet
+remove_structural_redundant_places_from_petri_net(Petrinet, BerthelotParameters) -> Petrinet
+remove_structural_redundant_places_from_petri_net(Petrinet) -> Petrinet
+removes_all_classifiers_from_the_log(XLog) -> 
+removes_all_global_attribute_definitions_from_the_log(XLog) -> 
+repair_log_globals_classifiers_extensions(XLog) -> XLog
+repair_log_globals_classifiers_extensions_in_place_(XLog) -> 
+repair_model(XLog, PetrinetGraph, Marking, Marking, RepairConfiguration, TransEvClassMapping) -> (Petrinet, Marking)
+repair_model(XLog, PetrinetGraph, Marking, Marking, RepairConfiguration) -> (Petrinet, Marking)
+repair_model(XLog, PetrinetGraph, Marking, Marking, RepairConfiguration, XEventClassifier) -> (Petrinet, Marking)
+replay_a_log_on_cnet_for_conformance_analysis(CNet, XLog, CNetEvClassMapping, ICNetReplayAlgorithm, ICNetReplayParameter) -> CNetRepResult
+replay_a_log_on_flexible_model_for_conformance_analysis(Flex, StartTaskNodesSet, XLog, EndTaskNodesSet, Collection, IFlexLogReplayAlgorithm, Object[]) -> (FlexRepResult, StartTaskNodesSet)
+replay_a_log_on_flexible_model_for_performance_analysis(Flex, XLog, Map, StartTaskNodesSet, EndTaskNodesSet, IFlexLogReplayAlgorithm, Object[]) -> FlexPerfRepInfo
+replay_a_log_on_petri_net_for_all_optimal_alignments(Petrinet, XLog, TransEvClassMapping, Marking, Marking, IPNMatchInstancesLogReplayAlgorithm, Object[]) -> PNMatchInstancesRepResult
+replay_a_log_on_petri_net_for_all_optimal_alignments(InhibitorNet, XLog, TransEvClassMapping, Marking, Marking, IPNMatchInstancesLogReplayAlgorithm, Object[]) -> PNMatchInstancesRepResult
+replay_a_log_on_petri_net_for_all_optimal_alignments(ResetNet, XLog, TransEvClassMapping, Marking, Marking, IPNMatchInstancesLogReplayAlgorithm, Object[]) -> PNMatchInstancesRepResult
+replay_a_log_on_petri_net_for_all_optimal_alignments(ResetInhibitorNet, XLog, TransEvClassMapping, Marking, Marking, IPNMatchInstancesLogReplayAlgorithm, Object[]) -> PNMatchInstancesRepResult
+replay_a_log_on_petri_net_for_conformance_analysis(ResetInhibitorNet, XLog, TransEvClassMapping, IPNReplayAlgorithm, IPNReplayParameter) -> PNRepResult
+replay_a_log_on_petri_net_for_conformance_analysis(ResetNet, XLog, TransEvClassMapping, IPNReplayAlgorithm, IPNReplayParameter) -> PNRepResult
+replay_a_log_on_petri_net_for_conformance_analysis(Petrinet, XLog, TransEvClassMapping, IPNReplayAlgorithm, IPNReplayParameter) -> PNRepResult
+replay_a_log_on_petri_net_for_conformance_analysis(InhibitorNet, XLog, TransEvClassMapping, IPNReplayAlgorithm, IPNReplayParameter) -> PNRepResult
+replay_a_log_on_petri_net_for_performance_conformance_analysis(PetrinetGraph, XLog, IPNManifestReplayAlgorithm, PNManifestReplayerParameter) -> Manifest
+replay_event_logs(EventLogArray, AcceptingPetriNetArray, ReplayCostFactor, ReplayEventLogArrayOnAcceptingPetriNetArrayParameters) -> ReplayResultArray
+replay_event_logs(EventLogArray, AcceptingPetriNetArray, ReplayEventLogArrayOnAcceptingPetriNetArrayParameters) -> ReplayResultArray
+replay_event_logs(EventLogArray, AcceptingPetriNetArray) -> ReplayResultArray
+replay_log_in_simple_precedence_diagram_spd_(SPD, XLog, int, IFPDNodeLogIdentifier, LifecycleTransitionChecker, AbstractFPDAAPDCalculator) -> (FPD, CaseKPIData, GlobalSettingsData, FPDElementPerformanceMeasurementData, TwoFPDNodesPerformanceData, AAPD)
+replay_log_in_simple_precedence_diagram_spd_(SPD, XLog, int, IFPDNodeLogIdentifier, LifecycleTransitionChecker) -> (FPD, CaseKPIData, GlobalSettingsData, FPDElementPerformanceMeasurementData, TwoFPDNodesPerformanceData, AAPD)
+replay_log_in_simple_precedence_diagram_spd_(SPD, XLog) -> (FPD, CaseKPIData, GlobalSettingsData, FPDElementPerformanceMeasurementData, TwoFPDNodesPerformanceData, AAPD)
+replay_log_in_simple_precedence_diagram_spd_(SPD, XLog, int, IFPDNodeLogIdentifier) -> (FPD, CaseKPIData, GlobalSettingsData, FPDElementPerformanceMeasurementData, TwoFPDNodesPerformanceData, AAPD)
+replay_using_decomposition(XLog, AcceptingPetriNet, DecomposedReplayParameters) -> PNRepResult
+replay_using_decomposition(XLog, AcceptingPetriNet) -> PNRepResult
+resetinhibitor_net_semantics_provider() -> ResetInhibitorNetSemantics
+resetnet_semantics_provider() -> ResetNetSemantics
+resort_log_based_on_time(XLog) -> XLog
+resort_log_based_on_time_preserve_ordering(XLog) -> XLog
+resource_swap_analysis(JPanel) -> JPanel
+rra_export_replay_result_array_(ReplayResultArray, File) -> 
+select_best_fuzzy_instance(MetricsRepository) -> MutableFuzzyGraph
+select_bpmn_diagram(Bpmn, BpmnSelectDiagramParameters) -> BPMNDiagram
+select_bpmn_diagram(Bpmn) -> BPMNDiagram
+sensor_interval_visualizer(SortedSensorIntervals) -> JComponent
+show_diffgraph(DiffGraph) -> JComponent
+show_leemans_episode_model_rules(EpisodeModel) -> JComponent
+show_log(Loggable) -> JComponent
+show_petri_net_metrics(Petrinet) -> PetriNetMetrics
+show_pompom_view(Petrinet, XLog) -> PomPomView
+signature_discovery_visualization(SignaturePatternsFrame) -> JComponent
+simplify_for_replay(Petrinet, Marking) -> (Petrinet, Marking)
+simplify_mined_model_using_uma(XLog, Petrinet, Marking, Configuration, XEventClassifier) -> (Petrinet, Marking)
+simulate_cpn_model(ColouredPetriNet, State) -> XLog
+simulate_cpn_model(ColouredPetriNet, State, int, int) -> XLog
+simulate_cpn_model(ColouredPetriNet, State, int, int, int) -> XLog
+simulate_cpn_model(ColouredPetriNet, State, int) -> XLog
+social_network_how_miner(XLog) -> SocialNetwork
+social_network_ra_miner(XLog) -> SocialNetwork
+social_network_sc_miner(XLog) -> SocialNetwork
+social_network_st_miner(XLog) -> SocialNetwork
+social_network_wt_miner(XLog) -> SocialNetwork
+sort_events_in_traces_based_on_time_stamp_in_place_(XLog) -> XLog
+split_accepting_petri_net(AcceptingPetriNet, ActivityClusterArray, DecomposeAcceptingPetriNetUsingActivityClusterArrayParameters) -> AcceptingPetriNetArray
+split_accepting_petri_net(AcceptingPetriNet, ActivityClusterArray) -> AcceptingPetriNetArray
+split_cheetah_log_into_processes_per_model_max_30_(XLog) -> (XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog, XLog)
+split_event_log(XLog, ActivityClusterArray, DecomposeEventLogUsingActivityClusterArrayParameters) -> EventLogArray
+split_event_log(XLog, ActivityClusterArray) -> EventLogArray
+split_traces(XLog, SplitLogParameters) -> XLog
+split_traces(XLog) -> XLog
+start_and_accept_state_searcher(TransitionSystem) -> (StartStateSet, AcceptStateSet)
+start_event_log_filter(XLog, XEventClassifier, String[]) -> XLog
+start_event_log_filter(XLog, XEventClasses) -> XLog
+start_not_another_workflow_language_system(SessionHandle) -> SimpleWorkflowSystem
+start_not_another_workflow_language_system(SessionHandle, XLog) -> SimpleWorkflowSystem
+start_operational_support_service_2_0() -> OSServicePOM
+start_process_tree_editor() -> EditorObject
+start_process_tree_editor_beginner() -> EditorObjectBeginner
+start_retarded_squirrel_provider(OSService) -> Provider
+stochastic_net_semantics_provider() -> StochasticNetSemantics
+stochastic_petri_net_visualizer(StochasticNet) -> JComponent
+string_visualizer(String) -> JComponent
+swimlane_discovery_plug_in(BPMNDiagram, XLog) -> BPMNDiagram
+synchronous_activity_analysis(XLog) -> JComponent
+temporal_model_visualizer(TemporalModel) -> JComponent
+test_cnetminer(XLog) -> (CNet, Petrinet, Marking)
+test_cnetminer() -> (CNet, Petrinet, Marking)
+test_driver_plg_process_generator() -> (PLGProcessGeneratorConfiguration, PLGLogGeneratorConfiguration)
+test_invoke_other_plugins1() -> String
+test_invoke_other_plugins2() -> String
+test_plugin_called_by_pluginmanagertests_test_invoke_other_plugins_(Integer) -> (Integer, String, Double, Character)
+test_plugin_called_by_pluginmanagertests_test_invoke_other_plugins_(Integer, String) -> (Integer, String, Double, Character)
+time_between_transition_analysis(PNRepResult) -> JComponent
+time_between_transition_class_analysis(Manifest) -> JComponent
+trace_alignment_frame_visualization(AlignmentFrame) -> JComponent
+trace_alignment_of_alignments(PNRepResult) -> JComponent
+trace_alignment_of_manifests(Manifest) -> JComponent
+trace_happiness(LogCentrality) -> JComponent
+transition_system_to_petrinet(TransitionSystem) -> (Petrinet, Marking)
+undouble_accepting_petri_net(AcceptingPetriNet, UndoubleAcceptingPetriNetParameters) -> AcceptingPetriNet
+undouble_accepting_petri_net(AcceptingPetriNet) -> AcceptingPetriNet
+unpack_accepting_petri_net(AcceptingPetriNet, UnpackPetrinetParameters) -> Petrinet
+unpack_accepting_petri_net(AcceptingPetriNet) -> Petrinet
+validate_clusters(ActivityClusterArray, AcceptingPetriNetArray) -> ActivityClusterArray
+view_projection_to_log(CNetRepResult) -> JComponent
+visualise_deviations_on_process_tree(XLog, ProcessTree) -> InductiveVisualMinerLauncher
+visualise_log_comparison(AlignmentComparisonResult) -> JComponent
+visualise_pareto_front(ParetoFrontProcessTree) -> JComponent
+visualise_pareto_front_with_monotonicity(ParetoFrontMonotonicityProcessTree) -> JComponent
+visualise_process_tree_array_as_trees(ProcessTreeArray) -> JComponent
+visualise_process_tree_array_bpmn(ProcessTreeArray) -> JComponent
+visualise_process_tree_data_context_array(ProcessTreeDataContextArray) -> JComponent
+visualise_process_tree_environment_context_array(ProcessTreeEnvironmentContextArray) -> JComponent
+visualise_process_tree_originator_context_array(ProcessTreeOriginatorContextArray) -> JComponent
+visualise_process_tree_simulation_context_array(ProcessTreeSimulationContextArray) -> JComponent
+visualization_of_map_data(MapVisData) -> JComponent
+visualize_accepting_petri_net_dot_(AcceptingPetriNet) -> JComponent
+visualize_activity_cluster_array_dot_(ActivityClusterArray) -> JComponent
+visualize_aggregated_activities_performance_diagram_aapd_(AAPD, GlobalSettingsData) -> JComponent
+visualize_aggregated_activities_performance_diagram_aapd_(AAPD) -> JComponent
+visualize_alignmentmap(PNRepResultMap) -> JComponent
+visualize_analysis_of_flexible_model(Flex) -> JComponent
+visualize_and_control_running_etm_pareto(ETMPareto) -> JComponent
+visualize_bpmn(BPMNDiagram) -> JComponent
+visualize_bpmn_metrics(LinkedList) -> JComponent
+visualize_bpmn_to_pn(BPMNDiagram) -> JComponent
+visualize_case_replay_result_with_instance_exploration_graph_(CaseReplayResult) -> JComponent
+visualize_causal_activity_graph_dot_(CausalActivityGraph) -> JComponent
+visualize_causal_net_with_annotations(Flex) -> JComponent
+visualize_cnet(CNet) -> JComponent
+visualize_coloured_petri_net(ColouredPetriNet) -> JComponent
+visualize_dottedchart(LogView) -> JComponent
+visualize_flexible_model(Flex) -> JComponent
+visualize_flexible_model_log_replay_result(FlexRepResult) -> JComponent
+visualize_fuzzy_instance_dot_(MutableFuzzyGraph) -> JComponent
+visualize_fuzzy_performance_diagram_fpd_(FPD) -> JComponent
+visualize_fuzzy_performance_diagram_fpd_(FPD, CaseKPIData, GlobalSettingsData, FPDElementPerformanceMeasurementData, TwoFPDNodesPerformanceData) -> JComponent
+visualize_general_model(AprModel) -> JComponent
+visualize_global_settings_data(GlobalSettingsData) -> JComponent
+visualize_heuristicsnet_with_annotations(HeuristicsNet) -> JComponent
+visualize_heuristicsnet_with_semantics_split_joing_points(HeuristicsNet[]) -> JComponent
+visualize_heuristicsnet_with_semantics_split_joing_points(HeuristicsNet) -> JComponent
+visualize_html_text(HTMLToString) -> HtmlPanel
+visualize_inhibitor_net_dot_(InhibitorNet) -> JComponent
+visualize_map(VisData) -> JComponent
+visualize_p_alignments_as_graphs(PNRepResult) -> JComponent
+visualize_p_traces_as_graphs(PNRepResult) -> JComponent
+visualize_p_traces_as_graphs(PLog) -> JComponent
+visualize_palignments_projected_on_model(PNRepResult) -> JComponent
+visualize_pareto_front_of_process_trees(ParetoFront) -> JComponent
+visualize_petri_net_dot_(ResetNet) -> JComponent
+visualize_petri_net_dot_(ResetInhibitorNet) -> JComponent
+visualize_petri_net_dot_(Petrinet) -> JComponent
+visualize_petri_net_dot_local_(Petrinet) -> JComponent
+visualize_process_tree(NAryTree) -> JComponent
+visualize_process_tree_as_bpmn(ProcessTree) -> JComponent
+visualize_process_tree_as_tree(ProcessTree) -> JComponent
+visualize_process_tree_as_tree_with_properties(ProcessTree) -> JComponent
+visualize_process_tree_data_context(ProcessTreeDataContext) -> JComponent
+visualize_process_tree_environment_context(ProcessTreeEnvironmentContext) -> JComponent
+visualize_process_tree_originator_context(ProcessTreeOriginatorContext) -> JComponent
+visualize_process_tree_simulation_context(ProcessTreeSimulationContext) -> JComponent
+visualize_process_tree_with_fitness(ProcessTree) -> JComponent
+visualize_regs(RepEGraphs) -> JComponent
+visualize_simple_precedence_diagram_spd_(SPD, XLog) -> JComponent
+visualize_simple_precedence_diagram_spd_(SPD) -> JComponent
+visualize_social_network(SocialNetwork) -> JComponent
+visualize_transition_system_dot_(TransitionSystem) -> JComponent
+visualize_yawl_net_replay_result(YawlReplayResult) -> JComponent
+visualize_yawl_specification(SpecificationModel) -> JComponent
+week_abstraction_log_editor(XLog) -> XLog
+workspace(ApromoreImporterExporter) -> JComponent
+xdotted_chart(XLog) -> JComponent
+xfrequent_movement_sets_mining_for_deviation_analysis(PNRepResult) -> JComponent
+xfrequent_movement_sets_mining_for_deviation_analysis(Manifest) -> JComponent
+xpdl_2_2_export(BPMNDiagram, File) -> 
+xpdl_export_bussines_notation_with_artifact(BPMNDiagramExt, File) -> 
+yawl_export(NetGraph, File) -> 
+yawl_specification(URL) -> NetGraph
+yawl_specification(String) -> NetGraph
+yawl_specification(File) -> NetGraph
+yawl_specification(URI) -> NetGraph
+your_plug_in_name(YourFirstInput, YourSecondInput) -> YourOutput
+your_plug_in_name(YourFirstInput, YourSecondInput, YourConfiguration) -> YourOutput
+z_show_leemans_episode_model_in_debug_visualization(EpisodeModel) -> JComponent
+Terminate batch job (Y/N)? 
+runCLi script ended

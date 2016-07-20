@@ -3,6 +3,13 @@ A collection of tools, scripts and info about the ProM plugins and tools.
 ProM has a cli plugin, allowing many actions to be scripted, thereby avoiding dealing with the raw Java plugins.
 See https://dirksmetric.wordpress.com/2015/03/11/tutorial-automating-process-mining-with-proms-command-line-interface/
 
+Example usage:
+Copy the .bat and the script file into the ProM directory containing the main ProM .jar executable,
+then call:
+	runCli.bat -f alphaMiner.script
+
+Don't forget the '-f' before the file name! And alphaMiner.script will contain java to be compiled on-the-fly.
+
 Example usage: 
 	invocation: java -da -Xmx1G -XX:MaxPermSize=256m -classpath ProM641.jar -Djava.util.Arrays.useLegacyMergeSort=true org.processmining.contexts.cli.CLI
 	script:
