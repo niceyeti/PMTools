@@ -14,12 +14,6 @@ import sys
 import xes
 import copy
 
-class(object) Trace:
-	def __init__(self,traceNo,isAnomalous,sequence):
-		self.traceNo
-		self.isAnomalous
-		self.sequence
-
 """
 Just a utility for reading the trace file traces into a list of traces, each of which is a three-tuple
 of [traceNo<int>, isAnomaly<bool>, sequence<list of chars>].

@@ -1,1 +1,1 @@
-This directory contains all the test scripts for research. Anything directly pertaining to test code should go here, but no data generation or conversion stuff.
+This directory contains all the test scripts for research. Anything directly pertaining to test code should go here; no data generation or conversion stuff.

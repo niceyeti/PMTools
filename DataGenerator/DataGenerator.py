@@ -8,7 +8,9 @@ a (possibly cyclic) left to right graph with probability distribution parameters
 the parameters at LOOP and OR nodes are meaningful, since all other edge probabiliies are 1.0).
 
 Output: A number of traces of the graph, labelled +/-1 to demark whether or not a particular walk traversed any
-anomalous edge one or more times.
+anomalous edge one or more times. Output format (this was defined by the needs to the client):
+	0,-,ABCDEFGH...
+	1,+,BCEFHI...
 
 Usage:
 	print("python ./DataGenerator -file=(path to graphml file) -n=[number of traces to generate] -ofile=(path to output file; defaults to traces.txt if not passed)]")
@@ -33,7 +35,7 @@ class DataGenerator(object):
 	"""
 	def _getNode(self,nodeIndex):
 		return self._graph.vs[nodeIndex]
-			
+
 	"""
 	The utility for generating a single trace from the input graph. This encapsulates a graph walk,
 	and hence the probabilistic logic/parameters for choosing walks.
@@ -301,10 +303,12 @@ class DataGenerator(object):
 		else:
 			ostr += ",-,"
 			
-		#output all the src nodes as the activities that occurred at time t, except for the START node of course
+		#Output all the *src* nodes as the activities that occurred at time t, except for the START node of course.
+		#By ignoring the target nodes we effectively get only the path bounded between START and END of the walk.
 		for edge in trace:
-			if edge[0]["label"] != "START":
-				ostr += edge[0]["label"]
+			nodeLabel = self._getNode(edge[0].source)["label"]
+			if nodeLabel != "START":
+				ostr += nodeLabel
 		
 		ofile.write(ostr+"\n")
 		
@@ -417,7 +421,7 @@ class DataGenerator(object):
 			trace = self._generateTrace(self._startNode, 0)
 			#sort the activities in the trace, such that activities with equal timesteps are randomized wrt eachother
 			self._randomizedSort(trace)
-			self._writeTrace(trace,ofile)
+			self._writeTrace(i,trace,ofile)
 			self._reset()
 			i += 1
 		print("Trace generation completed and output to "+outputFile+".")
