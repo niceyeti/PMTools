@@ -81,7 +81,8 @@ class DataGenerator(object):
 					r = float(random.randint(1,100)) / 100.0
 					if r <= pLoop:
 						transitionList.append((loopEdge, currentTime))
-						currentTime += 1
+						if "^_" not in curNode["label"]: # only update time step for non-empty transitions
+							currentTime += 1
 						curNode = self._graph.vs[loopEdge.target]
 						loopTaken = True
 			#continue
@@ -147,7 +148,8 @@ class DataGenerator(object):
 						randomEdge = outEdges[1]
 						
 					transitionList.append((randomEdge,currentTime))
-					currentTime += 1
+					if "^_" not in curNode["label"]: # only update time step for non-empty transitions
+						currentTime += 1
 					curNode = self._graph.vs[randomEdge.target]
 
 				#lastly, only one option left: current node has only one outgoing "SEQ edge"
@@ -157,13 +159,15 @@ class DataGenerator(object):
 					if len(outEdges) > 1:
 						print("WARNING more than one SEQ edge in _generateTrace(). Num edges: "+str(outEdges))
 					transitionList.append((outEdges[0],currentTime))
-					currentTime += 1		
+					if "^_" not in curNode["label"]: # only update time step for non-empty transitions
+						currentTime += 1		
 					curNode = self._graph.vs[outEdges[0].target]
 				else:
 					#this else should be unreachable, so notify if not
 					print("ERROR unreachable else reached in _generateTrace() for edgeTypes: "+str(edgeTypes))
 					transitionList.append((outEdges[0],currentTime))
-					currentTime += 1
+					if "^_" not in curNode["label"]: # only update time step for non-empty transitions
+						currentTime += 1
 					curNode = self._graph.vs[outEdges[0].target]
 					
 		return transitionList
@@ -215,7 +219,7 @@ class DataGenerator(object):
 						sourceEdge = edge
 						#warn of contiguous empty branches, which I'm not handling
 						if "^" in edge.target["label"]:
-							print("WARN contiguous empty branch encountered in _postProcessEdges() of DataGenerator, unhandled")		
+							print("WARN contiguous empty branches encountered in _postProcessEdges() of DataGenerator, unhandled")		
 				#post-for: have both the start and end points of the empty transition. So add them to scrubbed, and remove them from edge list
 				scrubbed += (self._getNode(sourceEdge.source)["label"], self._getNode(edges[0].source)["label"])
 				temp = []
@@ -256,12 +260,12 @@ class DataGenerator(object):
 	
 	The algorithm, however, is very simple:
 		0) Completely randomize (shuffle) the traceList T to get R
-		1) Stable sort the tracelist R to get S
-	Since (0) achieves randomness wrt all activities with equal time-steps, stable-sorting in (1) is not a problem.
-		
+		1) Stable sort the tracelist by time-step R to get S
+	Since (0) achieves randomness w.r.t. all activities with equal time-steps, stable-sorting in (1) is not a problem.
+
 	@trace: A trace list, which is a list of <igraph-edge,integer timestep> tuples.
 	
-	Returns: None. The list is sorted in place.
+	Returns: None. The input list is sorted in place.
 	"""
 	def _randomizedSort(self, trace):
 		#randomize the traces
@@ -307,7 +311,7 @@ class DataGenerator(object):
 		#By ignoring the target nodes we effectively get only the path bounded between START and END of the walk.
 		for edge in trace:
 			nodeLabel = self._getNode(edge[0].source)["label"]
-			if nodeLabel != "START":
+			if nodeLabel != "START" and "^_" not in nodeLabel: #ignore STARTn node and empty-transition nodes labeled like "^_123"
 				ostr += nodeLabel
 		
 		ofile.write(ostr+"\n")

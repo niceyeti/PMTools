@@ -3,8 +3,11 @@
 #models instead of generating new ones for every test.
 
 numActivites="20"
+logPath="../SyntheticData/testTraces.log"
+xesPath="../SyntheticData/testTraces.xes"
+
 echo Building process model with appr $numActivites activities...
 python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt
 python ModelConverter.py model.txt testModel.graphml
-python DataGenerator.py testModel.graphml -n=1000 -ofile=../SyntheticData/testTraces.log
-#python SynData2Xes.py -ifile=../SyntheticData/testTraces.log -ofile=../SyntheticData/testTraces.xes
+python DataGenerator.py testModel.graphml -n=1000 -ofile=$logPath
+python SynData2Xes.py -ifile=$logPath -ofile=$xesPath

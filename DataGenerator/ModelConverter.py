@@ -2,6 +2,7 @@
 import igraph
 import copy
 import sys
+import os
 
 """
 Given a process-model string as output by ModelGenerator.py, this build a graph structure based on 
@@ -352,7 +353,7 @@ class ModelConverter(object):
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
 	"""
-	def ConvertModel(self,modelString,graphFile = "model.graphml"):
+	def ConvertModel(self,modelString,graphPath = "syntheticModel.graphml"):
 		#create the graph
 		self._graph = igraph.Graph(directed=True)
 		#add the edge attributes
@@ -382,28 +383,22 @@ class ModelConverter(object):
 		#print("START: "+str(startNodes)+"  END: "+str(endNodes))
 
 		#plot the graph for verification
-		self._plot()
+		self._plot( os.path.dirname(graphPath) )
 		#output the graph to some reproducible format; graphml is nice because it preserves all edge/node attributes (isAnomalous, etc.)
-		self._graph.write_graphml(graphFile)
+		self._graph.write_graphml(graphPath)
 		
 	"""
 	Utility for plotting the generated graph, detecting anomalous edges and the like.
+	
+	@folderPath: Path to the folder to which the plot will be saved.
 	"""
-	def _plot(self):
-		"""
-		i=0
-		while i < len(self._graph.es):
-			#print(self._graph.es[i]["isAnomalous"])
-			if self._graph.es[i]["isAnomalous"]:
-				print("ANOMALOUS EDGE FOUND")
-			print(str(self._graph.es[i]))
-			i+=1
-		"""
-		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph, if imperfect
+	def _plot(self, folderPath):
+		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph
 		layout = self._graph.layout("sugiyama")
 		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
-		igraph.plot(self._graph, "plot.png", layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+		savePath = os.path.join(folderPath,"syntheticModel.png")
+		igraph.plot(self._graph, savePath, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
 def usage():

@@ -26,7 +26,7 @@ def BuildTraces(ipath):
 
 	for line in ifile.readlines():
 		if len(line) > 2:
-			params = line.split(",")
+			params = line.strip().split(",")
 			if len(params) != 3:
 				print("ERROR params != 3 in ToXes(), poorly formatted trace: "+line)
 			else:
@@ -38,9 +38,9 @@ def BuildTraces(ipath):
 					print("ERROR poorly formatted anomaly flag in ToXes() for line: "+line)
 					hasAnomaly = "UNKNOWN"
 				sequence = [activity for activity in params[2]]
-				print("Trace number: "+str(traceNo))
-				print(params[1])
-				print(str(sequence))
+				#print("Trace number: "+str(traceNo))
+				#print(params[1])
+				#print(str(sequence))
 				#append this trace to the trace list
 				traces.append([traceNo,hasAnomaly,sequence])
 	ifile.close()
@@ -49,6 +49,8 @@ def BuildTraces(ipath):
 
 """
 Converts the trace list output by BuildTraces() into the target format of the xes developer's example.
+Each trace is named with its traceNo, and an isAnomalous label. The partially-ordered events only
+contain the name of the event, no time-step info.
 
 Returns: An xes.log object defined by the input trace list.
 """
@@ -57,7 +59,7 @@ def BuildXesLog(traces):
 
 	for trace in traces:
 		#the name of the trace is just the trace number
-		traceName = trace[0]
+		traceName = str(trace[0])
 		#add the anomaly status of the trace; this likely won't be used by any ProM or process-discovery tools, but is worth preserving
 		isAnomalous = str(trace[1])
 		#build the trace info
@@ -70,12 +72,21 @@ def BuildXesLog(traces):
 		for eventName in trace[2]:
 			e = xes.Event()
 			e.attributes = [
-				xes.Attribute(type="string", key="concept:name", value=eventName),
-				xes.Attribute(type="string", key="Activity", value=eventName),
+				xes.Attribute(type="string", key="concept:name", value=eventName)
+				#xes.Attribute(type="string", key="Activity", value=eventName)
 			]
 			t.add_event(e)
 		#add the trace
 		log.add_trace(t)
+
+	#add the classifiers
+	log.classifiers = [
+		#xes.Classifier(name="org:resource",keys="org:resource"),
+		#xes.Classifier(name="concept:name",keys="concept:name")
+		xes.Classifier(name="concept:name",keys="concept:name"),
+		#xes.Classifier(name="concept:traceName",keys="concept:traceName"),
+		xes.Classifier(name="concept:isAnomalous",keys="concept:isAnomalous")
+	]
 
 	return log
 
