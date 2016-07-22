@@ -1,5 +1,5 @@
 System.out.println("Loading log");
-log = open_xes_log_file("myLog.xes");
+log = open_xes_log_file("$1");
 
 System.out.println("Getting log info");
 org.deckfour.xes.info.XLogInfo logInfo = org.deckfour.xes.info.XLogInfoFactory.createLogInfo(log);
@@ -14,11 +14,15 @@ hms.setClassifier(classifier);
 System.out.println("Calling miner");
 net = mine_for_a_heuristics_net_using_heuristics_miner(log, hms);
 
-System.out.println("Visualize");
-javax.swing.JComponent comp = visualize_heuristicsnet_with_annotations(net);
-javax.swing.JFrame frame = new javax.swing.JFrame();
-frame.add(comp);
-frame.setSize(400,400);
-frame.setVisible(true);
+System.out.println("Saving net...");
+File net_file = new File("$2");
+pnml_export_petri_net_(net, net_file);
+
+//System.out.println("Visualize");
+//javax.swing.JComponent comp = visualize_heuristicsnet_with_annotations(net);
+//javax.swing.JFrame frame = new javax.swing.JFrame();
+//frame.add(comp);
+//frame.setSize(400,400);
+//frame.setVisible(true);
 
 System.out.println("done.");

@@ -1,5 +1,5 @@
 System.out.println("Loading log");
-log = open_xes_log_file("running-example.xes");
+log = open_xes_log_file("$1");
 
 System.out.println("Getting log info");
 org.deckfour.xes.info.XLogInfo logInfo = org.deckfour.xes.info.XLogInfoFactory.createLogInfo(log);
@@ -12,8 +12,8 @@ net_and_marking = alpha_miner(log, classifier);
 net = net_and_marking[0];
 marking = net_and_marking[1];
 
-System.out.println("Saving net to AlphaNet.pnml");
-File net_file = new File("AlphaNet.pnml");
+System.out.println("Saving net");
+File net_file = new File("$2");
 pnml_export_petri_net_(net, net_file);
 
 System.out.println("done.");

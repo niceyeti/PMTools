@@ -2,11 +2,16 @@
 #generating data from it. In all likelihood only components will be used for research, re-testing
 #models instead of generating new ones for every test.
 
+if [ $# -ne 4 ]; then
+    echo "Incorrect number of parameters"
+	return
+fi
+
 echo Generating model with $1 activities and from which $2 traces will be stored.
 numActivites=$1
 numTraces=$2
-logPath="../SyntheticData/testTraces.log"
-xesPath="../SyntheticData/testTraces.xes"
+logPath=$3
+xesPath=$4
 
 echo Building process model with appr $numActivites activities...
 #build the model, using Bezerra's algorithm

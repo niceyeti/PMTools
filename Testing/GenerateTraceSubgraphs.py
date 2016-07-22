@@ -166,7 +166,7 @@ def BuildGRecord(isAnomalous=False,traceNo,gTrace, graph):
 
 
 def usage():
-	print("Usage: python ./GenerateTraceSubgraphs.py [path to pnml model file] [path to trace file] [output path for .g file]")
+	print("Usage: python ./GenerateTraceSubgraphs.py [path to graphml model file] [path to trace file] [output path for .g file]")
 
 	
 if len(sys.argv) != 4:
