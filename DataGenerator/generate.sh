@@ -2,7 +2,9 @@
 #generating data from it. In all likelihood only components will be used for research, re-testing
 #models instead of generating new ones for every test.
 
-numActivites="20"
+echo Generating model with $1 activities and from which $2 traces will be stored.
+numActivites=$1
+numTraces=$2
 logPath="../SyntheticData/testTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
 
@@ -12,6 +14,6 @@ python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=mo
 #convert the generated model to transferrable graphml
 python ModelConverter.py model.txt testModel.graphml
 #generate stochastic walk data from the model
-python DataGenerator.py testModel.graphml -n=1000 -ofile=$logPath
+python DataGenerator.py testModel.graphml -n=$numTraces -ofile=$logPath
 #convert synthetic data to xes format for process mining
 python SynData2Xes.py -ifile=$logPath -ofile=$xesPath
