@@ -15,14 +15,12 @@ Usage:
 from __future__ import print_function
 import sys
 
-
-
 def usage():
 	print("Usage: python miningWrapper.py -miner=[alpha,inductive,heuristic] -ifile=process.xes -ofile=petrinet.pnml")
 
 
-if len(sys.argv) != 3:
-	print("ERROR insufficient arguments passed to miningWrapper")
+if len(sys.argv) != 4:
+	print("ERROR incorrect num arguments passed to miningWrapper")
 	usage()
 	exit()
 
