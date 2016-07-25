@@ -25,4 +25,5 @@ pnml_export_petri_net_(net, net_file);
 //frame.setSize(400,400);
 //frame.setVisible(true);
 
-System.out.println("done.");
+System.out.println("heuristic miner done.");
+System.exit(0)

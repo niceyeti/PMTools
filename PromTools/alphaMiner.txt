@@ -16,4 +16,5 @@ System.out.println("Saving net");
 File net_file = new File("../SyntheticData/testModel.pnml");
 pnml_export_petri_net_(net, net_file);
 
-System.out.println("done.");
+System.out.println("alpha miner done.");
+System.exit(0)

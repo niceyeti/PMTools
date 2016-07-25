@@ -11,4 +11,5 @@ System.out.println("Saving net");
 File net_file = new File("$2");
 pnml_export_petri_net_(pn_and_marking[0], net_file);
 
-System.out.println("done.");
+System.out.println("inductive miner done.");
+System.exit(0)

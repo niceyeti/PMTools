@@ -13,16 +13,15 @@ graphmlPath="../SyntheticData/testModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="./test.g"
 
-#Generate a model containing appr. 20 activities, and generate 1000 traces from it
-#cd $generatorFolder
-#sh $generatorPath 20 1000 $logPath $xesPath
-#cd "../Testing/"
+#generate a model containing appr. 20 activities, and generate 1000 traces from it
+cd $generatorFolder
+sh $generatorPath 20 1000 $logPath $xesPath
+cd "../Testing/"
 
-#Prep the java script to be passed to the ProM java cli
+#mine the ground-truth model from the generated data
 cd "../PromTools/"
 python $miningWrapper -miner=alpha -ifile=$xesPath -ofile=$pnmlPath
 
-#Run the process miner to get an approximate ground-truth model
 cd "../Testing/"
 sh $minerPath -f $minerScript
 

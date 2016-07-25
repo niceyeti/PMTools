@@ -38,7 +38,7 @@ def GenerateTraces(graphPath, tracePath, outputPath):
 	
 	traceFile = open(tracePath,"r")
 	gFile = open(outputPath,"w+")
-	modelInfo = graph["name"]
+	modelInfo = model["name"]
 	gFile.write("% Trace replay of "+tracePath+" on model mined from "+graphPath+" for model "+modelInfo+"\n\n")
 	
 	for trace in traceFile.readlines():
@@ -163,7 +163,6 @@ def BuildGRecord(isAnomalous,traceNo,gTrace, graph):
 		record += ("d " + str(edge.source) + " " + str(edge.target) + "\n") #note that edges have no labels
 
 	return record
-
 
 def usage():
 	print("Usage: python ./GenerateTraceSubgraphs.py [path to graphml model file] [path to trace file] [output path for .g file]")
