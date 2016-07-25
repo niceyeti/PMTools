@@ -1,5 +1,6 @@
-#!/bin/sh
-generatorFolder="../DataGenerator/"
+#!/bin/bash
+
+generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
 logPath="../SyntheticData/testTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
@@ -20,10 +21,11 @@ cd "../Testing/"
 #mine the ground-truth model from the generated data
 cd "../PromTools/"
 python $miningWrapper -miner=alpha -ifile=$xesPath -ofile=$pnmlPath
+
 cd "../Testing/"
 sh $minerPath -f $minerScript
-#convert the mined pnml model to graphml
 
+#convert the mined pnml model to graphml
 python $pnmlConverterPath $pnmlPath $graphmlPath
 #generate sub-graphs from the mined graphml model
 python $subgraphGeneratorPath $graphmlPath $logPath $subdueLogPath
