@@ -140,7 +140,7 @@ Returns: A formatted string representing the trace .g record (using directed edg
 @traceNo: This trace's number.
 @gTrace: The list of edges representing this trace
 """
-def BuildGRecord(isAnomalous=False,traceNo,gTrace, graph):
+def BuildGRecord(isAnomalous,traceNo,gTrace, graph):
 	record = ""
 	if isAnomalous:
 		record = "XP"
