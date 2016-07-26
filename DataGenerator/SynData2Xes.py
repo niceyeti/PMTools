@@ -44,6 +44,8 @@ def BuildTraces(ipath):
 				#append this trace to the trace list
 				traces.append([traceNo,hasAnomaly,sequence])
 	ifile.close()
+
+	print(str(traces))
 	
 	return traces
 
@@ -83,9 +85,10 @@ def BuildXesLog(traces):
 	log.classifiers = [
 		#xes.Classifier(name="org:resource",keys="org:resource"),
 		#xes.Classifier(name="concept:name",keys="concept:name")
-		xes.Classifier(name="concept:name",keys="concept:name"),
 		#xes.Classifier(name="concept:traceName",keys="concept:traceName"),
-		xes.Classifier(name="concept:isAnomalous",keys="concept:isAnomalous")
+		#xes.Classifier(name="concept:isAnomalous",keys="concept:isAnomalous")
+		xes.Classifier(name="concept:name",keys="concept:name"),
+		xes.Classifier(name="Activity", keys="Activity")
 	]
 
 	return log

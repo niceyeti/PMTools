@@ -12,7 +12,7 @@ pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 graphmlPath="../SyntheticData/testModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="./test.g"
-classifierString="concept:name"
+classifierString="Activity"
 
 #Generate a model containing appr. 20 activities, and generate 1000 traces from it
 cd "../DataGenerator/"
@@ -31,5 +31,3 @@ python $pnmlConverterPath $pnmlPath $graphmlPath
 #generate sub-graphs from the mined graphml model
 python $subgraphGeneratorPath $graphmlPath $logPath $subdueLogPath
 #call subdue/gbad
-
-

@@ -1,4 +1,3 @@
-
 import igraph
 import copy
 import sys
@@ -352,8 +351,12 @@ class ModelConverter(object):
 	"""
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
+	
+	@modelString: the paraseable model string
+	@graphPath: The path to which the output graphml will be stored
+	@showPlot: Whether or not to show the graph to the user
 	"""
-	def ConvertModel(self,modelString,graphPath = "syntheticModel.graphml"):
+	def ConvertModel(self,modelString,graphPath, showPlot=True):
 		#create the graph
 		self._graph = igraph.Graph(directed=True)
 		#add the edge attributes
@@ -383,26 +386,29 @@ class ModelConverter(object):
 		#print("START: "+str(startNodes)+"  END: "+str(endNodes))
 
 		#plot the graph for verification
-		self._plot( os.path.dirname(graphPath) )
+		self._plot( os.path.dirname(graphPath), showPlot )
 		#output the graph to some reproducible format; graphml is nice because it preserves all edge/node attributes (isAnomalous, etc.)
 		self._graph.write_graphml(graphPath)
-		
+
 	"""
 	Utility for plotting the generated graph, detecting anomalous edges and the like.
 	
 	@folderPath: Path to the folder to which the plot will be saved.
 	"""
-	def _plot(self, folderPath):
+	def _plot(self, folderPath, showPlot=True):
 		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph
 		layout = self._graph.layout("sugiyama")
 		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
 		savePath = os.path.join(folderPath,"syntheticModel.png")
 		igraph.plot(self._graph, savePath, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
-		igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
+		#plot and show the graph, if desired
+		if showPlot:
+			igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+
 def usage():
-	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'")
+	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'] [--quiet: optional; whether or not to show the graph]")
 
 def main():
 	if len(sys.argv) < 2:
@@ -417,12 +423,11 @@ def main():
 	if len(sys.argv) == 3:
 		outputPath= sys.argv[2]
 	
+	showPlot = "--quiet" not in sys.argv
+	
 	converter = ModelConverter()
-	converter.ConvertModel(modelString,outputPath)
+	converter.ConvertModel(modelString,outputPath,showPlot)
 
 		
 if __name__ == "__main__":
 	main()
-	
-	
-	
