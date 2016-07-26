@@ -44,8 +44,6 @@ def BuildTraces(ipath):
 				#append this trace to the trace list
 				traces.append([traceNo,hasAnomaly,sequence])
 	ifile.close()
-
-	print(str(traces))
 	
 	return traces
 
@@ -74,7 +72,8 @@ def BuildXesLog(traces):
 		for eventName in trace[2]:
 			e = xes.Event()
 			e.attributes = [
-				xes.Attribute(type="string", key="concept:name", value=eventName)
+				xes.Attribute(type="string", key="concept:name", value=eventName),
+				xes.Attribute(type="string", key="Activity", value=eventName)
 				#xes.Attribute(type="string", key="Activity", value=eventName)
 			]
 			t.add_event(e)
@@ -87,8 +86,8 @@ def BuildXesLog(traces):
 		#xes.Classifier(name="concept:name",keys="concept:name")
 		#xes.Classifier(name="concept:traceName",keys="concept:traceName"),
 		#xes.Classifier(name="concept:isAnomalous",keys="concept:isAnomalous")
-		xes.Classifier(name="concept:name",keys="concept:name"),
-		xes.Classifier(name="Activity", keys="Activity")
+		xes.Classifier(name="Activity", keys="Activity"),
+		xes.Classifier(name="concept:name",keys="concept:name")
 	]
 
 	return log
@@ -122,7 +121,7 @@ def ToXes(ipath,opath):
 
 def usage():
 	print("Usage: python ./SynData2Xes.py -ifile=[path to input file of synthetic data] -ofile=[output path for xes log file]")	
-	
+
 if len(sys.argv) < 3:
 	print("ERROR insufficient parameters")
 	usage()

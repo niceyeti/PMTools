@@ -5,7 +5,7 @@ are swapped with some parameters, and a new script can thereby be generated on t
 fly from this template.
 */
 
-System.out.println("Loading log");
+System.out.println("Loading log from $1");
 log = open_xes_log_file("$1");
 
 System.out.println("Getting log info");
@@ -13,10 +13,11 @@ org.deckfour.xes.info.XLogInfo logInfo = org.deckfour.xes.info.XLogInfoFactory.c
 
 System.out.println("Getting classifier");
 org.deckfour.xes.classification.XEventClassifier classifier = logInfo.getEventClassifiers().iterator().next();
-//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "$2");
+//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "concept:name", "Activity");
+System.out.println("Classifier: ");
+System.out.println(classifier);
 
 System.out.println("Mining model with alpha miner");
-System.out.println("Classifier:");
 net_and_marking = alpha_miner(log, classifier);
 net = net_and_marking[0];
 marking = net_and_marking[1];

@@ -4,20 +4,20 @@
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
 <!-- Created by igraph -->
-  <key id="v_name" for="node" attr.name="name" attr.type="string"/>
   <key id="v_label" for="node" attr.name="label" attr.type="string"/>
+  <key id="v_name" for="node" attr.name="name" attr.type="string"/>
   <graph id="G" edgedefault="directed">
     <node id="n0">
-      <data key="v_name">None</data>
       <data key="v_label">None</data>
+      <data key="v_name">None</data>
     </node>
     <node id="n1">
-      <data key="v_name">START</data>
       <data key="v_label">START</data>
+      <data key="v_name">START</data>
     </node>
     <node id="n2">
-      <data key="v_name">END</data>
       <data key="v_label">END</data>
+      <data key="v_name">END</data>
     </node>
     <edge source="n1" target="n0">
     </edge>

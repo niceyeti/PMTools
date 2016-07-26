@@ -35,7 +35,7 @@ if miner not in ["alpha","inductive","heuristic"]:
 	exit()
 
 print("Generating miner script with miner="+miner+" ifile="+ifile+" ofile="+ofile+" classifier="+classifierString)
-	
+
 if miner == "alpha":
 	templatePath = "./alphaTemplate.js"
 	outputPath = "./alphaMiner.js"

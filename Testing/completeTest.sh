@@ -17,10 +17,10 @@ classifierString="Activity"
 #Generate a model containing appr. 20 activities, and generate 1000 traces from it
 cd "../DataGenerator/"
 sh $generatorPath 20 1000 $logPath $xesPath
-
-#Prep the java script to be passed to the ProM java cli
+#
+##Prep the java script to be passed to the ProM java cli
 cd "../PromTools/"
-python $miningWrapper -miner=alpha -ifile=$xesPath -ofile=$pnmlPath -classifierString=$classifierString
+python $miningWrapper -miner=inductive -ifile=$xesPath -ofile=$pnmlPath -classifierString=$classifierString
 
 #Run the process miner to get an approximate ground-truth model
 cd "../Testing/"
