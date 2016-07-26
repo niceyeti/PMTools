@@ -1,3 +1,10 @@
+/*
+The template miner script. This isn't actual javascript, just the java-style script language
+that is parsed by the Prom66 cli. Note the ../SyntheticData/testTraces.xes, concept:name, ../SyntheticData/testModel.pnml anchors; this file is read, the anchors
+are swapped with some parameters, and a new script can thereby be generated on the
+fly from this template.
+*/
+
 System.out.println("Loading log");
 log = open_xes_log_file("../SyntheticData/testTraces.xes");
 
@@ -6,11 +13,10 @@ org.deckfour.xes.info.XLogInfo logInfo = org.deckfour.xes.info.XLogInfoFactory.c
 
 System.out.println("Getting classifier");
 org.deckfour.xes.classification.XEventClassifier classifier = logInfo.getEventClassifiers().iterator().next();
-//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "org:name");
+//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "concept:name");
 
 System.out.println("Mining model with alpha miner");
 System.out.println("Classifier:");
-System.out.println(classifier.toString());
 net_and_marking = alpha_miner(log, classifier);
 net = net_and_marking[0];
 marking = net_and_marking[1];

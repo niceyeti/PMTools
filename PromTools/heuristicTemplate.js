@@ -1,3 +1,10 @@
+/*
+The template miner script. This isn't actual javascript, just the java-style script language
+that is parsed by the Prom66 cli. Note the $1, $2, $3 anchors; this file is read, the anchors
+are swapped with some parameters, and a new script can thereby be generated on the
+fly from this template.
+*/
+
 System.out.println("Loading log");
 log = open_xes_log_file("$1");
 
@@ -5,7 +12,8 @@ System.out.println("Getting log info");
 org.deckfour.xes.info.XLogInfo logInfo = org.deckfour.xes.info.XLogInfoFactory.createLogInfo(log);
 
 System.out.println("Setting classifier");
-org.deckfour.xes.classification.XEventClassifier classifier = logInfo.getEventClassifiers().iterator().next();
+//org.deckfour.xes.classification.XEventClassifier classifier = logInfo.getEventClassifiers().iterator().next();
+org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "$2");
 
 System.out.println("Creating heuristics miner settings");
 org.processmining.plugins.heuristicsnet.miner.heuristics.miner.settings.HeuristicsMinerSettings hms = new org.processmining.plugins.heuristicsnet.miner.heuristics.miner.settings.HeuristicsMinerSettings();
@@ -15,7 +23,7 @@ System.out.println("Calling miner");
 net = mine_for_a_heuristics_net_using_heuristics_miner(log, hms);
 
 System.out.println("Saving net...");
-File net_file = new File("$2");
+File net_file = new File("$3");
 pnml_export_petri_net_(net, net_file);
 
 //System.out.println("Visualize");
@@ -26,4 +34,4 @@ pnml_export_petri_net_(net, net_file);
 //frame.setVisible(true);
 
 System.out.println("heuristic miner done.");
-System.exit(0)
+System.exit(0);
