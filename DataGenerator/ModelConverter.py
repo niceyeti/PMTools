@@ -427,7 +427,6 @@ def main():
 	
 	converter = ModelConverter()
 	converter.ConvertModel(modelString,outputPath,showPlot)
-
 		
 if __name__ == "__main__":
 	main()

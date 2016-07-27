@@ -5,7 +5,7 @@ are swapped with some parameters, and a new script can thereby be generated on t
 fly from this template.
 */
 
-System.out.println("Loading log");
+System.out.println("Loading log from $1");
 log = open_xes_log_file("$1");
 
 System.out.println("Creating settings");
