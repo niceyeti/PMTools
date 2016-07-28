@@ -21,6 +21,7 @@ as input to SUBDUE.
 
 from __future__ import print_function
 import igraph
+import platform
 import sys
 import xml.etree.ElementTree as ET
 
@@ -29,9 +30,9 @@ Utility for converting pnml format file into a graphml structure, for easy trans
 
 @pnmlPath: Path to a pnml file
 @opath: Path to the output location for the graphml representation of the pnml
-"""
+
 def Convert(pnmlPath):
-	print("Converting graph. Be aware this script only resolves transitions separated by a single place, non-recursively.")
+	print("Converting graph. Be aware this script only resolves transitions separated by a single place or tau-transition, non-recursively.")
 	print("It does not curently resolve consecutive places, if that is a valid construct given in some input petri net.")
 
 	#read the pnml data
@@ -131,6 +132,7 @@ def Convert(pnmlPath):
 	graph.vs["label"] = [v["name"] for v in graph.vs]
 	
 	return graph
+"""
 	
 """
 Given a list of arcs in the form (src<int>, dest<int>) and a vertexDict of <int,string>,
@@ -161,13 +163,13 @@ Utility for converting pnml format file into a graphml structure, for easy trans
 @pnmlPath: Path to a pnml file
 @opath: Path to the output location for the graphml representation of the pnml
 """
-def Convert2(pnmlPath):
+def Convert(pnmlPath):
 	print("Converting graph. Be aware this script only resolves transitions separated by a single place, non-recursively.")
-	print("It does not curently resolve consecutive places, if that is a valid construct given in some input petri net.")
+	print("It does not currently resolve consecutive places, if that is a valid construct given in some input petri net.")
 
 	#read the pnml data
 	root = ET.parse(pnmlPath).getroot()
-	netName = root.find("./net/page/name/text").text	
+	netName = root.find("./net/page/name/text").text
 	vertexDict = {} #vertices are stored temporarily as {id : text}
 	places = {} #places are stored as vertices; they are only stored for the purposes of factoring them out of the final graph
 	arcs = [] #pnml arcs are stored as a list of tuples, (sourceId<string>, targetId<string>)
@@ -260,9 +262,9 @@ def ShowGraph(graph):
 	#igraph.plot(graph, bbox = (1000,1000), vertex_size=35, vertex_label_size=5,label="name")
 	
 def usage():
-	print("Usage: python Pnml2Graphml.py [input file] [output path for graphml file]")
+	print("Usage: python Pnml2Graphml.py [input file] [output path for graphml file] [optional: --show to show the graph]")
 
-if len(sys.argv) != 3:
+if len(sys.argv) < 3:
 	print("ERROR incorrect number of arguments passed to Pnml2Graphml.py. Exiting.")
 	usage()
 	exit()
@@ -271,8 +273,17 @@ ipath = sys.argv[1]
 opath= sys.argv[2]
 
 print("Converting pnml at "+ipath+" to output graphml at "+opath)
-transitionGraph = Convert2(ipath)
-#ShowGraph(transitionGraph)
-transitionGraph.write_graphml(opath)
+transitionGraph = Convert(ipath)
+
+if "--show" in sys.argv:
+	ShowGraph(transitionGraph)
+	
+#defensive programming on windows, for which write_graphml currently breaks (likely this is because of a precompiled exe install of igraph or its components)
+if "windows" in platform.system().lower():
+	try:
+		transitionGraph.write_graphml(opath) #this crashes Python 3.5 under windows with igraph precompiled binaries
+	except Exception as e: print(e)  #maybe this will save us? maybe not
+else:
+	transitionGraph.write_graphml(opath) #this crashes Python 3.5 under windows with igraph precompiled binaries
 print("Pnml to graphml conversion complete.")
 #print(str(transitionGraph))
