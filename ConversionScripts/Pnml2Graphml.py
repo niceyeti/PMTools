@@ -1,10 +1,10 @@
 """
 Converts a pnml file to a graphml graph file. See example.pnml for an example of the pnml format.
-This script converts a pnml petrinet with places, transitions, and arcs into our target graph format. (Excuse
-the nomenclature: in pnml 'places' and 'transitions' are like graph nodes, and 'arcs' are edges.)
+This script converts a pnml petrinet with places, transitions, and arcs into our target graph format.
+(The nomenclature: in pnml 'places' and 'transitions' are like graph nodes, and 'arcs' are edges.)
 We want the ground-truth sequential model of the process, which has no places, only edges between transitions (activities).
 So only the arc and transition data is useful; the 'place' data and other pnml data is irrelevant or just provides
-structural info. 'Places' are essentially flattened: if P is a place, and given the edge set {A->P, P->B}, this
+structural info. 'Places' are essentially resolved: if P is a place, and given the edge set {A->P, P->B}, this
 simplifies to {A->B}.
 
 The output of this script is a graphml-formatted graph for which the nodes represet activities, the edges represent sequential
@@ -19,7 +19,6 @@ algorithm. This pnml must be converted to graphml so we can read in the graph an
 as input to SUBDUE.
 """
 
-#TODO; haven't gotten ProM automation up yet
 from __future__ import print_function
 import igraph
 import sys
@@ -48,20 +47,17 @@ def Convert(pnmlPath):
 		vName = t.find('./name/text').text
 		vertices[vId] = vName
 
-
 	#populate the place dictionary, which is only used for the purposes of transforming the petrinet and factoring out the places
 	for p in root.findall('./net/page/place'):
 		pId = p.get('id')
 		pName = p.find('./name/text').text
 		places[pId] = pName
 
-
 	#parse the edge data from the petrinet
 	for e in root.findall('./net/page/arc'):
 		source = e.get('source')
 		target = e.get('target')
 		arcs.append((source,target))
-
 
 	#The algorithm for eliminating/factoring out the places: for each place, find all vertices pointing to it, and to which it points, then use these to bypass the place
 	for p in places:
@@ -74,7 +70,6 @@ def Convert(pnmlPath):
 			elif arc[0] == p: #this place points to some 
 				outLinks.append(arc[1])
 
-				
 		if len(inLinks) == 0:
 			print("WARN inLinks length 0 in Convert() for place: "+str(p))
 			print(str(outLinks))
@@ -88,11 +83,10 @@ def Convert(pnmlPath):
 		for inLink in inLinks:
 			for outLink in outLinks:
 				edges.append((inLink,outLink))
-	
+
 	print("pre edges: "+str(edges))
 	#the edge list currently contains pnml vIds, which this converts to their corresponding vertex names
 	edges = [(vertices[e[0]],vertices[e[1]]) for e in edges]
-
 
 	#add the vertices to the output graph
 	vertexNames = [vertices[vId] for vId in vertices]
@@ -137,6 +131,121 @@ def Convert(pnmlPath):
 	graph.vs["label"] = [v["name"] for v in graph.vs]
 	
 	return graph
+	
+"""
+Given a list of arcs in the form (src<int>, dest<int>) and a vertexDict of <int,string>,
+and a filter string, this removes all edges connected to vertices containing the filter string (eg, 'PLACE_').
+The resolution procedure then sutures all input edges and output edges from the removed nodes. So logically
+is A,B,C have in-links to D, and D has outlinks to E,F,G, and if the filter-string is 'D', then D will be removed
+and replaced by direct links from A,B,C to E,F,G.
+"""
+def _resolveEdges(arcs, vertexDict, filterString):
+	placeIds = [pId for pId in vertexDict if filterString in vertexDict[pId]]
+	for pId in placeIds:
+		#get all outlinked nodes from this place
+		outLinkNodes = [arc[1] for arc in arcs if arc[0] == pId]
+		#get all inlinked nodes to this place
+		inLinkNodes = [arc[0] for arc in arcs if arc[1] == pId]
+		#remove all the arcs containing this pId as src or dst
+		arcs = [arc for arc in arcs if (pId != arc[0] and pId != arc[1])]
+		#add the in-out nodes back in
+		for outNode in outLinkNodes:
+			for inNode in inLinkNodes:
+				arcs.append((inNode,outNode))
+	return arcs
+	
+"""
+Utility for converting pnml format file into a graphml structure, for easy transmission and storage.
+
+
+@pnmlPath: Path to a pnml file
+@opath: Path to the output location for the graphml representation of the pnml
+"""
+def Convert2(pnmlPath):
+	print("Converting graph. Be aware this script only resolves transitions separated by a single place, non-recursively.")
+	print("It does not curently resolve consecutive places, if that is a valid construct given in some input petri net.")
+
+	#read the pnml data
+	root = ET.parse(pnmlPath).getroot()
+	netName = root.find("./net/page/name/text").text	
+	vertexDict = {} #vertices are stored temporarily as {id : text}
+	places = {} #places are stored as vertices; they are only stored for the purposes of factoring them out of the final graph
+	arcs = [] #pnml arcs are stored as a list of tuples, (sourceId<string>, targetId<string>)
+	edges = [] #the output edge list for the igraph object
+	
+	#store the transitions, which will be a mix of 'tau' constructs and actual activities (eg, "register patient", "discharge patient", etc)
+	for t in root.findall('./net/page/transition'):
+		vId = t.get('id')
+		vName = t.find('./name/text').text
+		if "tau" in vName.lower():
+			vName = "TAU_" + vName #mark tau nodes
+		vertexDict[vId] = vName
+
+	#add places to the vertex set, labelling them as "PLACE" for later identification
+	for p in root.findall('./net/page/place'):
+		pId = p.get('id')
+		pName = "PLACE_"+p.find('./name/text').text
+		vertexDict[pId] = pName
+
+	#parse the edge data from the petrinet
+	for e in root.findall('./net/page/arc'):
+		source = e.get('source') #these are the text-based node-ids, corresponding with the keys in the vertex dict
+		target = e.get('target')
+		arcs.append((source,target))
+
+	#in this algorithm, the complete pnml graph is built in-memory, then edges of places and 'tau' transitions are removed
+	#through an edge-resolution procedure, such that only actual activity-nodes are left
+	#filter the place nodes:
+	arcs = _resolveEdges(arcs, vertexDict, "PLACE_")
+	#filter any 'tau' nodes; these show up in the output of some mining algorithms
+	arcs = _resolveEdges(arcs, vertexDict, "TAU_")
+	#the arcs now contain only the set of resolve edges, without places or 'tau' transition-nodes
+	
+	#get the set of all unique activities
+	arcIds = set([arc[0] for arc in arcs]+[arc[1] for arc in arcs])
+	activityNames = [vertexDict[arcId] for arcId in arcIds]
+	#translate the arcs from id-pairs to vertex-name pairs
+	edges = [(vertexDict[arc[0]],vertexDict[arc[1]]) for arc in arcs]
+
+	#build the igraph graph object. This is really just used to serialize the graph to graphml
+	graph = igraph.Graph(directed=True)
+	#finally, add the filtered graph structure vertices and edges to an igraph
+	graph.add_vertices(activityNames)
+	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
+
+	if "START" not in activityNames and "END" not in activityNames:
+		#now search for the start and ending nodes: start nodes are those with no inputs, end nodes are those with no outputs
+		startNodes = []
+		endNodes = []
+		for v in graph.vs:
+			isStartNode = True
+			isEndNode = True
+			for e in graph.es:
+				if v.index == e.target: #some node points to this one, hence it cannot be a start node
+					isStartNode = False
+				if v.index == e.source: #this node points to some other, hence it cannot be an end node
+					isEndNode = False
+			if isStartNode:
+				startNodes.append(v)
+			if isEndNode:
+				endNodes.append(v)
+		#end-loop: start and terminal nodes in-hand, so add a START and END node to bind them
+	
+		#add the start/end vertices
+		graph.add_vertex("START")
+		graph.add_vertex("END")
+		#and thread them in
+		startNode = graph.vs.select(name="START")[0]
+		endNode = graph.vs.select(name="END")[0]
+		for node in startNodes:
+			graph.add_edge(startNode.index,node.index)
+		for node in endNodes:
+			graph.add_edge(node.index,endNode.index)
+	
+	#store the activity as both the node name and 'label' attribute
+	graph.vs["label"] = [v["name"] for v in graph.vs]
+	
+	return graph	
 
 """
 Plotting, for visual analysis.
@@ -162,8 +271,8 @@ ipath = sys.argv[1]
 opath= sys.argv[2]
 
 print("Converting pnml at "+ipath+" to output graphml at "+opath)
-transitionGraph = Convert(ipath)
-ShowGraph(transitionGraph)
+transitionGraph = Convert2(ipath)
+#ShowGraph(transitionGraph)
 transitionGraph.write_graphml(opath)
 print("Pnml to graphml conversion complete.")
-print(str(transitionGraph))
+#print(str(transitionGraph))
