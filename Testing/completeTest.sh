@@ -13,7 +13,7 @@ classifierString="Activity"
 
 pnmlPath="../SyntheticData/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
-minedGraphmlPath="../SyntheticData/testModel.graphml"
+minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="./test.g"
 
@@ -30,7 +30,7 @@ cd "../Testing/"
 sh $minerPath -f $minerScript
 
 #convert the mined pnml model to graphml
-python $pnmlConverterPath $pnmlPath $minedGraphmlPath
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 #generate sub-graphs from the mined graphml model
 python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath
 #call subdue/gbad

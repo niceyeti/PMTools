@@ -169,7 +169,7 @@ def Convert(pnmlPath):
 
 	#read the pnml data
 	root = ET.parse(pnmlPath).getroot()
-	netName = root.find("./net/page/name/text").text
+	netName = root.find("./net/name/text").text
 	vertexDict = {} #vertices are stored temporarily as {id : text}
 	places = {} #places are stored as vertices; they are only stored for the purposes of factoring them out of the final graph
 	arcs = [] #pnml arcs are stored as a list of tuples, (sourceId<string>, targetId<string>)
@@ -247,17 +247,23 @@ def Convert(pnmlPath):
 	#store the activity as both the node name and 'label' attribute
 	graph.vs["label"] = [v["name"] for v in graph.vs]
 	
+	#name the graph
+	if len(netName) > 0:
+		graph["name"] = netName
+	else:
+		graph["name"] = "mined-process"
+	
 	return graph	
 
 """
 Plotting, for visual analysis.
 """
-def ShowGraph(graph):
+def ShowGraph(graph,opath):
 	#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph, if imperfect
 	layout = graph.layout("sugiyama")
 	#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 	#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
-	#igraph.plot(graph, "petriGraph.png", layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+	igraph.plot(graph, opath.replace(".graphml",".png"), layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 	igraph.plot(graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 	#igraph.plot(graph, bbox = (1000,1000), vertex_size=35, vertex_label_size=5,label="name")
 	
@@ -276,7 +282,7 @@ print("Converting pnml at "+ipath+" to output graphml at "+opath)
 transitionGraph = Convert(ipath)
 
 if "--show" in sys.argv:
-	ShowGraph(transitionGraph)
+	ShowGraph(transitionGraph,opath)
 	
 #defensive programming on windows, for which write_graphml currently breaks (likely this is because of a precompiled exe install of igraph or its components)
 if "windows" in platform.system().lower():

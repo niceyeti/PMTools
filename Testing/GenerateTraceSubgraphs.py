@@ -96,13 +96,13 @@ def ReplaySequence(sequence, graph):
 
 	#init the edge sequence with the edge from START to sequence[0] the first activity
 	edgeSequence = []
-	initialEdge = getEdge("START", sequence[i])
+	initialEdge = getEdge("START", sequence[0])
 	if initialEdge == None:
 		print("WARNING edgeSequence.len = 0 in ReplaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 	else:
 		edgeSequence.append(initialEdge)
 	
-	#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next ede
+	#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
 	i = 0
 	while i < len(sequence) - 2:
 		#search downstream for this activity's edge, given the partial ordering
