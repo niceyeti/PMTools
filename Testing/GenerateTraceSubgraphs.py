@@ -42,7 +42,7 @@ def GenerateTraces(graphPath, tracePath, outputPath):
 	gFile.write("% Trace replay of "+tracePath+" on model mined from "+graphPath+" for model "+modelInfo+"\n\n")
 	
 	for trace in traceFile.readlines():
-		tokens = trace.split(",")
+		tokens = trace.strip().split(",")
 		#detect the anomaly status of this trace
 		isAnomalous = "+" == tokens[1]
 		traceNo = int(tokens[0])
@@ -51,8 +51,8 @@ def GenerateTraces(graphPath, tracePath, outputPath):
 		#"replay" the sequence on the mined model; bear in mind some model-miners may generate incomplete or inaccurate models,
 		#such that every sequence may not be a valid walk on the graph!
 		gTrace = ReplaySequence(sequence,model) #returns a list of igraph edges defining this walk
-		gRecord = BuildGRecord(isAnomalous,traceNo,gTrace)
-		gFile.write(gRecord)
+		gRecord = BuildGRecord(isAnomalous,traceNo,gTrace,model)
+		gFile.write(gRecord+"\n")
 		
 	traceFile.close()
 	gFile.close()
@@ -65,7 +65,7 @@ Returns: edge with edge.sorce = a and edge.target = b. None if not found.
 def getEdge(a,b,graph):
 	e = None
 	for edge in graph.es:
-		if graph.vs[edge.source]["name"] == a and graph.vs[edge.target]["name"]:
+		if graph.vs[edge.source]["name"] == a and graph.vs[edge.target]["name"] == b:
 			e = edge
 	return e
 		
@@ -96,7 +96,7 @@ def ReplaySequence(sequence, graph):
 
 	#init the edge sequence with the edge from START to sequence[0] the first activity
 	edgeSequence = []
-	initialEdge = getEdge("START", sequence[0])
+	initialEdge = getEdge("START", sequence[0], graph)
 	if initialEdge == None:
 		print("WARNING edgeSequence.len = 0 in ReplaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 	else:
@@ -109,7 +109,7 @@ def ReplaySequence(sequence, graph):
 		j = i + 1
 		edge = None
 		while j < len(sequence) - 1 and edge == None:
-			edge = getEdge(sequence[i], sequence[j])
+			edge = getEdge(sequence[i], sequence[j], graph)
 			j += 1
 
 		if edge != None:
@@ -120,9 +120,9 @@ def ReplaySequence(sequence, graph):
 		i += 1
 
 	#add the last transition from last activity to the END node
-	finalEdge = getEdge(sequence[len(sequence)-1], "END")
+	finalEdge = getEdge(sequence[len(sequence)-1], "END", graph)
 	if finalEdge == None:
-		print("WARNING no final edge found to END node for sequence: "+sequence)
+		print("WARNING no final edge found to END node for sequence >"+sequence+"<")
 
 	return edgeSequence
 
