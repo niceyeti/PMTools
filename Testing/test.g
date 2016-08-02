@@ -1,13015 +1,12932 @@
-% Trace replay of ../SyntheticData/testTraces.log on model mined from ../SyntheticData/minedModel.graphml for model 35689193-d154-43ec-a18e-32f115457749
+% Trace replay of ../SyntheticData/testTraces.log on model mined from ../SyntheticData/minedModel.graphml for model 2d944861-599c-4595-b101-fd38a8418ba1
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
+XP
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
+XP
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 13 x
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 13 x
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 13
+d 13 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 9 B
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 9
-d 9 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
-XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 23 x
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 23
-d 23 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 8 v
-v 11 M
-v 12 0
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 17 q
-v 18 f
-v 4 X
-v 21 C
-v 8 v
-v 24 START
-v 10 s
-v 2 h
-v 14 V
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 10
-d 10 2
-
-XN
+v 0 f
+v 1 d
+v 2 3
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 10 B
+v 11 C
+v 12 X
+v 15 z
+v 16 0
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 10
+d 10 16
+d 16 1
+d 1 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
-XN
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
 
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
-
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XN
 v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 21
-d 21 18
-d 15 18
-d 18 2
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XP
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XP
+v 0 f
+v 19 t
+v 20 V
+v 22 s
+v 6 v
+v 7 h
+v 24 START
+v 9 q
+v 11 C
+v 12 X
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 22
+d 22 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
 
 XP
-v 0 3
-v 2 h
-v 3 d
-v 4 X
-v 5 2
-v 6 R
-v 7 D
-v 8 v
-v 11 M
-v 12 0
-v 13 L
-v 14 V
-v 15 t
-v 16 Q
-v 17 q
-v 18 f
-v 19 5
-v 20 J
-v 21 C
-v 22 z
-v 24 START
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-d 2 4
-d 4 14
-d 14 17
-d 17 8
-d 8 0
-d 0 16
-d 16 19
-d 19 20
-d 20 12
-d 12 3
-d 3 11
-d 11 6
-d 6 13
-d 13 7
-d 7 11
-d 11 22
-d 22 5
-d 5 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
-
-XN
-v 24 START
-v 18 f
-v 2 h
-v 21 C
-v 15 t
-d 24 15
-d 15 18
-d 21 18
-d 18 2
+v 0 f
+v 1 d
+v 2 3
+v 3 R
+v 4 D
+v 5 5
+v 6 v
+v 7 h
+v 8 2
+v 9 q
+v 11 C
+v 12 X
+v 14 J
+v 15 z
+v 16 0
+v 17 L
+v 18 Q
+v 19 t
+v 20 V
+v 21 M
+v 24 START
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+d 7 12
+d 12 20
+d 20 9
+d 9 6
+d 6 2
+d 2 18
+d 18 5
+d 5 14
+d 14 16
+d 16 1
+d 1 21
+d 21 3
+d 3 17
+d 17 4
+d 4 21
+d 21 15
+d 15 8
+d 8 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 19 t
+v 11 C
+v 7 h
+d 24 19
+d 19 0
+d 11 0
+d 0 7
+
+XN
+v 24 START
+v 0 f
+v 11 C
+v 19 t
+v 7 h
+d 24 11
+d 11 0
+d 19 0
+d 0 7
 
