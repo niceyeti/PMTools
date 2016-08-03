@@ -16,7 +16,25 @@ pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="./test.g"
-gbadPath="../../gbad-tool-kit_3.2\gbad-tool-kit_3.2/gbad-mdl/bin/gbad"
+
+#gbad/subdue experimental parameters. these may become bloated, so I may need to manage them elsewhere, eg a config file
+gbadMdlParam="0.2"
+
+#set the path to the gbad and subdue executables depending on which os we're runnin
+gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl.exe"
+gbadFsmPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-fsm.exe"
+subduePath="../../subdue-5.2.2/subdue-5.2.2/src/subdue.exe"
+subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/subdue.exe"
+osName=$(uname)
+platform="$osName"
+echo OS name $platform
+if [ "$platform" = "Linux" ]; then	#reset paths if running linux; DONT use if-else for the os detection, as cygwin doesn't support `uname` command
+	echo resetting paths for $platform
+	gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl_linux"
+	gbadFsmPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-fsm_linux"
+	subduePath="../../subdue-5.2.2/subdue-5.2.2/src/subdue_linux"
+	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
+fi
 
 ##Generate a model containing appr. 20 activities, and generate 1000 traces from it
 #cd "../DataGenerator"
@@ -34,14 +52,15 @@ gbadPath="../../gbad-tool-kit_3.2\gbad-tool-kit_3.2/gbad-mdl/bin/gbad"
 #cd "../../ProM"
 #sh ./miner.sh -f inductiveMiner.js
 #cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
-#
-##convert the mined pnml model to graphml
-#cd "../scripts/Testing"
-#python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-##generate sub-graphs from the mined graphml model
-#python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath
-#call subdue/gbad
-$gbadPath -mdl $subdueLogPath
+
+#convert the mined pnml model to graphml
+cd "../scripts/Testing"
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+#generate sub-graphs from the mined graphml model
+python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath
+
+#call gbad on the generated traces
+$gbadMdlPath -mdl $gbadMdlParam $subdueLogPath
 
 
 

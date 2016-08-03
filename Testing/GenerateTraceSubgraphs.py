@@ -39,7 +39,9 @@ def GenerateTraces(graphPath, tracePath, outputPath):
 	traceFile = open(tracePath,"r")
 	gFile = open(outputPath,"w+")
 	modelInfo = model["name"]
-	gFile.write("% Trace replay of "+tracePath+" on model mined from "+graphPath+" for model "+modelInfo+"\n\n")
+
+	#I pulled this out since gbad and subdue recognize different comment anchors: gbad uses '//' subdue uses '%'.
+	#gFile.write("// Trace replay of "+tracePath+" on model mined from "+graphPath+" for model "+modelInfo+"\n\n")
 	
 	for trace in traceFile.readlines():
 		tokens = trace.strip().split(",")
@@ -143,9 +145,9 @@ Returns: A formatted string representing the trace .g record (using directed edg
 def BuildGRecord(isAnomalous,traceNo,gTrace, graph):
 	record = ""
 	if isAnomalous:
-		record = "XP"
+		record = "XP #<"+str(traceNo)+">"
 	else:
-		record = "XN"
+		record = "XN #<"+str(traceNo)+">"
 	record += "\n"
 
 	#build the vertex declarations
