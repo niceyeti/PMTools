@@ -420,8 +420,9 @@ class DataGenerator(object):
 		print("Generating traces...")
 		ofile = open(outputFile, "w+")
 		self._buildGraph(graphmlPath)
-		i = 0
-		while i < n:
+		#NOTE: starting at 1 is not arbitrary. Ultimately this guarantees the trace-no labels span 1-n, which is a requirement for GBAD/SUBDUE input files later on
+		i = 1
+		while i <= n:
 			trace = self._generateTrace(self._startNode, 0)
 			#sort the activities in the trace, such that activities with equal timesteps are randomized wrt eachother
 			self._randomizedSort(trace)
