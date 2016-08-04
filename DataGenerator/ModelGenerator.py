@@ -239,8 +239,8 @@ class ModelGenerator(object):
 		probExpr = ":<"+leftProbExpr+","+rightProbExpr+">"
 		
 		if n2 > 0:
-			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
-			orExpr = "("+self._generateRandomActivity()+self._createModel(n1-1)+"|" + self._createModel(n2,True)+")"+probExpr
+			#NOTE both branches are prepended with some concrete activity, to constraint models to binary branching
+			orExpr = "("+self._generateRandomActivity()+self._createModel(n1-1)+"|" +self._generateRandomActivity()+self._createModel(n2,True)+")"+probExpr
 		else:
 			#note only the left branch is prepended with an activity; this is done to guarantee at least one branch has a concrete activity, preventing branches both of which are empty
 			orExpr = "("+self._generateRandomActivity()+self._createModel(n1-1)+"|^)"+probExpr

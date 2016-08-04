@@ -194,7 +194,7 @@ class ModelConverter(object):
 	"""
 	def _parseBranchAttributes(self,expr):
 		pBranch = float(expr.split("/")[0])
-		isAnomaly = expr.split("/")[1] == "True"
+		isAnomaly = expr.split("/")[1].lower() == "true"
 		return pBranch,isAnomaly
 	
 	"""
@@ -233,7 +233,6 @@ class ModelConverter(object):
 				#initialize the input activities, if not yet inited
 				if len(firstActivities) == 0:
 					firstActivities = [activity]
-				
 				i += 1
 				
 			elif modelString[i] == "(":
