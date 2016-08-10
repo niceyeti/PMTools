@@ -94,6 +94,10 @@ class DataGenerator(object):
 					if len(outEdges) < 2: #unrecoverable; all AND splits must have two or more outgoing edges, or something is broken in the model
 						print("ERROR out edges for split node < 2: "+str(outEdges)+" model: "+self._model)
 						raw_input()
+					#firstly, add entry points to each branch to transition list
+					transitionList.append((outEdges[0], currentTime))
+					transitionList.append((outEdges[1], currentTime))
+					currentTime += 1
 					#For AND splits, go down both branches, then glue their shared prefixes to get the re-join point of the branches
 					leftNode = self._graph.vs[outEdges[0].target]
 					leftPath = self._generateTrace(leftNode,currentTime)
@@ -102,7 +106,7 @@ class DataGenerator(object):
 
 					#TODO: MAKE THIS A FUNCTION
 					#make sure this whole search returns index of END node if no match is found; although, we do guarantee each AND split is appended with an alpha
-					#find the first char at which the two strings match; this is the node (via its name/label) at which the AND rejoined
+					#find the first char at which the two strings match; on a 'mostly' acyclic graph, this is the node (via its name/label) at which the AND rejoined
 					i = 0
 					matchFound = False
 					#for each char in leftPath, search for match in rightPath
@@ -195,7 +199,7 @@ class DataGenerator(object):
 	For now, this only includes resolving empty transitions. The output of _generateTrace() may include walks
 	over empty edges (eg, edges labeled "^_123"). This unifies the entry node with the exit node of some empty edge
 	transition. An example of an empty transition for three nodes would be A-> ^_123 -> B. This would then unify this
-	empty transition to only (A,B), from (A,^_123) and (^_123, B)
+	empty transition to only (A,B), from (A,^_xyz) and (^_xyz, B)
 	
 	@edges: a list of igraph-edges defining this walk; treat these edges as unordered
 	
@@ -209,7 +213,7 @@ class DataGenerator(object):
 			if "^" not in [edges[0].source["label"], edges[0].target["label"]]:
 				scrubbed += (edges[0].source["label"],edges[0].target["label"])
 				edges = edges[1:] #discard the edge after copying it to scrubbed
-					
+
 			#empty transition found, so find the end points of the transition, add these endpoints to the scrubbed list, and remove the empty transitions from edges
 			elif "^" in edges[0].target["label"]:
 				lambdaLabel = edges[0].target["label"]
@@ -254,6 +258,33 @@ class DataGenerator(object):
 		return scrubbed
 
 	"""
+	If a trace traverse an AND split, the trace will contain two edges with the same 'source' node for
+	the same timestep value (for instance, (A->B,2) and (A->C,2) for some AND split from node A at
+	timestep 2). The _writeTrace() function just outputs the 'source' node of every edge in the tracelist,
+	so it will output multiple 'A's at some timestep if such edges are not deduplicated.
+	
+	Hence this function just deduplicates all edges with the same 'source' node and timestep.
+	
+	@trace: A list of (igraph-edge,time) event tuples.
+
+	Returns: A list of igraph edges, from which 
+	"""
+	def _deduplicateANDSplits(self, trace):
+		filteredTraces = []
+		for et in trace: #for event tuple
+			#check if this event-tuple et is already in the filteredTraces, based on its timestamp and source node of the edge
+			isNewEdge = True
+			for fet in filteredTraces:
+				#if timestamp and source node match, consider this event tuple a duplicate
+				if et[0]["type"] == "AND" and fet[0]["type"] == "AND" and fet[1] == et[1] and fet[0].source == et[0].source:
+					isNewEdge = False
+			#append this event tuple if it is new
+			if isNewEdge:
+				filteredTraces.append(et)
+
+		return filteredTraces
+				
+	"""
 	This method sorts activities in traces by their timestep, but does so in a manner that deliberately randomizes
 	the order of activities with equal time steps. As noted in _writeTrace() header, this is critical so that we aren'take
 	implicitly transmitting model information, such as if a stable sort was used.
@@ -275,6 +306,7 @@ class DataGenerator(object):
 		
 	"""
 	Iterates over the activities in a trace and writes the sequence. The traces are assumed to be sorted already.
+	The 'source' node of each node in the trace (edge list) is emitted per edge.
 	
 	Output format:
 	To keep the DataGenerator.py cohesive, the traces are output in raw text in the following format. The client
@@ -288,7 +320,6 @@ class DataGenerator(object):
 		+,ABCeogjh
 		-,ABCdjg
 		...
-	
 	
 	Input:
 	@traceNo: The trace number
@@ -307,6 +338,8 @@ class DataGenerator(object):
 		else:
 			ostr += ",-,"
 			
+		#remove duplicated AND split source edges (see _deduplicateANDSplits header)
+		trace = self._deduplicateANDSplits(trace)
 		#Output all the *src* nodes as the activities that occurred at time t, except for the START node of course.
 		#By ignoring the target nodes we effectively get only the path bounded between START and END of the walk.
 		for edge in trace:
@@ -412,7 +445,7 @@ class DataGenerator(object):
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputFile="traces.log"):
+	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log"):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -424,7 +457,7 @@ class DataGenerator(object):
 		i = 1
 		while i <= n:
 			trace = self._generateTrace(self._startNode, 0)
-			#sort the activities in the trace, such that activities with equal timesteps are randomized wrt eachother
+			#sort the activities in the trace, but such that activities with equal timesteps are randomized w.r.t. eachother
 			self._randomizedSort(trace)
 			self._writeTrace(i,trace,ofile)
 			self._reset()
@@ -433,7 +466,7 @@ class DataGenerator(object):
 		ofile.close()
 
 def usage():
-	print("python ./DataGenerator -file=(path to graphml file) -n=500 [-ofile=(path to output file; defaults to traces.txt if not passed)]")
+	print("python ./DataGenerator [path to graphml file] -n=[integer number of traces] [-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
 
 	
 """
@@ -456,8 +489,8 @@ def main():
 		usage()
 		exit()
 		
-	ofile = "traces.txt"
-	if "-ofile=" in sys.argv[3]:
+	ofile = "./syntheticTraces.log"
+	if len(sys.argv) >= 4 and "-ofile=" in sys.argv[3]:
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()

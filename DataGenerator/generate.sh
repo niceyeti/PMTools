@@ -4,7 +4,7 @@
 
 if [ $# -ne 5 ]; then
     echo "Incorrect number of parameters"
-	return
+	exit
 fi
 
 echo Generating model with $1 activities and from which $2 traces will be stored.
@@ -20,6 +20,6 @@ python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=mo
 #convert the generated model to transferrable graphml
 python ModelConverter.py model.txt $graphmlPath
 #generate stochastic walk data from the model
-python DataGenerator.py testModel.graphml -n=$numTraces -ofile=$logPath
+python DataGenerator.py $graphmlPath -n=$numTraces -ofile=$logPath
 #convert synthetic data to xes format for process mining
 python SynData2Xes.py -ifile=$logPath -ofile=$xesPath

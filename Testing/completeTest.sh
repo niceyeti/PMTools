@@ -2,9 +2,9 @@
 
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
-syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
 logPath="../SyntheticData/testTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
+syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
 
 minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
@@ -36,35 +36,43 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux; DONT use if-el
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
 fi
 
-##Generate a model containing appr. 20 activities, and generate 1000 traces from it
-cd "../DataGenerator"
-sh $generatorPath 20 1000 $logPath $xesPath $syntheticGraphmlPath
+###Generate a model containing appr. 20 activities, and generate 1000 traces from it
+#cd "../DataGenerator"
+#sh ./generate.sh 20 1000 $logPath $xesPath $syntheticGraphmlPath
+#
+##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
+#cd "../PromTools"
+#python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
+##copy everything over to the ProM environment; simpler to run everything from there
+#minerScript="$minerName"Miner.js
+#promMinerPath=../../ProM/"$minerScript"
+#echo Prom miner path: $promMinerPath
+#cp $minerScript $promMinerPath
+#cp $xesPath ../../ProM/testTraces.xes
+#cp ./miner.sh ../../ProM/miner.sh
+#
+#
+#
+#
+##Run the process miner to get an approximate ground-truth model
+#cd "../../ProM"
+#sh ./miner.sh -f $minerScript
+##copy the mined model back to the SyntheticData folder
+#cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+#
+#cd "../scripts/Testing"
+##Convert the mined pnml model to graphml
+#python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+##generate sub-graphs from the mined graphml model
+#python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 
-#Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
-cd "../PromTools"
-python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
-#copy everything over to the ProM environment; simpler to run everything from there
-minerScript="$minerName"Miner.js
-promMinerPath=../../ProM/"$minerScript"
-echo Prom miner path: $promMinerPath
-cp $minerScript $promMinerPath
-cp $xesPath ../../ProM/testTraces.xes
-cp ./miner.sh ../../ProM/miner.sh
+#call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
+#$gbadMdlPath -mdl 0.50 $subdueLogPath
 
-#Run the process miner to get an approximate ground-truth model
-cd "../../ProM"
-sh ./miner.sh -f $minerScript
-#copy the mined model back to the SyntheticData folder
-cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+#GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
+$gbadMdlPath -mps 0.9 $subdueLogPath
+$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath
 
-cd "../scripts/Testing"
-#Convert the mined pnml model to graphml
-python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-#generate sub-graphs from the mined graphml model
-python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
-
-#call gbad on the generated traces
-$gbadMdlPath -mdl $gbadMdlParam $subdueLogPath
 
 
 
