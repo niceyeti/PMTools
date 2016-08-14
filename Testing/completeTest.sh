@@ -63,6 +63,9 @@ fi
 #cd "../scripts/Testing"
 ##Convert the mined pnml model to graphml
 #python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+
+#anomalize the model???
+
 ##generate sub-graphs from the mined graphml model
 #python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 
@@ -70,6 +73,7 @@ fi
 #$gbadMdlPath -mdl 0.50 $subdueLogPath
 
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
+$gbadMdlPath -mdl 0.9 $subdueLogPath
 $gbadMdlPath -mps 0.9 $subdueLogPath
 $gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath
 

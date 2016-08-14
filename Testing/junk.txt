@@ -1,0 +1,11 @@
+Graph comparison stats for ..\SyntheticData\minedModel.graphml and ..\SyntheticData\syntheticModel.graphml. Cols represent g1, g2, respectively.
+Vertex count:	22	22
+s1 vertices: {'M', 'END', 'F', 'h', '7', 'y', 'P', 'H', 'Q', 'C', 'START', 'r', 'g', 'I', 'j', 'G', 'O', 'f', 'q', 'B', 'E', 'w'}
+s2 vertices: {'M', 'END', 'F', 'h', '7', 'y', 'P', 'H', 'Q', 'START', 'C', 'r', 'g', 'I', 'j', 'G', 'O', 'f', 'q', 'B', 'E', 'w'}
+Vertex set difference s1 - s2: set()
+
+Vertex identity:	100.0% (g1/g2 similarity)
+Edge count:	31	24
+Edge identity:	70.96774193548387% (g1/g2 edge similarity
+Edge set difference s1 - s2: {('M', 'h'), ('j', 'F'), ('G', 'O'), ('I', 'G'), ('F', 'M'), ('h', 'O'), ('H', 'I'), ('M', 'y'), ('G', 'y')}
+Comparison completed for ..\SyntheticData\minedModel.graphml ..\SyntheticData\syntheticModel.graphml
