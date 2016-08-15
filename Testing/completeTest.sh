@@ -67,15 +67,13 @@ fi
 #anomalize the model???
 
 ##generate sub-graphs from the mined graphml model
-#python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 
 #call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
-#$gbadMdlPath -mdl 0.50 $subdueLogPath
-
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
 $gbadMdlPath -mdl 0.9 $subdueLogPath
 $gbadMdlPath -mps 0.9 $subdueLogPath
-$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath
+$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath 
 
 
 

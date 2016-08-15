@@ -4,7 +4,7 @@ tools, and converted the output petri net (pnml) to a graphml graph for easy rea
 graph must be structured such that nodes represent activities, edges represent sequential transitions between
 activities, and the graph must also have a START and END node denoting the entry/exit points.
 
-This script takes as input a path to a graphml file containing the ground-truth process model given by some external
+This script takes as input a path to a graphml file containing the process model given by some external
 algorithm; it also takes a path to the original trace file from which this model was mined. The traces are then replayed
 on the discovered model, where each walk is regarded as a miniature graph. These mini graphs are output to a .g
 file which can then be fed to SUBDUE.
