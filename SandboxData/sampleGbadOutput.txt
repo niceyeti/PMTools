@@ -1,0 +1,126 @@
+GBAD 3.2
+
+Parameters:
+  Input file..................... ../SandboxData/dummyTest.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.900000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 449
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 950
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 50 total positive graphs
+
+50 positive graphs: 950 vertices, 899 edges, 18998 bits
+22 unique labels
+21 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.56699, instances = 48
+  Graph(8v,7e):
+    v 1 "y"
+    v 2 "7"
+    v 3 "O"
+    v 4 "r"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 4 2 "e"
+    d 2 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+Anomalous Instance(s):
+
+ from example 50:
+    v 942 "y"
+    v 944 "7"
+    v 945 "O"
+    v 946 "r"
+    v 947 "P"
+    v 948 "C"
+    v 949 "f"
+    v 950 "A" <-- anomaly (original vertex: 19 , in original example 50)
+    d 942 944 "e"
+    d 945 946 "e"
+    d 946 944 "e"
+    d 944 947 "e"
+    d 947 948 "e"
+    d 948 949 "e"
+    d 949 950 "e"
+    (information_theoretic anomalous value = 1.000000 )
+
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.56699, instances = 48
+  Graph(8v,7e):
+    v 1 "y"
+    v 2 "7"
+    v 3 "O"
+    v 4 "r"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 4 2 "e"
+    d 2 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+(2) Substructure: value = 1.44709, instances = 48
+  Graph(7v,6e):
+    v 1 "7"
+    v 2 "O"
+    v 3 "r"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 2 3 "e"
+    d 3 1 "e"
+    d 1 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+(3) Substructure: value = 1.44678, instances = 48
+  Graph(7v,6e):
+    v 1 "y"
+    v 2 "7"
+    v 3 "r"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 1 2 "e"
+    d 3 2 "e"
+    d 2 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+
+GBAD done (elapsed CPU time =   84.38 seconds).

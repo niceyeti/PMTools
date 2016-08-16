@@ -15,21 +15,30 @@ class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
-		self._resultPath
+		self._resultPath = resultPath
 
 	"""
 	Given a file containing gad output, parses the text for all of the anomalies detected. Each
 	anomaly must contain the corresponding trace number associated with a trace in the original
 	log file (labelled +/- for anomaly status).
 	
-	Returns: All of the anomalies listed in the gbad output, formatted as a list of <integer, string-text> pairs, where the
-	integer is the key of the trace label (XP label in gbad) and the string text is the raw gbad record for that anomaly (likely unused).
-	Returns empty list if no anomalies were found.
+	Returns: A list of integers that are the ids of any 
 	"""
-	def _parseGbadAnomalies(self):
+	def _parseGbadAnomalies(self, gbadFile):
+		self._detectedAnomalyIds = []
+		gbadOutput = gbadFile.read()
+		gbadFile.close()
 		
-		
-		
+		"""
+		Gbad output (in the versions I've used) always has anomalies anchored with the file-unique string
+		"from example xx" where xx is the integer number of the anomalous graph, the same as the trace id in the trace log.
+		Thus, search for all lines with this string, parse the number, and we've a list of trace-ids for the anomalies.
+		"""
+		for line in gbadOutput:
+			if " from example " in line:
+				id = int(line.strip().split(" from example ")[1])
+				self._detectedAnomalyIds.append(id)
+
 	"""
 	Parses a log file into the object's internal storage.
 	
@@ -40,27 +49,28 @@ class AnomalyReporter(object):
 		#maintain traces internally as a list of <traceNo,+/-,trace> string tuples
 		self._logTraces = [trace.split(",") for trace in logFile.readlines() if len(trace.strip()) > 0]
 		#get the subset of the traces which are anomalies
-		self._logAnomalies = [anom for anom in self._traces if anom[1] == "+"]
+		self._logAnomalies = [anom for anom in self._logTraces if anom[1] == "+"]
 		#get the non-anomalies
-		self._logNegatives = [anom for anom in self._traces if anom[1] == "-"]
+		self._logNegatives = [anom for anom in self._logTraces if anom[1] == "-"]
+		logFile.close()
 		
 	"""
 	Keep this clean and easy to parse.
 	"""
-	def _outputResults(self):
+	def _outputResults(self):	
 		ofile = open(self._resultPath, "w+")
-		ofile.write("Statistics for log parsed from "+self._logPath+", anomalies detected")
-		ofile.write("True positives:\t"+str(len(self._truePositives))+"\t"+str(self._truePositives))
-		ofile.write("False positives:\t"+str(len(self._falsePositivies))+"\t"+str(self._falsePositivies))
-		ofile.write("True negatives:\t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives))
-		ofile.write("False negatives:\t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives))
+		ofile.write("Statistics for log parsed from "+self._logPath+", anomalies detected\n")
+		ofile.write("True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n")
+		ofile.write("False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n")
+		ofile.write("True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n")
+		ofile.write("False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n")
 		ofile.close()
-		
+
 	"""
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
-	to compute false/true positives/negatives and then output them.
+	to compute false/true positives/negatives and then output them to file.
 	"""
-	def Compile():
+	def CompileResults(self):
 		gbadFile = open(self._gbadPath, "r")
 		logFile = open(self._logPath, "r")
 
@@ -68,17 +78,17 @@ class AnomalyReporter(object):
 		self._parseLogAnomalies(logFile)
 
 		#create the true anomaly and detected anomaly sets via the trace-id's
-		truePositiveSet = set( [int(anomaly[0] for anomaly in self._logAnomalies)] )
-		trueNegativeSet = set( [int(anomaly[0] for anomaly in self._logNegatives)] )
-		detectedAnomalies = set( [detectedAnomaly[0] for detectedAnomaly in self._detectedAnomalies] )
+		truePositiveSet = set( [int(anomaly[0]) for anomaly in self._logAnomalies] )
+		trueNegativeSet = set( [int(anomaly[0]) for anomaly in self._logNegatives] )
+		detectedAnomalies = set(self._detectedAnomalyIds)
 
 		#store overall stats and counts
 		self._numTraces = len(self._logTraces)
 		self._numTrueAnomalies = len(self._logAnomalies)
-		self._numDetectedAnomalies = len(self._detectedAnomalies)
+		self._numDetectedAnomalies = detectedAnomalies
 
 		#get the false/true positives/negatives using set arithmetic
-		self._truePositives = detectedAnomalies & truePositiveSet
+		self._truePositives = detectedAnomalies.intersect(truePositiveSet)
 		self._falsePositives = detectedAnomalies - truePositiveSet
 		self._trueNegatives = trueNegativeSet - detectedAnomalies
 		self._falseNegatives = truePositiveSet - detectedAnomalies
@@ -95,12 +105,12 @@ def main():
 		print("ERROR incorrect num args")
 		usage()
 		exit()
-		
+
 	gbadPath = sys.argv[1].split("=")[1]
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
 	
-	reporter = AnomalyReport(gbadPath, logPath, resultPath)
+	reporter = AnomalyReporter(gbadPath, logPath, resultPath)
 	reporter.CompileResults()
 
 if __name__ == "__main__":
