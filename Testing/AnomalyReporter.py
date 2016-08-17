@@ -26,7 +26,8 @@ class AnomalyReporter(object):
 	"""
 	def _parseGbadAnomalies(self, gbadFile):
 		self._detectedAnomalyIds = []
-		gbadOutput = gbadFile.read()
+		gbadOutput = gbadFile.readlines()
+		#print("output: "+gbadOutput)
 		gbadFile.close()
 		
 		"""
@@ -35,8 +36,10 @@ class AnomalyReporter(object):
 		Thus, search for all lines with this string, parse the number, and we've a list of trace-ids for the anomalies.
 		"""
 		for line in gbadOutput:
-			if " from example " in line:
-				id = int(line.strip().split(" from example ")[1])
+			if "from example " in line:
+				print("found anom: "+line)
+				#parses 50 from 'from example 50:'
+				id = int(line.strip().split("from example ")[1].replace(":",""))
 				self._detectedAnomalyIds.append(id)
 
 	"""
@@ -88,7 +91,7 @@ class AnomalyReporter(object):
 		self._numDetectedAnomalies = detectedAnomalies
 
 		#get the false/true positives/negatives using set arithmetic
-		self._truePositives = detectedAnomalies.intersect(truePositiveSet)
+		self._truePositives = detectedAnomalies & truePositiveSet
 		self._falsePositives = detectedAnomalies - truePositiveSet
 		self._trueNegatives = trueNegativeSet - detectedAnomalies
 		self._falseNegatives = truePositiveSet - detectedAnomalies
