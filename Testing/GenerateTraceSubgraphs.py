@@ -113,9 +113,9 @@ class Retracer(object):
 	relies on many rules defined in the data generation grammar, such that individual activities may be mapped to edges given the partial-ordering.
 	The task is not as trivial as it may appear. A given activity 'B' in the sequence 'ABC' may be ambiguous in terms of its predecessor and successor nodes.
 	Most obviously, it does not necessarily share an edge with its immediate neighbors A and C. Likewise, for purely partial ordered sequences, A could have multiple
-	predecessors and successors. However, given the petrinet definition, this is not possible: A may have only one predecessor. This constraint is a key
-	assumption relied on in this function. The constraint means, given A and searching for its in/out edges for this partial ordering,  it is valid to search to
-	simply search forward for the first node in the po with which A shares an edge, and search backward for the first node which shares an edge with A.
+	predecessors and successors. However, given the petrinet definition, this is not possible: A may have only one predecessor. ***This constraint is a key
+	assumption relied on in this function***. The constraint means, given A and searching for its in/out edges for this partial ordering (p.o.),  it is valid to search to
+	simply search forward for the first node in the p.o. with which A shares an edge, and search backward for the first node which shares an edge with A.
 
 	Returns: A list of igraph edges giving the walk represented by this partially ordered sequence and the graph.
 

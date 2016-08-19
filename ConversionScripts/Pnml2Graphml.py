@@ -167,6 +167,7 @@ def Convert(pnmlPath):
 	print("Converting graph. Be aware this script only resolves transitions separated by a single place, non-recursively.")
 	print("It does not currently resolve consecutive places, if that is a valid construct given in some input petri net.")
 
+	#The following algorithm
 	#read the pnml data
 	root = ET.parse(pnmlPath).getroot()
 	netName = root.find("./net/name/text").text
@@ -174,19 +175,19 @@ def Convert(pnmlPath):
 	places = {} #places are stored as vertices; they are only stored for the purposes of factoring them out of the final graph
 	arcs = [] #pnml arcs are stored as a list of tuples, (sourceId<string>, targetId<string>)
 	edges = [] #the output edge list for the igraph object
-	
+
 	#store the transitions, which will be a mix of 'tau' constructs and actual activities (eg, "register patient", "discharge patient", etc)
 	for t in root.findall('./net/page/transition'):
 		vId = t.get('id')
 		vName = t.find('./name/text').text
-		if "tau" in vName.lower():
-			vName = "TAU_" + vName #mark tau nodes
+		if 'tau' in vName.lower():
+			vName = 'TAU_' + vName #mark tau nodes for detection later
 		vertexDict[vId] = vName
 
 	#add places to the vertex set, labelling them as "PLACE" for later identification
 	for p in root.findall('./net/page/place'):
 		pId = p.get('id')
-		pName = "PLACE_"+p.find('./name/text').text
+		pName = 'PLACE_'+p.find('./name/text').text
 		vertexDict[pId] = pName
 
 	#parse the edge data from the petrinet
@@ -194,7 +195,72 @@ def Convert(pnmlPath):
 		source = e.get('source') #these are the text-based node-ids, corresponding with the keys in the vertex dict
 		target = e.get('target')
 		arcs.append((source,target))
+		
+	#get the start node id (a source: vertex with no in-links)
+	startIds = []
+	inlinks = [arc[1] for arc in arcs]
+	for vId in vertexDict:
+		if vId not in inlinks:
+			startIds.append(vId)
+	if len(startIds) != 1:
+		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
+		print("WARNING len(startIds) != 1, is "+str(len(startIds))+" in Pnml2Graphml. See code.")
+	startNodeId = startIds[0]
+	
+	#get the end node id (a sink: vertex with no outlinks)
+	endIds = []
+	outlinks = [arc[0] for arc in arcs]
+	for vId in vertexDict:
+		if vId not in outlinks:
+			endIds.append(vId)
+	if len(endIds) != 1:
+		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
+		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.")
+	endNodeId = endIds[0]
 
+	#get all activities (all non-Tau transitions)
+	activities = [vertexDict[vId] for vID in vertexDict if "PLACE_" not in vertexDict[vId] and "TAU_" not in vertexDict[vId]]
+
+	#bfs build an edge list of all edges, such that the edges are only between valid activities (non-Tau pml-transitions)
+	edgeList = []
+	frontier = [startNodeId]
+	while len(frontier) > 0:
+		#pop first node on frontier list
+		curNodeId = frontier[0]
+		if len(frontier) == 1: #pop
+			frontier = []
+		else:
+			frontier = frontier[1:]
+	
+		outlinks = [arc for arc in arcs if arc[0] == curNodeId]
+		#recursively get all activity nodes to which these outlinks point (following all intermediate taus, places, etc)
+		successorNodes = _getSuccessorActivities()
+		for successor in successorNodes:
+			#expand frontier
+			frontier.append(successor)
+			#add link between nodes
+			edgeList.append((curNodeId,successor))
+		
+		
+		
+		
+	activities += ["START","END"]
+	#build the igraph graph object. Igraph is just used to serialize the graph to graphml.
+	graph = igraph.Graph(directed=True)
+	#finally, add the filtered graph structure vertices and edges to an igraph
+	graph.add_vertices(activities)
+	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
+	
+		
+		
+		
+		
+		
+		
+		
+	
+	
+	
 	#in this algorithm, the complete pnml graph is built in-memory, then edges of places and 'tau' transitions are removed
 	#through an edge-resolution procedure, such that only actual activity-nodes are left
 	#filter the place nodes:
@@ -209,12 +275,13 @@ def Convert(pnmlPath):
 	#translate the arcs from id-pairs to vertex-name pairs
 	edges = [(vertexDict[arc[0]],vertexDict[arc[1]]) for arc in arcs]
 
-	#build the igraph graph object. This is really just used to serialize the graph to graphml
+	#build the igraph graph object. Igraph is just used to serialize the graph to graphml.
 	graph = igraph.Graph(directed=True)
 	#finally, add the filtered graph structure vertices and edges to an igraph
 	graph.add_vertices(activityNames)
 	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
 
+	
 	if "START" not in activityNames and "END" not in activityNames:
 		#now search for the start and ending nodes: start nodes are those with no inputs, end nodes are those with no outputs
 		startNodes = []

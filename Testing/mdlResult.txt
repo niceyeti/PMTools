@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 3317
+  Limit.......................... 5564
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 7198
+  Maximum size of substructures.. 11465
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,18 +27,18 @@ Parameters:
 
 Read 1000 total positive graphs
 
-1000 positive graphs: 7198 vertices, 6634 edges, 165267 bits
-23 unique labels
-23 initial substructures
+1000 positive graphs: 11465 vertices, 11129 edges, 284927 bits
+26 unique labels
+26 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.57096, instances = 489
+Substructure: value = 1.35042, instances = 594
   Graph(6v,5e):
-    v 1 "START"
-    v 2 "A"
-    v 3 "9"
-    v 4 "c"
-    v 5 "f"
-    v 6 "O"
+    v 1 "I"
+    v 2 "u"
+    v 3 "n"
+    v 4 "E"
+    v 5 "H"
+    v 6 "N"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
@@ -47,127 +47,111 @@ Substructure: value = 1.57096, instances = 489
 
 Anomalous Instance(s):
 
- from example 210:
-    v 1431 "Y" <-- anomaly (original vertex: 3 , in original example 210)
-    v 1440 "v" <-- anomaly (original vertex: 12 , in original example 210)
-    v 1442 "K" <-- anomaly (original vertex: 14 , in original example 210)
-    v 1443 "S" <-- anomaly (original vertex: 15 , in original example 210)
-    v 1444 "J" <-- anomaly (original vertex: 16 , in original example 210)
-    v 1445 "O"
-    d 1440 1442 "e"
-    d 1442 1443 "e"
-    d 1443 1444 "e"
-    d 1444 1431 "e"
-    d 1431 1445 "e"
-    (information_theoretic anomalous value = 25.000000 )
+ from example 111:
+    v 1227 "X" <-- anomaly (original vertex: 2 , in original example 111)
+    v 1228 "C" <-- anomaly (original vertex: 3 , in original example 111)
+    v 1229 "I"
+    v 1230 "u"
+    v 1231 "n"
+    v 1232 "E"
+    d 1227 1228 "e"
+    d 1228 1229 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 111)
+    d 1229 1230 "e"
+    d 1230 1231 "e"
+    d 1231 1232 "e"
+    (information_theoretic anomalous value = 8.000000 )
 
 
- from example 364:
-    v 2525 "Y" <-- anomaly (original vertex: 3 , in original example 364)
-    v 2534 "v" <-- anomaly (original vertex: 12 , in original example 364)
-    v 2536 "K" <-- anomaly (original vertex: 14 , in original example 364)
-    v 2537 "S" <-- anomaly (original vertex: 15 , in original example 364)
-    v 2538 "J" <-- anomaly (original vertex: 16 , in original example 364)
-    v 2539 "O"
-    d 2534 2536 "e"
-    d 2536 2537 "e"
-    d 2537 2538 "e"
-    d 2538 2525 "e"
-    d 2525 2539 "e"
-    (information_theoretic anomalous value = 25.000000 )
+ from example 287:
+    v 3306 "X" <-- anomaly (original vertex: 2 , in original example 287)
+    v 3307 "C" <-- anomaly (original vertex: 3 , in original example 287)
+    v 3308 "I"
+    v 3309 "u"
+    v 3310 "n"
+    v 3311 "E"
+    d 3306 3307 "e"
+    d 3307 3308 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 287)
+    d 3308 3309 "e"
+    d 3309 3310 "e"
+    d 3310 3311 "e"
+    (information_theoretic anomalous value = 8.000000 )
 
 
- from example 389:
-    v 2710 "Y" <-- anomaly (original vertex: 3 , in original example 389)
-    v 2719 "v" <-- anomaly (original vertex: 12 , in original example 389)
-    v 2721 "K" <-- anomaly (original vertex: 14 , in original example 389)
-    v 2722 "S" <-- anomaly (original vertex: 15 , in original example 389)
-    v 2723 "J" <-- anomaly (original vertex: 16 , in original example 389)
-    v 2724 "O"
-    d 2719 2721 "e"
-    d 2721 2722 "e"
-    d 2722 2723 "e"
-    d 2723 2710 "e"
-    d 2710 2724 "e"
-    (information_theoretic anomalous value = 25.000000 )
+ from example 111:
+    v 1228 "C" <-- anomaly (original vertex: 3 , in original example 111)
+    v 1229 "I"
+    v 1230 "u"
+    v 1231 "n"
+    v 1232 "E"
+    v 1233 "K" <-- anomaly (original vertex: 8 , in original example 111)
+    d 1228 1229 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 111)
+    d 1229 1230 "e"
+    d 1230 1231 "e"
+    d 1231 1232 "e"
+    d 1232 1233 "e"
+    (information_theoretic anomalous value = 8.000000 )
 
 
- from example 664:
-    v 4738 "Y" <-- anomaly (original vertex: 3 , in original example 664)
-    v 4747 "v" <-- anomaly (original vertex: 12 , in original example 664)
-    v 4749 "K" <-- anomaly (original vertex: 14 , in original example 664)
-    v 4750 "S" <-- anomaly (original vertex: 15 , in original example 664)
-    v 4751 "J" <-- anomaly (original vertex: 16 , in original example 664)
-    v 4752 "O"
-    d 4747 4749 "e"
-    d 4749 4750 "e"
-    d 4750 4751 "e"
-    d 4751 4738 "e"
-    d 4738 4752 "e"
-    (information_theoretic anomalous value = 25.000000 )
-
-
- from example 1000:
-    v 7184 "Y" <-- anomaly (original vertex: 3 , in original example 1000)
-    v 7193 "v" <-- anomaly (original vertex: 12 , in original example 1000)
-    v 7195 "K" <-- anomaly (original vertex: 14 , in original example 1000)
-    v 7196 "S" <-- anomaly (original vertex: 15 , in original example 1000)
-    v 7197 "J" <-- anomaly (original vertex: 16 , in original example 1000)
-    v 7198 "O"
-    d 7193 7195 "e"
-    d 7195 7196 "e"
-    d 7196 7197 "e"
-    d 7197 7184 "e"
-    d 7184 7198 "e"
-    (information_theoretic anomalous value = 25.000000 )
+ from example 287:
+    v 3307 "C" <-- anomaly (original vertex: 3 , in original example 287)
+    v 3308 "I"
+    v 3309 "u"
+    v 3310 "n"
+    v 3311 "E"
+    v 3312 "K" <-- anomaly (original vertex: 8 , in original example 287)
+    d 3307 3308 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 287)
+    d 3308 3309 "e"
+    d 3309 3310 "e"
+    d 3310 3311 "e"
+    d 3311 3312 "e"
+    (information_theoretic anomalous value = 8.000000 )
 
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.57096, instances = 489
+(1) Substructure: value = 1.35042, instances = 594
   Graph(6v,5e):
-    v 1 "START"
-    v 2 "A"
-    v 3 "9"
-    v 4 "c"
-    v 5 "f"
-    v 6 "O"
+    v 1 "I"
+    v 2 "u"
+    v 3 "n"
+    v 4 "E"
+    v 5 "H"
+    v 6 "N"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
 
-(2) Substructure: value = 1.42881, instances = 257
-  Graph(8v,8e):
-    v 1 "START"
-    v 2 "A"
-    v 3 "9"
-    v 4 "c"
-    v 5 "Q"
-    v 6 "B"
-    v 7 "f"
-    v 8 "O"
+(2) Substructure: value = 1.33974, instances = 738
+  Graph(5v,4e):
+    v 1 "I"
+    v 2 "u"
+    v 3 "n"
+    v 4 "E"
+    v 5 "K"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+(3) Substructure: value = 1.30607, instances = 380
+  Graph(8v,7e):
+    v 1 "I"
+    v 2 "u"
+    v 3 "n"
+    v 4 "E"
+    v 5 "K"
+    v 6 "7"
+    v 7 "P"
+    v 8 "M"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
-    d 6 4 "e"
-    d 4 7 "e"
+    d 6 7 "e"
     d 7 8 "e"
 
-(3) Substructure: value = 1.39688, instances = 489
-  Graph(5v,4e):
-    v 1 "START"
-    v 2 "A"
-    v 3 "9"
-    v 4 "c"
-    v 5 "f"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
 
-
-GBAD done (elapsed CPU time = 1776.74 seconds).
+GBAD done (elapsed CPU time = 3529.41 seconds).
