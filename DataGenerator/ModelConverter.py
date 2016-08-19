@@ -397,7 +397,6 @@ class ModelConverter(object):
 	def _plot(self, folderPath, showPlot=True):
 		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph
 		layout = self._graph.layout("sugiyama")
-		#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
 		savePath = os.path.join(folderPath,"syntheticModel.png")
 		igraph.plot(self._graph, savePath, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)

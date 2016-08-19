@@ -8,6 +8,179 @@ Parameters:
   Beam width..................... 4
   Compress....................... false
   Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.900000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 3317
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 7198
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 1000 total positive graphs
+
+1000 positive graphs: 7198 vertices, 6634 edges, 165267 bits
+23 unique labels
+23 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.57096, instances = 489
+  Graph(6v,5e):
+    v 1 "START"
+    v 2 "A"
+    v 3 "9"
+    v 4 "c"
+    v 5 "f"
+    v 6 "O"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+
+Anomalous Instance(s):
+
+ from example 210:
+    v 1431 "Y" <-- anomaly (original vertex: 3 , in original example 210)
+    v 1440 "v" <-- anomaly (original vertex: 12 , in original example 210)
+    v 1442 "K" <-- anomaly (original vertex: 14 , in original example 210)
+    v 1443 "S" <-- anomaly (original vertex: 15 , in original example 210)
+    v 1444 "J" <-- anomaly (original vertex: 16 , in original example 210)
+    v 1445 "O"
+    d 1440 1442 "e"
+    d 1442 1443 "e"
+    d 1443 1444 "e"
+    d 1444 1431 "e"
+    d 1431 1445 "e"
+    (information_theoretic anomalous value = 25.000000 )
+
+
+ from example 364:
+    v 2525 "Y" <-- anomaly (original vertex: 3 , in original example 364)
+    v 2534 "v" <-- anomaly (original vertex: 12 , in original example 364)
+    v 2536 "K" <-- anomaly (original vertex: 14 , in original example 364)
+    v 2537 "S" <-- anomaly (original vertex: 15 , in original example 364)
+    v 2538 "J" <-- anomaly (original vertex: 16 , in original example 364)
+    v 2539 "O"
+    d 2534 2536 "e"
+    d 2536 2537 "e"
+    d 2537 2538 "e"
+    d 2538 2525 "e"
+    d 2525 2539 "e"
+    (information_theoretic anomalous value = 25.000000 )
+
+
+ from example 389:
+    v 2710 "Y" <-- anomaly (original vertex: 3 , in original example 389)
+    v 2719 "v" <-- anomaly (original vertex: 12 , in original example 389)
+    v 2721 "K" <-- anomaly (original vertex: 14 , in original example 389)
+    v 2722 "S" <-- anomaly (original vertex: 15 , in original example 389)
+    v 2723 "J" <-- anomaly (original vertex: 16 , in original example 389)
+    v 2724 "O"
+    d 2719 2721 "e"
+    d 2721 2722 "e"
+    d 2722 2723 "e"
+    d 2723 2710 "e"
+    d 2710 2724 "e"
+    (information_theoretic anomalous value = 25.000000 )
+
+
+ from example 664:
+    v 4738 "Y" <-- anomaly (original vertex: 3 , in original example 664)
+    v 4747 "v" <-- anomaly (original vertex: 12 , in original example 664)
+    v 4749 "K" <-- anomaly (original vertex: 14 , in original example 664)
+    v 4750 "S" <-- anomaly (original vertex: 15 , in original example 664)
+    v 4751 "J" <-- anomaly (original vertex: 16 , in original example 664)
+    v 4752 "O"
+    d 4747 4749 "e"
+    d 4749 4750 "e"
+    d 4750 4751 "e"
+    d 4751 4738 "e"
+    d 4738 4752 "e"
+    (information_theoretic anomalous value = 25.000000 )
+
+
+ from example 1000:
+    v 7184 "Y" <-- anomaly (original vertex: 3 , in original example 1000)
+    v 7193 "v" <-- anomaly (original vertex: 12 , in original example 1000)
+    v 7195 "K" <-- anomaly (original vertex: 14 , in original example 1000)
+    v 7196 "S" <-- anomaly (original vertex: 15 , in original example 1000)
+    v 7197 "J" <-- anomaly (original vertex: 16 , in original example 1000)
+    v 7198 "O"
+    d 7193 7195 "e"
+    d 7195 7196 "e"
+    d 7196 7197 "e"
+    d 7197 7184 "e"
+    d 7184 7198 "e"
+    (information_theoretic anomalous value = 25.000000 )
+
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.57096, instances = 489
+  Graph(6v,5e):
+    v 1 "START"
+    v 2 "A"
+    v 3 "9"
+    v 4 "c"
+    v 5 "f"
+    v 6 "O"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+
+(2) Substructure: value = 1.42881, instances = 257
+  Graph(8v,8e):
+    v 1 "START"
+    v 2 "A"
+    v 3 "9"
+    v 4 "c"
+    v 5 "Q"
+    v 6 "B"
+    v 7 "f"
+    v 8 "O"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 4 "e"
+    d 4 7 "e"
+    d 7 8 "e"
+
+(3) Substructure: value = 1.39688, instances = 489
+  Graph(5v,4e):
+    v 1 "START"
+    v 2 "A"
+    v 3 "9"
+    v 4 "c"
+    v 5 "f"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+
+GBAD done (elapsed CPU time = 1776.74 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ./test.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
   Maximum Partial Sub threshold.. 0.900000
   Max Anomalous Score............ MAX
@@ -1556,3 +1729,18 @@ Best 3 substructures:
 
 
 GBAD done (elapsed CPU time =   22.57 seconds).
+GBAD-FSM, Graph-Based Anomaly Detection using a Frequent Subgraph Miner
+Version 2.1
+Parameters:
+  Minimum Support Threshold...... 20
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.100000
+  Best Substructure File......... best_sub.g
+  Anomalous Substructure File.... anom_sub.g
+
+
+maxsize (default) = 4294967295
+Reading options...
+argc = 6
+Running both phases.
+minfreq = 20

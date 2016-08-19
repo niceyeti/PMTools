@@ -7,7 +7,7 @@ So only the arc and transition data is useful; the 'place' data and other pnml d
 structural info. 'Places' are essentially resolved: if P is a place, and given the edge set {A->P, P->B}, this
 simplifies to {A->B}.
 
-The output of this script is a graphml-formatted graph for which the nodes represet activities, the edges represent sequential
+The output of this script is a graphml-formatted graph for which the nodes represent activities, the edges represent sequential
 transitions between activities, and the graph has a START and END node representing the entry/exit points of the overall model.
 
 TODO: May need to provide a visual for the presumed mapping between pnml data and our target graphml structure, for

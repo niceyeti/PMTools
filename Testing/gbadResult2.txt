@@ -1,0 +1,279 @@
+GBAD 3.2
+
+Parameters:
+  Input file..................... ./test.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.900000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 9001
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 19004
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 1000 total positive graphs
+
+1000 positive graphs: 19004 vertices, 18003 edges, 455464 bits
+21 unique labels
+20 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.62086, instances = 999
+  Graph(8v,7e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "y"
+    v 4 "7"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 2 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+Anomalous Instance(s):
+
+ from example 1:
+    v 7 "F" <-- anomaly (original vertex: 7 , in original example 1)
+    v 8 "H" <-- anomaly (original vertex: 8 , in original example 1)
+    v 9 "M" <-- anomaly (original vertex: 9 , in original example 1)
+    v 11 "O"
+    v 13 "r"
+    v 14 "y"
+    v 15 "7"
+    v 16 "P"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 11 "e" <-- anomaly (original edge vertices: 9 -- 11, in original example 1)
+    d 11 13 "e"
+    d 14 15 "e"
+    d 13 15 "e"
+    d 15 16 "e"
+    (information_theoretic anomalous value = 5.000000 )
+
+
+ from example 1:
+    v 6 "j" <-- anomaly (original vertex: 6 , in original example 1)
+    v 7 "F" <-- anomaly (original vertex: 7 , in original example 1)
+    v 9 "M" <-- anomaly (original vertex: 9 , in original example 1)
+    v 11 "O"
+    v 13 "r"
+    v 14 "y"
+    v 15 "7"
+    v 16 "P"
+    d 6 7 "e"
+    d 7 9 "e"
+    d 9 11 "e" <-- anomaly (original edge vertices: 9 -- 11, in original example 1)
+    d 11 13 "e"
+    d 14 15 "e"
+    d 13 15 "e"
+    d 15 16 "e"
+    (information_theoretic anomalous value = 5.000000 )
+
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.62086, instances = 999
+  Graph(8v,7e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "y"
+    v 4 "7"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 2 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+(2) Substructure: value = 1.48648, instances = 999
+  Graph(7v,6e):
+    v 1 "r"
+    v 2 "y"
+    v 3 "7"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 2 3 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+(3) Substructure: value = 1.48619, instances = 999
+  Graph(7v,6e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "7"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+
+GBAD done (elapsed CPU time =  496.89 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ./test.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.900000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 9001
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 19004
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 1000 total positive graphs
+
+1000 positive graphs: 19004 vertices, 18003 edges, 455464 bits
+21 unique labels
+20 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.62086, instances = 999
+  Graph(8v,7e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "y"
+    v 4 "7"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 2 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+Anomalous Instance(s):
+
+ from example 1:
+    v 11 "O"
+    v 13 "r"
+    v 14 "y"
+    v 15 "7"
+    v 16 "P"
+    d 11 13 "e"
+    d 14 15 "e"
+    d 13 15 "e"
+    d 15 16 "e"
+    (max_partial_substructure anomalous value = 6.000000 )
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.62086, instances = 999
+  Graph(8v,7e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "y"
+    v 4 "7"
+    v 5 "P"
+    v 6 "C"
+    v 7 "f"
+    v 8 "B"
+    d 1 2 "e"
+    d 3 4 "e"
+    d 2 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+
+(2) Substructure: value = 1.48648, instances = 999
+  Graph(7v,6e):
+    v 1 "r"
+    v 2 "y"
+    v 3 "7"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 2 3 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+(3) Substructure: value = 1.48619, instances = 999
+  Graph(7v,6e):
+    v 1 "O"
+    v 2 "r"
+    v 3 "7"
+    v 4 "P"
+    v 5 "C"
+    v 6 "f"
+    v 7 "B"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+
+GBAD done (elapsed CPU time =   37.06 seconds).
+GBAD-FSM, Graph-Based Anomaly Detection using a Frequent Subgraph Miner
+Version 2.1
+Parameters:
+  Minimum Support Threshold...... 20
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.100000
+  Best Substructure File......... best_sub.g
+  Anomalous Substructure File.... anom_sub.g
+
+
+maxsize (default) = 4294967295
+Reading options...
+argc = 6
+Running both phases.
+minfreq = 20

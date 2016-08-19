@@ -9,8 +9,6 @@ from __future__ import print_function
 import sys
 
 
-
-
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath):
 		self._gbadPath = gbadPath
@@ -29,7 +27,7 @@ class AnomalyReporter(object):
 		gbadOutput = gbadFile.readlines()
 		#print("output: "+gbadOutput)
 		gbadFile.close()
-		
+
 		"""
 		Gbad output (in the versions I've used) always has anomalies anchored with the file-unique string
 		"from example xx" where xx is the integer number of the anomalous graph, the same as the trace id in the trace log.
@@ -101,8 +99,9 @@ class AnomalyReporter(object):
 		print("Result Reporter completed.")
 		
 def usage():
-	print("Usage: python ./AnomalyReporter.py -gbadResult=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path]")
-		
+	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path]")
+	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
+
 def main():
 	if len(sys.argv) != 4:
 		print("ERROR incorrect num args")
