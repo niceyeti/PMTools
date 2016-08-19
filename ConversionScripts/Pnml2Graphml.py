@@ -217,6 +217,15 @@ def Convert(pnmlPath):
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
 		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.")
 	endNodeId = endIds[0]
+	
+	#re-mark the end and start node text; currently they are TAU_ or PLACE_ typed
+	#start with a critical error check; this algorithm REQUIRES the final node detected above is not an activity, hence a tansition or a place
+	if "TAU_" not in vertexDict[startNodeId] and "PLACE_" not in vertexDict[startNodeId]:
+		print("ERROR start node not TAU or PLACE see code")
+	if "TAU_" not in vertexDict[endNodeId] and "PLACE_" not in vertexDict[endNodeId]:
+		print("ERROR end node not TAU or PLACE see code")
+	vertexDict[startNodeId] = "START"
+	vertexDict[endNodeId] = "END"
 
 	#get all activities (all non-Tau transitions)
 	activities = [vertexDict[vId] for vID in vertexDict if "PLACE_" not in vertexDict[vId] and "TAU_" not in vertexDict[vId]]
