@@ -219,7 +219,7 @@ def Convert(pnmlPath):
 	endNodeId = endIds[0]
 	
 	#re-mark the end and start node text; currently they are TAU_ or PLACE_ typed
-	#start with a critical error check; this algorithm REQUIRES the final node detected above is not an activity, hence a tansition or a place
+	#start with a critical error check; this algorithm REQUIRES the final node detected above is not an activity, hence only a tansition or a place.
 	if "TAU_" not in vertexDict[startNodeId] and "PLACE_" not in vertexDict[startNodeId]:
 		print("ERROR start node not TAU or PLACE see code")
 	if "TAU_" not in vertexDict[endNodeId] and "PLACE_" not in vertexDict[endNodeId]:
