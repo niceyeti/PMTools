@@ -230,8 +230,9 @@ def Convert(pnmlPath):
 	#get all activities (all non-Tau transitions)
 	activities = [vertexDict[vId] for vID in vertexDict if "PLACE_" not in vertexDict[vId] and "TAU_" not in vertexDict[vId]]
 
-	#bfs build an edge list of all edges, such that the edges are only between valid activities (non-Tau pml-transitions)
+	#bfs from START node: build an edge list (srcName,dstName) of all edges, such that the edges are between valid activities (non-Tau pml-transitions)
 	edgeList = []
+	visited = []
 	frontier = [startNodeId]
 	while len(frontier) > 0:
 		#pop first node on frontier list
@@ -240,18 +241,23 @@ def Convert(pnmlPath):
 			frontier = []
 		else:
 			frontier = frontier[1:]
+		#add current node to visited list
+		visited.append(curNodeId)
 	
-		outlinks = [arc for arc in arcs if arc[0] == curNodeId]
-		#recursively get all activity nodes to which these outlinks point (following all intermediate taus, places, etc)
-		successorNodes = _getSuccessorActivities()
-		for successor in successorNodes:
+		#get all immediate outlinks from this node
+		outLinks = [arc for arc in arcs if arc[0] == curNodeId]
+		#recursively get all activity node ids to which these outlinks point (following all intermediate taus, places, etc)
+		successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict)
+		print(str(successors))
+		
+		for successor in successors:
 			#expand frontier
 			frontier.append(successor)
 			#add link between nodes
-			edgeList.append((curNodeId,successor))
+			edgeList.append((vertexDict[curNodeId], vertexDict[successor]))
 		
 		
-		
+
 		
 	activities += ["START","END"]
 	#build the igraph graph object. Igraph is just used to serialize the graph to graphml.
@@ -259,9 +265,6 @@ def Convert(pnmlPath):
 	#finally, add the filtered graph structure vertices and edges to an igraph
 	graph.add_vertices(activities)
 	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
-	
-		
-		
 		
 		
 		
@@ -269,7 +272,7 @@ def Convert(pnmlPath):
 		
 	
 	
-	
+	"""
 	#in this algorithm, the complete pnml graph is built in-memory, then edges of places and 'tau' transitions are removed
 	#through an edge-resolution procedure, such that only actual activity-nodes are left
 	#filter the place nodes:
@@ -290,7 +293,6 @@ def Convert(pnmlPath):
 	graph.add_vertices(activityNames)
 	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
 
-	
 	if "START" not in activityNames and "END" not in activityNames:
 		#now search for the start and ending nodes: start nodes are those with no inputs, end nodes are those with no outputs
 		startNodes = []
@@ -320,6 +322,9 @@ def Convert(pnmlPath):
 		for node in endNodes:
 			graph.add_edge(node.index,endNode.index)
 	
+	"""
+	
+	
 	#store the activity as both the node name and 'label' attribute
 	graph.vs["label"] = [v["name"] for v in graph.vs]
 	
@@ -330,6 +335,35 @@ def Convert(pnmlPath):
 		graph["name"] = "mined-process"
 	
 	return graph	
+	
+	
+"""
+A recursive utility for getting all activities attached to a given set of outlinks.
+
+An outlink leads to a place, tau-split, or an activity node. So think of an outlink as a graph
+edge that can split at multiple points, like branches to flowers. The flowers are the activities.
+Hence this retrieves all activities at the end of some branch, also detecting cycles (should not happen).
+
+Cycles should not occur, since our process-graph definition does not allow self-loops, and this only
+goes to the first set of nodes.
+
+@outLinks: The immediate outlinks of some node
+@arcs: List of tuples representing node ids
+@vertexDict: the dict of id keys and string vertex names
+"""
+def _getSuccessorActivityIds(outLinks,arcs,vertexDict):
+	activities = []
+	for outLink in outLinks:
+		#if this link leads to a place or a tau node, get the outlinks from that node and recurse on them
+		if "TAU_" in vertexDict[outLink[1]] or "PLACE_" in vertexDict[outLink[1]]:
+			#get all the outlinks of this successor, and recurse on them
+			successorLinks = [arc for arc in arcs if arc[0] == outLink[1]]
+			activities += _getSuccessorActivityIds(successorLinks, arcs, vertexDict)
+		#else the success is just a regular place, so add it to list
+		else:
+			activities.append(outLink[1])
+
+	return activities	
 
 """
 Plotting, for visual analysis.
