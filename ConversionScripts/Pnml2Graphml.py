@@ -228,7 +228,9 @@ def Convert(pnmlPath):
 	vertexDict[endNodeId] = "END"
 
 	#get all activities (all non-Tau transitions)
-	activities = [vertexDict[vId] for vID in vertexDict if "PLACE_" not in vertexDict[vId] and "TAU_" not in vertexDict[vId]]
+	activities = [vertexDict[vId] for vId in vertexDict if "PLACE_" not in vertexDict[vId] and "TAU_" not in vertexDict[vId]]
+	print("Activities: "+str(activities))
+	print("Vertex dict: "+str(vertexDict))
 
 	#bfs from START node: build an edge list (srcName,dstName) of all edges, such that the edges are between valid activities (non-Tau pml-transitions)
 	edgeList = []
@@ -237,93 +239,35 @@ def Convert(pnmlPath):
 	while len(frontier) > 0:
 		#pop first node on frontier list
 		curNodeId = frontier[0]
-		if len(frontier) == 1: #pop
+		if len(frontier) <= 1: #pop
 			frontier = []
 		else:
 			frontier = frontier[1:]
+
+		if curNodeId not in visited:
+			#get all immediate outlinks from this node
+			outLinks = [arc for arc in arcs if arc[0] == curNodeId]
+			#recursively get all activity node ids to which these outlinks point (following all intermediate taus, places, etc)
+			successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict)
+			print(str(successors))
+			
+			for successor in successors:
+				#expand frontier
+				frontier.append(successor)
+				#add link between nodes
+				edgeList.append((vertexDict[curNodeId], vertexDict[successor]))
+
 		#add current node to visited list
 		visited.append(curNodeId)
-	
-		#get all immediate outlinks from this node
-		outLinks = [arc for arc in arcs if arc[0] == curNodeId]
-		#recursively get all activity node ids to which these outlinks point (following all intermediate taus, places, etc)
-		successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict)
-		print(str(successors))
-		
-		for successor in successors:
-			#expand frontier
-			frontier.append(successor)
-			#add link between nodes
-			edgeList.append((vertexDict[curNodeId], vertexDict[successor]))
-		
-		
 
-		
-	activities += ["START","END"]
+
+	#activities += ["START","END"]
 	#build the igraph graph object. Igraph is just used to serialize the graph to graphml.
 	graph = igraph.Graph(directed=True)
 	#finally, add the filtered graph structure vertices and edges to an igraph
 	graph.add_vertices(activities)
-	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
-		
-		
-		
-		
-		
-	
-	
-	"""
-	#in this algorithm, the complete pnml graph is built in-memory, then edges of places and 'tau' transitions are removed
-	#through an edge-resolution procedure, such that only actual activity-nodes are left
-	#filter the place nodes:
-	arcs = _resolveEdges(arcs, vertexDict, "PLACE_")
-	#filter any 'tau' nodes; these show up in the output of some mining algorithms
-	arcs = _resolveEdges(arcs, vertexDict, "TAU_")
-	#the arcs now contain only the set of resolve edges, without places or 'tau' transition-nodes
-	
-	#get the set of all unique activities
-	arcIds = set([arc[0] for arc in arcs]+[arc[1] for arc in arcs])
-	activityNames = [vertexDict[arcId] for arcId in arcIds]
-	#translate the arcs from id-pairs to vertex-name pairs
-	edges = [(vertexDict[arc[0]],vertexDict[arc[1]]) for arc in arcs]
-
-	#build the igraph graph object. Igraph is just used to serialize the graph to graphml.
-	graph = igraph.Graph(directed=True)
-	#finally, add the filtered graph structure vertices and edges to an igraph
-	graph.add_vertices(activityNames)
-	graph.add_edges(edges) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
-
-	if "START" not in activityNames and "END" not in activityNames:
-		#now search for the start and ending nodes: start nodes are those with no inputs, end nodes are those with no outputs
-		startNodes = []
-		endNodes = []
-		for v in graph.vs:
-			isStartNode = True
-			isEndNode = True
-			for e in graph.es:
-				if v.index == e.target: #some node points to this one, hence it cannot be a start node
-					isStartNode = False
-				if v.index == e.source: #this node points to some other, hence it cannot be an end node
-					isEndNode = False
-			if isStartNode:
-				startNodes.append(v)
-			if isEndNode:
-				endNodes.append(v)
-		#end-loop: start and terminal nodes in-hand, so add a START and END node to bind them
-	
-		#add the start/end vertices
-		graph.add_vertex("START")
-		graph.add_vertex("END")
-		#and thread them in
-		startNode = graph.vs.select(name="START")[0]
-		endNode = graph.vs.select(name="END")[0]
-		for node in startNodes:
-			graph.add_edge(startNode.index,node.index)
-		for node in endNodes:
-			graph.add_edge(node.index,endNode.index)
-	
-	"""
-	
+	graph.add_edges(edgeList) #edges is a sequence of vertex name tuples (source,target). Conveniently, you can pass either name tuples of id tuples to add_edges
+	print("edges: "+str(edgeList))
 	
 	#store the activity as both the node name and 'label' attribute
 	graph.vs["label"] = [v["name"] for v in graph.vs]
@@ -347,12 +291,15 @@ Hence this retrieves all activities at the end of some branch, also detecting cy
 Cycles should not occur, since our process-graph definition does not allow self-loops, and this only
 goes to the first set of nodes.
 
-@outLinks: The immediate outlinks of some node
+@outLinks: The immediate outlinks of a node
 @arcs: List of tuples representing node ids
 @vertexDict: the dict of id keys and string vertex names
+
+Returns: The ids of the activities at the terminal points of these outlinks
 """
 def _getSuccessorActivityIds(outLinks,arcs,vertexDict):
 	activities = []
+	#get all activities at the terminal points of these outlinks
 	for outLink in outLinks:
 		#if this link leads to a place or a tau node, get the outlinks from that node and recurse on them
 		if "TAU_" in vertexDict[outLink[1]] or "PLACE_" in vertexDict[outLink[1]]:
@@ -363,7 +310,7 @@ def _getSuccessorActivityIds(outLinks,arcs,vertexDict):
 		else:
 			activities.append(outLink[1])
 
-	return activities	
+	return activities
 
 """
 Plotting, for visual analysis.
