@@ -312,6 +312,7 @@ class ModelGenerator(object):
 	"""
 	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
 	other bad structures.
+	
 	"""
 	def _isValidModel(self):
 		#check for an approximate minimum valid length
@@ -329,7 +330,17 @@ class ModelGenerator(object):
 		if self._model.find("[]") >= 0:
 			print("ERROR model contains empty loop expr: "+self._model)
 			return False
-		
+
+		#Check for outermost expressions that would allow direct transitions from START to FINISH: (A|^), (^|A), where 'A' is any recursive subprocess
+		if self._model[0] == "(": #opening parent means model starts with an AND or OR expr: (A|A) or (A&A)
+			#find the closing paren for the outermost expr
+			closingIndex = self._model.rfind(")")
+			#check if left expression is of the form '(^|A)' or '(^&A)'
+			if self._model[0:3] in ["(^|", "(^&"]:
+				return False
+			#check if right expression is of the form '&^)' or '|^)'
+			if self._model[closingIndex-2:closingIndex+1] in ["&^)","|^)"]:
+				return False
 		#check for consecutive empty transitions: ^^, but treat these as a warning
 		if self._model.find("^^") >= 0:
 			print("ERROR model string contains consecutive empty branches: "+self._model)
