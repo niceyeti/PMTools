@@ -15,7 +15,7 @@ pnmlPath="../SyntheticData/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
-subdueLogPath="./test.g"
+subdueLogPath="../SyntheticData/test.g"
 
 #gbad/subdue experimental parameters. these may become bloated, so I may need to manage them elsewhere, eg a config file
 gbadMdlParam="0.50"
@@ -40,7 +40,7 @@ fi
 ###############################################################################
 ##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
 cd "../DataGenerator"
-sh ./generate.sh 20 1000 $logPath $xesPath $syntheticGraphmlPath
+sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
 
 
 ###############################################################################
@@ -76,29 +76,28 @@ python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 
 
-###############################################################################
-##Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
-##GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
-#logFile="../SandboxData/dummyTest.g"
-#mdlResult="mdlResult.txt"
-#mpsResult="mpsResult.txt"
-#fsmResult="fsmResult.txt"
-#gbadResult="gbadResult.txt"
-#anomalyFile="anomalyResult.txt"
-##clear any previous results
-#cat /dev/null > $mdlResult
-#cat /dev/null > $mpsResult
-#cat /dev/null > $fsmResult
-##$gbadMdlPath -mdl 0.9 $subdueLogPath
-##$gbadMdlPath -mps 0.9 $subdueLogPath
-##$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath
-#$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
-#$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
-#$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath > $fsmResult
-#
-##cat the gbad results into a single file so they are easier to analyze at once
-#cat $mdlResult > $gbadResult
-#cat $mpsResult >> $gbadResult
-#cat $fsmResult >> $gbadResult
-#
-#python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
+##############################################################################
+#Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
+#GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
+mdlResult="mdlResult.txt"
+mpsResult="mpsResult.txt"
+fsmResult="fsmResult.txt"
+gbadResult="gbadResult.txt"
+anomalyFile="anomalyResult.txt"
+#clear any previous results
+cat /dev/null > $mdlResult
+cat /dev/null > $mpsResult
+cat /dev/null > $fsmResult
+#$gbadMdlPath -mdl 0.9 $subdueLogPath
+#$gbadMdlPath -mps 0.9 $subdueLogPath
+#$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath
+$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
+$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
+$gbadFsmPath -mps 0.1 -mst 20 $subdueLogPath > $fsmResult
+
+#cat the gbad results into a single file so they are easier to analyze at once
+cat $mdlResult > $gbadResult
+cat $mpsResult >> $gbadResult
+cat $fsmResult >> $gbadResult
+
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile

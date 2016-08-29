@@ -45,7 +45,7 @@ class Retracer(object):
 	will be output by this class.
 	"""
 	def GenerateTraces(self, graphPath, tracePath, outputPath, useSubdueFormat):
-		print("Retracer replaying traces from "+tracePath+" on mined model "+modelGraphmlPath+". Output will be saved to "+outputPath)
+		print("Retracer subgraph-generator replaying traces from "+tracePath+" on mined model "+modelGraphmlPath+". Output will be saved to "+outputPath)
 
 		#read the mined process model
 		model = igraph.Graph.Read(graphPath)
@@ -106,7 +106,7 @@ class Retracer(object):
 
 	NOTE: The graph (mined process model) may be incomplete or inaccurate, depending on the mining algorithm that generated it. Hence
 	the sequence may not be a valid walk! I detect and warn about these case because it isn't yet clear how to handle them. For now I will
-	search across the vertices for the dest vertex of a broken walk; if not found, advance to th next suffix and repeat the search. Continue 
+	search across the vertices for the dest vertex of a broken walk; if not found, advance to the next suffix and repeat the search. Continue 
 	until we find a valid re-entry point, or the sequence is exhausted. 
 
 	Note: Also note the complexity of mapping a partially-ordered sequence representing AND, OR, and LOOP constructs. This function
@@ -134,14 +134,14 @@ class Retracer(object):
 		
 		#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
 		i = 0
-		while i < len(sequence) - 2:
+		while i < len(sequence) - 1:
 			#search downstream for this activity's edge, given the partial ordering
 			j = i + 1
 			edge = None
-			while j < len(sequence) - 1 and edge == None:
+			while j < len(sequence) and edge == None:
 				edge = self._getEdge(sequence[i], sequence[j], graph)
 				j += 1
-
+				
 			if edge != None:
 				edgeSequence.append(edge)
 			else:

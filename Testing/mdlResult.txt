@@ -1,7 +1,7 @@
 GBAD 3.2
 
 Parameters:
-  Input file..................... ./test.g
+  Input file..................... ../SyntheticData/test.g
   Predefined substructure file... none
   Output file.................... none
   Dot file....................... none
@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 5564
+  Limit.......................... 789
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 11465
+  Maximum size of substructures.. 1774
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -25,126 +25,26 @@ Parameters:
   Threshold...................... 0.000000
   Value-based queue.............. false
 
-Read 1000 total positive graphs
+Read 200 total positive graphs
 
-1000 positive graphs: 11465 vertices, 11129 edges, 284927 bits
-26 unique labels
-26 initial substructures
+200 positive graphs: 1774 vertices, 1578 edges, 37713 bits
+29 unique labels
+28 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.35042, instances = 594
-  Graph(6v,5e):
-    v 1 "I"
-    v 2 "u"
-    v 3 "n"
-    v 4 "E"
-    v 5 "H"
-    v 6 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-Anomalous Instance(s):
-
- from example 111:
-    v 1227 "X" <-- anomaly (original vertex: 2 , in original example 111)
-    v 1228 "C" <-- anomaly (original vertex: 3 , in original example 111)
-    v 1229 "I"
-    v 1230 "u"
-    v 1231 "n"
-    v 1232 "E"
-    d 1227 1228 "e"
-    d 1228 1229 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 111)
-    d 1229 1230 "e"
-    d 1230 1231 "e"
-    d 1231 1232 "e"
-    (information_theoretic anomalous value = 8.000000 )
-
-
- from example 287:
-    v 3306 "X" <-- anomaly (original vertex: 2 , in original example 287)
-    v 3307 "C" <-- anomaly (original vertex: 3 , in original example 287)
-    v 3308 "I"
-    v 3309 "u"
-    v 3310 "n"
-    v 3311 "E"
-    d 3306 3307 "e"
-    d 3307 3308 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 287)
-    d 3308 3309 "e"
-    d 3309 3310 "e"
-    d 3310 3311 "e"
-    (information_theoretic anomalous value = 8.000000 )
-
-
- from example 111:
-    v 1228 "C" <-- anomaly (original vertex: 3 , in original example 111)
-    v 1229 "I"
-    v 1230 "u"
-    v 1231 "n"
-    v 1232 "E"
-    v 1233 "K" <-- anomaly (original vertex: 8 , in original example 111)
-    d 1228 1229 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 111)
-    d 1229 1230 "e"
-    d 1230 1231 "e"
-    d 1231 1232 "e"
-    d 1232 1233 "e"
-    (information_theoretic anomalous value = 8.000000 )
-
-
- from example 287:
-    v 3307 "C" <-- anomaly (original vertex: 3 , in original example 287)
-    v 3308 "I"
-    v 3309 "u"
-    v 3310 "n"
-    v 3311 "E"
-    v 3312 "K" <-- anomaly (original vertex: 8 , in original example 287)
-    d 3307 3308 "e" <-- anomaly (original edge vertices: 3 -- 4, in original example 287)
-    d 3308 3309 "e"
-    d 3309 3310 "e"
-    d 3310 3311 "e"
-    d 3311 3312 "e"
-    (information_theoretic anomalous value = 8.000000 )
-
-
-Best 3 substructures:
-
-(1) Substructure: value = 1.35042, instances = 594
-  Graph(6v,5e):
-    v 1 "I"
-    v 2 "u"
-    v 3 "n"
-    v 4 "E"
-    v 5 "H"
-    v 6 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(2) Substructure: value = 1.33974, instances = 738
-  Graph(5v,4e):
-    v 1 "I"
-    v 2 "u"
-    v 3 "n"
-    v 4 "E"
-    v 5 "K"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(3) Substructure: value = 1.30607, instances = 380
-  Graph(8v,7e):
-    v 1 "I"
-    v 2 "u"
-    v 3 "n"
-    v 4 "E"
-    v 5 "K"
-    v 6 "7"
-    v 7 "P"
-    v 8 "M"
+Substructure: value = 1.54491, instances = 52
+  Graph(12v,11e):
+    v 1 "START"
+    v 2 "x"
+    v 3 "z"
+    v 4 "t"
+    v 5 "I"
+    v 6 "5"
+    v 7 "R"
+    v 8 "h"
+    v 9 "4"
+    v 10 "6"
+    v 11 "8"
+    v 12 "p"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
@@ -152,6 +52,493 @@ Best 3 substructures:
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
+    d 9 8 "e"
+    d 8 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+
+Anomalous Instance(s):
+
+ from example 4:
+    v 43 "START"
+    v 44 "x"
+    v 45 "z"
+    v 46 "t"
+    v 47 "I"
+    v 48 "5"
+    v 49 "4" <-- anomaly (original vertex: 7 , in original example 4)
+    v 50 "h"
+    v 52 "6"
+    v 53 "8"
+    v 54 "p"
+    v 55 "s" <-- anomaly (original vertex: 13 , in original example 4)
+    d 43 44 "e"
+    d 44 45 "e"
+    d 45 46 "e"
+    d 46 47 "e"
+    d 47 48 "e"
+    d 48 49 "e"
+    d 49 50 "e"
+    d 50 52 "e"
+    d 52 53 "e"
+    d 53 54 "e"
+    d 54 55 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 4)
+    (information_theoretic anomalous value = 60.000000 )
 
 
-GBAD done (elapsed CPU time = 3529.41 seconds).
+ from example 6:
+    v 70 "START"
+    v 71 "x"
+    v 72 "z"
+    v 73 "t"
+    v 74 "I"
+    v 75 "5"
+    v 76 "4" <-- anomaly (original vertex: 7 , in original example 6)
+    v 77 "h"
+    v 79 "6"
+    v 80 "8"
+    v 81 "p"
+    v 82 "s" <-- anomaly (original vertex: 13 , in original example 6)
+    d 70 71 "e"
+    d 71 72 "e"
+    d 72 73 "e"
+    d 73 74 "e"
+    d 74 75 "e"
+    d 75 76 "e"
+    d 76 77 "e"
+    d 77 79 "e"
+    d 79 80 "e"
+    d 80 81 "e"
+    d 81 82 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 6)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 9:
+    v 102 "START"
+    v 103 "x"
+    v 104 "z"
+    v 105 "t"
+    v 106 "I"
+    v 107 "5"
+    v 108 "4" <-- anomaly (original vertex: 7 , in original example 9)
+    v 109 "h"
+    v 111 "6"
+    v 112 "8"
+    v 113 "p"
+    v 114 "s" <-- anomaly (original vertex: 13 , in original example 9)
+    d 102 103 "e"
+    d 103 104 "e"
+    d 104 105 "e"
+    d 105 106 "e"
+    d 106 107 "e"
+    d 107 108 "e"
+    d 108 109 "e"
+    d 109 111 "e"
+    d 111 112 "e"
+    d 112 113 "e"
+    d 113 114 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 9)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 14:
+    v 169 "START"
+    v 170 "x"
+    v 171 "z"
+    v 172 "t"
+    v 173 "I"
+    v 174 "5"
+    v 175 "4" <-- anomaly (original vertex: 7 , in original example 14)
+    v 176 "h"
+    v 178 "6"
+    v 179 "8"
+    v 180 "p"
+    v 181 "s" <-- anomaly (original vertex: 13 , in original example 14)
+    d 169 170 "e"
+    d 170 171 "e"
+    d 171 172 "e"
+    d 172 173 "e"
+    d 173 174 "e"
+    d 174 175 "e"
+    d 175 176 "e"
+    d 176 178 "e"
+    d 178 179 "e"
+    d 179 180 "e"
+    d 180 181 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 14)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 18:
+    v 216 "START"
+    v 217 "x"
+    v 218 "z"
+    v 219 "t"
+    v 220 "I"
+    v 221 "5"
+    v 222 "4" <-- anomaly (original vertex: 7 , in original example 18)
+    v 223 "h"
+    v 225 "6"
+    v 226 "8"
+    v 227 "p"
+    v 228 "s" <-- anomaly (original vertex: 13 , in original example 18)
+    d 216 217 "e"
+    d 217 218 "e"
+    d 218 219 "e"
+    d 219 220 "e"
+    d 220 221 "e"
+    d 221 222 "e"
+    d 222 223 "e"
+    d 223 225 "e"
+    d 225 226 "e"
+    d 226 227 "e"
+    d 227 228 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 18)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 47:
+    v 465 "START"
+    v 466 "x"
+    v 467 "z"
+    v 468 "t"
+    v 469 "I"
+    v 470 "5"
+    v 471 "4" <-- anomaly (original vertex: 7 , in original example 47)
+    v 472 "h"
+    v 474 "6"
+    v 475 "8"
+    v 476 "p"
+    v 477 "s" <-- anomaly (original vertex: 13 , in original example 47)
+    d 465 466 "e"
+    d 466 467 "e"
+    d 467 468 "e"
+    d 468 469 "e"
+    d 469 470 "e"
+    d 470 471 "e"
+    d 471 472 "e"
+    d 472 474 "e"
+    d 474 475 "e"
+    d 475 476 "e"
+    d 476 477 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 47)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 56:
+    v 544 "START"
+    v 545 "x"
+    v 546 "z"
+    v 547 "t"
+    v 548 "I"
+    v 549 "5"
+    v 550 "4" <-- anomaly (original vertex: 7 , in original example 56)
+    v 551 "h"
+    v 553 "6"
+    v 554 "8"
+    v 555 "p"
+    v 556 "s" <-- anomaly (original vertex: 13 , in original example 56)
+    d 544 545 "e"
+    d 545 546 "e"
+    d 546 547 "e"
+    d 547 548 "e"
+    d 548 549 "e"
+    d 549 550 "e"
+    d 550 551 "e"
+    d 551 553 "e"
+    d 553 554 "e"
+    d 554 555 "e"
+    d 555 556 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 56)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 81:
+    v 746 "START"
+    v 747 "x"
+    v 748 "z"
+    v 749 "t"
+    v 750 "I"
+    v 751 "5"
+    v 752 "4" <-- anomaly (original vertex: 7 , in original example 81)
+    v 753 "h"
+    v 755 "6"
+    v 756 "8"
+    v 757 "p"
+    v 758 "s" <-- anomaly (original vertex: 13 , in original example 81)
+    d 746 747 "e"
+    d 747 748 "e"
+    d 748 749 "e"
+    d 749 750 "e"
+    d 750 751 "e"
+    d 751 752 "e"
+    d 752 753 "e"
+    d 753 755 "e"
+    d 755 756 "e"
+    d 756 757 "e"
+    d 757 758 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 81)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 92:
+    v 855 "START"
+    v 856 "x"
+    v 857 "z"
+    v 858 "t"
+    v 859 "I"
+    v 860 "5"
+    v 861 "4" <-- anomaly (original vertex: 7 , in original example 92)
+    v 862 "h"
+    v 864 "6"
+    v 865 "8"
+    v 866 "p"
+    v 867 "s" <-- anomaly (original vertex: 13 , in original example 92)
+    d 855 856 "e"
+    d 856 857 "e"
+    d 857 858 "e"
+    d 858 859 "e"
+    d 859 860 "e"
+    d 860 861 "e"
+    d 861 862 "e"
+    d 862 864 "e"
+    d 864 865 "e"
+    d 865 866 "e"
+    d 866 867 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 92)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 136:
+    v 1178 "START"
+    v 1179 "x"
+    v 1180 "z"
+    v 1181 "t"
+    v 1182 "I"
+    v 1183 "5"
+    v 1184 "4" <-- anomaly (original vertex: 7 , in original example 136)
+    v 1185 "h"
+    v 1187 "6"
+    v 1188 "8"
+    v 1189 "p"
+    v 1190 "s" <-- anomaly (original vertex: 13 , in original example 136)
+    d 1178 1179 "e"
+    d 1179 1180 "e"
+    d 1180 1181 "e"
+    d 1181 1182 "e"
+    d 1182 1183 "e"
+    d 1183 1184 "e"
+    d 1184 1185 "e"
+    d 1185 1187 "e"
+    d 1187 1188 "e"
+    d 1188 1189 "e"
+    d 1189 1190 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 136)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 142:
+    v 1245 "START"
+    v 1246 "x"
+    v 1247 "z"
+    v 1248 "t"
+    v 1249 "I"
+    v 1250 "5"
+    v 1251 "4" <-- anomaly (original vertex: 7 , in original example 142)
+    v 1252 "h"
+    v 1254 "6"
+    v 1255 "8"
+    v 1256 "p"
+    v 1257 "s" <-- anomaly (original vertex: 13 , in original example 142)
+    d 1245 1246 "e"
+    d 1246 1247 "e"
+    d 1247 1248 "e"
+    d 1248 1249 "e"
+    d 1249 1250 "e"
+    d 1250 1251 "e"
+    d 1251 1252 "e"
+    d 1252 1254 "e"
+    d 1254 1255 "e"
+    d 1255 1256 "e"
+    d 1256 1257 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 142)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 157:
+    v 1391 "START"
+    v 1392 "x"
+    v 1393 "z"
+    v 1394 "t"
+    v 1395 "I"
+    v 1396 "5"
+    v 1397 "4" <-- anomaly (original vertex: 7 , in original example 157)
+    v 1398 "h"
+    v 1400 "6"
+    v 1401 "8"
+    v 1402 "p"
+    v 1403 "s" <-- anomaly (original vertex: 13 , in original example 157)
+    d 1391 1392 "e"
+    d 1392 1393 "e"
+    d 1393 1394 "e"
+    d 1394 1395 "e"
+    d 1395 1396 "e"
+    d 1396 1397 "e"
+    d 1397 1398 "e"
+    d 1398 1400 "e"
+    d 1400 1401 "e"
+    d 1401 1402 "e"
+    d 1402 1403 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 157)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 158:
+    v 1404 "START"
+    v 1405 "x"
+    v 1406 "z"
+    v 1407 "t"
+    v 1408 "I"
+    v 1409 "5"
+    v 1410 "4" <-- anomaly (original vertex: 7 , in original example 158)
+    v 1411 "h"
+    v 1413 "6"
+    v 1414 "8"
+    v 1415 "p"
+    v 1416 "s" <-- anomaly (original vertex: 13 , in original example 158)
+    d 1404 1405 "e"
+    d 1405 1406 "e"
+    d 1406 1407 "e"
+    d 1407 1408 "e"
+    d 1408 1409 "e"
+    d 1409 1410 "e"
+    d 1410 1411 "e"
+    d 1411 1413 "e"
+    d 1413 1414 "e"
+    d 1414 1415 "e"
+    d 1415 1416 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 158)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 190:
+    v 1679 "START"
+    v 1680 "x"
+    v 1681 "z"
+    v 1682 "t"
+    v 1683 "I"
+    v 1684 "5"
+    v 1685 "4" <-- anomaly (original vertex: 7 , in original example 190)
+    v 1686 "h"
+    v 1688 "6"
+    v 1689 "8"
+    v 1690 "p"
+    v 1691 "s" <-- anomaly (original vertex: 13 , in original example 190)
+    d 1679 1680 "e"
+    d 1680 1681 "e"
+    d 1681 1682 "e"
+    d 1682 1683 "e"
+    d 1683 1684 "e"
+    d 1684 1685 "e"
+    d 1685 1686 "e"
+    d 1686 1688 "e"
+    d 1688 1689 "e"
+    d 1689 1690 "e"
+    d 1690 1691 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 190)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+ from example 195:
+    v 1726 "START"
+    v 1727 "x"
+    v 1728 "z"
+    v 1729 "t"
+    v 1730 "I"
+    v 1731 "5"
+    v 1732 "4" <-- anomaly (original vertex: 7 , in original example 195)
+    v 1733 "h"
+    v 1735 "6"
+    v 1736 "8"
+    v 1737 "p"
+    v 1738 "s" <-- anomaly (original vertex: 13 , in original example 195)
+    d 1726 1727 "e"
+    d 1727 1728 "e"
+    d 1728 1729 "e"
+    d 1729 1730 "e"
+    d 1730 1731 "e"
+    d 1731 1732 "e"
+    d 1732 1733 "e"
+    d 1733 1735 "e"
+    d 1735 1736 "e"
+    d 1736 1737 "e"
+    d 1737 1738 "e" <-- anomaly (original edge vertices: 12 -- 13, in original example 195)
+    (information_theoretic anomalous value = 60.000000 )
+
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.54491, instances = 52
+  Graph(12v,11e):
+    v 1 "START"
+    v 2 "x"
+    v 3 "z"
+    v 4 "t"
+    v 5 "I"
+    v 6 "5"
+    v 7 "R"
+    v 8 "h"
+    v 9 "4"
+    v 10 "6"
+    v 11 "8"
+    v 12 "p"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 9 8 "e"
+    d 8 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+
+(2) Substructure: value = 1.47148, instances = 52
+  Graph(11v,10e):
+    v 1 "START"
+    v 2 "x"
+    v 3 "z"
+    v 4 "t"
+    v 5 "I"
+    v 6 "5"
+    v 7 "R"
+    v 8 "h"
+    v 9 "4"
+    v 10 "6"
+    v 11 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 9 8 "e"
+    d 8 10 "e"
+    d 10 11 "e"
+
+(3) Substructure: value = 1.46122, instances = 52
+  Graph(11v,10e):
+    v 1 "START"
+    v 2 "x"
+    v 3 "z"
+    v 4 "t"
+    v 5 "I"
+    v 6 "5"
+    v 7 "R"
+    v 8 "h"
+    v 9 "6"
+    v 10 "8"
+    v 11 "p"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+
+
+GBAD done (elapsed CPU time =   25.09 seconds).
