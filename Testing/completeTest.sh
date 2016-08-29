@@ -76,10 +76,10 @@ python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 
 
-################################################################################
-###Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
-###GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
-##logFile="../SandboxData/dummyTest.g"
+###############################################################################
+##Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
+##GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least mst XP transactions
+#logFile="../SandboxData/dummyTest.g"
 #mdlResult="mdlResult.txt"
 #mpsResult="mpsResult.txt"
 #fsmResult="fsmResult.txt"
@@ -101,4 +101,4 @@ python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 #cat $mpsResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 #
-#python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resutFile=$anomalyFile
+#python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
