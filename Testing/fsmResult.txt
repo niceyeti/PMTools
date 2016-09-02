@@ -1,0 +1,15 @@
+GBAD-FSM, Graph-Based Anomaly Detection using a Frequent Subgraph Miner
+Version 2.1
+Parameters:
+  Minimum Support Threshold...... 20
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.100000
+  Best Substructure File......... best_sub.g
+  Anomalous Substructure File.... anom_sub.g
+
+
+maxsize (default) = 4294967295
+Reading options...
+argc = 6
+Running both phases.
+minfreq = 20
