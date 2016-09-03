@@ -60,10 +60,15 @@ class AnomalyReporter(object):
 	"""
 	def _outputResults(self):	
 		output = "Statistics for log parsed from "+self._logPath+", anomalies detected\n"
-		output += "True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
-		output += "False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
-		output += "True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
-		output += "False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
+		#output += "True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
+		#output += "False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
+		#output += "True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
+		#output += "False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
+
+		output += ("True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives)+"\n")
+		output += ("False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives)+"\n") 
+		output += ("True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives)+"\n")  
+		output += ("False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives)+"\n")
 
 		print(output)
 		
@@ -82,21 +87,27 @@ class AnomalyReporter(object):
 		self._parseGbadAnomalies(gbadFile)
 		self._parseLogAnomalies(logFile)
 
-		#create the true anomaly and detected anomaly sets via the trace-id's
+		#create the true anomaly and detected anomaly sets via the trace-id numbers
 		truePositiveSet = set( [int(anomaly[0]) for anomaly in self._logAnomalies] )
 		trueNegativeSet = set( [int(anomaly[0]) for anomaly in self._logNegatives] )
 		detectedAnomalies = set(self._detectedAnomalyIds)
 
 		#store overall stats and counts
+		self._numDetectedAnomalies = detectedAnomalies
 		self._numTraces = len(self._logTraces)
 		self._numTrueAnomalies = len(self._logAnomalies)
-		self._numDetectedAnomalies = detectedAnomalies
 
 		#get the false/true positives/negatives using set arithmetic
 		self._truePositives = detectedAnomalies & truePositiveSet
 		self._falsePositives = detectedAnomalies - truePositiveSet
 		self._trueNegatives = trueNegativeSet - detectedAnomalies
 		self._falseNegatives = truePositiveSet - detectedAnomalies
+
+		#convert all sets to lists
+		self._truePositives = sorted(list(self._truePositives))
+		self._falsePositives = sorted(list(self._falsePositives))
+		self._trueNegatives = sorted(list(self._trueNegatives))
+		self._falseNegatives = sorted(list(self._falseNegatives))
 
 		self._outputResults()
 		
