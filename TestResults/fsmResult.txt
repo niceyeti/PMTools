@@ -1,2 +1,13780 @@
-GBAD 3.2
-
+% transaction containing anomalous structure: 4
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 4
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 4
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 4
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 5
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 5
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 5
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 5
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 6
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 6
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 6
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 6
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 8
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 8
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 8
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 8
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 10
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 10
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 10
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 10
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 11
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 11
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 11
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 11
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 13
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 13
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 13
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 13
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 15
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 15
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 15
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 15
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 16
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 16
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 16
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 16
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 18
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 18
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 18
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 18
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 19
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 19
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 19
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 19
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 22
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 22
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 22
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 22
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 23
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 23
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 23
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 23
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 24
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 24
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 24
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 24
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 25
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 25
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 25
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 25
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 29
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 29
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 29
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 29
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 31
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 31
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 31
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 31
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 32
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 32
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 32
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 32
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 33
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 33
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 33
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 33
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 34
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 34
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 34
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 34
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 39
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 39
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 39
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 39
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 40
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 40
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 40
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 40
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 41
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 41
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 41
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 41
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 44
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 44
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 44
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 44
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 45
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 45
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 45
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 45
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 46
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 46
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 46
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 46
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 47
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 47
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 47
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 47
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 51
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 51
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 51
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 51
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 52
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 52
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 52
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 52
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 54
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 54
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 54
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 54
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 55
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 55
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 55
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 55
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 59
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 59
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 59
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 59
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 61
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 61
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 61
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 61
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 63
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 63
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 63
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 63
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 64
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 64
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 64
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 64
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 65
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 65
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 65
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 65
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 66
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 66
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 66
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 66
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 69
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 69
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 69
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 69
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 70
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 70
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 70
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 70
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 72
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 72
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 72
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 72
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 76
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 76
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 76
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 76
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 79
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 79
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 79
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 79
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 80
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 80
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 80
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 80
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 81
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 81
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 81
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 81
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 83
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 83
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 83
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 83
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 84
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 84
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 84
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 84
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 87
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 87
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 87
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 87
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 89
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 89
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 89
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 89
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 90
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 90
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 90
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 90
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 91
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 91
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 91
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 91
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 93
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 93
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 93
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 93
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 96
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 96
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 96
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 96
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 98
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 98
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 98
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 98
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 100
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 100
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 100
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 100
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 101
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 101
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 101
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 101
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 103
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 103
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 103
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 103
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 104
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 104
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 104
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 104
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 107
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 107
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 107
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 107
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 111
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 111
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 111
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 111
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 112
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 112
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 112
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 112
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 113
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 113
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 113
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 113
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 114
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 114
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 114
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 114
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 115
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 115
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 115
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 115
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 116
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 116
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 116
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 116
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 119
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 119
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 119
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 119
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 120
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 120
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 120
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 120
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 125
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 125
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 125
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 125
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 126
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 126
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 126
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 126
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 127
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 127
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 127
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 127
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 128
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 128
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 128
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 128
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 129
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 129
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 129
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 129
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 132
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 132
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 132
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 132
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 134
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 134
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 134
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 134
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 135
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 135
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 135
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 135
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 136
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 136
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 136
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 136
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 137
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 137
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 137
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 137
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 142
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 142
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 142
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 142
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 144
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 144
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 144
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 144
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 148
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 148
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 148
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 148
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 151
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 151
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 151
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 151
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 153
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 153
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 153
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 153
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 154
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 154
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 154
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 154
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 156
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 156
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 156
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 156
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 158
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 158
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 158
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 158
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 160
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 160
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 160
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 160
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 161
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 161
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 161
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 161
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 162
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 162
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 162
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 162
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 163
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 163
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 163
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 163
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 164
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 164
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 164
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 164
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 165
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 165
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 165
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 165
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 166
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 166
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 166
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 166
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 170
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 170
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 170
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 170
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 171
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 171
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 171
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 171
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 172
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 172
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 172
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 172
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 174
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 174
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 174
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 174
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 178
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 178
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 178
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 178
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 179
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 179
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 179
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 179
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 180
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 180
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 180
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 180
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 181
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 181
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 181
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 181
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 184
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 184
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 184
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 184
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 185
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 185
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 185
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 185
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 190
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 190
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 190
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 190
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 194
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 194
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 194
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 194
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 195
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 195
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 195
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 195
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 196
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 196
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 196
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 196
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly
+% transaction containing anomalous structure: 200
+% probability: 0.726027
+v 12 16
+v 13 19  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 13 14  <--- anomaly
+% transaction containing anomalous structure: 200
+% probability: 0.726027
+v 12 16
+v 16 22  <--- anomaly
+v 17 17
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+v 18 18
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 18 14
+e 12 16 14  <--- anomaly
+% transaction containing anomalous structure: 200
+% probability: 0.726027
+v 17 17
+v 12 16
+v 18 18
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 17 12 14  <--- anomaly
+% transaction containing anomalous structure: 200
+% probability: 0.726027
+v 18 18
+v 17 17
+v 12 16
+v 11 15
+v 10 10
+v 9 9
+v 8 8
+v 7 7
+v 6 6
+v 5 5
+v 4 4
+v 3 3
+v 2 2
+v 1 1
+v 0 0
+e 17 18 14
+e 12 17 14
+e 11 12 14
+e 10 11 14
+e 9 10 14
+e 8 9 14
+e 7 8 14
+e 6 7 14
+e 5 6 14
+e 4 5 14
+e 3 4 14
+e 2 3 14
+e 1 2 14
+e 0 1 14
+e 18 17 14  <--- anomaly

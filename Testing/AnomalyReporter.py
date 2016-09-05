@@ -1,7 +1,12 @@
 """
 Given the output of gbad containing found-anomalies, and the original trace log containing
-+/- anomaly labellings, this object compares the two nd generates the matrix for
++/- anomaly labellings, this object compares the two and generates the matrix for
 true positives, false positives, true negatives, and false negatives.
+
+The gbad output may contain output of any gbad version (mdl, mps, fsm), and output of each gbad
+version can be concatenated into a single file as input to this script. Mdl and mps output is the same,
+but the fsm version declares anomalies slightly differently. All are plaintext files, which ought to be
+updated to something more rigorous.
 
 The info is just printed to the output, but keep it parseable if possible.
 """
@@ -34,10 +39,15 @@ class AnomalyReporter(object):
 		Thus, search for all lines with this string, parse the number, and we've a list of trace-ids for the anomalies.
 		"""
 		for line in gbadOutput:
+			#detects output of mdl and mps versions of gbad
 			if "from example " in line:
 				#print("found anom: "+line)
 				#parses 50 from 'from example 50:'
 				id = int(line.strip().split("from example ")[1].replace(":",""))
+				self._detectedAnomalyIds.append(id)
+			#detects output format of gbad-fsm
+			if "transaction containing anomalous structure:" in line:
+				id = int(line.split("structure:")[1].strip())
 				self._detectedAnomalyIds.append(id)
 
 	"""
@@ -98,11 +108,15 @@ class AnomalyReporter(object):
 		self._numTrueAnomalies = len(self._logAnomalies)
 
 		#get the false/true positives/negatives using set arithmetic
-		self._truePositives = detectedAnomalies & truePositiveSet
-		self._falsePositives = detectedAnomalies - truePositiveSet
-		self._trueNegatives = trueNegativeSet - detectedAnomalies
-		self._falseNegatives = truePositiveSet - detectedAnomalies
+		self._truePositives = float(detectedAnomalies & truePositiveSet)
+		self._falsePositives = float(detectedAnomalies - truePositiveSet)
+		self._trueNegatives = float(trueNegativeSet - detectedAnomalies)
+		self._falseNegatives = float(truePositiveSet - detectedAnomalies)
 
+		#compile other accuracy stats	
+		self._errorRate = (self._falseNegatives + self._falsePositives) / self. #error rate = (FP + FN) / N = 1 - accuracy
+		self._accuracy = # accuracy = (TN + TP) / N = 1 - error rate
+		
 		#convert all sets to lists
 		self._truePositives = sorted(list(self._truePositives))
 		self._falsePositives = sorted(list(self._falsePositives))

@@ -67,35 +67,35 @@ class ModelGenerator(object):
 	
 		config = open(configPath,"r")
 		for line in config.readlines():
-			if "anomalousLoopProb=" in line:
+			if "AnomalousLoopProb=" in line:
 				self._anomalousLoopProb = float(line.split("=")[1])
-			if "anomalousOrBranchProb=" in line:
+			if "AnomalousOrBranchProb=" in line:
 				self._anomalousOrBranchProb = float(line.split("=")[1])
-			if "abnormalOrProbRange=" in line:
+			if "AbnormalOrProbRange=" in line:
 				vals = line.split("=")[1].split(",")
 				self._abnormalOrProbRange = (float(vals[0]),float(vals[1]))
-			if "normalOrProbRange=" in line:
+			if "NormalOrProbRange=" in line:
 				vals = line.split("=")[1].split(",")
 				self._normalOrProbRange = (float(vals[0]),float(vals[1]))
-			if "abnormalLoopProbRange=" in line:
+			if "AbnormalLoopProbRange=" in line:
 				vals = line.split("=")[1].split(",")
 				self._abnormalLoopProbRange = (float(vals[0]),float(vals[1]))
-			if "normalLoopProbRange=" in line:
+			if "NormalLoopProbRange=" in line:
 				vals = line.split("=")[1].split(",")
 				self._normalLoopProbRange = (float(vals[0]),float(vals[1]))
-			if "numAnomalies=" in line:
+			if "NumAnomalies=" in line:
 				self._requiredAnomalies = int(line.split("=")[1])
 				
 		if self._requiredAnomalies < 0:
-			print("ERROR config did not contain numAnomalies")
+			print("ERROR config did not contain NumAnomalies")
 		if self._abnormalOrProbRange[0] < 0.0:
-			print("ERROR config did not contain abnormalOrProbRange")
+			print("ERROR config did not contain AbnormalOrProbRange")
 		if self._normalOrProbRange[0] < 0.0:
-			print("ERROR config did not contain normalOrProbRange")
+			print("ERROR config did not contain NormalOrProbRange")
 		if self._abnormalLoopProbRange[0] < 0.0:
-			print("ERROR config did not contain abnormalLoopProbRange")
+			print("ERROR config did not contain AbnormalLoopProbRange")
 		if self._normalLoopProbRange[0] < 0.0:
-			print("ERROR config did not contain normalLoopProbRange")
+			print("ERROR config did not contain NormalLoopProbRange")
 		
 	"""
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
@@ -166,7 +166,7 @@ class ModelGenerator(object):
 		return self._getRandomProb(self._normalOrProbRange[0], self._normalOrProbRange[1] )
 
 	"""
-	Inverse of previous. Returns a randomly-chosen non-zero probability bounded to some very low, outlier range, such as 0.0-0.1.
+	Inverse of previous. Returns a randomly-chosen non-zero probability bounded to some very low, outlier range, such as 0.001-0.1.
 	"""
 	def _getAbnormalOrProb(self):
 		return self._getRandomProb( self._abnormalOrProbRange[0], self._abnormalOrProbRange[1] )
@@ -231,8 +231,14 @@ class ModelGenerator(object):
 
 		if not (isLeftBranchAnomalous or isRightBranchAnomalous):
 			p = self._getNormalOrProb()
+			leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
+			rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
 		else:
 			p = self._getAbnormalOrProb()
+			if isRightBranchAnomalous:
+				 p = 1.0 - p
+			leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
+			rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
 		
 		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
 		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)

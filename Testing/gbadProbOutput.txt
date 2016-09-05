@@ -1,0 +1,105 @@
+GBAD-FSM, Graph-Based Anomaly Detection using a Frequent Subgraph Miner
+Version 2.1
+Parameters:
+  Input file..................... ../SyntheticData/test_fsm.g
+  Minimum Support Threshold...... 1
+  Anomaly Detection method....... Probabilistic
+  Probabilistic Iterations....... 2
+  Best Substructure File......... best_sub.g
+  Anomalous Substructure File.... ../TestResults/fsmResult.txt
+
+
+maxsize (default) = 4294967295
+Reading options...
+argc = 9
+Anomolous substructures info will be saved to: ../TestResults/fsmResult.txt
+Running both phases.
+argv[1] = -mst
+minfreq = 1
+input graph file: ../SyntheticData/test_fsm.g
+No instances file specified
+initializating GraphState ...
+Root 0
+   Processing path(0): 0 ...
+Root 1
+   Processing path(1): 1 ...
+Root 2
+   Processing path(2): 2 ...
+Root 3
+   Processing path(3): 3 ...
+Root 4
+   Processing path(4): 4 ...
+Root 5
+   Processing path(5): 5 ...
+Root 6
+   Processing path(6): 6 ...
+Root 7
+   Processing path(7): 7 ...
+Root 8
+   Processing path(8): 8 ...
+Root 9
+   Processing path(9): 9 ...
+Root 10
+   Processing path(10): 10 ...
+Root 11
+   Processing path(11): 11 ...
+Root 12
+   Processing path(12): 12 ...
+Root 13
+   Processing path(13): 13 ...
+Root 14
+   Processing path(14): 14 ...
+Root 15
+   Processing path(15): 15 ...
+Root 16
+   Processing path(16): 16 ...
+Root 17
+   Processing path(17): 17 ...
+Root 18
+   Processing path(18): 18 ...
+Frequent 2 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
+Frequent 3 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
+Frequent 4 cyclic graphs: 0 real trees: 1 paths: 18 total: 19
+Frequent 5 cyclic graphs: 0 real trees: 3 paths: 16 total: 19
+Frequent 6 cyclic graphs: 0 real trees: 5 paths: 12 total: 17
+Frequent 7 cyclic graphs: 0 real trees: 5 paths: 10 total: 15
+Frequent 8 cyclic graphs: 0 real trees: 5 paths: 9 total: 14
+Frequent 9 cyclic graphs: 0 real trees: 5 paths: 8 total: 13
+Frequent 10 cyclic graphs: 0 real trees: 5 paths: 7 total: 12
+Frequent 11 cyclic graphs: 0 real trees: 5 paths: 6 total: 11
+Frequent 12 cyclic graphs: 0 real trees: 5 paths: 4 total: 9
+Frequent 13 cyclic graphs: 0 real trees: 4 paths: 2 total: 6
+Frequent 14 cyclic graphs: 0 real trees: 2 paths: 0 total: 2
+TOTAL:
+Frequent cyclic graphs: 0 real trees: 45 paths: 130 total: 175
+Approximate total runtime: 0.141s
+argv[1] = -prob
+GBAD-P option chosen.
+argv[2] = -mst
+minfreq = 1
+input graph file: ../SyntheticData/test_fsm.g
+No instances file specified
+Reading in best substructure information...
+Reading in the best subtructure best_sub.g ... 
+Number of instances of best substructure: 183
+Size of best substructure: 23
+Reading in the best subtructure instances  ... 
+... finished reading best substructure information
+Searching for anomalies...
+Anomalous Value: 1.000000
+Frequent 2 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
+Frequent 3 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
+Frequent 4 cyclic graphs: 0 real trees: 1 paths: 18 total: 19
+Frequent 5 cyclic graphs: 0 real trees: 3 paths: 16 total: 19
+Frequent 6 cyclic graphs: 0 real trees: 5 paths: 12 total: 17
+Frequent 7 cyclic graphs: 0 real trees: 5 paths: 10 total: 15
+Frequent 8 cyclic graphs: 0 real trees: 5 paths: 9 total: 14
+Frequent 9 cyclic graphs: 0 real trees: 5 paths: 8 total: 13
+Frequent 10 cyclic graphs: 0 real trees: 5 paths: 7 total: 12
+Frequent 11 cyclic graphs: 0 real trees: 5 paths: 6 total: 11
+Frequent 12 cyclic graphs: 0 real trees: 5 paths: 4 total: 9
+Frequent 13 cyclic graphs: 0 real trees: 4 paths: 2 total: 6
+Frequent 14 cyclic graphs: 0 real trees: 2 paths: 0 total: 2
+TOTAL:
+Frequent cyclic graphs: 0 real trees: 45 paths: 130 total: 175
+Approximate total runtime: 0.109000s

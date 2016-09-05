@@ -16,9 +16,10 @@ pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="../SyntheticData/test.g"
+gbadFsmLogPath="../SyntheticData/test_fsm.g"
 
 #gbad/subdue experimental parameters. these may become bloated, so I may need to manage them elsewhere, eg a config file
-gbadMdlParam="0.50"
+#gbadMdlParam="0.50"
 
 #set the path to the gbad and subdue executables depending on which os we're running under
 gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl.exe"
@@ -37,44 +38,43 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 fi
 
 
-################################################################################
-###Generate a model containing appr. 20 activities, and generate 1000 traces from it.
-#cd "../DataGenerator"
-#sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
-#
-#
-################################################################################
-###Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
-#cd "../PromTools"
-##Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
-#python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
-##Copy everything over to the ProM environment; simpler to run everything from there.
-#minerScript="$minerName"Miner.js
-#promMinerPath=../../ProM/"$minerScript"
-#cp $minerScript $promMinerPath
-#cp $xesPath ../../ProM/testTraces.xes
-#cp ./miner.sh ../../ProM/miner.sh
-#
-#
-################################################################################
-###Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
-#cd "../../ProM"
-#sh ./miner.sh -f $minerScript
-##copy the mined model back to the SyntheticData folder
-#cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
-#cd "../scripts/Testing"
-##Convert the mined pnml model to graphml
-#python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-#
-#
-################################################################################
-##anomalize the model???
-#
-#
-################################################################################
-###Generate sub-graphs from the mined graphml model
-#python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+###############################################################################
+##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
+cd "../DataGenerator"
+sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
 
+
+###############################################################################
+##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
+cd "../PromTools"
+#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
+python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
+#Copy everything over to the ProM environment; simpler to run everything from there.
+minerScript="$minerName"Miner.js
+promMinerPath=../../ProM/"$minerScript"
+cp $minerScript $promMinerPath
+cp $xesPath ../../ProM/testTraces.xes
+cp ./miner.sh ../../ProM/miner.sh
+
+
+###############################################################################
+##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
+cd "../../ProM"
+sh ./miner.sh -f $minerScript
+#copy the mined model back to the SyntheticData folder
+cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+cd "../scripts/Testing"
+#Convert the mined pnml model to graphml
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+
+###############################################################################
+#anomalize the model???
+
+###############################################################################
+##Generate sub-graphs from the mined graphml model
+python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+#Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
+python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
@@ -82,23 +82,26 @@ fi
 mdlResult="../TestResults/mdlResult.txt"
 mpsResult="../TestResults/mpsResult.txt"
 fsmResult="../TestResults/fsmResult.txt"
+fsmTemp="../TestResults/fsmPostProced.txt"
 gbadResult="../TestResults/gbadResult.txt"
 anomalyFile="../TestResults/anomalyResult.txt"
 
 #clear any previous results
-#cat /dev/null > $mdlResult
-#cat /dev/null > $mpsResult
-#cat /dev/null > $fsmResult
-#echo Running gbad-mdl...
-#$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
-#echo Running gbad-mps...
-#$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
+cat /dev/null > $mdlResult
+cat /dev/null > $mpsResult
+cat /dev/null > $fsmResult
+echo Running gbad-mdl...
+$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
+echo Running gbad-mps...
+$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
 echo Running gbad-prob...
-$gbadFsmPath -prob 2 -mst 1 -graph $subdueLogPath # > $fsmResult
+$gbadFsmPath -prob 3 -mst 1 -graph $gbadFsmLogPath -nameAnomSub  $fsmResult #> ./gbadProbOutput.txt
+#fsm results have to be post-processed a bit
+grep "transaction containing anomalous structure" $fsmResult | uniq | sort > $fsmTemp
 
 ##Concat the gbad results into a single file so they are easier to analyze at once
 cat $mdlResult > $gbadResult
 cat $mpsResult >> $gbadResult
-cat $fsmResult >> $gbadResult
+cat $fsmTemp >> $gbadResult
 
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
