@@ -35,7 +35,7 @@ class AnomalyReporter(object):
 		"""
 		for line in gbadOutput:
 			if "from example " in line:
-				print("found anom: "+line)
+				#print("found anom: "+line)
 				#parses 50 from 'from example 50:'
 				id = int(line.strip().split("from example ")[1].replace(":",""))
 				self._detectedAnomalyIds.append(id)

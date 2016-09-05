@@ -77,7 +77,7 @@ fi
 
 
 ##############################################################################
-#Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications, gbad-mps->deletions)
+#Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least *mst* XP transactions
 mdlResult="../TestResults/mdlResult.txt"
 mpsResult="../TestResults/mpsResult.txt"
@@ -86,14 +86,17 @@ gbadResult="../TestResults/gbadResult.txt"
 anomalyFile="../TestResults/anomalyResult.txt"
 
 #clear any previous results
-cat /dev/null > $mdlResult
-cat /dev/null > $mpsResult
-cat /dev/null > $fsmResult
-$gbadMdlPath -mdl 0.9 $subdueLogPath
-$gbadMdlPath -mps 0.9 $subdueLogPath
-$gbadFsmPath -prob 2 -mst 1 -graph $subdueLogPath
+#cat /dev/null > $mdlResult
+#cat /dev/null > $mpsResult
+#cat /dev/null > $fsmResult
+#echo Running gbad-mdl...
+#$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
+#echo Running gbad-mps...
+#$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
+echo Running gbad-prob...
+$gbadFsmPath -prob 2 -mst 1 -graph $subdueLogPath # > $fsmResult
 
-#cat the gbad results into a single file so they are easier to analyze at once
+##Concat the gbad results into a single file so they are easier to analyze at once
 cat $mdlResult > $gbadResult
 cat $mpsResult >> $gbadResult
 cat $fsmResult >> $gbadResult
