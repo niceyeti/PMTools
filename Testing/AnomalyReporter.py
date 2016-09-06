@@ -75,7 +75,13 @@ class AnomalyReporter(object):
 		#output += "True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 		#output += "False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 
-		output += ("True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives)+"\n")
+		output += ("Num traces (N): \t"+str(self._numTraces)+"\n")
+		output += ("Accuracy:          \t"+str(self._accuracy)+"\n")
+		output += ("Error rate:         \t"+str(self._errorRate)+"\n")
+		output += ("Recall:              \t"+str(self._recall)+"\n")
+		output += ("Precision:          \t"+str(self._precision)+"\n")
+		
+		output += ("True positives:   \t"+str(len(self._truePositives))+"\t"+str(self._truePositives)+"\n")
 		output += ("False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives)+"\n") 
 		output += ("True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives)+"\n")  
 		output += ("False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives)+"\n")
@@ -108,16 +114,30 @@ class AnomalyReporter(object):
 		self._numTrueAnomalies = len(self._logAnomalies)
 
 		#get the false/true positives/negatives using set arithmetic
-		self._truePositives = float(detectedAnomalies & truePositiveSet)
-		self._falsePositives = float(detectedAnomalies - truePositiveSet)
-		self._trueNegatives = float(trueNegativeSet - detectedAnomalies)
-		self._falseNegatives = float(truePositiveSet - detectedAnomalies)
+		self._truePositives = detectedAnomalies & truePositiveSet
+		self._falsePositives = detectedAnomalies - truePositiveSet
+		self._trueNegatives = trueNegativeSet - detectedAnomalies
+		self._falseNegatives = truePositiveSet - detectedAnomalies
 
-		#compile other accuracy stats	
-		self._errorRate = (self._falseNegatives + self._falsePositives) / self. #error rate = (FP + FN) / N = 1 - accuracy
-		self._accuracy = # accuracy = (TN + TP) / N = 1 - error rate
+		#compile other accuracy stats
+		self._errorRate = float(len(self._falseNegatives) + len(self._falsePositives)) / float(self._numTraces) #error rate = (FP + FN) / N = 1 - accuracy
+		self._accuracy =  float(len(self._trueNegatives) + len(self._truePositives)) / float(self._numTraces) # accuracy = (TN + TP) / N = 1 - error rate
+
+		#calculate precision: TP / (FP + TP)
+		denom = float(len(self._falseNegatives) + len(self._truePositives))
+		if denom > 0.0:
+			self._precision =  float(len(self._truePositives)) / denom
+		else:
+			self._precision = 0.0
 		
-		#convert all sets to lists
+		#calculate recall: TP / (TP + FN)
+		denom = float(len(self._truePositives) + len(self._falsePositives))
+		if denom > 0.0:
+			self._recall = float(len(self._truePositives)) / denom
+		else:
+			self._recall = 0.0
+		
+		#convert all sets to sorted lists
 		self._truePositives = sorted(list(self._truePositives))
 		self._falsePositives = sorted(list(self._falsePositives))
 		self._trueNegatives = sorted(list(self._trueNegatives))

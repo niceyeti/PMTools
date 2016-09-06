@@ -4,7 +4,7 @@ Parameters:
   Input file..................... ../SyntheticData/test_fsm.g
   Minimum Support Threshold...... 1
   Anomaly Detection method....... Probabilistic
-  Probabilistic Iterations....... 2
+  Probabilistic Iterations....... 3
   Best Substructure File......... best_sub.g
   Anomalous Substructure File.... ../TestResults/fsmResult.txt
 
@@ -57,22 +57,45 @@ Root 17
    Processing path(17): 17 ...
 Root 18
    Processing path(18): 18 ...
-Frequent 2 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
-Frequent 3 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
-Frequent 4 cyclic graphs: 0 real trees: 1 paths: 18 total: 19
-Frequent 5 cyclic graphs: 0 real trees: 3 paths: 16 total: 19
-Frequent 6 cyclic graphs: 0 real trees: 5 paths: 12 total: 17
-Frequent 7 cyclic graphs: 0 real trees: 5 paths: 10 total: 15
-Frequent 8 cyclic graphs: 0 real trees: 5 paths: 9 total: 14
-Frequent 9 cyclic graphs: 0 real trees: 5 paths: 8 total: 13
-Frequent 10 cyclic graphs: 0 real trees: 5 paths: 7 total: 12
-Frequent 11 cyclic graphs: 0 real trees: 5 paths: 6 total: 11
-Frequent 12 cyclic graphs: 0 real trees: 5 paths: 4 total: 9
-Frequent 13 cyclic graphs: 0 real trees: 4 paths: 2 total: 6
-Frequent 14 cyclic graphs: 0 real trees: 2 paths: 0 total: 2
+Root 19
+   Processing path(19): 19 ...
+Root 20
+   Processing path(20): 20 ...
+Root 21
+   Processing path(21): 21 ...
+Root 22
+   Processing path(22): 22 ...
+Root 23
+   Processing path(23): 23 ...
+Root 24
+   Processing path(24): 24 ...
+Root 25
+   Processing path(25): 25 ...
+Root 26
+   Processing path(26): 26 ...
+Root 27
+   Processing path(27): 27 ...
+Root 28
+   Processing path(28): 28 ...
+Frequent 2 cyclic graphs: 0 real trees: 0 paths: 35 total: 35
+Frequent 3 cyclic graphs: 0 real trees: 0 paths: 44 total: 44
+Frequent 4 cyclic graphs: 0 real trees: 5 paths: 58 total: 63
+Frequent 5 cyclic graphs: 0 real trees: 26 paths: 72 total: 98
+Frequent 6 cyclic graphs: 0 real trees: 79 paths: 88 total: 167
+Frequent 7 cyclic graphs: 4 real trees: 176 paths: 77 total: 257
+Frequent 8 cyclic graphs: 12 real trees: 270 paths: 67 total: 349
+Frequent 9 cyclic graphs: 20 real trees: 352 paths: 53 total: 425
+Frequent 10 cyclic graphs: 36 real trees: 404 paths: 35 total: 475
+Frequent 11 cyclic graphs: 60 real trees: 401 paths: 16 total: 477
+Frequent 12 cyclic graphs: 76 real trees: 338 paths: 4 total: 418
+Frequent 13 cyclic graphs: 72 real trees: 247 paths: 0 total: 319
+Frequent 14 cyclic graphs: 56 real trees: 157 paths: 0 total: 213
+Frequent 15 cyclic graphs: 48 real trees: 78 paths: 0 total: 126
+Frequent 16 cyclic graphs: 40 real trees: 22 paths: 0 total: 62
+Frequent 17 cyclic graphs: 16 real trees: 0 paths: 0 total: 16
 TOTAL:
-Frequent cyclic graphs: 0 real trees: 45 paths: 130 total: 175
-Approximate total runtime: 0.141s
+Frequent cyclic graphs: 440 real trees: 2555 paths: 549 total: 3544
+Approximate total runtime: 0.061s
 argv[1] = -prob
 GBAD-P option chosen.
 argv[2] = -mst
@@ -81,25 +104,28 @@ input graph file: ../SyntheticData/test_fsm.g
 No instances file specified
 Reading in best substructure information...
 Reading in the best subtructure best_sub.g ... 
-Number of instances of best substructure: 183
-Size of best substructure: 23
+Number of instances of best substructure: 126
+Size of best substructure: 11
 Reading in the best subtructure instances  ... 
 ... finished reading best substructure information
 Searching for anomalies...
 Anomalous Value: 1.000000
-Frequent 2 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
-Frequent 3 cyclic graphs: 0 real trees: 0 paths: 19 total: 19
-Frequent 4 cyclic graphs: 0 real trees: 1 paths: 18 total: 19
-Frequent 5 cyclic graphs: 0 real trees: 3 paths: 16 total: 19
-Frequent 6 cyclic graphs: 0 real trees: 5 paths: 12 total: 17
-Frequent 7 cyclic graphs: 0 real trees: 5 paths: 10 total: 15
-Frequent 8 cyclic graphs: 0 real trees: 5 paths: 9 total: 14
-Frequent 9 cyclic graphs: 0 real trees: 5 paths: 8 total: 13
-Frequent 10 cyclic graphs: 0 real trees: 5 paths: 7 total: 12
-Frequent 11 cyclic graphs: 0 real trees: 5 paths: 6 total: 11
-Frequent 12 cyclic graphs: 0 real trees: 5 paths: 4 total: 9
-Frequent 13 cyclic graphs: 0 real trees: 4 paths: 2 total: 6
-Frequent 14 cyclic graphs: 0 real trees: 2 paths: 0 total: 2
+Frequent 2 cyclic graphs: 0 real trees: 0 paths: 35 total: 35
+Frequent 3 cyclic graphs: 0 real trees: 0 paths: 44 total: 44
+Frequent 4 cyclic graphs: 0 real trees: 5 paths: 58 total: 63
+Frequent 5 cyclic graphs: 0 real trees: 26 paths: 72 total: 98
+Frequent 6 cyclic graphs: 0 real trees: 79 paths: 88 total: 167
+Frequent 7 cyclic graphs: 4 real trees: 176 paths: 77 total: 257
+Frequent 8 cyclic graphs: 12 real trees: 270 paths: 67 total: 349
+Frequent 9 cyclic graphs: 20 real trees: 352 paths: 53 total: 425
+Frequent 10 cyclic graphs: 36 real trees: 404 paths: 35 total: 475
+Frequent 11 cyclic graphs: 60 real trees: 401 paths: 16 total: 477
+Frequent 12 cyclic graphs: 76 real trees: 338 paths: 4 total: 418
+Frequent 13 cyclic graphs: 72 real trees: 247 paths: 0 total: 319
+Frequent 14 cyclic graphs: 56 real trees: 157 paths: 0 total: 213
+Frequent 15 cyclic graphs: 48 real trees: 78 paths: 0 total: 126
+Frequent 16 cyclic graphs: 40 real trees: 22 paths: 0 total: 62
+Frequent 17 cyclic graphs: 16 real trees: 0 paths: 0 total: 16
 TOTAL:
-Frequent cyclic graphs: 0 real trees: 45 paths: 130 total: 175
-Approximate total runtime: 0.109000s
+Frequent cyclic graphs: 440 real trees: 2555 paths: 549 total: 3544
+Approximate total runtime: 0.266000s
