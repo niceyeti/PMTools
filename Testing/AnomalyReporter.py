@@ -1,18 +1,18 @@
 """
 Given the output of gbad containing found-anomalies, and the original trace log containing
-+/- anomaly labellings, this object compares the two and generates the matrix for
++/- anomaly labelings, this object compares the two and generates the matrix for
 true positives, false positives, true negatives, and false negatives.
 
-The gbad output may contain output of any gbad version (mdl, mps, fsm), and output of each gbad
+The gbad output may contain output of any gbad version (mdl, mps, prob), and output of each gbad
 version can be concatenated into a single file as input to this script. Mdl and mps output is the same,
 but the fsm version declares anomalies slightly differently. All are plaintext files, which ought to be
-updated to something more rigorous.
+updated to something more rigorous. This doesn't handle fsm output directly, but can with a little
+preprocessing: grep "transaction containing anomalous structure" $fsmResult | uniq | sort > $fsmTemp
 
 The info is just printed to the output, but keep it parseable if possible.
 """
 from __future__ import print_function
 import sys
-
 
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath):
