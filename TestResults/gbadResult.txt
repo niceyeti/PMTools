@@ -9,14 +9,14 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.200000
+  Information Theoretic threshold 0.900000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 1804
+  Limit.......................... 1141
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 3809
+  Maximum size of substructures.. 2482
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,142 +27,32 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 3809 vertices, 3609 edges, 82943 bits
-21 unique labels
-21 initial substructures
+200 positive graphs: 2482 vertices, 2282 edges, 52354 bits
+24 unique labels
+24 initial substructures
 Normative Pattern (1):
-Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
+Substructure: value = 1.80456, instances = 116
+  Graph(10v,9e):
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
+    v 10 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
     d 8 9 "e"
     d 9 10 "e"
-    d 10 11 "e"
 
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-
-(2) Substructure: value = 2.15513, instances = 106
-  Graph(19v,18e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    v 17 "l"
-    v 18 "z"
-    v 19 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-    d 18 19 "e"
-
-(3) Substructure: value = 2.00513, instances = 106
-  Graph(18v,17e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    v 16 "l"
-    v 17 "z"
-    v 18 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-
-
-GBAD done (elapsed CPU time =    0.60 seconds).
 GBAD 3.2
 
 Parameters:
@@ -174,14 +64,14 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.200000
+  Maximum Partial Sub threshold.. 0.900000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 1804
+  Limit.......................... 1141
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 3809
+  Maximum size of substructures.. 2482
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -192,142 +82,9 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 3809 vertices, 3609 edges, 82943 bits
-21 unique labels
-21 initial substructures
-Normative Pattern (1):
-Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-
-(2) Substructure: value = 2.15513, instances = 106
-  Graph(19v,18e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    v 17 "l"
-    v 18 "z"
-    v 19 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-    d 18 19 "e"
-
-(3) Substructure: value = 2.00513, instances = 106
-  Graph(18v,17e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    v 16 "l"
-    v 17 "z"
-    v 18 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-
-
-GBAD done (elapsed CPU time =    0.60 seconds).
+200 positive graphs: 2482 vertices, 2282 edges, 52354 bits
+24 unique labels
+24 initial substructures
 GBAD 3.2
 
 Parameters:
@@ -343,9 +100,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 2
-  Limit.......................... 1804
+  Limit.......................... 1141
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 3809
+  Maximum size of substructures.. 2482
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -358,192 +115,25 @@ Read 200 total positive graphs
 
 ----- Iteration 1 -----
 
-200 positive graphs: 3809 vertices, 3609 edges, 82943 bits
-21 unique labels
-21 initial substructures
+200 positive graphs: 2482 vertices, 2282 edges, 52354 bits
+24 unique labels
+24 initial substructures
 Normative Pattern (1):
-Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-
-
-Best 87 substructures:
-
-(1) Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-
-(2) Substructure: value = 2.15513, instances = 106
-  Graph(19v,18e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    v 17 "l"
-    v 18 "z"
-    v 19 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-    d 18 19 "e"
-
-(3) Substructure: value = 2.00513, instances = 106
-  Graph(18v,17e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    v 16 "l"
-    v 17 "z"
-    v 18 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-
-(4) Substructure: value = 2.00513, instances = 106
-  Graph(18v,17e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    v 17 "l"
-    v 18 "z"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-    d 17 18 "e"
-
-(5) Substructure: value = 1.99834, instances = 200
+Substructure: value = 1.80456, instances = 116
   Graph(10v,9e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
+    v 10 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
@@ -551,21 +141,24 @@ Best 87 substructures:
     d 8 9 "e"
     d 9 10 "e"
 
-(6) Substructure: value = 1.96685, instances = 200
+
+Best 77 substructures:
+
+(1) Substructure: value = 1.80456, instances = 116
   Graph(10v,9e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
+    v 10 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
@@ -573,127 +166,19 @@ Best 87 substructures:
     d 8 9 "e"
     d 9 10 "e"
 
-(7) Substructure: value = 1.89356, instances = 106
-  Graph(17v,16e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    v 13 "0"
-    v 14 "y"
-    v 15 "l"
-    v 16 "z"
-    v 17 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-
-(8) Substructure: value = 1.89356, instances = 106
-  Graph(17v,16e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    v 17 "l"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-
-(9) Substructure: value = 1.87501, instances = 106
-  Graph(17v,16e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    v 16 "l"
-    v 17 "z"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-    d 16 17 "e"
-
-(10) Substructure: value = 1.79867, instances = 200
+(2) Substructure: value = 1.65507, instances = 116
   Graph(9v,8e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    d 1 2 "e"
-    d 2 3 "e"
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    v 7 "4"
+    v 8 "8"
+    v 9 "x"
+    d 2 1 "e"
+    d 1 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
@@ -701,153 +186,17 @@ Best 87 substructures:
     d 7 8 "e"
     d 8 9 "e"
 
-(11) Substructure: value = 1.79344, instances = 106
-  Graph(16v,15e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    v 16 "y"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-
-(12) Substructure: value = 1.79344, instances = 106
-  Graph(16v,15e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
-    v 12 "0"
-    v 13 "y"
-    v 14 "l"
-    v 15 "z"
-    v 16 "N"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-
-(13) Substructure: value = 1.77715, instances = 106
-  Graph(16v,15e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    v 16 "l"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-
-(14) Substructure: value = 1.77715, instances = 106
-  Graph(16v,15e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    v 13 "0"
-    v 14 "y"
-    v 15 "l"
-    v 16 "z"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-
-(15) Substructure: value = 1.77427, instances = 200
+(3) Substructure: value = 1.65441, instances = 116
   Graph(9v,8e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
+    v 1 "G"
+    v 2 "q"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    v 7 "4"
+    v 8 "8"
+    v 9 "x"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
@@ -857,164 +206,36 @@ Best 87 substructures:
     d 7 8 "e"
     d 8 9 "e"
 
-(16) Substructure: value = 1.77427, instances = 200
+(4) Substructure: value = 1.63573, instances = 116
   Graph(9v,8e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
     d 8 9 "e"
 
-(17) Substructure: value = 1.70312, instances = 106
-  Graph(15v,14e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    v 15 "0"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-
-(18) Substructure: value = 1.68876, instances = 106
-  Graph(15v,14e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    v 15 "y"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-
-(19) Substructure: value = 1.68876, instances = 106
-  Graph(15v,14e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    v 13 "0"
-    v 14 "y"
-    v 15 "l"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-
-(20) Substructure: value = 1.68876, instances = 106
-  Graph(15v,14e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
-    v 12 "0"
-    v 13 "y"
-    v 14 "l"
-    v 15 "z"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-
-(21) Substructure: value = 1.63447, instances = 200
+(5) Substructure: value = 1.52744, instances = 116
   Graph(8v,7e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    v 4 "N"
+    v 5 "M"
+    v 6 "4"
+    v 7 "8"
+    v 8 "x"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
@@ -1023,82 +244,52 @@ Best 87 substructures:
     d 6 7 "e"
     d 7 8 "e"
 
-(22) Substructure: value = 1.62123, instances = 106
-  Graph(14v,13e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
-    v 14 "V"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-
-(23) Substructure: value = 1.61537, instances = 200
+(6) Substructure: value = 1.51235, instances = 116
   Graph(8v,7e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    d 1 2 "e"
-    d 2 3 "e"
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    v 7 "4"
+    v 8 "8"
+    d 2 1 "e"
+    d 1 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
 
-(24) Substructure: value = 1.61537, instances = 200
+(7) Substructure: value = 1.51209, instances = 116
   Graph(8v,7e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
 
-(25) Substructure: value = 1.61537, instances = 200
+(8) Substructure: value = 1.51183, instances = 116
   Graph(8v,7e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
+    v 1 "G"
+    v 2 "q"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    v 7 "4"
+    v 8 "8"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
@@ -1107,227 +298,89 @@ Best 87 substructures:
     d 6 7 "e"
     d 7 8 "e"
 
-(26) Substructure: value = 1.60854, instances = 106
-  Graph(14v,13e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
-    v 14 "0"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-
-(27) Substructure: value = 1.60854, instances = 106
-  Graph(14v,13e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    v 13 "0"
-    v 14 "y"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-
-(28) Substructure: value = 1.60854, instances = 106
-  Graph(14v,13e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
-    v 12 "0"
-    v 13 "y"
-    v 14 "l"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-
-(29) Substructure: value = 1.60586, instances = 113
-  Graph(13v,12e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
+(9) Substructure: value = 1.43064, instances = 116
+  Graph(7v,6e):
+    v 1 "B"
+    v 2 "F"
+    v 3 "N"
+    v 4 "M"
     v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    v 13 "3"
+    v 6 "8"
+    v 7 "x"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
 
-(30) Substructure: value = 1.53544, instances = 106
-  Graph(13v,12e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    v 13 "V"
+(10) Substructure: value = 1.40584, instances = 116
+  Graph(7v,6e):
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    v 7 "4"
+    d 2 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+
+(11) Substructure: value = 1.40563, instances = 116
+  Graph(7v,6e):
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    v 4 "N"
+    v 5 "M"
+    v 6 "4"
+    v 7 "8"
     d 1 2 "e"
     d 2 3 "e"
     d 3 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
 
-(31) Substructure: value = 1.53544, instances = 106
-  Graph(13v,12e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    v 13 "0"
+(12) Substructure: value = 1.40563, instances = 116
+  Graph(7v,6e):
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
 
-(32) Substructure: value = 1.53544, instances = 106
-  Graph(13v,12e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
+(13) Substructure: value = 1.3902, instances = 59
+  Graph(12v,11e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "r"
+    v 4 "q"
+    v 5 "e"
+    v 6 "B"
     v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
-    v 12 "0"
-    v 13 "y"
+    v 8 "N"
+    v 9 "M"
+    v 10 "4"
+    v 11 "8"
+    v 12 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-
-(33) Substructure: value = 1.52729, instances = 113
-  Graph(12v,11e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
-    v 12 "9"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
+    d 3 2 "e"
+    d 2 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
     d 6 7 "e"
     d 7 8 "e"
     d 8 9 "e"
@@ -1335,165 +388,23 @@ Best 87 substructures:
     d 10 11 "e"
     d 11 12 "e"
 
-(34) Substructure: value = 1.51668, instances = 113
-  Graph(12v,11e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    v 12 "3"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-
-(35) Substructure: value = 1.49715, instances = 200
-  Graph(7v,6e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(36) Substructure: value = 1.48213, instances = 200
-  Graph(7v,6e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(37) Substructure: value = 1.48213, instances = 200
-  Graph(7v,6e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(38) Substructure: value = 1.48213, instances = 200
-  Graph(7v,6e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(39) Substructure: value = 1.46856, instances = 106
-  Graph(12v,11e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
-    v 12 "V"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-
-(40) Substructure: value = 1.46856, instances = 106
-  Graph(12v,11e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
-    v 12 "0"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-
-(41) Substructure: value = 1.44723, instances = 113
+(14) Substructure: value = 1.33845, instances = 59
   Graph(11v,10e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    v 11 "3"
+    v 1 "f"
+    v 2 "G"
+    v 3 "q"
+    v 4 "e"
+    v 5 "B"
+    v 6 "F"
+    v 7 "N"
+    v 8 "M"
+    v 9 "4"
+    v 10 "8"
+    v 11 "x"
     d 1 2 "e"
     d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
+    d 4 3 "e"
+    d 3 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
@@ -1501,23 +412,23 @@ Best 87 substructures:
     d 9 10 "e"
     d 10 11 "e"
 
-(42) Substructure: value = 1.44662, instances = 113
+(15) Substructure: value = 1.33809, instances = 59
   Graph(11v,10e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    v 7 "U"
-    v 8 "e"
-    v 9 "F"
-    v 10 "i"
-    v 11 "9"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
+    v 1 "G"
+    v 2 "r"
+    v 3 "q"
+    v 4 "e"
+    v 5 "B"
+    v 6 "F"
+    v 7 "N"
+    v 8 "M"
+    v 9 "4"
+    v 10 "8"
+    v 11 "x"
+    d 2 1 "e"
+    d 1 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
@@ -1525,22 +436,22 @@ Best 87 substructures:
     d 9 10 "e"
     d 10 11 "e"
 
-(43) Substructure: value = 1.40715, instances = 106
+(16) Substructure: value = 1.33479, instances = 59
   Graph(11v,10e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
-    v 11 "V"
+    v 1 "f"
+    v 2 "G"
+    v 3 "r"
+    v 4 "q"
+    v 5 "B"
+    v 6 "F"
+    v 7 "N"
+    v 8 "M"
+    v 9 "4"
+    v 10 "8"
+    v 11 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
@@ -1549,1030 +460,2344 @@ Best 87 substructures:
     d 9 10 "e"
     d 10 11 "e"
 
-(44) Substructure: value = 1.38374, instances = 113
-  Graph(10v,9e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
+(17) Substructure: value = 1.33479, instances = 59
+  Graph(11v,10e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "r"
+    v 4 "q"
+    v 5 "e"
+    v 6 "B"
     v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    v 10 "3"
+    v 8 "N"
+    v 9 "M"
+    v 10 "4"
+    v 11 "8"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
+    d 3 2 "e"
+    d 2 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
     d 6 7 "e"
     d 7 8 "e"
     d 8 9 "e"
     d 9 10 "e"
+    d 10 11 "e"
 
-(45) Substructure: value = 1.3832, instances = 113
-  Graph(10v,9e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    v 7 "e"
-    v 8 "F"
-    v 9 "i"
-    v 10 "9"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-
-(46) Substructure: value = 1.38071, instances = 200
+(18) Substructure: value = 1.33316, instances = 116
   Graph(6v,5e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(47) Substructure: value = 1.36893, instances = 200
-  Graph(6v,5e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    v 6 "m"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(48) Substructure: value = 1.36893, instances = 200
-  Graph(6v,5e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    v 6 "U"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(49) Substructure: value = 1.36893, instances = 200
-  Graph(6v,5e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(50) Substructure: value = 1.32504, instances = 113
-  Graph(9v,8e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    v 6 "e"
-    v 7 "F"
-    v 8 "i"
-    v 9 "9"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-
-(51) Substructure: value = 1.28079, instances = 200
-  Graph(5v,4e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(52) Substructure: value = 1.27167, instances = 200
-  Graph(5v,4e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    v 5 "a"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(53) Substructure: value = 1.27167, instances = 200
-  Graph(5v,4e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    v 5 "m"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(54) Substructure: value = 1.27167, instances = 200
-  Graph(5v,4e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    v 5 "U"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(55) Substructure: value = 1.1942, instances = 200
-  Graph(4v,3e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(56) Substructure: value = 1.18736, instances = 200
-  Graph(4v,3e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    v 4 "4"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(57) Substructure: value = 1.18736, instances = 200
-  Graph(4v,3e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    v 4 "a"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(58) Substructure: value = 1.18736, instances = 200
-  Graph(4v,3e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    v 4 "m"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(59) Substructure: value = 1.11857, instances = 200
-  Graph(3v,2e):
-    v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(60) Substructure: value = 1.11381, instances = 200
-  Graph(3v,2e):
-    v 1 "8"
-    v 2 "s"
-    v 3 "L"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(61) Substructure: value = 1.11381, instances = 200
-  Graph(3v,2e):
-    v 1 "s"
-    v 2 "L"
-    v 3 "4"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(62) Substructure: value = 1.11381, instances = 200
-  Graph(3v,2e):
-    v 1 "L"
-    v 2 "4"
-    v 3 "a"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(63) Substructure: value = 1.05215, instances = 200
-  Graph(2v,1e):
-    v 1 "START"
-    v 2 "8"
-    d 1 2 "e"
-
-(64) Substructure: value = 1.04949, instances = 200
-  Graph(2v,1e):
-    v 1 "8"
-    v 2 "s"
-    d 1 2 "e"
-
-(65) Substructure: value = 1.04949, instances = 200
-  Graph(2v,1e):
-    v 1 "s"
-    v 2 "L"
-    d 1 2 "e"
-
-(66) Substructure: value = 1.04949, instances = 200
-  Graph(2v,1e):
-    v 1 "L"
-    v 2 "4"
-    d 1 2 "e"
-
-(67) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "START"
-
-(68) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "8"
-
-(69) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "s"
-
-(70) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "L"
-
-(71) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "4"
-
-(72) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "a"
-
-(73) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "m"
-
-(74) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "U"
-
-(75) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
-    v 1 "e"
-
-(76) Substructure: value = 0.993981, instances = 200
-  Graph(1v,0e):
     v 1 "F"
+    v 2 "N"
+    v 3 "M"
+    v 4 "4"
+    v 5 "8"
+    v 6 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
 
-(77) Substructure: value = 0.993981, instances = 200
+(19) Substructure: value = 1.32305, instances = 116
+  Graph(6v,5e):
+    v 1 "B"
+    v 2 "F"
+    v 3 "N"
+    v 4 "M"
+    v 5 "4"
+    v 6 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+
+(20) Substructure: value = 1.31327, instances = 116
+  Graph(6v,5e):
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    v 6 "M"
+    d 2 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+
+(21) Substructure: value = 1.3131, instances = 116
+  Graph(6v,5e):
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    v 4 "N"
+    v 5 "M"
+    v 6 "4"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+
+(22) Substructure: value = 1.29026, instances = 59
+  Graph(10v,9e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "r"
+    v 4 "q"
+    v 5 "e"
+    v 6 "B"
+    v 7 "F"
+    v 8 "N"
+    v 9 "M"
+    v 10 "4"
+    d 1 2 "e"
+    d 3 2 "e"
+    d 2 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+
+(23) Substructure: value = 1.28731, instances = 59
+  Graph(10v,9e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "q"
+    v 4 "e"
+    v 5 "B"
+    v 6 "F"
+    v 7 "N"
+    v 8 "M"
+    v 9 "4"
+    v 10 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+
+(24) Substructure: value = 1.28731, instances = 59
+  Graph(10v,9e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "q"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
+    v 10 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+
+(25) Substructure: value = 1.24791, instances = 116
+  Graph(5v,4e):
+    v 1 "N"
+    v 2 "M"
+    v 3 "4"
+    v 4 "8"
+    v 5 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+(26) Substructure: value = 1.24593, instances = 59
+  Graph(9v,8e):
+    v 1 "f"
+    v 2 "G"
+    v 3 "q"
+    v 4 "e"
+    v 5 "B"
+    v 6 "F"
+    v 7 "N"
+    v 8 "M"
+    v 9 "4"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+
+(27) Substructure: value = 1.23995, instances = 116
+  Graph(5v,4e):
+    v 1 "B"
+    v 2 "F"
+    v 3 "N"
+    v 4 "M"
+    v 5 "4"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+(28) Substructure: value = 1.23222, instances = 116
+  Graph(5v,4e):
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    v 5 "N"
+    d 2 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+(29) Substructure: value = 1.23209, instances = 116
+  Graph(5v,4e):
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    v 4 "N"
+    v 5 "M"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+
+(30) Substructure: value = 1.23041, instances = 31
+  Graph(15v,14e):
+    v 1 "START"
+    v 2 "m"
+    v 3 "L"
+    v 4 "r"
+    v 5 "G"
+    v 6 "f"
+    v 7 "q"
+    v 8 "e"
+    v 9 "B"
+    v 10 "F"
+    v 11 "N"
+    v 12 "M"
+    v 13 "4"
+    v 14 "8"
+    v 15 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+    d 13 14 "e"
+    d 14 15 "e"
+
+(31) Substructure: value = 1.20677, instances = 31
+  Graph(14v,13e):
+    v 1 "START"
+    v 2 "m"
+    v 3 "L"
+    v 4 "r"
+    v 5 "G"
+    v 6 "f"
+    v 7 "q"
+    v 8 "e"
+    v 9 "B"
+    v 10 "F"
+    v 11 "N"
+    v 12 "M"
+    v 13 "4"
+    v 14 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+    d 13 14 "e"
+
+(32) Substructure: value = 1.20677, instances = 31
+  Graph(14v,13e):
+    v 1 "m"
+    v 2 "L"
+    v 3 "r"
+    v 4 "G"
+    v 5 "f"
+    v 6 "q"
+    v 7 "e"
+    v 8 "B"
+    v 9 "F"
+    v 10 "N"
+    v 11 "M"
+    v 12 "4"
+    v 13 "8"
+    v 14 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
+    d 7 6 "e"
+    d 6 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+    d 13 14 "e"
+
+(33) Substructure: value = 1.20677, instances = 31
+  Graph(14v,13e):
+    v 1 "START"
+    v 2 "m"
+    v 3 "L"
+    v 4 "r"
+    v 5 "G"
+    v 6 "q"
+    v 7 "e"
+    v 8 "B"
+    v 9 "F"
+    v 10 "N"
+    v 11 "M"
+    v 12 "4"
+    v 13 "8"
+    v 14 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 7 6 "e"
+    d 6 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+    d 13 14 "e"
+
+(34) Substructure: value = 1.20677, instances = 31
+  Graph(14v,13e):
+    v 1 "START"
+    v 2 "m"
+    v 3 "L"
+    v 4 "r"
+    v 5 "G"
+    v 6 "f"
+    v 7 "q"
+    v 8 "B"
+    v 9 "F"
+    v 10 "N"
+    v 11 "M"
+    v 12 "4"
+    v 13 "8"
+    v 14 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+    d 13 14 "e"
+
+(35) Substructure: value = 1.18727, instances = 31
+  Graph(13v,12e):
+    v 1 "L"
+    v 2 "r"
+    v 3 "G"
+    v 4 "f"
+    v 5 "q"
+    v 6 "e"
+    v 7 "B"
+    v 8 "F"
+    v 9 "N"
+    v 10 "M"
+    v 11 "4"
+    v 12 "8"
+    v 13 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+
+(36) Substructure: value = 1.18419, instances = 31
+  Graph(13v,12e):
+    v 1 "m"
+    v 2 "L"
+    v 3 "r"
+    v 4 "G"
+    v 5 "q"
+    v 6 "e"
+    v 7 "B"
+    v 8 "F"
+    v 9 "N"
+    v 10 "M"
+    v 11 "4"
+    v 12 "8"
+    v 13 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 4 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+
+(37) Substructure: value = 1.18419, instances = 31
+  Graph(13v,12e):
+    v 1 "m"
+    v 2 "L"
+    v 3 "r"
+    v 4 "G"
+    v 5 "f"
+    v 6 "q"
+    v 7 "B"
+    v 8 "F"
+    v 9 "N"
+    v 10 "M"
+    v 11 "4"
+    v 12 "8"
+    v 13 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+
+(38) Substructure: value = 1.18419, instances = 31
+  Graph(13v,12e):
+    v 1 "m"
+    v 2 "L"
+    v 3 "r"
+    v 4 "G"
+    v 5 "f"
+    v 6 "q"
+    v 7 "e"
+    v 8 "B"
+    v 9 "F"
+    v 10 "N"
+    v 11 "M"
+    v 12 "4"
+    v 13 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
+    d 7 6 "e"
+    d 6 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+    d 12 13 "e"
+
+(39) Substructure: value = 1.1728, instances = 116
+  Graph(4v,3e):
+    v 1 "M"
+    v 2 "4"
+    v 3 "8"
+    v 4 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+
+(40) Substructure: value = 1.16673, instances = 116
+  Graph(4v,3e):
+    v 1 "B"
+    v 2 "F"
+    v 3 "N"
+    v 4 "M"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+
+(41) Substructure: value = 1.16548, instances = 31
+  Graph(12v,11e):
+    v 1 "L"
+    v 2 "r"
+    v 3 "G"
+    v 4 "f"
+    v 5 "q"
+    v 6 "e"
+    v 7 "B"
+    v 8 "F"
+    v 9 "N"
+    v 10 "M"
+    v 11 "4"
+    v 12 "8"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 6 5 "e"
+    d 5 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+
+(42) Substructure: value = 1.16548, instances = 31
+  Graph(12v,11e):
+    v 1 "L"
+    v 2 "r"
+    v 3 "G"
+    v 4 "q"
+    v 5 "e"
+    v 6 "B"
+    v 7 "F"
+    v 8 "N"
+    v 9 "M"
+    v 10 "4"
+    v 11 "8"
+    v 12 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 5 4 "e"
+    d 4 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+
+(43) Substructure: value = 1.16548, instances = 31
+  Graph(12v,11e):
+    v 1 "L"
+    v 2 "r"
+    v 3 "G"
+    v 4 "f"
+    v 5 "q"
+    v 6 "B"
+    v 7 "F"
+    v 8 "N"
+    v 9 "M"
+    v 10 "4"
+    v 11 "8"
+    v 12 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 5 6 "e"
+    d 6 7 "e"
+    d 7 8 "e"
+    d 8 9 "e"
+    d 9 10 "e"
+    d 10 11 "e"
+    d 11 12 "e"
+
+(44) Substructure: value = 1.16083, instances = 116
+  Graph(4v,3e):
+    v 1 "q"
+    v 2 "e"
+    v 3 "B"
+    v 4 "F"
+    d 2 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+
+(45) Substructure: value = 1.16073, instances = 116
+  Graph(4v,3e):
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    v 4 "N"
+    d 1 2 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+
+(46) Substructure: value = 1.10623, instances = 116
+  Graph(3v,2e):
+    v 1 "START"
+    v 2 "m"
+    v 3 "L"
+    d 1 2 "e"
+    d 2 3 "e"
+
+(47) Substructure: value = 1.10623, instances = 116
+  Graph(3v,2e):
+    v 1 "4"
+    v 2 "8"
+    v 3 "x"
+    d 1 2 "e"
+    d 2 3 "e"
+
+(48) Substructure: value = 1.10195, instances = 116
+  Graph(3v,2e):
+    v 1 "B"
+    v 2 "F"
+    v 3 "N"
+    d 1 2 "e"
+    d 2 3 "e"
+
+(49) Substructure: value = 1.0977, instances = 116
+  Graph(3v,2e):
+    v 1 "q"
+    v 2 "B"
+    v 3 "F"
+    d 1 2 "e"
+    d 2 3 "e"
+
+(50) Substructure: value = 1.04701, instances = 116
+  Graph(2v,1e):
+    v 1 "START"
+    v 2 "m"
+    d 1 2 "e"
+
+(51) Substructure: value = 1.04701, instances = 116
+  Graph(2v,1e):
+    v 1 "8"
+    v 2 "x"
+    d 1 2 "e"
+
+(52) Substructure: value = 1.04459, instances = 116
+  Graph(2v,1e):
+    v 1 "m"
+    v 2 "L"
+    d 1 2 "e"
+
+(53) Substructure: value = 1.04459, instances = 116
+  Graph(2v,1e):
+    v 1 "B"
+    v 2 "F"
+    d 1 2 "e"
+
+(54) Substructure: value = 0.994583, instances = 116
   Graph(1v,0e):
-    v 1 "i"
+    v 1 "x"
 
-(78) Substructure: value = 0.993981, instances = 187
-  Graph(1v,0e):
-    v 1 "V"
-
-(79) Substructure: value = 0.993981, instances = 187
+(55) Substructure: value = 0.994583, instances = 84
   Graph(1v,0e):
     v 1 "0"
 
-(80) Substructure: value = 0.993981, instances = 187
+(56) Substructure: value = 0.994583, instances = 14
   Graph(1v,0e):
-    v 1 "y"
+    v 1 "E"
 
-(81) Substructure: value = 0.993981, instances = 187
-  Graph(1v,0e):
-    v 1 "l"
-
-(82) Substructure: value = 0.993981, instances = 187
-  Graph(1v,0e):
-    v 1 "z"
-
-(83) Substructure: value = 0.993981, instances = 113
-  Graph(1v,0e):
-    v 1 "9"
-
-(84) Substructure: value = 0.993981, instances = 87
-  Graph(1v,0e):
-    v 1 "R"
-
-(85) Substructure: value = 0.993981, instances = 87
+(57) Substructure: value = 0.994583, instances = 70
   Graph(1v,0e):
     v 1 "c"
 
-(86) Substructure: value = 0.993981, instances = 200
+(58) Substructure: value = 0.994583, instances = 70
   Graph(1v,0e):
-    v 1 "3"
+    v 1 "W"
 
-(87) Substructure: value = 0.993981, instances = 187
+(59) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "m"
+
+(60) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "L"
+
+(61) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "r"
+
+(62) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "e"
+
+(63) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "f"
+
+(64) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "q"
+
+(65) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "G"
+
+(66) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "B"
+
+(67) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "F"
+
+(68) Substructure: value = 0.994583, instances = 116
   Graph(1v,0e):
     v 1 "N"
 
-Compressing graph by best substructure (1):
-Substructure: value = 2.24611, instances = 200
-  Graph(11v,10e):
+(69) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "M"
+
+(70) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "4"
+
+(71) Substructure: value = 0.994583, instances = 116
+  Graph(1v,0e):
+    v 1 "8"
+
+(72) Substructure: value = 0.994583, instances = 84
+  Graph(1v,0e):
+    v 1 "A"
+
+(73) Substructure: value = 0.994583, instances = 84
+  Graph(1v,0e):
+    v 1 "7"
+
+(74) Substructure: value = 0.994583, instances = 84
+  Graph(1v,0e):
+    v 1 "d"
+
+(75) Substructure: value = 0.994583, instances = 84
+  Graph(1v,0e):
+    v 1 "u"
+
+(76) Substructure: value = 0.994583, instances = 84
+  Graph(1v,0e):
+    v 1 "y"
+
+(77) Substructure: value = 0.994583, instances = 200
+  Graph(1v,0e):
     v 1 "START"
-    v 2 "8"
-    v 3 "s"
-    v 4 "L"
-    v 5 "4"
-    v 6 "a"
-    v 7 "m"
-    v 8 "U"
-    v 9 "e"
-    v 10 "F"
-    v 11 "i"
+
+Compressing graph by best substructure (1):
+Substructure: value = 1.80456, instances = 116
+  Graph(10v,9e):
+    v 1 "G"
+    v 2 "q"
+    v 3 "e"
+    v 4 "B"
+    v 5 "F"
+    v 6 "N"
+    v 7 "M"
+    v 8 "4"
+    v 9 "8"
+    v 10 "x"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
+    d 3 2 "e"
+    d 2 4 "e"
     d 4 5 "e"
     d 5 6 "e"
     d 6 7 "e"
     d 7 8 "e"
     d 8 9 "e"
     d 9 10 "e"
-    d 10 11 "e"
 
 Elapsed time for iteration 1 = 2 seconds.
 
 ----- Iteration 2 -----
 
-200 positive graphs: 1809 vertices, 1609 edges, 33094 bits
-12 unique labels
-11 initial substructures
+200 positive graphs: 1438 vertices, 1238 edges, 26378 bits
+16 unique labels
+15 initial substructures
 Normative Pattern:
-Substructure: value = 1.11476, instances = 200
+Substructure: value = 1.08943, instances = 232
   Graph(2v,1e):
-    v 1 "z"
-    v 2 "N"
+    v 1 "START"
+    v 2 "m"
     d 1 2 "e"
 
 Anomalous Instance(s): 
 
  from positive example 1:
+    v 1 SUB_1
+    v 121 "f" <-- anomaly (original vertex: 6 , in original example 1)
+    d 121 1 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 1)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 2 SUB_1
+    v 125 "f" <-- anomaly (original vertex: 4 , in original example 2)
+    d 125 2 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 2)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 3 SUB_1
+    v 131 "f" <-- anomaly (original vertex: 6 , in original example 3)
+    d 131 3 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 3)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 4 SUB_1
+    v 135 "f" <-- anomaly (original vertex: 4 , in original example 4)
+    d 135 4 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 4)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
     v 5 SUB_1
-    v 227 "R" <-- anomaly (original vertex: 12 , in original example 5)
-    d 5 227 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 5)
-    (probabilistic anomalous value = 0.435000 )
+    v 166 "f" <-- anomaly (original vertex: 6 , in original example 8)
+    d 166 5 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 8)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 6 SUB_1
-    v 236 "R" <-- anomaly (original vertex: 12 , in original example 6)
-    d 6 236 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 6)
-    (probabilistic anomalous value = 0.435000 )
+    v 170 "f" <-- anomaly (original vertex: 4 , in original example 9)
+    d 170 6 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 9)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 7 SUB_1
-    v 245 "R" <-- anomaly (original vertex: 12 , in original example 7)
-    d 7 245 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 7)
-    (probabilistic anomalous value = 0.435000 )
+    v 176 "f" <-- anomaly (original vertex: 6 , in original example 10)
+    d 176 7 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 10)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 8 SUB_1
-    v 254 "R" <-- anomaly (original vertex: 12 , in original example 8)
-    d 8 254 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 8)
-    (probabilistic anomalous value = 0.435000 )
+    v 198 "f" <-- anomaly (original vertex: 6 , in original example 13)
+    d 198 8 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 13)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 9 SUB_1
-    v 263 "R" <-- anomaly (original vertex: 12 , in original example 9)
-    d 9 263 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 9)
-    (probabilistic anomalous value = 0.435000 )
+    v 203 "f" <-- anomaly (original vertex: 6 , in original example 14)
+    d 203 9 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 14)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 10 SUB_1
-    v 272 "R" <-- anomaly (original vertex: 12 , in original example 10)
-    d 10 272 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 10)
-    (probabilistic anomalous value = 0.435000 )
+    v 226 "f" <-- anomaly (original vertex: 6 , in original example 17)
+    d 226 10 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 17)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 11 SUB_1
+    v 231 "f" <-- anomaly (original vertex: 6 , in original example 18)
+    d 231 11 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 18)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 12 SUB_1
-    v 289 "R" <-- anomaly (original vertex: 12 , in original example 12)
-    d 12 289 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 12)
-    (probabilistic anomalous value = 0.435000 )
+    v 253 "f" <-- anomaly (original vertex: 6 , in original example 21)
+    d 253 12 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 21)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 13 SUB_1
+    v 266 "f" <-- anomaly (original vertex: 4 , in original example 23)
+    d 266 13 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 23)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 14 SUB_1
-    v 306 "R" <-- anomaly (original vertex: 12 , in original example 14)
-    d 14 306 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 14)
-    (probabilistic anomalous value = 0.435000 )
+    v 271 "f" <-- anomaly (original vertex: 4 , in original example 24)
+    d 271 14 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 24)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 1:
     v 15 SUB_1
-    v 309 "R" <-- anomaly (original vertex: 12 , in original example 15)
-    d 15 309 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 15)
-    (probabilistic anomalous value = 0.435000 )
+    v 277 "f" <-- anomaly (original vertex: 6 , in original example 25)
+    d 277 15 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 25)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 1:
+ from positive example 2:
+    v 16 SUB_1
+    v 282 "f" <-- anomaly (original vertex: 6 , in original example 26)
+    d 282 16 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 26)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 17 SUB_1
+    v 287 "f" <-- anomaly (original vertex: 6 , in original example 27)
+    d 287 17 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 27)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 18 SUB_1
+    v 291 "f" <-- anomaly (original vertex: 4 , in original example 28)
+    d 291 18 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 28)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
     v 19 SUB_1
-    v 342 "R" <-- anomaly (original vertex: 12 , in original example 19)
-    d 19 342 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 19)
-    (probabilistic anomalous value = 0.435000 )
+    v 296 "f" <-- anomaly (original vertex: 4 , in original example 29)
+    d 296 19 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 29)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 20 SUB_1
+    v 310 "f" <-- anomaly (original vertex: 4 , in original example 31)
+    d 310 20 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 31)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 21 SUB_1
-    v 359 "R" <-- anomaly (original vertex: 12 , in original example 21)
-    d 21 359 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 21)
-    (probabilistic anomalous value = 0.435000 )
+    v 315 "f" <-- anomaly (original vertex: 4 , in original example 32)
+    d 315 21 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 32)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 22 SUB_1
-    v 368 "R" <-- anomaly (original vertex: 12 , in original example 22)
-    d 22 368 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 22)
-    (probabilistic anomalous value = 0.435000 )
+    v 321 "f" <-- anomaly (original vertex: 6 , in original example 33)
+    d 321 22 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 33)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 23 SUB_1
-    v 377 "R" <-- anomaly (original vertex: 12 , in original example 23)
-    d 23 377 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 23)
-    (probabilistic anomalous value = 0.435000 )
+    v 326 "f" <-- anomaly (original vertex: 6 , in original example 34)
+    d 326 23 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 34)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 24 SUB_1
+    v 330 "f" <-- anomaly (original vertex: 4 , in original example 35)
+    d 330 24 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 35)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 25 SUB_1
-    v 394 "R" <-- anomaly (original vertex: 12 , in original example 25)
-    d 25 394 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 25)
-    (probabilistic anomalous value = 0.435000 )
+    v 335 "f" <-- anomaly (original vertex: 4 , in original example 36)
+    d 335 25 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 36)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 26 SUB_1
-    v 403 "R" <-- anomaly (original vertex: 12 , in original example 26)
-    d 26 403 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 26)
-    (probabilistic anomalous value = 0.435000 )
+    v 341 "f" <-- anomaly (original vertex: 6 , in original example 37)
+    d 341 26 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 37)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
     v 27 SUB_1
-    v 412 "R" <-- anomaly (original vertex: 12 , in original example 27)
-    d 27 412 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 27)
-    (probabilistic anomalous value = 0.435000 )
+    v 346 "f" <-- anomaly (original vertex: 6 , in original example 38)
+    d 346 27 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 38)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 2:
+    v 28 SUB_1
+    v 351 "f" <-- anomaly (original vertex: 6 , in original example 39)
+    d 351 28 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 39)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 29 SUB_1
+    v 356 "f" <-- anomaly (original vertex: 6 , in original example 40)
+    d 356 29 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 40)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 30 SUB_1
+    v 360 "f" <-- anomaly (original vertex: 4 , in original example 41)
+    d 360 30 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 41)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
     v 31 SUB_1
-    v 445 "R" <-- anomaly (original vertex: 12 , in original example 31)
-    d 31 445 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 31)
-    (probabilistic anomalous value = 0.435000 )
+    v 374 "f" <-- anomaly (original vertex: 4 , in original example 43)
+    d 374 31 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 43)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 32 SUB_1
+    v 379 "f" <-- anomaly (original vertex: 4 , in original example 44)
+    d 379 32 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 44)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 33 SUB_1
+    v 384 "f" <-- anomaly (original vertex: 4 , in original example 45)
+    d 384 33 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 45)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 34 SUB_1
+    v 398 "f" <-- anomaly (original vertex: 4 , in original example 47)
+    d 398 34 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 47)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 35 SUB_1
+    v 404 "f" <-- anomaly (original vertex: 6 , in original example 48)
+    d 404 35 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 48)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 36 SUB_1
+    v 408 "f" <-- anomaly (original vertex: 4 , in original example 49)
+    d 408 36 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 49)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 37 SUB_1
+    v 432 "f" <-- anomaly (original vertex: 6 , in original example 52)
+    d 432 37 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 52)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 38 SUB_1
+    v 437 "f" <-- anomaly (original vertex: 6 , in original example 53)
+    d 437 38 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 53)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
     v 39 SUB_1
-    v 504 "R" <-- anomaly (original vertex: 12 , in original example 39)
-    d 39 504 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 39)
-    (probabilistic anomalous value = 0.435000 )
+    v 460 "f" <-- anomaly (original vertex: 6 , in original example 56)
+    d 460 39 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 56)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
     v 40 SUB_1
-    v 507 "R" <-- anomaly (original vertex: 12 , in original example 40)
-    d 40 507 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 40)
-    (probabilistic anomalous value = 0.435000 )
+    v 464 "f" <-- anomaly (original vertex: 4 , in original example 57)
+    d 464 40 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 57)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 41 SUB_1
+    v 470 "f" <-- anomaly (original vertex: 6 , in original example 58)
+    d 470 41 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 58)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 42 SUB_1
+    v 474 "f" <-- anomaly (original vertex: 4 , in original example 59)
+    d 474 42 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 59)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
     v 43 SUB_1
-    v 532 "R" <-- anomaly (original vertex: 12 , in original example 43)
-    d 43 532 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 43)
-    (probabilistic anomalous value = 0.435000 )
+    v 479 "f" <-- anomaly (original vertex: 4 , in original example 60)
+    d 479 43 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 60)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
     v 44 SUB_1
-    v 541 "R" <-- anomaly (original vertex: 12 , in original example 44)
-    d 44 541 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 44)
-    (probabilistic anomalous value = 0.435000 )
+    v 503 "f" <-- anomaly (original vertex: 6 , in original example 63)
+    d 503 44 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 63)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
     v 45 SUB_1
-    v 544 "R" <-- anomaly (original vertex: 12 , in original example 45)
-    d 45 544 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 45)
-    (probabilistic anomalous value = 0.435000 )
+    v 508 "f" <-- anomaly (original vertex: 6 , in original example 64)
+    d 508 45 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 64)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 3:
+ from positive example 4:
     v 46 SUB_1
-    v 553 "R" <-- anomaly (original vertex: 12 , in original example 46)
-    d 46 553 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 46)
-    (probabilistic anomalous value = 0.435000 )
+    v 512 "f" <-- anomaly (original vertex: 4 , in original example 65)
+    d 512 46 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 65)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 3:
+ from positive example 4:
     v 47 SUB_1
-    v 562 "R" <-- anomaly (original vertex: 12 , in original example 47)
-    d 47 562 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 47)
-    (probabilistic anomalous value = 0.435000 )
+    v 518 "f" <-- anomaly (original vertex: 6 , in original example 66)
+    d 518 47 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 66)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 3:
+ from positive example 4:
+    v 48 SUB_1
+    v 523 "f" <-- anomaly (original vertex: 6 , in original example 67)
+    d 523 48 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 67)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
     v 49 SUB_1
-    v 579 "R" <-- anomaly (original vertex: 12 , in original example 49)
-    d 49 579 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 49)
-    (probabilistic anomalous value = 0.435000 )
+    v 555 "f" <-- anomaly (original vertex: 6 , in original example 71)
+    d 555 49 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 71)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 3:
+ from positive example 4:
+    v 50 SUB_1
+    v 560 "f" <-- anomaly (original vertex: 6 , in original example 72)
+    d 560 50 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 72)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
     v 51 SUB_1
-    v 596 "R" <-- anomaly (original vertex: 12 , in original example 51)
-    d 51 596 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 51)
-    (probabilistic anomalous value = 0.435000 )
+    v 572 "f" <-- anomaly (original vertex: 4 , in original example 74)
+    d 572 51 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 74)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 3:
+ from positive example 4:
+    v 52 SUB_1
+    v 578 "f" <-- anomaly (original vertex: 6 , in original example 75)
+    d 578 52 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 75)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 53 SUB_1
+    v 582 "f" <-- anomaly (original vertex: 4 , in original example 76)
+    d 582 53 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 76)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 54 SUB_1
+    v 606 "f" <-- anomaly (original vertex: 6 , in original example 79)
+    d 606 54 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 79)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
     v 55 SUB_1
-    v 629 "R" <-- anomaly (original vertex: 12 , in original example 55)
-    d 55 629 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 55)
-    (probabilistic anomalous value = 0.435000 )
+    v 611 "f" <-- anomaly (original vertex: 6 , in original example 80)
+    d 611 55 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 80)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 56 SUB_1
+    v 625 "f" <-- anomaly (original vertex: 6 , in original example 82)
+    d 625 56 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 82)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 57 SUB_1
+    v 630 "f" <-- anomaly (original vertex: 6 , in original example 83)
+    d 630 57 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 83)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 58 SUB_1
+    v 635 "f" <-- anomaly (original vertex: 6 , in original example 84)
+    d 635 58 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 84)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 59 SUB_1
+    v 640 "f" <-- anomaly (original vertex: 6 , in original example 85)
+    d 640 59 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 85)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 60 SUB_1
+    v 661 "f" <-- anomaly (original vertex: 4 , in original example 88)
+    d 661 60 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 88)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 61 SUB_1
+    v 667 "f" <-- anomaly (original vertex: 6 , in original example 89)
+    d 667 61 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 89)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 62 SUB_1
+    v 698 "f" <-- anomaly (original vertex: 4 , in original example 93)
+    d 698 62 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 93)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 63 SUB_1
+    v 704 "f" <-- anomaly (original vertex: 6 , in original example 94)
+    d 704 63 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 94)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 64 SUB_1
+    v 763 "f" <-- anomaly (original vertex: 6 , in original example 101)
+    d 763 64 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 101)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 65 SUB_1
+    v 785 "f" <-- anomaly (original vertex: 4 , in original example 104)
+    d 785 65 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 104)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 66 SUB_1
+    v 791 "f" <-- anomaly (original vertex: 6 , in original example 105)
+    d 791 66 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 105)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 67 SUB_1
+    v 803 "f" <-- anomaly (original vertex: 4 , in original example 107)
+    d 803 67 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 107)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 68 SUB_1
+    v 808 "f" <-- anomaly (original vertex: 4 , in original example 108)
+    d 808 68 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 108)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
+    v 69 SUB_1
+    v 832 "f" <-- anomaly (original vertex: 6 , in original example 111)
+    d 832 69 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 111)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 70 SUB_1
+    v 836 "f" <-- anomaly (original vertex: 4 , in original example 112)
+    d 836 70 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 112)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 71 SUB_1
+    v 859 "f" <-- anomaly (original vertex: 4 , in original example 115)
+    d 859 71 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 115)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 72 SUB_1
+    v 864 "f" <-- anomaly (original vertex: 4 , in original example 116)
+    d 864 72 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 116)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 73 SUB_1
+    v 887 "f" <-- anomaly (original vertex: 4 , in original example 119)
+    d 887 73 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 119)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 74 SUB_1
+    v 937 "f" <-- anomaly (original vertex: 4 , in original example 125)
+    d 937 74 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 125)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 75 SUB_1
+    v 943 "f" <-- anomaly (original vertex: 6 , in original example 126)
+    d 943 75 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 126)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 76 SUB_1
+    v 956 "f" <-- anomaly (original vertex: 4 , in original example 128)
+    d 956 76 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 128)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 77 SUB_1
+    v 961 "f" <-- anomaly (original vertex: 4 , in original example 129)
+    d 961 77 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 129)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 78 SUB_1
+    v 975 "f" <-- anomaly (original vertex: 4 , in original example 131)
+    d 975 78 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 131)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 79 SUB_1
+    v 990 "f" <-- anomaly (original vertex: 6 , in original example 133)
+    d 990 79 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 133)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 80 SUB_1
+    v 994 "f" <-- anomaly (original vertex: 4 , in original example 134)
+    d 994 80 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 134)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 81 SUB_1
+    v 1000 "f" <-- anomaly (original vertex: 6 , in original example 135)
+    d 1000 81 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 135)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 82 SUB_1
+    v 1004 "f" <-- anomaly (original vertex: 4 , in original example 136)
+    d 1004 82 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 136)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 83 SUB_1
+    v 1009 "f" <-- anomaly (original vertex: 4 , in original example 137)
+    d 1009 83 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 137)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 84 SUB_1
+    v 1015 "f" <-- anomaly (original vertex: 6 , in original example 138)
+    d 1015 84 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 138)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 85 SUB_1
+    v 1020 "f" <-- anomaly (original vertex: 6 , in original example 139)
+    d 1020 85 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 139)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 86 SUB_1
+    v 1059 "f" <-- anomaly (original vertex: 6 , in original example 144)
+    d 1059 86 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 144)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 87 SUB_1
+    v 1063 "f" <-- anomaly (original vertex: 4 , in original example 145)
+    d 1063 87 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 145)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 88 SUB_1
+    v 1068 "f" <-- anomaly (original vertex: 4 , in original example 146)
+    d 1068 88 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 146)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 89 SUB_1
+    v 1074 "f" <-- anomaly (original vertex: 6 , in original example 147)
+    d 1074 89 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 147)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 90 SUB_1
+    v 1079 "f" <-- anomaly (original vertex: 6 , in original example 148)
+    d 1079 90 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 148)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 91 SUB_1
+    v 1083 "f" <-- anomaly (original vertex: 4 , in original example 149)
+    d 1083 91 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 149)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 92 SUB_1
+    v 1089 "f" <-- anomaly (original vertex: 6 , in original example 150)
+    d 1089 92 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 150)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 93 SUB_1
+    v 1094 "f" <-- anomaly (original vertex: 6 , in original example 151)
+    d 1094 93 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 151)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 94 SUB_1
+    v 1115 "f" <-- anomaly (original vertex: 4 , in original example 154)
+    d 1115 94 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 154)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 95 SUB_1
+    v 1120 "f" <-- anomaly (original vertex: 4 , in original example 155)
+    d 1120 95 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 155)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 96 SUB_1
+    v 1144 "f" <-- anomaly (original vertex: 6 , in original example 158)
+    d 1144 96 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 158)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 97 SUB_1
+    v 1148 "f" <-- anomaly (original vertex: 4 , in original example 159)
+    d 1148 97 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 159)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 98 SUB_1
+    v 1163 "f" <-- anomaly (original vertex: 6 , in original example 161)
+    d 1163 98 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 161)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 99 SUB_1
+    v 1168 "f" <-- anomaly (original vertex: 6 , in original example 162)
+    d 1168 99 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 162)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 100 SUB_1
+    v 1180 "f" <-- anomaly (original vertex: 4 , in original example 164)
+    d 1180 100 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 164)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 101 SUB_1
+    v 1185 "f" <-- anomaly (original vertex: 4 , in original example 165)
+    d 1185 101 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 165)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 102 SUB_1
+    v 1191 "f" <-- anomaly (original vertex: 6 , in original example 166)
+    d 1191 102 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 166)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 103 SUB_1
+    v 1231 "f" <-- anomaly (original vertex: 6 , in original example 171)
+    d 1231 103 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 171)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 104 SUB_1
+    v 1235 "f" <-- anomaly (original vertex: 4 , in original example 172)
+    d 1235 104 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 172)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 105 SUB_1
+    v 1240 "f" <-- anomaly (original vertex: 4 , in original example 173)
+    d 1240 105 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 173)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 106 SUB_1
+    v 1272 "f" <-- anomaly (original vertex: 4 , in original example 177)
+    d 1272 106 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 177)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 107 SUB_1
+    v 1277 "f" <-- anomaly (original vertex: 4 , in original example 178)
+    d 1277 107 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 178)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 108 SUB_1
+    v 1299 "f" <-- anomaly (original vertex: 4 , in original example 181)
+    d 1299 108 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 181)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 109 SUB_1
+    v 1304 "f" <-- anomaly (original vertex: 4 , in original example 182)
+    d 1304 109 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 182)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 110 SUB_1
+    v 1328 "f" <-- anomaly (original vertex: 6 , in original example 185)
+    d 1328 110 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 185)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 111 SUB_1
+    v 1333 "f" <-- anomaly (original vertex: 6 , in original example 186)
+    d 1333 111 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 186)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 112 SUB_1
+    v 1347 "f" <-- anomaly (original vertex: 6 , in original example 188)
+    d 1347 112 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 188)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 113 SUB_1
+    v 1369 "f" <-- anomaly (original vertex: 4 , in original example 191)
+    d 1369 113 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 191)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 114 SUB_1
+    v 1400 "f" <-- anomaly (original vertex: 4 , in original example 195)
+    d 1400 114 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 195)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 115 SUB_1
+    v 1424 "f" <-- anomaly (original vertex: 6 , in original example 198)
+    d 1424 115 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 198)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 10:
+    v 116 SUB_1
+    v 1428 "f" <-- anomaly (original vertex: 4 , in original example 199)
+    d 1428 116 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 199)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 1 SUB_1
+    v 120 "r" <-- anomaly (original vertex: 4 , in original example 1)
+    d 120 1 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 1)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 2 SUB_1
+    v 126 "r" <-- anomaly (original vertex: 6 , in original example 2)
+    d 126 2 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 2)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 3 SUB_1
+    v 130 "r" <-- anomaly (original vertex: 4 , in original example 3)
+    d 130 3 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 3)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 4 SUB_1
+    v 136 "r" <-- anomaly (original vertex: 6 , in original example 4)
+    d 136 4 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 4)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 5 SUB_1
+    v 165 "r" <-- anomaly (original vertex: 4 , in original example 8)
+    d 165 5 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 8)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 6 SUB_1
+    v 171 "r" <-- anomaly (original vertex: 6 , in original example 9)
+    d 171 6 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 9)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 7 SUB_1
+    v 175 "r" <-- anomaly (original vertex: 4 , in original example 10)
+    d 175 7 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 10)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 8 SUB_1
+    v 197 "r" <-- anomaly (original vertex: 4 , in original example 13)
+    d 197 8 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 13)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 9 SUB_1
+    v 202 "r" <-- anomaly (original vertex: 4 , in original example 14)
+    d 202 9 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 14)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 10 SUB_1
+    v 225 "r" <-- anomaly (original vertex: 4 , in original example 17)
+    d 225 10 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 17)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 11 SUB_1
+    v 230 "r" <-- anomaly (original vertex: 4 , in original example 18)
+    d 230 11 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 18)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 12 SUB_1
+    v 252 "r" <-- anomaly (original vertex: 4 , in original example 21)
+    d 252 12 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 21)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 13 SUB_1
+    v 267 "r" <-- anomaly (original vertex: 6 , in original example 23)
+    d 267 13 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 23)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 14 SUB_1
+    v 272 "r" <-- anomaly (original vertex: 6 , in original example 24)
+    d 272 14 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 24)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 1:
+    v 15 SUB_1
+    v 276 "r" <-- anomaly (original vertex: 4 , in original example 25)
+    d 276 15 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 25)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 16 SUB_1
+    v 281 "r" <-- anomaly (original vertex: 4 , in original example 26)
+    d 281 16 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 26)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 17 SUB_1
+    v 286 "r" <-- anomaly (original vertex: 4 , in original example 27)
+    d 286 17 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 27)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 18 SUB_1
+    v 292 "r" <-- anomaly (original vertex: 6 , in original example 28)
+    d 292 18 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 28)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 19 SUB_1
+    v 297 "r" <-- anomaly (original vertex: 6 , in original example 29)
+    d 297 19 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 29)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 20 SUB_1
+    v 311 "r" <-- anomaly (original vertex: 6 , in original example 31)
+    d 311 20 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 31)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 21 SUB_1
+    v 316 "r" <-- anomaly (original vertex: 6 , in original example 32)
+    d 316 21 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 32)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 22 SUB_1
+    v 320 "r" <-- anomaly (original vertex: 4 , in original example 33)
+    d 320 22 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 33)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 23 SUB_1
+    v 325 "r" <-- anomaly (original vertex: 4 , in original example 34)
+    d 325 23 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 34)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 24 SUB_1
+    v 331 "r" <-- anomaly (original vertex: 6 , in original example 35)
+    d 331 24 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 35)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 25 SUB_1
+    v 336 "r" <-- anomaly (original vertex: 6 , in original example 36)
+    d 336 25 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 36)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 26 SUB_1
+    v 340 "r" <-- anomaly (original vertex: 4 , in original example 37)
+    d 340 26 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 37)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 27 SUB_1
+    v 345 "r" <-- anomaly (original vertex: 4 , in original example 38)
+    d 345 27 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 38)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 28 SUB_1
+    v 350 "r" <-- anomaly (original vertex: 4 , in original example 39)
+    d 350 28 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 39)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 29 SUB_1
+    v 355 "r" <-- anomaly (original vertex: 4 , in original example 40)
+    d 355 29 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 40)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 2:
+    v 30 SUB_1
+    v 361 "r" <-- anomaly (original vertex: 6 , in original example 41)
+    d 361 30 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 41)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 3:
+    v 31 SUB_1
+    v 375 "r" <-- anomaly (original vertex: 6 , in original example 43)
+    d 375 31 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 43)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 32 SUB_1
+    v 380 "r" <-- anomaly (original vertex: 6 , in original example 44)
+    d 380 32 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 44)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 33 SUB_1
+    v 385 "r" <-- anomaly (original vertex: 6 , in original example 45)
+    d 385 33 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 45)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 34 SUB_1
+    v 399 "r" <-- anomaly (original vertex: 6 , in original example 47)
+    d 399 34 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 47)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 35 SUB_1
+    v 403 "r" <-- anomaly (original vertex: 4 , in original example 48)
+    d 403 35 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 48)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 36 SUB_1
+    v 409 "r" <-- anomaly (original vertex: 6 , in original example 49)
+    d 409 36 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 49)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 37 SUB_1
+    v 431 "r" <-- anomaly (original vertex: 4 , in original example 52)
+    d 431 37 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 52)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 38 SUB_1
+    v 436 "r" <-- anomaly (original vertex: 4 , in original example 53)
+    d 436 38 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 53)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 39 SUB_1
+    v 459 "r" <-- anomaly (original vertex: 4 , in original example 56)
+    d 459 39 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 56)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 40 SUB_1
+    v 465 "r" <-- anomaly (original vertex: 6 , in original example 57)
+    d 465 40 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 57)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 41 SUB_1
+    v 469 "r" <-- anomaly (original vertex: 4 , in original example 58)
+    d 469 41 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 58)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 42 SUB_1
+    v 475 "r" <-- anomaly (original vertex: 6 , in original example 59)
+    d 475 42 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 59)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 43 SUB_1
+    v 480 "r" <-- anomaly (original vertex: 6 , in original example 60)
+    d 480 43 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 60)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 44 SUB_1
+    v 502 "r" <-- anomaly (original vertex: 4 , in original example 63)
+    d 502 44 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 63)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 3:
+    v 45 SUB_1
+    v 507 "r" <-- anomaly (original vertex: 4 , in original example 64)
+    d 507 45 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 64)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 46 SUB_1
+    v 513 "r" <-- anomaly (original vertex: 6 , in original example 65)
+    d 513 46 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 65)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 47 SUB_1
+    v 517 "r" <-- anomaly (original vertex: 4 , in original example 66)
+    d 517 47 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 66)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 48 SUB_1
+    v 522 "r" <-- anomaly (original vertex: 4 , in original example 67)
+    d 522 48 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 67)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 49 SUB_1
+    v 554 "r" <-- anomaly (original vertex: 4 , in original example 71)
+    d 554 49 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 71)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 50 SUB_1
+    v 559 "r" <-- anomaly (original vertex: 4 , in original example 72)
+    d 559 50 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 72)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 51 SUB_1
+    v 573 "r" <-- anomaly (original vertex: 6 , in original example 74)
+    d 573 51 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 74)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 52 SUB_1
+    v 577 "r" <-- anomaly (original vertex: 4 , in original example 75)
+    d 577 52 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 75)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 53 SUB_1
+    v 583 "r" <-- anomaly (original vertex: 6 , in original example 76)
+    d 583 53 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 76)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 54 SUB_1
+    v 605 "r" <-- anomaly (original vertex: 4 , in original example 79)
+    d 605 54 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 79)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 55 SUB_1
+    v 610 "r" <-- anomaly (original vertex: 4 , in original example 80)
+    d 610 55 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 80)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
     v 56 SUB_1
-    v 638 "R" <-- anomaly (original vertex: 12 , in original example 56)
-    d 56 638 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 56)
-    (probabilistic anomalous value = 0.435000 )
+    v 624 "r" <-- anomaly (original vertex: 4 , in original example 82)
+    d 624 56 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 82)
+    (probabilistic anomalous value = 1.000000 )
 
  from positive example 4:
+    v 57 SUB_1
+    v 629 "r" <-- anomaly (original vertex: 4 , in original example 83)
+    d 629 57 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 83)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 58 SUB_1
+    v 634 "r" <-- anomaly (original vertex: 4 , in original example 84)
+    d 634 58 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 84)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 59 SUB_1
+    v 639 "r" <-- anomaly (original vertex: 4 , in original example 85)
+    d 639 59 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 85)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 4:
+    v 60 SUB_1
+    v 662 "r" <-- anomaly (original vertex: 6 , in original example 88)
+    d 662 60 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 88)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
     v 61 SUB_1
-    v 679 "R" <-- anomaly (original vertex: 12 , in original example 61)
-    d 61 679 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 61)
-    (probabilistic anomalous value = 0.435000 )
+    v 666 "r" <-- anomaly (original vertex: 4 , in original example 89)
+    d 666 61 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 89)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 4:
+ from positive example 5:
+    v 62 SUB_1
+    v 699 "r" <-- anomaly (original vertex: 6 , in original example 93)
+    d 699 62 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 93)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
     v 63 SUB_1
-    v 696 "R" <-- anomaly (original vertex: 12 , in original example 63)
-    d 63 696 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 63)
-    (probabilistic anomalous value = 0.435000 )
+    v 703 "r" <-- anomaly (original vertex: 4 , in original example 94)
+    d 703 63 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 94)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 4:
+ from positive example 5:
+    v 64 SUB_1
+    v 762 "r" <-- anomaly (original vertex: 4 , in original example 101)
+    d 762 64 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 101)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
     v 65 SUB_1
-    v 713 "R" <-- anomaly (original vertex: 12 , in original example 65)
-    d 65 713 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 65)
-    (probabilistic anomalous value = 0.435000 )
+    v 786 "r" <-- anomaly (original vertex: 6 , in original example 104)
+    d 786 65 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 104)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 4:
+ from positive example 5:
+    v 66 SUB_1
+    v 790 "r" <-- anomaly (original vertex: 4 , in original example 105)
+    d 790 66 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 105)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 5:
     v 67 SUB_1
-    v 730 "R" <-- anomaly (original vertex: 12 , in original example 67)
-    d 67 730 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 67)
-    (probabilistic anomalous value = 0.435000 )
+    v 804 "r" <-- anomaly (original vertex: 6 , in original example 107)
+    d 804 67 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 107)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 4:
+ from positive example 5:
     v 68 SUB_1
-    v 739 "R" <-- anomaly (original vertex: 12 , in original example 68)
-    d 68 739 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 68)
-    (probabilistic anomalous value = 0.435000 )
+    v 809 "r" <-- anomaly (original vertex: 6 , in original example 108)
+    d 809 68 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 108)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 4:
+ from positive example 5:
     v 69 SUB_1
-    v 748 "R" <-- anomaly (original vertex: 12 , in original example 69)
-    d 69 748 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 69)
-    (probabilistic anomalous value = 0.435000 )
+    v 831 "r" <-- anomaly (original vertex: 4 , in original example 111)
+    d 831 69 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 111)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 6:
+    v 70 SUB_1
+    v 837 "r" <-- anomaly (original vertex: 6 , in original example 112)
+    d 837 70 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 112)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
+    v 71 SUB_1
+    v 860 "r" <-- anomaly (original vertex: 6 , in original example 115)
+    d 860 71 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 115)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
     v 72 SUB_1
-    v 773 "R" <-- anomaly (original vertex: 12 , in original example 72)
-    d 72 773 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 72)
-    (probabilistic anomalous value = 0.435000 )
+    v 865 "r" <-- anomaly (original vertex: 6 , in original example 116)
+    d 865 72 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 116)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 6:
     v 73 SUB_1
-    v 782 "R" <-- anomaly (original vertex: 12 , in original example 73)
-    d 73 782 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 73)
-    (probabilistic anomalous value = 0.435000 )
+    v 888 "r" <-- anomaly (original vertex: 6 , in original example 119)
+    d 888 73 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 119)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 6:
     v 74 SUB_1
-    v 791 "R" <-- anomaly (original vertex: 12 , in original example 74)
-    d 74 791 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 74)
-    (probabilistic anomalous value = 0.435000 )
+    v 938 "r" <-- anomaly (original vertex: 6 , in original example 125)
+    d 938 74 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 125)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 6:
+    v 75 SUB_1
+    v 942 "r" <-- anomaly (original vertex: 4 , in original example 126)
+    d 942 75 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 126)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 6:
     v 76 SUB_1
-    v 808 "R" <-- anomaly (original vertex: 12 , in original example 76)
-    d 76 808 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 76)
-    (probabilistic anomalous value = 0.435000 )
+    v 957 "r" <-- anomaly (original vertex: 6 , in original example 128)
+    d 957 76 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 128)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 6:
+    v 77 SUB_1
+    v 962 "r" <-- anomaly (original vertex: 6 , in original example 129)
+    d 962 77 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 129)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 78 SUB_1
+    v 976 "r" <-- anomaly (original vertex: 6 , in original example 131)
+    d 976 78 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 131)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
+    v 79 SUB_1
+    v 989 "r" <-- anomaly (original vertex: 4 , in original example 133)
+    d 989 79 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 133)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
     v 80 SUB_1
-    v 829 "R" <-- anomaly (original vertex: 12 , in original example 80)
-    d 80 829 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 80)
-    (probabilistic anomalous value = 0.435000 )
+    v 995 "r" <-- anomaly (original vertex: 6 , in original example 134)
+    d 995 80 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 134)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 7:
+    v 81 SUB_1
+    v 999 "r" <-- anomaly (original vertex: 4 , in original example 135)
+    d 999 81 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 135)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 7:
     v 82 SUB_1
-    v 846 "R" <-- anomaly (original vertex: 12 , in original example 82)
-    d 82 846 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 82)
-    (probabilistic anomalous value = 0.435000 )
+    v 1005 "r" <-- anomaly (original vertex: 6 , in original example 136)
+    d 1005 82 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 136)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 7:
     v 83 SUB_1
-    v 849 "R" <-- anomaly (original vertex: 12 , in original example 83)
-    d 83 849 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 83)
-    (probabilistic anomalous value = 0.435000 )
+    v 1010 "r" <-- anomaly (original vertex: 6 , in original example 137)
+    d 1010 83 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 137)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 7:
     v 84 SUB_1
-    v 858 "R" <-- anomaly (original vertex: 12 , in original example 84)
-    d 84 858 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 84)
-    (probabilistic anomalous value = 0.435000 )
+    v 1014 "r" <-- anomaly (original vertex: 4 , in original example 138)
+    d 1014 84 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 138)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 5:
+ from positive example 7:
+    v 85 SUB_1
+    v 1019 "r" <-- anomaly (original vertex: 4 , in original example 139)
+    d 1019 85 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 139)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 86 SUB_1
+    v 1058 "r" <-- anomaly (original vertex: 4 , in original example 144)
+    d 1058 86 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 144)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
     v 87 SUB_1
-    v 883 "R" <-- anomaly (original vertex: 12 , in original example 87)
-    d 87 883 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 87)
-    (probabilistic anomalous value = 0.435000 )
+    v 1064 "r" <-- anomaly (original vertex: 6 , in original example 145)
+    d 1064 87 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 145)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 8:
+    v 88 SUB_1
+    v 1069 "r" <-- anomaly (original vertex: 6 , in original example 146)
+    d 1069 88 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 146)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 89 SUB_1
+    v 1073 "r" <-- anomaly (original vertex: 4 , in original example 147)
+    d 1073 89 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 147)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 90 SUB_1
+    v 1078 "r" <-- anomaly (original vertex: 4 , in original example 148)
+    d 1078 90 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 148)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
     v 91 SUB_1
-    v 916 "R" <-- anomaly (original vertex: 12 , in original example 91)
-    d 91 916 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 91)
-    (probabilistic anomalous value = 0.435000 )
+    v 1084 "r" <-- anomaly (original vertex: 6 , in original example 149)
+    d 1084 91 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 149)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 8:
+    v 92 SUB_1
+    v 1088 "r" <-- anomaly (original vertex: 4 , in original example 150)
+    d 1088 92 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 150)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 93 SUB_1
+    v 1093 "r" <-- anomaly (original vertex: 4 , in original example 151)
+    d 1093 93 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 151)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 94 SUB_1
+    v 1116 "r" <-- anomaly (original vertex: 6 , in original example 154)
+    d 1116 94 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 154)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 95 SUB_1
+    v 1121 "r" <-- anomaly (original vertex: 6 , in original example 155)
+    d 1121 95 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 155)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
     v 96 SUB_1
-    v 957 "R" <-- anomaly (original vertex: 12 , in original example 96)
-    d 96 957 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 96)
-    (probabilistic anomalous value = 0.435000 )
+    v 1143 "r" <-- anomaly (original vertex: 4 , in original example 158)
+    d 1143 96 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 158)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 8:
     v 97 SUB_1
-    v 966 "R" <-- anomaly (original vertex: 12 , in original example 97)
-    d 97 966 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 97)
-    (probabilistic anomalous value = 0.435000 )
+    v 1149 "r" <-- anomaly (original vertex: 6 , in original example 159)
+    d 1149 97 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 159)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 8:
+    v 98 SUB_1
+    v 1162 "r" <-- anomaly (original vertex: 4 , in original example 161)
+    d 1162 98 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 161)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 99 SUB_1
+    v 1167 "r" <-- anomaly (original vertex: 4 , in original example 162)
+    d 1167 99 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 162)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 8:
+    v 100 SUB_1
+    v 1181 "r" <-- anomaly (original vertex: 6 , in original example 164)
+    d 1181 100 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 164)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
     v 101 SUB_1
-    v 993 "R" <-- anomaly (original vertex: 12 , in original example 101)
-    d 101 993 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 101)
-    (probabilistic anomalous value = 0.435000 )
+    v 1186 "r" <-- anomaly (original vertex: 6 , in original example 165)
+    d 1186 101 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 165)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 9:
     v 102 SUB_1
-    v 1002 "R" <-- anomaly (original vertex: 12 , in original example 102)
-    d 102 1002 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 102)
-    (probabilistic anomalous value = 0.435000 )
+    v 1190 "r" <-- anomaly (original vertex: 4 , in original example 166)
+    d 1190 102 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 166)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 9:
+    v 103 SUB_1
+    v 1230 "r" <-- anomaly (original vertex: 4 , in original example 171)
+    d 1230 103 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 171)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 104 SUB_1
+    v 1236 "r" <-- anomaly (original vertex: 6 , in original example 172)
+    d 1236 104 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 172)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
     v 105 SUB_1
-    v 1027 "R" <-- anomaly (original vertex: 12 , in original example 105)
-    d 105 1027 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 105)
-    (probabilistic anomalous value = 0.435000 )
+    v 1241 "r" <-- anomaly (original vertex: 6 , in original example 173)
+    d 1241 105 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 173)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 9:
     v 106 SUB_1
-    v 1036 "R" <-- anomaly (original vertex: 12 , in original example 106)
-    d 106 1036 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 106)
-    (probabilistic anomalous value = 0.435000 )
+    v 1273 "r" <-- anomaly (original vertex: 6 , in original example 177)
+    d 1273 106 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 177)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 9:
+    v 107 SUB_1
+    v 1278 "r" <-- anomaly (original vertex: 6 , in original example 178)
+    d 1278 107 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 178)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
     v 108 SUB_1
-    v 1053 "R" <-- anomaly (original vertex: 12 , in original example 108)
-    d 108 1053 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 108)
-    (probabilistic anomalous value = 0.435000 )
+    v 1300 "r" <-- anomaly (original vertex: 6 , in original example 181)
+    d 1300 108 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 181)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 6:
+ from positive example 9:
     v 109 SUB_1
-    v 1062 "R" <-- anomaly (original vertex: 12 , in original example 109)
-    d 109 1062 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 109)
-    (probabilistic anomalous value = 0.435000 )
+    v 1305 "r" <-- anomaly (original vertex: 6 , in original example 182)
+    d 1305 109 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 182)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 7:
+ from positive example 9:
+    v 110 SUB_1
+    v 1327 "r" <-- anomaly (original vertex: 4 , in original example 185)
+    d 1327 110 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 185)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
+    v 111 SUB_1
+    v 1332 "r" <-- anomaly (original vertex: 4 , in original example 186)
+    d 1332 111 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 186)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
     v 112 SUB_1
-    v 1087 "R" <-- anomaly (original vertex: 12 , in original example 112)
-    d 112 1087 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 112)
-    (probabilistic anomalous value = 0.435000 )
+    v 1346 "r" <-- anomaly (original vertex: 4 , in original example 188)
+    d 1346 112 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 188)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 7:
+ from positive example 9:
     v 113 SUB_1
-    v 1096 "R" <-- anomaly (original vertex: 12 , in original example 113)
-    d 113 1096 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 113)
-    (probabilistic anomalous value = 0.435000 )
+    v 1370 "r" <-- anomaly (original vertex: 6 , in original example 191)
+    d 1370 113 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 191)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 7:
+ from positive example 9:
+    v 114 SUB_1
+    v 1401 "r" <-- anomaly (original vertex: 6 , in original example 195)
+    d 1401 114 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 195)
+    (probabilistic anomalous value = 1.000000 )
+
+ from positive example 9:
     v 115 SUB_1
-    v 1113 "R" <-- anomaly (original vertex: 12 , in original example 115)
-    d 115 1113 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 115)
-    (probabilistic anomalous value = 0.435000 )
+    v 1423 "r" <-- anomaly (original vertex: 4 , in original example 198)
+    d 1423 115 "e" <-- anomaly (original edge vertices: 4 -- 5, in original example 198)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 7:
+ from positive example 10:
     v 116 SUB_1
-    v 1122 "R" <-- anomaly (original vertex: 12 , in original example 116)
-    d 116 1122 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 116)
-    (probabilistic anomalous value = 0.435000 )
+    v 1429 "r" <-- anomaly (original vertex: 6 , in original example 199)
+    d 1429 116 "e" <-- anomaly (original edge vertices: 6 -- 5, in original example 199)
+    (probabilistic anomalous value = 1.000000 )
 
- from positive example 7:
-    v 121 SUB_1
-    v 1163 "R" <-- anomaly (original vertex: 12 , in original example 121)
-    d 121 1163 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 121)
-    (probabilistic anomalous value = 0.435000 )
+Best 31 substructures:
 
- from positive example 7:
-    v 123 SUB_1
-    v 1180 "R" <-- anomaly (original vertex: 12 , in original example 123)
-    d 123 1180 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 123)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 7:
-    v 124 SUB_1
-    v 1189 "R" <-- anomaly (original vertex: 12 , in original example 124)
-    d 124 1189 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 124)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 7:
-    v 127 SUB_1
-    v 1214 "R" <-- anomaly (original vertex: 12 , in original example 127)
-    d 127 1214 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 127)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 7:
-    v 128 SUB_1
-    v 1223 "R" <-- anomaly (original vertex: 12 , in original example 128)
-    d 128 1223 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 128)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 7:
-    v 130 SUB_1
-    v 1240 "R" <-- anomaly (original vertex: 12 , in original example 130)
-    d 130 1240 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 130)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 8:
-    v 136 SUB_1
-    v 1289 "R" <-- anomaly (original vertex: 12 , in original example 136)
-    d 136 1289 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 136)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 8:
-    v 137 SUB_1
-    v 1298 "R" <-- anomaly (original vertex: 12 , in original example 137)
-    d 137 1298 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 137)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 8:
-    v 141 SUB_1
-    v 1331 "R" <-- anomaly (original vertex: 12 , in original example 141)
-    d 141 1331 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 141)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 8:
-    v 147 SUB_1
-    v 1374 "R" <-- anomaly (original vertex: 12 , in original example 147)
-    d 147 1374 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 147)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 151 SUB_1
-    v 1407 "R" <-- anomaly (original vertex: 12 , in original example 151)
-    d 151 1407 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 151)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 153 SUB_1
-    v 1424 "R" <-- anomaly (original vertex: 12 , in original example 153)
-    d 153 1424 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 153)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 160 SUB_1
-    v 1481 "R" <-- anomaly (original vertex: 12 , in original example 160)
-    d 160 1481 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 160)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 161 SUB_1
-    v 1490 "R" <-- anomaly (original vertex: 12 , in original example 161)
-    d 161 1490 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 161)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 163 SUB_1
-    v 1507 "R" <-- anomaly (original vertex: 12 , in original example 163)
-    d 163 1507 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 163)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 164 SUB_1
-    v 1516 "R" <-- anomaly (original vertex: 12 , in original example 164)
-    d 164 1516 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 164)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 166 SUB_1
-    v 1533 "R" <-- anomaly (original vertex: 12 , in original example 166)
-    d 166 1533 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 166)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 167 SUB_1
-    v 1542 "R" <-- anomaly (original vertex: 12 , in original example 167)
-    d 167 1542 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 167)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 9:
-    v 168 SUB_1
-    v 1551 "R" <-- anomaly (original vertex: 12 , in original example 168)
-    d 168 1551 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 168)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 175 SUB_1
-    v 1602 "R" <-- anomaly (original vertex: 12 , in original example 175)
-    d 175 1602 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 175)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 177 SUB_1
-    v 1619 "R" <-- anomaly (original vertex: 12 , in original example 177)
-    d 177 1619 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 177)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 179 SUB_1
-    v 1636 "R" <-- anomaly (original vertex: 12 , in original example 179)
-    d 179 1636 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 179)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 180 SUB_1
-    v 1645 "R" <-- anomaly (original vertex: 12 , in original example 180)
-    d 180 1645 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 180)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 182 SUB_1
-    v 1650 "R" <-- anomaly (original vertex: 12 , in original example 182)
-    d 182 1650 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 182)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 186 SUB_1
-    v 1683 "R" <-- anomaly (original vertex: 12 , in original example 186)
-    d 186 1683 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 186)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 10:
-    v 190 SUB_1
-    v 1716 "R" <-- anomaly (original vertex: 12 , in original example 190)
-    d 190 1716 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 190)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 11:
-    v 192 SUB_1
-    v 1733 "R" <-- anomaly (original vertex: 12 , in original example 192)
-    d 192 1733 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 192)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 11:
-    v 195 SUB_1
-    v 1758 "R" <-- anomaly (original vertex: 12 , in original example 195)
-    d 195 1758 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 195)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 11:
-    v 196 SUB_1
-    v 1767 "R" <-- anomaly (original vertex: 12 , in original example 196)
-    d 196 1767 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 196)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 11:
-    v 197 SUB_1
-    v 1776 "R" <-- anomaly (original vertex: 12 , in original example 197)
-    d 197 1776 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 197)
-    (probabilistic anomalous value = 0.435000 )
-
- from positive example 11:
-    v 199 SUB_1
-    v 1793 "R" <-- anomaly (original vertex: 12 , in original example 199)
-    d 199 1793 "e" <-- anomaly (original edge vertices: 11 -- 12, in original example 199)
-    (probabilistic anomalous value = 0.435000 )
-
-Best 22 substructures:
-
-(1) Substructure: value = 1.11476, instances = 187
+(1) Substructure: value = 1.08943, instances = 116
   Graph(2v,1e):
-    v 1 "z"
-    v 2 "N"
+    v 1 "START"
+    v 2 "m"
     d 1 2 "e"
 
-(2) Substructure: value = 1.10779, instances = 187
+(2) Substructure: value = 1.08692, instances = 116
   Graph(2v,1e):
-    v 1 "3"
-    v 2 "V"
+    v 1 SUB_1
+    v 2 "f"
+    d 2 1 "e"
+
+(3) Substructure: value = 1.08674, instances = 116
+  Graph(2v,1e):
+    v 1 SUB_1
+    v 2 "r"
+    d 2 1 "e"
+
+(4) Substructure: value = 1.08424, instances = 116
+  Graph(2v,1e):
+    v 1 "m"
+    v 2 "L"
     d 1 2 "e"
 
-(3) Substructure: value = 1.10779, instances = 187
+(5) Substructure: value = 1.0603, instances = 84
   Graph(2v,1e):
-    v 1 "V"
-    v 2 "0"
+    v 1 "START"
+    v 2 "A"
     d 1 2 "e"
 
-(4) Substructure: value = 1.10779, instances = 187
+(6) Substructure: value = 1.05673, instances = 84
   Graph(2v,1e):
-    v 1 "0"
+    v 1 "A"
+    v 2 "7"
+    d 1 2 "e"
+
+(7) Substructure: value = 1.05673, instances = 84
+  Graph(2v,1e):
+    v 1 "7"
+    v 2 "d"
+    d 1 2 "e"
+
+(8) Substructure: value = 1.05673, instances = 84
+  Graph(2v,1e):
+    v 1 "d"
+    v 2 "u"
+    d 1 2 "e"
+
+(9) Substructure: value = 1.05673, instances = 84
+  Graph(2v,1e):
+    v 1 "u"
     v 2 "y"
     d 1 2 "e"
 
-(5) Substructure: value = 1.10779, instances = 187
+(10) Substructure: value = 1.04802, instances = 70
+  Graph(2v,1e):
+    v 1 "W"
+    v 2 "0"
+    d 1 2 "e"
+
+(11) Substructure: value = 1.04511, instances = 70
   Graph(2v,1e):
     v 1 "y"
-    v 2 "l"
-    d 1 2 "e"
-
-(6) Substructure: value = 1.10779, instances = 187
-  Graph(2v,1e):
-    v 1 "l"
-    v 2 "z"
-    d 1 2 "e"
-
-(7) Substructure: value = 1.06091, instances = 113
-  Graph(2v,1e):
-    v 1 SUB_1
-    v 2 "9"
-    d 1 2 "e"
-
-(8) Substructure: value = 1.05731, instances = 113
-  Graph(2v,1e):
-    v 1 "9"
-    v 2 "3"
-    d 1 2 "e"
-
-(9) Substructure: value = 1.04316, instances = 87
-  Graph(2v,1e):
-    v 1 SUB_1
-    v 2 "R"
-    d 1 2 "e"
-
-(10) Substructure: value = 1.0405, instances = 87
-  Graph(2v,1e):
-    v 1 "c"
-    v 2 "3"
-    d 1 2 "e"
-
-(11) Substructure: value = 1.0403, instances = 87
-  Graph(2v,1e):
-    v 1 "R"
     v 2 "c"
     d 1 2 "e"
 
-(12) Substructure: value = 0.988108, instances = 187
-  Graph(1v,0e):
-    v 1 "V"
+(12) Substructure: value = 1.04511, instances = 70
+  Graph(2v,1e):
+    v 1 "c"
+    v 2 "W"
+    d 1 2 "e"
 
-(13) Substructure: value = 0.988108, instances = 187
+(13) Substructure: value = 1.03697, instances = 60
+  Graph(2v,1e):
+    v 1 "L"
+    v 2 "r"
+    d 1 2 "e"
+
+(14) Substructure: value = 1.03374, instances = 56
+  Graph(2v,1e):
+    v 1 "L"
+    v 2 "f"
+    d 1 2 "e"
+
+(15) Substructure: value = 1.00154, instances = 14
+  Graph(2v,1e):
+    v 1 "E"
+    v 2 "0"
+    d 1 2 "e"
+
+(16) Substructure: value = 1.00101, instances = 14
+  Graph(2v,1e):
+    v 1 "y"
+    v 2 "E"
+    d 1 2 "e"
+
+(17) Substructure: value = 0.991056, instances = 84
   Graph(1v,0e):
     v 1 "0"
 
-(14) Substructure: value = 0.988108, instances = 187
-  Graph(1v,0e):
-    v 1 "y"
-
-(15) Substructure: value = 0.988108, instances = 187
-  Graph(1v,0e):
-    v 1 "l"
-
-(16) Substructure: value = 0.988108, instances = 187
-  Graph(1v,0e):
-    v 1 "z"
-
-(17) Substructure: value = 0.988108, instances = 113
-  Graph(1v,0e):
-    v 1 "9"
-
-(18) Substructure: value = 0.988108, instances = 200
-  Graph(1v,0e):
-    v 1 "3"
-
-(19) Substructure: value = 0.988108, instances = 87
-  Graph(1v,0e):
-    v 1 "R"
-
-(20) Substructure: value = 0.988108, instances = 87
-  Graph(1v,0e):
-    v 1 "c"
-
-(21) Substructure: value = 0.988108, instances = 200
+(18) Substructure: value = 0.991056, instances = 116
   Graph(1v,0e):
     v 1 SUB_1
 
-(22) Substructure: value = 0.988108, instances = 187
+(19) Substructure: value = 0.991056, instances = 14
   Graph(1v,0e):
-    v 1 "N"
+    v 1 "E"
+
+(20) Substructure: value = 0.991056, instances = 70
+  Graph(1v,0e):
+    v 1 "c"
+
+(21) Substructure: value = 0.991056, instances = 70
+  Graph(1v,0e):
+    v 1 "W"
+
+(22) Substructure: value = 0.991056, instances = 84
+  Graph(1v,0e):
+    v 1 "A"
+
+(23) Substructure: value = 0.991056, instances = 84
+  Graph(1v,0e):
+    v 1 "7"
+
+(24) Substructure: value = 0.991056, instances = 84
+  Graph(1v,0e):
+    v 1 "d"
+
+(25) Substructure: value = 0.991056, instances = 84
+  Graph(1v,0e):
+    v 1 "u"
+
+(26) Substructure: value = 0.991056, instances = 84
+  Graph(1v,0e):
+    v 1 "y"
+
+(27) Substructure: value = 0.991056, instances = 116
+  Graph(1v,0e):
+    v 1 "m"
+
+(28) Substructure: value = 0.991056, instances = 116
+  Graph(1v,0e):
+    v 1 "L"
+
+(29) Substructure: value = 0.991056, instances = 116
+  Graph(1v,0e):
+    v 1 "r"
+
+(30) Substructure: value = 0.991056, instances = 116
+  Graph(1v,0e):
+    v 1 "f"
+
+(31) Substructure: value = 0.991056, instances = 200
+  Graph(1v,0e):
+    v 1 "START"
 
 Elapsed time for iteration 2 = 0 seconds.
 
 
-GBAD done (elapsed CPU time =    2.45 seconds).
+GBAD done (elapsed CPU time =    2.54 seconds).

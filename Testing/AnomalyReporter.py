@@ -39,7 +39,6 @@ class AnomalyReporter(object):
 		Thus, search for all lines with this string, parse the number, and we've a list of trace-ids for the anomalies.
 		"""
 		for line in gbadOutput:
-			#detects output of mdl and mps versions of gbad
 			if "from example " in line:
 				#print("found anom: "+line)
 				#parses 50 from 'from example 50:'

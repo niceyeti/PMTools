@@ -32,6 +32,7 @@ platform="$osName"
 if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 	echo resetting paths for $platform
 	gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl_linux"
+	#gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad"
 	gbadFsmPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-fsm_linux"
 	subduePath="../../subdue-5.2.2/subdue-5.2.2/src/subdue_linux"
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
@@ -93,9 +94,9 @@ cat /dev/null > $mpsResult
 cat /dev/null > $probResult
 cat /dev/null > $fsmResult
 echo Running gbad-mdl from $gbadMdlPath ...
-$gbadMdlPath -mdl 0.2 $subdueLogPath > $mdlResult
+$gbadMdlPath -mdl 0.9 $subdueLogPath > $mdlResult
 echo Running gbad-mps from $gbadMdlPath ...
-$gbadMdlPath -mps 0.2 $subdueLogPath > $mpsResult
+$gbadMdlPath -mps 0.9 $subdueLogPath > $mpsResult
 echo Running gbad-prob from $gbadMdlPath ...
 $gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
