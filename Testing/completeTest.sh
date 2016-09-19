@@ -10,7 +10,7 @@ minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
 minerPath="../scripts/PromTools/miner.sh"
 classifierString="Activity"
-
+ $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 pnmlPath="../SyntheticData/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
@@ -75,7 +75,7 @@ fi
 ###Generate sub-graphs from the mined graphml model
 #python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
 ##Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
+##python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)

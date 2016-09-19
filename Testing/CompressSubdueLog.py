@@ -16,20 +16,53 @@ Note this currently only takes the top substructure listed in the .g file.
 """
 def Compress(logPath, subsPath, outPath):
 	bestSub = _parseBestSubstructure(subsPath)
-	print(str(sub))
-	
-	subgraphs = _buildAllTraces(gLog)
-	compressedSubs = _compressAllTraces(subgraphs, bestSub)
-	_writeSubs(compressedSubs, outPath)
+	print(str(bestSub))
+	subgraphs = _buildAllTraces(logPath)
+	print(str(subgraphs))
+	#compressedSubs = _compressAllTraces(subgraphs, bestSub)
+	#_writeSubs(compressedSubs, outPath)
 	
 """
 Given a list of sub-graphs stored in igraph.Graph structures, write each one
 to a new output file, suitable as input to subdue/gbad.
+
+@subs: A list of igraph structures representing .g traces
+@outPath: The path to which the new .g trace file will be written
 """
 def _writeSubs(subs, outPath):
+	ofile = open(outPath, "w+")
+
+	for sub in subs:
+		ofile.write(_sub2GFormatString(sub)+"\n")
 	
+	ofile.close()
+
+"""
+Given a sub-graph .g trace in igraph form, converts the structure into a string formatted
+in .g format used by subdue/gbad.
+
+NOTE: This outputs using linux line endings
+
+returns: string representing this subgraph/trace in .g format
+"""
+def _sub2GFormatString(sub):
+	vertexDict = {}
+	s = sub["header"]+"\n"
+	#build the vertex declarations
+	i = 0
+	for v in sub.vs:
+		s += ("v "+str(i)+" "+v["name"]+"\n")
+		vertexDict[i] = v["name"]
+		i += 1
+		
+	#build the edge declarations
+	for e in sub.es:
+		src = vetexDict[sub.vs[e[0]]["name"]]
+		dst = vetexDict[sub.vs[e[1]]["name"]]
+		s+= ("d "+str(src)+" "+str(dst)+"\n")
 	
-	
+	return s
+
 """
 Given a trace subgraph from the log and a compressing substructure, 
 this compresses the subgraph wrt to the compressing substructure. If
@@ -105,7 +138,7 @@ the trace is preserved in its current form. If the trace does contain the substr
 substructure is replaced with a single node "SUB1", and all in/out edges to/from the structure are woven
 into this metanode.
 """
-def _compressAllTraces(traceSubs, bestSub)
+def _compressAllTraces(traceSubs, bestSub):
 	compressedSubs = []
 	
 	for trace in traceSubs:
@@ -121,32 +154,36 @@ Returns: A list of subgraphs representing all traces in the log, as igraph.Graph
 """
 def _buildAllTraces(logPath):
 	logFile = open(logPath,"r")
-	tempLines = []
 	subgList = []
-	subHeader = ""
 	
-	for line in logFile.readlines():
-		if "XP " == line[0:4]:
+	i = 0
+	lines = logFile.readlines()
+	while i < len(lines):
+		line = lines[i]
+		#start of subgraph, so spool and consume its contents
+		if "XP" == line[0:2]:
 			header = line.rstrip()
-			#if tempLines is full, build the last subgraph, and restart tempList for gathering lines with which to build the next one
-			if len(tempLines) > 0:
-				subsStr = ""
-				for ln in tempLines:
-					subsStr += ln.rstrip()+"~"
-				subsStr += "~" #one extra tilde, per the requirement in the _subDeclarationToGraph() header
-				sub = _subDeclarationToGraph(subsStr)
-				sub["header"] = header
-				tempLines = []
-			else:
-				tempLines += line
-	
+			i += 1
+			tempLines = []
+			while i < len(lines) and lines[i][0:2] != "XP":
+				tempLines.append(lines[i].rstrip())
+				i+=1
+			if i < len(lines):
+				i-=1
+
+			subsStr = ""
+			for ln in tempLines:
+				subsStr += (ln.rstrip()+"~")
+			subsStr += "~" #one extra tilde, per the requirement in the _subDeclarationToGraph() header
+			print("subs in: "+subsStr)
+			sub = _subDeclarationToGraph(subsStr)
+			sub["header"] = header
+			print("SUB OUT:\n"+sub["header"]+"\n"+str(sub))
+			tempLines = []
+		else:
+			i+=1
+
 	return subgList
-	
-def 
-	
-
-
-
 
 """
 Assumptions: the .g substructures are all "d" edges.
@@ -169,7 +206,7 @@ def _parseBestSubstructure(subsPath):
 	print("subs raw: "+subsRaw)
 	sub = _subDeclarationToGraph(subsRaw)
 
-	return substructure
+	return sub
 	
 """
 Converts a substructure (subgraph) declaration string in .g format to an igraph.Graph structure.
@@ -182,9 +219,11 @@ that coincide with the declared vertex names.
 """
 def _subDeclarationToGraph(subStr):
 	substructure = igraph.Graph(directed=True)
+	vertexDict = {}
+	edges = []
 	
 	#within the string, find all the "v" and "d" (edge) declarations
-	for line in subsRaw.split("~"):
+	for line in subStr.split("~"):
 		ln = line.strip()
 		if len(ln) > 2:
 			#parse a vertex declaration

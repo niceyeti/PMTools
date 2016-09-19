@@ -123,7 +123,6 @@ class Retracer(object):
 	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
 	"""		
 	def _replaySequence(self, sequence, graph):
-
 		#init the edge sequence with the edge from START to sequence[0] the first activity
 		edgeSequence = []
 		initialEdge = self._getEdge("START", sequence[0], graph)
@@ -153,6 +152,8 @@ class Retracer(object):
 		finalEdge = self._getEdge(sequence[len(sequence)-1], "END", graph)
 		if finalEdge == None:
 			print("WARNING no final edge found to END node for sequence >"+sequence+"<")
+		else:
+			edgeSequence.append(finalEdge)
 
 		return edgeSequence
 
@@ -198,7 +199,7 @@ class Retracer(object):
 
 	@isAnomalous: Whether or not this trace is anomalous
 	@traceNo: This trace's number.
-	@gTrace: The list of edges representing this trace
+	@gTrace: The list of edges representing this trace, as igraph-edges
 	"""
 	def _buildGbadRecord(self, isAnomalous, traceNo, gTrace, graph):
 		vertexCounter = 1
@@ -206,6 +207,7 @@ class Retracer(object):
 		record = "XP # "+str(traceNo)+"\n"
 
 		vertices = {} #maps vertexName->vertexId, where vertexId is newly assigned by the vertexCounter to fit the gbad/subdue scheme
+		
 		for edge in gTrace:
 			srcName = graph.vs[edge.source]["name"]
 			if srcName not in vertices:
