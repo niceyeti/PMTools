@@ -1,0 +1,28 @@
+Seem to be only catching anomalies in the context of a known substructure. Outside those
+structures, GBAD is not providing good feedback (many false negatives). These false negatives
+occur even in cases that ought to be trivial. Say a process graph always terminates ABCD,
+but for only 2/200 traces, terminates ABEM. EM is obviously an anomaly, but since it didn't
+occur within the context of an anomaly, it wasnt caught.
+
+Get back to Eberle; diagnose GBAD segfault.
+
+Is there another parameter to gbad-prob to help discover insertions, besides the prob param?
+Can mdl or mps be forced to recurse on discovered substructure?
+Why does GBAD not catch EM? See SandboxData/DifficultLog3. Would recursive subdue work? See gbad-prob log. Why is E not caught, given it occurs in only 2 instances?
+**Why does EM have the substructure value it does, even though it belongs to only 2 instances?
+Would recursive subdue work to detect anomalies?
+Think of substructures as a terrain map: GBAD discovering the most trivial elements of a graph first. Innermost (best) substructure is first, then
+a tree of sbustructures form off of this one. Consolidate the by level; sort by compression value.
+Describes extending gbad to top n substructures: "Discovering Anomalies to Multiple Normative Patterns in Structural and Numeric Data"
+
+Anomaly wrt the substructure.
+Constrain substructure to contain START -> .... -> END
+
+1) Why is gbad p not scoring the EM edge as anomalous?
+2) Can iterative subdue find the anomaly?
+3 Constraining subdue to include START and END: loop condition in code (dont allow any substracture unless it include both START and END), seed subs with START and END,
+or seed with all prevalent paths from start to finish
+
+Goals:
+1) compress and iterate
+2) seed subdue or otherwise constrain subdue to include both START and END
