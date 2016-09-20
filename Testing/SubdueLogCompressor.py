@@ -15,6 +15,8 @@ import os
 Note this currently only takes the top substructure listed in the .g file.
 """
 def Compress(logPath, subsPath, outPath):
+	print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath+" and writing compressed log to "+outPath)
+
 	bestSub = _parseBestSubstructure(subsPath)
 	#print(str(bestSub))
 	subgraphs = _buildAllTraces(logPath)
@@ -50,9 +52,9 @@ def _sub2GFormatString(sub):
 	vertexDict = {}
 	s = sub["header"]+"\n"
 	#build the vertex declarations
-	i = 0
+	i = 1
 	for v in sub.vs:
-		s += ("v "+str(i)+" "+v["name"]+"\n")
+		s += ("v "+str(i)+" \""+v["name"]+"\"\n")
 		vertexDict[v["name"]] = i
 		i += 1
 		
@@ -60,7 +62,7 @@ def _sub2GFormatString(sub):
 	for e in sub.es:
 		src = vertexDict[sub.vs[e.source]["name"]]
 		dst = vertexDict[sub.vs[e.target]["name"]]
-		s+= ("d "+str(src)+" "+str(dst)+"\n")
+		s+= ("d "+str(src)+" "+str(dst)+" \"e\"\n")
 		
 	return s.rstrip()
 
@@ -78,7 +80,7 @@ accordingly to SUB1.
 def _compressTraceSub(traceSub, compSub):
 	compressed = traceSub
 	if _traceContainsSubgraph(traceSub, compSub):
-		print("CONTAINMENT")
+		#print("CONTAINMENT")
 		#build a new, compressed subgraph from scratch, but keeping the old one's indentifying header
 		compressed = igraph.Graph(directed=True)
 		#preserve the header
@@ -89,14 +91,15 @@ def _compressTraceSub(traceSub, compSub):
 		compNodeSet = _getNodeSet(compSub)
 		traceNodeSet = _getNodeSet(traceSub)
 		
+		#get new vertices (all vertices minus the compressing ones) by name
 		newVertices = [v for v in traceNodeSet.difference(compNodeSet)]
-		print("old vertices: "+str(traceNodeSet))
-		print("new vertices: "+str(newVertices))
+		#print("old vertices: "+str(traceNodeSet))
+		#print("new vertices: "+str(newVertices))
 		newVertices += ["SUB1"] #add the new metanode
 		newEdges = []
 		#build the edge set, redirecting all in-edges to the substructure to point at SUB1, all out-edges from the substructure to point from SUB1
 		for e in traceEdgeSet:
-			#detect edges in-edges to substructure
+			#detect edges incident to substructure
 			if e[0] not in compNodeSet and e[1] in compNodeSet:
 				newEdges.append((e[0],"SUB1"))
 			#detect out-edges from substructure
@@ -107,17 +110,23 @@ def _compressTraceSub(traceSub, compSub):
 				newEdges.append(e)
 			#lastly, no else: ignore edges internal to the substructure
 		
-		print(str(newVertices))
+		#print(str(newVertices))
 		compressed.add_vertices(newVertices)
-		print(str(newEdges))
+		#print(str(newEdges))
 		compressed.add_edges(newEdges)
 
 	return compressed
 	
-	
+"""
+Given a igraph Graph g representing a subgraph/trace from the gbad input,
+returns all edges as a list of named pairs (source, dest).
+"""
 def _getEdgeSet(g):
 	return set([(g.vs[e.source]["name"], g.vs[e.target ]["name"]) for e in g.es])
 	
+"""
+Returns the list of node names in some graph g.
+"""
 def _getNodeSet(g):
 	return set([v["name"] for v in g.vs])
 
@@ -150,17 +159,18 @@ into this metanode.
 """
 def _compressAllTraces(traceSubs, bestSub):
 	compressedSubs = []
-	
+
 	for trace in traceSubs:
 		compressedSubs.append(_compressTraceSub(trace, bestSub))
-		
+
 	return compressedSubs
-	
+
 """
 Given a .g log formatted as input to gbad/subdue, builds a 
 Note that this will disregard comments in the log.
 
-Returns: A list of subgraphs representing all traces in the log, as igraph.Graphs.
+Returns: A list of subgraphs representing all traces in the log, as igraph.Graphs. The vertices of the
+subgraphs preserve the gbad input vertex ids in the vertex "subdueId" attribute (eg, g.vs[1]["subdueId"])
 """
 def _buildAllTraces(logPath):
 	logFile = open(logPath,"r")
@@ -185,10 +195,10 @@ def _buildAllTraces(logPath):
 			for ln in tempLines:
 				subsStr += (ln.rstrip()+"~")
 			subsStr += "~" #one extra tilde, per the requirement in the _subDeclarationToGraph() header
-			print("subs in: "+subsStr)
+			#print("subs in: "+subsStr)
 			sub = _subDeclarationToGraph(subsStr)
 			sub["header"] = header
-			print("SUB OUT:\n"+sub["header"]+"\n"+str(sub))
+			#print("SUB OUT:\n"+sub["header"]+"\n"+str(sub))
 			tempLines = []
 			subgList.append(sub)
 		else:
@@ -214,7 +224,7 @@ def _parseBestSubstructure(subsPath):
 	subsRaw = subsRaw[start : subsRaw.find("~~",start)] #gets the "Normative Pattern.*\n\n" string
 	#find the precise start of the vertex declarations
 	subsRaw = subsRaw[ subsRaw.find("    v ") : ]	
-	print("subs raw: "+subsRaw)
+	#print("subs raw: "+subsRaw)
 	sub = _subDeclarationToGraph(subsRaw)
 
 	return sub
@@ -243,12 +253,12 @@ def _subDeclarationToGraph(subStr):
 				vId = int(ln.split(" ")[1])
 				vertexDict[vId] = vName
 			#parse an edge declaration (the labels are meaningless; and all are assumed DIRECTED)
-			if "d "== ln[0:2]:
+			elif "d "== ln[0:2]:
 				e = (int(ln.split(" ")[1]), int(ln.split(" ")[2]))
 				edges.append(e)
 
-	print(str(edges))
-	print(str(vertexDict))
+	#print(str(edges))
+	#print(str(vertexDict))
 	
 	#add all of the vertices
 	#substructure.add_vertices(vertexDict.values())
@@ -271,23 +281,24 @@ def _subDeclarationToGraph(subStr):
 	return substructure
 			
 def usage():
-	print("usage: python CompressSubdueLog.py [subgraph .g file] [prototypes file (subdue/gbad text output)] [output location for compressed .g log]")
+	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for compressed .g log] [optional: name=name of compressed structure]")
 	print("WARNING make sure input has only single line-feed line terminals (linux style), not windows style!!")
 	
 
-if len(sys.argv) != 4:
-	print("Incorrect nunm parameters passed to CompressSubdueLog.py.")
+if len(sys.argv) < 4:
+	for arg in sys.argv:
+		print(arg)
+	print("Incorrect num parameters ("+str(len(sys.argv))+") passed to SubdueLogCompressor.py.")
 	usage()
 	exit()
 
 if "linux" not in os.name.lower():
-	print("WARNING non-Linux OS detected. Make sure all input to CompressSubdueLog.py has linux style line endings (single line-feeds),")
+	print("WARNING non-Linux OS detected. Make sure all input to SubdueLogCompressor.py has linux style line endings (single line-feeds),")
 	print("not windows style CR+LF. All output will preserve linux-format.")
 
 inputLog = sys.argv[1]
 subsFile = sys.argv[2]
 outputLog = sys.argv[3]
-
 Compress(inputLog, subsFile, outputLog)
 
 
