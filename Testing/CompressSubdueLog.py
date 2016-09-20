@@ -16,11 +16,12 @@ Note this currently only takes the top substructure listed in the .g file.
 """
 def Compress(logPath, subsPath, outPath):
 	bestSub = _parseBestSubstructure(subsPath)
-	print(str(bestSub))
+	#print(str(bestSub))
 	subgraphs = _buildAllTraces(logPath)
-	print(str(subgraphs))
-	#compressedSubs = _compressAllTraces(subgraphs, bestSub)
-	#_writeSubs(compressedSubs, outPath)
+	#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
+	compressedSubs = _compressAllTraces(subgraphs, bestSub)
+	#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
+	_writeSubs(compressedSubs, outPath)
 	
 """
 Given a list of sub-graphs stored in igraph.Graph structures, write each one
@@ -52,16 +53,16 @@ def _sub2GFormatString(sub):
 	i = 0
 	for v in sub.vs:
 		s += ("v "+str(i)+" "+v["name"]+"\n")
-		vertexDict[i] = v["name"]
+		vertexDict[v["name"]] = i
 		i += 1
 		
 	#build the edge declarations
 	for e in sub.es:
-		src = vetexDict[sub.vs[e[0]]["name"]]
-		dst = vetexDict[sub.vs[e[1]]["name"]]
+		src = vertexDict[sub.vs[e.source]["name"]]
+		dst = vertexDict[sub.vs[e.target]["name"]]
 		s+= ("d "+str(src)+" "+str(dst)+"\n")
-	
-	return s
+		
+	return s.rstrip()
 
 """
 Given a trace subgraph from the log and a compressing substructure, 
@@ -70,46 +71,52 @@ the compressing substructure is not contained within the traceSub,
 traceSub is returned unchanged. Else, the compressing substructure is replaced
 by a single node "SUB1" with all in/out edges to the substructure sutured
 accordingly to SUB1.
+
+@traceSub: a trace/subgraph
+@compSub: a prototype substructure by which to attempt to compress traceSub
 """
 def _compressTraceSub(traceSub, compSub):
 	compressed = traceSub
-	if _traceContainsSubgraph(trace, bestSub):
+	if _traceContainsSubgraph(traceSub, compSub):
+		print("CONTAINMENT")
 		#build a new, compressed subgraph from scratch, but keeping the old one's indentifying header
 		compressed = igraph.Graph(directed=True)
 		#preserve the header
 		compressed["header"] = traceSub["header"]
-		#use set arithmetic to compress the structures
-		bestSubEdgeSet = _getEdgeSet(bestSub)
+		#use set arithmetic to compress the trace wrt the compressing substructure
+		compEdgeSet = _getEdgeSet(compSub)
 		traceEdgeSet = _getEdgeSet(traceSub)
-		bestSubNodeSet = _getNodeSet(compSub)
+		compNodeSet = _getNodeSet(compSub)
 		traceNodeSet = _getNodeSet(traceSub)
 		
-		newVertices = [v for v in traceNodeSet.difference(bestSubNodeSet)]
+		newVertices = [v for v in traceNodeSet.difference(compNodeSet)]
 		print("old vertices: "+str(traceNodeSet))
 		print("new vertices: "+str(newVertices))
 		newVertices += ["SUB1"] #add the new metanode
 		newEdges = []
-		#redirects all in-edges to the substructure to point at SUB1, all out-edges from the substructure to point from SUB1
+		#build the edge set, redirecting all in-edges to the substructure to point at SUB1, all out-edges from the substructure to point from SUB1
 		for e in traceEdgeSet:
 			#detect edges in-edges to substructure
-			if e[0] not in bestSubNodeSet and e[1] in bestSubNodeSet:
+			if e[0] not in compNodeSet and e[1] in compNodeSet:
 				newEdges.append((e[0],"SUB1"))
 			#detect out-edges from substructure
-			elif e[0] in bestSubNodeSet and e[1] not in bestSubNodeSet:
+			elif e[0] in compNodeSet and e[1] not in compNodeSet:
 				newEdges.append(("SUB1",e[1]))
 			#detect edges unconnected to substructure
-			elif e[0] not in bestSubNodeSet and e[1] not in bestSubNodeSet:
+			elif e[0] not in compNodeSet and e[1] not in compNodeSet:
 				newEdges.append(e)
 			#lastly, no else: ignore edges internal to the substructure
 		
+		print(str(newVertices))
 		compressed.add_vertices(newVertices)
+		print(str(newEdges))
 		compressed.add_edges(newEdges)
 
-	return traceSub
+	return compressed
 	
 	
 def _getEdgeSet(g):
-	return set([(g.vs[e[0]]["name"], g.vs[e[1]]["name"]) for e in compSub.es])
+	return set([(g.vs[e.source]["name"], g.vs[e.target ]["name"]) for e in g.es])
 	
 def _getNodeSet(g):
 	return set([v["name"] for v in g.vs])
@@ -123,12 +130,15 @@ Detects whether or not a particular trace subgraph contains some compressing sub
 Returns: bool
 """
 def _traceContainsSubgraph(subTrace, compSub):
-	traceNodeSet = _getNodeSet(subTrace)
+	subNodeSet = _getNodeSet(subTrace)
 	compNodeSet = _getNodeSet(compSub)
-	traceEdgeSet =  _getEdgeSet(subTrace)
+	subEdgeSet =  _getEdgeSet(subTrace)
 	compEdgeSet = _getEdgeSet(compSub)
 
-	return traceNodeSet.contains(compNodeSet) and traceEdgeSet.contains(compEdgeSet)
+	#print("sub ["+subTrace["header"]+": "+str(subNodeSet)+"\ncomp: "+str(compNodeSet))
+	#print("subed: "+str(subEdgeSet)+"\ncomped: "+str(compEdgeSet))
+	
+	return compNodeSet.issubset(subNodeSet) and compEdgeSet.issubset(subEdgeSet)
 
 
 """
@@ -180,6 +190,7 @@ def _buildAllTraces(logPath):
 			sub["header"] = header
 			print("SUB OUT:\n"+sub["header"]+"\n"+str(sub))
 			tempLines = []
+			subgList.append(sub)
 		else:
 			i+=1
 
@@ -267,11 +278,12 @@ def usage():
 if len(sys.argv) != 4:
 	print("Incorrect nunm parameters passed to CompressSubdueLog.py.")
 	usage()
+	exit()
 
 if "linux" not in os.name.lower():
 	print("WARNING non-Linux OS detected. Make sure all input to CompressSubdueLog.py has linux style line endings (single line-feeds),")
 	print("not windows style CR+LF. All output will preserve linux-format.")
-	
+
 inputLog = sys.argv[1]
 subsFile = sys.argv[2]
 outputLog = sys.argv[3]
