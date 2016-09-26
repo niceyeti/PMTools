@@ -9,14 +9,14 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.200000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 1396
+  Limit.......................... 1119
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 2993
+  Maximum size of substructures.. 2337
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,105 +27,153 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 2993 vertices, 2793 edges, 65247 bits
-26 unique labels
-25 initial substructures
+200 positive graphs: 2337 vertices, 2239 edges, 52169 bits
+25 unique labels
+24 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.63324, instances = 107
-  Graph(11v,10e):
-    v 1 "V"
-    v 2 "d"
-    v 3 "J"
-    v 4 "9"
-    v 5 "G"
-    v 6 "Q"
-    v 7 "K"
-    v 8 "l"
-    v 9 "START"
-    v 10 "h"
-    v 11 "g"
-    d 4 3 "e"
-    d 1 8 "e"
-    d 5 4 "e"
+Substructure: value = 3.97645, instances = 106
+  Graph(17v,16e):
+    v 1 "9"
+    v 2 "S"
+    v 3 "K"
+    v 4 "Q"
+    v 5 "START"
+    v 6 "c"
+    v 7 "2"
+    v 8 "4"
+    v 9 "w"
+    v 10 "o"
+    v 11 "3"
+    v 12 "END"
+    v 13 "D"
+    v 14 "M"
+    v 15 "N"
+    v 16 "h"
+    v 17 "5"
+    d 5 8 "e"
+    d 8 9 "e"
+    d 9 17 "e"
+    d 17 14 "e"
+    d 14 1 "e"
+    d 1 13 "e"
+    d 13 2 "e"
+    d 2 15 "e"
+    d 15 16 "e"
+    d 16 11 "e"
+    d 11 4 "e"
+    d 4 10 "e"
     d 10 6 "e"
-    d 3 11 "e"
-    d 9 2 "e"
-    d 8 5 "e"
-    d 6 7 "e"
-    d 11 10 "e"
-    d 2 1 "e"
+    d 6 3 "e"
+    d 3 7 "e"
+    d 7 12 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.63324, instances = 107
-  Graph(11v,10e):
-    v 1 "V"
-    v 2 "d"
-    v 3 "J"
-    v 4 "9"
-    v 5 "G"
-    v 6 "Q"
-    v 7 "K"
-    v 8 "l"
-    v 9 "START"
-    v 10 "h"
-    v 11 "g"
-    d 4 3 "e"
-    d 1 8 "e"
-    d 5 4 "e"
+(1) Substructure: value = 3.97645, instances = 106
+  Graph(17v,16e):
+    v 1 "9"
+    v 2 "S"
+    v 3 "K"
+    v 4 "Q"
+    v 5 "START"
+    v 6 "c"
+    v 7 "2"
+    v 8 "4"
+    v 9 "w"
+    v 10 "o"
+    v 11 "3"
+    v 12 "END"
+    v 13 "D"
+    v 14 "M"
+    v 15 "N"
+    v 16 "h"
+    v 17 "5"
+    d 5 8 "e"
+    d 8 9 "e"
+    d 9 17 "e"
+    d 17 14 "e"
+    d 14 1 "e"
+    d 1 13 "e"
+    d 13 2 "e"
+    d 2 15 "e"
+    d 15 16 "e"
+    d 16 11 "e"
+    d 11 4 "e"
+    d 4 10 "e"
     d 10 6 "e"
-    d 3 11 "e"
-    d 9 2 "e"
-    d 8 5 "e"
-    d 6 7 "e"
-    d 11 10 "e"
-    d 2 1 "e"
+    d 6 3 "e"
+    d 3 7 "e"
+    d 7 12 "e"
 
-(2) Substructure: value = 1.52338, instances = 107
-  Graph(10v,9e):
-    v 1 "V"
-    v 2 "d"
-    v 3 "J"
-    v 4 "9"
-    v 5 "G"
-    v 6 "Q"
-    v 7 "K"
-    v 8 "l"
-    v 9 "h"
-    v 10 "g"
-    d 4 3 "e"
-    d 1 8 "e"
-    d 5 4 "e"
-    d 9 6 "e"
-    d 3 10 "e"
-    d 8 5 "e"
-    d 6 7 "e"
-    d 10 9 "e"
-    d 2 1 "e"
+(2) Substructure: value = 3.27811, instances = 106
+  Graph(16v,15e):
+    v 1 "9"
+    v 2 "S"
+    v 3 "K"
+    v 4 "Q"
+    v 5 "c"
+    v 6 "2"
+    v 7 "4"
+    v 8 "w"
+    v 9 "o"
+    v 10 "3"
+    v 11 "END"
+    v 12 "D"
+    v 13 "M"
+    v 14 "N"
+    v 15 "h"
+    v 16 "5"
+    d 7 8 "e"
+    d 8 16 "e"
+    d 16 13 "e"
+    d 13 1 "e"
+    d 1 12 "e"
+    d 12 2 "e"
+    d 2 14 "e"
+    d 14 15 "e"
+    d 15 10 "e"
+    d 10 4 "e"
+    d 4 9 "e"
+    d 9 5 "e"
+    d 5 3 "e"
+    d 3 6 "e"
+    d 6 11 "e"
 
-(3) Substructure: value = 1.52338, instances = 107
-  Graph(10v,9e):
-    v 1 "V"
-    v 2 "d"
-    v 3 "J"
-    v 4 "9"
-    v 5 "G"
-    v 6 "Q"
-    v 7 "l"
-    v 8 "START"
-    v 9 "h"
-    v 10 "g"
-    d 4 3 "e"
-    d 1 7 "e"
-    d 5 4 "e"
-    d 9 6 "e"
-    d 3 10 "e"
-    d 8 2 "e"
-    d 7 5 "e"
-    d 10 9 "e"
-    d 2 1 "e"
+(3) Substructure: value = 3.23099, instances = 106
+  Graph(16v,15e):
+    v 1 "9"
+    v 2 "S"
+    v 3 "K"
+    v 4 "Q"
+    v 5 "START"
+    v 6 "c"
+    v 7 "2"
+    v 8 "4"
+    v 9 "w"
+    v 10 "o"
+    v 11 "3"
+    v 12 "D"
+    v 13 "M"
+    v 14 "N"
+    v 15 "h"
+    v 16 "5"
+    d 5 8 "e"
+    d 8 9 "e"
+    d 9 16 "e"
+    d 16 13 "e"
+    d 13 1 "e"
+    d 1 12 "e"
+    d 12 2 "e"
+    d 2 14 "e"
+    d 14 15 "e"
+    d 15 11 "e"
+    d 11 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
+    d 6 3 "e"
+    d 3 7 "e"
 
 
-GBAD done (elapsed CPU time =   10.56 seconds).
+GBAD done (elapsed CPU time =  103.67 seconds).

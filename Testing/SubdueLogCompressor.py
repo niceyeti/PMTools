@@ -19,12 +19,16 @@ Note this currently only takes the top substructure listed in the .g file.
 @outPath: The output path for the compressed log
 @compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
 """
-def Compress(logPath, subsPath, outPath, compSubName="SUBx"):
+def Compress(logPath, subsPath, outPath, compSubName="SUBx",showSub=False):
 	print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 	print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 	print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
 	
 	bestSub = _parseBestSubstructure(subsPath)
+	if showSub:
+		layout = bestSub.layout("sugiyama")
+		igraph.plot(bestSub, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+	
 	bestSub["name"] = compSubName
 	#print(str(bestSub))
 	subgraphs = _buildAllTraces(logPath)
@@ -110,7 +114,8 @@ def _compressTraceSub(traceSub, compSub):
 	compressed = traceSub
 	if _traceContainsSubgraph(traceSub, compSub):
 		#see header: return the compressing substructure with one reflexive loop
-		if _traceEqualsSubgraph(traceSub, compSub):
+		if _traceEqualsSubgraph(traceSub, compSub) and len(compSub.vs) == 1:
+			print("MAX COMPRESSION")
 			#just copy the sub and add a reflexive loop
 			compressed = igraph.Graph(directed=True)
 			#preserve the trace header
@@ -332,19 +337,26 @@ def _subDeclarationToGraph(subStr):
 		vertices.append(e[0])
 		vertices.append(e[1])
 	vertices = list(set(vertices))
+	#print("adding vertices: "+str(vertices))
 	substructure.add_vertices(vertices)
-	#preserve the subdue vertex id's as strings (may be useful to preserve these)
+	#preserve the subdue vertex id's as strings (it may be useful to preserve these)
 	for v in substructure.vs:
 		for k in vertexDict.keys():
 			if vertexDict[k] == v["name"]:
 				v["subdueId"] = str(k)
 	
+	#copy name as label attributes of vertices for display
+	for v in substructure.vs:
+		v["label"] = v["name"]
+	
+	#print("adding edges: "+str(edges))
 	substructure.add_edges(edges)
 			
 	return substructure
 			
 def usage():
 	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for compressed .g log] [optional: name=name of compressed structure]")
+	print("--showSub: pass to display the parsed substructure")
 	print("WARNING make sure input has only single line-feed line terminals (linux style), not windows style!!")
 	
 
@@ -362,17 +374,11 @@ if "linux" not in os.name.lower():
 inputLog = sys.argv[1]
 subsFile = sys.argv[2]
 outputLog = sys.argv[3]
-if len(sys.argv) == 5 and "name=" in sys.argv[4]:
+if len(sys.argv) > 4 and "name=" in sys.argv[4]:
 	compSubName = sys.argv[4].split("=")[1]
 else:
 	compSubName = "SUBx"
 
-Compress(inputLog, subsFile, outputLog, compSubName)
-
-
-
-
-
-
-
-
+showSub = "--showSub" in sys.argv
+	
+Compress(inputLog, subsFile, outputLog, compSubName, showSub)

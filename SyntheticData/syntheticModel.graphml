@@ -4,317 +4,299 @@
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
 <!-- Created by igraph -->
-  <key id="v_label" for="node" attr.name="label" attr.type="string"/>
   <key id="v_name" for="node" attr.name="name" attr.type="string"/>
+  <key id="v_label" for="node" attr.name="label" attr.type="string"/>
   <key id="e_type" for="edge" attr.name="type" attr.type="string"/>
-  <key id="e_isAnomalous" for="edge" attr.name="isAnomalous" attr.type="boolean"/>
   <key id="e_probability" for="edge" attr.name="probability" attr.type="double"/>
+  <key id="e_isAnomalous" for="edge" attr.name="isAnomalous" attr.type="boolean"/>
   <key id="e_color" for="edge" attr.name="color" attr.type="string"/>
   <graph id="G" edgedefault="directed">
     <node id="n0">
-      <data key="v_label">P</data>
-      <data key="v_name">P</data>
+      <data key="v_name">S</data>
+      <data key="v_label">S</data>
     </node>
     <node id="n1">
-      <data key="v_label">START</data>
-      <data key="v_name">START</data>
+      <data key="v_name">4</data>
+      <data key="v_label">4</data>
     </node>
     <node id="n2">
-      <data key="v_label">L</data>
-      <data key="v_name">L</data>
+      <data key="v_name">3</data>
+      <data key="v_label">3</data>
     </node>
     <node id="n3">
-      <data key="v_label">END</data>
-      <data key="v_name">END</data>
+      <data key="v_name">m</data>
+      <data key="v_label">m</data>
     </node>
     <node id="n4">
-      <data key="v_label">9</data>
-      <data key="v_name">9</data>
+      <data key="v_name">5</data>
+      <data key="v_label">5</data>
     </node>
     <node id="n5">
-      <data key="v_label">q</data>
-      <data key="v_name">q</data>
+      <data key="v_name">M</data>
+      <data key="v_label">M</data>
     </node>
     <node id="n6">
-      <data key="v_label">6</data>
-      <data key="v_name">6</data>
+      <data key="v_name">D</data>
+      <data key="v_label">D</data>
     </node>
     <node id="n7">
-      <data key="v_label">m</data>
-      <data key="v_name">m</data>
+      <data key="v_name">K</data>
+      <data key="v_label">K</data>
     </node>
     <node id="n8">
-      <data key="v_label">E</data>
-      <data key="v_name">E</data>
+      <data key="v_name">N</data>
+      <data key="v_label">N</data>
     </node>
     <node id="n9">
-      <data key="v_label">D</data>
-      <data key="v_name">D</data>
+      <data key="v_name">END</data>
+      <data key="v_label">END</data>
     </node>
     <node id="n10">
-      <data key="v_label">S</data>
-      <data key="v_name">S</data>
+      <data key="v_name">T</data>
+      <data key="v_label">T</data>
     </node>
     <node id="n11">
-      <data key="v_label">h</data>
-      <data key="v_name">h</data>
+      <data key="v_name">9</data>
+      <data key="v_label">9</data>
     </node>
     <node id="n12">
-      <data key="v_label">n</data>
-      <data key="v_name">n</data>
+      <data key="v_name">h</data>
+      <data key="v_label">h</data>
     </node>
     <node id="n13">
-      <data key="v_label">t</data>
-      <data key="v_name">t</data>
+      <data key="v_name">2</data>
+      <data key="v_label">2</data>
     </node>
     <node id="n14">
-      <data key="v_label">H</data>
-      <data key="v_name">H</data>
+      <data key="v_name">n</data>
+      <data key="v_label">n</data>
     </node>
     <node id="n15">
-      <data key="v_label">7</data>
-      <data key="v_name">7</data>
+      <data key="v_name">Q</data>
+      <data key="v_label">Q</data>
     </node>
     <node id="n16">
-      <data key="v_label">Q</data>
-      <data key="v_name">Q</data>
+      <data key="v_name">c</data>
+      <data key="v_label">c</data>
     </node>
     <node id="n17">
-      <data key="v_label">I</data>
-      <data key="v_name">I</data>
+      <data key="v_name">0</data>
+      <data key="v_label">0</data>
     </node>
     <node id="n18">
-      <data key="v_label">i</data>
-      <data key="v_name">i</data>
+      <data key="v_name">b</data>
+      <data key="v_label">b</data>
     </node>
     <node id="n19">
-      <data key="v_label">a</data>
-      <data key="v_name">a</data>
+      <data key="v_name">p</data>
+      <data key="v_label">p</data>
     </node>
     <node id="n20">
-      <data key="v_label">2</data>
-      <data key="v_name">2</data>
+      <data key="v_name">x</data>
+      <data key="v_label">x</data>
     </node>
     <node id="n21">
-      <data key="v_label">s</data>
-      <data key="v_name">s</data>
+      <data key="v_name">START</data>
+      <data key="v_label">START</data>
     </node>
     <node id="n22">
-      <data key="v_label">d</data>
-      <data key="v_name">d</data>
+      <data key="v_name">w</data>
+      <data key="v_label">w</data>
     </node>
     <node id="n23">
-      <data key="v_label">N</data>
-      <data key="v_name">N</data>
+      <data key="v_name">o</data>
+      <data key="v_label">o</data>
     </node>
     <node id="n24">
-      <data key="v_label">e</data>
-      <data key="v_name">e</data>
+      <data key="v_name">t</data>
+      <data key="v_label">t</data>
     </node>
     <node id="n25">
-      <data key="v_label">^_1</data>
-      <data key="v_name">^_1</data>
+      <data key="v_name">B</data>
+      <data key="v_label">B</data>
     </node>
     <node id="n26">
-      <data key="v_label">^_2</data>
-      <data key="v_name">^_2</data>
+      <data key="v_name">^_1</data>
+      <data key="v_label">^_1</data>
     </node>
+    <edge source="n21" target="n1">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
     <edge source="n1" target="n22">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n3" target="n18">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n18" target="n25">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n22" target="n3">
+      <data key="e_type">LOOP</data>
+      <data key="e_probability">0.22</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n25" target="n22">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">0.22</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
     <edge source="n22" target="n4">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n4" target="n21">
+    <edge source="n5" target="n11">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n21" target="n6">
+    <edge source="n11" target="n6">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n20" target="n24">
+    <edge source="n6" target="n0">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n24" target="n2">
+    <edge source="n14" target="n10">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n2" target="n14">
+    <edge source="n10" target="n19">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n6" target="n23">
-      <data key="e_type">OR</data>
       <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.245</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n6" target="n20">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.755</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n7" target="n5">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n23" target="n7">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">true</data>
-      <data key="e_probability">0.098</data>
-      <data key="e_color">orange</data>
-    </edge>
-    <edge source="n14" target="n7">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">true</data>
-      <data key="e_probability">0.098</data>
-      <data key="e_color">orange</data>
-    </edge>
-    <edge source="n23" target="n25">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.902</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n14" target="n25">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.902</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n9" target="n15">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n15" target="n13">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n5" target="n9">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.303</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n25" target="n9">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.303</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n5" target="n26">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.697</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n25" target="n26">
-      <data key="e_type">OR</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.697</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n13" target="n0">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n26" target="n0">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n8" target="n18">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n17" target="n11">
-      <data key="e_type">AND</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n17" target="n8">
-      <data key="e_type">AND</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n11" target="n12">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n18" target="n12">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n12" target="n19">
-      <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
-      <data key="e_probability">1</data>
-      <data key="e_color">black</data>
-    </edge>
-    <edge source="n0" target="n17">
+    <edge source="n0" target="n14">
       <data key="e_type">LOOP</data>
+      <data key="e_probability">0.661</data>
       <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.667</data>
       <data key="e_color">black</data>
     </edge>
     <edge source="n19" target="n0">
       <data key="e_type">SEQ</data>
+      <data key="e_probability">0.661</data>
       <data key="e_isAnomalous">false</data>
-      <data key="e_probability">0.667</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n0" target="n16">
+    <edge source="n0" target="n8">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n16" target="n10">
+    <edge source="n8" target="n12">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
-    <edge source="n10" target="n3">
+    <edge source="n12" target="n2">
       <data key="e_type">SEQ</data>
-      <data key="e_isAnomalous">false</data>
       <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n2" target="n15">
+      <data key="e_type">OR</data>
+      <data key="e_probability">0.944</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n2" target="n26">
+      <data key="e_type">OR</data>
+      <data key="e_probability">0.056</data>
+      <data key="e_isAnomalous">true</data>
+      <data key="e_color">orange</data>
+    </edge>
+    <edge source="n15" target="n23">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n26" target="n23">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n23" target="n16">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n16" target="n7">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n17" target="n24">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n24" target="n20">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n4" target="n5">
+      <data key="e_type">OR</data>
+      <data key="e_probability">0.548</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n4" target="n17">
+      <data key="e_type">OR</data>
+      <data key="e_probability">0.452</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n7" target="n13">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n20" target="n13">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
+      <data key="e_color">black</data>
+    </edge>
+    <edge source="n13" target="n9">
+      <data key="e_type">SEQ</data>
+      <data key="e_probability">1</data>
+      <data key="e_isAnomalous">false</data>
       <data key="e_color">black</data>
     </edge>
   </graph>
