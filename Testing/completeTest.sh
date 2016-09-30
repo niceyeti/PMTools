@@ -96,7 +96,7 @@ cat /dev/null > $mpsResult
 cat /dev/null > $probResult
 cat /dev/null > $fsmResult
 
-gbadThreshold="0.2"
+gbadThreshold="0.3"
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
@@ -106,22 +106,22 @@ $gbadMdlPath -mps $gbadThreshold $subdueLogPath > $mpsResult
 echo Running gbad-prob from $gbadMdlPath
 $gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
-#recursive-compression gbad
-cp $mdlResult lastMdlResult.txt
-for i in $(seq 1 20);
-do
-	echo Compression iteration $i
-	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
-	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i
-
-	echo Running gbad-mdl from $gbadMdlPath
-	$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
-	cat lastMdlResult.txt >> $mdlResult
-	echo Running gbad-mps from $gbadMdlPath
-	$gbadMdlPath -mps $gbadThreshold  $compressedLog >> $mpsResult
-	echo Running gbad-prob from $gbadMdlPath
-	$gbadMdlPath -prob 2 $compressedLog >> $probResult
-done
+##recursive-compression gbad
+#cp $mdlResult lastMdlResult.txt
+#for i in $(seq 1 20);
+#do
+#	echo Compression iteration $i
+#	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
+#	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i
+#
+#	echo Running gbad-mdl from $gbadMdlPath
+#	$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
+#	cat lastMdlResult.txt >> $mdlResult
+#	echo Running gbad-mps from $gbadMdlPath
+#	$gbadMdlPath -mps $gbadThreshold  $compressedLog >> $mpsResult
+#	echo Running gbad-prob from $gbadMdlPath
+#	$gbadMdlPath -prob 2 $compressedLog >> $probResult
+#done
 
 ##Run the frequent subgraph miner
 #echo Running gbad-fsm...
