@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 2138
+  Limit.......................... 475
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 4457
+  Maximum size of substructures.. 1150
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,161 +27,81 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 4457 vertices, 4276 edges, 104217 bits
-26 unique labels
-25 initial substructures
+200 positive graphs: 1150 vertices, 950 edges, 19541 bits
+13 unique labels
+12 initial substructures
 Normative Pattern (1):
-Substructure: value = 4.77989, instances = 200
-  Graph(18v,17e):
+Substructure: value = 3.58602, instances = 104
+  Graph(8v,7e):
     v 1 "o"
-    v 2 "z"
-    v 3 "9"
-    v 4 "F"
-    v 5 "f"
-    v 6 "START"
-    v 7 "m"
-    v 8 "k"
-    v 9 "n"
-    v 10 "j"
-    v 11 "Q"
-    v 12 "r"
-    v 13 "3"
-    v 14 "R"
-    v 15 "I"
-    v 16 "c"
-    v 17 "6"
-    v 18 "T"
-    d 6 3 "e"
-    d 3 11 "e"
-    d 11 13 "e"
-    d 13 14 "e"
-    d 14 7 "e"
-    d 7 18 "e"
-    d 18 5 "e"
-    d 5 15 "e"
-    d 15 8 "e"
-    d 8 1 "e"
-    d 1 17 "e"
-    d 17 4 "e"
-    d 4 16 "e"
-    d 16 9 "e"
-    d 9 12 "e"
-    d 12 10 "e"
-    d 10 2 "e"
+    v 2 "K"
+    v 3 "END"
+    v 4 "y"
+    v 5 "O"
+    v 6 "r"
+    v 7 "d"
+    v 8 "W"
+    d 2 6 "e"
+    d 1 6 "e"
+    d 6 4 "e"
+    d 4 5 "e"
+    d 5 8 "e"
+    d 8 7 "e"
+    d 7 3 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 4.77989, instances = 200
-  Graph(18v,17e):
+(1) Substructure: value = 3.58602, instances = 104
+  Graph(8v,7e):
     v 1 "o"
-    v 2 "z"
-    v 3 "9"
-    v 4 "F"
-    v 5 "f"
-    v 6 "START"
-    v 7 "m"
-    v 8 "k"
-    v 9 "n"
-    v 10 "j"
-    v 11 "Q"
-    v 12 "r"
-    v 13 "3"
-    v 14 "R"
-    v 15 "I"
-    v 16 "c"
-    v 17 "6"
-    v 18 "T"
-    d 6 3 "e"
-    d 3 11 "e"
-    d 11 13 "e"
-    d 13 14 "e"
-    d 14 7 "e"
-    d 7 18 "e"
-    d 18 5 "e"
-    d 5 15 "e"
-    d 15 8 "e"
-    d 8 1 "e"
-    d 1 17 "e"
-    d 17 4 "e"
-    d 4 16 "e"
-    d 16 9 "e"
-    d 9 12 "e"
-    d 12 10 "e"
-    d 10 2 "e"
+    v 2 "K"
+    v 3 "END"
+    v 4 "y"
+    v 5 "O"
+    v 6 "r"
+    v 7 "d"
+    v 8 "W"
+    d 2 6 "e"
+    d 1 6 "e"
+    d 6 4 "e"
+    d 4 5 "e"
+    d 5 8 "e"
+    d 8 7 "e"
+    d 7 3 "e"
 
-(2) Substructure: value = 3.93807, instances = 200
-  Graph(17v,16e):
+(2) Substructure: value = 2.58348, instances = 104
+  Graph(7v,6e):
     v 1 "o"
-    v 2 "9"
-    v 3 "F"
-    v 4 "f"
-    v 5 "START"
-    v 6 "m"
-    v 7 "k"
-    v 8 "n"
-    v 9 "j"
-    v 10 "Q"
-    v 11 "r"
-    v 12 "3"
-    v 13 "R"
-    v 14 "I"
-    v 15 "c"
-    v 16 "6"
-    v 17 "T"
-    d 5 2 "e"
-    d 2 10 "e"
-    d 10 12 "e"
-    d 12 13 "e"
-    d 13 6 "e"
-    d 6 17 "e"
-    d 17 4 "e"
-    d 4 14 "e"
-    d 14 7 "e"
-    d 7 1 "e"
-    d 1 16 "e"
-    d 16 3 "e"
-    d 3 15 "e"
-    d 15 8 "e"
-    d 8 11 "e"
-    d 11 9 "e"
+    v 2 "END"
+    v 3 "y"
+    v 4 "O"
+    v 5 "r"
+    v 6 "d"
+    v 7 "W"
+    d 1 5 "e"
+    d 5 3 "e"
+    d 3 4 "e"
+    d 4 7 "e"
+    d 7 6 "e"
+    d 6 2 "e"
 
-(3) Substructure: value = 3.82006, instances = 200
-  Graph(17v,16e):
-    v 1 "o"
-    v 2 "z"
-    v 3 "9"
-    v 4 "F"
-    v 5 "f"
-    v 6 "m"
-    v 7 "k"
-    v 8 "n"
-    v 9 "j"
-    v 10 "Q"
-    v 11 "r"
-    v 12 "3"
-    v 13 "R"
-    v 14 "I"
-    v 15 "c"
-    v 16 "6"
-    v 17 "T"
-    d 3 10 "e"
-    d 10 12 "e"
-    d 12 13 "e"
-    d 13 6 "e"
-    d 6 17 "e"
-    d 17 5 "e"
-    d 5 14 "e"
-    d 14 7 "e"
-    d 7 1 "e"
-    d 1 16 "e"
-    d 16 4 "e"
-    d 4 15 "e"
-    d 15 8 "e"
-    d 8 11 "e"
-    d 11 9 "e"
-    d 9 2 "e"
+(3) Substructure: value = 2.57774, instances = 104
+  Graph(7v,6e):
+    v 1 "K"
+    v 2 "END"
+    v 3 "y"
+    v 4 "O"
+    v 5 "r"
+    v 6 "d"
+    v 7 "W"
+    d 1 5 "e"
+    d 5 3 "e"
+    d 3 4 "e"
+    d 4 7 "e"
+    d 7 6 "e"
+    d 6 2 "e"
 
 
-GBAD done (elapsed CPU time =    1.55 seconds).
+GBAD done (elapsed CPU time =    0.13 seconds).

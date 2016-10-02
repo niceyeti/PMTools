@@ -171,6 +171,9 @@ def _compressTraceSub(traceSub, compSub):
 			if len(newVertices) == 0: #tracks a specific defect I had
 				print("ERROR newVertices empty in SubdueLogCompressor._compressTraceSub()")
 			
+			if len(newEdges) == 0:
+				print("WARN zero edge graph detected for vs "+str(newVertices))
+			
 			#print(str(newVertices))
 			compressed.add_vertices(newVertices)
 			#print(str(newEdges))

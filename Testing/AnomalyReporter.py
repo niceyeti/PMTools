@@ -39,11 +39,19 @@ class AnomalyReporter(object):
 		Thus, search for all lines with this string, parse the number, and we've a list of trace-ids for the anomalies.
 		"""
 		for line in gbadOutput:
+			#detects gbad-mdl, -mps, -prob anomal declarations (mdl/mps use "from example", gbad-prob uses "from positive example")
 			if "from example " in line:
-				#print("found anom: "+line)
-				#parses 50 from 'from example 50:'
-				id = int(line.strip().split("from example ")[1].replace(":",""))
-				self._detectedAnomalyIds.append(id)
+					#print("found anom: "+line)
+					#parses 50 from 'from example 50:'
+					id = int(line.strip().split("from example ")[1].replace(":",""))
+					self._detectedAnomalyIds.append(id)
+			#detects gbad-prob anomalous subgraph example declarations
+			if "in original example " in line:
+					#print("found anom: "+line)
+					#parses 50 from 'in original example 50)'
+					id = int(line.strip().split("in original example ")[1].replace(")",""))
+					self._detectedAnomalyIds.append(id)
+
 			#detects output format of gbad-fsm
 			if "transaction containing anomalous structure:" in line:
 				id = int(line.split("structure:")[1].strip())
@@ -65,6 +73,12 @@ class AnomalyReporter(object):
 		logFile.close()
 		
 	"""
+	Given a float in range 0.0 to 1.0, such as 0.4567532, returns "45.67%" (hundredths precision)
+	"""
+	def _floatToPctStr(self, f):
+		return str(float(int(f * 10000)) / 100.0)+"%"
+
+	"""
 	Keep this clean and easy to parse.
 	"""
 	def _outputResults(self):	
@@ -75,14 +89,14 @@ class AnomalyReporter(object):
 		#output += "False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 
 		output += ("Num traces (N): \t"+str(self._numTraces)+"\n")
-		output += ("Accuracy:          \t"+str(self._accuracy)+"\n")
-		output += ("Error rate:         \t"+str(self._errorRate)+"\n")
-		output += ("Recall:              \t"+str(self._recall)+"\n")
-		output += ("Precision:          \t"+str(self._precision)+"\n")
+		output += ("Accuracy:          \t"+str(self._accuracy)+"  ("+self._floatToPctStr(self._accuracy)+")\n")
+		output += ("Error rate:         \t"+str(self._errorRate)+"  ("+self._floatToPctStr(self._errorRate)+")\n")
+		output += ("Recall:              \t"+str(self._recall)+"  ("+self._floatToPctStr(self._recall)+")\n")
+		output += ("Precision:          \t"+str(self._precision)+"  ("+self._floatToPctStr(self._precision)+")\n")
 		
 		output += ("True positives:   \t"+str(len(self._truePositives))+"\t"+str(self._truePositives)+"\n")
 		output += ("False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives)+"\n") 
-		output += ("True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives)+"\n")  
+		output += ("True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives)+"\n")
 		output += ("False negatives: \t"+str(len(self._falseNegatives))+"\t"+str(self._falseNegatives)+"\n")
 
 		print(output)
