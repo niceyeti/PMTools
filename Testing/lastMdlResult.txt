@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 475
+  Limit.......................... 104
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
+  Maximum size of substructures.. 316
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,81 +27,35 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
 
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "o"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
 
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
 
 
-GBAD done (elapsed CPU time =    0.13 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).

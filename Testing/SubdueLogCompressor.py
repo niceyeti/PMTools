@@ -171,9 +171,14 @@ def _compressTraceSub(traceSub, compSub):
 			if len(newVertices) == 0: #tracks a specific defect I had
 				print("ERROR newVertices empty in SubdueLogCompressor._compressTraceSub()")
 			
-			if len(newEdges) == 0:
-				print("WARN zero edge graph detected for vs "+str(newVertices))
-			
+			if len(newEdges) < len(newVertices) - 1: #just a potential error, for disconnected graphs
+				print("ERROR numEdges < numVertices in SubdueLogCompressor")
+				
+			#loop the single vertex back to itself when it has reached max compression
+			if len(newEdges) == 0 and len(newVertices) == 1:
+				#print("reflecting max compressed graph")
+				newEdges.append((newVertices[0],newVertices[0]))
+
 			#print(str(newVertices))
 			compressed.add_vertices(newVertices)
 			#print(str(newEdges))
@@ -183,7 +188,7 @@ def _compressTraceSub(traceSub, compSub):
 	
 """
 Given a igraph Graph g representing a subgraph/trace from the gbad input,
-returns all edges as a list of named pairs (source, dest).
+returns all edges as a set of named pairs (source, dest).
 """
 def _getEdgeSet(g):
 	return set([(g.vs[e.source]["name"], g.vs[e.target ]["name"]) for e in g.es])

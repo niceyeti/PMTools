@@ -81,17 +81,17 @@ if [ $generateData = "true" ]; then
 	cd "../scripts/Testing"
 	#Convert the mined pnml model to graphml
 	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+	
+	################################################################################
+	##anomalize the model???
+	#
+	################################################################################
+	##Generate sub-graphs from the mined graphml model
+	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
+	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 fi
 	
-################################################################################
-##anomalize the model???
-#
-################################################################################
-###Generate sub-graphs from the mined graphml model
-#python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
-###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
-
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least *mst* XP transactions
@@ -109,7 +109,7 @@ cat /dev/null > $mpsResult
 cat /dev/null > $probResult
 cat /dev/null > $fsmResult
 
-gbadThreshold="0.3"
+gbadThreshold="0.3" #the best performance always seems to be about 0.3; I need to justify this
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
@@ -132,7 +132,7 @@ if [ $recursiveIterations -gt 0 ]; then
 		echo Running gbad-mps from $gbadMdlPath
 		$gbadMdlPath -mps $gbadThreshold  $compressedLog >> $mpsResult
 		echo Running gbad-prob from $gbadMdlPath
-		$gbadMdlPath -prob 1 $compressedLog >> $probResult
+		$gbadMdlPath -prob 2 $compressedLog >> $probResult
 	done
 fi
 

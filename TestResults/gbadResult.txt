@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 920
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 2040
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,215 +27,101 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 2040 vertices, 1840 edges, 40891 bits
-20 unique labels
-19 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
 
-(2) Substructure: value = 1.48953, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(3) Substructure: value = 1.48862, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
 
-
-GBAD done (elapsed CPU time =    0.19 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 556
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
-Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "END"
-    v 6 "u"
-    v 7 "C"
-    v 8 "G"
-    v 9 "U"
-    v 10 "p"
-    v 11 "h"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 11 "e"
-    d 11 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 10 "e"
-    d 10 4 "e"
-    d 4 5 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "END"
-    v 6 "u"
-    v 7 "C"
-    v 8 "G"
-    v 9 "U"
-    v 10 "p"
-    v 11 "h"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 11 "e"
-    d 11 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 10 "e"
-    d 10 4 "e"
-    d 4 5 "e"
-
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "b"
-    v 2 "a"
-    v 3 "w"
-    v 4 "END"
-    v 5 "u"
-    v 6 "C"
-    v 7 "G"
-    v 8 "U"
-    v 9 "p"
-    v 10 "h"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
     d 1 2 "e"
-    d 2 10 "e"
-    d 10 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 9 "e"
-    d 9 3 "e"
-    d 3 4 "e"
 
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "u"
-    v 6 "C"
-    v 7 "G"
-    v 8 "U"
-    v 9 "p"
-    v 10 "h"
+
+GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.300000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
     d 2 1 "e"
-    d 1 3 "e"
-    d 3 10 "e"
-    d 10 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 9 "e"
-    d 9 4 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.07 seconds).
+GBAD done (elapsed CPU time =    0.00 seconds).
 GBAD 3.2
 
 Parameters:
@@ -252,9 +138,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 475
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -265,322 +151,40 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "o"
-    v 4 "y"
-    v 5 "d"
-    v 6 "END"
-    v 7 "r"
-    v 8 "W"
-    d 2 7 "e"
-    d 3 7 "e"
-    d 7 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "o"
-    v 4 "y"
-    v 5 "d"
-    v 6 "END"
-    v 7 "r"
-    v 8 "W"
-    d 2 7 "e"
-    d 3 7 "e"
-    d 7 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "O"
-    v 2 "o"
-    v 3 "y"
-    v 4 "d"
-    v 5 "END"
-    v 6 "r"
-    v 7 "W"
-    d 2 6 "e"
-    d 6 3 "e"
-    d 3 1 "e"
-    d 1 7 "e"
-    d 7 4 "e"
-    d 4 5 "e"
-
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "y"
-    v 4 "d"
-    v 5 "END"
-    v 6 "r"
-    v 7 "W"
-    d 2 6 "e"
-    d 6 3 "e"
-    d 3 1 "e"
-    d 1 7 "e"
-    d 7 4 "e"
-    d 4 5 "e"
-
-
-GBAD done (elapsed CPU time =    0.12 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 556
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
-Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "END"
-    v 8 "C"
-    v 9 "a"
-    v 10 "U"
-    v 11 "w"
-    d 3 5 "e"
-    d 5 9 "e"
-    d 9 2 "e"
-    d 2 10 "e"
-    d 10 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 11 "e"
-    d 11 7 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "END"
-    v 8 "C"
-    v 9 "a"
-    v 10 "U"
-    v 11 "w"
-    d 3 5 "e"
-    d 5 9 "e"
-    d 9 2 "e"
-    d 2 10 "e"
-    d 10 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 11 "e"
-    d 11 7 "e"
-
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "p"
-    v 4 "b"
-    v 5 "G"
-    v 6 "END"
-    v 7 "C"
-    v 8 "a"
-    v 9 "U"
-    v 10 "w"
-    d 4 8 "e"
-    d 8 2 "e"
-    d 2 9 "e"
-    d 9 1 "e"
-    d 1 7 "e"
-    d 7 5 "e"
-    d 5 3 "e"
-    d 3 10 "e"
-    d 10 6 "e"
-
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "C"
-    v 8 "a"
-    v 9 "U"
-    v 10 "w"
-    d 3 5 "e"
-    d 5 8 "e"
-    d 8 2 "e"
-    d 2 9 "e"
-    d 9 1 "e"
-    d 1 7 "e"
-    d 7 6 "e"
-    d 6 4 "e"
-    d 4 10 "e"
-
-
-GBAD done (elapsed CPU time =    0.07 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 475
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
-Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "o"
-    v 8 "y"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
     d 2 1 "e"
-    d 7 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
 
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "o"
-    v 8 "y"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
     d 2 1 "e"
-    d 7 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "W"
-    v 3 "d"
-    v 4 "END"
-    v 5 "O"
-    v 6 "o"
-    v 7 "y"
-    d 6 1 "e"
-    d 1 7 "e"
-    d 7 5 "e"
-    d 5 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "y"
-    d 2 1 "e"
-    d 1 7 "e"
-    d 7 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
 
 
-GBAD done (elapsed CPU time =    0.12 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -597,9 +201,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 556
+  Limit.......................... 104
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
+  Maximum size of substructures.. 316
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -610,108 +214,38 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
 Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "START"
-    v 9 "p"
-    v 10 "a"
-    v 11 "u"
-    d 8 4 "e"
-    d 4 10 "e"
-    d 10 6 "e"
-    d 6 7 "e"
-    d 7 11 "e"
-    d 11 5 "e"
-    d 5 1 "e"
-    d 1 9 "e"
-    d 9 2 "e"
-    d 2 3 "e"
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "START"
-    v 9 "p"
-    v 10 "a"
-    v 11 "u"
-    d 8 4 "e"
-    d 4 10 "e"
-    d 10 6 "e"
-    d 6 7 "e"
-    d 7 11 "e"
-    d 11 5 "e"
-    d 5 1 "e"
-    d 1 9 "e"
-    d 9 2 "e"
-    d 2 3 "e"
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
 
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "p"
-    v 9 "a"
-    v 10 "u"
-    d 4 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 10 "e"
-    d 10 5 "e"
-    d 5 1 "e"
-    d 1 8 "e"
-    d 8 2 "e"
-    d 2 3 "e"
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
+    d 1 2 "e"
 
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "b"
-    v 4 "C"
-    v 5 "h"
-    v 6 "U"
-    v 7 "START"
-    v 8 "p"
-    v 9 "a"
-    v 10 "u"
-    d 7 3 "e"
-    d 3 9 "e"
-    d 9 5 "e"
-    d 5 6 "e"
-    d 6 10 "e"
-    d 10 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 2 "e"
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.06 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -728,9 +262,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 475
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -741,84 +275,101 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "o"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
 
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.13 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.300000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -835,9 +386,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 920
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 2040
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -848,215 +399,101 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 2040 vertices, 1840 edges, 40891 bits
-20 unique labels
-19 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
 
-(2) Substructure: value = 1.48953, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(3) Substructure: value = 1.48862, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
     d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
 
-
-GBAD done (elapsed CPU time =    0.19 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 556
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
-Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "END"
-    v 6 "u"
-    v 7 "C"
-    v 8 "G"
-    v 9 "U"
-    v 10 "p"
-    v 11 "h"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 11 "e"
-    d 11 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 10 "e"
-    d 10 4 "e"
-    d 4 5 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "END"
-    v 6 "u"
-    v 7 "C"
-    v 8 "G"
-    v 9 "U"
-    v 10 "p"
-    v 11 "h"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 11 "e"
-    d 11 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 10 "e"
-    d 10 4 "e"
-    d 4 5 "e"
-
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "b"
-    v 2 "a"
-    v 3 "w"
-    v 4 "END"
-    v 5 "u"
-    v 6 "C"
-    v 7 "G"
-    v 8 "U"
-    v 9 "p"
-    v 10 "h"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
     d 1 2 "e"
-    d 2 10 "e"
-    d 10 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 9 "e"
-    d 9 3 "e"
-    d 3 4 "e"
 
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "b"
-    v 2 "START"
-    v 3 "a"
-    v 4 "w"
-    v 5 "u"
-    v 6 "C"
-    v 7 "G"
-    v 8 "U"
-    v 9 "p"
-    v 10 "h"
+
+GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.300000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
     d 2 1 "e"
-    d 1 3 "e"
-    d 3 10 "e"
-    d 10 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 9 "e"
-    d 9 4 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.07 seconds).
+GBAD done (elapsed CPU time =    0.00 seconds).
 GBAD 3.2
 
 Parameters:
@@ -1073,9 +510,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 475
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -1086,322 +523,40 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "o"
-    v 4 "y"
-    v 5 "d"
-    v 6 "END"
-    v 7 "r"
-    v 8 "W"
-    d 2 7 "e"
-    d 3 7 "e"
-    d 7 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "o"
-    v 4 "y"
-    v 5 "d"
-    v 6 "END"
-    v 7 "r"
-    v 8 "W"
-    d 2 7 "e"
-    d 3 7 "e"
-    d 7 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 5 "e"
-    d 5 6 "e"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "O"
-    v 2 "o"
-    v 3 "y"
-    v 4 "d"
-    v 5 "END"
-    v 6 "r"
-    v 7 "W"
-    d 2 6 "e"
-    d 6 3 "e"
-    d 3 1 "e"
-    d 1 7 "e"
-    d 7 4 "e"
-    d 4 5 "e"
-
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "O"
-    v 2 "K"
-    v 3 "y"
-    v 4 "d"
-    v 5 "END"
-    v 6 "r"
-    v 7 "W"
-    d 2 6 "e"
-    d 6 3 "e"
-    d 3 1 "e"
-    d 1 7 "e"
-    d 7 4 "e"
-    d 4 5 "e"
-
-
-GBAD done (elapsed CPU time =    0.12 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 556
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
-Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "END"
-    v 8 "C"
-    v 9 "a"
-    v 10 "U"
-    v 11 "w"
-    d 3 5 "e"
-    d 5 9 "e"
-    d 9 2 "e"
-    d 2 10 "e"
-    d 10 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 11 "e"
-    d 11 7 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "END"
-    v 8 "C"
-    v 9 "a"
-    v 10 "U"
-    v 11 "w"
-    d 3 5 "e"
-    d 5 9 "e"
-    d 9 2 "e"
-    d 2 10 "e"
-    d 10 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 11 "e"
-    d 11 7 "e"
-
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "p"
-    v 4 "b"
-    v 5 "G"
-    v 6 "END"
-    v 7 "C"
-    v 8 "a"
-    v 9 "U"
-    v 10 "w"
-    d 4 8 "e"
-    d 8 2 "e"
-    d 2 9 "e"
-    d 9 1 "e"
-    d 1 7 "e"
-    d 7 5 "e"
-    d 5 3 "e"
-    d 3 10 "e"
-    d 10 6 "e"
-
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "u"
-    v 2 "h"
-    v 3 "START"
-    v 4 "p"
-    v 5 "b"
-    v 6 "G"
-    v 7 "C"
-    v 8 "a"
-    v 9 "U"
-    v 10 "w"
-    d 3 5 "e"
-    d 5 8 "e"
-    d 8 2 "e"
-    d 2 9 "e"
-    d 9 1 "e"
-    d 1 7 "e"
-    d 7 6 "e"
-    d 6 4 "e"
-    d 4 10 "e"
-
-
-GBAD done (elapsed CPU time =    0.07 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.300000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 475
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
-Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "o"
-    v 8 "y"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
     d 2 1 "e"
-    d 7 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
 
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "o"
-    v 8 "y"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
     d 2 1 "e"
-    d 7 1 "e"
-    d 1 8 "e"
-    d 8 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "W"
-    v 3 "d"
-    v 4 "END"
-    v 5 "O"
-    v 6 "o"
-    v 7 "y"
-    d 6 1 "e"
-    d 1 7 "e"
-    d 7 5 "e"
-    d 5 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "K"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    v 6 "O"
-    v 7 "y"
-    d 2 1 "e"
-    d 1 7 "e"
-    d 7 6 "e"
-    d 6 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
 
 
-GBAD done (elapsed CPU time =    0.12 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -1418,9 +573,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 556
+  Limit.......................... 104
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1312
+  Maximum size of substructures.. 316
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -1431,108 +586,38 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
 Normative Pattern (1):
-Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "START"
-    v 9 "p"
-    v 10 "a"
-    v 11 "u"
-    d 8 4 "e"
-    d 4 10 "e"
-    d 10 6 "e"
-    d 6 7 "e"
-    d 7 11 "e"
-    d 11 5 "e"
-    d 5 1 "e"
-    d 1 9 "e"
-    d 9 2 "e"
-    d 2 3 "e"
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 4.41911, instances = 89
-  Graph(11v,10e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "START"
-    v 9 "p"
-    v 10 "a"
-    v 11 "u"
-    d 8 4 "e"
-    d 4 10 "e"
-    d 10 6 "e"
-    d 6 7 "e"
-    d 7 11 "e"
-    d 11 5 "e"
-    d 5 1 "e"
-    d 1 9 "e"
-    d 9 2 "e"
-    d 2 3 "e"
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
 
-(2) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "END"
-    v 4 "b"
-    v 5 "C"
-    v 6 "h"
-    v 7 "U"
-    v 8 "p"
-    v 9 "a"
-    v 10 "u"
-    d 4 9 "e"
-    d 9 6 "e"
-    d 6 7 "e"
-    d 7 10 "e"
-    d 10 5 "e"
-    d 5 1 "e"
-    d 1 8 "e"
-    d 8 2 "e"
-    d 2 3 "e"
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
+    d 1 2 "e"
 
-(3) Substructure: value = 3.19188, instances = 89
-  Graph(10v,9e):
-    v 1 "G"
-    v 2 "w"
-    v 3 "b"
-    v 4 "C"
-    v 5 "h"
-    v 6 "U"
-    v 7 "START"
-    v 8 "p"
-    v 9 "a"
-    v 10 "u"
-    d 7 3 "e"
-    d 3 9 "e"
-    d 9 5 "e"
-    d 5 6 "e"
-    d 6 10 "e"
-    d 10 4 "e"
-    d 4 1 "e"
-    d 1 8 "e"
-    d 8 2 "e"
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.06 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -1549,9 +634,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 475
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 1150
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -1562,84 +647,101 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 1150 vertices, 950 edges, 19541 bits
-13 unique labels
-12 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 3.58602, instances = 104
-  Graph(8v,7e):
-    v 1 "o"
-    v 2 "K"
-    v 3 "END"
-    v 4 "y"
-    v 5 "O"
-    v 6 "r"
-    v 7 "d"
-    v 8 "W"
-    d 2 6 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 5 "e"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
 
-(2) Substructure: value = 2.58348, instances = 104
-  Graph(7v,6e):
-    v 1 "o"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
 
-(3) Substructure: value = 2.57774, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "END"
-    v 3 "y"
-    v 4 "O"
-    v 5 "r"
-    v 6 "d"
-    v 7 "W"
-    d 1 5 "e"
-    d 5 3 "e"
-    d 3 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 2 "e"
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.12 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD 3.2
+
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Maximum Partial
+  Maximum Partial Sub threshold.. 0.300000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+
+GBAD done (elapsed CPU time =    0.00 seconds).
 GBAD 3.2
 
 Parameters:
@@ -1655,9 +757,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 2
-  Limit.......................... 920
+  Limit.......................... 129
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 2040
+  Maximum size of substructures.. 516
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -1670,1371 +772,840 @@ Read 200 total positive graphs
 
 ----- Iteration 1 -----
 
-200 positive graphs: 2040 vertices, 1840 edges, 40891 bits
-20 unique labels
-19 initial substructures
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
-    d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-
-
-Best 53 substructures:
-
-(1) Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
-    d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-
-(2) Substructure: value = 1.48953, instances = 104
-  Graph(7v,6e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(3) Substructure: value = 1.48862, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    v 7 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(4) Substructure: value = 1.4812, instances = 104
-  Graph(7v,6e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(5) Substructure: value = 1.36801, instances = 104
-  Graph(6v,5e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(6) Substructure: value = 1.36801, instances = 104
-  Graph(6v,5e):
-    v 1 "r"
-    v 2 "y"
-    v 3 "O"
-    v 4 "W"
-    v 5 "d"
-    v 6 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(7) Substructure: value = 1.36399, instances = 55
-  Graph(10v,9e):
-    v 1 "START"
-    v 2 "Y"
-    v 3 "K"
-    v 4 "r"
-    v 5 "o"
-    v 6 "y"
-    v 7 "O"
-    v 8 "W"
-    v 9 "d"
-    v 10 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 5 4 "e"
-    d 4 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-
-(8) Substructure: value = 1.36224, instances = 104
-  Graph(6v,5e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(9) Substructure: value = 1.36153, instances = 104
-  Graph(6v,5e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    v 6 "d"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-
-(10) Substructure: value = 1.31049, instances = 49
-  Graph(10v,9e):
-    v 1 "START"
-    v 2 "Y"
-    v 3 "o"
-    v 4 "r"
-    v 5 "K"
-    v 6 "y"
-    v 7 "O"
-    v 8 "W"
-    v 9 "d"
-    v 10 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 5 4 "e"
-    d 4 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-
-(11) Substructure: value = 1.3029, instances = 55
-  Graph(9v,8e):
-    v 1 "Y"
-    v 2 "K"
-    v 3 "r"
-    v 4 "o"
-    v 5 "y"
-    v 6 "O"
-    v 7 "W"
-    v 8 "d"
-    v 9 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 4 3 "e"
-    d 3 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-
-(12) Substructure: value = 1.3029, instances = 55
-  Graph(9v,8e):
-    v 1 "START"
-    v 2 "Y"
-    v 3 "K"
-    v 4 "r"
-    v 5 "y"
-    v 6 "O"
-    v 7 "W"
-    v 8 "d"
-    v 9 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-
-(13) Substructure: value = 1.3029, instances = 55
-  Graph(9v,8e):
-    v 1 "START"
-    v 2 "Y"
-    v 3 "K"
-    v 4 "r"
-    v 5 "o"
-    v 6 "y"
-    v 7 "O"
-    v 8 "W"
-    v 9 "d"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 5 4 "e"
-    d 4 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-
-(14) Substructure: value = 1.28036, instances = 104
-  Graph(5v,4e):
-    v 1 "y"
-    v 2 "O"
-    v 3 "W"
-    v 4 "d"
-    v 5 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(15) Substructure: value = 1.27075, instances = 104
-  Graph(5v,4e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-
-(16) Substructure: value = 1.26627, instances = 104
-  Graph(5v,4e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(17) Substructure: value = 1.26573, instances = 104
-  Graph(5v,4e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    v 5 "W"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-
-(18) Substructure: value = 1.25989, instances = 49
-  Graph(9v,8e):
-    v 1 "Y"
-    v 2 "o"
-    v 3 "r"
-    v 4 "K"
-    v 5 "y"
-    v 6 "O"
-    v 7 "W"
-    v 8 "d"
-    v 9 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 4 3 "e"
-    d 3 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-
-(19) Substructure: value = 1.25395, instances = 55
-  Graph(8v,7e):
-    v 1 "START"
-    v 2 "Y"
-    v 3 "K"
-    v 4 "r"
-    v 5 "o"
-    v 6 "y"
-    v 7 "O"
-    v 8 "W"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 5 4 "e"
-    d 4 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-
-(20) Substructure: value = 1.24764, instances = 55
-  Graph(8v,7e):
-    v 1 "Y"
-    v 2 "K"
-    v 3 "r"
-    v 4 "o"
-    v 5 "y"
-    v 6 "O"
-    v 7 "W"
-    v 8 "d"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 4 3 "e"
-    d 3 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-
-(21) Substructure: value = 1.24764, instances = 55
-  Graph(8v,7e):
-    v 1 "Y"
-    v 2 "K"
-    v 3 "r"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-
-(22) Substructure: value = 1.203, instances = 55
-  Graph(7v,6e):
-    v 1 "Y"
-    v 2 "K"
-    v 3 "r"
-    v 4 "o"
-    v 5 "y"
-    v 6 "O"
-    v 7 "W"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 4 3 "e"
-    d 3 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-
-(23) Substructure: value = 1.19365, instances = 104
-  Graph(4v,3e):
-    v 1 "O"
-    v 2 "W"
-    v 3 "d"
-    v 4 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(24) Substructure: value = 1.18645, instances = 104
-  Graph(4v,3e):
-    v 1 "y"
-    v 2 "O"
-    v 3 "W"
-    v 4 "d"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(25) Substructure: value = 1.18308, instances = 104
-  Graph(4v,3e):
-    v 1 "r"
-    v 2 "o"
-    v 3 "y"
-    v 4 "O"
-    d 2 1 "e"
-    d 1 3 "e"
-    d 3 4 "e"
-
-(26) Substructure: value = 1.18267, instances = 104
-  Graph(4v,3e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "y"
-    v 4 "O"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-
-(27) Substructure: value = 1.11792, instances = 104
-  Graph(3v,2e):
-    v 1 "W"
-    v 2 "d"
-    v 3 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(28) Substructure: value = 1.1129, instances = 104
-  Graph(3v,2e):
-    v 1 "y"
-    v 2 "O"
-    v 3 "W"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(29) Substructure: value = 1.1129, instances = 104
-  Graph(3v,2e):
-    v 1 "O"
-    v 2 "W"
-    v 3 "d"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(30) Substructure: value = 1.10793, instances = 104
-  Graph(3v,2e):
-    v 1 "r"
-    v 2 "y"
-    v 3 "O"
-    d 1 2 "e"
-    d 2 3 "e"
-
-(31) Substructure: value = 1.05143, instances = 104
+Substructure: value = 2.63913, instances = 200
   Graph(2v,1e):
-    v 1 "START"
-    v 2 "Y"
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
 
-(32) Substructure: value = 1.05143, instances = 104
+
+Best 9 substructures:
+
+(1) Substructure: value = 2.63913, instances = 200
   Graph(2v,1e):
-    v 1 "d"
-    v 2 "END"
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
 
-(33) Substructure: value = 1.04862, instances = 104
+(2) Substructure: value = 1.15727, instances = 50
   Graph(2v,1e):
-    v 1 "y"
-    v 2 "O"
+    v 1 "2"
+    v 2 "5"
     d 1 2 "e"
 
-(34) Substructure: value = 1.04862, instances = 104
+(3) Substructure: value = 0.995893, instances = 8
   Graph(2v,1e):
-    v 1 "O"
-    v 2 "W"
+    v 1 "Y"
+    v 2 "l"
     d 1 2 "e"
 
-(35) Substructure: value = 0.993261, instances = 200
+(4) Substructure: value = 0.972042, instances = 200
   Graph(1v,0e):
-    v 1 "START"
+    v 1 "V"
 
-(36) Substructure: value = 0.993261, instances = 104
+(5) Substructure: value = 0.972042, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(6) Substructure: value = 0.972042, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.972042, instances = 8
   Graph(1v,0e):
     v 1 "Y"
 
-(37) Substructure: value = 0.993261, instances = 104
+(8) Substructure: value = 0.972042, instances = 50
   Graph(1v,0e):
-    v 1 "o"
+    v 1 "2"
 
-(38) Substructure: value = 0.993261, instances = 104
+(9) Substructure: value = 0.972042, instances = 200
   Graph(1v,0e):
-    v 1 "r"
-
-(39) Substructure: value = 0.993261, instances = 104
-  Graph(1v,0e):
-    v 1 "K"
-
-(40) Substructure: value = 0.993261, instances = 104
-  Graph(1v,0e):
-    v 1 "y"
-
-(41) Substructure: value = 0.993261, instances = 104
-  Graph(1v,0e):
-    v 1 "O"
-
-(42) Substructure: value = 0.993261, instances = 104
-  Graph(1v,0e):
-    v 1 "W"
-
-(43) Substructure: value = 0.993261, instances = 104
-  Graph(1v,0e):
-    v 1 "d"
-
-(44) Substructure: value = 0.993261, instances = 96
-  Graph(1v,0e):
-    v 1 "b"
-
-(45) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "a"
-
-(46) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "h"
-
-(47) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "U"
-
-(48) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "u"
-
-(49) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "C"
-
-(50) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "G"
-
-(51) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "p"
-
-(52) Substructure: value = 0.993261, instances = 89
-  Graph(1v,0e):
-    v 1 "w"
-
-(53) Substructure: value = 0.993261, instances = 200
-  Graph(1v,0e):
-    v 1 "END"
+    v 1 "Z"
 
 Compressing graph by best substructure (1):
-Substructure: value = 1.63453, instances = 104
-  Graph(8v,7e):
-    v 1 "K"
-    v 2 "r"
-    v 3 "o"
-    v 4 "y"
-    v 5 "O"
-    v 6 "W"
-    v 7 "d"
-    v 8 "END"
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
     d 1 2 "e"
-    d 3 2 "e"
-    d 2 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
 
-Elapsed time for iteration 1 = 1 seconds.
+Elapsed time for iteration 1 = 0 seconds.
 
 ----- Iteration 2 -----
 
-200 positive graphs: 1312 vertices, 1112 edges, 23182 bits
-14 unique labels
-13 initial substructures
+200 positive graphs: 316 vertices, 58 edges, 1832 bits
+6 unique labels
+5 initial substructures
 Normative Pattern:
-Substructure: value = 1.087, instances = 104
+Substructure: value = 1.6203, instances = 0
   Graph(2v,1e):
-    v 1 SUB_1
-    v 2 "Y"
-    d 2 1 "e"
-
-Anomalous Instance(s): 
-
- from positive example 1:
-    v 1 SUB_1
-    v 106 "Y" <-- anomaly (original vertex: 2 , in original example 1)
-    d 106 1 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 1)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 2 SUB_1
-    v 108 "Y" <-- anomaly (original vertex: 2 , in original example 2)
-    d 108 2 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 2)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 3 SUB_1
-    v 176 "Y" <-- anomaly (original vertex: 2 , in original example 9)
-    d 176 3 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 9)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 4 SUB_1
-    v 189 "Y" <-- anomaly (original vertex: 2 , in original example 11)
-    d 189 4 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 11)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 5 SUB_1
-    v 202 "Y" <-- anomaly (original vertex: 2 , in original example 13)
-    d 202 5 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 13)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 6 SUB_1
-    v 204 "Y" <-- anomaly (original vertex: 2 , in original example 14)
-    d 204 6 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 14)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 7 SUB_1
-    v 206 "Y" <-- anomaly (original vertex: 2 , in original example 15)
-    d 206 7 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 15)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 8 SUB_1
-    v 230 "Y" <-- anomaly (original vertex: 2 , in original example 18)
-    d 230 8 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 18)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 9 SUB_1
-    v 232 "Y" <-- anomaly (original vertex: 2 , in original example 19)
-    d 232 9 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 19)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 1:
-    v 10 SUB_1
-    v 234 "Y" <-- anomaly (original vertex: 2 , in original example 20)
-    d 234 10 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 20)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 11 SUB_1
-    v 247 "Y" <-- anomaly (original vertex: 2 , in original example 22)
-    d 247 11 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 22)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 12 SUB_1
-    v 274 "Y" <-- anomaly (original vertex: 2 , in original example 26)
-    d 274 12 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 26)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 13 SUB_1
-    v 287 "Y" <-- anomaly (original vertex: 2 , in original example 28)
-    d 287 13 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 28)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 14 SUB_1
-    v 311 "Y" <-- anomaly (original vertex: 2 , in original example 31)
-    d 311 14 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 31)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 15 SUB_1
-    v 324 "Y" <-- anomaly (original vertex: 2 , in original example 33)
-    d 324 15 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 33)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 16 SUB_1
-    v 326 "Y" <-- anomaly (original vertex: 2 , in original example 34)
-    d 326 16 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 34)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 17 SUB_1
-    v 328 "Y" <-- anomaly (original vertex: 2 , in original example 35)
-    d 328 17 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 35)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 18 SUB_1
-    v 330 "Y" <-- anomaly (original vertex: 2 , in original example 36)
-    d 330 18 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 36)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 19 SUB_1
-    v 332 "Y" <-- anomaly (original vertex: 2 , in original example 37)
-    d 332 19 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 37)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 2:
-    v 20 SUB_1
-    v 367 "Y" <-- anomaly (original vertex: 2 , in original example 41)
-    d 367 20 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 41)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 21 SUB_1
-    v 369 "Y" <-- anomaly (original vertex: 2 , in original example 42)
-    d 369 21 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 42)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 22 SUB_1
-    v 382 "Y" <-- anomaly (original vertex: 2 , in original example 44)
-    d 382 22 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 44)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 23 SUB_1
-    v 384 "Y" <-- anomaly (original vertex: 2 , in original example 45)
-    d 384 23 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 45)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 24 SUB_1
-    v 386 "Y" <-- anomaly (original vertex: 2 , in original example 46)
-    d 386 24 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 46)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 25 SUB_1
-    v 388 "Y" <-- anomaly (original vertex: 2 , in original example 47)
-    d 388 25 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 47)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 26 SUB_1
-    v 390 "Y" <-- anomaly (original vertex: 2 , in original example 48)
-    d 390 26 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 48)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 27 SUB_1
-    v 403 "Y" <-- anomaly (original vertex: 2 , in original example 50)
-    d 403 27 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 50)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 28 SUB_1
-    v 405 "Y" <-- anomaly (original vertex: 2 , in original example 51)
-    d 405 28 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 51)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 29 SUB_1
-    v 418 "Y" <-- anomaly (original vertex: 2 , in original example 53)
-    d 418 29 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 53)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 30 SUB_1
-    v 442 "Y" <-- anomaly (original vertex: 2 , in original example 56)
-    d 442 30 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 56)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 3:
-    v 31 SUB_1
-    v 444 "Y" <-- anomaly (original vertex: 2 , in original example 57)
-    d 444 31 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 57)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 32 SUB_1
-    v 446 "Y" <-- anomaly (original vertex: 2 , in original example 58)
-    d 446 32 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 58)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 33 SUB_1
-    v 459 "Y" <-- anomaly (original vertex: 2 , in original example 60)
-    d 459 33 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 60)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 34 SUB_1
-    v 472 "Y" <-- anomaly (original vertex: 2 , in original example 62)
-    d 472 34 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 62)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 35 SUB_1
-    v 474 "Y" <-- anomaly (original vertex: 2 , in original example 63)
-    d 474 35 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 63)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 36 SUB_1
-    v 487 "Y" <-- anomaly (original vertex: 2 , in original example 65)
-    d 487 36 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 65)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 37 SUB_1
-    v 489 "Y" <-- anomaly (original vertex: 2 , in original example 66)
-    d 489 37 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 66)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 38 SUB_1
-    v 502 "Y" <-- anomaly (original vertex: 2 , in original example 68)
-    d 502 38 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 68)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 39 SUB_1
-    v 515 "Y" <-- anomaly (original vertex: 2 , in original example 70)
-    d 515 39 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 70)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 40 SUB_1
-    v 528 "Y" <-- anomaly (original vertex: 2 , in original example 72)
-    d 528 40 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 72)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 41 SUB_1
-    v 530 "Y" <-- anomaly (original vertex: 2 , in original example 73)
-    d 530 41 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 73)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 4:
-    v 42 SUB_1
-    v 543 "Y" <-- anomaly (original vertex: 2 , in original example 75)
-    d 543 42 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 75)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 43 SUB_1
-    v 545 "Y" <-- anomaly (original vertex: 2 , in original example 76)
-    d 545 43 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 76)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 44 SUB_1
-    v 547 "Y" <-- anomaly (original vertex: 2 , in original example 77)
-    d 547 44 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 77)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 45 SUB_1
-    v 549 "Y" <-- anomaly (original vertex: 2 , in original example 78)
-    d 549 45 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 78)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 46 SUB_1
-    v 551 "Y" <-- anomaly (original vertex: 2 , in original example 79)
-    d 551 46 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 79)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 47 SUB_1
-    v 553 "Y" <-- anomaly (original vertex: 2 , in original example 80)
-    d 553 47 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 80)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 48 SUB_1
-    v 621 "Y" <-- anomaly (original vertex: 2 , in original example 87)
-    d 621 48 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 87)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 49 SUB_1
-    v 634 "Y" <-- anomaly (original vertex: 2 , in original example 89)
-    d 634 49 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 89)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 50 SUB_1
-    v 636 "Y" <-- anomaly (original vertex: 2 , in original example 90)
-    d 636 50 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 90)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 51 SUB_1
-    v 660 "Y" <-- anomaly (original vertex: 2 , in original example 93)
-    d 660 51 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 93)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 52 SUB_1
-    v 728 "Y" <-- anomaly (original vertex: 2 , in original example 100)
-    d 728 52 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 100)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 5:
-    v 53 SUB_1
-    v 741 "Y" <-- anomaly (original vertex: 2 , in original example 102)
-    d 741 53 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 102)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 54 SUB_1
-    v 743 "Y" <-- anomaly (original vertex: 2 , in original example 103)
-    d 743 54 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 103)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 55 SUB_1
-    v 781 "Y" <-- anomaly (original vertex: 2 , in original example 108)
-    d 781 55 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 108)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 56 SUB_1
-    v 783 "Y" <-- anomaly (original vertex: 2 , in original example 109)
-    d 783 56 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 109)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 57 SUB_1
-    v 785 "Y" <-- anomaly (original vertex: 2 , in original example 110)
-    d 785 57 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 110)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 58 SUB_1
-    v 798 "Y" <-- anomaly (original vertex: 2 , in original example 112)
-    d 798 58 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 112)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 59 SUB_1
-    v 800 "Y" <-- anomaly (original vertex: 2 , in original example 113)
-    d 800 59 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 113)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 60 SUB_1
-    v 802 "Y" <-- anomaly (original vertex: 2 , in original example 114)
-    d 802 60 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 114)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 61 SUB_1
-    v 815 "Y" <-- anomaly (original vertex: 2 , in original example 116)
-    d 815 61 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 116)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 62 SUB_1
-    v 817 "Y" <-- anomaly (original vertex: 2 , in original example 117)
-    d 817 62 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 117)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 63 SUB_1
-    v 830 "Y" <-- anomaly (original vertex: 2 , in original example 119)
-    d 830 63 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 119)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 6:
-    v 64 SUB_1
-    v 835 "Y" <-- anomaly (original vertex: 2 , in original example 121)
-    d 835 64 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 121)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 65 SUB_1
-    v 851 "Y" <-- anomaly (original vertex: 2 , in original example 124)
-    d 851 65 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 124)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 66 SUB_1
-    v 864 "Y" <-- anomaly (original vertex: 2 , in original example 126)
-    d 864 66 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 126)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 67 SUB_1
-    v 866 "Y" <-- anomaly (original vertex: 2 , in original example 127)
-    d 866 67 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 127)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 68 SUB_1
-    v 901 "Y" <-- anomaly (original vertex: 2 , in original example 131)
-    d 901 68 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 131)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 69 SUB_1
-    v 917 "Y" <-- anomaly (original vertex: 2 , in original example 134)
-    d 917 69 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 134)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 70 SUB_1
-    v 930 "Y" <-- anomaly (original vertex: 2 , in original example 136)
-    d 930 70 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 136)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 71 SUB_1
-    v 935 "Y" <-- anomaly (original vertex: 2 , in original example 138)
-    d 935 71 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 138)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 72 SUB_1
-    v 937 "Y" <-- anomaly (original vertex: 2 , in original example 139)
-    d 937 72 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 139)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 73 SUB_1
-    v 939 "Y" <-- anomaly (original vertex: 2 , in original example 140)
-    d 939 73 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 140)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 74 SUB_1
-    v 963 "Y" <-- anomaly (original vertex: 2 , in original example 143)
-    d 963 74 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 143)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 7:
-    v 75 SUB_1
-    v 965 "Y" <-- anomaly (original vertex: 2 , in original example 144)
-    d 965 75 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 144)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 76 SUB_1
-    v 967 "Y" <-- anomaly (original vertex: 2 , in original example 145)
-    d 967 76 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 145)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 77 SUB_1
-    v 969 "Y" <-- anomaly (original vertex: 2 , in original example 146)
-    d 969 77 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 146)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 78 SUB_1
-    v 982 "Y" <-- anomaly (original vertex: 2 , in original example 148)
-    d 982 78 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 148)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 79 SUB_1
-    v 995 "Y" <-- anomaly (original vertex: 2 , in original example 150)
-    d 995 79 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 150)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 80 SUB_1
-    v 1008 "Y" <-- anomaly (original vertex: 2 , in original example 152)
-    d 1008 80 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 152)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 81 SUB_1
-    v 1032 "Y" <-- anomaly (original vertex: 2 , in original example 155)
-    d 1032 81 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 155)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 82 SUB_1
-    v 1045 "Y" <-- anomaly (original vertex: 2 , in original example 157)
-    d 1045 82 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 157)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 83 SUB_1
-    v 1058 "Y" <-- anomaly (original vertex: 2 , in original example 159)
-    d 1058 83 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 159)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 84 SUB_1
-    v 1060 "Y" <-- anomaly (original vertex: 2 , in original example 160)
-    d 1060 84 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 160)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 85 SUB_1
-    v 1073 "Y" <-- anomaly (original vertex: 2 , in original example 162)
-    d 1073 85 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 162)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 8:
-    v 86 SUB_1
-    v 1108 "Y" <-- anomaly (original vertex: 2 , in original example 166)
-    d 1108 86 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 166)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 87 SUB_1
-    v 1121 "Y" <-- anomaly (original vertex: 2 , in original example 168)
-    d 1121 87 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 168)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 88 SUB_1
-    v 1134 "Y" <-- anomaly (original vertex: 2 , in original example 170)
-    d 1134 88 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 170)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 89 SUB_1
-    v 1136 "Y" <-- anomaly (original vertex: 2 , in original example 171)
-    d 1136 89 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 171)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 90 SUB_1
-    v 1138 "Y" <-- anomaly (original vertex: 2 , in original example 172)
-    d 1138 90 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 172)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 91 SUB_1
-    v 1140 "Y" <-- anomaly (original vertex: 2 , in original example 173)
-    d 1140 91 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 173)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 92 SUB_1
-    v 1142 "Y" <-- anomaly (original vertex: 2 , in original example 174)
-    d 1142 92 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 174)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 93 SUB_1
-    v 1144 "Y" <-- anomaly (original vertex: 2 , in original example 175)
-    d 1144 93 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 175)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 94 SUB_1
-    v 1146 "Y" <-- anomaly (original vertex: 2 , in original example 176)
-    d 1146 94 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 176)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 95 SUB_1
-    v 1159 "Y" <-- anomaly (original vertex: 2 , in original example 178)
-    d 1159 95 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 178)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 9:
-    v 96 SUB_1
-    v 1172 "Y" <-- anomaly (original vertex: 2 , in original example 180)
-    d 1172 96 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 180)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 97 SUB_1
-    v 1174 "Y" <-- anomaly (original vertex: 2 , in original example 181)
-    d 1174 97 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 181)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 98 SUB_1
-    v 1212 "Y" <-- anomaly (original vertex: 2 , in original example 186)
-    d 1212 98 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 186)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 99 SUB_1
-    v 1225 "Y" <-- anomaly (original vertex: 2 , in original example 188)
-    d 1225 99 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 188)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 100 SUB_1
-    v 1249 "Y" <-- anomaly (original vertex: 2 , in original example 191)
-    d 1249 100 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 191)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 101 SUB_1
-    v 1273 "Y" <-- anomaly (original vertex: 2 , in original example 194)
-    d 1273 101 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 194)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 102 SUB_1
-    v 1297 "Y" <-- anomaly (original vertex: 2 , in original example 197)
-    d 1297 102 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 197)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 103 SUB_1
-    v 1299 "Y" <-- anomaly (original vertex: 2 , in original example 198)
-    d 1299 103 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 198)
-    (probabilistic anomalous value = 1.000000 )
-
- from positive example 10:
-    v 104 SUB_1
-    v 1312 "Y" <-- anomaly (original vertex: 2 , in original example 200)
-    d 1312 104 "e" <-- anomaly (original edge vertices: 2 -- 3, in original example 200)
-    (probabilistic anomalous value = 1.000000 )
-
-Best 26 substructures:
-
-(1) Substructure: value = 1.087, instances = 104
-  Graph(2v,1e):
-    v 1 SUB_1
-    v 2 "Y"
-    d 2 1 "e"
-
-(2) Substructure: value = 1.087, instances = 104
-  Graph(2v,1e):
-    v 1 "START"
-    v 2 "Y"
+    v 1 "2"
+    v 2 "5"
     d 1 2 "e"
 
-(3) Substructure: value = 1.0788, instances = 96
+Anomalous Instance(s): NONE
+
+Best 7 substructures:
+
+(1) Substructure: value = 1.6203, instances = 50
   Graph(2v,1e):
-    v 1 "START"
-    v 2 "b"
+    v 1 "2"
+    v 2 "5"
     d 1 2 "e"
 
-(4) Substructure: value = 1.07172, instances = 89
+(2) Substructure: value = 1.01795, instances = 8
   Graph(2v,1e):
-    v 1 "w"
-    v 2 "END"
+    v 1 "Y"
+    v 2 "l"
     d 1 2 "e"
 
-(5) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "b"
-    v 2 "a"
-    d 1 2 "e"
-
-(6) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "a"
-    v 2 "h"
-    d 1 2 "e"
-
-(7) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "h"
-    v 2 "U"
-    d 1 2 "e"
-
-(8) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "U"
-    v 2 "u"
-    d 1 2 "e"
-
-(9) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "u"
-    v 2 "C"
-    d 1 2 "e"
-
-(10) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "C"
-    v 2 "G"
-    d 1 2 "e"
-
-(11) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "G"
-    v 2 "p"
-    d 1 2 "e"
-
-(12) Substructure: value = 1.06733, instances = 89
-  Graph(2v,1e):
-    v 1 "p"
-    v 2 "w"
-    d 1 2 "e"
-
-(13) Substructure: value = 0.995023, instances = 7
-  Graph(2v,1e):
-    v 1 "b"
-    v 2 "END"
-    d 1 2 "e"
-
-(14) Substructure: value = 0.989539, instances = 200
+(3) Substructure: value = 0.955274, instances = 50
   Graph(1v,0e):
-    v 1 "START"
+    v 1 "2"
 
-(15) Substructure: value = 0.989539, instances = 89
+(4) Substructure: value = 0.955274, instances = 50
   Graph(1v,0e):
-    v 1 "a"
+    v 1 "5"
 
-(16) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "h"
-
-(17) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "U"
-
-(18) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "u"
-
-(19) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "C"
-
-(20) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "G"
-
-(21) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "p"
-
-(22) Substructure: value = 0.989539, instances = 89
-  Graph(1v,0e):
-    v 1 "w"
-
-(23) Substructure: value = 0.989539, instances = 104
+(5) Substructure: value = 0.955274, instances = 8
   Graph(1v,0e):
     v 1 "Y"
 
-(24) Substructure: value = 0.989539, instances = 96
+(6) Substructure: value = 0.955274, instances = 8
   Graph(1v,0e):
-    v 1 "b"
+    v 1 "l"
 
-(25) Substructure: value = 0.989539, instances = 104
+(7) Substructure: value = 0.955274, instances = 200
   Graph(1v,0e):
     v 1 SUB_1
-
-(26) Substructure: value = 0.989539, instances = 96
-  Graph(1v,0e):
-    v 1 "END"
 
 Elapsed time for iteration 2 = 0 seconds.
 
 
-GBAD done (elapsed CPU time =    1.61 seconds).
+GBAD done (elapsed CPU time =    0.10 seconds).
 GBAD 3.2
 
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Probabilistic
+  Max Anomalous Score............ 1.000000
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 2
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+----- Iteration 1 -----
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(4) Substructure: value = 0.9681, instances = 200
+  Graph(1v,0e):
+    v 1 "SUB1"
+
+(5) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(6) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(7) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(8) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+Compressing graph by best substructure (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB1"
+    d 1 1 "e"
+
+Elapsed time for iteration 1 = 0 seconds.
+
+----- Iteration 2 -----
+
+200 positive graphs: 316 vertices, 58 edges, 1915 bits
+7 unique labels
+6 initial substructures
+Normative Pattern:
+Substructure: value = 1.6174, instances = 0
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+Anomalous Instance(s): NONE
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.6174, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(2) Substructure: value = 1.02453, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(3) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(4) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(5) Substructure: value = 0.962379, instances = 150
+  Graph(1v,0e):
+    v 1 SUB_1
+
+(6) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "SUB1"
+
+(8) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+Elapsed time for iteration 2 = 0 seconds.
+
+
+GBAD done (elapsed CPU time =    0.08 seconds).
 GBAD 3.2
 
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Probabilistic
+  Max Anomalous Score............ 1.000000
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 2
+  Limit.......................... 129
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 516
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+----- Iteration 1 -----
+
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
+Normative Pattern (1):
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+
+Best 9 substructures:
+
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+(4) Substructure: value = 0.972042, instances = 200
+  Graph(1v,0e):
+    v 1 "V"
+
+(5) Substructure: value = 0.972042, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(6) Substructure: value = 0.972042, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.972042, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(8) Substructure: value = 0.972042, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(9) Substructure: value = 0.972042, instances = 200
+  Graph(1v,0e):
+    v 1 "Z"
+
+Compressing graph by best substructure (1):
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+Elapsed time for iteration 1 = 0 seconds.
+
+----- Iteration 2 -----
+
+200 positive graphs: 316 vertices, 58 edges, 1832 bits
+6 unique labels
+5 initial substructures
+Normative Pattern:
+Substructure: value = 1.6203, instances = 0
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+Anomalous Instance(s): NONE
+
+Best 7 substructures:
+
+(1) Substructure: value = 1.6203, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(2) Substructure: value = 1.01795, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+(3) Substructure: value = 0.955274, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(4) Substructure: value = 0.955274, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(5) Substructure: value = 0.955274, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(6) Substructure: value = 0.955274, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.955274, instances = 200
+  Graph(1v,0e):
+    v 1 SUB_1
+
+Elapsed time for iteration 2 = 0 seconds.
+
+
+GBAD done (elapsed CPU time =    0.07 seconds).
 GBAD 3.2
 
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Probabilistic
+  Max Anomalous Score............ 1.000000
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 2
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+----- Iteration 1 -----
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
+
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
+    d 1 2 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(4) Substructure: value = 0.9681, instances = 200
+  Graph(1v,0e):
+    v 1 "SUB3"
+
+(5) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(6) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(7) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(8) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+Compressing graph by best substructure (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB3"
+    d 1 1 "e"
+
+Elapsed time for iteration 1 = 0 seconds.
+
+----- Iteration 2 -----
+
+200 positive graphs: 316 vertices, 58 edges, 1915 bits
+7 unique labels
+6 initial substructures
+Normative Pattern:
+Substructure: value = 1.6174, instances = 0
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
+    d 1 2 "e"
+
+Anomalous Instance(s): NONE
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.6174, instances = 50
+  Graph(2v,1e):
+    v 1 "2"
+    v 2 "5"
+    d 1 2 "e"
+
+(2) Substructure: value = 1.02453, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(3) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(4) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(5) Substructure: value = 0.962379, instances = 150
+  Graph(1v,0e):
+    v 1 SUB_1
+
+(6) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(8) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "SUB3"
+
+Elapsed time for iteration 2 = 1 seconds.
+
+
+GBAD done (elapsed CPU time =    0.07 seconds).
 GBAD 3.2
 
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Probabilistic
+  Max Anomalous Score............ 1.000000
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 2
+  Limit.......................... 129
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 516
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 200 total positive graphs
+
+----- Iteration 1 -----
+
+200 positive graphs: 516 vertices, 258 edges, 5282 bits
+7 unique labels
+6 initial substructures
+Normative Pattern (1):
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+
+Best 9 substructures:
+
+(1) Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+(2) Substructure: value = 1.15727, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 0.995893, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(4) Substructure: value = 0.972042, instances = 200
+  Graph(1v,0e):
+    v 1 "V"
+
+(5) Substructure: value = 0.972042, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(6) Substructure: value = 0.972042, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.972042, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(8) Substructure: value = 0.972042, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(9) Substructure: value = 0.972042, instances = 200
+  Graph(1v,0e):
+    v 1 "Z"
+
+Compressing graph by best substructure (1):
+Substructure: value = 2.63913, instances = 200
+  Graph(2v,1e):
+    v 1 "Z"
+    v 2 "V"
+    d 1 2 "e"
+
+Elapsed time for iteration 1 = 0 seconds.
+
+----- Iteration 2 -----
+
+200 positive graphs: 316 vertices, 58 edges, 1832 bits
+6 unique labels
+5 initial substructures
+Normative Pattern:
+Substructure: value = 1.6203, instances = 0
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+Anomalous Instance(s): NONE
+
+Best 7 substructures:
+
+(1) Substructure: value = 1.6203, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(2) Substructure: value = 1.01795, instances = 8
+  Graph(2v,1e):
+    v 1 "Y"
+    v 2 "l"
+    d 1 2 "e"
+
+(3) Substructure: value = 0.955274, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(4) Substructure: value = 0.955274, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+(5) Substructure: value = 0.955274, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(6) Substructure: value = 0.955274, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.955274, instances = 200
+  Graph(1v,0e):
+    v 1 SUB_1
+
+Elapsed time for iteration 2 = 0 seconds.
+
+
+GBAD done (elapsed CPU time =    0.08 seconds).
 GBAD 3.2
 
-GBAD 3.2
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Probabilistic
+  Max Anomalous Score............ 1.000000
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 2
+  Limit.......................... 104
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 316
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
 
+Read 200 total positive graphs
+
+----- Iteration 1 -----
+
+200 positive graphs: 316 vertices, 208 edges, 3615 bits
+6 unique labels
+5 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+(2) Substructure: value = 1.24233, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(3) Substructure: value = 1.00125, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+(4) Substructure: value = 0.9681, instances = 200
+  Graph(1v,0e):
+    v 1 "SUB5"
+
+(5) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(6) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(7) Substructure: value = 0.9681, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(8) Substructure: value = 0.9681, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+Compressing graph by best substructure (1):
+Substructure: value = 1.87984, instances = 150
+  Graph(1v,1e):
+    v 1 "SUB5"
+    d 1 1 "e"
+
+Elapsed time for iteration 1 = 0 seconds.
+
+----- Iteration 2 -----
+
+200 positive graphs: 316 vertices, 58 edges, 1915 bits
+7 unique labels
+6 initial substructures
+Normative Pattern:
+Substructure: value = 1.6174, instances = 0
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+Anomalous Instance(s): NONE
+
+Best 8 substructures:
+
+(1) Substructure: value = 1.6174, instances = 50
+  Graph(2v,1e):
+    v 1 "5"
+    v 2 "2"
+    d 2 1 "e"
+
+(2) Substructure: value = 1.02453, instances = 8
+  Graph(2v,1e):
+    v 1 "l"
+    v 2 "Y"
+    d 2 1 "e"
+
+(3) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "2"
+
+(4) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "Y"
+
+(5) Substructure: value = 0.962379, instances = 150
+  Graph(1v,0e):
+    v 1 SUB_1
+
+(6) Substructure: value = 0.962379, instances = 8
+  Graph(1v,0e):
+    v 1 "l"
+
+(7) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "SUB5"
+
+(8) Substructure: value = 0.962379, instances = 50
+  Graph(1v,0e):
+    v 1 "5"
+
+Elapsed time for iteration 2 = 0 seconds.
+
+
+GBAD done (elapsed CPU time =    0.04 seconds).
