@@ -56,20 +56,19 @@ class AnomalyReporter(object):
 			if "transaction containing anomalous structure:" in line:
 				id = int(line.split("structure:")[1].strip())
 				self._detectedAnomalyIds.append(id)
-
+				
 	"""
 	Parses a log file into the object's internal storage.
 	
 	@self._anomalies: a list of anomalous traces (tokenized by comma)
-	
 	"""
 	def _parseLogAnomalies(self,logFile):
-		#maintain traces internally as a list of <traceNo,+/-,trace> string tuples
+		#maintain traces internally as a list of <traceNo,+/-,trace> string 3-ples
 		self._logTraces = [trace.split(",") for trace in logFile.readlines() if len(trace.strip()) > 0]
 		#get the subset of the traces which are anomalies
-		self._logAnomalies = [anom for anom in self._logTraces if anom[1] == "+"]
+		self._logAnomalies = [trace for trace in self._logTraces if trace[1] == "+"]
 		#get the non-anomalies
-		self._logNegatives = [anom for anom in self._logTraces if anom[1] == "-"]
+		self._logNegatives = [trace for trace in self._logTraces if trace[1] == "-"]
 		logFile.close()
 		
 	"""
@@ -106,6 +105,37 @@ class AnomalyReporter(object):
 		ofile.close()
 
 	"""
+	Gbad doesn't always report all instances of a given anomaly; so if "ABC" is reported as an 
+	anomaly, it doesn't always report all "ABC" traces as anomalies in it results. 
+	
+	NOTE: I've only currently written this to look for traces (strings) in the trace file which are
+	matching strings. This covers 99% of the cases, however, traces like "ACB" could theoretically
+	be included and NOT caught as equivalent to some found-anomaly "ABC". THIS NEEDS TO BE FIXED.
+	That is, for each anomaly, we need to reconstruct it graphically according to the mined model, then compare 
+	the anomaly to all other traces as graphs.
+	
+	@anoms: list of anomalies by string-id (the first field of each trace in logTraces)
+	
+	returns: Full list of anomaly-ids. For example, if [2,3] are passed in, and {3,7,9} are equivalent graphs,
+	then this would return [2,3,7,9].
+	"""
+	def _unifyAnomalies(self, anoms):
+		
+		#find the trace (a string) for this anomaly
+		for id in anoms:
+			#get the trace-string for this anomaly
+			for logTrace in self._logTraces:
+				if self._logTraces[0] == id:
+					traceStr = self_logTraces[2]
+			#search for other log-traces with this same trace-string. This is an insufficient match, since these are technically graphs.
+			for logTrace in self._logTraces:
+				if logTrace[2] == traceStr and logTrace[0] not in anoms:
+					print("Extra anomaly detected for "+traceStr+" "+id+": "+logTrace[0])
+					anoms.append(logTrace[0])
+		
+		return anoms
+		
+	"""
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
 	"""
@@ -115,7 +145,9 @@ class AnomalyReporter(object):
 
 		self._parseGbadAnomalies(gbadFile)
 		self._parseLogAnomalies(logFile)
-
+		#gbad doesn't always report all equivalent anomalies; this simply unifies all reported anomalies with traces that are the same
+		self._logAnomalies = self._unifyAnomalies()
+		
 		#create the true anomaly and detected anomaly sets via the trace-id numbers
 		truePositiveSet = set( [int(anomaly[0]) for anomaly in self._logAnomalies] )
 		trueNegativeSet = set( [int(anomaly[0]) for anomaly in self._logNegatives] )
@@ -137,14 +169,14 @@ class AnomalyReporter(object):
 		self._accuracy =  float(len(self._trueNegatives) + len(self._truePositives)) / float(self._numTraces) # accuracy = (TN + TP) / N = 1 - error rate
 
 		#calculate precision: TP / (FP + TP)
-		denom = float(len(self._falseNegatives) + len(self._truePositives))
+		denom = float(len(self._falsePositives) + len(self._truePositives))
 		if denom > 0.0:
 			self._precision =  float(len(self._truePositives)) / denom
 		else:
 			self._precision = 0.0
 		
 		#calculate recall: TP / (TP + FN)
-		denom = float(len(self._truePositives) + len(self._falsePositives))
+		denom = float(len(self._truePositives) + len(self._falseNegatives))
 		if denom > 0.0:
 			self._recall = float(len(self._truePositives)) / denom
 		else:

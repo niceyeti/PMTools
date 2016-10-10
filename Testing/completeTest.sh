@@ -44,7 +44,7 @@ fi
 generateData="false"
 recursiveIterations="0"
 for var in "$@"; do
-	#get the data generation bool
+	#detect the data generation bool
 	if [ "$var" = "--generate" ]; then
 		generateData="true"
 	fi
@@ -117,7 +117,7 @@ $gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
 echo Running gbad-mps from $gbadMdlPath
 $gbadMdlPath -mps $gbadThreshold $subdueLogPath > $mpsResult
 echo Running gbad-prob from $gbadMdlPath
-$gbadMdlPath -prob 2 $subdueLogPath > $probResult
+#$gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
 #run recursive-compression gbad
 if [ $recursiveIterations -gt 0 ]; then
@@ -132,7 +132,7 @@ if [ $recursiveIterations -gt 0 ]; then
 		echo Running gbad-mps from $gbadMdlPath
 		$gbadMdlPath -mps $gbadThreshold  $compressedLog >> $mpsResult
 		echo Running gbad-prob from $gbadMdlPath
-		$gbadMdlPath -prob 2 $compressedLog >> $probResult
+		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
 	done
 fi
 
