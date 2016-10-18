@@ -359,22 +359,26 @@ Returns: The best substructure, as an igraph.Graph structure.
 def _parseBestSubstructure(subsPath):
 	vertexDict = {}
 	edges = []
-	
+
 	#get the raw subs file string (gbad/subdue output) (replacing linefeeds with some temp pattern makes things easier for re's)
-	subsRaw = open(subsPath,"r").read().replace("\n","~")
+	subsRaw = open(subsPath,"r").read().replace("\r\n","\n").replace("\n","~")
 	#print("raw subs:\n"+subsRaw)
 	if len(subsRaw) < 500:
 		print("WARNING Possibly empty substructure file detected. Contents:\n"+subsRaw)
-	
+
 	#find the substructures just given a textual anchor pattern: "Normative Pattern (" followed by stuff, followed by double line-feeds
 	start = subsRaw.find("Normative Pattern (")
+	#write out the number of instances to file; this is just hacky comms with external processes that use the LogCompressor
+	subCt = subsRaw.split(", instances = ")[1].split("~")[0]
+	print("Writing subs-count to ./subsCount.txt with COMPRESSOR SUB_CT="+subCt)
+	open("subsCount.txt","w+").write("instances="+subCt)
 	#print("start: "+str(start))
 	subsRaw = subsRaw[start : subsRaw.find("~~",start)] #gets the "Normative Pattern.*\n\n" string
 	#find the precise start of the vertex declarations
-	subsRaw = subsRaw[ subsRaw.find("    v ") : ]	
+	subsRaw = subsRaw[ subsRaw.find("    v ") : ]
 	#print("subs raw: "+subsRaw)
 	sub = _subDeclarationToGraph(subsRaw)
-
+	
 	return sub
 	
 """

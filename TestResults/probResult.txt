@@ -2415,7 +2415,7 @@ Substructure: value = 2.86168, instances = 144
     d 14 11 "e"
     d 11 15 "e"
 
-Elapsed time for iteration 1 = 8 seconds.
+Elapsed time for iteration 1 = 4 seconds.
 
 ----- Iteration 2 -----
 
@@ -3364,4 +3364,4 @@ Best 55 substructures:
 Elapsed time for iteration 2 = 1 seconds.
 
 
-GBAD done (elapsed CPU time =    9.06 seconds).
+GBAD done (elapsed CPU time =    4.63 seconds).

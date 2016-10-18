@@ -220,4 +220,4 @@ Best 3 substructures:
     d 11 15 "e"
 
 
-GBAD done (elapsed CPU time =   26.70 seconds).
+GBAD done (elapsed CPU time =   28.64 seconds).

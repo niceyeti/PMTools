@@ -143,6 +143,26 @@ if [ $recursiveIterations -gt 0 ]; then
 	done
 fi
 
+##run recursive-compression gbad
+#if [ $recursiveIterations -gt 0 ]; then
+#	cp $mdlResult lastMdlResult.txt
+#	for i in $(seq 0 $recursiveIterations); do
+#		echo Compression iteration $i
+#		#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
+#		python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
+#		echo RUNNING GBAD
+#		echo Running gbad-mdl from $gbadMdlPath
+#		$gbadMdlPath -mdl $gbadThreshold $compressedLog
+#		#$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
+#		#cat lastMdlResult.txt >> $mdlResult
+#		#echo Running gbad-mps from $gbadMdlPath
+#		#$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
+#		#echo Running gbad-prob from $gbadMdlPath
+#		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
+#	done
+#fi
+
+
 ##Run the frequent subgraph miner
 #echo Running gbad-fsm...
 #$gbadFsmPath -prob 3 -mst 1 -graph $gbadFsmLogPath #-nameAnomSub  $fsmResult > ./gbadProbOutput.txt
