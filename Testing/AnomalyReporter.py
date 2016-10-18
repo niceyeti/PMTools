@@ -58,7 +58,7 @@ class AnomalyReporter(object):
 				self._detectedAnomalyIds.append(id)
 				
 	"""
-	Parses a log file into the object's internal storage.
+	Parses a trace log file into the object's internal storage. These are the ground truth anomalies, not those detected by gbad.
 	
 	@self._anomalies: a list of anomalous traces (tokenized by comma)
 	"""
@@ -114,27 +114,42 @@ class AnomalyReporter(object):
 	That is, for each anomaly, we need to reconstruct it graphically according to the mined model, then compare 
 	the anomaly to all other traces as graphs.
 	
-	@anoms: list of anomalies by string-id (the first field of each trace in logTraces)
+	@anoms: list of anomalies as a list of 3-ples: string-id (the first field of each trace in logTraces), +/-, and traceStr
 	
-	returns: Full list of anomaly-ids. For example, if [2,3] are passed in, and {3,7,9} are equivalent graphs,
-	then this would return [2,3,7,9].
+	returns: Full list of anomalous traces as 3-ples.
 	"""
-	def _unifyAnomalies(self, anoms):
+	def _unifyAnomalies(self):
+		#print("detected: "+str(set(self._detectedAnomalyIds)))
+		#print("traces: "+str(self._logTraces))
+		anoms = []
+		#get the anomaly list as a list of 3-ples
+		for id in set(self._detectedAnomalyIds):
+			for trace in self._logTraces:
+				if trace[0] == str(id):
+					anoms.append(trace)
 		
-		#find the trace (a string) for this anomaly
-		for id in anoms:
-			#get the trace-string for this anomaly
-			for logTrace in self._logTraces:
-				if self._logTraces[0] == id:
-					traceStr = self_logTraces[2]
+		#print("traces: "+str(anoms))
+	
+		ids = set([a[0] for a in anoms])
+		equivalentAnoms = []
+		#given each anomaly, look for others with the same trace-string which are not yet included in the anomaly set
+		for anom in anoms:
+			id = anom[0]
+			traceStr = anom[2]
 			#search for other log-traces with this same trace-string. This is an insufficient match, since these are technically graphs.
 			for logTrace in self._logTraces:
-				if logTrace[2] == traceStr and logTrace[0] not in anoms:
-					print("Extra anomaly detected for "+traceStr+" "+id+": "+logTrace[0])
-					anoms.append(logTrace[0])
+				#if logTrace[2] == traceStr:
+				#	print("traceStr hit"+str(logTrace))#+"  ids: "+str(ids))
+				if logTrace[2] == traceStr and logTrace[0] not in ids:
+					#print("Extra anomaly detected for "+traceStr+" "+id+": "+logTrace[0])
+					equivalentAnoms.append(logTrace)
+					ids.add(logTrace[0])
 		
+		anoms += equivalentAnoms
+					
+		#print("all anoms: "+str(anoms))
 		return anoms
-		
+
 	"""
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
@@ -146,8 +161,8 @@ class AnomalyReporter(object):
 		self._parseGbadAnomalies(gbadFile)
 		self._parseLogAnomalies(logFile)
 		#gbad doesn't always report all equivalent anomalies; this simply unifies all reported anomalies with traces that are the same
-		self._logAnomalies = self._unifyAnomalies()
-		
+		self._detectedAnomalyIds = [int(trace[0]) for trace in self._unifyAnomalies()]
+
 		#create the true anomaly and detected anomaly sets via the trace-id numbers
 		truePositiveSet = set( [int(anomaly[0]) for anomaly in self._logAnomalies] )
 		trueNegativeSet = set( [int(anomaly[0]) for anomaly in self._logNegatives] )

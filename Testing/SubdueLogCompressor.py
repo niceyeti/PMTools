@@ -1,6 +1,7 @@
 """
 Given a SUBDUE log and a file containing substructure prototypes, this compresses
-the subdue log wrt the provide substructures. 
+the subdue log wrt the provide substructures.  It can also delete the substructure from 
+all traces in which it occurs, deleting all vertices and in/out-edges to/from the substructure.
 
 GBAD/SUBDUE output is all text-based, so this is annoying text-based for parsing the substructures
 and subgraph log.
@@ -19,7 +20,7 @@ Note this currently only takes the top substructure listed in the .g file.
 @outPath: The output path for the compressed log
 @compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
 """
-def Compress(logPath, subsPath, outPath, compSubName="SUBx",showSub=False):
+def Compress(logPath, subsPath, outPath, compSubName="SUBx",showSub=False, deleteSub=False):
 	print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 	print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 	print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
@@ -33,7 +34,7 @@ def Compress(logPath, subsPath, outPath, compSubName="SUBx",showSub=False):
 	#print(str(bestSub))
 	subgraphs = _buildAllTraces(logPath)
 	#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-	compressedSubs = _compressAllTraces(subgraphs, bestSub)
+	compressedSubs = _compressAllTraces(subgraphs, bestSub, deleteSub)
 	#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
 	_writeSubs(compressedSubs, outPath)
 
@@ -84,13 +85,72 @@ This check is used to prevent compressing a graph with only one node--some
 compressing substructure--into nothing.
 """
 def _traceEqualsSubgraph(subTrace, compSub):
-	subNodeSet = _getNodeSet(subTrace)
-	compNodeSet = _getNodeSet(compSub)
-	subEdgeSet =  _getEdgeSet(subTrace)
-	compEdgeSet = _getEdgeSet(compSub)
+	return (len(_getNodeSet(subTrace)) > 0 and _getNodeSet(subTrace) == _getNodeSet(compSub) and len(_getEdgeSet(subTrace)) > 0 and _getEdgeSet(subTrace) ==  _getEdgeSet(compSub))
 
 	#note < and > check for proper subsets
-	return len(compNodeSet.difference(subNodeSet)) == 0 and len(compEdgeSet.difference(subEdgeSet)) == 0
+	#return len(compNodeSet.difference(subNodeSet)) == 0 and len(compEdgeSet.difference(subEdgeSet)) == 0
+	
+
+"""
+Deletes a substructure from a trace. This is very nuanced, since clients (eg gbad) may handle
+the results (potentially disconnected graphs) poorly, since potentially-disconnected graphs
+are a likely edge-case not covered by most graph algorithm implementation tests.
+
+@traceSub: a trace/subgraph
+@compSub: a prototype substructure by which to attempt to compress traceSub
+
+Return Cases:
+	1) trace does not contain sub: just return the trace unmodified
+	2) trace PROPERLY contains substructure: The substructure is deleted from the trace.
+	This may result in single vertices with no edges, which will be returned with a single reflexive loop.
+	This is just so clients can handle disconnected vertices, since its foreseeable their code was not written to handle edge-less nodes.
+	3) trace EQUALS substructure: the trace is deleted, and None is returned
+"""
+def _deleteTraceSub(traceSub, compSub):
+	delSub = compSub
+
+	#trace contains subgraph, so delete it as described above
+	if _traceContainsSubgraph(traceSub, compSub):
+		#trace equals subgraph, so entire trace should be deleted: set result to None and return
+		if _traceEqualsSubgraph(traceSub,compSub):
+			print("EQUALITY")
+			delSub = None
+		else:
+			print("CONTAINMENT")
+			#get the vertex and edge sets for each subgraph
+			vsTrace = set([v["name"] for v in traceSub.vs])
+			vsComp = set([v["name"] for v in compSub.vs])
+			esTrace = set([(traceSub.vs[e.source]["name"], traceSub.vs[e.target]["name"]) for e in traceSub.es])
+			esComp = set([(compSub.vs[e.source]["name"], compSub.vs[e.target]["name"]) for e in compSub.es])
+			#subtract the compressing substructure vertices, edges, from the trace
+			vsDel = vsTrace - vsComp
+			#delete the edges within the compressing substructure
+			esDel = esTrace - esComp
+			#also delete any incident edges to the compressing substructure (those esTrace edges neither pointing to, nor from, some compSub vertex)
+			esDel = set([e for e in esDel if e[0] not in vsComp and e[1] not in vsComp])
+			#print("trace vs: "+str(vsTrace))
+			#print("comp vs: "+str(vsComp))
+			#print("trace es: "+str(esTrace))
+			#print("comp es: "+str(esComp))
+			#check for vertices associated with no edges, and add reflexive edges to them
+			for v in vsDel:
+				hasEdge = False
+				for e in esDel:
+					hasEdge = e[0] == v or e[1] == v
+				#vertex has no associated edge so add a reflexive edge to it
+				if not hasEdge:
+					esDel.add((v,v))
+
+			#create the new sub
+			delSub = igraph.Graph(directed=True)
+			#preserve the trace header
+			delSub["header"] = traceSub["header"]
+			delSub["name"] = compSub["name"]
+			#add the vertices and edges as created above
+			delSub.add_vertices(vsDel)
+			delSub.add_edges(esDel)
+	
+	return delSub
 	
 """
 Given a trace subgraph from the log and a compressing substructure, 
@@ -226,15 +286,27 @@ this compresses all subgraph wrt the best substructure. If the trace does not co
 the trace is preserved in its current form. If the trace does contain the substructure, then the entire
 substructure is replaced with a single node "SUB1", and all in/out edges to/from the structure are woven
 into this metanode.
+
+@traceSubs: All traces (subgraphs) in the original log
+@bestSub: Best-compressing substructure wrt which this log will be compressed
+@deleteSub: Flag, if true, delete all substructure instances instead of compressing them
 """
-def _compressAllTraces(traceSubs, bestSub):
+def _compressAllTraces(traceSubs, bestSub, deleteSub=False):
 	compressedSubs = []
 
 	for trace in traceSubs:
-		compressedSubs.append(_compressTraceSub(trace, bestSub))
+		#if deleteSub, delete the substructure; if not vertices remain, the subgraph is no longer in the trace
+		if deleteSub:
+			print("DELETING SUB")
+			sub = _deleteTraceSub(trace, bestSub)
+			#if sub is None (entire subgraph was deleted), just ignore it
+			if sub != None:
+				compressedSubs.append(sub)
+		else:
+			compressedSubs.append(_compressTraceSub(trace, bestSub))
 
 	return compressedSubs
-
+	
 """
 Given a .g log formatted as input to gbad/subdue, builds a 
 Note that this will disregard comments in the log.
@@ -365,6 +437,7 @@ def _subDeclarationToGraph(subStr):
 def usage():
 	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for compressed .g log] [optional: name=name of compressed structure]")
 	print("--showSub: pass to display the parsed substructure")
+	print("--deleteSub: pass to delete the substructure from the log. Single node w/out edges will be converted to reflexive nodes.")
 	print("WARNING make sure input has only single line-feed line terminals (linux style), not windows style!!")
 	
 
@@ -387,6 +460,7 @@ if len(sys.argv) > 4 and "name=" in sys.argv[4]:
 else:
 	compSubName = "SUBx"
 
+deleteSub = "--deleteSubs" in sys.argv or "--deleteSubs=true" in sys.argv
 showSub = "--showSub" in sys.argv
 	
-Compress(inputLog, subsFile, outputLog, compSubName, showSub)
+Compress(inputLog, subsFile, outputLog, compSubName, showSub, deleteSub)

@@ -42,6 +42,7 @@ fi
 
 #get the command line arg switches, if any
 generateData="false"
+deleteSubstructures="false"
 recursiveIterations="0"
 for var in "$@"; do
 	#detect the data generation bool
@@ -52,45 +53,49 @@ for var in "$@"; do
 	if [[ $var == "--recurse="* ]]; then
 		recursiveIterations=$(echo $var | cut -f2 -d=)
 	fi
+	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
+	if [ "$var" = "--deleteSubs" ]; then
+		deleteSubstructures="true"
+	fi	
 done
 
-if [ $generateData = "true" ]; then
-	###############################################################################
-	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
-	cd "../DataGenerator"
-	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
-	
-	###############################################################################
-	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
-	cd "../PromTools"
-	#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
-	python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
-	#Copy everything over to the ProM environment; simpler to run everything from there.
-	minerScript="$minerName"Miner.js
-	promMinerPath=../../ProM/"$minerScript"
-	cp $minerScript $promMinerPath
-	cp $xesPath ../../ProM/testTraces.xes
-	cp ./miner.sh ../../ProM/miner.sh
-	
-	###############################################################################
-	##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
-	cd "../../ProM"
-	sh ./miner.sh -f $minerScript
-	#copy the mined model back to the SyntheticData folder
-	cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
-	cd "../scripts/Testing"
-	#Convert the mined pnml model to graphml
-	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-	
-	################################################################################
-	##anomalize the model???
-	#
-	################################################################################
-	##Generate sub-graphs from the mined graphml model
-	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
-	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
-fi
+#if [ $generateData = "true" ]; then
+#	###############################################################################
+#	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
+#	cd "../DataGenerator"
+#	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
+#	
+#	###############################################################################
+#	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
+#	cd "../PromTools"
+#	#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
+#	python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
+#	#Copy everything over to the ProM environment; simpler to run everything from there.
+#	minerScript="$minerName"Miner.js
+#	promMinerPath=../../ProM/"$minerScript"
+#	cp $minerScript $promMinerPath
+#	cp $xesPath ../../ProM/testTraces.xes
+#	cp ./miner.sh ../../ProM/miner.sh
+#	
+#	###############################################################################
+#	##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
+#	cd "../../ProM"
+#	sh ./miner.sh -f $minerScript
+#	#copy the mined model back to the SyntheticData folder
+#	cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+#	cd "../scripts/Testing"
+#	#Convert the mined pnml model to graphml
+#	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+#	
+#	################################################################################
+#	##anomalize the model???
+#	#
+#	################################################################################
+#	##Generate sub-graphs from the mined graphml model
+#	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+#	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
+#	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
+#fi
 	
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
@@ -103,12 +108,12 @@ fsmResult="../TestResults/fsmResult.txt"
 gbadResult="../TestResults/gbadResult.txt"
 anomalyFile="../TestResults/anomalyResult.txt"
 
-#clear any previous results
-cat /dev/null > $mdlResult
-cat /dev/null > $mpsResult
-cat /dev/null > $probResult
-cat /dev/null > $fsmResult
-
+##clear any previous results
+#cat /dev/null > $mdlResult
+#cat /dev/null > $mpsResult
+#cat /dev/null > $probResult
+#cat /dev/null > $fsmResult
+#
 gbadThreshold="0.3" #the best performance always seems to be about 0.3; I need to justify this
 
 echo Running gbad-mdl from $gbadMdlPath
@@ -117,21 +122,23 @@ $gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
 echo Running gbad-mps from $gbadMdlPath
 $gbadMdlPath -mps $gbadThreshold $subdueLogPath > $mpsResult
 echo Running gbad-prob from $gbadMdlPath
-#$gbadMdlPath -prob 2 $subdueLogPath > $probResult
+$gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
 #run recursive-compression gbad
 if [ $recursiveIterations -gt 0 ]; then
 	cp $mdlResult lastMdlResult.txt
-	for i in $(seq 1 $recursiveIterations); do
+	for i in $(seq 0 $recursiveIterations); do
 		echo Compression iteration $i
 		#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
-		python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i
+		python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
+		echo RUNNING GBAD
 		echo Running gbad-mdl from $gbadMdlPath
-		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
-		cat lastMdlResult.txt >> $mdlResult
-		echo Running gbad-mps from $gbadMdlPath
-		$gbadMdlPath -mps $gbadThreshold  $compressedLog >> $mpsResult
-		echo Running gbad-prob from $gbadMdlPath
+		$gbadMdlPath -mdl $gbadThreshold $compressedLog
+		#$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
+		#cat lastMdlResult.txt >> $mdlResult
+		#echo Running gbad-mps from $gbadMdlPath
+		#$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
+		#echo Running gbad-prob from $gbadMdlPath
 		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
 	done
 fi
