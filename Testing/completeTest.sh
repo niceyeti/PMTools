@@ -115,6 +115,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $fsmResult
 #
 gbadThreshold="0.3" #the best performance always seems to be about 0.3; I need to justify this
+numTraces="200"
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
@@ -131,13 +132,16 @@ if [ $recursiveIterations -gt 0 ]; then
 		echo Compression iteration $i
 		#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
 		python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
-		echo RUNNING GBAD
-		echo Running gbad-mdl from $gbadMdlPath
-		$gbadMdlPath -mdl $gbadThreshold $compressedLog
-		#$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
-		#cat lastMdlResult.txt >> $mdlResult
-		#echo Running gbad-mps from $gbadMdlPath
-		#$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
+		#compressor writes the number of best-substructure instances to ./subsCount.txt file, relative to the compressor's environment
+		#Read the subsCount.txt parameter and use it to modify the gbad threshold
+		gbadThreshold=$(cat gbadThresh.txt)
+		echo Re-running gbad with new threshold $gbadThreshold
+		#echo Running gbad-mdl from $gbadMdlPath
+		#$gbadMdlPath -mdl $gbadThreshold $compressedLog
+		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
+		cat lastMdlResult.txt >> $mdlResult
+		echo Running gbad-mps from $gbadMdlPath
+		$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
 		#echo Running gbad-prob from $gbadMdlPath
 		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
 	done

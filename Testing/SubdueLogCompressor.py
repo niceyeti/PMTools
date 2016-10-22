@@ -370,8 +370,13 @@ def _parseBestSubstructure(subsPath):
 	start = subsRaw.find("Normative Pattern (")
 	#write out the number of instances to file; this is just hacky comms with external processes that use the LogCompressor
 	subCt = subsRaw.split(", instances = ")[1].split("~")[0]
-	print("Writing subs-count to ./subsCount.txt with COMPRESSOR SUB_CT="+subCt)
-	open("subsCount.txt","w+").write("instances="+subCt)
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	#Here I'm directly calculating the target gbad-threshold, which really has no business in the Log Compressor
+	gbadThreshold = float(subCt) / 200.0 - 0.2
+	gbadThreshold = min(0.4, max(gbadThreshold,0.05))
+	print("Writing subs-count to ./subsCount.txt with COMPRESSOR SUB_CT="+subCt+" threshold "+str(gbadThreshold))
+	open("gbadThresh.txt","w+").write(str(gbadThreshold))
+	#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	#print("start: "+str(start))
 	subsRaw = subsRaw[start : subsRaw.find("~~",start)] #gets the "Normative Pattern.*\n\n" string
 	#find the precise start of the vertex declarations

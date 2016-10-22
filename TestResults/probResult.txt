@@ -3364,4 +3364,4 @@ Best 55 substructures:
 Elapsed time for iteration 2 = 1 seconds.
 
 
-GBAD done (elapsed CPU time =    4.63 seconds).
+GBAD done (elapsed CPU time =    5.49 seconds).
