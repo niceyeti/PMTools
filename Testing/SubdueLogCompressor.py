@@ -48,10 +48,14 @@ to a new output file, suitable as input to subdue/gbad.
 def _writeSubs(subs, outPath):
 	ofile = open(outPath, "wb+") #the b and encode() notation below are just to force linux line endings
 
+	i = 1
 	for sub in subs:
+		xpNo = sub["header"][sub["header"].rfind(" ")+1:]
+		print("MAPPING "+xpNo+" -> "+str(i))
 		#a hack required by gbad: "xp" declarations must be sequential
-		
+		sub["header"] = sub["header"][0:sub["header"].rfind(" ")]+" "+str(i)
 		ofile.write((_sub2GFormatString(sub)+"\n").encode())
+		i+=1
 	
 	ofile.close()
 
@@ -115,11 +119,11 @@ def _deleteTraceSub(traceSub, compSub):
 	if _traceContainsSubgraph(traceSub, compSub):
 		#trace equals subgraph, so entire trace should be deleted: set result to None and return
 		if _traceEqualsSubgraph(traceSub,compSub):
-			print("EQUALITY")
+			#print("EQUALITY")
 			delSub = None
 		else:
-			print("CONTAINMENT: g1"+str([v["name"] for v in traceSub.vs]))
-			print("g2: "+str([v["name"] for v in compSub.vs]))
+			#print("CONTAINMENT: g1"+str([v["name"] for v in traceSub.vs]))
+			#print("g2: "+str([v["name"] for v in compSub.vs]))
 			#get the vertex and edge sets for each subgraph
 			vsTrace = set([v["name"] for v in traceSub.vs])
 			vsComp = set([v["name"] for v in compSub.vs])
@@ -129,8 +133,8 @@ def _deleteTraceSub(traceSub, compSub):
 			vsDel = vsTrace - vsComp
 			#delete the edges within or incident to/from the compressing substructure
 			esDel = set([e for e in esTrace if e[0] not in vsComp and e[1] not in vsComp])
-			print("vsDel: "+str(vsDel))
-			print("esDel: "+str(esDel))
+			#print("vsDel: "+str(vsDel))
+			#print("esDel: "+str(esDel))
 			#print("trace vs: "+str(vsTrace))
 			#print("comp vs: "+str(vsComp))
 			#print("trace es: "+str(esTrace))
@@ -144,8 +148,8 @@ def _deleteTraceSub(traceSub, compSub):
 				if not hasEdge:
 					esDel.add((v,v))
 
-			print("vsDel: "+str(vsDel))
-			print("esDel: "+str(esDel))
+			#print("vsDel: "+str(vsDel))
+			#print("esDel: "+str(esDel))
 
 			#create the new sub
 			delSub = igraph.Graph(directed=True)
@@ -303,7 +307,7 @@ def _compressAllTraces(traceSubs, bestSub, deleteSub=False):
 	for trace in traceSubs:
 		#if deleteSub, delete the substructure; if not vertices remain, the subgraph is no longer in the trace
 		if deleteSub:
-			print("DELETING SUB: "+bestSub["name"])
+			#print("DELETING SUB: "+bestSub["name"])
 			sub = _deleteTraceSub(trace, bestSub)
 			#if sub is None (entire subgraph was deleted), just ignore it
 			if sub != None:

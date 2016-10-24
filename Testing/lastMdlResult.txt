@@ -1,2 +1,93 @@
 GBAD 3.2
 
+Parameters:
+  Input file..................... ../SyntheticData/compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.100000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 21
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 44
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 5 total positive graphs
+
+5 positive graphs: 44 vertices, 43 edges, 671 bits
+13 unique labels
+12 initial substructures
+Normative Pattern (1):
+Substructure: value = 1.89825, instances = 5
+  Graph(6v,5e):
+    v 1 "K"
+    v 2 "3"
+    v 3 "END"
+    v 4 "n"
+    v 5 "i"
+    v 6 "2"
+    d 4 2 "e"
+    d 1 4 "e"
+    d 5 3 "e"
+    d 2 5 "e"
+    d 6 5 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 1.89825, instances = 5
+  Graph(6v,5e):
+    v 1 "K"
+    v 2 "3"
+    v 3 "END"
+    v 4 "n"
+    v 5 "i"
+    v 6 "2"
+    d 4 2 "e"
+    d 1 4 "e"
+    d 5 3 "e"
+    d 2 5 "e"
+    d 6 5 "e"
+
+(2) Substructure: value = 1.88317, instances = 5
+  Graph(6v,5e):
+    v 1 "K"
+    v 2 "3"
+    v 3 "END"
+    v 4 "n"
+    v 5 "M"
+    v 6 "i"
+    d 4 2 "e"
+    d 1 4 "e"
+    d 6 3 "e"
+    d 2 6 "e"
+    d 6 5 "e"
+
+(3) Substructure: value = 1.61716, instances = 5
+  Graph(5v,4e):
+    v 1 "K"
+    v 2 "3"
+    v 3 "END"
+    v 4 "n"
+    v 5 "i"
+    d 4 2 "e"
+    d 1 4 "e"
+    d 5 3 "e"
+    d 2 5 "e"
+
+
+GBAD done (elapsed CPU time =    0.01 seconds).
