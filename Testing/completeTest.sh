@@ -114,7 +114,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $probResult
 #cat /dev/null > $fsmResult
 #
-gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
+gbadThreshold="0.4" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
 
 echo Running gbad-mdl from $gbadMdlPath

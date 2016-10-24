@@ -9,7 +9,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -160,7 +160,7 @@ Best 3 substructures:
     d 11 15 "e"
 
 
-GBAD done (elapsed CPU time =    4.07 seconds).
+GBAD done (elapsed CPU time =    1.65 seconds).
 GBAD 3.2
 
 Parameters:
@@ -172,7 +172,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -196,17 +196,17 @@ Read 110 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.50954, instances = 71
   Graph(6v,5e):
-    v 1 "G"
-    v 2 "X"
-    v 3 "m"
-    v 4 "P"
-    v 5 "W"
-    v 6 "l"
-    d 1 2 "e"
-    d 2 4 "e"
+    v 1 "l"
+    v 2 "W"
+    v 3 "P"
+    v 4 "X"
+    v 5 "m"
+    v 6 "G"
+    d 6 4 "e"
     d 4 3 "e"
-    d 3 6 "e"
-    d 6 5 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -214,71 +214,71 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.50954, instances = 71
   Graph(6v,5e):
-    v 1 "G"
-    v 2 "X"
-    v 3 "m"
-    v 4 "P"
-    v 5 "W"
-    v 6 "l"
-    d 1 2 "e"
-    d 2 4 "e"
+    v 1 "l"
+    v 2 "W"
+    v 3 "P"
+    v 4 "X"
+    v 5 "m"
+    v 6 "G"
+    d 6 4 "e"
     d 4 3 "e"
-    d 3 6 "e"
-    d 6 5 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 (2) Substructure: value = 1.38541, instances = 17
   Graph(18v,18e):
-    v 1 "START"
-    v 2 "i"
-    v 3 "END"
-    v 4 "G"
-    v 5 "X"
-    v 6 "K"
-    v 7 "n"
-    v 8 "3"
-    v 9 "N"
-    v 10 "m"
-    v 11 "P"
-    v 12 "W"
-    v 13 "x"
-    v 14 "8"
-    v 15 "d"
-    v 16 "z"
-    v 17 "l"
-    v 18 "B"
-    d 1 15 "e"
-    d 15 16 "e"
-    d 16 4 "e"
-    d 4 5 "e"
-    d 5 11 "e"
-    d 11 10 "e"
-    d 10 17 "e"
-    d 17 12 "e"
-    d 12 16 "e"
-    d 16 13 "e"
-    d 13 9 "e"
-    d 9 18 "e"
-    d 18 14 "e"
-    d 14 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 2 "e"
+    v 1 "i"
+    v 2 "l"
+    v 3 "W"
+    v 4 "START"
+    v 5 "END"
+    v 6 "P"
+    v 7 "8"
+    v 8 "X"
+    v 9 "n"
+    v 10 "x"
+    v 11 "3"
+    v 12 "z"
+    v 13 "B"
+    v 14 "N"
+    v 15 "m"
+    v 16 "K"
+    v 17 "G"
+    v 18 "d"
+    d 4 18 "e"
+    d 18 12 "e"
+    d 12 17 "e"
+    d 17 8 "e"
+    d 8 6 "e"
+    d 6 15 "e"
+    d 15 2 "e"
     d 2 3 "e"
+    d 3 12 "e"
+    d 12 10 "e"
+    d 10 14 "e"
+    d 14 13 "e"
+    d 13 7 "e"
+    d 7 16 "e"
+    d 16 9 "e"
+    d 9 11 "e"
+    d 11 1 "e"
+    d 1 5 "e"
 
 (3) Substructure: value = 1.35919, instances = 71
   Graph(5v,4e):
-    v 1 "X"
-    v 2 "m"
+    v 1 "l"
+    v 2 "W"
     v 3 "P"
-    v 4 "W"
-    v 5 "l"
-    d 1 3 "e"
-    d 3 2 "e"
-    d 2 5 "e"
-    d 5 4 "e"
+    v 4 "X"
+    v 5 "m"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.15 seconds).
+GBAD done (elapsed CPU time =    0.14 seconds).
 GBAD 3.2
 
 Parameters:
@@ -290,7 +290,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -314,29 +314,29 @@ Read 56 total positive graphs
 Normative Pattern (1):
 Substructure: value = 6.20288, instances = 51
   Graph(12v,11e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    v 12 "END"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 12 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "START"
+    v 12 "B"
+    d 11 2 "e"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 12 "e"
+    d 12 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 Anomalous Instances:  NONE.
 
@@ -344,80 +344,80 @@ Best 3 substructures:
 
 (1) Substructure: value = 6.20288, instances = 51
   Graph(12v,11e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    v 12 "END"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 12 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "START"
+    v 12 "B"
+    d 11 2 "e"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 12 "e"
+    d 12 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 (2) Substructure: value = 4.07629, instances = 51
   Graph(11v,10e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "x"
+    v 7 "z"
+    v 8 "N"
+    v 9 "i"
+    v 10 "START"
+    v 11 "B"
+    d 10 2 "e"
+    d 2 7 "e"
+    d 7 6 "e"
+    d 6 8 "e"
+    d 8 11 "e"
+    d 11 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 9 "e"
 
 (3) Substructure: value = 4.07629, instances = 51
   Graph(11v,10e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "x"
-    v 10 "N"
-    v 11 "END"
-    d 1 2 "e"
-    d 2 9 "e"
-    d 9 10 "e"
-    d 10 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 11 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "B"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 11 "e"
+    d 11 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 
-GBAD done (elapsed CPU time =    5.83 seconds).
+GBAD done (elapsed CPU time =    6.33 seconds).
 GBAD 3.2
 
 Parameters:
@@ -429,7 +429,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -453,25 +453,25 @@ Read 5 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.6804, instances = 5
   Graph(10v,9e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "8"
+    v 5 "B"
+    v 6 "x"
     v 7 "z"
-    v 8 "8"
-    v 9 "d"
-    v 10 "N"
-    d 5 9 "e"
-    d 9 7 "e"
-    d 7 4 "e"
-    d 4 10 "e"
+    v 8 "w"
+    v 9 "H"
+    v 10 "START"
     d 10 1 "e"
-    d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
-    d 3 8 "e"
+    d 1 7 "e"
+    d 7 6 "e"
+    d 6 3 "e"
+    d 3 9 "e"
+    d 9 2 "e"
+    d 2 8 "e"
+    d 8 5 "e"
+    d 5 4 "e"
 
 Anomalous Instances:  NONE.
 
@@ -479,65 +479,65 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.6804, instances = 5
   Graph(10v,9e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "8"
+    v 5 "B"
+    v 6 "x"
     v 7 "z"
-    v 8 "8"
-    v 9 "d"
-    v 10 "N"
-    d 5 9 "e"
-    d 9 7 "e"
-    d 7 4 "e"
-    d 4 10 "e"
+    v 8 "w"
+    v 9 "H"
+    v 10 "START"
     d 10 1 "e"
-    d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
-    d 3 8 "e"
+    d 1 7 "e"
+    d 7 6 "e"
+    d 6 3 "e"
+    d 3 9 "e"
+    d 9 2 "e"
+    d 2 8 "e"
+    d 8 5 "e"
+    d 5 4 "e"
 
 (2) Substructure: value = 1.56177, instances = 5
   Graph(9v,8e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
-    v 7 "z"
-    v 8 "d"
-    v 9 "N"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 4 "e"
-    d 4 9 "e"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "B"
+    v 5 "x"
+    v 6 "z"
+    v 7 "w"
+    v 8 "H"
+    v 9 "START"
     d 9 1 "e"
     d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
+    d 6 5 "e"
+    d 5 3 "e"
+    d 3 8 "e"
+    d 8 2 "e"
+    d 2 7 "e"
+    d 7 4 "e"
 
 (3) Substructure: value = 1.53966, instances = 5
   Graph(9v,8e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "c"
-    v 6 "z"
-    v 7 "8"
-    v 8 "d"
-    v 9 "N"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 9 "e"
+    v 1 "c"
+    v 2 "N"
+    v 3 "8"
+    v 4 "K"
+    v 5 "B"
+    v 6 "x"
+    v 7 "z"
+    v 8 "w"
+    v 9 "H"
+    d 7 6 "e"
+    d 6 2 "e"
+    d 2 9 "e"
     d 9 1 "e"
-    d 1 5 "e"
-    d 5 2 "e"
-    d 2 3 "e"
-    d 3 7 "e"
+    d 1 8 "e"
+    d 8 5 "e"
+    d 5 3 "e"
+    d 3 4 "e"
 
 
 GBAD done (elapsed CPU time =    0.01 seconds).
@@ -552,7 +552,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.100000
+  Information Theoretic threshold 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -576,17 +576,17 @@ Read 5 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.89825, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "2"
+    v 3 "3"
     v 4 "n"
-    v 5 "i"
-    v 6 "2"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 5 3 "e"
-    d 2 5 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 2 1 "e"
+    d 3 1 "e"
+    d 4 3 "e"
 
 Anomalous Instances:  NONE.
 
@@ -594,43 +594,43 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.89825, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "2"
+    v 3 "3"
     v 4 "n"
-    v 5 "i"
-    v 6 "2"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 5 3 "e"
-    d 2 5 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 2 1 "e"
+    d 3 1 "e"
+    d 4 3 "e"
 
 (2) Substructure: value = 1.88317, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "M"
+    v 3 "3"
     v 4 "n"
-    v 5 "M"
-    v 6 "i"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 6 3 "e"
-    d 2 6 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 3 1 "e"
+    d 4 3 "e"
+    d 1 2 "e"
 
 (3) Substructure: value = 1.61716, instances = 5
   Graph(5v,4e):
-    v 1 "K"
+    v 1 "i"
     v 2 "3"
-    v 3 "END"
-    v 4 "n"
-    v 5 "i"
-    d 4 2 "e"
+    v 3 "n"
+    v 4 "END"
+    v 5 "K"
     d 1 4 "e"
     d 5 3 "e"
-    d 2 5 "e"
+    d 2 1 "e"
+    d 3 2 "e"
 
 
 GBAD done (elapsed CPU time =    0.01 seconds).
@@ -645,7 +645,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
+  Maximum Partial Sub threshold.. 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -796,7 +796,7 @@ Best 3 substructures:
     d 11 15 "e"
 
 
-GBAD done (elapsed CPU time =   26.78 seconds).
+GBAD done (elapsed CPU time =    1.31 seconds).
 GBAD 3.2
 
 Parameters:
@@ -808,7 +808,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
+  Maximum Partial Sub threshold.. 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -832,17 +832,17 @@ Read 110 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.50954, instances = 71
   Graph(6v,5e):
-    v 1 "G"
-    v 2 "X"
-    v 3 "m"
-    v 4 "P"
-    v 5 "W"
-    v 6 "l"
-    d 1 2 "e"
-    d 2 4 "e"
+    v 1 "l"
+    v 2 "W"
+    v 3 "P"
+    v 4 "X"
+    v 5 "m"
+    v 6 "G"
+    d 6 4 "e"
     d 4 3 "e"
-    d 3 6 "e"
-    d 6 5 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -850,71 +850,71 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.50954, instances = 71
   Graph(6v,5e):
-    v 1 "G"
-    v 2 "X"
-    v 3 "m"
-    v 4 "P"
-    v 5 "W"
-    v 6 "l"
-    d 1 2 "e"
-    d 2 4 "e"
+    v 1 "l"
+    v 2 "W"
+    v 3 "P"
+    v 4 "X"
+    v 5 "m"
+    v 6 "G"
+    d 6 4 "e"
     d 4 3 "e"
-    d 3 6 "e"
-    d 6 5 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 (2) Substructure: value = 1.38541, instances = 17
   Graph(18v,18e):
-    v 1 "START"
-    v 2 "i"
-    v 3 "END"
-    v 4 "G"
-    v 5 "X"
-    v 6 "K"
-    v 7 "n"
-    v 8 "3"
-    v 9 "N"
-    v 10 "m"
-    v 11 "P"
-    v 12 "W"
-    v 13 "x"
-    v 14 "8"
-    v 15 "d"
-    v 16 "z"
-    v 17 "l"
-    v 18 "B"
-    d 1 15 "e"
-    d 15 16 "e"
-    d 16 4 "e"
-    d 4 5 "e"
-    d 5 11 "e"
-    d 11 10 "e"
-    d 10 17 "e"
-    d 17 12 "e"
-    d 12 16 "e"
-    d 16 13 "e"
-    d 13 9 "e"
-    d 9 18 "e"
-    d 18 14 "e"
-    d 14 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 2 "e"
+    v 1 "i"
+    v 2 "l"
+    v 3 "W"
+    v 4 "START"
+    v 5 "END"
+    v 6 "P"
+    v 7 "8"
+    v 8 "X"
+    v 9 "n"
+    v 10 "x"
+    v 11 "3"
+    v 12 "z"
+    v 13 "B"
+    v 14 "N"
+    v 15 "m"
+    v 16 "K"
+    v 17 "G"
+    v 18 "d"
+    d 4 18 "e"
+    d 18 12 "e"
+    d 12 17 "e"
+    d 17 8 "e"
+    d 8 6 "e"
+    d 6 15 "e"
+    d 15 2 "e"
     d 2 3 "e"
+    d 3 12 "e"
+    d 12 10 "e"
+    d 10 14 "e"
+    d 14 13 "e"
+    d 13 7 "e"
+    d 7 16 "e"
+    d 16 9 "e"
+    d 9 11 "e"
+    d 11 1 "e"
+    d 1 5 "e"
 
 (3) Substructure: value = 1.35919, instances = 71
   Graph(5v,4e):
-    v 1 "X"
-    v 2 "m"
+    v 1 "l"
+    v 2 "W"
     v 3 "P"
-    v 4 "W"
-    v 5 "l"
-    d 1 3 "e"
-    d 3 2 "e"
-    d 2 5 "e"
-    d 5 4 "e"
+    v 4 "X"
+    v 5 "m"
+    d 4 3 "e"
+    d 3 5 "e"
+    d 5 1 "e"
+    d 1 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.15 seconds).
+GBAD done (elapsed CPU time =    0.14 seconds).
 GBAD 3.2
 
 Parameters:
@@ -926,7 +926,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
+  Maximum Partial Sub threshold.. 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -950,29 +950,29 @@ Read 56 total positive graphs
 Normative Pattern (1):
 Substructure: value = 6.20288, instances = 51
   Graph(12v,11e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    v 12 "END"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 12 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "START"
+    v 12 "B"
+    d 11 2 "e"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 12 "e"
+    d 12 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 Anomalous Instances:  NONE.
 
@@ -980,80 +980,80 @@ Best 3 substructures:
 
 (1) Substructure: value = 6.20288, instances = 51
   Graph(12v,11e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    v 12 "END"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 12 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "START"
+    v 12 "B"
+    d 11 2 "e"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 12 "e"
+    d 12 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 (2) Substructure: value = 4.07629, instances = 51
   Graph(11v,10e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "START"
-    v 10 "x"
-    v 11 "N"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 10 "e"
-    d 10 11 "e"
-    d 11 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "x"
+    v 7 "z"
+    v 8 "N"
+    v 9 "i"
+    v 10 "START"
+    v 11 "B"
+    d 10 2 "e"
+    d 2 7 "e"
+    d 7 6 "e"
+    d 6 8 "e"
+    d 8 11 "e"
+    d 11 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 9 "e"
 
 (3) Substructure: value = 4.07629, instances = 51
   Graph(11v,10e):
-    v 1 "d"
-    v 2 "z"
-    v 3 "3"
-    v 4 "B"
-    v 5 "n"
-    v 6 "i"
-    v 7 "8"
-    v 8 "K"
-    v 9 "x"
-    v 10 "N"
-    v 11 "END"
-    d 1 2 "e"
-    d 2 9 "e"
-    d 9 10 "e"
-    d 10 4 "e"
-    d 4 7 "e"
-    d 7 8 "e"
-    d 8 5 "e"
-    d 5 3 "e"
-    d 3 6 "e"
-    d 6 11 "e"
+    v 1 "K"
+    v 2 "d"
+    v 3 "n"
+    v 4 "3"
+    v 5 "8"
+    v 6 "END"
+    v 7 "x"
+    v 8 "z"
+    v 9 "N"
+    v 10 "i"
+    v 11 "B"
+    d 2 8 "e"
+    d 8 7 "e"
+    d 7 9 "e"
+    d 9 11 "e"
+    d 11 5 "e"
+    d 5 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
+    d 4 10 "e"
+    d 10 6 "e"
 
 
-GBAD done (elapsed CPU time =    0.61 seconds).
+GBAD done (elapsed CPU time =    0.09 seconds).
 GBAD 3.2
 
 Parameters:
@@ -1065,7 +1065,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
+  Maximum Partial Sub threshold.. 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -1089,25 +1089,25 @@ Read 5 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.6804, instances = 5
   Graph(10v,9e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "8"
+    v 5 "B"
+    v 6 "x"
     v 7 "z"
-    v 8 "8"
-    v 9 "d"
-    v 10 "N"
-    d 5 9 "e"
-    d 9 7 "e"
-    d 7 4 "e"
-    d 4 10 "e"
+    v 8 "w"
+    v 9 "H"
+    v 10 "START"
     d 10 1 "e"
-    d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
-    d 3 8 "e"
+    d 1 7 "e"
+    d 7 6 "e"
+    d 6 3 "e"
+    d 3 9 "e"
+    d 9 2 "e"
+    d 2 8 "e"
+    d 8 5 "e"
+    d 5 4 "e"
 
 Anomalous Instances:  NONE.
 
@@ -1115,65 +1115,65 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.6804, instances = 5
   Graph(10v,9e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "8"
+    v 5 "B"
+    v 6 "x"
     v 7 "z"
-    v 8 "8"
-    v 9 "d"
-    v 10 "N"
-    d 5 9 "e"
-    d 9 7 "e"
-    d 7 4 "e"
-    d 4 10 "e"
+    v 8 "w"
+    v 9 "H"
+    v 10 "START"
     d 10 1 "e"
-    d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
-    d 3 8 "e"
+    d 1 7 "e"
+    d 7 6 "e"
+    d 6 3 "e"
+    d 3 9 "e"
+    d 9 2 "e"
+    d 2 8 "e"
+    d 8 5 "e"
+    d 5 4 "e"
 
 (2) Substructure: value = 1.56177, instances = 5
   Graph(9v,8e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "START"
-    v 6 "c"
-    v 7 "z"
-    v 8 "d"
-    v 9 "N"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 4 "e"
-    d 4 9 "e"
+    v 1 "d"
+    v 2 "c"
+    v 3 "N"
+    v 4 "B"
+    v 5 "x"
+    v 6 "z"
+    v 7 "w"
+    v 8 "H"
+    v 9 "START"
     d 9 1 "e"
     d 1 6 "e"
-    d 6 2 "e"
-    d 2 3 "e"
+    d 6 5 "e"
+    d 5 3 "e"
+    d 3 8 "e"
+    d 8 2 "e"
+    d 2 7 "e"
+    d 7 4 "e"
 
 (3) Substructure: value = 1.53966, instances = 5
   Graph(9v,8e):
-    v 1 "H"
-    v 2 "w"
-    v 3 "B"
-    v 4 "x"
-    v 5 "c"
-    v 6 "z"
-    v 7 "8"
-    v 8 "d"
-    v 9 "N"
-    d 8 6 "e"
-    d 6 4 "e"
-    d 4 9 "e"
+    v 1 "c"
+    v 2 "N"
+    v 3 "8"
+    v 4 "K"
+    v 5 "B"
+    v 6 "x"
+    v 7 "z"
+    v 8 "w"
+    v 9 "H"
+    d 7 6 "e"
+    d 6 2 "e"
+    d 2 9 "e"
     d 9 1 "e"
-    d 1 5 "e"
-    d 5 2 "e"
-    d 2 3 "e"
-    d 3 7 "e"
+    d 1 8 "e"
+    d 8 5 "e"
+    d 5 3 "e"
+    d 3 4 "e"
 
 
 GBAD done (elapsed CPU time =    0.01 seconds).
@@ -1188,7 +1188,7 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
+  Maximum Partial Sub threshold.. 0.001000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
@@ -1212,17 +1212,17 @@ Read 5 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.89825, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "2"
+    v 3 "3"
     v 4 "n"
-    v 5 "i"
-    v 6 "2"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 5 3 "e"
-    d 2 5 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 2 1 "e"
+    d 3 1 "e"
+    d 4 3 "e"
 
 Anomalous Instances:  NONE.
 
@@ -1230,46 +1230,46 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.89825, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "2"
+    v 3 "3"
     v 4 "n"
-    v 5 "i"
-    v 6 "2"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 5 3 "e"
-    d 2 5 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 2 1 "e"
+    d 3 1 "e"
+    d 4 3 "e"
 
 (2) Substructure: value = 1.88317, instances = 5
   Graph(6v,5e):
-    v 1 "K"
-    v 2 "3"
-    v 3 "END"
+    v 1 "i"
+    v 2 "M"
+    v 3 "3"
     v 4 "n"
-    v 5 "M"
-    v 6 "i"
-    d 4 2 "e"
-    d 1 4 "e"
-    d 6 3 "e"
-    d 2 6 "e"
-    d 6 5 "e"
+    v 5 "END"
+    v 6 "K"
+    d 1 5 "e"
+    d 6 4 "e"
+    d 3 1 "e"
+    d 4 3 "e"
+    d 1 2 "e"
 
 (3) Substructure: value = 1.61716, instances = 5
   Graph(5v,4e):
-    v 1 "K"
+    v 1 "i"
     v 2 "3"
-    v 3 "END"
-    v 4 "n"
-    v 5 "i"
-    d 4 2 "e"
+    v 3 "n"
+    v 4 "END"
+    v 5 "K"
     d 1 4 "e"
     d 5 3 "e"
-    d 2 5 "e"
+    d 2 1 "e"
+    d 3 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.00 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
