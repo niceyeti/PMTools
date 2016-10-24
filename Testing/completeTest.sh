@@ -114,7 +114,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $probResult
 #cat /dev/null > $fsmResult
 #
-gbadThreshold="0.3" #the best performance always seems to be about 0.3; I need to justify this
+gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
 
 echo Running gbad-mdl from $gbadMdlPath
@@ -122,20 +122,22 @@ echo Running gbad-mdl from $gbadMdlPath
 $gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
 echo Running gbad-mps from $gbadMdlPath
 $gbadMdlPath -mps $gbadThreshold $subdueLogPath > $mpsResult
-echo Running gbad-prob from $gbadMdlPath
-$gbadMdlPath -prob 2 $subdueLogPath > $probResult
+#echo Running gbad-prob from $gbadMdlPath
+#$gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
 #run recursive-compression gbad
 if [ $recursiveIterations -gt 0 ]; then
 	cp $mdlResult lastMdlResult.txt
+	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
+	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB_init --deleteSubs=$deleteSubstructures --showSub
 	for i in $(seq 0 $recursiveIterations); do
 		echo Compression iteration $i
-		#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
-		python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
+#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
+#python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
 		#compressor writes the number of best-substructure instances to ./subsCount.txt file, relative to the compressor's environment
 		#Read the subsCount.txt parameter and use it to modify the gbad threshold
-		gbadThreshold=$(cat gbadThresh.txt)
-		echo Re-running gbad with new threshold $gbadThreshold
+		#gbadThreshold=$(cat gbadThresh.txt)
+		echo Re-running gbad with threshold $gbadThreshold
 		#echo Running gbad-mdl from $gbadMdlPath
 		#$gbadMdlPath -mdl $gbadThreshold $compressedLog
 		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
@@ -144,6 +146,8 @@ if [ $recursiveIterations -gt 0 ]; then
 		$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
 		#echo Running gbad-prob from $gbadMdlPath
 		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
+		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
+		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
 	done
 fi
 

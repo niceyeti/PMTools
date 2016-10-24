@@ -49,6 +49,8 @@ def _writeSubs(subs, outPath):
 	ofile = open(outPath, "wb+") #the b and encode() notation below are just to force linux line endings
 
 	for sub in subs:
+		#a hack required by gbad: "xp" declarations must be sequential
+		
 		ofile.write((_sub2GFormatString(sub)+"\n").encode())
 	
 	ofile.close()
@@ -107,7 +109,7 @@ Return Cases:
 	3) trace EQUALS substructure: the trace is deleted, and None is returned
 """
 def _deleteTraceSub(traceSub, compSub):
-	delSub = compSub
+	delSub = traceSub
 
 	#trace contains subgraph, so delete it as described above
 	if _traceContainsSubgraph(traceSub, compSub):
@@ -116,7 +118,8 @@ def _deleteTraceSub(traceSub, compSub):
 			print("EQUALITY")
 			delSub = None
 		else:
-			print("CONTAINMENT")
+			print("CONTAINMENT: g1"+str([v["name"] for v in traceSub.vs]))
+			print("g2: "+str([v["name"] for v in compSub.vs]))
 			#get the vertex and edge sets for each subgraph
 			vsTrace = set([v["name"] for v in traceSub.vs])
 			vsComp = set([v["name"] for v in compSub.vs])
@@ -124,10 +127,10 @@ def _deleteTraceSub(traceSub, compSub):
 			esComp = set([(compSub.vs[e.source]["name"], compSub.vs[e.target]["name"]) for e in compSub.es])
 			#subtract the compressing substructure vertices, edges, from the trace
 			vsDel = vsTrace - vsComp
-			#delete the edges within the compressing substructure
-			esDel = esTrace - esComp
-			#also delete any incident edges to the compressing substructure (those esTrace edges neither pointing to, nor from, some compSub vertex)
-			esDel = set([e for e in esDel if e[0] not in vsComp and e[1] not in vsComp])
+			#delete the edges within or incident to/from the compressing substructure
+			esDel = set([e for e in esTrace if e[0] not in vsComp and e[1] not in vsComp])
+			print("vsDel: "+str(vsDel))
+			print("esDel: "+str(esDel))
 			#print("trace vs: "+str(vsTrace))
 			#print("comp vs: "+str(vsComp))
 			#print("trace es: "+str(esTrace))
@@ -136,10 +139,13 @@ def _deleteTraceSub(traceSub, compSub):
 			for v in vsDel:
 				hasEdge = False
 				for e in esDel:
-					hasEdge = e[0] == v or e[1] == v
+					hasEdge |= (e[0] == v or e[1] == v)
 				#vertex has no associated edge so add a reflexive edge to it
 				if not hasEdge:
 					esDel.add((v,v))
+
+			print("vsDel: "+str(vsDel))
+			print("esDel: "+str(esDel))
 
 			#create the new sub
 			delSub = igraph.Graph(directed=True)
@@ -147,9 +153,9 @@ def _deleteTraceSub(traceSub, compSub):
 			delSub["header"] = traceSub["header"]
 			delSub["name"] = compSub["name"]
 			#add the vertices and edges as created above
-			delSub.add_vertices(vsDel)
-			delSub.add_edges(esDel)
-	
+			delSub.add_vertices(list(vsDel))
+			delSub.add_edges(list(esDel))
+
 	return delSub
 	
 """
@@ -297,7 +303,7 @@ def _compressAllTraces(traceSubs, bestSub, deleteSub=False):
 	for trace in traceSubs:
 		#if deleteSub, delete the substructure; if not vertices remain, the subgraph is no longer in the trace
 		if deleteSub:
-			print("DELETING SUB")
+			print("DELETING SUB: "+bestSub["name"])
 			sub = _deleteTraceSub(trace, bestSub)
 			#if sub is None (entire subgraph was deleted), just ignore it
 			if sub != None:
