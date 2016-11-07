@@ -9,14 +9,14 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.001000
+  Information Theoretic threshold 0.100000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 21
+  Limit.......................... 1
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 44
+  Maximum size of substructures.. 4
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -25,69 +25,31 @@ Parameters:
   Threshold...................... 0.000000
   Value-based queue.............. false
 
-Read 5 total positive graphs
+Read 1 total positive graphs
 
-5 positive graphs: 44 vertices, 43 edges, 671 bits
-13 unique labels
-12 initial substructures
+1 positive graphs: 4 vertices, 3 edges, 32 bits
+5 unique labels
+4 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.89825, instances = 5
-  Graph(6v,5e):
-    v 1 "i"
-    v 2 "2"
-    v 3 "3"
-    v 4 "n"
-    v 5 "END"
-    v 6 "K"
-    d 1 5 "e"
-    d 6 4 "e"
-    d 2 1 "e"
-    d 3 1 "e"
-    d 4 3 "e"
+Substructure: value = 0.88568, instances = 1
+  Graph(1v,0e):
+    v 1 "a"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.89825, instances = 5
-  Graph(6v,5e):
-    v 1 "i"
-    v 2 "2"
-    v 3 "3"
-    v 4 "n"
-    v 5 "END"
-    v 6 "K"
-    d 1 5 "e"
-    d 6 4 "e"
-    d 2 1 "e"
-    d 3 1 "e"
-    d 4 3 "e"
+(1) Substructure: value = 0.88568, instances = 1
+  Graph(1v,0e):
+    v 1 "a"
 
-(2) Substructure: value = 1.88317, instances = 5
-  Graph(6v,5e):
-    v 1 "i"
-    v 2 "M"
-    v 3 "3"
-    v 4 "n"
-    v 5 "END"
-    v 6 "K"
-    d 1 5 "e"
-    d 6 4 "e"
-    d 3 1 "e"
-    d 4 3 "e"
-    d 1 2 "e"
+(2) Substructure: value = 0.88568, instances = 1
+  Graph(1v,0e):
+    v 1 "q"
 
-(3) Substructure: value = 1.61716, instances = 5
-  Graph(5v,4e):
-    v 1 "i"
-    v 2 "3"
-    v 3 "n"
-    v 4 "END"
-    v 5 "K"
-    d 1 4 "e"
-    d 5 3 "e"
-    d 2 1 "e"
-    d 3 2 "e"
+(3) Substructure: value = 0.88568, instances = 1
+  Graph(1v,0e):
+    v 1 "U"
 
 
-GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD done (elapsed CPU time =    0.00 seconds).
