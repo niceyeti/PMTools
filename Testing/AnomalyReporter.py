@@ -15,10 +15,11 @@ from __future__ import print_function
 import sys
 
 class AnomalyReporter(object):
-	def __init__(self, gbadPath, logPath, resultPath):
+	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		self._resultPath = resultPath
+		self._dendrogramPath = dendrogramPath
 
 	"""
 	Given a file containing gad output, parses the text for all of the anomalies detected. Each
@@ -151,10 +152,75 @@ class AnomalyReporter(object):
 		return anoms
 
 	"""
+	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > 5%
+	of the overall size of the traces.
+	"""
+	def _compileDendrogramResult(self):
+		compressionLevels = []
+		f = open(self._dendrogramPath,"r")
+		#parse the dendrogram file; the only important component is backtracking the trace-ids to their origins
+		for line in f.readlines():
+			idMappings = line.split("{")[1].split("}")[0].split(",")
+			newMap = {}
+			for mapping in idMappings:
+				prevId = mapping.split(":")[0]
+				nextId = mapping.split(":")[1]
+				newMap[prevId] = nextId
+			compressionLevels.append(newMap)
+			
+		print(str(compressionLevels))
+		#get the total number of traces from the size of the first id-map
+		numTraces = len(compressionLevels[0].keys())
+		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
+		#all these traces are anomalies. Once we have them, backtrack to their original id's.
+		threshold = 0.05
+		i = 0
+		while float(len(compressionLevels[i])) / float(numTraces) > threshold and i < len(compressionLevels):
+			print("ratio: "+str(float(len(compressionLevels[i])) / float(numTraces)))
+			i += 1
+		print("i = "+str(i)+" numTraces="+str(numTraces))
+		#check if anomalous group found; if so, backtrack to get their original ids
+		if i > -1:
+			#backtrack to the original ids; the keys in each level are the vals of the previous level
+			prev = i - 1
+			curKeys = compressionLevels[i].keys()
+			print(str(curKeys))
+			while prev >= 0:
+				#print("curKeys: "+str(compressionLevels[i].keys()))
+				#print("prev items: "+str(compressionLevels[prev].items()))
+				#print("cur keys: "+str(compressionLevels[i].items()))
+
+				prevKeys = []
+				for k in curKeys:
+					prevKeys += [pair[0] for pair in compressionLevels[prev].items() if pair[1] == k]
+				print("PKEYS: "+str(prevKeys))
+				curKeys = [k for k in prevKeys]
+				"""
+				curKeys = []
+				for pair in compressionLevels[prev].items():
+					for k in compressionLevels[i].keys():
+						if pair[1] == k:
+							curKeys.append(pair[0])
+				"""
+				#curKeys = [pair[0] for pair in compressionLevels[prev].items() if pair[1] in compressionLevels[i].keys()]
+				prev -= 1
+				#i -= 1
+
+			print("Dendrogram-based anomalies: ")
+			print(str(curKeys))
+		else:
+			print("Dendrogram results:  no anomalies found")
+		
+	"""
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
 	"""
 	def CompileResults(self):
+	
+		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
+		if self._dendrogramPath != None:
+			self._compileDendrogramResult()
+	
 		gbadFile = open(self._gbadPath, "r")
 		logFile = open(self._logPath, "r")
 
@@ -206,13 +272,13 @@ class AnomalyReporter(object):
 		self._outputResults()
 		
 		print("Result Reporter completed.")
-		
+
 def usage():
-	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path]")
+	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
 
 def main():
-	if len(sys.argv) != 4:
+	if len(sys.argv) < 4:
 		print("ERROR incorrect num args")
 		usage()
 		exit()
@@ -220,8 +286,11 @@ def main():
 	gbadPath = sys.argv[1].split("=")[1]
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
+	dendrogramPath=None
+	if "--dendrogram=" in sys.argv[4]:
+		dendrogramPath = sys.argv[4].split("=")[1]
 	
-	reporter = AnomalyReporter(gbadPath, logPath, resultPath)
+	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath)
 	reporter.CompileResults()
 
 if __name__ == "__main__":

@@ -131,7 +131,7 @@ cat /dev/null > "dendrogram.txt"
 if [ $recursiveIterations -gt 0 ]; then
 	cp $mdlResult lastMdlResult.txt
 	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
-	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB_init --deleteSubs=$deleteSubstructures --showSub
+	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB_init --deleteSubs=$deleteSubstructures
 	for i in $(seq 0 $recursiveIterations); do
 		echo Compression iteration $i
 		echo Re-running gbad with threshold $gbadThreshold
@@ -140,7 +140,7 @@ if [ $recursiveIterations -gt 0 ]; then
 		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
 		cat lastMdlResult.txt >> $mdlResult
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
-		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
+		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures
 	done
 fi
 
@@ -150,4 +150,4 @@ cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt
