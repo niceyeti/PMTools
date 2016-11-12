@@ -59,43 +59,43 @@ for var in "$@"; do
 	fi	
 done
 
-#if [ $generateData = "true" ]; then
-#	###############################################################################
-#	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
-#	cd "../DataGenerator"
-#	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
-#	
-#	###############################################################################
-#	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
-#	cd "../PromTools"
-#	#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
-#	python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
-#	#Copy everything over to the ProM environment; simpler to run everything from there.
-#	minerScript="$minerName"Miner.js
-#	promMinerPath=../../ProM/"$minerScript"
-#	cp $minerScript $promMinerPath
-#	cp $xesPath ../../ProM/testTraces.xes
-#	cp ./miner.sh ../../ProM/miner.sh
-#	
-#	###############################################################################
-#	##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
-#	cd "../../ProM"
-#	sh ./miner.sh -f $minerScript
-#	#copy the mined model back to the SyntheticData folder
-#	cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
-#	cd "../scripts/Testing"
-#	#Convert the mined pnml model to graphml
-#	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-#	
-#	################################################################################
-#	##anomalize the model???
-#	#
-#	################################################################################
-#	##Generate sub-graphs from the mined graphml model
-#	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
-#	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-#	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
-#fi
+if [ $generateData = "true" ]; then
+	###############################################################################
+	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
+	cd "../DataGenerator"
+	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
+	
+	###############################################################################
+	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
+	cd "../PromTools"
+	#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
+	python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
+	#Copy everything over to the ProM environment; simpler to run everything from there.
+	minerScript="$minerName"Miner.js
+	promMinerPath=../../ProM/"$minerScript"
+	cp $minerScript $promMinerPath
+	cp $xesPath ../../ProM/testTraces.xes
+	cp ./miner.sh ../../ProM/miner.sh
+	
+	###############################################################################
+	##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
+	cd "../../ProM"
+	sh ./miner.sh -f $minerScript
+	#copy the mined model back to the SyntheticData folder
+	cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+	cd "../scripts/Testing"
+	#Convert the mined pnml model to graphml
+	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+	
+	################################################################################
+	##anomalize the model???
+	#
+	################################################################################
+	##Generate sub-graphs from the mined graphml model
+	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
+	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
+fi
 	
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)

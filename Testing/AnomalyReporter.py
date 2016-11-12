@@ -277,6 +277,9 @@ def usage():
 	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
 
+"""
+
+"""
 def main():
 	if len(sys.argv) < 4:
 		print("ERROR incorrect num args")
@@ -287,7 +290,7 @@ def main():
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
 	dendrogramPath=None
-	if "--dendrogram=" in sys.argv[4]:
+	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
 	
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath)
