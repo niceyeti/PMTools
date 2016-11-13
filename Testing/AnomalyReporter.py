@@ -173,9 +173,9 @@ class AnomalyReporter(object):
 		numTraces = len(compressionLevels[0].keys())
 		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
 		#all these traces are anomalies. Once we have them, backtrack to their original id's.
-		threshold = 0.05
+		threshold = 0.10 #generous; this will throw the occasional false positive
 		i = 0
-		while float(len(compressionLevels[i])) / float(numTraces) > threshold and i < len(compressionLevels):
+		while i < len(compressionLevels) and float(len(compressionLevels[i])) / float(numTraces) > threshold:
 			print("ratio: "+str(float(len(compressionLevels[i])) / float(numTraces)))
 			i += 1
 		print("i = "+str(i)+" numTraces="+str(numTraces))
@@ -207,6 +207,8 @@ class AnomalyReporter(object):
 				#i -= 1
 
 			print("Dendrogram-based anomalies: ")
+			curKeys = [int(k) for k in curKeys]
+			curKeys = sorted(curKeys)
 			print(str(curKeys))
 		else:
 			print("Dendrogram results:  no anomalies found")

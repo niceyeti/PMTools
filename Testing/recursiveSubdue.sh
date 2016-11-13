@@ -115,7 +115,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $probResult
 #cat /dev/null > $fsmResult
 #
-gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
+gbadThreshold="0.05" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
 
 echo Running gbad-mdl from $gbadMdlPath
@@ -139,10 +139,16 @@ if [ $recursiveIterations -gt 0 ]; then
 		#$gbadMdlPath -mdl $gbadThreshold $compressedLog
 		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
 		cat lastMdlResult.txt >> $mdlResult
+
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
 		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures
 	done
 fi
+
+#REMEMBER: Once anomalies are obtained, they could be used to drive some search for the structural characteristics they share amongst
+#themselves, and also do not share amongst the community of 'normal' traces, such that we find the ground truth of the anomalies (eg, some edge
+#or vertex. Then you could search based on that property to discover other anomalies a priori/explicitly.
+
 
 ##Concat the gbad results into a single file so they are easier to analyze at once
 cat $mdlResult > $gbadResult
