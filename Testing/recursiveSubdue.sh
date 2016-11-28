@@ -142,6 +142,11 @@ if [ $recursiveIterations -gt 0 ]; then
 
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
 		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures
+		#break loop once an empty log is encountered
+		emptinessTest = $(cat $compressedLog)
+		if [[ -z $emptinessTest ]]; then
+			break
+		fi
 	done
 fi
 

@@ -45,19 +45,25 @@ class LogCompressor(object):
 		print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
 		
 		bestSub = self._parseBestSubstructure(subsPath)
-		if showSub:
-			layout = bestSub.layout("sugiyama")
-			igraph.plot(bestSub, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
-		
-		bestSub["name"] = compSubName
-		#print(str(bestSub))
-		subgraphs = self._buildAllTraces(logPath)
-		#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-		compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSub)
-		#append to the dendrogram file
-		self._appendToDendrogram(compSubName, compressedSubs, deletedSubs)
-		#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
-		self._writeSubs(compressedSubs, outPath)
+		if bestSub != None:
+			if showSub:
+				layout = bestSub.layout("sugiyama")
+				igraph.plot(bestSub, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+			
+			bestSub["name"] = compSubName
+			#print(str(bestSub))
+			subgraphs = self._buildAllTraces(logPath)
+			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
+			compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSub)
+			#append to the dendrogram file
+			self._appendToDendrogram(compSubName, compressedSubs, deletedSubs)
+			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
+			self._writeSubs(compressedSubs, outPath)
+		else:
+			print("Compressor exiting with no compression")
+			#output empty log to outPath
+			ofile = open(outPath,"w+")
+			ofile.close()
 
 	"""
 	Given a list of sub-graphs stored in igraph.Graph structures, write each one
@@ -459,8 +465,9 @@ class LogCompressor(object):
 		#get the raw subs file string (gbad/subdue output) (replacing linefeeds with some temp pattern makes things easier for re's)
 		subsRaw = open(subsPath,"r").read().replace("\r\n","\n").replace("\n","~")
 		#print("raw subs:\n"+subsRaw)
-		if len(subsRaw) < 500:
+		if len(subsRaw) < 50:
 			print("WARNING Possibly empty substructure file detected. Contents:\n"+subsRaw)
+			return None
 
 		#find the substructures just given a textual anchor pattern: "Normative Pattern (" followed by stuff, followed by double line-feeds
 		start = subsRaw.find("Normative Pattern (")
