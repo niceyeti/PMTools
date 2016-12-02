@@ -43,7 +43,6 @@ class LogCompressor(object):
 		print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 		print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 		print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
-		
 		bestSub = self._parseBestSubstructure(subsPath)
 		if bestSub != None:
 			if showSub:
