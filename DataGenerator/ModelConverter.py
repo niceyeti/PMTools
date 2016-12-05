@@ -4,15 +4,14 @@ import sys
 import os
 
 """
-Given a process-model string as output by ModelGenerator.py, this build a graph structure based on 
-the process-model using the igraph api. The igraph api is a powerful api for building, maintaining, traversing,
+Given a process-model string as output by ModelGenerator.py, this builds a graph structure based on 
+the process-model using the igraph api. igraph is a powerful api for building, maintaining, traversing,
 and serializing graphs.
 
 Input: a process-model string as described by ModelGenerator.py
 Ouput: a directed, edge-weighted graph in graphML. Such a graph can then be transferred to any
 other object for generating data.
-"""		
-
+"""
 class ModelConverter(object):
 	def __init__(self):
 		self._graph = None
@@ -382,6 +381,9 @@ class ModelConverter(object):
 		endId = self._getNodeId(endNodes[0])
 		self._graph.vs[endId]["name"] = "END"
 		self._graph.vs[endId]["label"] = "END"
+		#count and store the number of paths from start to end node in graph, allowing loop repeats a max of 2 times
+		print("Counting num traces via path from START to END for k=2 (per Bezerra)")
+		self._graph["PathCount"] = self._countPaths(self._graph, "START", "END", 2)
 		#print("START: "+str(startNodes)+"  END: "+str(endNodes))
 
 		#plot the graph for verification
@@ -389,6 +391,43 @@ class ModelConverter(object):
 		#output the graph to some reproducible format; graphml is nice because it preserves all edge/node attributes (isAnomalous, etc.)
 		self._graph.write_graphml(graphPath)
 
+		return self._graph
+
+	def _getOutNeighbors(self, g, node):
+		return [e.target for e in g.es[g.incident(node,mode="OUT")]]
+
+	def _countPaths(self, g, startName, endName, k):
+		#mark all the nodes per number of times traversed (max of k)
+		g.vs["pathCountHits"] = 0
+		#get start node
+		startNode = g.vs.find(name=startName)
+		#get immediate out-edge neighbors of START
+		q = self._getOutNeighbors(g, startNode)
+		pathct = 0
+
+		print("out neighbors: "+str(q))
+		while len(q) > 0:
+			#pop front node
+			nodeId = q[0]
+			node = g.vs[nodeId]
+			q = q[1:]
+			#get type of edge pointing to this node; note this detects if any edge pointing to node is LOOP type--unnecessary in our topology (loops only have one entrant edge), but robust
+			isLoop = [e for e in g.es if e.target == nodeId][0]["type"] == "LOOP"
+			print("isloop: "+str(isLoop))
+			
+			print(str(node["pathCountHits"]))
+			node["pathCountHits"] += 1
+			if node["name"] == endName:
+				print("++")
+				pathct += 1
+			#append non-loop successors, or loop successors whom we have traversed fewer than k time, to horizon
+			elif not isLoop or node["pathCountHits"] < k:
+				q += self._getOutNeighbors(g, node)
+
+		print("Pathct: "+str(pathct))
+				
+		return pathct
+		
 	"""
 	Utility for plotting the generated graph, detecting anomalous edges and the like.
 	
@@ -404,6 +443,7 @@ class ModelConverter(object):
 		#plot and show the graph, if desired
 		if showPlot:
 			igraph.plot(self._graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
+
 
 def usage():
 	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'] [--quiet: optional; whether or not to show the graph]")
@@ -425,6 +465,6 @@ def main():
 	
 	converter = ModelConverter()
 	converter.ConvertModel(modelString,outputPath,showPlot)
-		
+
 if __name__ == "__main__":
 	main()

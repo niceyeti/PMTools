@@ -2,6 +2,7 @@ import sys
 import math
 import random
 import igraph
+from ModelConverter import ModelConverter
 
 """
 Randomly generates process models according to Algorithm 4, in Bezerra's paper on process-mining anomaly detection.
@@ -51,6 +52,7 @@ class ModelGenerator(object):
 		self._anomalyCount = 0
 		self._requiredAnomalies = 999
 		self._parseConfig(configPath)
+		self._modelConverter = ModelConverter()
 
 	"""
 	Parses in the parameters/vals of the config file. All are required.
@@ -283,8 +285,12 @@ class ModelGenerator(object):
 	Just the outer driver for the recursive calls. Note that models are generated until one meets the num-anomalies requirement.
 	An alternative is to generate models with LOOP and OR constructs, and then to flip their anomaly status to True, but the lazy way
 	here is just clearer and easier, despite being less efficient.
+
+	@n: number of activities
+	@a: num anomalies to generate with model
+	
 	"""
-	def CreateModel(self,n,a):
+	def CreateModel(self, n, a, outputPath, showPlot):
 		if a > 3:
 			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate")
 
@@ -292,13 +298,19 @@ class ModelGenerator(object):
 		isValidModel = False
 		while self._anomalyCount != a or not isValidModel:
 			self._reset()
-			self._model = self._createModel(n,preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
+			self._model = self._createModel(n, preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
-			isValidModel = self._isValidModel()
+			isValidModelStr = self._isValidModelStr()# and self._isBezerraValidModel()
+			if isValidModelStr:
+				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
+				self._graphicalModel = self._modelConverter.ConvertModel(self._model, outputPath, showPlot)
+				self._pathCount = self._graphicalModel["PathCount"]
+				print("outer count: "+str(self._pathCount))
+				isValidModel = self._isBezerraValidModel(self._graphicalModel)
 
-		return self._model
-
+		return self._graphicalModel
+		
 	def PrintModel(self):
 		print("Model:\n"+self._model)
 		ct = 0
@@ -313,78 +325,25 @@ class ModelGenerator(object):
 				ct += 1
 			i += 1
 
-		print(str(ct)+" total activities, "+str(self._anomalyCount)+" anomalies")
+		print(str(ct)+" total activities, "+str(self._pathCount)+" unique paths, "+str(self._anomalyCount)+" anomalies")
 
 	"""
 	Verifies a generated graph is valid under Bezerra's definition, such that the graph has at least k
 	activities, p possible paths.
-	
-	To count the number of unique paths (unique traces), I used a proof based method. Igraph's all_simple_paths
-	enumerates all simple paths between two vertices, those for which no vertex is repeated. To account for the diversity
-	provided by loops, which can be traversed a maximum of k-times, the number of additional traces provide by a loop
-	can be lower-bounded by:
-		n = k * number of downstream CHOICE nodes (OR or LOOP)
-		
-	Thus a lower-bound (conservative) estimate when accounting for LOOP constructs is:
-		numPaths >= |all_simple_paths()| + Sum(n_i)
-	numPaths is then used as a conservative estimates of the number of additional paths/complexity provided by
-	LOOP constructs; for few LOOPs, any slop in the bound won't be significant.
-	
+
 	Bezerra used k=17, p =10 (model capable of generating at least 10 unique traces).
 	"""
-	def _isBezerraValidModel(self):
-		print("Validating model under Bezerra's requirements, using adjacency matrix exponentiation.")
-		print("Calling all_simple_paths() to count simple paths; if this hangs, the model may be exponentially complex...")
-		len(self._model.all_simple_paths())
-		
-		
-	"""
-	Uses BFS to count the number of paths between nodes start and end, allowing for loops to be traversed up to k-times.
-	This function assumes that k also applies to sub-loops of loops (draw an example of this to see; a loop with a nested loop returns 4 for k=2, as desired).
-	
-	@start: name of the start node
-	@end: name of the end node
-	@k: Loop iteration threshold (k=2 in Bezerra's work)
-	"""
-	def _countPaths(self,startName,endName,k):
-		#mark all the nodes per number of times traversed (max of k)
-		self._model.vs["pathCountHits"] = 0
-		#get start
-		startNode = self._model.find(name=startName)
-		#get immediate out-edge neighbors of START
-		q = self._getOutNeighbors(startNode)
-		pathct = 0
-	
-		while len(q) > 0:
-			#pop front node
-			node = self._model.vs[q[0]]
-			q = q[1:]
-			
-			if node["name"] == endName:
-				pathct += 1
-			elif node["pathCountHits"] <= k:
-				q.append( self._getOutNeighbors(node) )
+	def _isBezerraValidModel(self,g):
+		print("Validating model under Bezerra's requirements: pathct >= 10 and 9 <= numActivities <= 29.")
+		p = g["PathCount"]
+		k = len(g.vs)
+		return p >= 10 and k >= 9
 
-			return pathCountHits
-			
-			
-			
-			
-	"""
-	Get immediate neighbors of node, along its out-edges.
-	Returns: vertex sequence indices of some node out-neighbors
-	"""
-	def _getOutNeighbors(self,node):
-		return [e.target for e in g.es[self._model.incident(node,mode="OUT")]]
-	
-	
-		
 	"""
 	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
 	other bad structures.
-	
 	"""
-	def _isValidModel(self):
+	def _isValidModelStr(self):
 		#check for an approximate minimum valid length
 		if len(self._model) < 3:
 			print("ERROR model length too small: "+self._model)
@@ -516,7 +475,7 @@ class ModelGenerator(object):
 		return model
 
 def usage():
-	print("python ./ModelGenerator -n=(some +integer <= 60) -a=(number of anomalies to include) -config=configPath [-file=(path to output file)]")
+	print("python ./ModelGenerator -n=(some +integer <= 60) -a=(number of anomalies to include) -config=configPath [-file=(path to output file)] [-graph=graphml save location] [-quiet dont show graph]")
 
 def main():
 	if len(sys.argv) < 4:
@@ -554,8 +513,15 @@ def main():
 	if len(sys.argv) > 4 and "-file=" in sys.argv[4]:
 		ofile = open(sys.argv[4].split("=")[1], "w+")
 
+	graphPath = None
+	for arg in sys.argv:
+		if "-graph=" in arg:
+			graphPath = arg.split("=")[1]
+
+	showPlot = "-quiet" not in sys.argv
+
 	generator = ModelGenerator(configPath)
-	generator.CreateModel(n,a)
+	generator.CreateModel(n, a, graphPath, showPlot)
 	generator.PrintModel()
 
 	if ofile != None:

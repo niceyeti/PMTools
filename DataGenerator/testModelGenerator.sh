@@ -7,6 +7,3 @@ do
 	#convert the generated model to transferrable graphml
 	python ModelConverter.py testModel.txt testModel.graphml --show
 done
-
-
-

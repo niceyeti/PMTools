@@ -16,9 +16,9 @@ graphmlPath=$5
 
 echo Building process model with appr $numActivites activities...
 #build the model, using Bezerra's algorithm
-python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt
+python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt -graph=$graphmlPath
 #convert the generated model to transferrable graphml
-python ModelConverter.py model.txt $graphmlPath
+#python ModelConverter.py model.txt $graphmlPath
 #generate stochastic walk data from the model
 python DataGenerator.py $graphmlPath -n=$numTraces -ofile=$logPath
 #convert synthetic data to xes format for process mining

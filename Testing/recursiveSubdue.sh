@@ -56,7 +56,7 @@ for var in "$@"; do
 	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
 	if [ "$var" = "--deleteSubs" ]; then
 		deleteSubstructures="true"
-	fi	
+	fi
 done
 
 
