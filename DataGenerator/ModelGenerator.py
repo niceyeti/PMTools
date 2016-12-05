@@ -316,6 +316,70 @@ class ModelGenerator(object):
 		print(str(ct)+" total activities, "+str(self._anomalyCount)+" anomalies")
 
 	"""
+	Verifies a generated graph is valid under Bezerra's definition, such that the graph has at least k
+	activities, p possible paths.
+	
+	To count the number of unique paths (unique traces), I used a proof based method. Igraph's all_simple_paths
+	enumerates all simple paths between two vertices, those for which no vertex is repeated. To account for the diversity
+	provided by loops, which can be traversed a maximum of k-times, the number of additional traces provide by a loop
+	can be lower-bounded by:
+		n = k * number of downstream CHOICE nodes (OR or LOOP)
+		
+	Thus a lower-bound (conservative) estimate when accounting for LOOP constructs is:
+		numPaths >= |all_simple_paths()| + Sum(n_i)
+	numPaths is then used as a conservative estimates of the number of additional paths/complexity provided by
+	LOOP constructs; for few LOOPs, any slop in the bound won't be significant.
+	
+	Bezerra used k=17, p =10 (model capable of generating at least 10 unique traces).
+	"""
+	def _isBezerraValidModel(self):
+		print("Validating model under Bezerra's requirements, using adjacency matrix exponentiation.")
+		print("Calling all_simple_paths() to count simple paths; if this hangs, the model may be exponentially complex...")
+		len(self._model.all_simple_paths())
+		
+		
+	"""
+	Uses BFS to count the number of paths between nodes start and end, allowing for loops to be traversed up to k-times.
+	This function assumes that k also applies to sub-loops of loops (draw an example of this to see; a loop with a nested loop returns 4 for k=2, as desired).
+	
+	@start: name of the start node
+	@end: name of the end node
+	@k: Loop iteration threshold (k=2 in Bezerra's work)
+	"""
+	def _countPaths(self,startName,endName,k):
+		#mark all the nodes per number of times traversed (max of k)
+		self._model.vs["pathCountHits"] = 0
+		#get start
+		startNode = self._model.find(name=startName)
+		#get immediate out-edge neighbors of START
+		q = self._getOutNeighbors(startNode)
+		pathct = 0
+	
+		while len(q) > 0:
+			#pop front node
+			node = self._model.vs[q[0]]
+			q = q[1:]
+			
+			if node["name"] == endName:
+				pathct += 1
+			elif node["pathCountHits"] <= k:
+				q.append( self._getOutNeighbors(node) )
+
+			return pathCountHits
+			
+			
+			
+			
+	"""
+	Get immediate neighbors of node, along its out-edges.
+	Returns: vertex sequence indices of some node out-neighbors
+	"""
+	def _getOutNeighbors(self,node):
+		return [e.target for e in g.es[self._model.incident(node,mode="OUT")]]
+	
+	
+		
+	"""
 	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
 	other bad structures.
 	
