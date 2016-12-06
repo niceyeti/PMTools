@@ -301,7 +301,7 @@ class ModelGenerator(object):
 			self._model = self._createModel(n, preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
-			isValidModelStr = self._isValidModelStr()# and self._isBezerraValidModel()
+			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr()
 			if isValidModelStr:
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, outputPath, showPlot)
@@ -331,7 +331,7 @@ class ModelGenerator(object):
 	Verifies a generated graph is valid under Bezerra's definition, such that the graph has at least k
 	activities, p possible paths.
 
-	Bezerra used k=17, p =10 (model capable of generating at least 10 unique traces).
+	Bezerra used k=9, p =10 (model capable of generating at least 10 unique traces).
 	"""
 	def _isBezerraValidModel(self,g):
 		print("Validating model under Bezerra's requirements: pathct >= 10 and 9 <= numActivities <= 29.")
@@ -339,6 +339,21 @@ class ModelGenerator(object):
 		k = len(g.vs)
 		return p >= 10 and k >= 9
 
+	"""
+	THIS IS NOT A FULL CHECK FOR BEZERRA-VALIDITY. This only checks the model string for basic validity,
+	such that we can discard trivially invalid model strings before running the converter to derive their graph. 
+	As such, this only checks for a trivial lower-bound of Bezerra requirements (at least 10 different traces, 9 activities),
+	and could leak model-strings which can't generate 10 or more unique traces. But we can still catch the trivial
+	ones accordingly:
+		-more than three of OR (|) or AND (&)
+	"""
+	def _isBezerraValidModelStr(self,modelStr):
+		splitCt = 0
+		for c in modelStr:
+			if c in "&|":
+				splitCt += 1
+		return splitCt > 3
+		
 	"""
 	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
 	other bad structures.

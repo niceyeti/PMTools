@@ -410,7 +410,7 @@ class ModelConverter(object):
 		q = self._getOutNeighbors(g, startNode)
 		pathct = 0
 
-		print("out neighbors: "+str(q))
+		#print("out neighbors: "+str(q))
 		while len(q) > 0:
 			#pop front node
 			nodeId = q[0]
@@ -418,18 +418,18 @@ class ModelConverter(object):
 			q = q[1:]
 			#get type of edge pointing to this node; note this detects if any edge pointing to node is LOOP type--unnecessary in our topology (loops only have one entrant edge), but robust
 			isLoop = [e for e in g.es if e.target == nodeId][0]["type"] == "LOOP"
-			print("isloop: "+str(isLoop))
+			#print("isloop: "+str(isLoop))
 			
-			print(str(node["pathCountHits"]))
+			#print(str(node["pathCountHits"]))
 			node["pathCountHits"] += 1
 			if node["name"] == endName:
-				print("++")
+				#print("++")
 				pathct += 1
 			#append non-loop successors, or loop successors whom we have traversed fewer than k time, to horizon
 			elif not isLoop or node["pathCountHits"] < k:
 				q += self._getOutNeighbors(g, node)
 
-		print("Pathct: "+str(pathct))
+		#print("Pathct: "+str(pathct))
 				
 		return pathct
 		
