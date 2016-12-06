@@ -12,10 +12,10 @@ minerPath="../scripts/PromTools/miner.sh"
 classifierString="Activity"
 
 logCompressor="./SubdueLogCompressor.py"
-pnmlPath="../SyntheticData/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
-minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
+pnmlPath="../SyntheticData/testModel.pnml"
+minedGraphmlPath="../SyntheticData/minedModel.graphml"
 subdueLogPath="../SyntheticData/test.g"
 compressedLog="../SyntheticData/compressed.g"
 gbadFsmLogPath="../SyntheticData/test_fsm.g"
@@ -58,7 +58,6 @@ for var in "$@"; do
 		deleteSubstructures="true"
 	fi
 done
-
 
 if [ $generateData = "true" ]; then
 	###############################################################################
@@ -154,7 +153,6 @@ fi
 #themselves, and also do not share amongst the community of 'normal' traces, such that we find the ground truth of the anomalies (eg, some edge
 #or vertex. Then you could search based on that property to discover other anomalies a priori/explicitly.
 
-
 ##Concat the gbad results into a single file so they are easier to analyze at once
 cat $mdlResult > $gbadResult
 cat $mpsResult >> $gbadResult
@@ -162,3 +160,7 @@ cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt
+
+
+
+

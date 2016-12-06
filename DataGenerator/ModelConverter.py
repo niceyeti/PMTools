@@ -4,6 +4,11 @@ import sys
 import os
 
 """
+TODO: If this is ever used again, factor out the ModelGenerator and ModelConverter into separate objects, and
+embed them in some other object, eg "SyntheticModelFactory".
+"""
+
+"""
 Given a process-model string as output by ModelGenerator.py, this builds a graph structure based on 
 the process-model using the igraph api. igraph is a powerful api for building, maintaining, traversing,
 and serializing graphs.
