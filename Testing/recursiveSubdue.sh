@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#This takes an optional "-resultDest=" param denoting the location of a result folder, relative to '.' (the 'Testing' folder)
+
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
 logPath="../SyntheticData/testTraces.log"
@@ -44,6 +46,7 @@ fi
 generateData="false"
 deleteSubstructures="false"
 recursiveIterations="0"
+resultDestFolder="NULL"
 for var in "$@"; do
 	#detect the data generation bool
 	if [ "$var" = "--generate" ]; then
@@ -56,6 +59,10 @@ for var in "$@"; do
 	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
 	if [ "$var" = "--deleteSubs" ]; then
 		deleteSubstructures="true"
+	fi
+	#detect if results should be stored off to some home directory
+	if [ "$var" = "--resultDest="* ]; then
+		resultDestFolder=$(echo $var | cut -f2 -d=)
 	fi
 done
 
@@ -161,6 +168,22 @@ cat $probResult >> $gbadResult
 
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt
 
-
-
+#if resultDestFolder param was passed, copy all result files and other artifacts to the dest folder param
+if [ $resultDestFolder -ne "NULL"  ]; then
+	cp $logPath "$resultDestFolder/testTraces.log"
+	cp $xesPath "$resultDestFolder/testTraces.xes"
+	cp $syntheticGraphmlPath "$resultDestFolder/syntheticModel.graphml"
+	cp $pnmlPath "$resultDestFolder/minedModel.pnml"
+	cp $minedGraphmlPath "$resultDestFolder/minedModel.graphml"
+	cp $subdueLogPath "$resultDestFolder/test.g"
+	cp $compressedLog "$resultDestFolder/compressed.g"
+	cp $gbadFsmLogPath "$resultDestFolder/test_fsm.g"
+	cp $mdlResult "$resultDestFolder/mdlResult.txt"
+	cp $mpsResult "$resultDestFolder/mpsResult.txt"
+	cp $probResult "$resultDestFolder/probResult.txt"
+	cp $fsmResult "$resultDestFolder/fsmResult.txt"
+	cp $gbadResult "$resultDestFolder/gbadResult.txt"
+	cp $anomalyFile "$resultDestFolder/anomalyResult.txt"
+	cp dendrogram.txt "$resultDestFolder/dendrogram.txt"
+fi
 
