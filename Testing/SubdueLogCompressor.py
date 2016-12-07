@@ -401,7 +401,7 @@ class LogCompressor(object):
 					sub["newXpId"] = self._newXpIdCtr
 					self._newXpIdCtr += 1
 					compressedSubs.append(sub)
-					print("appended: "+str(sub))
+					#print("appended: "+str(sub))
 				else:
 					deletedSubs.append(trace)
 			else:

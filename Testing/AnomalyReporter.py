@@ -168,7 +168,7 @@ class AnomalyReporter(object):
 				newMap[prevId] = nextId
 			compressionLevels.append(newMap)
 			
-		print(str(compressionLevels))
+		#print(str(compressionLevels))
 		#get the total number of traces from the size of the first id-map
 		numTraces = len(compressionLevels[0].keys())
 		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
