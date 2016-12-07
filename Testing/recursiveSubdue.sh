@@ -169,7 +169,7 @@ cat $probResult >> $gbadResult
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt
 
 #if resultDestFolder param was passed, copy all result files and other artifacts to the dest folder param
-if [ $resultDestFolder -ne "NULL"  ]; then
+if [ $resultDestFolder != "NULL" ]; then
 	cp $logPath "$resultDestFolder/testTraces.log"
 	cp $xesPath "$resultDestFolder/testTraces.xes"
 	cp $syntheticGraphmlPath "$resultDestFolder/syntheticModel.graphml"

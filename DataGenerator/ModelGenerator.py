@@ -301,14 +301,13 @@ class ModelGenerator(object):
 			self._model = self._createModel(n, preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
-			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr()
+			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr(self._model)
 			if isValidModelStr:
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, outputPath, showPlot)
 				self._pathCount = self._graphicalModel["PathCount"]
-				print("outer count: "+str(self._pathCount))
 				isValidModel = self._isBezerraValidModel(self._graphicalModel)
-
+				
 		return self._graphicalModel
 		
 	def PrintModel(self):
