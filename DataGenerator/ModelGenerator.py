@@ -288,9 +288,9 @@ class ModelGenerator(object):
 
 	@n: number of activities
 	@a: num anomalies to generate with model
-	
+	@graphmlPath: Relative path of current execution context to which graphml and graph .png will be saved
 	"""
-	def CreateModel(self, n, a, outputPath, showPlot):
+	def CreateModel(self, n, a, graphmlPath, showPlot):
 		if a > 3:
 			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate")
 
@@ -304,9 +304,12 @@ class ModelGenerator(object):
 			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr(self._model)
 			if isValidModelStr:
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
-				self._graphicalModel = self._modelConverter.ConvertModel(self._model, outputPath, showPlot)
+				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
 				self._pathCount = self._graphicalModel["PathCount"]
 				isValidModel = self._isBezerraValidModel(self._graphicalModel)
+				if isValidModel and showPlot:
+					#only show valid model
+					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot=True)
 
 		return self._graphicalModel
 		

@@ -323,7 +323,7 @@ class LogCompressor(object):
 			#snip the last comma
 			s = s[:-1]
 
-		#build the mapping string; this just preserves the trace-id mapping info across iterations, since they change
+		#build the mapping string; this preserves the trace-id mapping info across iterations, since they change
 		mstr = "{"
 		for sub in compressedSubs:   #the traces that will be preserved in the next iteration
 			mstr += (str(sub["oldXpId"]) + ":" + str(sub["newXpId"]) + ",")
