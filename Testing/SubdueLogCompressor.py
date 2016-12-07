@@ -29,7 +29,7 @@ class LogCompressor(object):
 		self._compressedSubs = []
 		self._nonCompressedSubs = []
 		self._deletedSubs = []
-		self._newIdCtr = 1
+		self._newXpIdCtr = 1
 		
 	"""
 	Note this currently only takes the top substructure listed in the .g file.
@@ -39,7 +39,7 @@ class LogCompressor(object):
 	@outPath: The output path for the compressed log
 	@compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
 	"""
-	def Compress(self,logPath, subsPath, outPath, compSubName="SUBx",showSub=False, deleteSub=False):
+	def Compress(self,logPath, subsPath, outPath, compSubName="SUBx",showSub=False, deleteSubs=False):
 		print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 		print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 		print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
@@ -53,7 +53,7 @@ class LogCompressor(object):
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
 			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-			compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSub)
+			compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
 			#append to the dendrogram file
 			self._appendToDendrogram(compSubName, compressedSubs, deletedSubs)
 			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
@@ -295,10 +295,11 @@ class LogCompressor(object):
 	Given the list of compressed and uncompressed traces, appends a string to the dendrogram.txt
 	file as described in the header: ([1,2,3]4,5,6:SUB_NAME)7,8,9
 	Additionally, the id mapping is appended, indicating the mapping of old xp-ids to new one's. This is a defect of
-	SUBDUE/gbad, which always requires sequentially incrementing id's, starting at 1. Hence removing any traces breaks
+	SUBDUE/gbad, which requires sequentially incrementing id's, starting at 1. Hence removing any traces breaks
 	the sequence, and gbad crashes. A new sequence is generated, so the map string jut preserves the id mappings as:
 		{1:2,4:4,3:-1} 
-	Here, the old xp-id '1' maps to '2' in the new compressed log, 4 to 4, and 3 is set to -1 to indicate it was removed and is not in the new log.
+	Here, the old xp-id '1' maps to '2' in the new compressed log, 4 to 4, and 3 is set to -1 to indicate it was removed
+	and is not in the new log.
 	"""
 	def _appendToDendrogram(self, compSubName, compressedSubs, deletedSubs):
 		s = "("
@@ -307,14 +308,12 @@ class LogCompressor(object):
 			s += "["
 			for name in self._maxCompressedSubs:
 				s += str(name+",")
-			#snip the last comma
-			s = s[:-1]
+			s = s[:-1] #snip the last comma
 			s += "]"
 		#add the rest of the compressed ids
 		for name in self._compressedSubs:
 			s += str(name+",")
-		#snip the last comma
-		s = s[:-1]
+		s = s[:-1]    #snip the last comma
 		s += (":" + compSubName + ")")
 		#add the noncompressed trace ids
 		if len(self._nonCompressedSubs) > 0:
@@ -323,10 +322,12 @@ class LogCompressor(object):
 			#snip the last comma
 			s = s[:-1]
 
+		#print(">>>MY compressed subs: "+str(compressedSubs))
+		
 		#build the mapping string; this preserves the trace-id mapping info across iterations, since they change
 		mstr = "{"
 		for sub in compressedSubs:   #the traces that will be preserved in the next iteration
-			print("sub: "+str(sub))
+			#FAILING HERE??? Don't forget to pass --deleteSubs
 			mstr += (str(sub["oldXpId"]) + ":" + str(sub["newXpId"]) + ",")
 		if len(deletedSubs) > 0:	
 			for sub in deletedSubs: #the traces that were removed on this iteration; these will point to -1 to indicate their removal
@@ -397,9 +398,10 @@ class LogCompressor(object):
 				#if sub is None (entire subgraph was deleted), just ignore it
 				if sub != None:
 					sub["oldXpId"]  = trace["oldXpId"]
-					sub["newXpId"] = self._newIdCtr
-					self._newIdCtr += 1
+					sub["newXpId"] = self._newXpIdCtr
+					self._newXpIdCtr += 1
 					compressedSubs.append(sub)
+					print("appended: "+str(sub))
 				else:
 					deletedSubs.append(trace)
 			else:
