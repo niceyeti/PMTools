@@ -173,7 +173,7 @@ class AnomalyReporter(object):
 		numTraces = len(compressionLevels[0].keys())
 		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
 		#all these traces are anomalies. Once we have them, backtrack to their original id's.
-		threshold = 0.10 #generous; this will throw the occasional false positive
+		threshold = 0.05 #generous; this will throw the occasional false positive
 		i = 0
 		while i < len(compressionLevels) and float(len(compressionLevels[i])) / float(numTraces) > threshold:
 			print("ratio: "+str(float(len(compressionLevels[i])) / float(numTraces)))
@@ -276,7 +276,7 @@ class AnomalyReporter(object):
 		print("Result Reporter completed.")
 
 def usage():
-	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath")
+	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0]")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
 
 """
@@ -295,7 +295,10 @@ def main():
 	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
 	
-	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath)
+	if len(sys.argv) >= 6 and "--dendrogramThreshold" in sys.sargv[5]:
+		dendrogramThreshold = float(sys.argv[5].split("=")[1])
+	
+	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath, dendrogramThreshold)
 	reporter.CompileResults()
 
 if __name__ == "__main__":
