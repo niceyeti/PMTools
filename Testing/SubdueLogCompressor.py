@@ -326,6 +326,7 @@ class LogCompressor(object):
 		#build the mapping string; this preserves the trace-id mapping info across iterations, since they change
 		mstr = "{"
 		for sub in compressedSubs:   #the traces that will be preserved in the next iteration
+			print("sub: "+str(sub))
 			mstr += (str(sub["oldXpId"]) + ":" + str(sub["newXpId"]) + ",")
 		if len(deletedSubs) > 0:	
 			for sub in deletedSubs: #the traces that were removed on this iteration; these will point to -1 to indicate their removal
