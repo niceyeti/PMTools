@@ -307,7 +307,7 @@ class ModelGenerator(object):
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, outputPath, showPlot)
 				self._pathCount = self._graphicalModel["PathCount"]
 				isValidModel = self._isBezerraValidModel(self._graphicalModel)
-				
+
 		return self._graphicalModel
 		
 	def PrintModel(self):
