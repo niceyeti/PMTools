@@ -177,6 +177,9 @@ class Retracer(object):
 
 		return edgeSequence
 
+		"""
+		OBSOLETE
+		"""
 	def _buildSubdueRecord(self, isAnomalous, traceNo, gTrace, graph):
 		vertexCounter = 1
 		record = ""
