@@ -15,11 +15,12 @@ from __future__ import print_function
 import sys
 
 class AnomalyReporter(object):
-	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None):
+	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None, dendrogramThreshold=0.05):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		self._resultPath = resultPath
 		self._dendrogramPath = dendrogramPath
+		self._dendrogramThreshold = dendrogramThreshold
 
 	"""
 	Given a file containing gad output, parses the text for all of the anomalies detected. Each
@@ -154,8 +155,9 @@ class AnomalyReporter(object):
 	"""
 	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > 5%
 	of the overall size of the traces.
+	@threshold: The dendrogram threshold; about 0.05 is about right
 	"""
-	def _compileDendrogramResult(self):
+	def _compileDendrogramResult(self, threshold):
 		compressionLevels = []
 		f = open(self._dendrogramPath,"r")
 		#parse the dendrogram file; the only important component is backtracking the trace-ids to their origins
@@ -173,7 +175,6 @@ class AnomalyReporter(object):
 		numTraces = len(compressionLevels[0].keys())
 		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
 		#all these traces are anomalies. Once we have them, backtrack to their original id's.
-		threshold = 0.05 #generous; this will throw the occasional false positive
 		i = 0
 		while i < len(compressionLevels) and float(len(compressionLevels[i])) / float(numTraces) > threshold:
 			print("ratio: "+str(float(len(compressionLevels[i])) / float(numTraces)))
@@ -221,7 +222,7 @@ class AnomalyReporter(object):
 	
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
-			self._compileDendrogramResult()
+			self._compileDendrogramResult(self._dendrogramThreshold)
 	
 		gbadFile = open(self._gbadPath, "r")
 		logFile = open(self._logPath, "r")
@@ -295,7 +296,8 @@ def main():
 	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
 	
-	if len(sys.argv) >= 6 and "--dendrogramThreshold" in sys.sargv[5]:
+	dendrogramThreshold = 0.05
+	if len(sys.argv) >= 6 and "--dendrogramThreshold" in sys.argv[5]:
 		dendrogramThreshold = float(sys.argv[5].split("=")[1])
 	
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath, dendrogramThreshold)

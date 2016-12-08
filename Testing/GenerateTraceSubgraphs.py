@@ -37,7 +37,7 @@ class Retracer(object):
 	that some trace may not be replayed on that model. Not quite clear yet how to handle this.
 
 	@graphPath: Path to a graphml path representing the mined process model
-	@tracePath: Path to some file containing traces in the form [integer],[anomaly status],[observed sequence]. For example, "123,+,ABCD".
+	@tracePath: Path to some .log file containing traces in the form [integer],[anomaly status],[observed sequence]. For example, "123,+,ABCD".
 	@outputPath: The path to which all the walks replayed on the mined model will be stored, in .g format. Each trace is stored as described
 	in the .g examples: prepended with "XP" or "XN" to indicate anomaly-status, a listing of vertices and info, then a listing of edges and info.
 	@useSubdueFormat: A bool indicating whether or not to output SUBDUE or GBAD formatted traces. I'm trying to keep the schema for either
@@ -81,6 +81,11 @@ class Retracer(object):
 
 	"""
 	Outputs the traces in SUBDUE format, just like the 'groups.g' example found in the graphs/ folder of subdue.
+	
+	@traceFile: a .log file
+	@model: an igraph mined graphical model of the underlying process
+	@gFile: the .g file to which traces will be written (as graphs)
+	@useSubdueFormat: use subdue format over gbad
 	"""
 	def _outputTraces(self, traceFile, model, gFile, useSubdueFormat):
 		for trace in traceFile.readlines():
@@ -94,11 +99,22 @@ class Retracer(object):
 			#such that every sequence may not be a valid walk on the graph!
 			gTrace = self._replaySequence(sequence,model) #returns a list of igraph edges defining this walk
 			if useSubdueFormat:
+				print("SUBDUE FORMAT TODO. EXITING")
+				exit()
 				gRecord = self._buildSubdueRecord(isAnomalous, traceNo, gTrace, model)
 			else:
-				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace, model)
+				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
 
+	"""
+	Converts an igraph edge into an activity tuple
+	
+	@edge: an igraph edge
+	@graph: the graph from which this edge came
+	"""
+	def _edgeToActivityTuple(self, edge, graph):
+		return (graph.vs[edge.source]["name"], graph.vs[edge.target]["name"])
+		
 	"""
 	Given a partially-ordered sequence and a graph (process model) on which to replay the sequence, we replay them to derived
 	the ground-truth edge transitions (the real ordering) according the given process model. Returns the walk represented by @sequence
@@ -107,7 +123,8 @@ class Retracer(object):
 	NOTE: The graph (mined process model) may be incomplete or inaccurate, depending on the mining algorithm that generated it. Hence
 	the sequence may not be a valid walk! I detect and warn about these case because it isn't yet clear how to handle them. For now I will
 	search across the vertices for the dest vertex of a broken walk; if not found, advance to the next suffix and repeat the search. Continue 
-	until we find a valid re-entry point, or the sequence is exhausted. 
+	until we find a valid re-entry point, or the sequence is exhausted. If the symbol is not an activity in the graph activities, consider this an insertion-anomaly,
+	and output an edge to it, and continue.
 
 	Note: Also note the complexity of mapping a partially-ordered sequence representing AND, OR, and LOOP constructs. This function
 	relies on many rules defined in the data generation grammar, such that individual activities may be mapped to edges given the partial-ordering.
@@ -117,11 +134,11 @@ class Retracer(object):
 	assumption relied on in this function***. The constraint means, given A and searching for its in/out edges for this partial ordering (p.o.),  it is valid to search to
 	simply search forward for the first node in the p.o. with which A shares an edge, and search backward for the first node which shares an edge with A.
 
-	Returns: A list of igraph edges giving the walk represented by this partially ordered sequence and the graph.
+	Returns: A list of activity tuples representing a direct edge between them: [('a','b'), ('c','f'), ... ]
 
 	@sequence: a sequence of characters representing single activities, partially-ordered
 	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
-	"""		
+	"""
 	def _replaySequence(self, sequence, graph):
 		#init the edge sequence with the edge from START to sequence[0] the first activity
 		edgeSequence = []
@@ -129,7 +146,8 @@ class Retracer(object):
 		if initialEdge == None:
 			print("WARNING edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 		else:
-			edgeSequence.append(initialEdge)
+			e = self._edgeToActivityTuple(initialEdge, graph)
+			edgeSequence.append( e )
 		
 		#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
 		i = 0
@@ -142,10 +160,11 @@ class Retracer(object):
 				j += 1
 				
 			if edge != None:
-				edgeSequence.append(edge)
+				e = self._edgeToActivityTuple(edge, graph)
+				edgeSequence.append(e)
 			else:
 				print("WARNING no edge found for activity: "+sequence[i]+" for sequence "+sequence)
-			
+				
 			i += 1
 
 		#add the last transition from last activity to the END node
@@ -153,7 +172,8 @@ class Retracer(object):
 		if finalEdge == None:
 			print("WARNING no final edge found to END node for sequence >"+sequence+"<")
 		else:
-			edgeSequence.append(finalEdge)
+			e = self._edgeToActivityTuple(finalEdge, graph)
+			edgeSequence.append(e)
 
 		return edgeSequence
 
@@ -192,6 +212,7 @@ class Retracer(object):
 
 		
 	"""
+	OBSOLETE
 	Given an edge sequence, builds a single .g record in the form given in those files (vertex declaratons, edge list, etc).
 	The edges are unlabelled.
 
@@ -200,7 +221,6 @@ class Retracer(object):
 	@isAnomalous: Whether or not this trace is anomalous
 	@traceNo: This trace's number.
 	@gTrace: The list of edges representing this trace, as igraph-edges
-	"""
 	def _buildGbadRecord(self, isAnomalous, traceNo, gTrace, graph):
 		vertexCounter = 1
 		#XP is essentially a dont-care in gbad, but the docs say it is required formatting
@@ -230,6 +250,45 @@ class Retracer(object):
 			srcName = graph.vs[edge.source]["name"]
 			tgtName = graph.vs[edge.target]["name"]
 			record += ("d " + str(vertices[srcName]) + " " + str(vertices[tgtName]) + " \"e\"\n") #put a "e" label on every edge, just to satisfy gbad. This label could have leverage in the future
+
+		return record
+	"""
+	
+	"""
+	Given an edge sequence, builds a single .g record in the form given in those files (vertex declaratons, edge list, etc).
+	The edges are unlabelled.
+
+	Returns: A formatted string representing the trace .g record (using directed edge syntax)
+
+	@gTrace: A list of directed edges, represent as tuples: [('A','B'),('C','B') ... ]
+	"""
+	def _buildGbadRecord(self, isAnomalous, traceNo, gTrace):
+		vertexCounter = 1
+		#XP is essentially a dont-care in gbad, but the docs say it is required formatting
+		record = "XP # "+str(traceNo)+"\n"
+		
+		#get the set of activities
+		activities = []
+		for e in gTrace:
+			activities += [e[0],e[1]]
+		uniqActivities = set(activities)
+		
+		#build the vertex map
+		vertices = {} #maps vertexName->vertexId, where vertexId is newly assigned by the vertexCounter to fit the gbad/subdue scheme
+		for activity in uniqActivities:
+			vertices[activity] = vertexCounter
+			vertexCounter += 1
+
+		#output the vertex declarations
+		vertexList = [(key,vertices[key]) for key in vertices]
+		vertexList.sort(key = lambda v : v[1]) #sort vertices by the new ids (gbad/subdue require id sequences sorted ascending, starting at 1)
+		#output the vertex declarations
+		for tup in vertexList:
+			record += ("v " + str(tup[1]) + " \"" + tup[0] + "\"\n")
+
+		#build the edge declarations
+		for e in gTrace:
+			record += ("d " + str(vertices[e[0]]) + " " + str(vertices[e[1]]) + " \"e\"\n") #put a "e" label on every edge, just to satisfy gbad. This label could have leverage in the future
 
 		return record
 
