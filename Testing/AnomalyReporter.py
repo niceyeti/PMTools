@@ -82,7 +82,7 @@ class AnomalyReporter(object):
 	"""
 	Keep this clean and easy to parse.
 	"""
-	def _outputResults(self):	
+	def _displayResults(self):	
 		output = "Statistics for log parsed from "+self._logPath+", anomalies detected\n"
 		#output += "True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 		#output += "False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
@@ -158,6 +158,7 @@ class AnomalyReporter(object):
 	@threshold: The dendrogram threshold; about 0.05 is about right
 	"""
 	def _compileDendrogramResult(self, threshold):
+		anomalyIds = []
 		compressionLevels = []
 		f = open(self._dendrogramPath,"r")
 		#parse the dendrogram file; the only important component is backtracking the trace-ids to their origins
@@ -181,7 +182,7 @@ class AnomalyReporter(object):
 			i += 1
 		print("i = "+str(i)+" numTraces="+str(numTraces))
 		#check if anomalous group found; if so, backtrack to get their original ids
-		if i > -1:
+		if i > -1 and i < len(compressionLevels):
 			#backtrack to the original ids; the keys in each level are the vals of the previous level
 			prev = i - 1
 			curKeys = compressionLevels[i].keys()
@@ -211,27 +212,39 @@ class AnomalyReporter(object):
 			curKeys = [int(k) for k in curKeys]
 			curKeys = sorted(curKeys)
 			print(str(curKeys))
+			anomalyIds = curKeys
 		else:
-			print("Dendrogram results:  no anomalies found")
-		
+			print("Dendrogram-based anomalies:  >>no anomalies found<<")
+
+		#report confusion matrix, other values
+		self._outputResults(anomalyIds)
+
+
 	"""
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
 	"""
 	def CompileResults(self):
-	
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
 			self._compileDendrogramResult(self._dendrogramThreshold)
-	
-		gbadFile = open(self._gbadPath, "r")
+
+		#may be dead code: report recursive-gbad results
+		self._reportRecursiveAnomalies()
+		
+		print("Result Reporter completed.")
+
+	"""
+	Feed this only a list of integer anomaly id's, and it automatically generates the confusion values,
+	and displays the results
+
+	@anomalies: a list of integer anomaly id's
+	"""
+	def _outputResults(self, anomalies):
 		logFile = open(self._logPath, "r")
-
-		self._parseGbadAnomalies(gbadFile)
 		self._parseLogAnomalies(logFile)
-		#gbad doesn't always report all equivalent anomalies; this simply unifies all reported anomalies with traces that are the same
-		self._detectedAnomalyIds = [int(trace[0]) for trace in self._unifyAnomalies()]
-
+		self._detectedAnomalyIds = anomalies
+		
 		#create the true anomaly and detected anomaly sets via the trace-id numbers
 		truePositiveSet = set( [int(anomaly[0]) for anomaly in self._logAnomalies] )
 		trueNegativeSet = set( [int(anomaly[0]) for anomaly in self._logNegatives] )
@@ -272,10 +285,21 @@ class AnomalyReporter(object):
 		self._trueNegatives = sorted(list(self._trueNegatives))
 		self._falseNegatives = sorted(list(self._falseNegatives))
 
-		self._outputResults()
-		
-		print("Result Reporter completed.")
+		self._displayResults()
 
+	"""
+	This may soon be dead code, based on better results with the delete-sub method:
+	outputs anomalies found by recursive gbad, by which gbad is re-run on compressed
+	subs.
+	"""
+	def _reportRecursiveAnomalies(self, ):
+		gbadFile = open(self._gbadPath, "r")
+
+		self._parseGbadAnomalies(gbadFile)
+		#gbad doesn't always report all equivalent anomalies; this simply unifies all reported anomalies with traces that are the same
+		self._detectedAnomalyIds = [int(trace[0]) for trace in self._unifyAnomalies()]
+		self._outputResults(self._detectedAnomalyIds)
+		
 def usage():
 	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0]")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")

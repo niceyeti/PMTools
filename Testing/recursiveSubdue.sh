@@ -7,6 +7,7 @@ generatorPath="../DataGenerator/generate.sh"
 logPath="../SyntheticData/testTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
 syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
+syntheticPngPath="../SyntheticData/syntheticModel.png"
 
 minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
@@ -18,6 +19,7 @@ pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 pnmlPath="../SyntheticData/testModel.pnml"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
+minedPngPath="../SyntheticData/minedModel.png"
 subdueLogPath="../SyntheticData/test.g"
 compressedLog="../SyntheticData/compressed.g"
 gbadFsmLogPath="../SyntheticData/test_fsm.g"
@@ -48,6 +50,7 @@ deleteSubstructures="false"
 recursiveIterations="0"
 resultDestFolder="NULL"
 for var in "$@"; do
+	#echo $var
 	#detect the data generation bool
 	if [ "$var" = "--generate" ]; then
 		generateData="true"
@@ -61,8 +64,9 @@ for var in "$@"; do
 		deleteSubstructures="true"
 	fi
 	#detect if results should be stored off to some home directory
-	if [ "$var" = "--resultDest="* ]; then
+	if [[ "$var" = "--resultDest="* ]]; then
 		resultDestFolder=$(echo $var | cut -f2 -d=)
+		echo Running with resulfolder $resultDestFolder
 	fi
 done
 
@@ -156,7 +160,7 @@ if [ $recursiveIterations -gt 0 ]; then
 	done
 fi
 
-#REMEMBER: Once anomalies are obtained, they could be used to drive some search for the structural characteristics they share amongst
+#REMEMBER: Once anomalies are obtained, they can be used to drive some search for the structural characteristics shared amongst
 #themselves, and also do not share amongst the community of 'normal' traces, such that we find the ground truth of the anomalies (eg, some edge
 #or vertex. Then you could search based on that property to discover other anomalies a priori/explicitly.
 
@@ -173,8 +177,10 @@ if [ $resultDestFolder != "NULL" ]; then
 	cp $logPath "$resultDestFolder/testTraces.log"
 	cp $xesPath "$resultDestFolder/testTraces.xes"
 	cp $syntheticGraphmlPath "$resultDestFolder/syntheticModel.graphml"
+	cp $syntheticPngPath "$resultDestFolder/syntheticModel.png"
 	cp $pnmlPath "$resultDestFolder/minedModel.pnml"
 	cp $minedGraphmlPath "$resultDestFolder/minedModel.graphml"
+	cp $minedPngPath "$resultDestFolder/minedModel.png"
 	cp $subdueLogPath "$resultDestFolder/test.g"
 	cp $compressedLog "$resultDestFolder/compressed.g"
 	cp $gbadFsmLogPath "$resultDestFolder/test_fsm.g"

@@ -439,15 +439,13 @@ class ModelConverter(object):
 	"""
 	Utility for plotting the generated graph, detecting anomalous edges and the like.
 	
-	@graphmlPath: Path to graph and png plot will be saved.
+	@graphmlPath: Path to which graphml and png plot of graph will be saved.
 	"""
 	def Save(self, graph, graphmlPath, showPlot=False):
 		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph
 		layout = graph.layout("sugiyama")
 		#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
-		imgSavePath = "syntheticModel.png"
-		if os.sep in graphmlPath:
-			imgSavePath = graphmlPath[0:graphmlPath.rfind("/") ]+os.sep+imgSavePath
+		imgSavePath = graphmlPath.replace(".graphml", ".png")
 		igraph.plot(graph, imgSavePath, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
 		#save the graph in graphml
@@ -460,7 +458,7 @@ class ModelConverter(object):
 	def Plot(self, graph):
 		#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph
 		layout = graph.layout("sugiyama")
-		igraph.plot(graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)		
+		igraph.plot(graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 		
 def usage():
 	print("python ./ModelConverter.py [modelFile] [optional graphml output path; default is 'model.graphml'] [--quiet: optional; whether or not to show the graph]")
