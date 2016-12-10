@@ -173,8 +173,15 @@ class Retracer(object):
 					e = self._edgeToActivityTuple(edge, graph)
 					edgeSequence.append(e)
 				else:
-					print("WARNING no edge found for activity: "+sequence[i]+" for sequence "+sequence)
-					
+					#this case occurs when, for instance, an activity in the activity-set is anomalously repeated in some out-of-order way, inconsistent with the mined-model
+					print("WARNING no outgoing edge found from activity: "+sequence[i]+" for sequence "+sequence)
+					activity = sequence[i]
+					if i < len(sequence) - 1:
+						nextActivity = sequence[i+1]
+					else:
+						nextActivity = "END"
+					print("Arbitrarily associating activity with next in partial ordering: "+activity+"->"+nextActivity)
+					edgeSequence.append((activity, nextActivity))
 			i += 1
 
 		#add the last transition from last activity to the END node

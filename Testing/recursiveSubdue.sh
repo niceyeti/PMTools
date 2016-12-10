@@ -170,7 +170,7 @@ cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.05
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.15
 
 #if resultDestFolder param was passed, copy all result files and other artifacts to the dest folder param
 if [ $resultDestFolder != "NULL" ]; then

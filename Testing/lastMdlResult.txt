@@ -33,7 +33,7 @@ Read 1 total positive graphs
 Normative Pattern (1):
 Substructure: value = 0.953166, instances = 1
   Graph(1v,0e):
-    v 1 "START"
+    v 1 "l"
 
 Anomalous Instances:  NONE.
 
@@ -41,11 +41,11 @@ Best 3 substructures:
 
 (1) Substructure: value = 0.953166, instances = 1
   Graph(1v,0e):
-    v 1 "START"
+    v 1 "l"
 
 (2) Substructure: value = 0.953166, instances = 1
   Graph(1v,0e):
-    v 1 "z"
+    v 1 "c"
 
 (3) Substructure: value = 0.953166, instances = 1
   Graph(1v,0e):
