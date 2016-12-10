@@ -140,31 +140,41 @@ class Retracer(object):
 	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
 	"""
 	def _replaySequence(self, sequence, graph):
+		activitySet = set([v["name"] for v in graph.vs])
 		#init the edge sequence with the edge from START to sequence[0] the first activity
 		edgeSequence = []
 		initialEdge = self._getEdge("START", sequence[0], graph)
 		if initialEdge == None:
-			print("WARNING edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
+			print("ERROR edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 		else:
 			e = self._edgeToActivityTuple(initialEdge, graph)
-			edgeSequence.append( e )
-		
+			edgeSequence.append(e)
+
 		#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
 		i = 0
 		while i < len(sequence) - 1:
-			#search downstream for this activity's edge, given the partial ordering
-			j = i + 1
-			edge = None
-			while j < len(sequence) and edge == None:
-				edge = self._getEdge(sequence[i], sequence[j], graph)
-				j += 1
-				
-			if edge != None:
-				e = self._edgeToActivityTuple(edge, graph)
+			#handles inserton anomalies: for which the log contains an activity not in the model
+			if sequence[i] not in activitySet:
+				#arbitrarily attach sequence[i] activity to immediately-previous activity
+				if i == 0:
+					e = ("START",sequence[i])
+				else:
+					e = (sequence[i-1],sequence[i])
 				edgeSequence.append(e)
 			else:
-				print("WARNING no edge found for activity: "+sequence[i]+" for sequence "+sequence)
-				
+				#search downstream for this activity's edge, given the partial ordering
+				j = i + 1
+				edge = None
+				while j < len(sequence) and edge == None:
+					edge = self._getEdge(sequence[i], sequence[j], graph)
+					j += 1
+
+				if edge != None:
+					e = self._edgeToActivityTuple(edge, graph)
+					edgeSequence.append(e)
+				else:
+					print("WARNING no edge found for activity: "+sequence[i]+" for sequence "+sequence)
+					
 			i += 1
 
 		#add the last transition from last activity to the END node

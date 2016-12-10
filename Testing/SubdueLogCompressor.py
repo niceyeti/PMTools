@@ -296,7 +296,7 @@ class LogCompressor(object):
 	file as described in the header: ([1,2,3]4,5,6:SUB_NAME)7,8,9
 	Additionally, the id mapping is appended, indicating the mapping of old xp-ids to new one's. This is a defect of
 	SUBDUE/gbad, which requires sequentially incrementing id's, starting at 1. Hence removing any traces breaks
-	the sequence, and gbad crashes. A new sequence is generated, so the map string jut preserves the id mappings as:
+	the sequence, and gbad crashes. A new sequence is generated, so the map string just preserves the id mappings as:
 		{1:2,4:4,3:-1} 
 	Here, the old xp-id '1' maps to '2' in the new compressed log, 4 to 4, and 3 is set to -1 to indicate it was removed
 	and is not in the new log.
