@@ -187,7 +187,9 @@ class Retracer(object):
 		#add the last transition from last activity to the END node
 		finalEdge = self._getEdge(sequence[len(sequence)-1], "END", graph)
 		if finalEdge == None:
-			print("WARNING no final edge found to END node for sequence >"+sequence+"<")
+			print("WARNING no final edge found from activity "+sequence[len(sequence)-1]+"->END node for sequence >"+sequence+"<.")
+			print("Appending arbitrary link.")
+			edgeSequence.append((sequence[len(sequence)-1],"END"))
 		else:
 			e = self._edgeToActivityTuple(finalEdge, graph)
 			edgeSequence.append(e)

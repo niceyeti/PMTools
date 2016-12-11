@@ -144,9 +144,7 @@ if [ $recursiveIterations -gt 0 ]; then
 	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB_init --deleteSubs=$deleteSubstructures
 	for i in $(seq 0 $recursiveIterations); do
 		echo Compression iteration $i
-		echo Re-running gbad with threshold $gbadThreshold
-		#echo Running gbad-mdl from $gbadMdlPath
-		#$gbadMdlPath -mdl $gbadThreshold $compressedLog
+		echo Re-running gbad mdl with threshold $gbadThreshold
 		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
 		cat lastMdlResult.txt >> $mdlResult
 
@@ -170,7 +168,7 @@ cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.15
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.10
 
 #if resultDestFolder param was passed, copy all result files and other artifacts to the dest folder param
 if [ $resultDestFolder != "NULL" ]; then
