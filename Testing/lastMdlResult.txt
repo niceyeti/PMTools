@@ -9,14 +9,14 @@ Parameters:
   Compress....................... false
   Evaluation method.............. MDL
   Anomaly Detection method....... Information Theoretic
-  Information Theoretic threshold 0.050000
+  Information Theoretic threshold 0.100000
   Max Anomalous Score............ MAX
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 3
+  Limit.......................... 0
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 7
+  Maximum size of substructures.. 1
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -25,29 +25,23 @@ Parameters:
   Threshold...................... 0.000000
   Value-based queue.............. false
 
-Read 7 total positive graphs
+Read 1 total positive graphs
 
-7 positive graphs: 7 vertices, 7 edges, 51 bits
+1 positive graphs: 1 vertices, 1 edges, 5 bits
 2 unique labels
 1 initial substructures
 Normative Pattern (1):
-Substructure: value = 2.72239, instances = 7
-  Graph(1v,1e):
-    v 1 "I"
-    d 1 1 "e"
+Substructure: value = 0.697357, instances = 1
+  Graph(1v,0e):
+    v 1 "F"
 
 Anomalous Instances:  NONE.
 
-Best 2 substructures:
+Best 1 substructures:
 
-(1) Substructure: value = 2.72239, instances = 7
-  Graph(1v,1e):
-    v 1 "I"
-    d 1 1 "e"
-
-(2) Substructure: value = 0.848479, instances = 7
+(1) Substructure: value = 0.697357, instances = 1
   Graph(1v,0e):
-    v 1 "I"
+    v 1 "F"
 
 
 GBAD done (elapsed CPU time =    0.00 seconds).

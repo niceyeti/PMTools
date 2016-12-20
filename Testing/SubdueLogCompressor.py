@@ -315,7 +315,7 @@ class LogCompressor(object):
 			s += str(name+",")
 		s = s[:-1]    #snip the last comma
 		s += (":" + compSubName + ")") #add sub info
-		s += (":" + compSubName + ":"+compSub["instances"]+":"+compSub["compValue"]+")") #add sub info
+		s += (":" + compSubName + ":"+str(compSub["instances"])+":"+str(compSub["compValue"])+")") #add sub info
 		#add the noncompressed trace ids
 		if len(self._nonCompressedSubs) > 0:
 			for name in self._nonCompressedSubs:

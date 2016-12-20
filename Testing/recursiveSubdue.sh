@@ -58,6 +58,7 @@ for var in "$@"; do
 	#get the number of recursive iterations, if any
 	if [[ $var == "--recurse="* ]]; then
 		recursiveIterations=$(echo $var | cut -f2 -d=)
+		echo "Running for $recursiveIterations iterations"
 	fi
 	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
 	if [ "$var" = "--deleteSubs" ]; then
@@ -125,7 +126,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $probResult
 #cat /dev/null > $fsmResult
 #
-gbadThreshold="0.05" #the best performance always seems to be about 0.3; I need to justify this
+gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
 
 echo Running gbad-mdl from $gbadMdlPath
