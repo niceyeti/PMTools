@@ -1,6 +1,6 @@
 """
 Given a SUBDUE log and a file containing substructure prototypes, this compresses
-the subdue log wrt the provide substructures.  It can also delete the substructure from 
+the subdue log wrt the provided substructure.  It can also delete the substructure from 
 all traces in which it occurs, deleting all vertices and in/out-edges to/from the substructure.
 
 This script is to be used for a single compression, but as it does so, it will APPEND to dendrogram.txt
@@ -9,7 +9,7 @@ the compressed and non-compressed substructures in this format:
 In reality, only two groups are important: those inside parans are all xp/trace ids that were compressed
 by the compressing substructure; the brackets are just sugar to denote also those which reached max compression 
 (they matched the substructure). The SUB_NAME is the ["name"] field given by the substructure. All ids outside the parens
-are just those traces that did not contain the subtructure and could not be compressed. Thus on each iteration a new line
+are those traces that did not contain the subtructure and could not be compressed. Thus on each iteration a new line
 is added to dendrogram.txt, giving a paraseable description of the graph's compression.
 
 GBAD/SUBDUE output is all text-based, so this is annoying text-based for parsing the substructures
@@ -55,7 +55,7 @@ class LogCompressor(object):
 			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
 			compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
 			#append to the dendrogram file
-			self._appendToDendrogram(compSubName, compressedSubs, deletedSubs)
+			self._appendToDendrogram(bestSub,compSubName, compressedSubs, deletedSubs)
 			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
 			self._writeSubs(compressedSubs, outPath)
 		else:
@@ -301,7 +301,7 @@ class LogCompressor(object):
 	Here, the old xp-id '1' maps to '2' in the new compressed log, 4 to 4, and 3 is set to -1 to indicate it was removed
 	and is not in the new log.
 	"""
-	def _appendToDendrogram(self, compSubName, compressedSubs, deletedSubs):
+	def _appendToDendrogram(self, compSub, compSubName, compressedSubs, deletedSubs):
 		s = "("
 		#add the max compressed ids
 		if len(self._maxCompressedSubs) > 0:
@@ -314,7 +314,8 @@ class LogCompressor(object):
 		for name in self._compressedSubs:
 			s += str(name+",")
 		s = s[:-1]    #snip the last comma
-		s += (":" + compSubName + ")")
+		s += (":" + compSubName + ")") #add sub info
+		s += (":" + compSubName + ":"+compSub["instances"]+":"+compSub["compValue"]+")") #add sub info
 		#add the noncompressed trace ids
 		if len(self._nonCompressedSubs) > 0:
 			for name in self._nonCompressedSubs:
@@ -322,8 +323,6 @@ class LogCompressor(object):
 			#snip the last comma
 			s = s[:-1]
 
-		#print(">>>MY compressed subs: "+str(compressedSubs))
-		
 		#build the mapping string; this preserves the trace-id mapping info across iterations, since they change
 		mstr = "{"
 		for sub in compressedSubs:   #the traces that will be preserved in the next iteration
@@ -475,6 +474,7 @@ class LogCompressor(object):
 		start = subsRaw.find("Normative Pattern (")
 		#write out the number of instances to file; this is just hacky comms with external processes that use the LogCompressor
 		subCt = subsRaw.split(", instances = ")[1].split("~")[0]
+		compValue = float(subsRaw.split("Substructure: value = ")[1].split(",")[0])
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#Here I'm directly calculating the target gbad-threshold, which really has no business in the Log Compressor
 		gbadThreshold = float(subCt) / 200.0 - 0.2
@@ -488,6 +488,9 @@ class LogCompressor(object):
 		subsRaw = subsRaw[ subsRaw.find("    v ") : ]
 		#print("subs raw: "+subsRaw)
 		sub = self._subDeclarationToGraph(subsRaw)
+		#store additional data in the graph
+		sub["instances"] = int(subCt)
+		sub["compValue"] = compValue
 		
 		return sub
 		
