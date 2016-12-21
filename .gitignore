@@ -1,2 +1,10 @@
 /ExperimentalLogs/*
-/SyntheticData
+SyntheticData/compressed.g
+SyntheticData/minedModel.graphml
+SyntheticData/minedModel.png
+SyntheticData/syntheticModel.graphml
+SyntheticData/syntheticModel.png
+SyntheticData/test.g
+SyntheticData/testModel.pnml
+SyntheticData/testTraces.log
+SyntheticData/testTraces.xes
