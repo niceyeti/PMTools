@@ -5,6 +5,7 @@
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
 logPath="../SyntheticData/testTraces.log"
+noisedLogPath="../SyntheticData/noisedTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
 syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
 syntheticPngPath="../SyntheticData/syntheticModel.png"
@@ -14,6 +15,7 @@ miningWrapper="miningWrapper.py"
 minerPath="../scripts/PromTools/miner.sh"
 classifierString="Activity"
 
+logNoiser="./LogNoiser.py"
 logCompressor="./SubdueLogCompressor.py"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
@@ -49,10 +51,11 @@ generateData="false"
 deleteSubstructures="false"
 recursiveIterations="0"
 resultDestFolder="NULL"
+addNoise="false"
 for var in "$@"; do
 	#echo $var
 	#detect the data generation bool
-	if [ "$var" = "--generate" ]; then
+	if [[ "$var" == "--generate" ]]; then
 		generateData="true"
 	fi
 	#get the number of recursive iterations, if any
@@ -61,11 +64,14 @@ for var in "$@"; do
 		echo "Running for $recursiveIterations iterations"
 	fi
 	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
-	if [ "$var" = "--deleteSubs" ]; then
+	if [[ "$var" == "--deleteSubs" ]]; then
 		deleteSubstructures="true"
 	fi
+	if [[ "$var" == "--noise" ]]; then
+		addNoise="true"
+	fi 
 	#detect if results should be stored off to some home directory
-	if [[ "$var" = "--resultDest="* ]]; then
+	if [[ "$var" == "--resultDest="* ]]; then
 		resultDestFolder=$(echo $var | cut -f2 -d=)
 		echo Running with resulfolder $resultDestFolder
 	fi
@@ -75,8 +81,13 @@ if [ $generateData = "true" ]; then
 	###############################################################################
 	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
 	cd "../DataGenerator"
-	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
-	
+	if [[ $addNoise == "true" ]]; then
+		echo ADDING NOISE
+		sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath --noise=$noisedLogPath
+	else
+		sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
+	fi
+
 	###############################################################################
 	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
 	cd "../PromTools"
@@ -108,7 +119,7 @@ if [ $generateData = "true" ]; then
 	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
 	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 fi
-	
+
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least *mst* XP transactions

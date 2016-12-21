@@ -5,16 +5,17 @@ Given a log in the .log format, this script adds noise/variance to the log accor
 from __future__ import print_function
 import math
 import random
-
+import sys
 
 class LogNoiser(object):
 	def __init__(self):
+		pass
 		
 	"""
 	Currently just targets a single activity to replace with up to k different activity names or the target activity itself.
 	This should have the effect of creating a split at the target.
 	"""
-	def AddNoise(logPath,outPath="noisedLog.log"):
+	def AddNoise(self, logPath, outPath="noisedLog.log"):
 		log = open(logPath,"r")
 		noisedLog = open(outPath,"w+")
 		traces = log.readlines()
@@ -22,14 +23,15 @@ class LogNoiser(object):
 		ksplits = 3
 		
 		#determine the set of used symbols
-		availableActivities = set([for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"])
+		availableActivities = set([c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"])
 		usedActivities = set()
 		for trace in traces:
 			partialOrdering = trace.split(",")[-1]
 			for activity in partialOrdering:
 				if activity not in usedActivities:
 					usedActivities.add(activity)
-		availableActivities = availableActivities - usedActivities
+		availableActivities = list(availableActivities - usedActivities)
+		usedActivities = list(usedActivities)
 
 		if len(availableActivities) == 0:
 			print("ERROR availableActivities empty in LogNoiser, cannot noise log "+logPath+". Exiting.")
@@ -38,16 +40,19 @@ class LogNoiser(object):
 			print("WARNING: remaining activities < 5 : "+str(availableActivities))
 	
 		#select a random activity in the log to randomly replace with three or so different new activity names
-		target = list(usedActivities)[random.randint(0,len(usedActivities)-1)]
+		target = usedActivities[random.randint(0,len(usedActivities)-1)]
 		#build the set of possible replacement activities, including the target itself. this may generate deduplicates
 		noisyActivities = [target] + [availableActivities[random.randint(0,len(availableActivities)-1)] for i in range(0,ksplits-1)]
+		print("Noising log, replacing target >"+target+"< with any of:  "+str(noisyActivities))
 		noisedTraces = []
 		for trace in traces:
-			if target in trace: #add noise to the trace
-				newTrace = trace.replace(target, noisyActivities[random.randint(0,len(noisyActivities)-1)])
+			tokens = trace.split(",")
+			partialOrdering = tokens[-1]
+			if target in partialOrdering: #add noise to the trace
+				newTrace = tokens[0]+","+tokens[1]+","+partialOrdering.replace(target, noisyActivities[random.randint(0,len(noisyActivities)-1)])
 			else:
 				newTrace = trace
-			noisedLog.write(newTrace+"\n")
+			noisedLog.write(newTrace)
 
 		noisedLog.close()
 		log.close()
