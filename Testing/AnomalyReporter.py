@@ -13,6 +13,7 @@ The info is just printed to the output, but keep it parseable if possible.
 """
 from __future__ import print_function
 import sys
+from Dendrogram import *
 
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None, dendrogramThreshold=0.05):
@@ -153,6 +154,69 @@ class AnomalyReporter(object):
 		return anoms
 
 	"""
+	TODO: Dendrogram could certainly be its own class at some point; this is fine for now.
+	
+	A dendrogram is as demonstrated in dendrogram.txt. The intent is for the Dendrogram object
+	to support querying, such as "given this anomalous/outlier trace, what is the nearest compressing substructure?"
+	
+	returns: The dendrogram, which is just an ordered list of compression levels, with the last/bottom-most at back
+	"""
+	def _buildDendrogram(self, path):
+		anomalyIds = []
+		dendrogram = []
+		f = open(self._dendrogramPath,"r")
+		
+		#build the compression levels, each of which is an object with compressed id's, max compressed id's, compression factor (from gbad), num instances, etc
+		for line in f.readlines():
+			if len(line.strip()) > 0:
+				cl = CompressionLevel(line.strip())
+				dendrogram.append(cl)
+		
+		return dendrogram
+		
+	"""
+	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
+	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
+	"""
+	def _analyzeDendrogram(self, dendrogram):
+		threshold = 0.1
+		numTraces = float(len(dendrogram[0].IdMap.keys()))
+		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
+		candidateIndex = -1 #the index in the compression level list (dendrogram) at which the number of ids drops below threshold in terms of frequency
+		i = 0
+		for compressionLevel in dendrogram:
+			if candidateIndex < 0 and (float(len(compressionLevel.IdMap.keys())) / numTraces) <= threshold:
+				candidateIndex = i
+			i += 1
+		
+		ancestryDict = {}
+		candidateLevel = dendrogram[candidateIndex]
+		candidateIds = candidateLevel.IdMap.keys()
+		#for each id among the candidates (outliers and anomalies), show their ancestry, if any
+		for id in candidateIds:
+			#backtrack through the layers, showing the ancestry of this id, along with compression stats
+			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
+			i = candidateIndex
+			curId = id #watch your py shallow copy...
+			while i >= 0:
+				curLevel = dendrogram[i]
+				curId = curLevel.ReverseIdMap[curId]
+				if curId in curLevel.CompressedIds:
+					ancestry.append(i)
+				i -= 1
+			#all (if any) ancestor level-indices appended to ancestry, so just add this list for this id
+			ancestryDict[curId] = ancestry
+
+		#print, just to observe traits of anomalies
+		print("Ancestry")
+		print(str(ancestryDict))
+
+	#Just a wrapper for building and then analyzing the dendrogram, for research
+	def _dendrogramAnalysis(self, path):
+		dendrogram = self._buildDendrogram(path)
+		self._analyzeDendrogram(dendrogram)
+	
+	"""
 	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > 5%
 	of the overall size of the traces.
 	@threshold: The dendrogram threshold; about 0.05 is about right
@@ -161,7 +225,7 @@ class AnomalyReporter(object):
 		anomalyIds = []
 		compressionLevels = []
 		f = open(self._dendrogramPath,"r")
-		#parse the dendrogram file; the only important component is backtracking the trace-ids to their origins
+		#parse the dendrogram file; the only important component is backtracking the trace-ids to their original ids
 		for line in f.readlines():
 			idMappings = line.split("{")[1].split("}")[0].split(",")
 			newMap = {}
@@ -170,7 +234,7 @@ class AnomalyReporter(object):
 				nextId = mapping.split(":")[1]
 				newMap[prevId] = nextId
 			compressionLevels.append(newMap)
-			
+
 		#print(str(compressionLevels))
 		#get the total number of traces from the size of the first id-map
 		numTraces = len(compressionLevels[0].keys())
@@ -227,9 +291,10 @@ class AnomalyReporter(object):
 	def CompileResults(self):
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
+			self._dendrogramAnalysis(self._dendrogramPath)
 			self._compileDendrogramResult(self._dendrogramThreshold)
 
-		#may be dead code: report recursive-gbad results
+		#soon to be dead code: report recursive-gbad results
 		self._reportRecursiveAnomalies()
 		
 		print("Result Reporter completed.")

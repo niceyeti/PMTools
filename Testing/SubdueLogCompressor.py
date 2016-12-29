@@ -300,6 +300,8 @@ class LogCompressor(object):
 		{1:2,4:4,3:-1} 
 	Here, the old xp-id '1' maps to '2' in the new compressed log, 4 to 4, and 3 is set to -1 to indicate it was removed
 	and is not in the new log.
+	
+	THIS IS SERIALIZATION: CHANGE THIS CODE AND THE DESERIALIZATION IN ANOMALYREPORTER/DENDROGRAM.PY ARE BROKEN
 	"""
 	def _appendToDendrogram(self, compSub, compSubName, compressedSubs, deletedSubs):
 		s = "("
@@ -310,6 +312,8 @@ class LogCompressor(object):
 				s += str(name+",")
 			s = s[:-1] #snip the last comma
 			s += "]"
+		else:
+			s += "[]"
 		#add the rest of the compressed ids
 		for name in self._compressedSubs:
 			s += str(name+",")
