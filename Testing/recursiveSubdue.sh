@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #This takes an optional "-resultDest=" param denoting the location of a result folder, relative to '.' (the 'Testing' folder)
 
