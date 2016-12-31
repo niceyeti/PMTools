@@ -22,7 +22,7 @@ class CompressionLevel(object):
 		self.CompressionFactor = float(line.split(")")[0].split(":")[-1])
 		self.SubName = line.split(")")[0].split(":")[-3]
 		
-		#initialize the id-map: the left id is for the current compression level; right id's mapping to -1 are traces which reach maximum compression
+		#initialize the id-map: the left id is for the current compression level; right id's mapping to -1 are traces that reached maximum compression
 		self.IdMap = {}
 		self.ReverseIdMap = {} #maps ids in reverse: successors are keys, predecessor ids are values
 		idPairs = line.split("{")[1].split("}")[0].split(",") #from {2:1,1:-1,3:-1,4:-1} gets list: ["2:1","1:-1"...]

@@ -193,6 +193,7 @@ class AnomalyReporter(object):
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
 		#for each id among the candidates (outliers and anomalies), show their ancestry, if any
+		print("candidate ids: "+str(candidateIds))
 		for id in candidateIds:
 			#backtrack through the layers, showing the ancestry of this id, along with compression stats
 			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
