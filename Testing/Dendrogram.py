@@ -21,6 +21,7 @@ class CompressionLevel(object):
 		self.NumInstances = int(line.split(")")[0].split(":")[-2])
 		self.CompressionFactor = float(line.split(")")[0].split(":")[-1])
 		self.SubName = line.split(")")[0].split(":")[-3]
+		self.Line = line.strip()
 		
 		#initialize the id-map: the left id is for the current compression level; right id's mapping to -1 are traces that reached maximum compression
 		self.IdMap = {}

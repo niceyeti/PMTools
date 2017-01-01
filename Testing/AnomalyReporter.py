@@ -177,6 +177,8 @@ class AnomalyReporter(object):
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
+	
+	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
 	"""
 	def _analyzeDendrogram(self, dendrogram):
 		threshold = 0.1
@@ -184,24 +186,29 @@ class AnomalyReporter(object):
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
 		candidateIndex = -1 #the index in the compression level list (dendrogram) at which the number of ids drops below threshold in terms of frequency
 		i = 0
-		for compressionLevel in dendrogram:
-			if candidateIndex < 0 and (float(len(compressionLevel.IdMap.keys())) / numTraces) <= threshold:
+		while i <  len(dendrogram):
+			level = dendrogram[i]
+			if (float(len(level.IdMap.keys())) / numTraces) <= threshold:
 				candidateIndex = i
+				break
 			i += 1
 		
+		#now build the ancestry dict, mapping each id in the anomaly set to a list of compressing substructures higher in the hierarchy
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
-		#for each id among the candidates (outliers and anomalies), show their ancestry, if any
+		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
 		print("candidate ids: "+str(candidateIds))
 		for id in candidateIds:
 			#backtrack through the layers, showing the ancestry of this id, along with compression stats
 			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
-			i = candidateIndex
+			i = candidateIndex - 1
 			curId = id #watch your py shallow copy...
 			while i >= 0:
 				curLevel = dendrogram[i]
+				print("level: "+curLevel.Line)
 				curId = curLevel.ReverseIdMap[curId]
+				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry
 				if curId in curLevel.CompressedIds:
 					ancestry.append(i)
 				i -= 1

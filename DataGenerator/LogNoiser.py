@@ -26,7 +26,7 @@ class LogNoiser(object):
 		availableActivities = set([c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"])
 		usedActivities = set()
 		for trace in traces:
-			partialOrdering = trace.split(",")[-1]
+			partialOrdering = trace.strip().split(",")[-1]
 			for activity in partialOrdering:
 				if activity not in usedActivities:
 					usedActivities.add(activity)
