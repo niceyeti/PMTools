@@ -12,15 +12,15 @@ class LogNoiser(object):
 		pass
 		
 	"""
-	Currently just targets a single activity to replace with up to k different activity names or the target activity itself.
-	This should have the effect of creating a split at the target.
+	Currently just targets a single activity to replace with up to k different activities or the target activity itself.
+	This has the effect of creating a split in the process model, whereby the target (and its in/out-edges) has
+	a bunch of activities around it, which may be executed instead of the target, with a uniform distribution.
 	"""
 	def AddNoise(self, logPath, outPath="noisedLog.log"):
 		log = open(logPath,"r")
-		noisedLog = open(outPath,"w+")
 		traces = log.readlines()
 		#the number of activities with which some activity will be substituted, including itself, creating a SPLIT
-		ksplits = 3
+		ksplits = 5
 		
 		#determine the set of used symbols
 		availableActivities = set([c for c in "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"])
@@ -39,6 +39,7 @@ class LogNoiser(object):
 		if len(availableActivities) < 5:
 			print("WARNING: remaining activities < 5 : "+str(availableActivities))
 	
+		noisedLog = open(outPath,"w+")
 		#select a random activity in the log to randomly replace with three or so different new activity names
 		target = usedActivities[random.randint(0,len(usedActivities)-1)]
 		#build the set of possible replacement activities, including the target itself. this may generate deduplicates

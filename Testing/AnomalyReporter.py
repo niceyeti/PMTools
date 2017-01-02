@@ -193,15 +193,16 @@ class AnomalyReporter(object):
 				break
 			i += 1
 		
-		#now build the ancestry dict, mapping each id in the anomaly set to a list of compressing substructures higher in the hierarchy
+		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructures higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
 		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
-		print("candidate ids: "+str(candidateIds))
+		print("candidate ids: "+str(candidateIds)+" for threshold "+str(threshold))
 		for id in candidateIds:
 			#backtrack through the layers, showing the ancestry of this id, along with compression stats
 			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
+			cumulativeCompression = 0.0
 			i = candidateIndex - 1
 			curId = id #watch your py shallow copy...
 			while i >= 0:
@@ -211,9 +212,10 @@ class AnomalyReporter(object):
 				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry
 				if curId in curLevel.CompressedIds:
 					ancestry.append(i)
+					cumulativeCompression += curLevel.CompressionFactor
 				i -= 1
 			#all (if any) ancestor level-indices appended to ancestry, so just add this list for this id
-			ancestryDict[curId] = ancestry
+			ancestryDict[curId] = (ancestry,cumulativeCompression)
 
 		#print, just to observe traits of anomalies
 		print("Ancestry")
