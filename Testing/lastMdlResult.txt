@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 4
+  Limit.......................... 11
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 16
+  Maximum size of substructures.. 22
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -25,35 +25,29 @@ Parameters:
   Threshold...................... 0.000000
   Value-based queue.............. false
 
-Read 8 total positive graphs
+Read 22 total positive graphs
 
-8 positive graphs: 16 vertices, 8 edges, 99 bits
-3 unique labels
-2 initial substructures
+22 positive graphs: 22 vertices, 22 edges, 192 bits
+2 unique labels
+1 initial substructures
 Normative Pattern (1):
-Substructure: value = 3.3285, instances = 8
-  Graph(2v,1e):
-    v 1 "T"
-    v 2 "g"
-    d 2 1 "e"
+Substructure: value = 4.32152, instances = 22
+  Graph(1v,1e):
+    v 1 "START"
+    d 1 1 "e"
 
 Anomalous Instances:  NONE.
 
-Best 3 substructures:
+Best 2 substructures:
 
-(1) Substructure: value = 3.3285, instances = 8
-  Graph(2v,1e):
-    v 1 "T"
-    v 2 "g"
-    d 2 1 "e"
+(1) Substructure: value = 4.32152, instances = 22
+  Graph(1v,1e):
+    v 1 "START"
+    d 1 1 "e"
 
-(2) Substructure: value = 0.895593, instances = 8
+(2) Substructure: value = 0.877519, instances = 22
   Graph(1v,0e):
-    v 1 "T"
-
-(3) Substructure: value = 0.895593, instances = 8
-  Graph(1v,0e):
-    v 1 "g"
+    v 1 "START"
 
 
 GBAD done (elapsed CPU time =    0.00 seconds).
