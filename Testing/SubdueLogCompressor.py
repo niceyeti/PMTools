@@ -50,6 +50,8 @@ class LogCompressor(object):
 				igraph.plot(bestSub, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 			
 			bestSub["name"] = compSubName
+			#save the substructure
+			bestSub.write_graphml(bestSub["name"]+".graphml")
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
 			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")

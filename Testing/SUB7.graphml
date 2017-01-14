@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+         http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<!-- Created by igraph -->
+  <key id="g_name" for="graph" attr.name="name" attr.type="string"/>
+  <key id="g_compValue" for="graph" attr.name="compValue" attr.type="double"/>
+  <key id="g_instances" for="graph" attr.name="instances" attr.type="double"/>
+  <key id="v_name" for="node" attr.name="name" attr.type="string"/>
+  <key id="v_label" for="node" attr.name="label" attr.type="string"/>
+  <key id="v_subdueId" for="node" attr.name="subdueId" attr.type="string"/>
+  <graph id="G" edgedefault="directed">
+    <data key="g_name">SUB7</data>
+    <data key="g_compValue">1.49922</data>
+    <data key="g_instances">6</data>
+    <node id="n0">
+      <data key="v_name">F</data>
+      <data key="v_label">F</data>
+      <data key="v_subdueId">1</data>
+    </node>
+    <node id="n1">
+      <data key="v_name">B</data>
+      <data key="v_label">B</data>
+      <data key="v_subdueId">3</data>
+    </node>
+    <node id="n2">
+      <data key="v_name">N</data>
+      <data key="v_label">N</data>
+      <data key="v_subdueId">4</data>
+    </node>
+    <node id="n3">
+      <data key="v_name">J</data>
+      <data key="v_label">J</data>
+      <data key="v_subdueId">2</data>
+    </node>
+    <edge source="n1" target="n3">
+    </edge>
+    <edge source="n0" target="n2">
+    </edge>
+    <edge source="n2" target="n1">
+    </edge>
+  </graph>
+</graphml>

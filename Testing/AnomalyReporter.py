@@ -130,8 +130,6 @@ class AnomalyReporter(object):
 			for trace in self._logTraces:
 				if trace[0] == str(id):
 					anoms.append(trace)
-		
-		#print("traces: "+str(anoms))
 	
 		ids = set([a[0] for a in anoms])
 		equivalentAnoms = []
@@ -153,6 +151,9 @@ class AnomalyReporter(object):
 		#print("all anoms: "+str(anoms))
 		return anoms
 
+	
+		
+		
 	"""
 	TODO: Dendrogram could certainly be its own class at some point; this is fine for now.
 	
@@ -181,7 +182,7 @@ class AnomalyReporter(object):
 	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
 	"""
 	def _analyzeDendrogram(self, dendrogram):
-		threshold = 0.1
+		threshold = 0.15
 		numTraces = float(len(dendrogram[0].IdMap.keys()))
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
 		candidateIndex = -1 #the index in the compression level list (dendrogram) at which the number of ids drops below threshold in terms of frequency
@@ -192,13 +193,13 @@ class AnomalyReporter(object):
 				candidateIndex = i
 				break
 			i += 1
-		
-		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructures higher in the hierarchy, and the cumulative compression value
+
+		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
 		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
-		print("candidate ids: "+str(candidateIds)+" for threshold "+str(threshold))
+		print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold))
 		for id in candidateIds:
 			#backtrack through the layers, showing the ancestry of this id, along with compression stats
 			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
@@ -207,10 +208,12 @@ class AnomalyReporter(object):
 			curId = id #watch your py shallow copy...
 			while i >= 0:
 				curLevel = dendrogram[i]
-				print("level: "+curLevel.Line)
+				#print("level: "+curLevel.Line)
 				curId = curLevel.ReverseIdMap[curId]
-				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry
+				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry with other statistical measures
 				if curId in curLevel.CompressedIds:
+					#calculate KL div
+					
 					ancestry.append(i)
 					cumulativeCompression += curLevel.CompressionFactor
 				i -= 1
@@ -218,9 +221,12 @@ class AnomalyReporter(object):
 			ancestryDict[curId] = (ancestry,cumulativeCompression)
 
 		#print, just to observe traits of anomalies
-		print("Ancestry")
-		print(str(ancestryDict))
+		print("Candidate-id Ancestry")
+		print(str([(str(k),ancestryDict[str(k)]) for k in sorted([int(sk) for sk in ancestryDict.keys()])]))
 
+		
+		
+		
 	#Just a wrapper for building and then analyzing the dendrogram, for research
 	def _dendrogramAnalysis(self, path):
 		dendrogram = self._buildDendrogram(path)
@@ -269,7 +275,7 @@ class AnomalyReporter(object):
 				prevKeys = []
 				for k in curKeys:
 					prevKeys += [pair[0] for pair in compressionLevels[prev].items() if pair[1] == k]
-				print("PKEYS: "+str(prevKeys))
+				#print("PKEYS: "+str(prevKeys))
 				curKeys = [k for k in prevKeys]
 				"""
 				curKeys = []
