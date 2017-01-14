@@ -145,7 +145,7 @@ Best 3 substructures:
     d 5 9 "e"
 
 
-GBAD done (elapsed CPU time =    1.57 seconds).
+GBAD done (elapsed CPU time =    1.51 seconds).
 GBAD 3.2
 
 Parameters:
@@ -201,39 +201,39 @@ Best 3 substructures:
 
 (2) Substructure: value = 1.22046, instances = 25
   Graph(7v,6e):
-    v 1 "O"
-    v 2 "B"
-    v 3 "L"
-    v 4 "P"
+    v 1 "P"
+    v 2 "L"
+    v 3 "F"
+    v 4 "B"
     v 5 "A"
-    v 6 "k"
-    v 7 "F"
-    d 4 1 "e"
-    d 5 3 "e"
-    d 6 5 "e"
+    v 6 "O"
+    v 7 "k"
+    d 1 6 "e"
+    d 5 2 "e"
+    d 7 5 "e"
     d 2 4 "e"
-    d 7 6 "e"
-    d 3 2 "e"
+    d 4 1 "e"
+    d 3 7 "e"
 
 (3) Substructure: value = 1.2057, instances = 18
   Graph(9v,8e):
-    v 1 "j"
-    v 2 "O"
-    v 3 "B"
-    v 4 "L"
-    v 5 "P"
-    v 6 "A"
-    v 7 "R"
-    v 8 "k"
-    v 9 "F"
+    v 1 "P"
+    v 2 "R"
+    v 3 "L"
+    v 4 "F"
+    v 5 "j"
+    v 6 "B"
+    v 7 "A"
+    v 8 "O"
+    v 9 "k"
+    d 8 5 "e"
+    d 1 8 "e"
+    d 7 3 "e"
+    d 9 7 "e"
+    d 3 6 "e"
+    d 6 1 "e"
     d 5 2 "e"
-    d 2 1 "e"
-    d 1 7 "e"
-    d 6 4 "e"
-    d 8 6 "e"
-    d 3 5 "e"
-    d 9 8 "e"
-    d 4 3 "e"
+    d 4 9 "e"
 
 
 GBAD done (elapsed CPU time =    0.08 seconds).
@@ -272,19 +272,19 @@ Read 61 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.43048, instances = 25
   Graph(7v,6e):
-    v 1 "A"
-    v 2 "L"
+    v 1 "L"
+    v 2 "B"
     v 3 "P"
-    v 4 "O"
-    v 5 "k"
-    v 6 "B"
-    v 7 "F"
-    d 6 3 "e"
-    d 3 4 "e"
+    v 4 "A"
+    v 5 "O"
+    v 6 "F"
+    v 7 "k"
+    d 2 3 "e"
     d 1 2 "e"
-    d 5 1 "e"
-    d 2 6 "e"
-    d 7 5 "e"
+    d 7 4 "e"
+    d 4 1 "e"
+    d 3 5 "e"
+    d 6 7 "e"
 
 Anomalous Instances:  NONE.
 
@@ -292,54 +292,54 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.43048, instances = 25
   Graph(7v,6e):
-    v 1 "A"
-    v 2 "L"
+    v 1 "L"
+    v 2 "B"
     v 3 "P"
-    v 4 "O"
-    v 5 "k"
-    v 6 "B"
-    v 7 "F"
-    d 6 3 "e"
-    d 3 4 "e"
+    v 4 "A"
+    v 5 "O"
+    v 6 "F"
+    v 7 "k"
+    d 2 3 "e"
     d 1 2 "e"
-    d 5 1 "e"
-    d 2 6 "e"
-    d 7 5 "e"
+    d 7 4 "e"
+    d 4 1 "e"
+    d 3 5 "e"
+    d 6 7 "e"
 
 (2) Substructure: value = 1.3973, instances = 18
   Graph(9v,8e):
-    v 1 "A"
+    v 1 "j"
     v 2 "L"
-    v 3 "j"
+    v 3 "B"
     v 4 "P"
-    v 5 "O"
-    v 6 "k"
-    v 7 "B"
+    v 5 "A"
+    v 6 "O"
+    v 7 "F"
     v 8 "R"
-    v 9 "F"
-    d 7 4 "e"
-    d 5 3 "e"
-    d 4 5 "e"
-    d 1 2 "e"
+    v 9 "k"
+    d 3 4 "e"
     d 6 1 "e"
-    d 2 7 "e"
-    d 9 6 "e"
-    d 3 8 "e"
+    d 2 3 "e"
+    d 9 5 "e"
+    d 1 8 "e"
+    d 5 2 "e"
+    d 4 6 "e"
+    d 7 9 "e"
 
 (3) Substructure: value = 1.35617, instances = 33
   Graph(5v,4e):
-    v 1 "A"
-    v 2 "L"
-    v 3 "k"
-    v 4 "B"
-    v 5 "F"
+    v 1 "L"
+    v 2 "B"
+    v 3 "A"
+    v 4 "F"
+    v 5 "k"
     d 1 2 "e"
-    d 2 4 "e"
+    d 4 5 "e"
     d 3 1 "e"
     d 5 3 "e"
 
 
-GBAD done (elapsed CPU time =    0.09 seconds).
+GBAD done (elapsed CPU time =    0.16 seconds).
 GBAD 3.2
 
 Parameters:
@@ -375,14 +375,14 @@ Read 54 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.41246, instances = 26
   Graph(4v,4e):
-    v 1 "j"
-    v 2 "p"
-    v 3 "R"
-    v 4 "1"
-    d 3 2 "e"
+    v 1 "p"
+    v 2 "1"
+    v 3 "j"
+    v 4 "R"
+    d 1 2 "e"
+    d 3 4 "e"
     d 2 4 "e"
-    d 4 3 "e"
-    d 1 3 "e"
+    d 4 1 "e"
 
 Anomalous Instances:  NONE.
 
@@ -390,34 +390,34 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.41246, instances = 26
   Graph(4v,4e):
-    v 1 "j"
-    v 2 "p"
-    v 3 "R"
-    v 4 "1"
-    d 3 2 "e"
+    v 1 "p"
+    v 2 "1"
+    v 3 "j"
+    v 4 "R"
+    d 1 2 "e"
+    d 3 4 "e"
     d 2 4 "e"
-    d 4 3 "e"
-    d 1 3 "e"
+    d 4 1 "e"
 
 (2) Substructure: value = 1.27932, instances = 26
   Graph(4v,3e):
-    v 1 "j"
-    v 2 "p"
-    v 3 "R"
-    v 4 "1"
-    d 3 2 "e"
+    v 1 "p"
+    v 2 "1"
+    v 3 "j"
+    v 4 "R"
+    d 1 2 "e"
+    d 3 4 "e"
     d 2 4 "e"
-    d 1 3 "e"
 
 (3) Substructure: value = 1.27932, instances = 26
   Graph(4v,3e):
-    v 1 "j"
-    v 2 "p"
-    v 3 "R"
-    v 4 "1"
-    d 3 2 "e"
-    d 4 3 "e"
-    d 1 3 "e"
+    v 1 "p"
+    v 2 "1"
+    v 3 "j"
+    v 4 "R"
+    d 3 4 "e"
+    d 2 4 "e"
+    d 4 1 "e"
 
 
 GBAD done (elapsed CPU time =    0.03 seconds).
@@ -456,15 +456,15 @@ Read 45 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.31069, instances = 13
   Graph(5v,4e):
-    v 1 "O"
-    v 2 "N"
-    v 3 "F"
-    v 4 "P"
-    v 5 "B"
-    d 4 1 "e"
+    v 1 "N"
+    v 2 "F"
+    v 3 "B"
+    v 4 "O"
+    v 5 "P"
+    d 2 1 "e"
+    d 1 3 "e"
     d 5 4 "e"
-    d 2 5 "e"
-    d 3 2 "e"
+    d 3 5 "e"
 
 Anomalous Instances:  NONE.
 
@@ -472,33 +472,33 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.31069, instances = 13
   Graph(5v,4e):
-    v 1 "O"
-    v 2 "N"
-    v 3 "F"
-    v 4 "P"
-    v 5 "B"
-    d 4 1 "e"
+    v 1 "N"
+    v 2 "F"
+    v 3 "B"
+    v 4 "O"
+    v 5 "P"
+    d 2 1 "e"
+    d 1 3 "e"
     d 5 4 "e"
-    d 2 5 "e"
-    d 3 2 "e"
+    d 3 5 "e"
 
 (2) Substructure: value = 1.20613, instances = 13
   Graph(4v,3e):
     v 1 "N"
     v 2 "F"
-    v 3 "P"
-    v 4 "B"
-    d 4 3 "e"
-    d 1 4 "e"
+    v 3 "B"
+    v 4 "P"
     d 2 1 "e"
+    d 1 3 "e"
+    d 3 4 "e"
 
 (3) Substructure: value = 1.20219, instances = 19
   Graph(3v,2e):
     v 1 "N"
     v 2 "F"
     v 3 "B"
-    d 1 3 "e"
     d 2 1 "e"
+    d 1 3 "e"
 
 
 GBAD done (elapsed CPU time =    0.01 seconds).
@@ -537,17 +537,17 @@ Read 38 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.33068, instances = 8
   Graph(6v,5e):
-    v 1 "J"
-    v 2 "L"
+    v 1 "B"
+    v 2 "A"
     v 3 "F"
-    v 4 "k"
-    v 5 "A"
-    v 6 "B"
-    d 5 2 "e"
-    d 6 1 "e"
-    d 2 6 "e"
-    d 4 5 "e"
-    d 3 4 "e"
+    v 4 "L"
+    v 5 "J"
+    v 6 "k"
+    d 4 1 "e"
+    d 3 6 "e"
+    d 1 5 "e"
+    d 2 4 "e"
+    d 6 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -555,42 +555,42 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.33068, instances = 8
   Graph(6v,5e):
-    v 1 "J"
-    v 2 "L"
+    v 1 "B"
+    v 2 "A"
     v 3 "F"
-    v 4 "k"
-    v 5 "A"
-    v 6 "B"
-    d 5 2 "e"
-    d 6 1 "e"
-    d 2 6 "e"
-    d 4 5 "e"
-    d 3 4 "e"
+    v 4 "L"
+    v 5 "J"
+    v 6 "k"
+    d 4 1 "e"
+    d 3 6 "e"
+    d 1 5 "e"
+    d 2 4 "e"
+    d 6 2 "e"
 
 (2) Substructure: value = 1.2854, instances = 12
   Graph(4v,3e):
-    v 1 "L"
+    v 1 "A"
     v 2 "F"
-    v 3 "k"
-    v 4 "A"
+    v 3 "L"
+    v 4 "k"
+    d 2 4 "e"
+    d 1 3 "e"
     d 4 1 "e"
-    d 3 4 "e"
-    d 2 3 "e"
 
 (3) Substructure: value = 1.23494, instances = 8
   Graph(5v,4e):
-    v 1 "L"
-    v 2 "F"
-    v 3 "k"
-    v 4 "A"
-    v 5 "B"
+    v 1 "B"
+    v 2 "A"
+    v 3 "F"
+    v 4 "L"
+    v 5 "k"
     d 4 1 "e"
-    d 1 5 "e"
-    d 3 4 "e"
-    d 2 3 "e"
+    d 3 5 "e"
+    d 2 4 "e"
+    d 5 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.02 seconds).
+GBAD done (elapsed CPU time =    0.01 seconds).
 GBAD 3.2
 
 Parameters:
@@ -626,17 +626,17 @@ Read 31 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.2493, instances = 5
   Graph(6v,5e):
-    v 1 "P"
-    v 2 "W"
-    v 3 "O"
-    v 4 "N"
-    v 5 "F"
-    v 6 "v"
-    d 4 2 "e"
-    d 6 1 "e"
-    d 1 3 "e"
-    d 2 6 "e"
-    d 5 4 "e"
+    v 1 "F"
+    v 2 "N"
+    v 3 "W"
+    v 4 "v"
+    v 5 "P"
+    v 6 "O"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -644,33 +644,33 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.2493, instances = 5
   Graph(6v,5e):
-    v 1 "P"
-    v 2 "W"
-    v 3 "O"
-    v 4 "N"
-    v 5 "F"
-    v 6 "v"
-    d 4 2 "e"
-    d 6 1 "e"
-    d 1 3 "e"
-    d 2 6 "e"
-    d 5 4 "e"
+    v 1 "F"
+    v 2 "N"
+    v 3 "W"
+    v 4 "v"
+    v 5 "P"
+    v 6 "O"
+    d 4 5 "e"
+    d 5 6 "e"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 1 2 "e"
 
 (2) Substructure: value = 1.23334, instances = 21
   Graph(2v,1e):
-    v 1 "R"
-    v 2 "j"
-    d 2 1 "e"
+    v 1 "j"
+    v 2 "R"
+    d 1 2 "e"
 
 (3) Substructure: value = 1.20068, instances = 7
   Graph(4v,3e):
-    v 1 "P"
-    v 2 "W"
-    v 3 "O"
-    v 4 "v"
-    d 4 1 "e"
-    d 1 3 "e"
-    d 2 4 "e"
+    v 1 "W"
+    v 2 "v"
+    v 3 "P"
+    v 4 "O"
+    d 2 3 "e"
+    d 3 4 "e"
+    d 1 2 "e"
 
 
 GBAD done (elapsed CPU time =    0.01 seconds).
@@ -709,9 +709,9 @@ Read 28 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.35333, instances = 21
   Graph(2v,1e):
-    v 1 "R"
-    v 2 "j"
-    d 2 1 "e"
+    v 1 "j"
+    v 2 "R"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -719,9 +719,9 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.35333, instances = 21
   Graph(2v,1e):
-    v 1 "R"
-    v 2 "j"
-    d 2 1 "e"
+    v 1 "j"
+    v 2 "R"
+    d 1 2 "e"
 
 (2) Substructure: value = 1.2484, instances = 6
   Graph(4v,3e):
@@ -729,8 +729,8 @@ Best 3 substructures:
     v 2 "F"
     v 3 "J"
     v 4 "B"
-    d 1 4 "e"
     d 2 1 "e"
+    d 1 4 "e"
     d 4 3 "e"
 
 (3) Substructure: value = 1.13937, instances = 6
@@ -738,8 +738,8 @@ Best 3 substructures:
     v 1 "N"
     v 2 "F"
     v 3 "B"
-    d 1 3 "e"
     d 2 1 "e"
+    d 1 3 "e"
 
 
 GBAD done (elapsed CPU time =    0.00 seconds).
@@ -779,12 +779,12 @@ Normative Pattern (1):
 Substructure: value = 1.49922, instances = 6
   Graph(4v,3e):
     v 1 "F"
-    v 2 "J"
-    v 3 "B"
+    v 2 "B"
+    v 3 "J"
     v 4 "N"
-    d 3 2 "e"
     d 1 4 "e"
-    d 4 3 "e"
+    d 2 3 "e"
+    d 4 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -793,38 +793,38 @@ Best 3 substructures:
 (1) Substructure: value = 1.49922, instances = 6
   Graph(4v,3e):
     v 1 "F"
-    v 2 "J"
-    v 3 "B"
+    v 2 "B"
+    v 3 "J"
     v 4 "N"
-    d 3 2 "e"
     d 1 4 "e"
-    d 4 3 "e"
+    d 2 3 "e"
+    d 4 2 "e"
 
 (2) Substructure: value = 1.48358, instances = 4
   Graph(6v,5e):
-    v 1 "v"
-    v 2 "W"
-    v 3 "A"
+    v 1 "A"
+    v 2 "k"
+    v 3 "L"
     v 4 "F"
-    v 5 "L"
-    v 6 "k"
-    d 3 5 "e"
-    d 5 2 "e"
-    d 4 6 "e"
-    d 6 3 "e"
+    v 5 "v"
+    v 6 "W"
+    d 1 3 "e"
+    d 4 2 "e"
+    d 6 5 "e"
     d 2 1 "e"
+    d 3 6 "e"
 
 (3) Substructure: value = 1.34698, instances = 4
   Graph(5v,4e):
-    v 1 "W"
-    v 2 "A"
-    v 3 "F"
-    v 4 "L"
-    v 5 "k"
-    d 2 4 "e"
-    d 4 1 "e"
+    v 1 "A"
+    v 2 "k"
+    v 3 "L"
+    v 4 "F"
+    v 5 "W"
+    d 1 3 "e"
+    d 4 2 "e"
+    d 2 1 "e"
     d 3 5 "e"
-    d 5 2 "e"
 
 
 GBAD done (elapsed CPU time =    0.00 seconds).
@@ -1001,9 +1001,9 @@ Read 4 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.12826, instances = 2
   Graph(2v,1e):
-    v 1 "O"
-    v 2 "P"
-    d 2 1 "e"
+    v 1 "P"
+    v 2 "O"
+    d 1 2 "e"
 
 Anomalous Instances:  NONE.
 
@@ -1011,17 +1011,17 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.12826, instances = 2
   Graph(2v,1e):
-    v 1 "O"
-    v 2 "P"
-    d 2 1 "e"
+    v 1 "P"
+    v 2 "O"
+    d 1 2 "e"
 
 (2) Substructure: value = 0.893796, instances = 2
   Graph(1v,0e):
-    v 1 "O"
+    v 1 "P"
 
 (3) Substructure: value = 0.893796, instances = 2
   Graph(1v,0e):
-    v 1 "P"
+    v 1 "O"
 
 
 GBAD done (elapsed CPU time =    0.00 seconds).

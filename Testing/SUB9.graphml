@@ -4,34 +4,34 @@
          xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
          http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
 <!-- Created by igraph -->
+  <key id="g_instances" for="graph" attr.name="instances" attr.type="double"/>
   <key id="g_name" for="graph" attr.name="name" attr.type="string"/>
   <key id="g_compValue" for="graph" attr.name="compValue" attr.type="double"/>
-  <key id="g_instances" for="graph" attr.name="instances" attr.type="double"/>
-  <key id="v_subdueId" for="node" attr.name="subdueId" attr.type="string"/>
   <key id="v_name" for="node" attr.name="name" attr.type="string"/>
+  <key id="v_subdueId" for="node" attr.name="subdueId" attr.type="string"/>
   <key id="v_label" for="node" attr.name="label" attr.type="string"/>
   <graph id="G" edgedefault="directed">
+    <data key="g_instances">4</data>
     <data key="g_name">SUB9</data>
     <data key="g_compValue">1.55283</data>
-    <data key="g_instances">4</data>
     <node id="n0">
-      <data key="v_subdueId">1</data>
-      <data key="v_name">v</data>
-      <data key="v_label">v</data>
+      <data key="v_name">L</data>
+      <data key="v_subdueId">3</data>
+      <data key="v_label">L</data>
     </node>
     <node id="n1">
-      <data key="v_subdueId">2</data>
       <data key="v_name">W</data>
+      <data key="v_subdueId">2</data>
       <data key="v_label">W</data>
     </node>
     <node id="n2">
-      <data key="v_subdueId">3</data>
-      <data key="v_name">L</data>
-      <data key="v_label">L</data>
+      <data key="v_name">v</data>
+      <data key="v_subdueId">1</data>
+      <data key="v_label">v</data>
     </node>
-    <edge source="n2" target="n1">
+    <edge source="n0" target="n1">
     </edge>
-    <edge source="n1" target="n0">
+    <edge source="n1" target="n2">
     </edge>
   </graph>
 </graphml>

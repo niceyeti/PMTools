@@ -182,7 +182,7 @@ class AnomalyReporter(object):
 	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
 	"""
 	def _analyzeDendrogram(self, dendrogram):
-		threshold = 0.15
+		threshold = 0.10
 		numTraces = float(len(dendrogram[0].IdMap.keys()))
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
 		candidateIndex = -1 #the index in the compression level list (dendrogram) at which the number of ids drops below threshold in terms of frequency
@@ -212,7 +212,7 @@ class AnomalyReporter(object):
 				curId = curLevel.ReverseIdMap[curId]
 				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry with other statistical measures
 				if curId in curLevel.CompressedIds:
-					#calculate KL div
+					#calculate simple KL divergence
 					
 					ancestry.append(i)
 					cumulativeCompression += curLevel.CompressionFactor
@@ -224,8 +224,46 @@ class AnomalyReporter(object):
 		print("Candidate-id Ancestry")
 		print(str([(str(k),ancestryDict[str(k)]) for k in sorted([int(sk) for sk in ancestryDict.keys()])]))
 
+		ancestorSubs = set()
+		for pair in ancestryDict.items():
+			for id in pair[1][0]:
+				ancestorSubs.add(id)
+
+		print("Ancestry set: "+str(ancestorSubs))
 		
 		
+		#now, rather than searching over candidate ids, search over the space of anomalous substructures below candidate threshold
+		j  = len(dendrogram) - 1
+		ancestors = set()
+		while j > i:
+			#crawl up through dendrogram for all ancestors of this substructure
+			ancestors |= self._getAncestorSet(j,dendrogram)
+			j -= 1
+		print("Ancestors: "+str(ancestors))
+		
+	
+	"""
+	Given a substructure, crawls up through the dendrogram and returns a list of ancestor structures.
+	
+	@baseIndex: The index from which to start the (upward) search through the dendrogram
+	@dendrogram: a list of compressionLevels
+	"""
+	def _getAncestorSet(self,baseIndex,dendrogram):
+		#crawl up through dendrogram for all ancestors of this substructure
+		level = dendrogram[baseIndex]
+		ancestors = set()
+
+		for subId in level.CompressedIds:
+			prev = int(baseIndex) - 1
+			prevId = str(subId)
+			while prev >= 0:
+				ancestorLevel = dendrogram[prev]
+				prevId = ancestorLevel.ReverseIdMap[prevId]
+				if prevId in ancestorLevel.CompressedIds:
+					ancestors.add(prev)
+				prev -= 1
+
+		return ancestors
 		
 	#Just a wrapper for building and then analyzing the dendrogram, for research
 	def _dendrogramAnalysis(self, path):
