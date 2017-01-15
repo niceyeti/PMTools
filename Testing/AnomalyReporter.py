@@ -182,7 +182,7 @@ class AnomalyReporter(object):
 	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
 	"""
 	def _analyzeDendrogram(self, dendrogram):
-		threshold = 0.10
+		threshold = 0.18
 		numTraces = float(len(dendrogram[0].IdMap.keys()))
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
 		candidateIndex = -1 #the index in the compression level list (dendrogram) at which the number of ids drops below threshold in terms of frequency
@@ -198,6 +198,25 @@ class AnomalyReporter(object):
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
+		candidateIdSubMap = {} #the mapping from candidateIds to their respective elementary substructure at or below the candidate level; that is, binds the candidateIds to the most-compression substructure
+		#build the candidate id-sub map, of ids to their most-compression substructure (an index into the dendrogram levels)
+		for id in candidateIds:
+			level = int(candidateIndex)
+			nextId = str(id)
+			maxSubLevel = -1
+			#print("id: "+nextId+" maxcomps: "+str(dendrogram[level].MaxCompressedIds))
+			while level < len(dendrogram):
+				if nextId in dendrogram[level].MaxCompressedIds:
+					maxSubLevel = int(level)
+					break
+				else:
+					nextId = dendrogram[level].IdMap[nextId]
+				level += 1
+			candidateIdSubMap[id] = maxSubLevel
+		#the values of candidateIdSubMap, as a set, define the unique structures over which to search for anomalies and noise
+		print("Candidate Id Base Substructure map: "+str(candidateIdSubMap))
+		print("Candidate index: "+str(candidateIndex))
+		
 		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
 		print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold))
 		for id in candidateIds:
