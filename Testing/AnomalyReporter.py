@@ -14,6 +14,7 @@ The info is just printed to the output, but keep it parseable if possible.
 from __future__ import print_function
 import sys
 from Dendrogram import *
+import igraph
 
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None, dendrogramThreshold=0.05):
@@ -196,10 +197,10 @@ class AnomalyReporter(object):
 		return self._getChild(dendrogram, level+1, dendrogram[level].IdMap[id])
 
 	"""
-	Given the dendrogram, returns a list of dictionaries characterizing the frequency distribution of
-	each non-terminal level's children. The index of each dictionary corresponds with the level in the
+	Given the dendrogram, returns a list of (dict,string) tuples with the dict characterizing the frequency distribution of
+	each non-terminal level's children, and the string is the substructure name. The index of each dictionary corresponds with the level in the
 	dendrogram. 
-		[{"SUB_1":3, "SELF":4},{...}]
+		[({"SUB_1":3, "SELF":4},"NAME OF THIS NODE"),({...},"NAME OF NEXT NODE")]
 		
 	Note that frequently some nodes at a specific level will reach max compression; these are treated as "children"
 	of this substructure/level, which is valid since some others compressed by this level will not be maximally compressed but are
@@ -217,18 +218,56 @@ class AnomalyReporter(object):
 			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructures
 			for id in cl.CompressedIds:
 				if id not in cl.MaxCompressedIds:
-					childLevel = self._getChild(dendrogram,level+1,cl.IdMap[id])
+					childLevel = self._getChild(dendrogram, level+1, cl.IdMap[id])
 					#print("childLevel: "+str(childLevel))
-					childName = dendrogram[childLevel].SubName
+					childName = dendrogram[childLevel].SubName #some information stuffing, to identify the reflexive loops of nodes
 					if childName not in freqDist.keys():
 						freqDist[childName] = 1
 					else:
 						freqDist[childName] += 1
 			print("FreqDist, level "+str(level)+" sub "+cl.SubName+": "+str(freqDist))
-			dictList.append(freqDist)
+			dictList.append((freqDist,cl.SubName))
 
 		return dictList
 
+	def _visualizeDendrogram(self, freqDictList):
+		#build the edge list in memory
+		es = []
+		rootName = freqDictList[0][1]
+		print("ROOT: "+rootName)
+		for fd in freqDictList:
+			nodeName = fd[1]
+			#add the edges for this layer to all lower ones
+			for key in fd[0].keys():
+				es.append((nodeName,key))
+		#es populate, now use it to build set of unique vertex names
+		vs = set()
+		for edge in es:
+			vs.add(edge[0])
+			vs.add(edge[1])
+		print("VS: "+str(vs))
+		g = igraph.Graph(directed=True)
+		g.add_vertices(list(vs))
+		g.add_edges(es)
+		
+		for v in g.vs:
+			v["label"] = v["name"]
+			if v["name"] == rootName:
+				rootId = v.index
+		
+		#layout = igraph.Graph.layout_reingold_tilford(mode="out",root=rootId)
+		layout = g.layout("sugiyama")
+		#layout = g.layout_sugiyama()
+		#layout = g.layout_reingold_tilford(mode="in", root=[rootId])
+		igraph.plot(g, layout = layout, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
+		#igraph.plot(g, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
+		#layout = graph.layout("reingold")
+		#igraph.plot(g,layout = layout.reingold.tilford(g, root = rootName))
+		g.write_graphml("dendrogram.graphml")
+		
+		
+		
+		
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
@@ -253,6 +292,8 @@ class AnomalyReporter(object):
 		#Gets the distribution of a dendrogram, as a list of dictionaries
 		freqDist = self._getDendrogramDistribution(dendrogram)
 		print("FREQ DIST: "+str(freqDist))
+		#use the frequency distribution list to visualize the dendrogram
+		self._visualizeDendrogram(freqDist)
 
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
