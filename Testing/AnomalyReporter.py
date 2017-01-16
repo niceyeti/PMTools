@@ -186,15 +186,15 @@ class AnomalyReporter(object):
 	
 	Returns: Integer index of this nodes next compressing substructure in the dendrogram
 	"""
-	def _getChild(self,dendrogram,level,id)
+	def _getChild(self,dendrogram,level,id):
 		#one base case: if id == -1, this is the most compressing sub
-		if id < 0:
+		if id == "-1":
 			return level
 		if id in dendrogram[level].CompressedIds:
 			return level
 		#recurse
-		return self._getChild(dendrogram, level+1, dendrogram[level].IdMap[id])			
-	
+		return self._getChild(dendrogram, level+1, dendrogram[level].IdMap[id])
+
 	"""
 	Given the dendrogram, returns a list of dictionaries characterizing the frequency distribution of
 	each non-terminal level's children. The index of each dictionary corresponds with the level in the
@@ -211,20 +211,24 @@ class AnomalyReporter(object):
 		for level in range(0,len(dendrogram)-1):
 			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
 			freqDist = {}
-			if len(dendrogram[level].MaxCompressedIds) > 0:
-				freqDist = {dendrogram[level].SubName:len(dendrogram[level].MaxCompressedIds)}
+			cl = dendrogram[level]
+			if len(cl.MaxCompressedIds) > 0:
+				freqDist = {cl.SubName:len(cl.MaxCompressedIds)}
 			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructures
-			for id in dendrogram[level].CompressedIds:
-				childLevel = self._getChild(dendrogram,level,id)
-				print("childLevel: "+str(childLevel))
-				childName = dendrogram[childLevel].SubName
-				if childName not in freqDist.keys():
-					freqDist[childName] = 1.0
-				else:
-					freqDist[childName] += 1.0
-	
-	
-		
+			for id in cl.CompressedIds:
+				if id not in cl.MaxCompressedIds:
+					childLevel = self._getChild(dendrogram,level+1,cl.IdMap[id])
+					#print("childLevel: "+str(childLevel))
+					childName = dendrogram[childLevel].SubName
+					if childName not in freqDist.keys():
+						freqDist[childName] = 1
+					else:
+						freqDist[childName] += 1
+			print("FreqDist, level "+str(level)+" sub "+cl.SubName+": "+str(freqDist))
+			dictList.append(freqDist)
+
+		return dictList
+
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
@@ -244,10 +248,12 @@ class AnomalyReporter(object):
 				break
 			i += 1
 
+		print("id map: "+str(dendrogram[0].IdMap))
+
 		#Gets the distribution of a dendrogram, as a list of dictionaries
-		_getDendrogramDistribution(dendrogram)
-			
-			
+		freqDist = self._getDendrogramDistribution(dendrogram)
+		print("FREQ DIST: "+str(freqDist))
+
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
