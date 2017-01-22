@@ -7,7 +7,7 @@ All id's are maintained as strings.
 class CompressionLevel(object):
 	def __init__(self, line):
 		self.Initialize(line)
-		
+
 	"""
 	Given a line in a dendrogram file, fills in all data for this compression level
 	

@@ -15,6 +15,7 @@ from __future__ import print_function
 import sys
 from Dendrogram import *
 import igraph
+import math
 
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None, dendrogramThreshold=0.05):
@@ -151,9 +152,6 @@ class AnomalyReporter(object):
 					
 		#print("all anoms: "+str(anoms))
 		return anoms
-
-	
-		
 		
 	"""
 	TODO: Dendrogram could certainly be its own class at some point; this is fine for now.
@@ -265,9 +263,75 @@ class AnomalyReporter(object):
 		#igraph.plot(g,layout = layout.reingold.tilford(g, root = rootName))
 		g.write_graphml("dendrogram.graphml")
 		
+	"""
+	The entropy of a substructue is defined as its entropy in all substructure distributions above it, from which it was derived.
+	
+	@dendrogram: The dendrogram, as a list of DendrogramLevel objects.
+	@freqDist: The frequency distribution of the denddrogram levels, as a list of tuples: [({'SUB6': 1, 'SUB1': 8, 'SUB0': 139, 'SUB3': 1}, 'SUB_init'), ... ]
+	
+	Returns: Mapping of substructure names (freqDist keys) to sum entropy values over all ancestors.
+	"""
+	def _getSubstructureEntropyMap(self, dendrogram, freqDist):
+		subMap = {}
+		i = len(freqDist) - 1
+		while i >= 0:
+			levelName = freqDist[i][1]
+			sumEnt = 0.0
+			j = i - 1
+			while j >= 0:
+				if levelName in freqDist[j][0].keys():
+					#calculate the entropy of only this x variable in the distribution, if its in the dist
+					sumPx = sum(freqDist[j][0].values())
+					pSub = float(freqDist[j][0][levelName]) / float(sumPx)
+					sumEnt -= pSub * math.log(pSub,2.0)
+				j -= 1
+			subMap[levelName] = sumEnt
+			i -= 1
+
+		return subMap
+
+	"""
+	Given the sub-ent-map, we can also examine the cumulative entropy of a substructures ancestors.
+	This may be useful, may be not, but is worth looking at.
+	
+	@freqDist: Used to look up all paths from this substructure to the root
+	@subEntMap: mapping from substructure names to their associated sum entropy over all parent distributions in which they occur.
+	"""
+	def _getCumulativeSubstructureEntropyMap(self, freqDist, subEntMap):
+		cumEntMap = {}
+		i = len(freqDist) - 1
+		#walk up, using the subEntMap to map all of a substructure's ancestors to their entropy values
+		while i >= 0:
+			subName = freqDist[i][1]
+			#build the ancestor set for this node
+			ancestorQ = [subName]
+			ancestors = set(subName)
+			while len(ancestorQ) > 0:
+				subName = ancestorQ[0]
+				j = i - 1
+				#walk up, finding all predecessors of this substructure name
+				while j >= 0:
+					if subName in freqDist[j][0].keys():
+						ancestorQ.append(subName)
+						ancestors.add(subName)
+					j -= 1
+				#pop the front node
+				ancestorQ = ancestorQ[1:]
+				subName = ancestor[0]
+			print("Ancestors: "+str(ancestors))
+			entSum = 0.0
+			for subName in ancestors:
+				entSum += subEntMap[subName]
+			cumEntMap[freqDist[i][1]] = entSum
+
+			i -= 1
 		
 		
 		
+		
+		
+		
+
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
@@ -294,7 +358,10 @@ class AnomalyReporter(object):
 		print("FREQ DIST: "+str(freqDist))
 		#use the frequency distribution list to visualize the dendrogram
 		self._visualizeDendrogram(freqDist)
-
+		#maps substructure indices in the dendrogram (ints) to 
+		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
+		[print(str(item)) for item in entMap.items()]
+		
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
@@ -319,7 +386,7 @@ class AnomalyReporter(object):
 		print("Candidate index: "+str(candidateIndex))
 		
 		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
-		print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold))
+		print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold)+" from level "+str(candidateIndex))
 		for id in candidateIds:
 			#backtrack through the layers, showing the ancestry of this id, along with compression stats
 			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
@@ -333,7 +400,6 @@ class AnomalyReporter(object):
 				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry with other statistical measures
 				if curId in curLevel.CompressedIds:
 					#calculate simple KL divergence
-					
 					ancestry.append(i)
 					cumulativeCompression += curLevel.CompressionFactor
 				i -= 1
