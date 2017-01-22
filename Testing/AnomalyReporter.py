@@ -305,32 +305,38 @@ class AnomalyReporter(object):
 			subName = freqDist[i][1]
 			#build the ancestor set for this node
 			ancestorQ = [subName]
-			ancestors = set(subName)
-			while len(ancestorQ) > 0:
+			ancestors = set()
+			ancestors.add(subName)
+			while len(ancestorQ) > 0: #bfs search for ancestors
 				subName = ancestorQ[0]
+				ancestors.add(subName)
+				print("sub: "+subName)
 				j = i - 1
 				#walk up, finding all predecessors of this substructure name
 				while j >= 0:
 					if subName in freqDist[j][0].keys():
-						ancestorQ.append(subName)
-						ancestors.add(subName)
+						predName = freqDist[j][1]
+						if predName not in ancestors:
+							ancestorQ.append(predName)
+						ancestors.add(predName)
 					j -= 1
-				#pop the front node
+				#pop the processed front node
 				ancestorQ = ancestorQ[1:]
-				subName = ancestor[0]
+				print("q>> "+str(ancestorQ))
+				print("ancs: "+str(ancestors))
+
 			print("Ancestors: "+str(ancestors))
 			entSum = 0.0
-			for subName in ancestors:
-				entSum += subEntMap[subName]
+			for ancestor in ancestors:
+				entSum += subEntMap[ancestor]
 			cumEntMap[freqDist[i][1]] = entSum
 
 			i -= 1
-		
-		
-		
-		
-		
-		
+			
+		print("Cumulative Entropies: "+str(cumEntMap))
+
+		return cumEntMap
+
 
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
@@ -361,6 +367,7 @@ class AnomalyReporter(object):
 		#maps substructure indices in the dendrogram (ints) to 
 		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
 		[print(str(item)) for item in entMap.items()]
+		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 		
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
