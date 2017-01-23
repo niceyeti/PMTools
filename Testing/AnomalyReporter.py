@@ -264,7 +264,8 @@ class AnomalyReporter(object):
 		g.write_graphml("dendrogram.graphml")
 		
 	"""
-	The entropy of a substructue is defined as its entropy in all substructure distributions above it, from which it was derived.
+	An experiment to see if entropy metrics distinguish anomalies/noise: score each substructure according to the
+	distribution of substructures in all of its ancestors, by including and excluding this substructures ancestors.
 	
 	@dendrogram: The dendrogram, as a list of DendrogramLevel objects.
 	@freqDist: The frequency distribution of the denddrogram levels, as a list of tuples: [({'SUB6': 1, 'SUB1': 8, 'SUB0': 139, 'SUB3': 1}, 'SUB_init'), ... ]
@@ -279,8 +280,18 @@ class AnomalyReporter(object):
 			sumEnt = 0.0
 			j = i - 1
 			while j >= 0:
+				#calculate the difference in entropy with and without this substructure in the current distribution
 				if levelName in freqDist[j][0].keys():
-					#calculate the entropy of only this x variable in the distribution, if its in the dist
+					#calculate entropy with this substructure
+					 entWithSub = sum([val/sum(freqDist[j][0].values()) * math.log(val/sum(freqDist[j][0].values()),2.0) for val in freqDist[j][0].values()])
+					#calculate entropy without this substructure
+					entSansSub = 0.0
+					sumX = float(sum([item[1] for item in freqDist[j][0].items() if item[0] != levelName]))
+					for item in freqDist[j][0].items():
+						if item[0] != levelName:
+							entSansSub += (float(item[1])/sumX * math.log(float(item[1])/sumX,2.0))
+					entSansSub = sum([val/sum(freqDist[j][0].values()) * math.log(val/sum(freqDist[j][0].values()),2.0) for val in freqDist[j][0].values() if ])
+					
 					sumPx = sum(freqDist[j][0].values())
 					pSub = float(freqDist[j][0][levelName]) / float(sumPx)
 					sumEnt -= pSub * math.log(pSub,2.0)
@@ -310,7 +321,7 @@ class AnomalyReporter(object):
 			while len(ancestorQ) > 0: #bfs search for ancestors
 				subName = ancestorQ[0]
 				ancestors.add(subName)
-				print("sub: "+subName)
+				#print("sub: "+subName)
 				j = i - 1
 				#walk up, finding all predecessors of this substructure name
 				while j >= 0:
@@ -322,10 +333,10 @@ class AnomalyReporter(object):
 					j -= 1
 				#pop the processed front node
 				ancestorQ = ancestorQ[1:]
-				print("q>> "+str(ancestorQ))
-				print("ancs: "+str(ancestors))
+				#print("q>> "+str(ancestorQ))
+				#print("ancs: "+str(ancestors))
 
-			print("Ancestors: "+str(ancestors))
+			#print("Ancestors: "+str(ancestors))
 			entSum = 0.0
 			for ancestor in ancestors:
 				entSum += subEntMap[ancestor]
@@ -337,7 +348,21 @@ class AnomalyReporter(object):
 
 		return cumEntMap
 
-
+	"""
+	Given an index in the dendrogram representing a substructure, recovers the original trace ids of those id's compressed
+	by that sub. Note ought to be part of a Dendrogram api.
+	
+	Returns: original id list of all compressed ids for the substructure given by @subIndex.
+	"""
+	def _getSubTraceIds(self, dendrogram, subIndex):
+		ids = dendrogram[subIndex].CompressedIds
+		i = subIndex - 1
+		while i > 0:
+			ids = [dendrogram[i-1].ReverseIdMap[id] for id in ids]
+			i -= 1
+		
+		return ids
+		
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
@@ -368,6 +393,10 @@ class AnomalyReporter(object):
 		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
 		[print(str(item)) for item in entMap.items()]
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
+		
+		ids = self._getSubTraceIds(dendrogram, 6)
+		print("SUB6 ids:  "+str(ids))
+		
 		
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
