@@ -31,7 +31,9 @@ class CompressionLevel(object):
 			leftId = pair.split(":")[0]
 			rightId = pair.split(":")[1]
 			self.IdMap[leftId] = rightId
-			self.ReverseIdMap[rightId] = leftId
+			#reverse map will include only non-negative values
+			if rightId != "-1":
+				self.ReverseIdMap[rightId] = leftId
 		
 		"""
 		print("max comps: "+str(self.MaxCompressedIds))

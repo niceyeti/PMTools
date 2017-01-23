@@ -267,6 +267,8 @@ class AnomalyReporter(object):
 	An experiment to see if entropy metrics distinguish anomalies/noise: score each substructure according to the
 	distribution of substructures in all of its ancestors, by including and excluding this substructures ancestors.
 	
+	NOTE: This sums over all ancestors in which a particular substructure appears, so its entropy may be a sum over multiple distributions.
+	
 	@dendrogram: The dendrogram, as a list of DendrogramLevel objects.
 	@freqDist: The frequency distribution of the denddrogram levels, as a list of tuples: [({'SUB6': 1, 'SUB1': 8, 'SUB0': 139, 'SUB3': 1}, 'SUB_init'), ... ]
 	
@@ -283,18 +285,15 @@ class AnomalyReporter(object):
 				#calculate the difference in entropy with and without this substructure in the current distribution
 				if levelName in freqDist[j][0].keys():
 					#calculate entropy with this substructure
-					 entWithSub = sum([val/sum(freqDist[j][0].values()) * math.log(val/sum(freqDist[j][0].values()),2.0) for val in freqDist[j][0].values()])
+					sumX = float(sum(freqDist[j][0].values()))
+					entWithSub = -sum([float(val)/sumX * math.log(float(val)/sumX, 2.0) for val in freqDist[j][0].values()])
+					#print("ent1: "+str(entWithSub))
 					#calculate entropy without this substructure
-					entSansSub = 0.0
 					sumX = float(sum([item[1] for item in freqDist[j][0].items() if item[0] != levelName]))
-					for item in freqDist[j][0].items():
-						if item[0] != levelName:
-							entSansSub += (float(item[1])/sumX * math.log(float(item[1])/sumX,2.0))
-					entSansSub = sum([val/sum(freqDist[j][0].values()) * math.log(val/sum(freqDist[j][0].values()),2.0) for val in freqDist[j][0].values() if ])
-					
-					sumPx = sum(freqDist[j][0].values())
-					pSub = float(freqDist[j][0][levelName]) / float(sumPx)
-					sumEnt -= pSub * math.log(pSub,2.0)
+					entSansSub = -sum([float(item[1])/sumX * math.log(float(item[1])/sumX,2.0) for item in freqDist[j][0].items() if item[0] != levelName])
+					#print("ent2: "+str(entSansSub))
+					sumEnt += (entWithSub - entSansSub)
+					#subMap[levelName] = ent
 				j -= 1
 			subMap[levelName] = sumEnt
 			i -= 1
@@ -396,6 +395,17 @@ class AnomalyReporter(object):
 		
 		ids = self._getSubTraceIds(dendrogram, 6)
 		print("SUB6 ids:  "+str(ids))
+		ids = self._getSubTraceIds(dendrogram, 7)
+		print("SUB7 ids:  "+str(ids))
+		ids = self._getSubTraceIds(dendrogram, 8)
+		print("SUB8 ids:  "+str(ids))
+		ids = self._getSubTraceIds(dendrogram, 9)
+		print("SUB9 ids:  "+str(ids))
+		ids = self._getSubTraceIds(dendrogram, 10)
+		print("SUB10 ids:  "+str(ids))
+		ids = self._getSubTraceIds(dendrogram, 11)
+		print("SUB11 ids:  "+str(ids))
+		
 		
 		
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
