@@ -175,20 +175,20 @@ class AnomalyReporter(object):
 		return dendrogram
 	
 	"""
-	A recursive searh procedure for get a child of the current level.
+	A recursive searh procedure for retrieving a child of the current level.
 	
-	In some level Li, there is some compressed id ID. We wish to find the sub into which it is further mapped into some
-	compressing substructure further below
+	In some level Li for substructure Si, there is some compressed id ID. We wish to find the next child
+	sub into which it is further mapped into some compressing substructure further below.
 	
 	@level: The current level within which to check for this id
-	@id: An active id in this level
+	@id: An active id in @level
 	
 	Returns: Integer index of this nodes next compressing substructure in the dendrogram
 	"""
 	def _getChild(self,dendrogram,level,id):
 		#one base case: if id == -1, this is the most compressing sub
 		if id == "-1":
-			return level
+			return level - 1
 		if id in dendrogram[level].CompressedIds:
 			return level
 		#recurse
@@ -208,9 +208,9 @@ class AnomalyReporter(object):
 		dictList = []
 		
 		for level in range(0,len(dendrogram)-1):
-			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
 			freqDist = {}
 			cl = dendrogram[level]
+			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
 			if len(cl.MaxCompressedIds) > 0:
 				freqDist = {cl.SubName:len(cl.MaxCompressedIds)}
 			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructures
@@ -232,7 +232,7 @@ class AnomalyReporter(object):
 		#build the edge list in memory
 		es = []
 		rootName = freqDictList[0][1]
-		print("ROOT: "+rootName)
+		#print("ROOT: "+rootName)
 		for fd in freqDictList:
 			nodeName = fd[1]
 			#add the edges for this layer to all lower ones
@@ -243,7 +243,7 @@ class AnomalyReporter(object):
 		for edge in es:
 			vs.add(edge[0])
 			vs.add(edge[1])
-		print("VS: "+str(vs))
+		#print("VS: "+str(vs))
 		g = igraph.Graph(directed=True)
 		g.add_vertices(list(vs))
 		g.add_edges(es)
@@ -393,6 +393,8 @@ class AnomalyReporter(object):
 		[print(str(item)) for item in entMap.items()]
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 		
+		ids = self._getSubTraceIds(dendrogram, 5)
+		print("SUB5 ids:  "+str(ids))
 		ids = self._getSubTraceIds(dendrogram, 6)
 		print("SUB6 ids:  "+str(ids))
 		ids = self._getSubTraceIds(dendrogram, 7)
