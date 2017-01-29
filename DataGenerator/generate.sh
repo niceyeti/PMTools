@@ -3,7 +3,7 @@
 #models instead of generating new ones for every test.
 
 if [ $# -lt 5 ]; then
-    echo "ERROR: Insufficient number of parameters passed to generate.sh"
+	echo "ERROR: Insufficient number of parameters passed to generate.sh"
 	exit
 fi
 
