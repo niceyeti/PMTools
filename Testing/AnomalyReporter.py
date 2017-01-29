@@ -393,23 +393,10 @@ class AnomalyReporter(object):
 		[print(str(item)) for item in entMap.items()]
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 		
-		ids = self._getSubTraceIds(dendrogram, 5)
-		print("SUB5 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 6)
-		print("SUB6 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 7)
-		print("SUB7 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 8)
-		print("SUB8 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 9)
-		print("SUB9 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 10)
-		print("SUB10 ids:  "+str(ids))
-		ids = self._getSubTraceIds(dendrogram, 11)
-		print("SUB11 ids:  "+str(ids))
-		
-		
-		
+		for i in range(4,len(dendrogram)):
+			ids = self._getSubTraceIds(dendrogram, i)
+			print(dendrogram[i].SubName+" ids:  "+str(ids))
+
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
