@@ -47,14 +47,14 @@ fi
 
 #the real testing params
 minerName="inductive"
-classifierString="Activity"
+classifierString="concept:name"
 xesPath="testTraces.xes"
 #reset the classifier string if param passed
 for var in "$@"; do
 	#get the classifier string param, if passed
 	if [[ $var == "--classifier="* ]]; then
 		classifierString=$(echo $var | cut -f2 -d=)
-		echo "Running inductive miner with classifier=$classifierString"
+		echo "Running inductive miner with classifierStr=$classifierString"
 	fi
 	#get the xes path, if passed
 	if [[ $var == "--xesPath="* ]]; then
