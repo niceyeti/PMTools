@@ -1,0 +1,3 @@
+M1 = self.X_train[:,np.newaxis]-X
+M2 = np.square(M1)
+dists = np.sqrt(M2.sum(axis=2))
