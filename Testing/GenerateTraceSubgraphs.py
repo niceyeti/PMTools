@@ -88,8 +88,13 @@ class Retracer(object):
 	@useSubdueFormat: use subdue format over gbad
 	"""
 	def _outputTraces(self, traceFile, model, gFile, useSubdueFormat):
-		for trace in traceFile.readlines():
-			tokens = trace.strip().split(",")
+		traces = [line.strip() for line in traceFile.readlines()]
+		ntraces = str(len(traces))
+		ctr = 0
+		for trace in traces:
+			print("\rEmitting trace: "+str(ctr)+" / "+ntraces+" traces                                      ",end="")
+			ctr += 1
+			tokens = trace.split(",")
 			#detect the anomaly status of this trace
 			isAnomalous = "+" == tokens[1]
 			traceNo = int(tokens[0])
@@ -105,7 +110,8 @@ class Retracer(object):
 			else:
 				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
-
+		print("  Done.")
+			
 	"""
 	Converts an igraph edge into an activity tuple
 	
@@ -145,6 +151,7 @@ class Retracer(object):
 		edgeSequence = []
 		initialEdge = self._getEdge("START", sequence[0], graph)
 		if initialEdge == None:
+			print("First node="+str(graph.vs[0]["name"]))
 			print("ERROR edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 		else:
 			e = self._edgeToActivityTuple(initialEdge, graph)

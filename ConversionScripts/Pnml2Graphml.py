@@ -139,7 +139,7 @@ def Convert(pnmlPath):
 			#get all immediate outlinks from this node
 			outLinks = [arc for arc in arcs if arc[0] == curNodeId]
 			#recursively get all activity node ids to which these outlinks point (following all intermediate taus, places, etc)
-			successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict)
+			successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0)
 			#print(str(successors))
 			
 			for successor in successors:
@@ -184,18 +184,25 @@ goes to the first set of nodes.
 @outLinks: The immediate outlinks of a node
 @arcs: List of tuples representing node ids
 @vertexDict: the dict of id keys and string vertex names
+@d: current call depth, for bounding search if cycling
 
 Returns: The ids of the activities at the terminal points of these outlinks
 """
-def _getSuccessorActivityIds(outLinks,arcs,vertexDict):
+def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
 	activities = []
+	
+	#recursion depth check: probably cycling
+	if d > 20:
+		print("WARNING Recursive depth-bound of 20 struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
+		return []
+	
 	#get all activities at the terminal points of these outlinks
 	for outLink in outLinks:
 		#if this link leads to a place or a tau node, get the outlinks from that node and recurse on them
 		if "TAU_" in vertexDict[outLink[1]] or "PLACE_" in vertexDict[outLink[1]]:
 			#get all the outlinks of this successor, and recurse on them
 			successorLinks = [arc for arc in arcs if arc[0] == outLink[1]]
-			activities += _getSuccessorActivityIds(successorLinks, arcs, vertexDict)
+			activities += _getSuccessorActivityIds(successorLinks, arcs, vertexDict,d+1)
 		#else the success is just a regular place, so add it to list
 		else:
 			activities.append(outLink[1])

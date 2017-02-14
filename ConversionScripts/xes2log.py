@@ -62,7 +62,8 @@ def ReadXes(path, activityKey=None):
 						eventName = item.attrib["value"]
 			events += [[eventResource,eventName]]
 		traces += [[traceName,events]]
-		#print("BUILT TRACES: "+str(traces))
+		
+	#print("BUILT "+str(len(traces))+" TRACES: ")#+str(traces))
 	
 	return traces
 		
@@ -149,8 +150,9 @@ def WriteTraces(traces, outputPath):
 	activityDict = {}
 
 	i = 1
+	ts = ""
 	for trace in traces:
-		ts = str(i)+",-,"
+		ts += str(i)+",-,"
 		for event in trace[1]:
 			eventName = event[1]
 			if eventName not in activityDict:
@@ -160,13 +162,17 @@ def WriteTraces(traces, outputPath):
 				if len(activities) > 0:
 					activities = activities[1:]
 					if len(activities) == 0:
-						print("ERROR out of activities!! Cannot xes convert to .log. Expand activity symbol list or cry.")
+						activities = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321_^$"
+						"""
+						print("ERROR out of activities!! Cannot convert xes convert .log format. Expand activity symbol list or cry.")
 						[print(item) for item in activityDict.items()]
 						exit()
+						"""
 			else:
 				activitySymbol = activityDict[eventName]
 			ts += activitySymbol
 		ts += "\n"
+		i += 1
 	
 	outputFile.write(ts)
 	outputFile.close()

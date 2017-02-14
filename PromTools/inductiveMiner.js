@@ -1,6 +1,6 @@
 /*
 The template miner script. This isn't actual javascript, just the java-style script language
-that is parsed by the Prom66 cli. Note the testTraces.xes, Activity, testModel.pnml anchors; this file is read, the anchors
+that is parsed by the Prom66 cli. Note the testTraces.xes, concept:name, testModel.pnml anchors; this file is read, the anchors
 are swapped with some parameters, and a new script can thereby be generated on the
 fly from this template.
 
@@ -13,7 +13,7 @@ log = open_xes_log_file("testTraces.xes");
 
 System.out.println("Creating settings");
 org.processmining.plugins.InductiveMiner.mining.MiningParametersIMi parameters = new org.processmining.plugins.InductiveMiner.mining.MiningParametersIMi();
-//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "Activity");
+//org.deckfour.xes.classification.XEventClassifier classifier = new org.deckfour.xes.classification.XEventAttributeClassifier("Classifier name", "concept:name");
 
 //Set noise threshold to 0.0. This is CRITICAL to make the InductiveMiner include all traces in its model.
 parameters.setNoiseThreshold(0);

@@ -59,6 +59,7 @@ for var in "$@"; do
 	fi	
 done
 
+### If generating data, the data generator will generate and store a model, then emit traces from it in a .log file, then convert these to xes.
 if [ $generateData = "true" ]; then
 	###############################################################################
 	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
