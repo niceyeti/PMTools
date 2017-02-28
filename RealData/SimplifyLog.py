@@ -1,10 +1,9 @@
 """
-Some of the real world test data has enormous redundany, and many thousands of traces (~13k).
+Some of the real world test data has enormous redundancy, and many thousands of traces (~13k).
 This has proven slow for SUBDUE. This script builds a histogram of all traces, then shrinks the log
 so as to preserve the distribution of traces.
 
 This is a single-purpose, hardcoded script.
-
 """
 
 from __future__ import print_function

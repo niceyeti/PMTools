@@ -1,10 +1,11 @@
 # Script for executing the system on a real world xes dataset. One will need
-# to convert some xes data to a .log file, then convert that back to xes, and
-# provide that as input to this script.
+# to convert some xes data to a .log file, then convert that back to simplified xes, and
+# provide these as input to this script.
 #	1) Mine the model, using the inductive miner
 #	2) Regenerate subgraphs from the mined model, convert to SUBDUE .log format
 #	3) Run SUBDUE method
-logPath="./BPI_2012_financial_log.log"
+#logPath="./BPI_2012_financial_log.log"
+logPath="./testTraces.log"
 miningWrapper="miningWrapper.py"
 minerPath="../scripts/PromTools/miner.sh"
 
@@ -38,9 +39,9 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
 fi
 
-if [[ "$#" != "2" ]]; then
+if [[ "$#" -lt "2" ]]; then
 	echo WRONG NUMBER OF PARAMS: $#
-	echo "Usage: sh realDataTest.sh --classifier=[classifier string] --xesPath=[xes path]"
+	echo "Usage: sh realDataTest.sh --classifier=[classifier string] --xesPath=[xes path] [optional: --logPath=[.log path] ]"
 	exit
 fi
 
@@ -48,6 +49,7 @@ fi
 minerName="inductive"
 classifierString="concept:name"
 xesPath="testTraces.xes"
+logPath="testTraces.log"
 #reset the classifier string if param passed
 for var in "$@"; do
 	#get the classifier string param, if passed
@@ -60,6 +62,12 @@ for var in "$@"; do
 		xesPath=$(echo $var | cut -f2 -d=)
 		echo "Running inductive miner on xes data at $xesPath"
 	fi
+	
+	if [[ $var == "--logPath="* ]]; then
+		logPath=$(echo $var | cut -f2 -d=)
+		echo "Running inductive miner on log data at $logPath"
+	fi
+	
 done
 
 ###############################################################################
@@ -85,11 +93,11 @@ cd "../scripts/RealData"
 python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 
 ################################################################################
-#Simplify the log, the speed up SUBDUE
+#Simplify the log, to speed up SUBDUE
 #BAD: This modifies the log, reducing the multiplicity of all trace by some scalar k. The financial data may have a lot of redundancy, so this is okay, but not if many traces
 # have multiplicity not divisible by k.
-python SimplifyLog.py --in=$logPath --out=simpleLog.log
-logPath=simpleLog.log
+#python SimplifyLog.py --in=$logPath --out=simpleLog.log
+#logPath=simpleLog.log
 
 
 ################################################################################
@@ -118,7 +126,7 @@ $gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
 cat /dev/null > "dendrogram.txt"
 #run recursive-compression gbad, building a dendrogram of the subgraphs of the graph
 recursiveIterations=5
-deleteSubstructures=True
+deleteSubstructures="true"
 if [ $recursiveIterations -gt 0 ]; then
 	cp $mdlResult lastMdlResult.txt
 	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine

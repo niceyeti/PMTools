@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 1437
+  Limit.......................... 2087
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 3066
+  Maximum size of substructures.. 4374
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -27,769 +27,139 @@ Parameters:
 
 Read 200 total positive graphs
 
-200 positive graphs: 3066 vertices, 2875 edges, 68963 bits
-26 unique labels
-25 initial substructures
-Normative Pattern (1):
-Substructure: value = 2.02765, instances = 122
-  Graph(13v,12e):
-    v 1 "M"
-    v 2 "t"
-    v 3 "S"
-    v 4 "D"
-    v 5 "u"
-    v 6 "I"
-    v 7 "8"
-    v 8 "L"
-    v 9 "X"
-    v 10 "N"
-    v 11 "E"
-    v 12 "d"
-    v 13 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 2.02765, instances = 122
-  Graph(13v,12e):
-    v 1 "M"
-    v 2 "t"
-    v 3 "S"
-    v 4 "D"
-    v 5 "u"
-    v 6 "I"
-    v 7 "8"
-    v 8 "L"
-    v 9 "X"
-    v 10 "N"
-    v 11 "E"
-    v 12 "d"
-    v 13 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-
-(2) Substructure: value = 1.91677, instances = 91
-  Graph(16v,15e):
-    v 1 "START"
-    v 2 "R"
-    v 3 "j"
-    v 4 "M"
-    v 5 "t"
-    v 6 "S"
-    v 7 "D"
-    v 8 "u"
-    v 9 "I"
-    v 10 "8"
-    v 11 "L"
-    v 12 "X"
-    v 13 "N"
-    v 14 "E"
-    v 15 "d"
-    v 16 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-    d 12 13 "e"
-    d 13 14 "e"
-    d 14 15 "e"
-    d 15 16 "e"
-
-(3) Substructure: value = 1.86812, instances = 122
-  Graph(12v,11e):
-    v 1 "t"
-    v 2 "S"
-    v 3 "D"
-    v 4 "u"
-    v 5 "I"
-    v 6 "8"
-    v 7 "L"
-    v 8 "X"
-    v 9 "N"
-    v 10 "E"
-    v 11 "d"
-    v 12 "END"
-    d 1 2 "e"
-    d 2 3 "e"
-    d 3 4 "e"
-    d 4 5 "e"
-    d 5 6 "e"
-    d 6 7 "e"
-    d 7 8 "e"
-    d 8 9 "e"
-    d 9 10 "e"
-    d 10 11 "e"
-    d 11 12 "e"
-
-
-GBAD done (elapsed CPU time =    2.46 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 636
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1480
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 200 total positive graphs
-
-200 positive graphs: 1480 vertices, 1273 edges, 29821 bits
-25 unique labels
+200 positive graphs: 4374 vertices, 4174 edges, 98237 bits
+24 unique labels
 24 initial substructures
 Normative Pattern (1):
-Substructure: value = 1.431, instances = 36
-  Graph(12v,11e):
-    v 1 "P"
-    v 2 "S"
-    v 3 "D"
-    v 4 "a"
-    v 5 "M"
-    v 6 "9"
-    v 7 "t"
-    v 8 "START"
-    v 9 "u"
-    v 10 "END"
-    v 11 "j"
-    v 12 "R"
-    d 8 12 "e"
-    d 12 11 "e"
-    d 11 5 "e"
-    d 5 7 "e"
-    d 7 2 "e"
-    d 2 3 "e"
-    d 3 9 "e"
-    d 9 1 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 10 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 1.431, instances = 36
-  Graph(12v,11e):
-    v 1 "P"
-    v 2 "S"
-    v 3 "D"
-    v 4 "a"
-    v 5 "M"
-    v 6 "9"
-    v 7 "t"
-    v 8 "START"
-    v 9 "u"
-    v 10 "END"
-    v 11 "j"
-    v 12 "R"
-    d 8 12 "e"
-    d 12 11 "e"
-    d 11 5 "e"
-    d 5 7 "e"
-    d 7 2 "e"
-    d 2 3 "e"
-    d 3 9 "e"
-    d 9 1 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 10 "e"
-
-(2) Substructure: value = 1.4174, instances = 49
+Substructure: value = 1.5628, instances = 187
   Graph(9v,8e):
-    v 1 "P"
-    v 2 "S"
-    v 3 "D"
-    v 4 "a"
-    v 5 "M"
-    v 6 "9"
-    v 7 "t"
-    v 8 "u"
+    v 1 "y"
+    v 2 "n"
+    v 3 "P"
+    v 4 "g"
+    v 5 "R"
+    v 6 "l"
+    v 7 "a"
+    v 8 "p"
     v 9 "END"
-    d 5 7 "e"
-    d 7 2 "e"
-    d 2 3 "e"
+    d 6 7 "e"
+    d 1 7 "e"
+    d 7 4 "e"
+    d 4 3 "e"
     d 3 8 "e"
-    d 8 1 "e"
-    d 1 6 "e"
-    d 6 4 "e"
-    d 4 9 "e"
-
-(3) Substructure: value = 1.3964, instances = 54
-  Graph(8v,7e):
-    v 1 "S"
-    v 2 "D"
-    v 3 "M"
-    v 4 "t"
-    v 5 "START"
-    v 6 "u"
-    v 7 "j"
-    v 8 "R"
-    d 5 8 "e"
-    d 8 7 "e"
-    d 7 3 "e"
-    d 3 4 "e"
-    d 4 1 "e"
-    d 1 2 "e"
-    d 2 6 "e"
-
-
-GBAD done (elapsed CPU time =    1.47 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 438
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 1048
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 164 total positive graphs
-
-164 positive graphs: 1048 vertices, 877 edges, 20287 bits
-25 unique labels
-24 initial substructures
-Normative Pattern (1):
-Substructure: value = 1.568, instances = 29
-  Graph(12v,11e):
-    v 1 "N"
-    v 2 "E"
-    v 3 "L"
-    v 4 "M"
-    v 5 "S"
-    v 6 "D"
-    v 7 "d"
-    v 8 "I"
-    v 9 "t"
-    v 10 "X"
-    v 11 "END"
-    v 12 "u"
-    d 4 9 "e"
-    d 9 5 "e"
-    d 5 6 "e"
-    d 6 12 "e"
-    d 12 8 "e"
-    d 8 3 "e"
-    d 3 10 "e"
-    d 10 1 "e"
-    d 1 2 "e"
-    d 2 7 "e"
-    d 7 11 "e"
+    d 8 5 "e"
+    d 5 2 "e"
+    d 2 9 "e"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 1.568, instances = 29
-  Graph(12v,11e):
-    v 1 "N"
-    v 2 "E"
-    v 3 "L"
-    v 4 "M"
-    v 5 "S"
-    v 6 "D"
-    v 7 "d"
-    v 8 "I"
-    v 9 "t"
-    v 10 "X"
-    v 11 "END"
-    v 12 "u"
-    d 4 9 "e"
-    d 9 5 "e"
-    d 5 6 "e"
-    d 6 12 "e"
-    d 12 8 "e"
-    d 8 3 "e"
-    d 3 10 "e"
-    d 10 1 "e"
-    d 1 2 "e"
-    d 2 7 "e"
-    d 7 11 "e"
+(1) Substructure: value = 1.5628, instances = 187
+  Graph(9v,8e):
+    v 1 "y"
+    v 2 "n"
+    v 3 "P"
+    v 4 "g"
+    v 5 "R"
+    v 6 "l"
+    v 7 "a"
+    v 8 "p"
+    v 9 "END"
+    d 6 7 "e"
+    d 1 7 "e"
+    d 7 4 "e"
+    d 4 3 "e"
+    d 3 8 "e"
+    d 8 5 "e"
+    d 5 2 "e"
+    d 2 9 "e"
 
-(2) Substructure: value = 1.49637, instances = 29
-  Graph(11v,10e):
-    v 1 "N"
-    v 2 "E"
-    v 3 "L"
-    v 4 "S"
-    v 5 "D"
+(2) Substructure: value = 1.5433, instances = 73
+  Graph(21v,20e):
+    v 1 "G"
+    v 2 "q"
+    v 3 "9"
+    v 4 "8"
+    v 5 "6"
     v 6 "d"
-    v 7 "I"
-    v 8 "t"
-    v 9 "X"
-    v 10 "END"
-    v 11 "u"
-    d 8 4 "e"
-    d 4 5 "e"
-    d 5 11 "e"
+    v 7 "x"
+    v 8 "V"
+    v 9 "H"
+    v 10 "e"
+    v 11 "1"
+    v 12 "y"
+    v 13 "n"
+    v 14 "P"
+    v 15 "Z"
+    v 16 "g"
+    v 17 "R"
+    v 18 "l"
+    v 19 "a"
+    v 20 "p"
+    v 21 "END"
+    d 10 3 "e"
+    d 2 3 "e"
+    d 3 6 "e"
+    d 6 11 "e"
     d 11 7 "e"
-    d 7 3 "e"
-    d 3 9 "e"
-    d 9 1 "e"
-    d 1 2 "e"
-    d 2 6 "e"
-    d 6 10 "e"
+    d 7 1 "e"
+    d 1 15 "e"
+    d 15 8 "e"
+    d 8 9 "e"
+    d 9 5 "e"
+    d 5 4 "e"
+    d 4 18 "e"
+    d 18 19 "e"
+    d 12 19 "e"
+    d 19 16 "e"
+    d 16 14 "e"
+    d 14 20 "e"
+    d 20 17 "e"
+    d 17 13 "e"
+    d 13 21 "e"
 
-(3) Substructure: value = 1.43082, instances = 29
-  Graph(10v,9e):
-    v 1 "N"
-    v 2 "E"
-    v 3 "L"
-    v 4 "S"
-    v 5 "D"
-    v 6 "d"
-    v 7 "I"
-    v 8 "X"
-    v 9 "END"
-    v 10 "u"
-    d 4 5 "e"
+(3) Substructure: value = 1.49863, instances = 73
+  Graph(20v,19e):
+    v 1 "G"
+    v 2 "9"
+    v 3 "8"
+    v 4 "6"
+    v 5 "d"
+    v 6 "x"
+    v 7 "V"
+    v 8 "H"
+    v 9 "e"
+    v 10 "1"
+    v 11 "y"
+    v 12 "n"
+    v 13 "P"
+    v 14 "Z"
+    v 15 "g"
+    v 16 "R"
+    v 17 "l"
+    v 18 "a"
+    v 19 "p"
+    v 20 "END"
+    d 9 2 "e"
+    d 2 5 "e"
     d 5 10 "e"
-    d 10 7 "e"
-    d 7 3 "e"
-    d 3 8 "e"
-    d 8 1 "e"
-    d 1 2 "e"
-    d 2 6 "e"
-    d 6 9 "e"
-
-
-GBAD done (elapsed CPU time =    0.12 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 263
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 700
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 164 total positive graphs
-
-164 positive graphs: 700 vertices, 527 edges, 11430 bits
-19 unique labels
-18 initial substructures
-Normative Pattern (1):
-Substructure: value = 1.63161, instances = 109
-  Graph(3v,2e):
-    v 1 "j"
-    v 2 "R"
-    v 3 "START"
-    d 2 1 "e"
-    d 3 2 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 1.63161, instances = 109
-  Graph(3v,2e):
-    v 1 "j"
-    v 2 "R"
-    v 3 "START"
-    d 2 1 "e"
-    d 3 2 "e"
-
-(2) Substructure: value = 1.40483, instances = 55
-  Graph(4v,3e):
-    v 1 "z"
-    v 2 "START"
-    v 3 "R"
-    v 4 "m"
-    d 3 4 "e"
-    d 4 1 "e"
-    d 2 3 "e"
-
-(3) Substructure: value = 1.38246, instances = 164
-  Graph(2v,1e):
-    v 1 "START"
-    v 2 "R"
-    d 1 2 "e"
-
-
-GBAD done (elapsed CPU time =    0.05 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 154
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 373
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 61 total positive graphs
-
-61 positive graphs: 373 vertices, 309 edges, 6175 bits
-18 unique labels
-17 initial substructures
-Normative Pattern (1):
-Substructure: value = 2.03399, instances = 55
-  Graph(4v,3e):
-    v 1 "z"
-    v 2 "m"
-    v 3 "START"
-    v 4 "R"
-    d 4 2 "e"
-    d 2 1 "e"
-    d 3 4 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 2.03399, instances = 55
-  Graph(4v,3e):
-    v 1 "z"
-    v 2 "m"
-    v 3 "START"
-    v 4 "R"
-    d 4 2 "e"
-    d 2 1 "e"
-    d 3 4 "e"
-
-(2) Substructure: value = 1.86205, instances = 13
-  Graph(13v,12e):
-    v 1 "S"
-    v 2 "P"
-    v 3 "R"
-    v 4 "z"
-    v 5 "D"
-    v 6 "t"
-    v 7 "M"
-    v 8 "9"
-    v 9 "m"
-    v 10 "START"
-    v 11 "a"
-    v 12 "u"
-    v 13 "END"
-    d 10 3 "e"
-    d 3 9 "e"
-    d 9 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
+    d 10 6 "e"
     d 6 1 "e"
-    d 1 5 "e"
-    d 5 12 "e"
-    d 12 2 "e"
-    d 2 8 "e"
-    d 8 11 "e"
-    d 11 13 "e"
-
-(3) Substructure: value = 1.71586, instances = 13
-  Graph(12v,11e):
-    v 1 "S"
-    v 2 "P"
-    v 3 "R"
-    v 4 "z"
-    v 5 "D"
-    v 6 "t"
-    v 7 "M"
-    v 8 "9"
-    v 9 "m"
-    v 10 "START"
-    v 11 "a"
-    v 12 "u"
-    d 10 3 "e"
-    d 3 9 "e"
-    d 9 4 "e"
-    d 4 7 "e"
-    d 7 6 "e"
-    d 6 1 "e"
-    d 1 5 "e"
-    d 5 12 "e"
-    d 12 2 "e"
-    d 2 8 "e"
-    d 8 11 "e"
+    d 1 14 "e"
+    d 14 7 "e"
+    d 7 8 "e"
+    d 8 4 "e"
+    d 4 3 "e"
+    d 3 17 "e"
+    d 17 18 "e"
+    d 11 18 "e"
+    d 18 15 "e"
+    d 15 13 "e"
+    d 13 19 "e"
+    d 19 16 "e"
+    d 16 12 "e"
+    d 12 20 "e"
 
 
-GBAD done (elapsed CPU time =    0.03 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 65
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 153
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 22 total positive graphs
-
-22 positive graphs: 153 vertices, 131 edges, 2324 bits
-14 unique labels
-13 initial substructures
-Normative Pattern (1):
-Substructure: value = 3.61815, instances = 13
-  Graph(9v,8e):
-    v 1 "a"
-    v 2 "END"
-    v 3 "M"
-    v 4 "S"
-    v 5 "u"
-    v 6 "9"
-    v 7 "D"
-    v 8 "P"
-    v 9 "t"
-    d 5 8 "e"
-    d 4 7 "e"
-    d 9 4 "e"
-    d 3 9 "e"
-    d 7 5 "e"
-    d 8 6 "e"
-    d 1 2 "e"
-    d 6 1 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 3.61815, instances = 13
-  Graph(9v,8e):
-    v 1 "a"
-    v 2 "END"
-    v 3 "M"
-    v 4 "S"
-    v 5 "u"
-    v 6 "9"
-    v 7 "D"
-    v 8 "P"
-    v 9 "t"
-    d 5 8 "e"
-    d 4 7 "e"
-    d 9 4 "e"
-    d 3 9 "e"
-    d 7 5 "e"
-    d 8 6 "e"
-    d 1 2 "e"
-    d 6 1 "e"
-
-(2) Substructure: value = 2.63601, instances = 13
-  Graph(8v,7e):
-    v 1 "a"
-    v 2 "END"
-    v 3 "S"
-    v 4 "u"
-    v 5 "9"
-    v 6 "D"
-    v 7 "P"
-    v 8 "t"
-    d 4 7 "e"
-    d 3 6 "e"
-    d 8 3 "e"
-    d 6 4 "e"
-    d 7 5 "e"
-    d 1 2 "e"
-    d 5 1 "e"
-
-(3) Substructure: value = 2.63601, instances = 13
-  Graph(8v,7e):
-    v 1 "a"
-    v 2 "M"
-    v 3 "S"
-    v 4 "u"
-    v 5 "9"
-    v 6 "D"
-    v 7 "P"
-    v 8 "t"
-    d 4 7 "e"
-    d 3 6 "e"
-    d 8 3 "e"
-    d 2 8 "e"
-    d 6 4 "e"
-    d 7 5 "e"
-    d 5 1 "e"
-
-
-GBAD done (elapsed CPU time =    0.01 seconds).
-GBAD 3.2
-
-Parameters:
-  Input file..................... ../SyntheticData/compressed.g
-  Predefined substructure file... none
-  Output file.................... none
-  Dot file....................... none
-  Beam width..................... 4
-  Compress....................... false
-  Evaluation method.............. MDL
-  Anomaly Detection method....... Maximum Partial
-  Maximum Partial Sub threshold.. 0.100000
-  Max Anomalous Score............ MAX
-  Normative Pattern.............. 1
-  'e' edges directed............. true
-  Iterations..................... 1
-  Limit.......................... 13
-  Minimum size of substructures.. 1
-  Maximum size of substructures.. 36
-  Number of best substructures... 3
-  Output level................... 2
-  Allow overlapping instances.... false
-  Prune.......................... false
-  Optimized...................... true
-  Threshold...................... 0.000000
-  Value-based queue.............. false
-
-Read 9 total positive graphs
-
-9 positive graphs: 36 vertices, 27 edges, 355 bits
-5 unique labels
-4 initial substructures
-Normative Pattern (1):
-Substructure: value = 6.0496, instances = 9
-  Graph(4v,3e):
-    v 1 "n"
-    v 2 "2"
-    v 3 "v"
-    v 4 "Y"
-    d 1 2 "e"
-    d 3 1 "e"
-    d 2 4 "e"
-
-Anomalous Instances:  NONE.
-
-Best 3 substructures:
-
-(1) Substructure: value = 6.0496, instances = 9
-  Graph(4v,3e):
-    v 1 "n"
-    v 2 "2"
-    v 3 "v"
-    v 4 "Y"
-    d 1 2 "e"
-    d 3 1 "e"
-    d 2 4 "e"
-
-(2) Substructure: value = 2.01587, instances = 9
-  Graph(3v,2e):
-    v 1 "n"
-    v 2 "2"
-    v 3 "v"
-    d 1 2 "e"
-    d 3 1 "e"
-
-(3) Substructure: value = 2.01587, instances = 9
-  Graph(3v,2e):
-    v 1 "n"
-    v 2 "2"
-    v 3 "Y"
-    d 1 2 "e"
-    d 2 3 "e"
-
-
-GBAD done (elapsed CPU time =    0.00 seconds).
+GBAD done (elapsed CPU time =    0.99 seconds).

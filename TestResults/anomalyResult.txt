@@ -1,4 +1,4 @@
-Statistics for log parsed from ../SyntheticData/testTraces.log, anomalies detected
+Statistics for log parsed from testTraces.log, anomalies detected
 Num traces (N): 	200
 Accuracy:          	0.055  (5.5%)
 Error rate:         	0.945  (94.5%)

@@ -1,0 +1,99 @@
+GBAD 3.2
+
+Parameters:
+  Input file..................... ./compressed.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.100000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 39
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 91
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 13 total positive graphs
+
+13 positive graphs: 91 vertices, 78 edges, 1191 bits
+8 unique labels
+7 initial substructures
+Normative Pattern (1):
+Substructure: value = 10.1319, instances = 13
+  Graph(7v,6e):
+    v 1 "l"
+    v 2 "n"
+    v 3 "P"
+    v 4 "R"
+    v 5 "y"
+    v 6 "p"
+    v 7 "END"
+    d 2 7 "e"
+    d 4 2 "e"
+    d 3 6 "e"
+    d 6 4 "e"
+    d 1 3 "e"
+    d 5 3 "e"
+
+Anomalous Instances:  NONE.
+
+Best 3 substructures:
+
+(1) Substructure: value = 10.1319, instances = 13
+  Graph(7v,6e):
+    v 1 "l"
+    v 2 "n"
+    v 3 "P"
+    v 4 "R"
+    v 5 "y"
+    v 6 "p"
+    v 7 "END"
+    d 2 7 "e"
+    d 4 2 "e"
+    d 3 6 "e"
+    d 6 4 "e"
+    d 1 3 "e"
+    d 5 3 "e"
+
+(2) Substructure: value = 3.68142, instances = 13
+  Graph(6v,5e):
+    v 1 "l"
+    v 2 "n"
+    v 3 "P"
+    v 4 "R"
+    v 5 "y"
+    v 6 "p"
+    d 4 2 "e"
+    d 3 6 "e"
+    d 6 4 "e"
+    d 1 3 "e"
+    d 5 3 "e"
+
+(3) Substructure: value = 3.68142, instances = 13
+  Graph(6v,5e):
+    v 1 "l"
+    v 2 "n"
+    v 3 "P"
+    v 4 "R"
+    v 5 "p"
+    v 6 "END"
+    d 2 6 "e"
+    d 4 2 "e"
+    d 3 5 "e"
+    d 5 4 "e"
+    d 1 3 "e"
+
+
+GBAD done (elapsed CPU time =    0.01 seconds).

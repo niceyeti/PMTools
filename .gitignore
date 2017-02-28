@@ -11,3 +11,6 @@ SyntheticData/testModel.pnml
 SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
+RealData/*graphml
+RealData/*pnml
+RealData/*stackdump
