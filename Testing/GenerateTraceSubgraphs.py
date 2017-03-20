@@ -88,11 +88,12 @@ class Retracer(object):
 	@useSubdueFormat: use subdue format over gbad
 	"""
 	def _outputTraces(self, traceFile, model, gFile, useSubdueFormat):
-		traces = [line.strip() for line in traceFile.readlines()]
+		traces = [line.strip() for line in traceFile.readlines() if len(line.strip()) > 0]
 		ntraces = str(len(traces))
 		ctr = 0
 		for trace in traces:
-			print("\rEmitting trace: "+str(ctr)+" / "+ntraces+" traces                                      ",end="")
+			if ctr % 100 == 99:
+				print("\rEmitting trace: "+str(ctr)+" / "+ntraces+" traces                                      ",end="")
 			ctr += 1
 			tokens = trace.split(",")
 			#detect the anomaly status of this trace

@@ -1,0 +1,1 @@
+{'Create Fine': 'A', 'Insert Fine Notification': 'C', 'Notify Result Appeal to Offender': 'J', 'Send Fine': 'B', 'Appeal to Judge': 'K', 'Send Appeal to Prefecture': 'H', 'Add penalty': 'D', 'Receive Result Appeal from Prefecture': 'I', 'Send for Credit Collection': 'E', 'Payment': 'F', 'Insert Date Appeal to Prefecture': 'G'}

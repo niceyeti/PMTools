@@ -57,6 +57,7 @@ Returns: An xes.log object defined by the input trace list.
 def BuildXesLog(traces):
 	log = xes.Log()
 
+	i = 0
 	for trace in traces:
 		#the name of the trace is just the trace number
 		traceName = str(trace[0])
@@ -79,7 +80,9 @@ def BuildXesLog(traces):
 			t.add_event(e)
 		#add the trace
 		log.add_trace(t)
-
+		#print("here: "+str(i)+" of "+str(len(traces)))
+		i += 1
+		
 	#add the classifiers
 	log.classifiers = [
 		#xes.Classifier(name="org:resource",keys="org:resource"),
@@ -115,7 +118,9 @@ as ordered within the scope of some trace.
 def ToXes(ipath,opath):
 	print("Building xes log from synthetic data file "+ipath+". Xes will be written to "+opath)
 	traces = BuildTraces(ipath)
+	print("Read "+str(len(traces))+" traces from "+ipath)
 	log = BuildXesLog(traces)
+	print("Log built, writing xes to "+opath)
 	WriteLog(log,opath)
 	print("Complete.")
 
