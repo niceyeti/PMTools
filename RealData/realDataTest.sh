@@ -1,4 +1,4 @@
-# Script for executing the system on a real world xes dataset. One will need
+# Script for executing the system on a real world xes dataset. One will typically need
 # to convert some xes data to a .log file, then convert that back to simplified xes, and
 # provide these as input to this script. Use ConversionScripts/xes2log.py for initial transformation,
 # then 
@@ -67,7 +67,7 @@ for var in "$@"; do
 	if [[ $var == "--logPath="* ]]; then
 		logPath=$(echo $var | cut -f2 -d=)
 		echo "Running inductive miner on log data at $logPath"
-	fi	
+	fi
 done
 
 ###############################################################################

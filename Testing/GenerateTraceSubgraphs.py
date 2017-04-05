@@ -47,11 +47,10 @@ class Retracer(object):
 	def GenerateTraces(self, graphPath, tracePath, outputPath, useSubdueFormat):
 		print("Retracer subgraph-generator replaying traces from "+tracePath+" on mined model "+modelGraphmlPath+". Output will be saved to "+outputPath)
 
-		#read the mined process model
-		model = igraph.Graph.Read(graphPath)
+		self._readModel(graphPath)
 		traceFile = open(tracePath,"r")
 		gFile = open(outputPath,"w+")
-		modelInfo = model["name"]
+		modelInfo = self._model["name"]
 
 		#write header info, for convenience
 		header = "Trace replay of "+tracePath+" on model mined from "+graphPath+" for model "+modelInfo+"\n"
@@ -62,32 +61,58 @@ class Retracer(object):
 		gFile.write(header)
 
 		#prepare and write all of the traces to the target format
-		self._outputTraces(traceFile, model, gFile, useSubdueFormat)
-
+		self._outputTraces(traceFile, gFile, useSubdueFormat)
 		traceFile.close()
 		gFile.close()
-			
+
+	"""
+	Reads in a graph from graphml into an igraph graph object, and also caches the vertex and edge mappings in the object
+	for faster lookups compared with iterating the igraph vertex/edge linear sequences, which can be incredibly slow for frequent
+	graph traversals.
+	"""
+	def _readModel(self, gpath):
+	#read the mined process model
+		print("Reading graph from "+gpath)
+		self._model = igraph.Graph.Read(gpath)
+
+		#edgeMap maps symbolic (activity1, activity2) name string tuples directly to igraph edges
+		self._edgeMap = {}
+		#revMap maps igraph edges directly back to the (activity1, actvitiy2) named tuples keys of edgeMap
+		self._edgeRevMap = {}
+		for edge in self._model.es:
+			key = (self._model.vs[edge.source]["name"], self._model.vs[edge.target]["name"])
+			self._edgeMap[key] = edge
+			self._edgeRevMap[edge] = key        
+
 	"""
 	Utility for looking up the edge given by two activitiy labels, a and b.
 
 	Returns: edge with edge.sorce = a and edge.target = b. None if not found.
 	"""
-	def _getEdge(self,a,b,graph):
+	def _getEdge(self,srcName,dstName):
+		#look up the edge via the (srcName, dstName) tuple uniquely identifying an edge
+		eId = (srcName,dstName)
+		if (srcName,dstName) in self._edgeMap.keys():
+			return self._edgeMap[eId]
+		else:
+		#print("ERROR no edge found for "+str(eId))
+			return None
+	"""
 		e = None
 		for edge in graph.es:
 			if graph.vs[edge.source]["name"] == a and graph.vs[edge.target]["name"] == b:
 				e = edge
 		return e
+        """
 
 	"""
 	Outputs the traces in SUBDUE format, just like the 'groups.g' example found in the graphs/ folder of subdue.
 	
 	@traceFile: a .log file
-	@model: an igraph mined graphical model of the underlying process
 	@gFile: the .g file to which traces will be written (as graphs)
 	@useSubdueFormat: use subdue format over gbad
 	"""
-	def _outputTraces(self, traceFile, model, gFile, useSubdueFormat):
+	def _outputTraces(self, traceFile, gFile, useSubdueFormat):
 		traces = [line.strip() for line in traceFile.readlines() if len(line.strip()) > 0]
 		ntraces = str(len(traces))
 		ctr = 0
@@ -103,11 +128,11 @@ class Retracer(object):
 
 			#"replay" the sequence on the mined model; bear in mind some model-miners may generate incomplete or inaccurate models,
 			#such that every sequence may not be a valid walk on the graph!
-			gTrace = self._replaySequence(sequence,model) #returns a list of igraph edges defining this walk
+			gTrace = self._replaySequence(sequence) #returns a list of igraph edges defining this walk
 			if useSubdueFormat:
 				print("SUBDUE FORMAT TODO. EXITING")
 				exit()
-				gRecord = self._buildSubdueRecord(isAnomalous, traceNo, gTrace, model)
+				gRecord = self._buildSubdueRecord(isAnomalous, traceNo, gTrace)
 			else:
 				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
@@ -119,16 +144,17 @@ class Retracer(object):
 	@edge: an igraph edge
 	@graph: the graph from which this edge came
 	"""
-	def _edgeToActivityTuple(self, edge, graph):
-		return (graph.vs[edge.source]["name"], graph.vs[edge.target]["name"])
+	def _edgeToActivityTuple(self, edge):
+		#return (graph.vs[edge.source]["name"], graph.vs[edge.target]["name"])
+		return self._edgeRevMap[edge]
 		
 	"""
-	Given a partially-ordered sequence and a graph (process model) on which to replay the sequence, we replay them to derived
+	Given a partially-ordered sequence and a graph (process model) on which to replay the sequence, we replay them to derive
 	the ground-truth edge transitions (the real ordering) according the given process model. Returns the walk represented by @sequence
 	according to the graph.
 
 	NOTE: The graph (mined process model) may be incomplete or inaccurate, depending on the mining algorithm that generated it. Hence
-	the sequence may not be a valid walk! I detect and warn about these case because it isn't yet clear how to handle them. For now I will
+	the sequence may not be a valid walk! I detect and warn about these case because it isn't yet clear how to handle them. For now,
 	search across the vertices for the dest vertex of a broken walk; if not found, advance to the next suffix and repeat the search. Continue 
 	until we find a valid re-entry point, or the sequence is exhausted. If the symbol is not an activity in the graph activities, consider this an insertion-anomaly,
 	and output an edge to it, and continue.
@@ -146,16 +172,16 @@ class Retracer(object):
 	@sequence: a sequence of characters representing single activities, partially-ordered
 	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
 	"""
-	def _replaySequence(self, sequence, graph):
-		activitySet = set([v["name"] for v in graph.vs])
+	def _replaySequence(self, sequence):
+		activitySet = set([v["name"] for v in self._model.vs])
 		#init the edge sequence with the edge from START to sequence[0] the first activity
 		edgeSequence = []
-		initialEdge = self._getEdge("START", sequence[0], graph)
+		initialEdge = self._getEdge("START", sequence[0])
 		if initialEdge == None:
 			print("First node="+str(graph.vs[0]["name"]))
 			print("ERROR edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 		else:
-			e = self._edgeToActivityTuple(initialEdge, graph)
+			e = self._edgeToActivityTuple(initialEdge)
 			edgeSequence.append(e)
 
 		#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
@@ -174,11 +200,12 @@ class Retracer(object):
 				j = i + 1
 				edge = None
 				while j < len(sequence) and edge == None:
-					edge = self._getEdge(sequence[i], sequence[j], graph)
+					edge = self._getEdge(sequence[i], sequence[j])
+					#edge = self._getEdge(sequence[i], sequence[j], graph)
 					j += 1
 
 				if edge != None:
-					e = self._edgeToActivityTuple(edge, graph)
+					e = self._edgeToActivityTuple(edge)
 					edgeSequence.append(e)
 				else:
 					#this case occurs when, for instance, an activity in the activity-set is anomalously repeated in some out-of-order way, inconsistent with the mined-model
@@ -193,13 +220,13 @@ class Retracer(object):
 			i += 1
 
 		#add the last transition from last activity to the END node
-		finalEdge = self._getEdge(sequence[len(sequence)-1], "END", graph)
+		finalEdge = self._getEdge(sequence[len(sequence)-1], "END")
 		if finalEdge == None:
 			print("WARNING no final edge found from activity "+sequence[len(sequence)-1]+"->END node for sequence >"+sequence+"<.")
 			print("Appending arbitrary link.")
 			edgeSequence.append((sequence[len(sequence)-1],"END"))
 		else:
-			e = self._edgeToActivityTuple(finalEdge, graph)
+			e = self._edgeToActivityTuple(finalEdge)
 			edgeSequence.append(e)
 
 		return edgeSequence
@@ -207,7 +234,7 @@ class Retracer(object):
 		"""
 		OBSOLETE
 		"""
-	def _buildSubdueRecord(self, isAnomalous, traceNo, gTrace, graph):
+	def _buildSubdueRecord(self, isAnomalous, traceNo, gTrace):
 		vertexCounter = 1
 		record = ""
 		if isAnomalous:
@@ -217,11 +244,11 @@ class Retracer(object):
 
 		vertices = {} #maps vertexName->vertexId, where vertexId is newly assigned by the vertexCounter to fit the gbad/subdue scheme
 		for edge in gTrace:
-			srcName = graph.vs[edge.source]["name"]
+			srcName = self._model.vs[edge.source]["name"]
 			if srcName not in vertices:
 				vertices[srcName] = vertexCounter
 				vertexCounter += 1
-			tgtName = graph.vs[edge.target]["name"]
+			tgtName = self._model.vs[edge.target]["name"]
 			if tgtName not in vertices:
 				vertices[tgtName] = vertexCounter
 				vertexCounter += 1
@@ -234,8 +261,8 @@ class Retracer(object):
 
 		#build the edge declarations
 		for edge in gTrace:
-			srcName = graph.vs[edge.source]["name"]
-			tgtName = graph.vs[edge.target]["name"]
+			srcName = self._model.vs[edge.source]["name"]
+			tgtName = self._model.vs[edge.target]["name"]
 			record += ("d " + str(vertices[srcName]) + " " + str(vertices[tgtName]) + "\n")
 			
 		return record

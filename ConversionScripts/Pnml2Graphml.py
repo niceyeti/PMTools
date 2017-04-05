@@ -48,8 +48,7 @@ def _resolveEdges(arcs, vertexDict, filterString):
 	return arcs
 	
 """
-Utility for converting pnml format file into a graphml structure, for easy transmission and storage.
-
+Utility for converting pnml format file into a graphml structure for easier transmission and storage.
 
 @pnmlPath: Path to a pnml file
 @opath: Path to the output location for the graphml representation of the pnml
@@ -192,7 +191,7 @@ def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
 	activities = []
 	
 	#recursion depth check: probably cycling
-	if d > 20:
+	if d > 40:
 		print("WARNING Recursive depth-bound of 20 struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
 		return []
 	
