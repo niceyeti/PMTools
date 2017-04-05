@@ -1,2 +1,32 @@
 GBAD 3.2
 
+Parameters:
+  Input file..................... ./test.g
+  Predefined substructure file... none
+  Output file.................... none
+  Dot file....................... none
+  Beam width..................... 4
+  Compress....................... false
+  Evaluation method.............. MDL
+  Anomaly Detection method....... Information Theoretic
+  Information Theoretic threshold 0.100000
+  Max Anomalous Score............ MAX
+  Normative Pattern.............. 1
+  'e' edges directed............. true
+  Iterations..................... 1
+  Limit.......................... 137643
+  Minimum size of substructures.. 1
+  Maximum size of substructures.. 133180
+  Number of best substructures... 3
+  Output level................... 2
+  Allow overlapping instances.... false
+  Prune.......................... false
+  Optimized...................... true
+  Threshold...................... 0.000000
+  Value-based queue.............. false
+
+Read 13087 total positive graphs
+
+13087 positive graphs: 133180 vertices, 275287 edges, 6706717 bits
+27 unique labels
+26 initial substructures

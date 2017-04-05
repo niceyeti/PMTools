@@ -120,7 +120,8 @@ gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need t
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
-$gbadMdlPath -mdl $gbadThreshold $subdueLogPath -limit 20 > $mdlResult
+#$gbadMdlPath -mdl $gbadThreshold $subdueLogPath -limit 20 > $mdlResult
+$gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
 
 cat /dev/null > "dendrogram.txt"
 #run recursive-compression gbad, building a dendrogram of the subgraphs of the graph
@@ -134,7 +135,8 @@ if [ $recursiveIterations -gt 0 ]; then
 		echo Compression iteration $i
 		echo Re-running gbad mdl with threshold $gbadThreshold
 		#try: -limit k, where k is less than the default, the |edges| of the input graph divided by 2
-		$gbadMdlPath -mdl $gbadThreshold -limit 20 $compressedLog > lastMdlResult.txt
+		#$gbadMdlPath -mdl $gbadThreshold -limit 20 $compressedLog > lastMdlResult.txt
+		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
 		cat lastMdlResult.txt >> $mdlResult
 
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
