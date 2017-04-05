@@ -1,0 +1,5 @@
+
+git filter-branch --tree-filter "rm -rf RealData/Hospital_log.xes" HEAD
+git filter-branch --tree-filter "rm -rf RealData/Road_Traffic_Fine_Management_Process.xes" HEAD
+
+git gc --prune=now --aggressive
