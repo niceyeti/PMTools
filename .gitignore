@@ -11,9 +11,12 @@ SyntheticData/testModel.pnml
 SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
+
 RealData/*graphml
 RealData/*pnml
 RealData/*stackdump
-
+RealData/*.log
 RealData/Road_Traffic_Fine_Management_Process.xes
 RealData/Hospital_log.xes
+RealData/BPI_2012_financial_log_ALIASED_ACTIVITIES.xes
+RealData/BPI_2012_financial_log.xes
