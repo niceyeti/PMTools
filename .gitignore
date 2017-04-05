@@ -14,3 +14,6 @@ Testing/SUB*
 RealData/*graphml
 RealData/*pnml
 RealData/*stackdump
+
+RealData/Road_Traffic_Fine_Management_Process.xes
+RealData/Hospital_log.xes
