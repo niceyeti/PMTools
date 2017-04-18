@@ -117,12 +117,14 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
+limit="50"
+
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
-$gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
+$gbadMdlPath -limit $limit -mdl $gbadThreshold $subdueLogPath > $mdlResult
 echo Running gbad-mps from $gbadMdlPath
-$gbadMdlPath -mps $gbadThreshold $subdueLogPath > $mpsResult
+$gbadMdlPath -limit $limit -mps $gbadThreshold $subdueLogPath > $mpsResult
 #echo Running gbad-prob from $gbadMdlPath
 #$gbadMdlPath -prob 2 $subdueLogPath > $probResult
 
@@ -141,10 +143,10 @@ if [ $recursiveIterations -gt 0 ]; then
 		echo Re-running gbad with threshold $gbadThreshold
 		#echo Running gbad-mdl from $gbadMdlPath
 		#$gbadMdlPath -mdl $gbadThreshold $compressedLog
-		$gbadMdlPath -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
+		$gbadMdlPath -limit $limit -mdl $gbadThreshold $compressedLog > lastMdlResult.txt
 		cat lastMdlResult.txt >> $mdlResult
 		echo Running gbad-mps from $gbadMdlPath
-		$gbadMdlPath -mps $gbadThreshold $compressedLog >> $mpsResult
+		$gbadMdlPath -limit $limit -mps $gbadThreshold $compressedLog >> $mpsResult
 		#echo Running gbad-prob from $gbadMdlPath
 		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
@@ -184,4 +186,8 @@ cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
+#python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18
+
+
+

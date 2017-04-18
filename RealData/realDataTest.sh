@@ -121,7 +121,7 @@ gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need t
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
 #$gbadMdlPath -mdl $gbadThreshold $subdueLogPath -limit 20 > $mdlResult
-$gbadMdlPath -mdl $gbadThreshold $subdueLogPath > $mdlResult
+$gbadMdlPath -mdl $gbadThreshold -limit 20 $subdueLogPath > $mdlResult
 
 cat /dev/null > "dendrogram.txt"
 #run recursive-compression gbad, building a dendrogram of the subgraphs of the graph
@@ -179,7 +179,3 @@ if [ $resultDestFolder != "NULL" ]; then
 	cp $anomalyFile "$resultDestFolder/anomalyResult.txt"
 	cp dendrogram.txt "$resultDestFolder/dendrogram.txt"
 fi
-
-
-
-

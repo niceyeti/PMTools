@@ -14,9 +14,9 @@ Parameters:
   Normative Pattern.............. 1
   'e' edges directed............. true
   Iterations..................... 1
-  Limit.......................... 39
+  Limit.......................... 50
   Minimum size of substructures.. 1
-  Maximum size of substructures.. 91
+  Maximum size of substructures.. 7
   Number of best substructures... 3
   Output level................... 2
   Allow overlapping instances.... false
@@ -25,75 +25,31 @@ Parameters:
   Threshold...................... 0.000000
   Value-based queue.............. false
 
-Read 13 total positive graphs
+Read 1 total positive graphs
 
-13 positive graphs: 91 vertices, 78 edges, 1191 bits
+1 positive graphs: 7 vertices, 6 edges, 73 bits
 8 unique labels
 7 initial substructures
 Normative Pattern (1):
-Substructure: value = 10.1319, instances = 13
-  Graph(7v,6e):
-    v 1 "n"
-    v 2 "P"
-    v 3 "p"
-    v 4 "END"
-    v 5 "l"
-    v 6 "y"
-    v 7 "R"
-    d 7 1 "e"
-    d 5 2 "e"
-    d 1 4 "e"
-    d 3 7 "e"
-    d 2 3 "e"
-    d 6 2 "e"
+Substructure: value = 0.933098, instances = 1
+  Graph(1v,0e):
+    v 1 "4"
 
 Anomalous Instances:  NONE.
 
 Best 3 substructures:
 
-(1) Substructure: value = 10.1319, instances = 13
-  Graph(7v,6e):
-    v 1 "n"
-    v 2 "P"
-    v 3 "p"
-    v 4 "END"
-    v 5 "l"
-    v 6 "y"
-    v 7 "R"
-    d 7 1 "e"
-    d 5 2 "e"
-    d 1 4 "e"
-    d 3 7 "e"
-    d 2 3 "e"
-    d 6 2 "e"
+(1) Substructure: value = 0.933098, instances = 1
+  Graph(1v,0e):
+    v 1 "4"
 
-(2) Substructure: value = 3.68142, instances = 13
-  Graph(6v,5e):
-    v 1 "n"
-    v 2 "P"
-    v 3 "p"
-    v 4 "l"
-    v 5 "y"
-    v 6 "R"
-    d 6 1 "e"
-    d 4 2 "e"
-    d 3 6 "e"
-    d 2 3 "e"
-    d 5 2 "e"
+(2) Substructure: value = 0.933098, instances = 1
+  Graph(1v,0e):
+    v 1 "7"
 
-(3) Substructure: value = 3.68142, instances = 13
-  Graph(6v,5e):
-    v 1 "n"
-    v 2 "P"
-    v 3 "p"
-    v 4 "END"
-    v 5 "l"
-    v 6 "R"
-    d 6 1 "e"
-    d 5 2 "e"
-    d 1 4 "e"
-    d 3 6 "e"
-    d 2 3 "e"
+(3) Substructure: value = 0.933098, instances = 1
+  Graph(1v,0e):
+    v 1 "o"
 
 
-GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD done (elapsed CPU time =    0.00 seconds).
