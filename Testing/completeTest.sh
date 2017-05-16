@@ -117,7 +117,7 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
-limit="50"
+limit="50"   #The default value is computed based on the input graph as |Edges| / 2. 
 
 
 echo Running gbad-mdl from $gbadMdlPath
