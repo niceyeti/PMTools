@@ -9,6 +9,8 @@ algorithm; it also takes a path to the original trace file from which this model
 on the discovered model, where each walk is regarded as a miniature graph. These mini graphs are output to a .g
 file which can then be fed to SUBDUE.
 
+This script also outputs the markov model of the traces to markovModel.py in the provided output directory.
+
 The graph edges are assumed to be unlabelled, so the .g file edge listings will not contain that info. Note the difference
 between this and the example applications of GBAD/SUBDUE, which often use edge labellings.
 """
@@ -23,8 +25,9 @@ GBAD in their respective formats. Note that each trace is replayed and output as
 """
 class Retracer(object):
 	def __init__(self):
-		pass
-
+        #init the markov model, for which keys = string pairs, vals = transition count
+		self._markovModel = {}
+        
 	"""
 	Generates the traces, given the model. Note we are essentially re-generating the traces.
 
@@ -62,8 +65,17 @@ class Retracer(object):
 
 		#prepare and write all of the traces to the target format
 		self._outputTraces(traceFile, gFile, useSubdueFormat)
+        
+        markovFile = outputPath[:outputPath.rfind("/")]+"/markovModel.py"
+        self._writeMarkovModel(markovFile)
+        
 		traceFile.close()
 		gFile.close()
+
+    def _writeMarkovModel(self, outputPath):
+        f = open(outputPath,"w+")
+        f.write(str(self._markovModel))
+        f.close()
 
 	"""
 	Reads in a graph from graphml into an igraph graph object, and also caches the vertex and edge mappings in the object
@@ -136,8 +148,22 @@ class Retracer(object):
 			else:
 				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
+            
+            self._updateMarkovModel(gTrace)
+            
 		print("  Done.")
-			
+
+    """
+    Accepts a list of edges code as a list of directed edge pairs: [('a','b'), ('c','f'), ... ]
+    and update in-memory markov model.
+    """
+    def _updateMarkovModel(self, edgeSequence):
+        for edge in edgeSequence:
+            if edge in self._markovModel.keys():
+                self._markovModel[edge] += 1
+            else:
+                self._markovModel[edge] = 1
+        
 	"""
 	Converts an igraph edge into an activity tuple
 	

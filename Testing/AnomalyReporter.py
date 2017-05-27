@@ -18,13 +18,26 @@ import igraph
 import math
 
 class AnomalyReporter(object):
-	def __init__(self, gbadPath, logPath, resultPath, dendrogramPath=None, dendrogramThreshold=0.05):
+	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		self._resultPath = resultPath
 		self._dendrogramPath = dendrogramPath
 		self._dendrogramThreshold = dendrogramThreshold
-
+        self._markovModel = self._readMarkovModel(markovPath)
+        
+    """
+    Expected file format is a single line containing the tring version of the markov model,
+    a python dictionary of keys consisting of concatenated src-dst vertex names, and values
+    representing the edge transition counts.
+    """
+    def _readMarkovModel(self, markovPath):
+        f = open(markovPath, "r")
+        s = f.read().strip()
+        f.close()
+        
+        return eval(s)
+        
 	"""
 	Given a file containing gad output, parses the text for all of the anomalies detected. Each
 	anomaly must contain the corresponding trace number associated with a trace in the original
@@ -641,7 +654,7 @@ class AnomalyReporter(object):
 		self._outputResults(self._detectedAnomalyIds)
 		
 def usage():
-	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0]")
+	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0] -markovPath=[path to markov file]")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
 
 """
@@ -653,6 +666,7 @@ def main():
 		usage()
 		exit()
 
+    markovPath = ""
 	gbadPath = sys.argv[1].split("=")[1]
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
@@ -663,8 +677,16 @@ def main():
 	dendrogramThreshold = 0.05
 	if len(sys.argv) >= 6 and "--dendrogramThreshold" in sys.argv[5]:
 		dendrogramThreshold = float(sys.argv[5].split("=")[1])
-	
-	reporter = AnomalyReporter(gbadPath, logPath, resultPath, dendrogramPath, dendrogramThreshold)
+
+    for arg in sys.argv:
+        if "-markovPath=" in arg:
+            markovPath = arg.split("=")[1]
+    if markovPath == "":
+        usage()
+        exit()
+    
+            
+	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold)
 	reporter.CompileResults()
 
 if __name__ == "__main__":

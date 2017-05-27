@@ -90,7 +90,7 @@ Best 3 substructures:
     d 5 3 "e"
 
 
-GBAD done (elapsed CPU time =    0.28 seconds).
+GBAD done (elapsed CPU time =    0.27 seconds).
 GBAD 3.2
 
 Parameters:
@@ -126,211 +126,211 @@ Read 200 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.67379, instances = 113
   Graph(8v,7e):
-    v 1 "E"
-    v 2 "START"
-    v 3 "H"
-    v 4 "k"
-    v 5 "w"
-    v 6 "4"
-    v 7 "V"
+    v 1 "V"
+    v 2 "E"
+    v 3 "w"
+    v 4 "H"
+    v 5 "START"
+    v 6 "k"
+    v 7 "4"
     v 8 "n"
-    d 4 3 "e"
-    d 5 4 "e"
-    d 8 1 "e"
-    d 1 7 "e"
-    d 2 6 "e"
-    d 6 8 "e"
-    d 7 5 "e"
+    d 7 8 "e"
+    d 2 1 "e"
+    d 3 6 "e"
+    d 5 7 "e"
+    d 1 3 "e"
+    d 6 4 "e"
+    d 8 2 "e"
 
 Anomalous Instance(s):
 
  from example 6:
-    v 48 "E"
-    v 49 "START"
-    v 53 "k"
-    v 54 "w"
-    v 55 "4"
-    v 56 "y" <-- anomaly (original vertex: 9 , in original example 6)
-    v 57 "V"
-    v 60 "n"
-    d 54 53 "e"
-    d 60 48 "e"
-    d 48 57 "e"
-    d 49 55 "e"
-    d 55 60 "e"
-    d 53 56 "e"
-    d 57 54 "e"
+    v 48 "V"
+    v 49 "E"
+    v 50 "w"
+    v 53 "START"
+    v 54 "k"
+    v 58 "y" <-- anomaly (original vertex: 11 , in original example 6)
+    v 60 "4"
+    v 61 "n"
+    d 54 58 "e"
+    d 60 61 "e"
+    d 49 48 "e"
+    d 50 54 "e"
+    d 53 60 "e"
+    d 48 50 "e"
+    d 61 49 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 20:
-    v 206 "E"
-    v 207 "START"
-    v 211 "k"
-    v 212 "w"
-    v 213 "4"
-    v 214 "y" <-- anomaly (original vertex: 9 , in original example 20)
-    v 215 "V"
-    v 218 "n"
-    d 212 211 "e"
-    d 218 206 "e"
-    d 206 215 "e"
-    d 207 213 "e"
-    d 213 218 "e"
-    d 211 214 "e"
-    d 215 212 "e"
+    v 206 "V"
+    v 207 "E"
+    v 208 "w"
+    v 211 "START"
+    v 212 "k"
+    v 216 "y" <-- anomaly (original vertex: 11 , in original example 20)
+    v 218 "4"
+    v 219 "n"
+    d 212 216 "e"
+    d 218 219 "e"
+    d 207 206 "e"
+    d 208 212 "e"
+    d 211 218 "e"
+    d 206 208 "e"
+    d 219 207 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 61:
-    v 662 "y" <-- anomaly (original vertex: 4 , in original example 61)
-    v 665 "n"
-    v 668 "E"
-    v 669 "START"
-    v 671 "k"
-    v 672 "w"
-    v 673 "4"
-    v 675 "V"
-    d 672 671 "e"
-    d 665 668 "e"
-    d 668 675 "e"
-    d 669 673 "e"
-    d 673 665 "e"
-    d 671 662 "e"
-    d 675 672 "e"
+    v 659 "w"
+    v 662 "START"
+    v 666 "4"
+    v 668 "V"
+    v 669 "E"
+    v 672 "k"
+    v 674 "y" <-- anomaly (original vertex: 16 , in original example 61)
+    v 675 "n"
+    d 672 674 "e"
+    d 666 675 "e"
+    d 669 668 "e"
+    d 659 672 "e"
+    d 662 666 "e"
+    d 668 659 "e"
+    d 675 669 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 84:
-    v 954 "y" <-- anomaly (original vertex: 4 , in original example 84)
-    v 957 "n"
-    v 960 "E"
-    v 961 "START"
-    v 963 "k"
-    v 964 "w"
-    v 965 "4"
-    v 967 "V"
-    d 964 963 "e"
-    d 957 960 "e"
-    d 960 967 "e"
-    d 961 965 "e"
-    d 965 957 "e"
-    d 963 954 "e"
-    d 967 964 "e"
+    v 951 "w"
+    v 954 "START"
+    v 958 "4"
+    v 960 "V"
+    v 961 "E"
+    v 964 "k"
+    v 966 "y" <-- anomaly (original vertex: 16 , in original example 84)
+    v 967 "n"
+    d 964 966 "e"
+    d 958 967 "e"
+    d 961 960 "e"
+    d 951 964 "e"
+    d 954 958 "e"
+    d 960 951 "e"
+    d 967 961 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 114:
-    v 1239 "E"
-    v 1240 "START"
-    v 1244 "k"
-    v 1245 "w"
-    v 1246 "4"
-    v 1247 "y" <-- anomaly (original vertex: 9 , in original example 114)
-    v 1248 "V"
-    v 1251 "n"
-    d 1245 1244 "e"
-    d 1251 1239 "e"
-    d 1239 1248 "e"
-    d 1240 1246 "e"
-    d 1246 1251 "e"
-    d 1244 1247 "e"
-    d 1248 1245 "e"
+    v 1239 "V"
+    v 1240 "E"
+    v 1241 "w"
+    v 1244 "START"
+    v 1245 "k"
+    v 1249 "y" <-- anomaly (original vertex: 11 , in original example 114)
+    v 1251 "4"
+    v 1252 "n"
+    d 1245 1249 "e"
+    d 1251 1252 "e"
+    d 1240 1239 "e"
+    d 1241 1245 "e"
+    d 1244 1251 "e"
+    d 1239 1241 "e"
+    d 1252 1240 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 124:
-    v 1366 "E"
-    v 1367 "START"
-    v 1371 "k"
-    v 1372 "w"
-    v 1373 "4"
-    v 1374 "y" <-- anomaly (original vertex: 9 , in original example 124)
-    v 1375 "V"
-    v 1378 "n"
-    d 1372 1371 "e"
-    d 1378 1366 "e"
-    d 1366 1375 "e"
-    d 1367 1373 "e"
-    d 1373 1378 "e"
-    d 1371 1374 "e"
-    d 1375 1372 "e"
+    v 1366 "V"
+    v 1367 "E"
+    v 1368 "w"
+    v 1371 "START"
+    v 1372 "k"
+    v 1376 "y" <-- anomaly (original vertex: 11 , in original example 124)
+    v 1378 "4"
+    v 1379 "n"
+    d 1372 1376 "e"
+    d 1378 1379 "e"
+    d 1367 1366 "e"
+    d 1368 1372 "e"
+    d 1371 1378 "e"
+    d 1366 1368 "e"
+    d 1379 1367 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 158:
-    v 1712 "E"
-    v 1713 "START"
-    v 1717 "k"
-    v 1718 "w"
-    v 1719 "4"
-    v 1720 "y" <-- anomaly (original vertex: 9 , in original example 158)
-    v 1721 "V"
-    v 1724 "n"
-    d 1718 1717 "e"
-    d 1724 1712 "e"
-    d 1712 1721 "e"
-    d 1713 1719 "e"
-    d 1719 1724 "e"
-    d 1717 1720 "e"
-    d 1721 1718 "e"
+    v 1712 "V"
+    v 1713 "E"
+    v 1714 "w"
+    v 1717 "START"
+    v 1718 "k"
+    v 1722 "y" <-- anomaly (original vertex: 11 , in original example 158)
+    v 1724 "4"
+    v 1725 "n"
+    d 1718 1722 "e"
+    d 1724 1725 "e"
+    d 1713 1712 "e"
+    d 1714 1718 "e"
+    d 1717 1724 "e"
+    d 1712 1714 "e"
+    d 1725 1713 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 162:
-    v 1752 "y" <-- anomaly (original vertex: 4 , in original example 162)
-    v 1755 "n"
-    v 1758 "E"
-    v 1759 "START"
-    v 1761 "k"
-    v 1762 "w"
-    v 1763 "4"
-    v 1765 "V"
-    d 1762 1761 "e"
-    d 1755 1758 "e"
-    d 1758 1765 "e"
-    d 1759 1763 "e"
-    d 1763 1755 "e"
-    d 1761 1752 "e"
-    d 1765 1762 "e"
+    v 1749 "w"
+    v 1752 "START"
+    v 1756 "4"
+    v 1758 "V"
+    v 1759 "E"
+    v 1762 "k"
+    v 1764 "y" <-- anomaly (original vertex: 16 , in original example 162)
+    v 1765 "n"
+    d 1762 1764 "e"
+    d 1756 1765 "e"
+    d 1759 1758 "e"
+    d 1749 1762 "e"
+    d 1752 1756 "e"
+    d 1758 1749 "e"
+    d 1765 1759 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 166:
-    v 1792 "y" <-- anomaly (original vertex: 4 , in original example 166)
-    v 1795 "n"
-    v 1798 "E"
-    v 1799 "START"
-    v 1801 "k"
-    v 1802 "w"
-    v 1803 "4"
-    v 1805 "V"
-    d 1802 1801 "e"
-    d 1795 1798 "e"
-    d 1798 1805 "e"
-    d 1799 1803 "e"
-    d 1803 1795 "e"
-    d 1801 1792 "e"
-    d 1805 1802 "e"
+    v 1789 "w"
+    v 1792 "START"
+    v 1796 "4"
+    v 1798 "V"
+    v 1799 "E"
+    v 1802 "k"
+    v 1804 "y" <-- anomaly (original vertex: 16 , in original example 166)
+    v 1805 "n"
+    d 1802 1804 "e"
+    d 1796 1805 "e"
+    d 1799 1798 "e"
+    d 1789 1802 "e"
+    d 1792 1796 "e"
+    d 1798 1789 "e"
+    d 1805 1799 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
  from example 185:
-    v 1982 "E"
-    v 1983 "START"
-    v 1987 "k"
-    v 1988 "w"
-    v 1989 "4"
-    v 1990 "y" <-- anomaly (original vertex: 9 , in original example 185)
-    v 1991 "V"
-    v 1994 "n"
-    d 1988 1987 "e"
-    d 1994 1982 "e"
-    d 1982 1991 "e"
-    d 1983 1989 "e"
-    d 1989 1994 "e"
-    d 1987 1990 "e"
-    d 1991 1988 "e"
+    v 1982 "V"
+    v 1983 "E"
+    v 1984 "w"
+    v 1987 "START"
+    v 1988 "k"
+    v 1992 "y" <-- anomaly (original vertex: 11 , in original example 185)
+    v 1994 "4"
+    v 1995 "n"
+    d 1988 1992 "e"
+    d 1994 1995 "e"
+    d 1983 1982 "e"
+    d 1984 1988 "e"
+    d 1987 1994 "e"
+    d 1982 1984 "e"
+    d 1995 1983 "e"
     (information_theoretic anomalous value = 10.000000 )
 
 
@@ -338,62 +338,56 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.67379, instances = 113
   Graph(8v,7e):
-    v 1 "E"
-    v 2 "START"
-    v 3 "H"
-    v 4 "k"
-    v 5 "w"
-    v 6 "4"
-    v 7 "V"
+    v 1 "V"
+    v 2 "E"
+    v 3 "w"
+    v 4 "H"
+    v 5 "START"
+    v 6 "k"
+    v 7 "4"
     v 8 "n"
-    d 4 3 "e"
-    d 5 4 "e"
-    d 8 1 "e"
-    d 1 7 "e"
-    d 2 6 "e"
-    d 6 8 "e"
-    d 7 5 "e"
+    d 7 8 "e"
+    d 2 1 "e"
+    d 3 6 "e"
+    d 5 7 "e"
+    d 1 3 "e"
+    d 6 4 "e"
+    d 8 2 "e"
 
 (2) Substructure: value = 1.60027, instances = 123
   Graph(7v,6e):
-    v 1 "E"
-    v 2 "START"
-    v 3 "k"
-    v 4 "w"
-    v 5 "4"
-    v 6 "V"
-    v 7 "n"
-    d 4 3 "e"
-    d 7 1 "e"
-    d 1 6 "e"
-    d 2 5 "e"
-    d 5 7 "e"
-    d 6 4 "e"
-
-(3) Substructure: value = 1.48091, instances = 71
-  Graph(10v,9e):
-    v 1 "E"
-    v 2 "START"
-    v 3 "H"
-    v 4 "e"
+    v 1 "V"
+    v 2 "E"
+    v 3 "w"
+    v 4 "START"
     v 5 "k"
-    v 6 "w"
-    v 7 "4"
-    v 8 "V"
-    v 9 "d"
-    v 10 "n"
-    d 5 3 "e"
-    d 3 9 "e"
-    d 6 5 "e"
-    d 9 4 "e"
-    d 10 1 "e"
-    d 1 8 "e"
-    d 2 7 "e"
-    d 7 10 "e"
-    d 8 6 "e"
+    v 6 "4"
+    v 7 "n"
+    d 6 7 "e"
+    d 2 1 "e"
+    d 3 5 "e"
+    d 4 6 "e"
+    d 1 3 "e"
+    d 7 2 "e"
+
+(3) Substructure: value = 1.50827, instances = 113
+  Graph(7v,6e):
+    v 1 "V"
+    v 2 "E"
+    v 3 "w"
+    v 4 "H"
+    v 5 "k"
+    v 6 "4"
+    v 7 "n"
+    d 6 7 "e"
+    d 2 1 "e"
+    d 3 5 "e"
+    d 1 3 "e"
+    d 5 4 "e"
+    d 7 2 "e"
 
 
-GBAD done (elapsed CPU time =    0.22 seconds).
+GBAD done (elapsed CPU time =    0.21 seconds).
 GBAD 3.2
 
 Parameters:
@@ -430,14 +424,14 @@ Normative Pattern (1):
 Substructure: value = 1.85658, instances = 123
   Graph(5v,4e):
     v 1 "S"
-    v 2 "e"
+    v 2 "G"
     v 3 "l"
-    v 4 "d"
-    v 5 "G"
-    d 2 5 "e"
-    d 5 3 "e"
-    d 3 1 "e"
+    v 4 "e"
+    v 5 "d"
     d 4 2 "e"
+    d 3 1 "e"
+    d 2 3 "e"
+    d 5 4 "e"
 
 Anomalous Instances:  NONE.
 
@@ -446,37 +440,37 @@ Best 3 substructures:
 (1) Substructure: value = 1.85658, instances = 123
   Graph(5v,4e):
     v 1 "S"
-    v 2 "e"
+    v 2 "G"
     v 3 "l"
-    v 4 "d"
-    v 5 "G"
-    d 2 5 "e"
-    d 5 3 "e"
-    d 3 1 "e"
+    v 4 "e"
+    v 5 "d"
     d 4 2 "e"
+    d 3 1 "e"
+    d 2 3 "e"
+    d 5 4 "e"
 
 (2) Substructure: value = 1.51309, instances = 123
   Graph(4v,3e):
     v 1 "S"
-    v 2 "e"
+    v 2 "G"
     v 3 "l"
-    v 4 "G"
-    d 2 4 "e"
-    d 4 3 "e"
+    v 4 "e"
+    d 4 2 "e"
     d 3 1 "e"
+    d 2 3 "e"
 
 (3) Substructure: value = 1.50254, instances = 123
   Graph(4v,3e):
-    v 1 "e"
+    v 1 "G"
     v 2 "l"
-    v 3 "d"
-    v 4 "G"
-    d 1 4 "e"
-    d 4 2 "e"
+    v 3 "e"
+    v 4 "d"
     d 3 1 "e"
+    d 1 2 "e"
+    d 4 3 "e"
 
 
-GBAD done (elapsed CPU time =    0.09 seconds).
+GBAD done (elapsed CPU time =    0.11 seconds).
 GBAD 3.2
 
 Parameters:
@@ -512,15 +506,15 @@ Read 129 total positive graphs
 Normative Pattern (1):
 Substructure: value = 2.51392, instances = 77
   Graph(5v,4e):
-    v 1 "g"
+    v 1 "S"
     v 2 "START"
-    v 3 "S"
-    v 4 "T"
-    v 5 "l"
-    d 2 1 "e"
+    v 3 "T"
+    v 4 "l"
+    v 5 "g"
+    d 2 5 "e"
+    d 4 1 "e"
     d 5 3 "e"
-    d 4 5 "e"
-    d 1 4 "e"
+    d 3 4 "e"
 
 Anomalous Instances:  NONE.
 
@@ -528,35 +522,35 @@ Best 3 substructures:
 
 (1) Substructure: value = 2.51392, instances = 77
   Graph(5v,4e):
-    v 1 "g"
+    v 1 "S"
     v 2 "START"
-    v 3 "S"
-    v 4 "T"
-    v 5 "l"
-    d 2 1 "e"
+    v 3 "T"
+    v 4 "l"
+    v 5 "g"
+    d 2 5 "e"
+    d 4 1 "e"
     d 5 3 "e"
-    d 4 5 "e"
-    d 1 4 "e"
+    d 3 4 "e"
 
 (2) Substructure: value = 1.7793, instances = 77
   Graph(4v,3e):
-    v 1 "g"
-    v 2 "S"
-    v 3 "T"
-    v 4 "l"
+    v 1 "S"
+    v 2 "T"
+    v 3 "l"
+    v 4 "g"
+    d 3 1 "e"
     d 4 2 "e"
-    d 3 4 "e"
-    d 1 3 "e"
+    d 2 3 "e"
 
 (3) Substructure: value = 1.7793, instances = 77
   Graph(4v,3e):
-    v 1 "g"
-    v 2 "START"
-    v 3 "T"
-    v 4 "l"
-    d 2 1 "e"
-    d 3 4 "e"
-    d 1 3 "e"
+    v 1 "START"
+    v 2 "T"
+    v 3 "l"
+    v 4 "g"
+    d 1 4 "e"
+    d 4 2 "e"
+    d 2 3 "e"
 
 
 GBAD done (elapsed CPU time =    0.03 seconds).
@@ -595,10 +589,10 @@ Read 52 total positive graphs
 Normative Pattern (1):
 Substructure: value = 1.93699, instances = 46
   Graph(3v,2e):
-    v 1 "W"
-    v 2 "L"
-    v 3 "P"
-    d 3 1 "e"
+    v 1 "P"
+    v 2 "W"
+    v 3 "L"
+    d 2 3 "e"
     d 1 2 "e"
 
 Anomalous Instances:  NONE.
@@ -607,52 +601,52 @@ Best 3 substructures:
 
 (1) Substructure: value = 1.93699, instances = 46
   Graph(3v,2e):
-    v 1 "W"
-    v 2 "L"
-    v 3 "P"
-    d 3 1 "e"
+    v 1 "P"
+    v 2 "W"
+    v 3 "L"
+    d 2 3 "e"
     d 1 2 "e"
 
 (2) Substructure: value = 1.64696, instances = 10
   Graph(9v,8e):
-    v 1 "k"
-    v 2 "4"
-    v 3 "START"
-    v 4 "y"
+    v 1 "t"
+    v 2 "V"
+    v 3 "k"
+    v 4 "w"
     v 5 "n"
-    v 6 "E"
-    v 7 "t"
-    v 8 "w"
-    v 9 "V"
-    d 4 7 "e"
-    d 3 2 "e"
-    d 1 4 "e"
-    d 9 8 "e"
-    d 5 6 "e"
+    v 6 "4"
+    v 7 "START"
+    v 8 "y"
+    v 9 "E"
+    d 4 3 "e"
+    d 7 6 "e"
+    d 6 5 "e"
+    d 9 2 "e"
+    d 5 9 "e"
+    d 2 4 "e"
     d 8 1 "e"
-    d 6 9 "e"
-    d 2 5 "e"
+    d 3 8 "e"
 
 (3) Substructure: value = 1.50949, instances = 10
   Graph(8v,7e):
-    v 1 "k"
-    v 2 "4"
-    v 3 "START"
-    v 4 "y"
-    v 5 "n"
-    v 6 "E"
-    v 7 "w"
-    v 8 "V"
+    v 1 "V"
+    v 2 "k"
+    v 3 "w"
+    v 4 "n"
+    v 5 "4"
+    v 6 "START"
+    v 7 "y"
+    v 8 "E"
     d 3 2 "e"
-    d 1 4 "e"
-    d 8 7 "e"
-    d 5 6 "e"
-    d 7 1 "e"
-    d 6 8 "e"
-    d 2 5 "e"
+    d 6 5 "e"
+    d 5 4 "e"
+    d 8 1 "e"
+    d 4 8 "e"
+    d 1 3 "e"
+    d 2 7 "e"
 
 
-GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD done (elapsed CPU time =    0.02 seconds).
 GBAD 3.2
 
 Parameters:
@@ -688,23 +682,23 @@ Read 10 total positive graphs
 Normative Pattern (1):
 Substructure: value = 8.95247, instances = 10
   Graph(9v,8e):
-    v 1 "START"
-    v 2 "t"
-    v 3 "y"
-    v 4 "w"
-    v 5 "4"
-    v 6 "n"
-    v 7 "V"
+    v 1 "k"
+    v 2 "n"
+    v 3 "START"
+    v 4 "y"
+    v 5 "t"
+    v 6 "w"
+    v 7 "4"
     v 8 "E"
-    v 9 "k"
-    d 3 2 "e"
-    d 1 5 "e"
-    d 9 3 "e"
-    d 7 4 "e"
-    d 6 8 "e"
-    d 4 9 "e"
-    d 8 7 "e"
-    d 5 6 "e"
+    v 9 "V"
+    d 6 1 "e"
+    d 3 7 "e"
+    d 7 2 "e"
+    d 8 9 "e"
+    d 2 8 "e"
+    d 9 6 "e"
+    d 4 5 "e"
+    d 1 4 "e"
 
 Anomalous Instances:  NONE.
 
@@ -712,59 +706,59 @@ Best 3 substructures:
 
 (1) Substructure: value = 8.95247, instances = 10
   Graph(9v,8e):
-    v 1 "START"
-    v 2 "t"
-    v 3 "y"
-    v 4 "w"
-    v 5 "4"
-    v 6 "n"
-    v 7 "V"
+    v 1 "k"
+    v 2 "n"
+    v 3 "START"
+    v 4 "y"
+    v 5 "t"
+    v 6 "w"
+    v 7 "4"
     v 8 "E"
-    v 9 "k"
-    d 3 2 "e"
-    d 1 5 "e"
-    d 9 3 "e"
-    d 7 4 "e"
-    d 6 8 "e"
-    d 4 9 "e"
-    d 8 7 "e"
-    d 5 6 "e"
+    v 9 "V"
+    d 6 1 "e"
+    d 3 7 "e"
+    d 7 2 "e"
+    d 8 9 "e"
+    d 2 8 "e"
+    d 9 6 "e"
+    d 4 5 "e"
+    d 1 4 "e"
 
 (2) Substructure: value = 4.17526, instances = 10
   Graph(8v,7e):
-    v 1 "START"
-    v 2 "y"
-    v 3 "w"
-    v 4 "4"
-    v 5 "n"
-    v 6 "V"
+    v 1 "k"
+    v 2 "n"
+    v 3 "START"
+    v 4 "y"
+    v 5 "w"
+    v 6 "4"
     v 7 "E"
-    v 8 "k"
+    v 8 "V"
+    d 5 1 "e"
+    d 3 6 "e"
+    d 6 2 "e"
+    d 7 8 "e"
+    d 2 7 "e"
+    d 8 5 "e"
     d 1 4 "e"
-    d 8 2 "e"
-    d 6 3 "e"
-    d 5 7 "e"
-    d 3 8 "e"
-    d 7 6 "e"
-    d 4 5 "e"
 
 (3) Substructure: value = 4.17526, instances = 10
   Graph(8v,7e):
-    v 1 "t"
-    v 2 "y"
-    v 3 "w"
-    v 4 "4"
-    v 5 "n"
-    v 6 "V"
+    v 1 "k"
+    v 2 "n"
+    v 3 "y"
+    v 4 "t"
+    v 5 "w"
+    v 6 "4"
     v 7 "E"
-    v 8 "k"
-    d 2 1 "e"
-    d 8 2 "e"
-    d 6 3 "e"
-    d 5 7 "e"
-    d 3 8 "e"
-    d 7 6 "e"
-    d 4 5 "e"
+    v 8 "V"
+    d 5 1 "e"
+    d 6 2 "e"
+    d 7 8 "e"
+    d 2 7 "e"
+    d 8 5 "e"
+    d 3 4 "e"
+    d 1 3 "e"
 
 
-GBAD done (elapsed CPU time =    0.01 seconds).
+GBAD done (elapsed CPU time =    0.02 seconds).

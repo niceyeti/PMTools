@@ -15,6 +15,7 @@ logCompressor="./SubdueLogCompressor.py"
 pnmlPath="../SyntheticData/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
 minedGraphmlPath="../SyntheticData/minedModel.graphml"
+markovModelPath="../SyntheticData/minedModel/markovModel.py"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="../SyntheticData/test.g"
 compressedLog="../SyntheticData/compressed.g"
@@ -187,7 +188,7 @@ cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
 #python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath
 
 
 
