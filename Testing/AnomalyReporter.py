@@ -24,20 +24,21 @@ class AnomalyReporter(object):
 		self._resultPath = resultPath
 		self._dendrogramPath = dendrogramPath
 		self._dendrogramThreshold = dendrogramThreshold
-        self._markovModel = self._readMarkovModel(markovPath)
+		self._markovModel = self._readMarkovModel(markovPath)
         
-    """
-    Expected file format is a single line containing the tring version of the markov model,
-    a python dictionary of keys consisting of concatenated src-dst vertex names, and values
-    representing the edge transition counts.
-    """
-    def _readMarkovModel(self, markovPath):
-        f = open(markovPath, "r")
-        s = f.read().strip()
-        f.close()
-        
-        return eval(s)
-        
+	
+	"""
+	Expected file format is a single line containing the tring version of the markov model,
+	a python dictionary of keys consisting of concatenated src-dst vertex names, and values
+	representing the edge transition counts.
+	"""
+	def _readMarkovModel(self, markovPath):
+		f = open(markovPath, "r")
+		s = f.read().strip()
+		f.close()
+
+		return eval(s)
+	
 	"""
 	Given a file containing gad output, parses the text for all of the anomalies detected. Each
 	anomaly must contain the corresponding trace number associated with a trace in the original
@@ -666,26 +667,26 @@ def main():
 		usage()
 		exit()
 
-    markovPath = ""
+	markovPath = ""
 	gbadPath = sys.argv[1].split("=")[1]
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
 	dendrogramPath=None
 	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
-	
+
 	dendrogramThreshold = 0.05
-	if len(sys.argv) >= 6 and "--dendrogramThreshold" in sys.argv[5]:
+	if len(sys.argv) >= 6 and "--dendrogramThreshold=" in sys.argv[5]:
 		dendrogramThreshold = float(sys.argv[5].split("=")[1])
 
-    for arg in sys.argv:
-        if "-markovPath=" in arg:
-            markovPath = arg.split("=")[1]
-    if markovPath == "":
-        usage()
-        exit()
-    
-            
+	for arg in sys.argv:
+		if "-markovPath=" in arg:
+			markovPath = arg.split("=")[1]
+	if markovPath == "":
+		usage()
+		exit()
+
+	print("MARKOV: "+markovPath)
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold)
 	reporter.CompileResults()
 

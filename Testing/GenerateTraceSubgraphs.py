@@ -66,16 +66,22 @@ class Retracer(object):
 		#prepare and write all of the traces to the target format
 		self._outputTraces(traceFile, gFile, useSubdueFormat)
         
-        markovFile = outputPath[:outputPath.rfind("/")]+"/markovModel.py"
-        self._writeMarkovModel(markovFile)
+		markovFile = outputPath[:outputPath.rfind("/")]+"/markovModel.py"
+		for i in range(0,20):
+			print("!")
+		print(">>>  "+markovFile)
+		
+		
+		
+		self._writeMarkovModel(markovFile)
         
 		traceFile.close()
 		gFile.close()
 
-    def _writeMarkovModel(self, outputPath):
-        f = open(outputPath,"w+")
-        f.write(str(self._markovModel))
-        f.close()
+	def _writeMarkovModel(self, outputPath):
+		f = open(outputPath,"w+")
+		f.write(str(self._markovModel))
+		f.close()
 
 	"""
 	Reads in a graph from graphml into an igraph graph object, and also caches the vertex and edge mappings in the object
@@ -149,20 +155,20 @@ class Retracer(object):
 				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
             
-            self._updateMarkovModel(gTrace)
+			self._updateMarkovModel(gTrace)
             
 		print("  Done.")
 
-    """
-    Accepts a list of edges code as a list of directed edge pairs: [('a','b'), ('c','f'), ... ]
-    and update in-memory markov model.
-    """
-    def _updateMarkovModel(self, edgeSequence):
-        for edge in edgeSequence:
-            if edge in self._markovModel.keys():
-                self._markovModel[edge] += 1
-            else:
-                self._markovModel[edge] = 1
+	"""
+	Accepts a list of edges code as a list of directed edge pairs: [('a','b'), ('c','f'), ... ]
+	and update in-memory markov model.
+	"""
+	def _updateMarkovModel(self, edgeSequence):
+		for edge in edgeSequence:
+			if edge in self._markovModel.keys():
+				self._markovModel[edge] += 1
+			else:
+				self._markovModel[edge] = 1
         
 	"""
 	Converts an igraph edge into an activity tuple

@@ -341,16 +341,16 @@ class LogCompressor(object):
 		mstr += "}"
 		
         #add the complete graph description of the compressing substructure as a csv list of edges as v1->v2 directed pairs
-        mstr += "#"
-        mstr += str(list(self._getEdgeSet(compSub)))
-        
-        """
-        for edge in compSub.es:
-            mstr += (compSub.vs[edge[0]]["name"]+"->"compSub.vs[edge[0]]["name"]+",")
-        #delete the lastly appended comma
-        mstr = mstr[0:len(mstr)-1]
-        """
-        
+		mstr += "#"
+		mstr += str(list(self._getEdgeSet(compSub)))
+
+		"""
+		for edge in compSub.es:
+		mstr += (compSub.vs[edge[0]]["name"]+"->"compSub.vs[edge[0]]["name"]+",")
+		#delete the lastly appended comma
+		mstr = mstr[0:len(mstr)-1]
+		"""
+
 		f = open("dendrogram.txt","a+")
 		f.write(s+mstr+"\n")
 		f.close()
