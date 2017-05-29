@@ -11,19 +11,21 @@ class CompressionLevel(object):
 	"""
 	Takes the grpah portion of the dendrogram (a python list of vertex name pair tuples) and convert to an igraph
 	"""
-	def _getSubGraph(self, line):
-		edgeList = eval(line)
-
+	def _buildSubGraph(self, line):
+		self.SubGraphEdgeList = eval(line)
+		
 		vs = set()
 		for edge in edgeList:
 			vs.add(edge[0])
 			vs.add(edge[1])
 
+		self.SubGraphVertices = vs
+			
 		g = igraph.Graph(directed=True)
 		g.add_vertices(vs)
 		g.add_edges(edgeList)
 
-		return g
+		self.SubGraph = g
         
 	"""
 	Given a line in a dendrogram file, fills in all data for this compression level
@@ -35,7 +37,7 @@ class CompressionLevel(object):
 		graphLine = line.split("#")[1]
 		line = line.split("#")[0]
 
-		self.SubGraph = self._getSubGraph(line.split("#")[1])
+		self._buildSubGraph(line.split("#")[1])
 		self.MaxCompressedIds = [id for id in line.split("[")[1].split("]")[0].split(",") if len(id) > 0] #magic prevents empty max-comp list '[]' from becoming [''] (one item list of empty str)
 		self.CompressedIds = line.split("]")[1].split(":")[0].split(",")
 		self.UncompressedIds = [id for id in line.split(")")[1].split("{")[0].split(",") if len(id) > 0]
@@ -44,6 +46,9 @@ class CompressionLevel(object):
 		self.SubName = line.split(")")[0].split(":")[-3]
 		self.Line = line.strip()
 
+		#An arbitrary key-value store for other attributes that can be added to a level/substructure
+		self.Attrib = {}
+		
 		#initialize the id-map: the left id is for the current compression level; right id's mapping to -1 are traces that reached maximum compression
 		self.IdMap = {}
 		self.ReverseIdMap = {} #maps ids in reverse: successors are keys, predecessor ids are values

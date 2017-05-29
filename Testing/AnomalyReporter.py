@@ -25,7 +25,11 @@ class AnomalyReporter(object):
 		self._dendrogramPath = dendrogramPath
 		self._dendrogramThreshold = dendrogramThreshold
 		self._markovModel = self._readMarkovModel(markovPath)
-        
+		#calculate and store the markovian-based trace count; this is used to calculate edge probabilities based on trace counts
+		self._traceCount = 0.0
+		for edgeKey in self._markovModel:
+			if edgeKey[0].upper() == "START":
+				self._traceCount += self._markovModel[edgeKey]
 	
 	"""
 	Expected file format is a single line containing the tring version of the markov model,
@@ -229,7 +233,7 @@ class AnomalyReporter(object):
 				freqDist = {cl.SubName:len(cl.MaxCompressedIds)}
 			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructures
 			for id in cl.CompressedIds:
-				if id not in cl.MaxCompressedIds:
+				if id not in cl.MaxCompressedIds: #see above: already accounted for child/max compressed id's
 					childLevel = self._getChild(dendrogram, level+1, cl.IdMap[id])
 					#print("childLevel: "+str(childLevel))
 					childName = dendrogram[childLevel].SubName #some information stuffing, to identify the reflexive loops of nodes
@@ -271,7 +275,8 @@ class AnomalyReporter(object):
 		layout = g.layout("sugiyama")
 		#layout = g.layout_sugiyama()
 		#layout = g.layout_reingold_tilford(mode="in", root=[rootId])
-		igraph.plot(g, layout = layout, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
+		outputPlot = igraph.plot(g, layout = layout, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
+		outputPlot.save("dendrogram.png")
 		#igraph.plot(g, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
 		#layout = graph.layout("reingold")
 		#igraph.plot(g,layout = layout.reingold.tilford(g, root = rootName))
@@ -375,7 +380,136 @@ class AnomalyReporter(object):
 			i -= 1
 		
 		return ids
+	
+	"""
+	Analyzes the edge/node and other distribution measures comparing the 
+	child substructures with the distributions of the overall graph. 
+	
+	The general approach is simply to compare the distribution of edges/nodes/substructures with the distribution
+	given by the overall graph. This provides a measure of things seeming unusual (divergent) in the context of a pattern.
+	
+	Method: Given a dendrogram, proceed top down, analyzing divergence of each child wrt the distribution of the overall graph
+	given by self._markovModel. 
+	
+	Returns: A dict of dicts. The key in the outer dict is a particular substructure. Within this dict, the keys are the names of its children (which may
+	include itself), and the values are another dict of attributes for that child substructure
+
+	
+	
+	"""
+	def _analyzeChildSubDistributions(self, dendrogram):
+		childDivergenceMap = {}
+	
+		#friendly verification reminder
+		print("Running child sub distribution analysis with traceCount="+str(self._traceCount))
+
+		#get the distribution of children under each level
+		childDists = _getDendrogramDistribution(self,dendrogram):
+	
+		#analyze each level's child distribution wrt the edge distribution of the overall graph
+		for i in range(0,len(childDists)):
+			dist = childDists[i]  #returns distributions as : [({"SUB_1":3, "SELF":4},"NAME OF THIS NODE"),({...},"NAME OF NEXT NODE")]
+			parentName = dist[1]
+			parentLevel = self._getDendrogramLevelByName(dendrogram, dist[1])
+			freqDist = dist[0]
+			
+			#sum the frequencies of all children (normalization factor)
+			z = 0.0
+			#calculate divergence between connections to child and connections in the overall graph
+			for childName in freqDist:
+				if childName != parentName:
+					z += freqDist[childName]
+			
+			#calculate divergence between connections to child and connections in the overall graph
+			for childName in freqDist:
+				#exclude self from analysis; this is done because we're always analyzing wrt children; all nodes will be compressed eventually, and will have a value from their parent
+				if childName != parentName:
+					child = _getDendrogramLevelByName(dendrogram, name)
+					childFrequency = freqDist[childName]
+					childConnectingEdgeProb = float(childFrequency) / float(z)
+					#get the uniq edges connecting substructures and compare with overall graph distribution
+					edges = _getConnectingEdges(parentLevel.SubGraphVertices, child.SubGraphVertices, self._markovModel)
+					graphConnectingEdgeProb = _getMarkovianEdgeProb(edges)
+					#add properties to dendrogram level itself; as lists, since one substructure may be the child of multiple parents
+					if "ChildLocalConnectivityProbabilities" not in child.Attrib or child.Attrib["ChildLocalConnectivityProbabilities"] == 0:
+						child.Attrib["ChildLocalConnectivityProbabilities"] = [childConnectingEdgeProb]
+					else:
+						child.Attrib["ChildLocalConnectivityProbabilities"].append(childConnectingEdgeProb)
+					if "GlobalConnectivityProbabilities" not in child.Attrib or child.Attrib["GlobalConnectivityProbabilities"] == 0:
+						child.Attrib["GlobalConnectivityProbabilities"] = [graphConnectingEdgeProb]
+					else:
+						child.Attrib["GlobalConnectivityProbabilities"].append(graphConnectingEdgeProb)
+
+					#TODO: Could also evaluate sum vertex/edge probability of the complete substructure, given the graph
 		
+					if child.SubName in childDivergenceMap.keys():
+						childDivergenceMap[child.SubName].append((childConnectingEdgeProb, graphConnectingEdgeProb))
+					else:
+						childDivergenceMap[child.SubName] = [(childConnectingEdgeProb, graphConnectingEdgeProb)]
+					
+		return childDivergenceMap				
+				
+	"""
+	Gets the TRACE-probability of an edge, which is defined as the count of that edge divided
+	by the number of traces. The number of traces is necessarily contained by the sum over
+	edge-counts for edges starting with 'START' node.
+	
+	NOTE: This requires self._traceCount was set in markov-model init
+	
+	@edges: a list of edge tuples as ('a','b')
+	"""
+	def _getMarkovianEdgeProb(self, edges):
+		edgeCount = 0.0
+		
+		for edge in edges:
+			edgeCount += self._markovModel[edge]
+				
+		return float(edgeCount) / float(self._traceCount)
+
+	"""
+	TODO: This is very dangerous, since it assumes any link between the two vertex sets is an edge connecting the substructures.
+	If metrics confirm this method is useful, then this needs to be re-written to get the edges directly, by storing them during the compression process.
+	
+	Method: given sv1 and sv2, two sets of vertices by name str, gets all the edges connecting them via the passed markovModel, a list of edge-frequency tuples.	
+	
+	Returns: all edges in the passed markovian model, for which src/dest node are in complementary sets sv1 or sv2. In short, returns all edges in either direction, 
+	connecting sv1 to sv2 or vice versa.
+	"""
+	def _getConnectingEdges(sv1, sv2, markovModel):
+		connectingEdges = []
+
+		for v1 in sv1:
+			for v2 in sv2:
+				for edge in markovModel:
+					#check first direction
+					if edge[0] == v1 and edge[1] == v2:
+						connectingEdges.append(edge)
+					#check opposite direction
+					if edge[1] == v1 and edge[0] == v2:
+						connectingEdges.append(edge)
+		
+		if len(connectingEdges) == 0:
+			print("WARNING no connecting edges found via markov model for "+str(sv1)+"  AND  "+str(sv2))
+
+		return connectingEdges
+
+
+	def _getDendrogramLevelByName(dendrogram, name):
+		
+		for level in range(0,len(dendrogram)):
+			if dendogram[level].SubName == name:
+				return dendogram[level]
+		
+		print("ERROR dendrogram level name >"+name+"< not found in _getDendrogramLevelByName")
+		return None
+		
+					
+		
+		
+		
+		
+	
+	
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
