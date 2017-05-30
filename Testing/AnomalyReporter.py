@@ -404,7 +404,7 @@ class AnomalyReporter(object):
 		print("Running child sub distribution analysis with traceCount="+str(self._traceCount))
 
 		#get the distribution of children under each level
-		childDists = _getDendrogramDistribution(self,dendrogram)
+		childDists = self._getDendrogramDistribution(dendrogram)
 	
 		#analyze each level's child distribution wrt the edge distribution of the overall graph
 		for i in range(0,len(childDists)):
@@ -424,12 +424,12 @@ class AnomalyReporter(object):
 			for childName in freqDist:
 				#exclude self from analysis; this is done because we're always analyzing wrt children; all nodes will be compressed eventually, and will have a value from their parent
 				if childName != parentName:
-					child = _getDendrogramLevelByName(dendrogram, name)
+					child = self._getDendrogramLevelByName(dendrogram, childName)
 					childFrequency = freqDist[childName]
 					childConnectingEdgeProb = float(childFrequency) / float(z)
 					#get the uniq edges connecting substructures and compare with overall graph distribution
-					edges = _getConnectingEdges(parentLevel.SubGraphVertices, child.SubGraphVertices, self._markovModel)
-					graphConnectingEdgeProb = _getMarkovianEdgeProb(edges)
+					edges = self._getConnectingEdges(parentLevel.SubGraphVertices, child.SubGraphVertices, self._markovModel)
+					graphConnectingEdgeProb = self._getMarkovianEdgeProb(edges)
 					#add properties to dendrogram level itself; as lists, since one substructure may be the child of multiple parents
 					if "ChildLocalConnectivityProbabilities" not in child.Attrib or child.Attrib["ChildLocalConnectivityProbabilities"] == 0:
 						child.Attrib["ChildLocalConnectivityProbabilities"] = [childConnectingEdgeProb]
@@ -475,7 +475,7 @@ class AnomalyReporter(object):
 	Returns: all edges in the passed markovian model, for which src/dest node are in complementary sets sv1 or sv2. In short, returns all edges in either direction, 
 	connecting sv1 to sv2 or vice versa.
 	"""
-	def _getConnectingEdges(sv1, sv2, markovModel):
+	def _getConnectingEdges(self, sv1, sv2, markovModel):
 		connectingEdges = []
 
 		for v1 in sv1:
@@ -494,11 +494,11 @@ class AnomalyReporter(object):
 		return connectingEdges
 
 
-	def _getDendrogramLevelByName(dendrogram, name):
+	def _getDendrogramLevelByName(self, dendrogram, name):
 		
 		for level in range(0,len(dendrogram)):
-			if dendogram[level].SubName == name:
-				return dendogram[level]
+			if dendrogram[level].SubName == name:
+				return dendrogram[level]
 		
 		print("ERROR dendrogram level name >"+name+"< not found in _getDendrogramLevelByName")
 		return None

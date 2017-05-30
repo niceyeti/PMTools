@@ -17,16 +17,20 @@ class CompressionLevel(object):
 		
 		vs = set()
 		for edge in self.SubGraphEdgeList:
-			vs.add(edge[0])
-			vs.add(edge[1])
+			if edge[0] not in vs:
+				vs.add(edge[0])
+			if edge[1] not in vs:
+				vs.add(edge[1])
 
-		self.SubGraphVertices = vs
-			
+		self.SubGraphVertices = list(vs)
+
 		g = igraph.Graph(directed=True)
-		g.add_vertices(vs)
 		
 		print(str(vs))
 		print(str(self.SubGraphEdgeList))
+		g.add_vertices(self.SubGraphVertices)
+		for v in g.vs:
+			print("v: "+str(v["name"]))
 		g.add_edges(self.SubGraphEdgeList)
 
 		self.SubGraph = g
