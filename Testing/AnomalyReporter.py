@@ -404,7 +404,7 @@ class AnomalyReporter(object):
 		print("Running child sub distribution analysis with traceCount="+str(self._traceCount))
 
 		#get the distribution of children under each level
-		childDists = _getDendrogramDistribution(self,dendrogram):
+		childDists = _getDendrogramDistribution(self,dendrogram)
 	
 		#analyze each level's child distribution wrt the edge distribution of the overall graph
 		for i in range(0,len(childDists)):
@@ -540,6 +540,11 @@ class AnomalyReporter(object):
 		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
 		[print(str(item)) for item in entMap.items()]
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
+		
+		#conditional probability based analysis
+		self._analyzeChildSubDistributions(dendrogram)
+		
+		
 		
 		for i in range(4,len(dendrogram)):
 			ids = self._getSubTraceIds(dendrogram, i)

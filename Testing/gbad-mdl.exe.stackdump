@@ -5,5 +5,5 @@ r8 =00000006000283D0 r9 =000000018031CE40 r10=0000000100000000
 r11=000000010040B76E r12=0000000100417068 r13=0000000000000006
 r14=0000000000000000 r15=00000006000283D0
 rbp=0000000000000005 rsp=00000000FFFFC950
-program=C:\Users\jesse\Desktop\ProcessMining\Imp\gbad-tool-kit_3.2\gbad-tool-kit_3.2\bin\gbad-mdl.exe, pid 9272, thread main
+program=C:\Users\jesse\Desktop\ProcessMining\Imp\gbad-tool-kit_3.2\gbad-tool-kit_3.2\bin\gbad-mdl.exe, pid 5436, thread main
 cs=0033 ds=002B es=002B fs=0053 gs=002B ss=002B

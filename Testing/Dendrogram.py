@@ -1,3 +1,4 @@
+import igraph
 
 """
 Simple class comprising the information in a single compression level, as shown in a line in dendrogram.txt.
@@ -15,7 +16,7 @@ class CompressionLevel(object):
 		self.SubGraphEdgeList = eval(line)
 		
 		vs = set()
-		for edge in edgeList:
+		for edge in self.SubGraphEdgeList:
 			vs.add(edge[0])
 			vs.add(edge[1])
 
@@ -23,7 +24,10 @@ class CompressionLevel(object):
 			
 		g = igraph.Graph(directed=True)
 		g.add_vertices(vs)
-		g.add_edges(edgeList)
+		
+		print(str(vs))
+		print(str(self.SubGraphEdgeList))
+		g.add_edges(self.SubGraphEdgeList)
 
 		self.SubGraph = g
         
@@ -37,7 +41,7 @@ class CompressionLevel(object):
 		graphLine = line.split("#")[1]
 		line = line.split("#")[0]
 
-		self._buildSubGraph(line.split("#")[1])
+		self._buildSubGraph(graphLine)
 		self.MaxCompressedIds = [id for id in line.split("[")[1].split("]")[0].split(",") if len(id) > 0] #magic prevents empty max-comp list '[]' from becoming [''] (one item list of empty str)
 		self.CompressedIds = line.split("]")[1].split(":")[0].split(",")
 		self.UncompressedIds = [id for id in line.split(")")[1].split("{")[0].split(",") if len(id) > 0]
