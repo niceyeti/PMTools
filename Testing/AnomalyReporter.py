@@ -542,8 +542,8 @@ class AnomalyReporter(object):
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 		
 		#conditional probability based analysis
-		self._analyzeChildSubDistributions(dendrogram)
-		
+		childDists = self._analyzeChildSubDistributions(dendrogram)
+		print("Child distributions: "+str(childDists))
 		
 		
 		for i in range(4,len(dendrogram)):
