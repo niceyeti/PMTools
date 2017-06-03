@@ -41,13 +41,13 @@ class DataGenerator(object):
 	and hence the probabilistic logic/parameters for choosing walks.
 	
 	Notes: This method requires that every activity in the model is unique. Also, every AND must be appended with some activity,
-	to guarantee that a recusrive search down the AND-branches recombine at some node, which can then be found by chopping off
+	to guarantee that a recursive search down the AND-branches recombine at some node, which can then be found by chopping off
 	the non-matching prefixes of these searches. For example, the left and right searches for (ABC&EFG)H gives "ABCH..." and "EFGH...". 
 	Given the constraints, the joining node of the AND is H, and can be detected as such, as the first matching char in the left and right strings.
 	
 	Returns: A list of (igraph-edge,time) tuples, representing all transitions for this trace. The reason for this construction is we need to preserve some of the
 	edge info for post-processing analysis, but primarily because AND splits (parallel paths) can't be represented as a string. The 'time' member of the tuple
-	represents the discrete time at which the edge was walked; since an edge may be walked multiple times (for loops only), an edge may occur multiple times
+	represents the discrete timestep at which the edge was walked; since an edge may be walked multiple times (for loops only), an edge may occur multiple times
 	in the returned list, albeit with different time-stamps.
 	
 	TODO: This may need to be simplified with BFS queue or stack-based implementation.
@@ -258,7 +258,7 @@ class DataGenerator(object):
 		return scrubbed
 
 	"""
-	If a trace traverse an AND split, the trace will contain two edges with the same 'source' node for
+	If a trace traverses an AND split, the trace will contain two edges with the same 'source' node for
 	the same timestep value (for instance, (A->B,2) and (A->C,2) for some AND split from node A at
 	timestep 2). The _writeTrace() function just outputs the 'source' node of every edge in the tracelist,
 	so it will output multiple 'A's at some timestep if such edges are not deduplicated.
@@ -304,6 +304,8 @@ class DataGenerator(object):
 		#stable sort the traces
 		trace.sort(key=lambda tup : tup[1])
 		
+		return trace
+		
 	"""
 	Iterates over the activities in a trace and writes the sequence. The traces are assumed to be sorted already.
 	The 'source' node of each node in the trace (edge list) is emitted per edge.
@@ -325,19 +327,21 @@ class DataGenerator(object):
 	@traceNo: The trace number
 	@trace: a (potentially unordered) list of (igraph-edges,timeStep) tuples
 	@ofile: the output file handle
+	@noiseRate: the rate at which to add noise; no this isn't the place to do this, but it doesn't matter
 	"""
-	def _writeTrace(self,traceNo,trace,ofile):
+	def _writeTrace(self,traceNo,trace,ofile, noiseRate):
+		activities = [v["name"] for v in self._graph.vs if v["name"] not in ["START","END"] and "^_" not in v["name"]]
 		hasAnomaly = False
 		for tup in trace:
 			if tup[0]["isAnomalous"]:
 				hasAnomaly = True
-	
+
 		ostr = str(traceNo)
 		if hasAnomaly:
 			ostr += ",+,"
 		else:
 			ostr += ",-,"
-			
+
 		#remove duplicated AND split source edges (see _deduplicateANDSplits header)
 		trace = self._deduplicateANDSplits(trace)
 		#Output all the *src* nodes as the activities that occurred at time t, except for the START node of course.
@@ -346,9 +350,13 @@ class DataGenerator(object):
 			nodeLabel = self._getNode(edge[0].source)["label"]
 			if nodeLabel != "START" and "^_" not in nodeLabel: #ignore STARTn node and empty-transition nodes labeled like "^_123"
 				ostr += nodeLabel
-		
+
+				#add random activity with probability @noiseRate
+				if noiseRate > 0.0 and (float(random.randint(1,100)) / 100.0) <= noiseRate:
+					#insert a randomly selected activity
+					ostr += activities[random.randint(0,len(activities)-1)]
+
 		ofile.write(ostr+"\n")
-		
 		
 	"""
 	Old.
@@ -444,8 +452,10 @@ class DataGenerator(object):
 	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
+	@noiseRate: Currently defined as the probability of inserting a random activity, uniformly at random, at any time step (activity transition).
+	
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log"):
+	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log", noiseRate=0.0):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -458,16 +468,17 @@ class DataGenerator(object):
 		while i <= n:
 			trace = self._generateTrace(self._startNode, 0)
 			#sort the activities in the trace, but such that activities with equal timesteps are randomized w.r.t. eachother
-			self._randomizedSort(trace)
-			self._writeTrace(i,trace,ofile)
+			trace = self._randomizedSort(trace)
+			#write the trace, adding noise as well
+			self._writeTrace(i, trace, ofile, noiseRate)
 			self._reset()
 			i += 1
 		print("Trace generation completed and output to "+outputFile+".")
 		ofile.close()
 
 def usage():
-	print("python ./DataGenerator [path to graphml file] -n=[integer number of traces] [-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
-
+	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
+	print("\t-noiseRate=[0.0-1.0] (probability of inserting noise at each activity transition)")
 	
 """
 
@@ -480,6 +491,12 @@ def main():
 	if "-n=" not in sys.argv[2]:
 		print("ERROR no n parameter passed")
 		exit()
+
+	noiseRate = 0.0
+	for arg in sys.argv:
+		if "-noiseRate=" in arg:
+			#print("NOISY: "+arg+"\n\n\n")
+			noiseRate = float(arg.split("=")[1])
 
 	graphFile = sys.argv[1]
 
@@ -494,7 +511,7 @@ def main():
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
-	generator.GenerateTraces(graphFile, n, ofile)
+	generator.GenerateTraces(graphFile, n, ofile, noiseRate)
 
 if __name__ == "__main__":
 	main()

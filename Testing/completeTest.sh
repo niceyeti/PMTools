@@ -41,6 +41,9 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
 fi
 
+#noise rates
+noiseRate="0.10"
+
 #get the command line arg switches, if any
 generateData="false"
 deleteSubstructures="false"
@@ -57,7 +60,11 @@ for var in "$@"; do
 	#detect the substructure deletion flag (only meaningful if --recurse is passed as well)
 	if [ "$var" = "--deleteSubs" ]; then
 		deleteSubstructures="true"
-	fi	
+	fi
+	#get the number of recursive iterations, if any
+	if [[ $var == "--noiseRate="* ]]; then
+		noiseRate=$(echo $var | cut -f2 -d=)
+	fi
 done
 
 ### If generating data, the data generator will generate and store a model, then emit traces from it in a .log file, then convert these to xes.
@@ -98,6 +105,16 @@ if [ $generateData = "true" ]; then
 	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
 	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 fi
+	
+##############################################################################
+#Add noise to the log, if requested. The reason this is done after data generation is so we have the original noise-free
+#log in hand, and also so we can re-run the same log/model under different noise parameters to see the result.
+if [ $noiseRate > 0.0 ]; then
+	#add noise to the original log
+	
+	
+fi
+	
 	
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)

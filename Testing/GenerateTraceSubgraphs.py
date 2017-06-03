@@ -210,7 +210,7 @@ class Retracer(object):
 		edgeSequence = []
 		initialEdge = self._getEdge("START", sequence[0])
 		if initialEdge == None:
-			print("First node="+str(graph.vs[0]["name"]))
+			print("First node="+str(self._model.vs[0]["name"]))
 			print("ERROR edgeSequence.len = 0 in _replaySequence() of GenerateTraceSubgraphs.py. No edge found from START to first activity of "+sequence)
 		else:
 			e = self._edgeToActivityTuple(initialEdge)

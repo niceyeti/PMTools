@@ -7,7 +7,7 @@ if [ $# -lt 5 ]; then
 	exit
 fi
 
-echo Generating model with $1 activities and from which $2 traces will be stored.
+echo Generating model with $1 activities and by which $2 traces will be generated and stored.
 numActivites=$1
 numTraces=$2
 logPath=$3
@@ -21,13 +21,21 @@ if [ $# -gt 5 ]; then
 	fi
 fi
 
+noiseRate="0.0"
+for var in "$@"; do
+	#get the noise rate, if any
+	if [[ $var == "--noiseRate="* ]]; then
+		noiseRate=$(echo $var | cut -f2 -d=)
+	fi
+done
+
 echo Building process model with appr $numActivites activities...
 #build the model, using Bezerra's algorithm
 python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt -graph=$graphmlPath
 #convert the generated model to transferrable graphml
 #python ModelConverter.py model.txt $graphmlPath
 #generate stochastic walk data from the model
-python DataGenerator.py $graphmlPath -n=$numTraces -ofile=$logPath
+python DataGenerator.py $graphmlPath -n=$numTraces -ofile=$logPath -noiseRate=$noiseRate
 
 sourceLog=$logPath
 #add noise if --noise passed
