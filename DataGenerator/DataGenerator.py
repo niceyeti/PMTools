@@ -351,11 +351,13 @@ class DataGenerator(object):
 			if nodeLabel != "START" and "^_" not in nodeLabel: #ignore STARTn node and empty-transition nodes labeled like "^_123"
 				ostr += nodeLabel
 
+				"""
 				#add random activity with probability @noiseRate
 				if noiseRate > 0.0 and (float(random.randint(1,100)) / 100.0) <= noiseRate:
 					#insert a randomly selected activity
 					ostr += activities[random.randint(0,len(activities)-1)]
-
+				"""
+					
 		ofile.write(ostr+"\n")
 		
 	"""
@@ -452,10 +454,8 @@ class DataGenerator(object):
 	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
-	@noiseRate: Currently defined as the probability of inserting a random activity, uniformly at random, at any time step (activity transition).
-	
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log", noiseRate=0.0):
+	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log"):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -469,8 +469,8 @@ class DataGenerator(object):
 			trace = self._generateTrace(self._startNode, 0)
 			#sort the activities in the trace, but such that activities with equal timesteps are randomized w.r.t. eachother
 			trace = self._randomizedSort(trace)
-			#write the trace, adding noise as well
-			self._writeTrace(i, trace, ofile, noiseRate)
+			#write the trace
+			self._writeTrace(i, trace, ofile)
 			self._reset()
 			i += 1
 		print("Trace generation completed and output to "+outputFile+".")
@@ -478,7 +478,6 @@ class DataGenerator(object):
 
 def usage():
 	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
-	print("\t-noiseRate=[0.0-1.0] (probability of inserting noise at each activity transition)")
 	
 """
 
@@ -491,12 +490,6 @@ def main():
 	if "-n=" not in sys.argv[2]:
 		print("ERROR no n parameter passed")
 		exit()
-
-	noiseRate = 0.0
-	for arg in sys.argv:
-		if "-noiseRate=" in arg:
-			#print("NOISY: "+arg+"\n\n\n")
-			noiseRate = float(arg.split("=")[1])
 
 	graphFile = sys.argv[1]
 
@@ -511,7 +504,7 @@ def main():
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
-	generator.GenerateTraces(graphFile, n, ofile, noiseRate)
+	generator.GenerateTraces(graphFile, n, ofile)
 
 if __name__ == "__main__":
 	main()

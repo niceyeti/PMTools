@@ -42,7 +42,7 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 fi
 
 #noise rates
-noiseRate="0.10"
+noiseRate="0.0"
 
 #get the command line arg switches, if any
 generateData="false"
@@ -67,54 +67,60 @@ for var in "$@"; do
 	fi
 done
 
+#####################DATA GENERATION AND NOISING###################################
+#go to DataGenerator folder, and operate there until data fully ready to mine/run/compress
+cd "../DataGenerator"
+
 ### If generating data, the data generator will generate and store a model, then emit traces from it in a .log file, then convert these to xes.
 if [ $generateData = "true" ]; then
 	###############################################################################
 	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
-	cd "../DataGenerator"
-	sh ./generate.sh 20 200 $logPath $xesPath $syntheticGraphmlPath
-	
-	###############################################################################
-	##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
-	cd "../PromTools"
-	#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
-	python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
-	#Copy everything over to the ProM environment; simpler to run everything from there.
-	minerScript="$minerName"Miner.js
-	promMinerPath=../../ProM/"$minerScript"
-	cp $minerScript $promMinerPath
-	cp $xesPath ../../ProM/testTraces.xes
-	cp ./miner.sh ../../ProM/miner.sh
-	
-	###############################################################################
-	##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
-	cd "../../ProM"
-	sh ./miner.sh -f $minerScript
-	#copy the mined model back to the SyntheticData folder
-	cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
-	cd "../scripts/Testing"
-	#Convert the mined pnml model to graphml
-	python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-	
-	################################################################################
-	##anomalize the model???
-	#
-	################################################################################
-	##Generate sub-graphs from the mined graphml model
-	python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
-	###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-	###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
+	sh ./generate.sh 20 200 $logPath $syntheticGraphmlPath
 fi
-	
+
+#add noise to original/synthetic log as requested, before mining the new model
+if [ $noiseRate -gt 0 ]; then
+	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
+	logPath=$noisedLog
+fi
+
+#convert synthetic data to xes format for process mining
+python SynData2Xes.py -ifile=$logPath -ofile=$xesPath
 ##############################################################################
-#Add noise to the log, if requested. The reason this is done after data generation is so we have the original noise-free
-#log in hand, and also so we can re-run the same log/model under different noise parameters to see the result.
-if [ $noiseRate > 0.0 ]; then
-	#add noise to the original log
-	
-	
-fi
-	
+
+
+#mine the process model given by the log
+###############################################################################
+##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
+cd "../PromTools"
+#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
+python $miningWrapper -miner=$minerName -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=$classifierString
+#Copy everything over to the ProM environment; simpler to run everything from there.
+minerScript="$minerName"Miner.js
+promMinerPath=../../ProM/"$minerScript"
+cp $minerScript $promMinerPath
+cp $xesPath ../../ProM/testTraces.xes
+cp ./miner.sh ../../ProM/miner.sh
+
+###############################################################################
+##Run a process miner to get an approximation of the ground-truth model. Runs a miner with the greatest generalization, least precision.
+cd "../../ProM"
+sh ./miner.sh -f $minerScript
+#copy the mined model back to the SyntheticData folder
+cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+cd "../scripts/Testing"
+#Convert the mined pnml model to graphml
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+
+
+################################################################################
+##anomalize the model???
+#
+################################################################################
+##Generate sub-graphs from the mined graphml model
+python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
+###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath	
 	
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)

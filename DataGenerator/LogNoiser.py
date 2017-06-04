@@ -12,11 +12,70 @@ class LogNoiser(object):
 		pass
 		
 	"""
+	This version of adding noise proceeds through the symbol sequence of a trace in the log, 
+	and with probability @noiseRate, adds a randomly selected activity from the complete activity
+	set expressed in the log. This adds 'noise' under a criterion of completely random transitions, making
+	the graph more real world like, supposedly.
+	"""
+	def AddNoise1(self, logPath, outPath="noisedLog.log", noiseRate=0.1):
+		activities = self._getLogActivities(logPath)
+		
+		print("Generating type 1 noise, noise rate "+str(noiseRate))
+		
+		log = open(logPath,"r")
+		traces = log.readlines()
+		log.close()
+		
+		#CRITICAL: do this AFTER reading the input log, in the event that input==output log!
+		outputLog = open(outPath, "w+")
+		
+		#get the complete activity set expressed by the log, as a list
+		availableActivities = set()
+		for trace in traces:		
+			traceNo = trace.split(",")[0]
+			isAnomalous = traceNo = trace.split(",")[1]
+			partialOrdering = trace.split(",")[2]
+			
+			newOrdering = []
+			for activity in partialOrdering:
+				newOrdering.append(activity)
+				
+				#inject a random post activity with probability @noiseRate
+				if random.uniform(0,1) < noiseRate:
+					randActivity = activities[random.randint(0,len(activities)-1)]
+					newOrdering.append(randActivity)
+
+			newTrace = ",".join([traceNo,isAnomalous,newOrdering])
+			outputLog.write(newTrace+"\n")
+		
+		outputLog.close()
+
+	"""
+	Utility for reading a log and returning all the unique activities within it, as a list.
+	"""
+	def _getLogActivities(self, logPath):
+		log = open(logPath,"r")
+		traces = log.readlines()
+		log.close()
+		
+		#get the complete activity set expressed by the log, as a list
+		availableActivities = set()
+		for trace in traces:
+			partialOrdering = trace.split(",")[2]
+			for activity in partialOrdering:
+				if activity not in availableActivities:
+					availableActivities.add(activity)
+		availableActivities = list(availableActivities)
+		
+		return availableActivities
+		
+		
+	"""
 	Currently just targets a single activity to replace with up to k different activities or the target activity itself.
 	This has the effect of creating a split in the process model, whereby the target (and its in/out-edges) has
 	a bunch of activities around it, which may be executed instead of the target, with a uniform distribution.
 	"""
-	def AddNoise(self, logPath, outPath="noisedLog.log"):
+	def AddNoise2(self, logPath, outPath="noisedLog.log"):
 		log = open(logPath,"r")
 		traces = log.readlines()
 		#the number of activities with which some activity will be substituted, including itself, creating a SPLIT
@@ -57,20 +116,31 @@ class LogNoiser(object):
 
 		noisedLog.close()
 		log.close()
+		
 
 def usage():
-	print("usage: python LogNoiser.py")
+	print("usage: python LogNoiser.py -inputLog=[.log path] -outputLog=[output .log path] -noiseRate=[0-1.0]")
 	
 def main():
-	if len(sys.argv) < 3:
+	if len(sys.argv) < 4:
 		print("ERROR incorrect num args: "+str(len(sys.argv)))
 		usage()
 		exit()
 
-	logPath = sys.argv[1]
-	outPath = sys.argv[2]
+	inputLog = None
+	outputLog = None
+	noiseRate = 0.0
+	
+	for arg in sys.argv
+		if "-inputLog=" in arg:
+			inputLog = arg.split("=")[1]
+		if "-outputLog=" in arg:
+			outputLog = arg.split("=")[1]
+		if "-noiseRate=" in arg:
+			noiseRate = float(arg.split("=")[1])	
+	
 	noiser = LogNoiser()
-	noiser.AddNoise(logPath,outPath)
+	noiser.AddNoise1(logPath,outPath,noiseRate)
 
 if __name__ == "__main__":
 	main()

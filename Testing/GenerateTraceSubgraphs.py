@@ -124,6 +124,14 @@ class Retracer(object):
         """
 
 	"""
+	In special cases, one wants to use this object's capabilities to simply convert a .log file to a gbad file, such
+	as when noise has been added to the original log after generating it, and we want to regenerate a gbad/subdue file.
+	
+	This function takes a .log file and directly converts it to gbad format, without trace generation. Since the log contains noise, 
+	"""
+		
+		
+	"""
 	Outputs the traces in SUBDUE format, just like the 'groups.g' example found in the graphs/ folder of subdue.
 	
 	@traceFile: a .log file
@@ -381,18 +389,24 @@ class Retracer(object):
 
 		return record
 
+
 def usage():
 	print("Usage: python ./GenerateTraceSubgraphs.py [path to graphml model file] [path to trace file] [output path for .g file] [--subdue/--gbad (target format)]")
 
-if len(sys.argv) < 4:
-	print("ERROR incorrect number of params passed to GenerateTraceSubgraphs.py")
-	usage()
-	exit()
-	
-modelGraphmlPath = sys.argv[1]
-tracePath = sys.argv[2]
-outputPath  = sys.argv[3]
-useSubdueFormat = len(sys.argv) == 5 and "--subdue" in sys.argv[4]
+def main():
+	if len(sys.argv) < 4:
+		print("ERROR incorrect number of params passed to GenerateTraceSubgraphs.py")
+		usage()
+		exit()
+		
+	modelGraphmlPath = sys.argv[1]
+	tracePath = sys.argv[2]
+	outputPath  = sys.argv[3]
+	useSubdueFormat = len(sys.argv) == 5 and "--subdue" in sys.argv[4]
 
-retracer = Retracer()
-retracer.GenerateTraces(modelGraphmlPath, tracePath, outputPath, useSubdueFormat)
+	retracer = Retracer()
+	retracer.GenerateTraces(modelGraphmlPath, tracePath, outputPath, useSubdueFormat)
+
+
+if __name__ == "__main__":
+	main()
