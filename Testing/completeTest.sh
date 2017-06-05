@@ -114,14 +114,14 @@ python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 
 
 ################################################################################
-##anomalize the model???
+##anomalize the model further???
 #
 ################################################################################
 ##Generate sub-graphs from the mined graphml model
 python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath --outputPath=$subdueLogPath --gbad
 ###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
 ###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath	
-	
+
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least *mst* XP transactions
@@ -139,6 +139,9 @@ anomalyFile="../TestResults/anomalyResult.txt"
 #cat /dev/null > $probResult
 #cat /dev/null > $fsmResult
 #
+
+cat /dev/null > dendrogram.txt
+
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
 limit="50"   #The default value is computed based on the input graph as |Edges| / 2. 

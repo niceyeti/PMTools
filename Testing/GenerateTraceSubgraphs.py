@@ -25,9 +25,23 @@ GBAD in their respective formats. Note that each trace is replayed and output as
 """
 class Retracer(object):
 	def __init__(self):
-        #init the markov model, for which keys = string pairs, vals = transition count
-		self._markovModel = {}
+		pass
         
+	"""
+	The markov model is initialized not just from the edges encountered in the log, but from the underlying mined model, even if
+	edge transitions are zero. Just by including zero frequency edges doesn't interfere with the model, but such edges are needed
+	later when processing distributions based on the markov model as a process model.
+	
+	NOTE: This function requires that _readModel() has executed and constructed the edge model
+	"""
+	def _initializeMarkovModel(self):
+        #init the markov model, for which keys = string pairs, vals = transition count
+		self._markovModel = dict()
+		
+		#iterate the edges as a sequence of nae transitions ('a', 'b')
+		for edgeTup in self._edgeMap.keys():
+			self._markovModel[edgeTup] = 0
+		
 	"""
 	Generates the traces, given the model. Note we are essentially re-generating the traces.
 
@@ -48,9 +62,10 @@ class Retracer(object):
 	will be output by this class.
 	"""
 	def GenerateTraces(self, graphPath, tracePath, outputPath, useSubdueFormat):
-		print("Retracer subgraph-generator replaying traces from "+tracePath+" on mined model "+modelGraphmlPath+". Output will be saved to "+outputPath)
+		print("Retracer subgraph-generator replaying traces from "+tracePath+" on mined model "+graphPath+". Output will be saved to "+outputPath)
 
 		self._readModel(graphPath)
+		self._initializeMarkovModel()
 		traceFile = open(tracePath,"r")
 		gFile = open(outputPath,"w+")
 		modelInfo = self._model["name"]
@@ -67,11 +82,7 @@ class Retracer(object):
 		self._outputTraces(traceFile, gFile, useSubdueFormat)
         
 		markovFile = outputPath[:outputPath.rfind("/")]+"/markovModel.py"
-		for i in range(0,20):
-			print("!")
-		print(">>>  "+markovFile)
-		
-		
+		print("Outputting markov model to: "+markovFile)
 		
 		self._writeMarkovModel(markovFile)
         
@@ -101,6 +112,7 @@ class Retracer(object):
 			key = (self._model.vs[edge.source]["name"], self._model.vs[edge.target]["name"])
 			self._edgeMap[key] = edge
 			self._edgeRevMap[edge] = key        
+			
 
 	"""
 	Utility for looking up the edge given by two activitiy labels, a and b.
@@ -176,6 +188,10 @@ class Retracer(object):
 			if edge in self._markovModel.keys():
 				self._markovModel[edge] += 1
 			else:
+				#this should be unreachable, based on constructing the markov model from the all-behavior-inclusive process model, so warn if reached
+				#the justification for this warning is that no edge should be detected that is not included in the model already; if there is, either the log
+				#was modified (? maybe to add noise), or an error has occurred, so it needs to be justified why this was reached
+				print("\n\n>>> WARNING: new edge detected in _updateMarkovModel not found in original graph: "+str(edge))
 				self._markovModel[edge] = 1
         
 	"""
