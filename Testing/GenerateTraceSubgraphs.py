@@ -391,22 +391,36 @@ class Retracer(object):
 
 
 def usage():
-	print("Usage: python ./GenerateTraceSubgraphs.py [path to graphml model file] [path to trace file] [output path for .g file] [--subdue/--gbad (target format)]")
+	print("Usage: python ./GenerateTraceSubgraphs.py --graphml=[path to graphml model file] --tracePath=[path to trace file] --outputPath=[output path for .g file] [--subdue/--gbad (target format)]")
 
 def main():
 	if len(sys.argv) < 4:
 		print("ERROR incorrect number of params passed to GenerateTraceSubgraphs.py")
 		usage()
 		exit()
-		
-	modelGraphmlPath = sys.argv[1]
-	tracePath = sys.argv[2]
-	outputPath  = sys.argv[3]
-	useSubdueFormat = len(sys.argv) == 5 and "--subdue" in sys.argv[4]
+
+	modelGraphmlPath = None
+	tracePath = None
+	outputPath = None
+
+	for arg in sys.argv:
+		if "--graphml=" in arg:
+			modelGraphmlPath = arg.split("=")[1]
+		if "--tracePath=" in arg:
+			tracePath = arg.split("=")[1]
+		if "--outputPath=" in arg:
+			outputPath = arg.split("=")[1]
+
+	if not modelGraphmlPath or not tracePath or not outputPath:
+		print("\n\nERROR retracer missing arguments, in GenerateTraceSubgraphs.py.\n")
+		usage()
+		exit()
+
+	#use gbad by default; subdue likely not supported, as gbad has been used so much instead
+	useSubdueFormat = "--subdue" in sys.argv and not "--gbad" in sys.argv
 
 	retracer = Retracer()
 	retracer.GenerateTraces(modelGraphmlPath, tracePath, outputPath, useSubdueFormat)
-
 
 if __name__ == "__main__":
 	main()

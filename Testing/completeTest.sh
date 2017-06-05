@@ -79,7 +79,7 @@ if [ $generateData = "true" ]; then
 fi
 
 #add noise to original/synthetic log as requested, before mining the new model
-if [ $noiseRate -gt 0 ]; then
+if [ $noiseRate -ne "0.0" ]; then #note this is string comparison, not numeric comparison
 	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
 	logPath=$noisedLog
 fi
@@ -118,7 +118,7 @@ python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 #
 ################################################################################
 ##Generate sub-graphs from the mined graphml model
-python $subgraphGeneratorPath $minedGraphmlPath $logPath $subdueLogPath --gbad
+python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath --outputPath=$subdueLogPath --gbad
 ###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
 ###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath	
 	

@@ -327,9 +327,8 @@ class DataGenerator(object):
 	@traceNo: The trace number
 	@trace: a (potentially unordered) list of (igraph-edges,timeStep) tuples
 	@ofile: the output file handle
-	@noiseRate: the rate at which to add noise; no this isn't the place to do this, but it doesn't matter
 	"""
-	def _writeTrace(self,traceNo,trace,ofile, noiseRate):
+	def _writeTrace(self,traceNo,trace,ofile):
 		activities = [v["name"] for v in self._graph.vs if v["name"] not in ["START","END"] and "^_" not in v["name"]]
 		hasAnomaly = False
 		for tup in trace:
