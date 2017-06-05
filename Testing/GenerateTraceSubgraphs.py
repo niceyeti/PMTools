@@ -91,6 +91,7 @@ class Retracer(object):
 
 	def _writeMarkovModel(self, outputPath):
 		f = open(outputPath,"w+")
+		print("\n\n>>>MARKOV MODEL: "+str(self._markovModel))
 		f.write(str(self._markovModel))
 		f.close()
 
