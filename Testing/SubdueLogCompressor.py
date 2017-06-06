@@ -125,7 +125,7 @@ class LogCompressor(object):
 		
 
 	"""
-	Deletes a substructure from a trace. This is very nuanced, since clients (eg gbad) may handle
+	Deletes a substructure from a trace. This is nuanced, since clients (eg gbad) may handle
 	the results (potentially disconnected graphs) poorly, since potentially-disconnected graphs
 	are a likely edge-case not covered by graph algorithm implementation testing.
 
@@ -133,13 +133,18 @@ class LogCompressor(object):
 	@compSub: a prototype substructure by which to attempt to compress traceSub
 
 	Return Cases:
-		1) trace does not contain sub: just return the trace unmodified
+	
+		Returns: delSub (deleted substructure) and delEdges (incident and out-edges of a deleted substructure wrt compressing sub)
+	
+		1) trace does not contain sub: just return the trace unmodified, empty edge list
 		2) trace PROPERLY contains substructure: The substructure is deleted from the trace.
 		This may result in single vertices with no edges, which will be returned with a single reflexive loop.
 		This is just so clients can handle disconnected vertices, since its foreseeable their code was not written to handle edgeless nodes.
 		3) trace EQUALS substructure: the trace is discarded and None is returned
 	"""
 	def _deleteTraceSub(self,traceSub, compSub):
+		#delEdges is a list of named tuples reflecting directed edges: [('a','b'), ('c','b') ... ]
+		delEdges = [] #delEdges only takes a non-empty value if the trace is compressed wrt compSub, but not maximally compressed (one or more edges connect them)
 		delSub = traceSub
 
 		#trace contains subgraph, so delete it as described above
@@ -162,6 +167,10 @@ class LogCompressor(object):
 				vsDel = vsTrace - vsComp
 				#delete the edges within or incident to/from the compressing substructure
 				esDel = set([e for e in esTrace if e[0] not in vsComp and e[1] not in vsComp])
+				#build delEdges from the set of edges connecting traceSub and compSub
+				
+				
+				
 				#print("vsDel: "+str(vsDel))
 				#print("esDel: "+str(esDel))
 				#print("trace vs: "+str(vsTrace))
