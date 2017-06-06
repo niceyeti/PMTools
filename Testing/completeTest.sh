@@ -79,7 +79,7 @@ if [ $generateData = "true" ]; then
 fi
 
 #add noise to original/synthetic log as requested, before mining the new model
-if [ $noiseRate -ne "0.0" ]; then #note this is string comparison, not numeric comparison
+if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric comparison
 	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
 	logPath=$noisedLog
 fi

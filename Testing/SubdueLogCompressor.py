@@ -127,7 +127,7 @@ class LogCompressor(object):
 	"""
 	Deletes a substructure from a trace. This is very nuanced, since clients (eg gbad) may handle
 	the results (potentially disconnected graphs) poorly, since potentially-disconnected graphs
-	are a likely edge-case not covered by most graph algorithm implementation testing.
+	are a likely edge-case not covered by graph algorithm implementation testing.
 
 	@traceSub: a trace/subgraph
 	@compSub: a prototype substructure by which to attempt to compress traceSub
@@ -391,7 +391,7 @@ class LogCompressor(object):
 
 	"""
 	Given a list of traces subgraphs, and an instance of the best substructure found by subdue/gbad,
-	this compresses all subgraph wrt the best substructure. If the trace does not contain the substructure,
+	this compresses all subgraphs wrt the best substructure. If the trace does not contain the substructure,
 	the trace is preserved in its current form. If the trace does contain the substructure, then the entire
 	substructure is replaced with a single node "SUB1", and all in/out edges to/from the structure are woven
 	into this metanode.

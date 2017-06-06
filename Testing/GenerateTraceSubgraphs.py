@@ -29,7 +29,7 @@ class Retracer(object):
         
 	"""
 	The markov model is initialized not just from the edges encountered in the log, but from the underlying mined model, even if
-	edge transitions are zero. Just by including zero frequency edges doesn't interfere with the model, but such edges are needed
+	edge transitions are zero. Just by including zero frequency edges doesn't interfere with the model; such edges are needed
 	later when processing distributions based on the markov model as a process model.
 	
 	NOTE: This function requires that _readModel() has executed and constructed the edge model
