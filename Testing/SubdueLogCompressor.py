@@ -55,9 +55,9 @@ class LogCompressor(object):
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
 			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-			compressedSubs, deletedSubs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
+			compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
 			#append to the dendrogram file
-			self._appendToDendrogram(bestSub,compSubName, compressedSubs, deletedSubs)
+			self._appendToDendrogram(bestSub,compSubName, compressedSubs, deletedSubs, edgeFreqs)
 			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
 			self._writeSubs(compressedSubs, outPath)
 		else:
@@ -168,9 +168,8 @@ class LogCompressor(object):
 				#delete the edges within or incident to/from the compressing substructure
 				esDel = set([e for e in esTrace if e[0] not in vsComp and e[1] not in vsComp])
 				#build delEdges from the set of edges connecting traceSub and compSub
-				
-				
-				
+				delEdges = [e for e in esTrace if (e[0] not in vsComp and e[1] in vsComp) or (e[1] not in vsComp and e[0] in vsComp)]
+				print("\n\nDEL EDGES: "+str(delEdges))
 				#print("vsDel: "+str(vsDel))
 				#print("esDel: "+str(esDel))
 				#print("trace vs: "+str(vsTrace))
@@ -201,8 +200,8 @@ class LogCompressor(object):
 			#append to non-compressed traces
 			self._nonCompressedSubs.append(traceSub["oldXpId"])
 
-		return delSub
-		
+		return delSub, delEdges
+
 	"""
 	Given a trace subgraph from the log and a compressing substructure, 
 	this compresses the subgraph wrt to the compressing substructure. If
@@ -313,8 +312,11 @@ class LogCompressor(object):
 	and is not in the new log.
 	
 	THIS IS SERIALIZATION: CHANGE THIS CODE AND THE DESERIALIZATION IN ANOMALYREPORTER/DENDROGRAM.PY ARE BROKEN
+	
+	@edgeFreqs: A frequency table of ('a','b') -> freq  key/value pairs giving the distribution of edges for this substructure. Often this will be empty. It
+	is passed along as information stuffed into the dendrogram.txt file
 	"""
-	def _appendToDendrogram(self, compSub, compSubName, compressedSubs, deletedSubs):
+	def _appendToDendrogram(self, compSub, compSubName, compressedSubs, deletedSubs, edgeFreqs):
 		s = "("
 		#add the max compressed ids
 		if len(self._maxCompressedSubs) > 0:
@@ -353,6 +355,10 @@ class LogCompressor(object):
 		mstr += "#"
 		mstr += str(list(self._getEdgeSet(compSub)))
 
+		#add the distribution of edges that connected to the compressing substructure; this will often be empty
+		mstr += "#"
+		mstr += str(edgeFreqs)
+		
 		"""
 		for edge in compSub.es:
 		mstr += (compSub.vs[edge[0]]["name"]+"->"compSub.vs[edge[0]]["name"]+",")
@@ -414,12 +420,20 @@ class LogCompressor(object):
 	def _compressAllTraces(self, traceSubs, bestSub, deleteSub=False):
 		compressedSubs = []
 		deletedSubs = []
+		connectingEdgeFreqs = dict() #the edge collection; this is constructed as a frequency table since in/out edges may not occur the same in every compressable trace (although this will normally be true)
 		
 		for trace in traceSubs:
 			#if deleteSub, delete the substructure; if no vertices remain, the subgraph is no longer in the trace
 			if deleteSub:
 				#print("DELETING SUB: "+bestSub["name"])
-				sub = self._deleteTraceSub(trace, bestSub)
+				sub, connectingEdges = self._deleteTraceSub(trace, bestSub)
+				#record connecting edges for this trace and bestSub
+				for edge in connectingEdges:
+					if edge in connectingEdgeFreqs.keys():
+						connectingEdgeFreqs[edge] += 1
+					else:
+						connectingEdgeFreqs[edge] = 1
+
 				#if sub is None (entire subgraph was deleted), just ignore it
 				if sub != None:
 					sub["oldXpId"]  = trace["oldXpId"]
@@ -433,7 +447,7 @@ class LogCompressor(object):
 				sub = self._compressTraceSub(trace, bestSub)
 				compressedSubs.append(sub)
 
-		return compressedSubs, deletedSubs
+		return compressedSubs, deletedSubs, connectingEdgeFreqs
 		
 	"""
 	Given a .g log formatted as input to gbad/subdue, builds a 
