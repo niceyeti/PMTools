@@ -29,8 +29,8 @@ class CompressionLevel(object):
 		print(str(vs))
 		print(str(self.SubGraphEdgeList))
 		g.add_vertices(self.SubGraphVertices)
-		for v in g.vs:
-			print("v: "+str(v["name"]))
+		#for v in g.vs:
+		#	print("v: "+str(v["name"]))
 		g.add_edges(self.SubGraphEdgeList)
 
 		self.SubGraph = g

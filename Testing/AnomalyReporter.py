@@ -21,6 +21,10 @@ class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
+		logFile = open(self._logPath, "r")
+		self._parseLogAnomalies(logFile)
+		self._numTraces = len(self._logTraces)
+		
 		self._resultPath = resultPath
 		self._dendrogramPath = dendrogramPath
 		self._dendrogramThreshold = dendrogramThreshold
@@ -456,6 +460,8 @@ class AnomalyReporter(object):
 	The divergence metric is KL: Sum[ P(x)*log(P(x)/Q(x)) ] where P(x) is global probability of edge, and Q(x) is probability of edge in this substructure context.
 	The values are stored in the dendrogram "EDGE_KL_PQ" and "EDGE_KL_QP" attributes, where P is described in previous line, Q is Sum[ Q(x)*log(Q(x)/P(x)) ]
 	
+	This returns nothing; the information is printed and also stored in each dendrogram level as described.
+	
 	NOTE: This could also incorporate node probabilities, but that depends on the variance of node occurrences throughout the graph, which is sort of zero
 	for the process model definition (eg, a node can only occur in one position, hence its global/local probability will be the same).
 	"""
@@ -473,7 +479,7 @@ class AnomalyReporter(object):
 					#get the global edge probability; checking first for markov-model and edge-dist consistency
 					if key not in self._markovModel.keys():
 						print("\n\n>>> ERROR: local edge from dendrogram not in markovModel in _analyzeEdgeConnectivityDivergence")
-						print("MARKOV: "str(self._markovModel))
+						print("MARKOV: "+str(self._markovModel))
 						print("Edge dist: "+str(level.EdgeDist))
 						
 					pEdgeGlobal = float(self._markovModel[key]) / float(self._numTraces)
@@ -482,17 +488,31 @@ class AnomalyReporter(object):
 					if pEdgeLocal == 0 or pEdgeGlobal == 0:
 						print("ERROR pEdgeLocal or pEdgeGlobal zero in _analyzeEdgeConnectivityDivergence: pEdgeLocal="+str(pEdgeLocal)+"  pEdgeGlobal="+str(pEdgeGlobal))
 
+					print(str(pEdgeGlobal)+"   "+str(pEdgeLocal))
+					"""
 					divPQ += pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal)
 					divQP += pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal)
+					"""
+					
+					#binomial edge construction
+					pNotEdgeLocal = 1.0 - pEdgeLocal
+					pNotEdgeGlobal = 1.0 - pEdgeGlobal
+					divPQ += (pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal) + pNotEdgeLocal * math.log(pNotEdgeLocal / pNotEdgeGlobal))
+					divQP += (pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal) + pNotEdgeGlobal * math.log(pNotEdgeGlobal / pNotEdgeLocal))
+					
 				
-				
-				level.Attrib["EDGE_KL_QP"] = divQP
 				level.Attrib["EDGE_KL_PQ"] = divPQ
+				level.Attrib["EDGE_KL_QP"] = divQP
 
 			else:
 				#empty edge distributions are okay: they occur often when a subtructure is maximally compressed
-				level.Attrib["EDGE_KL_QP"] = -1.0
-				level.Attrib["EDGE_KL_PQ"] = -1.0
+				level.Attrib["EDGE_KL_QP"] = -999
+				level.Attrib["EDGE_KL_PQ"] = -999
+
+		#print the KL divergence values for each substructure
+		print("KL divergence values per level")
+		for level in dendrogram:
+			print(level.SubName+"    pq: "+str(level.Attrib["EDGE_KL_PQ"])+"    qp: "+str(level.Attrib["EDGE_KL_PQ"]))
 
 		
 	"""
@@ -591,11 +611,14 @@ class AnomalyReporter(object):
 		childDists = self._analyzeChildSubDistributions(dendrogram)
 		print("Child distributions: "+str(childDists))
 		
-		
 		for i in range(4,len(dendrogram)):
 			ids = self._getSubTraceIds(dendrogram, i)
 			print(dendrogram[i].SubName+" ids:  "+str(ids))
 
+		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
+		self._analyzeEdgeConnectivityDivergence(dendrogram)
+			
+			
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
@@ -780,8 +803,9 @@ class AnomalyReporter(object):
 	@anomalies: a list of integer anomaly id's
 	"""
 	def _outputResults(self, anomalies):
-		logFile = open(self._logPath, "r")
-		self._parseLogAnomalies(logFile)
+		#MOVED TO CTOR
+		#logFile = open(self._logPath, "r")
+		#self._parseLogAnomalies(logFile)
 		self._detectedAnomalyIds = anomalies
 		
 		#create the true anomaly and detected anomaly sets via the trace-id numbers
@@ -791,7 +815,6 @@ class AnomalyReporter(object):
 
 		#store overall stats and counts
 		self._numDetectedAnomalies = detectedAnomalies
-		self._numTraces = len(self._logTraces)
 		self._numTrueAnomalies = len(self._logAnomalies)
 
 		#get the false/true positives/negatives using set arithmetic
