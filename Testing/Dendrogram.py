@@ -38,10 +38,17 @@ class CompressionLevel(object):
 	"""
 	Given a line in a dendrogram file, fills in all data for this compression level
 	
-	@line: a line like "([1,3,4]1,2,3,4:SUB7:4:2.24336)7,8,9{2:1,1:-1,3:-1,4:-1}#[('a','b'),('c','b')...]"
+	@line: a line like "([1,3,4]1,2,3,4:SUB7:4:2.24336)7,8,9{2:1,1:-1,3:-1,4:-1}#[('a','b'),('c','b')...]#[('h','e'),('r','d')...]"
 	"""
 	def Initialize(self,line):
-		print("line: >"+line+"<")
+		#print("line: >"+line+"<")
+		
+		#copy the line, why not
+		self.Line = str(line)
+		
+		#build the edge distribution surrounding the substructure; remember, this may be empty!!
+		self.EdgeDist= eval(line.split('#')[2])
+		
 		graphLine = line.split("#")[1]
 		line = line.split("#")[0]
 

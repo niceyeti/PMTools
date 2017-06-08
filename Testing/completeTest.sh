@@ -213,7 +213,7 @@ cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
-#python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile
+
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath
 
 

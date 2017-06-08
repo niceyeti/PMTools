@@ -394,8 +394,6 @@ class AnomalyReporter(object):
 	Returns: A dict of dicts. The key in the outer dict is a particular substructure. Within this dict, the keys are the names of its children (which may
 	include itself), and the values are another dict of attributes for that child substructure
 
-	
-	
 	"""
 	def _analyzeChildSubDistributions(self, dendrogram):
 		childDivergenceMap = {}
@@ -448,7 +446,55 @@ class AnomalyReporter(object):
 						childDivergenceMap[child.SubName] = [(childConnectingEdgeProb, graphConnectingEdgeProb)]
 					
 		return childDivergenceMap				
+
+	"""
+	Measures the edge divergence of edges connecting to a substructure wrt the edge distribution in the overall graph. 
+	This is a metric of "in the context of a normative pattern, something unusual occurs" in the sense that we are looking for divergence
+	between the frequency of edges in this context vs. its frequency in the complete graph. The assumption being that the
+	recursive compression process places unusual behavior in the edges connecting substructures and at the leaves.
+	
+	The divergence metric is KL: Sum[ P(x)*log(P(x)/Q(x)) ] where P(x) is global probability of edge, and Q(x) is probability of edge in this substructure context.
+	The values are stored in the dendrogram "EDGE_KL_PQ" and "EDGE_KL_QP" attributes, where P is described in previous line, Q is Sum[ Q(x)*log(Q(x)/P(x)) ]
+	
+	NOTE: This could also incorporate node probabilities, but that depends on the variance of node occurrences throughout the graph, which is sort of zero
+	for the process model definition (eg, a node can only occur in one position, hence its global/local probability will be the same).
+	"""
+	def _analyzeEdgeConnectivityDivergence(self, dendrogram):
+		
+		for level in dendrogram:
+			#calculate divergence
+			if len(level.EdgeDist.keys()) > 0:
+				divPQ = 0.0
+				divQP = 0.0
+				#keys are tuples of node names: ('c','b')
+				for key in level.EdgeDist.keys():
+					#get the edge probability in context of this substructure
+					pEdgeLocal = float(level.EdgeDist[key]) / float(level.NumInstances)
+					#get the global edge probability; checking first for markov-model and edge-dist consistency
+					if key not in self._markovModel.keys():
+						print("\n\n>>> ERROR: local edge from dendrogram not in markovModel in _analyzeEdgeConnectivityDivergence")
+						print("MARKOV: "str(self._markovModel))
+						print("Edge dist: "+str(level.EdgeDist))
+						
+					pEdgeGlobal = float(self._markovModel[key]) / float(self._numTraces)
+
+					#check for math errors
+					if pEdgeLocal == 0 or pEdgeGlobal == 0:
+						print("ERROR pEdgeLocal or pEdgeGlobal zero in _analyzeEdgeConnectivityDivergence: pEdgeLocal="+str(pEdgeLocal)+"  pEdgeGlobal="+str(pEdgeGlobal))
+
+					divPQ += pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal)
+					divQP += pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal)
 				
+				
+				level.Attrib["EDGE_KL_QP"] = divQP
+				level.Attrib["EDGE_KL_PQ"] = divPQ
+
+			else:
+				#empty edge distributions are okay: they occur often when a subtructure is maximally compressed
+				level.Attrib["EDGE_KL_QP"] = -1.0
+				level.Attrib["EDGE_KL_PQ"] = -1.0
+
+		
 	"""
 	Gets the TRACE-probability of an edge, which is defined as the count of that edge divided
 	by the number of traces. The number of traces is necessarily contained by the sum over

@@ -135,6 +135,7 @@ class LogCompressor(object):
 	Return Cases:
 	
 		Returns: delSub (deleted substructure) and delEdges (incident and out-edges of a deleted substructure wrt compressing sub)
+		@delEdges can be empty when a substructure reaches maximum compression: the only remaining components are deleted, and therefore not connected to anything.
 	
 		1) trace does not contain sub: just return the trace unmodified, empty edge list
 		2) trace PROPERLY contains substructure: The substructure is deleted from the trace.
@@ -169,7 +170,7 @@ class LogCompressor(object):
 				esDel = set([e for e in esTrace if e[0] not in vsComp and e[1] not in vsComp])
 				#build delEdges from the set of edges connecting traceSub and compSub
 				delEdges = [e for e in esTrace if (e[0] not in vsComp and e[1] in vsComp) or (e[1] not in vsComp and e[0] in vsComp)]
-				print("\n\nDEL EDGES: "+str(delEdges))
+				#print("\n\nDEL EDGES: "+str(delEdges))
 				#print("vsDel: "+str(vsDel))
 				#print("esDel: "+str(esDel))
 				#print("trace vs: "+str(vsTrace))
