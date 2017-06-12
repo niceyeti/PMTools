@@ -500,7 +500,6 @@ class AnomalyReporter(object):
 					divPQ += (pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal) + pNotEdgeLocal * math.log(pNotEdgeLocal / pNotEdgeGlobal))
 					divQP += (pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal) + pNotEdgeGlobal * math.log(pNotEdgeGlobal / pNotEdgeLocal))
 					
-				
 				level.Attrib["EDGE_KL_PQ"] = divPQ
 				level.Attrib["EDGE_KL_QP"] = divQP
 

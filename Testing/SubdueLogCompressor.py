@@ -356,7 +356,7 @@ class LogCompressor(object):
 		mstr += "#"
 		mstr += str(list(self._getEdgeSet(compSub)))
 
-		#add the distribution of edges that connected to the compressing substructure; this will often be empty
+		#add the distribution of edges that connected to the compressing substructure; this will often be empty, such as when no edges remain
 		mstr += "#"
 		mstr += str(edgeFreqs)
 		
