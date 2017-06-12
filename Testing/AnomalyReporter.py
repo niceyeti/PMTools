@@ -482,7 +482,8 @@ class AnomalyReporter(object):
 						print("MARKOV: "+str(self._markovModel))
 						print("Edge dist: "+str(level.EdgeDist))
 						
-					pEdgeGlobal = float(self._markovModel[key]) / float(self._numTraces)
+					pEdgeGlobal = float(self._markovModel[key]) / float(sum(self._markovModel.values())) #the characterization of p(edge) over the number of traces
+					#pEdgeGlobal = float(self._markovModel[key]) / float(self._numTraces) #the characterization of p(edge) over the number of traces
 
 					#check for math errors
 					if pEdgeLocal == 0 or pEdgeGlobal == 0:
@@ -497,7 +498,9 @@ class AnomalyReporter(object):
 					#binomial edge construction
 					pNotEdgeLocal = 1.0 - pEdgeLocal
 					pNotEdgeGlobal = 1.0 - pEdgeGlobal
+					#accumulate divergence of PQ
 					divPQ += (pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal) + pNotEdgeLocal * math.log(pNotEdgeLocal / pNotEdgeGlobal))
+					#accumulate divergence of QP
 					divQP += (pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal) + pNotEdgeGlobal * math.log(pNotEdgeGlobal / pNotEdgeLocal))
 					
 				level.Attrib["EDGE_KL_PQ"] = divPQ
