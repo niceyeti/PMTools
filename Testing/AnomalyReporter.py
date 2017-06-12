@@ -220,11 +220,13 @@ class AnomalyReporter(object):
 	Given the dendrogram, returns a list of (dict,string) tuples with the dict characterizing the frequency distribution of
 	each non-terminal level's children, and the string is the substructure name. The index of each dictionary corresponds with the level in the
 	dendrogram. 
-		[({"SUB_1":3, "SELF":4},"NAME OF THIS NODE"),({...},"NAME OF NEXT NODE")]
+		[({"SUB_1":3, "SELF":4},"NAME OF THIS NODE"),({...},"NAME NODE")]
 		
 	Note that frequently some nodes at a specific level will reach max compression; these are treated as "children"
 	of this substructure/level, which is valid since some others compressed by this level will not be maximally compressed but are
 	nonetheless siblings.
+	
+	Returns: freqDist, a list of dictionaries GUARANTEED to be ordered by lines in the dendrogram file, and hence by compression order and topo-graph order.
 	"""
 	def _getDendrogramDistribution(self,dendrogram):
 		dictList = []
@@ -505,7 +507,7 @@ class AnomalyReporter(object):
 					
 				level.Attrib["EDGE_KL_PQ"] = divPQ
 				level.Attrib["EDGE_KL_QP"] = divQP
-
+				
 			else:
 				#empty edge distributions are okay: they occur often when a subtructure is maximally compressed
 				level.Attrib["EDGE_KL_QP"] = -999
@@ -562,6 +564,7 @@ class AnomalyReporter(object):
 		return connectingEdges
 
 
+	#returns dendrogram object by name in dendrogram levels
 	def _getDendrogramLevelByName(self, dendrogram, name):
 		
 		for level in range(0,len(dendrogram)):
@@ -575,7 +578,55 @@ class AnomalyReporter(object):
 		
 		
 		
-		
+	"""
+	The edge distributions for each substructure do not contain information on edges that may have been compressed/deleted at
+	a previous iteration. This restores the info by looking donwstream via @freqDist to determine the missing info.
+	
+	@dendrogram: The dendrogram, as a list of dendrogram objects
+	@freqDist: The substructure frequency distribution; structurally this tells us how to traverse and recover the missing edge distribution information for each substructure
+
+	NOTE: Requires that len(dendrogram) == number of tuples in freqDist, such that indices in @freqDist match indices in @dendrogram
+
+	"""
+	def _amendDendrogramEdgeDists(self, dendrogram, freqDist):
+		print("Edge distributions before:")
+		for level in range(len(dendrogram)):
+			print(str(dendrogram[level].EdgeDist))
+	
+		#traverse graph of connected substructures from first substructure downstream, via freqDist structure
+		for level in range(len(dendrogram) - 1):  #see _getDendrogramDistribution: subtract one, since the length of freqDist is len(dendrogram) -1; this does not result in loss of info, since we know the lowest leaf child will have its dist updated via its parents
+			parent = dendrogram[level]
+			if len(freqDist[level]) > 0:
+				childDist = freqDist[level][0] #each member of freqDist is a tuple: ({'SUB0': 146, 'SUB1': 39, 'SUB2': 15}, 'SUB_init')
+				parentEdgeDist = parent.EdgeDist #get all the edges that we deleted when this substructure was deleted
+				parentVs = [edge[0] for edge in parent.SubGraphEdgeList]+[edge[1] for edge in parent.SubGraphEdgeList]
+				parentVs = set(parentVs)
+				
+				#for this level, look at all of its children, and add any edges in its EdgeDist to its children, satisfying that these edges connect to parent to the child
+				for childName in childDist.keys():
+					childLevel = self._getDendrogramLevelByName(dendrogram, childName)
+					#get the set of all nodes in the child substructure
+					childVs = [edge[0] for edge in childLevel.SubGraphEdgeList]+[edge[1] for edge in childLevel.SubGraphEdgeList]
+					childVs = set(childVs)
+					#print("CHILD VS: "+str(childVs))
+					#look for nodes in edgeDist's dest/target nodes in @childVs; these will be added to the child per their frequency
+					for edge in parentEdgeDist.keys():
+						if edge[0] in parentVs and edge[1] in childVs:
+							#print("APPENDING TO CHILD DIST: "+str(edge))
+							if edge in childLevel.EdgeDist.keys():
+								#note: this is permissible if/when a child has multiple parents
+								childLevel.EdgeDist[edge] += parentEdgeDist[edge]
+							else:
+								childLevel.EdgeDist[edge] = parentEdgeDist[edge]
+							#	print("ERROR: edge "+str(edge)+" already in child.EdgeDist in amendDendrogramEdgeDists(): "+str(childLevel.EdgeDist)) #A serious error; if reachble, then haven't understood the necessary parts of the structure ell enough
+							#create a new member of the child's edge distribution
+							#childLevel.EdgeDist[edge] = parentEdgeDist[edge]
+
+		print("Edge distributions after:")
+		for level in range(len(dendrogram)):
+			print(str(dendrogram[level].EdgeDist))
+				
+				
 	
 	
 	"""
@@ -602,6 +653,15 @@ class AnomalyReporter(object):
 		#Gets the distribution of a dendrogram, as a list of dictionaries
 		freqDist = self._getDendrogramDistribution(dendrogram)
 		print("FREQ DIST: "+str(freqDist))
+		
+		#CRITICAL: The timing of this is arbitrary and represents the bad coupling in this code:
+		#At each compression iteration, edges are deleted; however edges incident to some substructure
+		#could have been deleted on a previous iteration. This point in the code, freqDist in hand, 
+		#just happens to be the point when we have the information to restore the upstream edge distribution information.
+		self._amendDendrogramEdgeDists(dendrogram, freqDist)
+		
+		
+		
 		#use the frequency distribution list to visualize the dendrogram
 		self._visualizeDendrogram(freqDist)
 		#maps substructure indices in the dendrogram (ints) to 
