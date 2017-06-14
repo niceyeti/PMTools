@@ -501,6 +501,8 @@ class AnomalyReporter(object):
 					pNotEdgeLocal = 1.0 - pEdgeLocal
 					pNotEdgeGlobal = 1.0 - pEdgeGlobal
 					#accumulate divergence of PQ
+					print("pNotGlob: "+str(pNotEdgeGlobal)+"  pGlob: "+str(pEdgeGlobal))
+					print("pNotLocal: "+str(pNotEdgeLocal)+"  pLoc: "+str(pEdgeLocal))
 					divPQ += (pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal) + pNotEdgeLocal * math.log(pNotEdgeLocal / pNotEdgeGlobal))
 					#accumulate divergence of QP
 					divQP += (pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal) + pNotEdgeGlobal * math.log(pNotEdgeGlobal / pNotEdgeLocal))
