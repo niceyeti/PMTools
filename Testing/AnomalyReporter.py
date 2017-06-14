@@ -604,7 +604,7 @@ class AnomalyReporter(object):
 				parentVs = [edge[0] for edge in parent.SubGraphEdgeList]+[edge[1] for edge in parent.SubGraphEdgeList]
 				parentVs = set(parentVs)
 				
-				#for this level, look at all of its children, and add any edges in its EdgeDist to its children, satisfying that these edges connect to parent to the child
+				#for this level, look at all of its children, and add any edges in its EdgeDist to its children, satisfying that these edges connect parent to the child
 				for childName in childDist.keys():
 					childLevel = self._getDendrogramLevelByName(dendrogram, childName)
 					#get the set of all nodes in the child substructure
@@ -626,11 +626,9 @@ class AnomalyReporter(object):
 
 		print("Edge distributions after:")
 		for level in range(len(dendrogram)):
-			print(str(dendrogram[level].EdgeDist))
-				
-				
-	
-	
+			print(dendrogram[level].SubName+"\t"+str(dendrogram[level].EdgeDist)+"  "+str(dendrogram[level].NumInstances)+" instances")
+
+			
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
