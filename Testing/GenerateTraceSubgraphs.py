@@ -17,6 +17,7 @@ between this and the example applications of GBAD/SUBDUE, which often use edge l
 from __future__ import print_function
 import igraph
 import sys
+import os
 
 """
 Oddly named, but this object's responsibility is reading in a model graphml file, and a file containing
@@ -61,13 +62,19 @@ class Retracer(object):
 	the same, they just use different syntax. The graphs/groups.g file in SUBDUE provides the guiding example of the target format in which traces
 	will be output by this class.
 	"""
-	def GenerateTraces(self, graphPath, tracePath, outputPath, useSubdueFormat):
+	def GenerateTraces(self, graphPath, tracePath, outputPath, useSubdueFormat, subgraphPath):
 		print("Retracer subgraph-generator replaying traces from "+tracePath+" on mined model "+graphPath+". Output will be saved to "+outputPath)
 
 		self._readModel(graphPath)
 		self._initializeMarkovModel()
 		traceFile = open(tracePath,"r")
 		gFile = open(outputPath,"w+")
+		#output the subgraphs representing each individual trace to subgraphs.py
+		subgraphPath = os.path.dirname(outputPath)
+		if len(subgraphPath) <= 2:
+			subgraphPath = "./"
+		subgraphPath += "subgraphs.py"
+		subgraphFile = open(subgraphPath,"w+")
 		modelInfo = self._model["name"]
 
 		#write header info, for convenience
@@ -79,13 +86,14 @@ class Retracer(object):
 		gFile.write(header)
 
 		#prepare and write all of the traces to the target format
-		self._outputTraces(traceFile, gFile, useSubdueFormat)
+		self._outputTraces(traceFile, gFile, useSubdueFormat, subgraphFile)
         
 		markovFile = outputPath[:outputPath.rfind("/")]+"/markovModel.py"
 		print("Outputting markov model to: "+markovFile)
 		
 		self._writeMarkovModel(markovFile)
         
+		subgraphFile.close()
 		traceFile.close()
 		gFile.close()
 
@@ -150,8 +158,9 @@ class Retracer(object):
 	@traceFile: a .log file
 	@gFile: the .g file to which traces will be written (as graphs)
 	@useSubdueFormat: use subdue format over gbad
+	@subgraphFile: The file to which each trace-graph will be written as a tuple, the first member the trace id, the second item the list of edges representing the graph
 	"""
-	def _outputTraces(self, traceFile, gFile, useSubdueFormat):
+	def _outputTraces(self, traceFile, gFile, useSubdueFormat, subgraphFile):
 		traces = [line.strip() for line in traceFile.readlines() if len(line.strip()) > 0]
 		ntraces = str(len(traces))
 		ctr = 0
@@ -175,11 +184,35 @@ class Retracer(object):
 			else:
 				gRecord = self._buildGbadRecord(isAnomalous, traceNo, gTrace)
 			gFile.write(gRecord)
+			
+			#also write the graph representation of the trace to the subgraphs.py file, for processing later in python
+			self._writeSubgraph(subgraphFile, traceNo, gTrace, includeEndPoints=False)
             
 			self._updateMarkovModel(gTrace)
             
 		print("  Done.")
 
+	"""
+	Writes python representation of graph to file, as a tuple: tup[0]=traceNo, tup[1] = list of edges as named tuples, as in [('a', 'c'), ('f', 'h'), ('a', 'h')]
+	
+	@subgraphFile: Open file handle to which the edge sequence will be written
+	@traceNo: The trace number
+	@gTrace: A list of named tuples representing the edge sequence given by some graph: [('a', 'c'), ('f', 'h'), ('a', 'h') ... ]
+	@includeEndPoints: Whether or not to include the START and END nodes of each trace
+	"""
+	def _writeSubgraph(self, subgraphFile, traceNo, gTrace, includeEndPoints=False):
+		s = "("+str(traceNo)+","
+		
+		#filter end points if not requested to include them
+		if not includeEndPoints:
+			edgeList = [edge for edge in edgeList if edge[0].upper() not in ["START","END"] and edge[1].upper() not in ["START","END"]]
+		
+		#edgeList = [(gTrace.vs[e.source]["name"], gTrace.vs[e.target]["name"])  for e in gTrace.es]
+		s += str(edgeList)
+		s += "\n"
+		
+		subgraphFile.write(s)
+		
 	"""
 	Accepts a list of edges code as a list of directed edge pairs: [('a','b'), ('c','f'), ... ]
 	and update in-memory markov model.
@@ -408,10 +441,10 @@ class Retracer(object):
 
 
 def usage():
-	print("Usage: python ./GenerateTraceSubgraphs.py --graphml=[path to graphml model file] --tracePath=[path to trace file] --outputPath=[output path for .g file] [--subdue/--gbad (target format)]")
+	print("Usage: python ./GenerateTraceSubgraphs.py --graphml=[path to graphml model file] --tracePath=[path to trace file] --outputPath=[output path for .g file] --traceGraphs=[path to which graph of each trace written] [--subdue/--gbad (target format)]")
 
 def main():
-	if len(sys.argv) < 4:
+	if len(sys.argv) < 5:
 		print("ERROR incorrect number of params passed to GenerateTraceSubgraphs.py")
 		usage()
 		exit()
@@ -419,6 +452,7 @@ def main():
 	modelGraphmlPath = None
 	tracePath = None
 	outputPath = None
+	traceGraphPath = None
 
 	for arg in sys.argv:
 		if "--graphml=" in arg:
@@ -427,8 +461,10 @@ def main():
 			tracePath = arg.split("=")[1]
 		if "--outputPath=" in arg:
 			outputPath = arg.split("=")[1]
-
-	if not modelGraphmlPath or not tracePath or not outputPath:
+		if "--traceGraphs=" in arg:
+			traceGraphPath = arg.split("=")[1]
+			
+	if not modelGraphmlPath or not tracePath or not outputPath or not traceGraphPath:
 		print("\n\nERROR retracer missing arguments, in GenerateTraceSubgraphs.py.\n")
 		usage()
 		exit()
@@ -437,7 +473,7 @@ def main():
 	useSubdueFormat = "--subdue" in sys.argv and not "--gbad" in sys.argv
 
 	retracer = Retracer()
-	retracer.GenerateTraces(modelGraphmlPath, tracePath, outputPath, useSubdueFormat)
+	retracer.GenerateTraces(modelGraphmlPath, tracePath, outputPath, useSubdueFormat, traceGraphPath)
 
 if __name__ == "__main__":
 	main()

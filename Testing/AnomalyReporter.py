@@ -18,7 +18,7 @@ import igraph
 import math
 
 class AnomalyReporter(object):
-	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05):
+	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05, traceGraphPath):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		logFile = open(self._logPath, "r")
@@ -34,7 +34,24 @@ class AnomalyReporter(object):
 		for edgeKey in self._markovModel:
 			if edgeKey[0].upper() == "START":
 				self._traceCount += self._markovModel[edgeKey]
-	
+
+		#read in the trace subgraphs (all traces in graph form, given by the mined model)
+		self._traceGraphs = self._readTraceGraphs(traceGraphPath)
+				
+	"""
+	Reads the trace-subgraph file of graph representations of each trace, for which the file is formatted as tuples of (traceNo, [edgeList like ... ('a','s'), ('s','d'), ('g','s')])
+	"""
+	def _readTraceGraphs(self, traceGraphPath):
+		traceGraphDict = {} #dictionary of trace graphs, 
+		
+		with open(traceGraphPath,"r") as tf:
+			for line in tf.readlines():
+				tup = eval(line.strip())
+				
+		
+		
+		
+				
 	"""
 	Expected file format is a single line containing the tring version of the markov model,
 	a python dictionary of keys consisting of concatenated src-dst vertex names, and values
@@ -925,19 +942,20 @@ class AnomalyReporter(object):
 		self._outputResults(self._detectedAnomalyIds)
 		
 def usage():
-	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0] -markovPath=[path to markov file]")
+	print("Usage: python ./AnomalyReporter.py -gbadResultFiles=[path to gbad output] -logFile=[path to log file containing anomaly labellings] -resultFile=[result output path] [optional: --dendrogram=dendrogramFilePath --dendrogramThreshold=[0.0-1.0] -markovPath=[path to markov file] -traceGraphs=[trace graphs path]")
 	print("To get this class to evaluate multiple gbad result files at once, just cat the files into a single file and pass that file.")
 
 """
 
 """
 def main():
-	if len(sys.argv) < 4:
+	if len(sys.argv) < 5:
 		print("ERROR incorrect num args")
 		usage()
 		exit()
 
 	markovPath = ""
+	traceGraphPath = ""
 	gbadPath = sys.argv[1].split("=")[1]
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
@@ -952,12 +970,14 @@ def main():
 	for arg in sys.argv:
 		if "-markovPath=" in arg:
 			markovPath = arg.split("=")[1]
-	if markovPath == "":
+		if "-traceGraphs=" in arg:
+			traceGraphPath = arg.split("=")[1]
+	if markovPath == "" or traceGraphPath == "":
 		usage()
 		exit()
 
 	print("MARKOV: "+markovPath)
-	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold)
+	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold, traceGraphPath)
 	reporter.CompileResults()
 
 if __name__ == "__main__":

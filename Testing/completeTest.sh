@@ -18,6 +18,7 @@ minedGraphmlPath="../SyntheticData/minedModel.graphml"
 markovModelPath="../SyntheticData/markovModel.py"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
 subdueLogPath="../SyntheticData/test.g"
+traceGraphPath="../SyntheticData/traceGraphs.py"
 compressedLog="../SyntheticData/compressed.g"
 gbadFsmLogPath="../SyntheticData/test_fsm.g"
 
@@ -118,9 +119,9 @@ python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
 #
 ################################################################################
 ##Generate sub-graphs from the mined graphml model
-python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath --outputPath=$subdueLogPath --gbad
+python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath --outputPath=$subdueLogPath --traceGraphs=$traceGraphPath --gbad
 ###Added step: gbad-fsm requires a undirected edges declarations, so take the subueLog and just convert the 'd ' edge declarations to 'u '
-###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath	
+###python ../ConversionScripts/SubdueLogToGbadFsm.py $subdueLogPath $gbadFsmLogPath
 
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
@@ -214,7 +215,7 @@ cat $probResult >> $gbadResult
 #cat $fsmResult >> $gbadResult
 
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
 
 #python ./AnomalyReporter.py -gbadResult=../TestResults/gbadResult.txt -logFile=../SyntheticData/testTraces.log -resultFile=../TestResults/anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=../SyntheticData/markovModel.py
 
