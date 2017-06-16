@@ -70,10 +70,11 @@ class Retracer(object):
 		traceFile = open(tracePath,"r")
 		gFile = open(outputPath,"w+")
 		#output the subgraphs representing each individual trace to subgraphs.py
-		subgraphPath = os.path.dirname(outputPath)
-		if len(subgraphPath) <= 2:
-			subgraphPath = "./"
-		subgraphPath += "subgraphs.py"
+		#subgraphPath = os.path.dirname(outputPath)
+		#if len(subgraphPath) <= 2:
+		#	subgraphPath = "./"
+		#subgraphPath += "/subgraphs.py"
+		#print("\n\nOPENING SUBSGRAPHS: "+subgraphPath)
 		subgraphFile = open(subgraphPath,"w+")
 		modelInfo = self._model["name"]
 
@@ -205,11 +206,11 @@ class Retracer(object):
 		
 		#filter end points if not requested to include them
 		if not includeEndPoints:
-			edgeList = [edge for edge in edgeList if edge[0].upper() not in ["START","END"] and edge[1].upper() not in ["START","END"]]
+			edgeList = [edge for edge in gTrace if edge[0].upper() not in {"START","END"} and edge[1].upper() not in {"START","END"}]
 		
 		#edgeList = [(gTrace.vs[e.source]["name"], gTrace.vs[e.target]["name"])  for e in gTrace.es]
 		s += str(edgeList)
-		s += "\n"
+		s += ")\n"
 		
 		subgraphFile.write(s)
 		

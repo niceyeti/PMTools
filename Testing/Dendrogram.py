@@ -43,7 +43,7 @@ class CompressionLevel(object):
 	def Initialize(self,line):
 		#print("line: >"+line+"<")
 		
-		#copy the line, why not
+		#copy and preserve the line, why not
 		self.Line = str(line)
 		
 		#build the edge distribution surrounding the substructure; remember, this may be empty!!

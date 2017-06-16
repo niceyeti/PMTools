@@ -18,7 +18,7 @@ import igraph
 import math
 
 class AnomalyReporter(object):
-	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05, traceGraphPath):
+	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05, traceGraphPath="../SyntheticData/traceGraphs.py"):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		logFile = open(self._logPath, "r")
@@ -39,7 +39,8 @@ class AnomalyReporter(object):
 		self._traceGraphs = self._readTraceGraphs(traceGraphPath)
 				
 	"""
-	Reads the trace-subgraph file of graph representations of each trace, for which the file is formatted as tuples of (traceNo, [edgeList like ... ('a','s'), ('s','d'), ('g','s')])
+	Reads the trace-subgraph file of graph representations of each trace, for which the file is formatted as
+	tuples of (traceNo, [edgeList like ... ('a','s'), ('s','d'), ('g','s')])
 	"""
 	def _readTraceGraphs(self, traceGraphPath):
 		traceGraphDict = {} #dictionary of trace graphs, 
@@ -47,11 +48,14 @@ class AnomalyReporter(object):
 		with open(traceGraphPath,"r") as tf:
 			for line in tf.readlines():
 				tup = eval(line.strip())
-				
+				traceNo = tup[0]
+				traceGraph = tup[1]
+				if traceNo in traceGraphDict.keys():
+					print("ERROR traceNo already in trageGraph in _readTraceGraphs")
+				traceGraphDict[traceNo] = traceGraph
 		
-		
-		
-				
+		return traceGraphDict
+
 	"""
 	Expected file format is a single line containing the tring version of the markov model,
 	a python dictionary of keys consisting of concatenated src-dst vertex names, and values
@@ -211,8 +215,35 @@ class AnomalyReporter(object):
 				cl = CompressionLevel(line.strip())
 				dendrogram.append(cl)
 		
+		#create the edge distributions from the trace subgraph file
+		for level in range(len(dendrogram)):
+			sub = dendrogram[level]
+			sub.EdgeDist = self._buildSubstructureEdgeDist(dendrogram, level)
+		
 		return dendrogram
-	
+
+	#Builds the edge distribution for a given substructure in an a priori fashion, using the trace graphs populated prior.
+	#NOTE: this requires self._traceGraphs was populated before
+	def _buildSubstructureEdgeDist(self, dendrogram, level):
+		sub = dendrogram[level]
+		#populate the first level / root-ids for this substructure in the dendrogram; these are used to pull the original traces from the tracegraph file
+		rootIds = self._getSubTraceIds(dendrogram, level)
+		sub.Attrib["RootIds"] = rootIds
+		
+		#build the edge distribution for this substructure
+		edgeDist = {}
+		for rootId in rootIds:
+			#count edges connected to this substructure (one vertex in and one out for a given edge, undirected)
+			traceEdges = self._traceGraphs[int(rootId)]
+			for edge in traceEdges:
+				if (edge[0] in sub.SubGraphVertices and edge[1] not in sub.SubGraphVertices) or (edge[1] in sub.SubGraphVertices and edge[0] not in sub.SubGraphVertices):
+					if edge in edgeDist.keys():
+						edgeDist[edge] += 1
+					else:
+						edgeDist[edge] = 1
+		
+		return edgeDist
+		
 	"""
 	A recursive searh procedure for retrieving a child of the current level.
 	
@@ -592,11 +623,7 @@ class AnomalyReporter(object):
 		
 		print("ERROR dendrogram level name >"+name+"< not found in _getDendrogramLevelByName")
 		return None
-		
-					
-		
-		
-		
+
 	"""
 	The edge distributions for each substructure do not contain information on edges that may have been compressed/deleted at
 	a previous iteration. This restores the info by looking donwstream via @freqDist to determine the missing info.
@@ -606,7 +633,7 @@ class AnomalyReporter(object):
 
 	NOTE: Requires that len(dendrogram) == number of tuples in freqDist, such that indices in @freqDist match indices in @dendrogram
 
-	"""
+	
 	def _amendDendrogramEdgeDists(self, dendrogram, freqDist):
 		print("Edge distributions before:")
 		for level in range(len(dendrogram)):
@@ -644,7 +671,7 @@ class AnomalyReporter(object):
 		print("Edge distributions after:")
 		for level in range(len(dendrogram)):
 			print(dendrogram[level].SubName+"\t"+str(dendrogram[level].EdgeDist)+"  "+str(dendrogram[level].NumInstances)+" instances")
-
+		"""
 			
 	"""
 	For experimentation: search for metrics that distinguish outliers from anomalies, where loosely speaking, anomalies occur in the context of some
@@ -675,7 +702,7 @@ class AnomalyReporter(object):
 		#At each compression iteration, edges are deleted; however edges incident to some substructure
 		#could have been deleted on a previous iteration. This point in the code, freqDist in hand, 
 		#just happens to be the point when we have the information to restore the upstream edge distribution information.
-		self._amendDendrogramEdgeDists(dendrogram, freqDist)
+		#self._amendDendrogramEdgeDists(dendrogram, freqDist)
 		
 		
 		
@@ -793,7 +820,7 @@ class AnomalyReporter(object):
 		self._analyzeDendrogram(dendrogram)
 	
 	"""
-	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > 5%
+	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > threshold (eg 5%)
 	of the overall size of the traces.
 	@threshold: The dendrogram threshold; about 0.05 is about right
 	"""
@@ -982,6 +1009,4 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
-
 
