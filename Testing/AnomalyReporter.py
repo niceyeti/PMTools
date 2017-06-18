@@ -525,35 +525,38 @@ class AnomalyReporter(object):
 				#keys are tuples of node names: ('c','b')
 				for key in level.EdgeDist.keys():
 					#get the edge probability in context of this substructure
-					pEdgeLocal = float(level.EdgeDist[key]) / float(level.NumInstances)
+					pLocal = float(level.EdgeDist[key]) / float(level.NumInstances)
+					pLocal = max(0.001, min(0.999,pLocal)) #clamp probs to range [0.001-0.999] to prevent zero/one problems in KL calculations
+					
 					#get the global edge probability; checking first for markov-model and edge-dist consistency
 					if key not in self._markovModel.keys():
 						print("\n\n>>> ERROR: local edge from dendrogram not in markovModel in _analyzeEdgeConnectivityDivergence")
 						print("MARKOV: "+str(self._markovModel))
 						print("Edge dist: "+str(level.EdgeDist))
 						
-					pEdgeGlobal = float(self._markovModel[key]) / float(sum(self._markovModel.values())) #the characterization of p(edge) over the number of traces
-					#pEdgeGlobal = float(self._markovModel[key]) / float(self._numTraces) #the characterization of p(edge) over the number of traces
+					pGlobal = float(self._markovModel[key]) / float(sum(self._markovModel.values())) #the characterization of p(edge) over the number of traces
+					pGlobal = max(0.001, min(0.999,pGlobal))
+					#pGlobal = float(self._markovModel[key]) / float(self._numTraces) #the characterization of p(edge) over the number of traces
 
 					#check for math errors
-					if pEdgeLocal == 0 or pEdgeGlobal == 0:
-						print("ERROR pEdgeLocal or pEdgeGlobal zero in _analyzeEdgeConnectivityDivergence: pEdgeLocal="+str(pEdgeLocal)+"  pEdgeGlobal="+str(pEdgeGlobal))
+					if pLocal == 0 or pGlobal == 0:
+						print("ERROR pLocal or pGlobal zero in _analyzeEdgeConnectivityDivergence: pLocal="+str(pLocal)+"  pGlobal="+str(pGlobal))
 
-					print(str(pEdgeGlobal)+"   "+str(pEdgeLocal))
+					print(str(pGlobal)+"   "+str(pLocal))
 					"""
-					divPQ += pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal)
-					divQP += pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal)
+					divPQ += pLocal * math.log(pLocal / pGlobal)
+					divQP += pGlobal * math.log(pGlobal / pLocal)
 					"""
 					
 					#binomial edge construction
-					pNotEdgeLocal = 1.0 - pEdgeLocal
-					pNotEdgeGlobal = 1.0 - pEdgeGlobal
+					pNotLocal = 1.0 - pLocal
+					pNotGlobal = 1.0 - pGlobal
 					#accumulate divergence of PQ
-					print("pNotGlob: "+str(pNotEdgeGlobal)+"  pGlob: "+str(pEdgeGlobal))
-					print("pNotLocal: "+str(pNotEdgeLocal)+"  pLoc: "+str(pEdgeLocal))
-					divPQ += (pEdgeLocal * math.log(pEdgeLocal / pEdgeGlobal) + pNotEdgeLocal * math.log(pNotEdgeLocal / pNotEdgeGlobal))
+					print("pNotGlob: "+str(pNotGlobal)+"  pGlob: "+str(pGlobal))
+					print("pNotLocal: "+str(pNotLocal)+"  pLoc: "+str(pLocal))
+					divPQ += (pLocal * math.log(pLocal / pGlobal) + pNotLocal * math.log(pNotLocal / pNotGlobal))
 					#accumulate divergence of QP
-					divQP += (pEdgeGlobal * math.log(pEdgeGlobal / pEdgeLocal) + pNotEdgeGlobal * math.log(pNotEdgeGlobal / pNotEdgeLocal))
+					divQP += (pGlobal * math.log(pGlobal / pLocal) + pNotGlobal * math.log(pNotGlobal / pNotLocal))
 					
 				level.Attrib["EDGE_KL_PQ"] = divPQ
 				level.Attrib["EDGE_KL_QP"] = divQP
