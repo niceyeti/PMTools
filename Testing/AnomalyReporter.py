@@ -222,7 +222,7 @@ class AnomalyReporter(object):
 		
 		return dendrogram
 
-	#Builds the edge distribution for a given substructure in an a priori fashion, using the trace graphs populated prior.
+	#Builds the edge distribution for a given substructure in a-priori fashion, using the trace graphs populated prior.
 	#NOTE: this requires self._traceGraphs was populated before
 	def _buildSubstructureEdgeDist(self, dendrogram, level):
 		sub = dendrogram[level]
@@ -430,11 +430,11 @@ class AnomalyReporter(object):
 		ids = dendrogram[subIndex].CompressedIds
 		i = subIndex - 1
 		while i > 0:
-			ids = [dendrogram[i-1].ReverseIdMap[id] for id in ids]
+			ids = [dendrogram[i].ReverseIdMap[id] for id in ids]
 			i -= 1
 		
 		return ids
-	
+
 	"""
 	Analyzes the edge/node and other distribution measures comparing the 
 	child substructures with the distributions of the overall graph. 
@@ -542,7 +542,7 @@ class AnomalyReporter(object):
 					if pLocal == 0 or pGlobal == 0:
 						print("ERROR pLocal or pGlobal zero in _analyzeEdgeConnectivityDivergence: pLocal="+str(pLocal)+"  pGlobal="+str(pGlobal))
 
-					print(str(pGlobal)+"   "+str(pLocal))
+					#print(str(pGlobal)+"   "+str(pLocal))
 					"""
 					divPQ += pLocal * math.log(pLocal / pGlobal)
 					divQP += pGlobal * math.log(pGlobal / pLocal)
@@ -552,8 +552,8 @@ class AnomalyReporter(object):
 					pNotLocal = 1.0 - pLocal
 					pNotGlobal = 1.0 - pGlobal
 					#accumulate divergence of PQ
-					print("pNotGlob: "+str(pNotGlobal)+"  pGlob: "+str(pGlobal))
-					print("pNotLocal: "+str(pNotLocal)+"  pLoc: "+str(pLocal))
+					#print("pNotGlob: "+str(pNotGlobal)+"  pGlob: "+str(pGlobal))
+					#print("pNotLocal: "+str(pNotLocal)+"  pLoc: "+str(pLocal))
 					divPQ += (pLocal * math.log(pLocal / pGlobal) + pNotLocal * math.log(pNotLocal / pNotGlobal))
 					#accumulate divergence of QP
 					divQP += (pGlobal * math.log(pGlobal / pLocal) + pNotGlobal * math.log(pNotGlobal / pNotLocal))
@@ -720,20 +720,19 @@ class AnomalyReporter(object):
 		childDists = self._analyzeChildSubDistributions(dendrogram)
 		print("Child distributions: "+str(childDists))
 		
-		for i in range(4,len(dendrogram)):
+		for i in range(0,len(dendrogram)):
 			ids = self._getSubTraceIds(dendrogram, i)
 			print(dendrogram[i].SubName+" ids:  "+str(ids))
 
 		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
 		self._analyzeEdgeConnectivityDivergence(dendrogram)
-			
-			
+
 		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
 		ancestryDict = {}
 		candidateLevel = dendrogram[candidateIndex]
 		candidateIds = candidateLevel.IdMap.keys()
 		candidateIdSubMap = {} #the mapping from candidateIds to their respective elementary substructure at or below the candidate level; that is, binds the candidateIds to the most-compression substructure
-		#build the candidate id-sub map, of ids to their most-compression substructure (an index into the dendrogram levels)
+		#build the candidate id-sub map, of ids to their most-compressing substructure (an index into the dendrogram levels)
 		for id in candidateIds:
 			level = int(candidateIndex)
 			nextId = str(id)
