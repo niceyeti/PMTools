@@ -522,20 +522,28 @@ class AnomalyReporter(object):
 			if len(level.EdgeDist.keys()) > 0:
 				divPQ = 0.0
 				divQP = 0.0
+				
+				#get normalization constant for all global edge probs; required to make global probs a proper probability distribution wrt the local edge probs
+				#zNormGlobal = 0.0
+				#for key in level.EdgeDist.keys():
+				#	zNormGlobal += self._markovModel[key]
+				
 				#keys are tuples of node names: ('c','b')
 				for key in level.EdgeDist.keys():
 					#get the edge probability in context of this substructure
 					pLocal = float(level.EdgeDist[key]) / float(level.NumInstances)
-					pLocal = max(0.001, min(0.999,pLocal)) #clamp probs to range [0.001-0.999] to prevent zero/one problems in KL calculations
-					
+					#pLocal = float(level.EdgeDist[key]) / float(sum(level.EdgeDist.values())) 
+					pLocal = max(0.0001, min(0.9999,pLocal)) #clamp probs to range [0.001-0.999] to prevent zero/one problems in KL calculations
+
 					#get the global edge probability; checking first for markov-model and edge-dist consistency
 					if key not in self._markovModel.keys():
 						print("\n\n>>> ERROR: local edge from dendrogram not in markovModel in _analyzeEdgeConnectivityDivergence")
 						print("MARKOV: "+str(self._markovModel))
 						print("Edge dist: "+str(level.EdgeDist))
-						
-					pGlobal = float(self._markovModel[key]) / float(sum(self._markovModel.values())) #the characterization of p(edge) over the number of traces
-					pGlobal = max(0.001, min(0.999,pGlobal))
+
+					#pGlobal = float(self._markovModel[key]) / float(zNormGlobal)  #the characterization of p(edge) over the number of traces
+					pGlobal = float(self._markovModel[key]) / float(self._numTraces)
+					pGlobal = max(0.0001, min(0.9999,pGlobal))
 					#pGlobal = float(self._markovModel[key]) / float(self._numTraces) #the characterization of p(edge) over the number of traces
 
 					#check for math errors
@@ -543,10 +551,10 @@ class AnomalyReporter(object):
 						print("ERROR pLocal or pGlobal zero in _analyzeEdgeConnectivityDivergence: pLocal="+str(pLocal)+"  pGlobal="+str(pGlobal))
 
 					#print(str(pGlobal)+"   "+str(pLocal))
-					"""
-					divPQ += pLocal * math.log(pLocal / pGlobal)
-					divQP += pGlobal * math.log(pGlobal / pLocal)
-					"""
+					
+					##accumulate divergence of QP and PQ
+					#divPQ += pLocal * math.log(pLocal / pGlobal)
+					#divQP += pGlobal * math.log(pGlobal / pLocal)					
 					
 					#binomial edge construction
 					pNotLocal = 1.0 - pLocal
@@ -962,7 +970,7 @@ class AnomalyReporter(object):
 	outputs anomalies found by recursive gbad, by which gbad is re-run on compressed
 	subs.
 	"""
-	def _reportRecursiveAnomalies(self, ):
+	def _reportRecursiveAnomalies(self):
 		gbadFile = open(self._gbadPath, "r")
 
 		self._parseGbadAnomalies(gbadFile)
