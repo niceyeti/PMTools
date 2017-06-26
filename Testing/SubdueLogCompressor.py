@@ -39,7 +39,7 @@ class LogCompressor(object):
 	@outPath: The output path for the compressed log
 	@compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
 	"""
-	def Compress(self,logPath, subsPath, outPath, compSubName="SUBx",showSub=False, deleteSubs=False):
+	def Compress(self,logPath, subsPath, outPath, compSubName="SUBx", showSub=False, deleteSubs=False):
 		print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 		print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 		print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
@@ -454,6 +454,8 @@ class LogCompressor(object):
 	Given a .g log formatted as input to gbad/subdue, builds a 
 	Note that this will disregard comments in the log.
 
+	@logPath: Path to compressed.g log
+	
 	Returns: A list of subgraphs representing all traces in the log, as igraph.Graphs. The vertices of the
 	subgraphs preserve the gbad input vertex ids in the vertex "subdueId" attribute (eg, g.vs[1]["subdueId"])
 	"""

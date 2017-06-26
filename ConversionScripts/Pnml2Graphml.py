@@ -95,6 +95,14 @@ def Convert(pnmlPath):
 	if len(startIds) != 1:
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happen
 		print("WARNING len(startIds) != 1, is "+str(len(startIds))+" in Pnml2Graphml. See code. "+str(startIds))
+		"""
+		This warning is a result of a defect with the pnml format, or rather with my relying on it (is there another graph format we could use as output of the process miner?)
+		Pnml files have provide no topological description of the start node in a process; they only have a graphically 'leftmost' node.
+		As a result, the graphs (especially if noise is added to a log) must always contain a defined start/end node.
+		Consider multiple paths to resolve:
+			1) pnml parsing logic (not clear how, since the pnml format doesn't provide a definition of start/end node)
+			2) change to a different process output file type (dont know which exist)
+		"""
 	startNodeId = startIds[0]
 	
 	#get the end node id (a sink: vertex with no outlinks)
