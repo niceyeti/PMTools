@@ -154,8 +154,8 @@ limit="50"   #The default value is computed based on the input graph as |Edges| 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.
 $gbadMdlPath -limit $limit -mdl $gbadThreshold $subdueLogPath > $mdlResult
-echo Running gbad-mps from $gbadMdlPath
-$gbadMdlPath -limit $limit -mps $gbadThreshold $subdueLogPath > $mpsResult
+#echo Running gbad-mps from $gbadMdlPath
+#$gbadMdlPath -limit $limit -mps $gbadThreshold $subdueLogPath > $mpsResult
 #echo Running gbad-prob from $gbadMdlPath
 #$gbadMdlPath -prob 2 $subdueLogPath > $probResult
 

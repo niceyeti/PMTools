@@ -39,7 +39,7 @@ class LogCompressor(object):
 	@outPath: The output path for the compressed log
 	@compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
 	"""
-	def Compress(self,logPath, subsPath, outPath, compSubName="SUBx", showSub=False, deleteSubs=False):
+	def Compress(self, logPath, subsPath, outPath, compSubName="SUBx", showSub=False, deleteSubs=False):
 		print("Running SubdueLogCompressor on "+logPath+" using substructures from "+subsPath)
 		print("Outputting compressed log to "+outPath+" with new compressed substructure named: "+compSubName)
 		print("NOTE: once reduced to a single vertex (most compressed) substructure, the substructure will be looped to itself.")
@@ -78,6 +78,11 @@ class LogCompressor(object):
 		ofile = open(outPath, "wb+") #the b and encode() notation below are just to force linux line endings
 
 		for sub in subs:
+			if len(sub.vs) == 0:
+				print("ERROR empty sub detected  Edges: "+str(len(sub.es)))
+			if len(sub.vs) == 1:
+				print("WARNING single-vertex sub detected.  Edges: "+str(len(sub.es)))
+		
 			xpNo = sub["header"][sub["header"].rfind(" ")+1:]
 			#print("MAPPING "+xpNo+" -> "+str(i))
 			#a hack required by gbad: "xp" declarations must be sequential
@@ -143,7 +148,7 @@ class LogCompressor(object):
 		This is just so clients can handle disconnected vertices, since its foreseeable their code was not written to handle edgeless nodes.
 		3) trace EQUALS substructure: the trace is discarded and None is returned
 	"""
-	def _deleteTraceSub(self,traceSub, compSub):
+	def _deleteTraceSub(self, traceSub, compSub):
 		#delEdges is a list of named tuples reflecting directed edges: [('a','b'), ('c','b') ... ]
 		delEdges = [] #delEdges only takes a non-empty value if the trace is compressed wrt compSub, but not maximally compressed (one or more edges connect them)
 		delSub = traceSub
@@ -416,7 +421,7 @@ class LogCompressor(object):
 	@bestSub: Best-compressing substructure wrt which this log will be compressed
 	@deleteSub: Flag, if true, delete all substructure instances instead of compressing them
 	
-	Returns: List of compressed subs, and also the deleted subs (only meaningful/non-empty if deleteSub=True)
+	Returns: List of compressed subs, the deleted subs (only meaningful/non-empty if deleteSub=True), and edge frequencies for each
 	"""
 	def _compressAllTraces(self, traceSubs, bestSub, deleteSub=False):
 		compressedSubs = []
@@ -436,7 +441,16 @@ class LogCompressor(object):
 						connectingEdgeFreqs[edge] = 1
 
 				#if sub is None (entire subgraph was deleted), just ignore it
-				if sub != None:
+				if sub is not None:
+				
+					#bug check
+					if len(sub.vs) == 0:
+						print("ERROR empty sub detected  Edges: "+str(len(sub.es)))
+					if len(sub.vs) == 1:
+						print("WARNING single-vertex sub detected.  Edges: "+str(len(sub.es)))
+				
+				
+				
 					sub["oldXpId"]  = trace["oldXpId"]
 					sub["newXpId"] = self._newXpIdCtr
 					self._newXpIdCtr += 1
@@ -459,7 +473,7 @@ class LogCompressor(object):
 	Returns: A list of subgraphs representing all traces in the log, as igraph.Graphs. The vertices of the
 	subgraphs preserve the gbad input vertex ids in the vertex "subdueId" attribute (eg, g.vs[1]["subdueId"])
 	"""
-	def _buildAllTraces(self,logPath):
+	def _buildAllTraces_Obsolete(self,logPath):
 		logFile = open(logPath,"r")
 		subgList = []
 		
@@ -496,6 +510,21 @@ class LogCompressor(object):
 				i+=1
 
 		return subgList
+		
+	def _buildAllTraces(self,logPath):
+			logFile = open(logPath,"r")
+			subgList = []
+			
+			i = 0
+			fileStr = logFile.read().strip()
+			if "~" in fileStr:
+				print("ERROR tilde used as special anchor in _buildAllTrace. File may not contain tildes.")
+			#NOTE: This requires tilde ~ is not a character already in file
+			xpTokens = fileStr.replace("XP","~XP").split("~")
+			#convert all 'XP' strings to subgraphs
+			subgList = [_subDeclarationToGraph(xpToken) for xpToken in xpTokens]
+
+			return subgList
 
 	"""
 	Assumptions: the .g substructures are all "d" edges.
@@ -540,13 +569,75 @@ class LogCompressor(object):
 	"""
 	Converts a substructure (subgraph) declaration string in .g format to an igraph.Graph structure.
 
+	@subStr: The substructure string starting with 'XP' and newlines replaced with tilde
+	but with all newlines replaced by tilde (just a parsing trick).
+
+	Returns: The igraph.Graph structure representing this substructure, having node "name"/"label" attributes
+	that coincide with the declared vertex names.
+	"""
+	def _subDeclarationToGraph(self, subStr):
+		substructure = igraph.Graph(directed=True)
+		vertexDict = {}
+		edges = []
+		
+		lineTokens = subStr.split("~")
+		substructure["header"] = lineTokens[0]
+		substructure["oldXpId"] = lineTokens[0].split("#")[1].strip()
+		
+		#within the string, find all the "v" and "d" (edge) declarations
+		for line in lineTokens[1:]:
+			ln = line.strip()
+			if len(ln) > 2:
+				#parse a vertex declaration
+				if "v " == ln[0:2]:
+					vName = ln.split("\"")[1]
+					vId = int(ln.split(" ")[1])
+					vertexDict[vId] = vName
+				#parse an edge declaration (the labels are meaningless; and all are assumed DIRECTED)
+				elif "d "== ln[0:2]:
+					e = (int(ln.split(" ")[1]), int(ln.split(" ")[2]))
+					edges.append(e)
+
+		#print(str(edges))
+		#print(str(vertexDict))
+		
+		#add all of the vertices
+		#substructure.add_vertices(vertexDict.values())
+		#add all of the edges (by name)
+		edges = [(vertexDict[e[0]], vertexDict[e[1]]) for e in edges]
+		vertices = []
+		for e in edges:
+			vertices.append(e[0])
+			vertices.append(e[1])
+		vertices = list(set(vertices))
+		#print("adding vertices: "+str(vertices))
+		substructure.add_vertices(vertices)
+		#preserve the subdue vertex id's as strings (it may be useful to preserve these)
+		for v in substructure.vs:
+			for k in vertexDict.keys():
+				if vertexDict[k] == v["name"]:
+					v["subdueId"] = str(k)
+		
+		#copy name as label attributes of vertices for display
+		for v in substructure.vs:
+			v["label"] = v["name"]
+		
+		#print("adding edges: "+str(edges))
+		substructure.add_edges(edges)
+				
+		return substructure
+
+		
+	"""
+	Converts a substructure (subgraph) declaration string in .g format to an igraph.Graph structure.
+
 	@subStr: The substructure string (starting with the first "v 1 "node1" and ending with the last edge-declaration),
 	but with all newlines replaced by tilde (just a parsing trick).
 
 	Returns: The igraph.Graph structure representing this substructure, having node "name"/"label" attributes
 	that coincide with the declared vertex names.
 	"""
-	def _subDeclarationToGraph(self,subStr):
+	def _subDeclarationToGraph_Obsolete(self, subStr):
 		substructure = igraph.Graph(directed=True)
 		vertexDict = {}
 		edges = []
@@ -595,7 +686,7 @@ class LogCompressor(object):
 		return substructure
 				
 def usage():
-	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for compressed .g log] [optional: name=name of compressed structure]")
+	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for new compressed .g log] [optional: name=name of compressed structure]")
 	print("--showSub: pass to display the parsed substructure")
 	print("--deleteSub: pass to delete the substructure from the log. Single node w/out edges will be converted to reflexive nodes.")
 	print("WARNING make sure input has only single line-feed line terminals (linux style), not windows style!!")
