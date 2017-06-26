@@ -3,6 +3,7 @@
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
 logPath="../SyntheticData/testTraces.log"
+noisedLog="../SyntheticData/noisedTraces.log"
 xesPath="../SyntheticData/testTraces.xes"
 syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
 
@@ -83,8 +84,10 @@ fi
 if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric comparison
 	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
 	logPath=$noisedLog
+	echo Log path reset to $logPath after adding noise...
 fi
 
+echo $logPath
 #convert synthetic data to xes format for process mining
 python SynData2Xes.py -ifile=$logPath -ofile=$xesPath
 ##############################################################################

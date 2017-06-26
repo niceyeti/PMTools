@@ -93,8 +93,8 @@ def Convert(pnmlPath):
 		if vId not in inlinks:
 			startIds.append(vId)
 	if len(startIds) != 1:
-		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
-		print("WARNING len(startIds) != 1, is "+str(len(startIds))+" in Pnml2Graphml. See code.")
+		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happen
+		print("WARNING len(startIds) != 1, is "+str(len(startIds))+" in Pnml2Graphml. See code. "+str(startIds))
 	startNodeId = startIds[0]
 	
 	#get the end node id (a sink: vertex with no outlinks)

@@ -39,7 +39,7 @@ class Retracer(object):
         #init the markov model, for which keys = string pairs, vals = transition count
 		self._markovModel = dict()
 		
-		#iterate the edges as a sequence of nae transitions ('a', 'b')
+		#iterate the edges as a sequence of named transitions ('a', 'b')
 		for edgeTup in self._edgeMap.keys():
 			self._markovModel[edgeTup] = 0
 		
@@ -121,8 +121,7 @@ class Retracer(object):
 		for edge in self._model.es:
 			key = (self._model.vs[edge.source]["name"], self._model.vs[edge.target]["name"])
 			self._edgeMap[key] = edge
-			self._edgeRevMap[edge] = key        
-			
+			self._edgeRevMap[edge] = key
 
 	"""
 	Utility for looking up the edge given by two activitiy labels, a and b.

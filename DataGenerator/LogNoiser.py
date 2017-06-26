@@ -14,7 +14,7 @@ class LogNoiser(object):
 	"""
 	This version of adding noise proceeds through the symbol sequence of a trace in the log, 
 	and with probability @noiseRate, adds a randomly selected activity from the complete activity
-	set expressed in the log. This adds 'noise' under a criterion of completely random transitions, making
+	set expressed in the log at each transition. This adds 'noise' under a criterion of completely random transitions, making
 	the graph more real world like, supposedly.
 	"""
 	def AddNoise1(self, logPath, outPath="noisedLog.log", noiseRate=0.1):
@@ -23,27 +23,46 @@ class LogNoiser(object):
 		print("Generating type 1 noise, noise rate "+str(noiseRate))
 		
 		log = open(logPath,"r")
-		traces = log.readlines()
+		traces = [line.strip() for line in log.readlines()]
 		log.close()
 		
 		#CRITICAL: do this AFTER reading the input log, in the event that input==output log!
 		outputLog = open(outPath, "w+")
 		
-		#get the complete activity set expressed by the log, as a list
-		availableActivities = set()
-		for trace in traces:		
-			traceNo = trace.split(",")[0]
-			isAnomalous = traceNo = trace.split(",")[1]
-			partialOrdering = trace.split(",")[2]
+		for trace in traces:
+			#print("TRACE: "+trace+str(trace.split(",")))
+			tokens = trace.split(",")
+			traceNo = tokens[0]
+			isAnomalous = tokens[1]
+			partialOrdering = tokens[2]
 			
-			newOrdering = []
-			for activity in partialOrdering:
-				newOrdering.append(activity)
+			if len(partialOrdering) > 2: #this check is required by the defect described next line
+				#CONSTRAINT ADDED: This allows noise only after the first activity, and prior to the end activity, thus preserving the endpoints
+				#This is actually a defect wrt to the mined pnml model description, for which there is no a priori way to determine the beginning
+				#acitivity/ies without this upstream constraint on the noise generation, such that the generated logs always have only one
+				#activity with no inlinks (begin) and one with no outlinks (end). This condition is required by Pnml2Graphml; the requirement for this
+				#condition is the real bug/defect.
+				end = partialOrdering[-1]
+				begin = partialOrdering[0]
+				#Note zero index is correct; the loop structure below always adds @begin before adding noise
+				partialOrdering = partialOrdering[0:-1]
 				
-				#inject a random post activity with probability @noiseRate
-				if random.uniform(0,1) < noiseRate:
-					randActivity = activities[random.randint(0,len(activities)-1)]
-					newOrdering.append(randActivity)
+				newOrdering = []
+				for activity in partialOrdering:
+					newOrdering.append(activity)
+					
+					#inject a random post activity with probability @noiseRate
+					if random.uniform(0,1) < noiseRate:
+						#require: randActivity cannot be @end or @begin
+						randActivity = end
+						while randActivity in {end,begin}:
+							randActivity = activities[random.randint(0, len(activities)-1)]
+						newOrdering.append(randActivity)
+						
+				newOrdering = "".join(newOrdering)+end
+				
+			else:
+				newOrdering = partialOrdering
 
 			newTrace = ",".join([traceNo,isAnomalous,newOrdering])
 			outputLog.write(newTrace+"\n")
@@ -55,7 +74,7 @@ class LogNoiser(object):
 	"""
 	def _getLogActivities(self, logPath):
 		log = open(logPath,"r")
-		traces = log.readlines()
+		traces = [trace.strip() for trace in log.readlines()]
 		log.close()
 		
 		#get the complete activity set expressed by the log, as a list
@@ -116,7 +135,7 @@ class LogNoiser(object):
 
 		noisedLog.close()
 		log.close()
-		
+
 
 def usage():
 	print("usage: python LogNoiser.py -inputLog=[.log path] -outputLog=[output .log path] -noiseRate=[0-1.0]")
@@ -131,7 +150,7 @@ def main():
 	outputLog = None
 	noiseRate = 0.0
 	
-	for arg in sys.argv
+	for arg in sys.argv:
 		if "-inputLog=" in arg:
 			inputLog = arg.split("=")[1]
 		if "-outputLog=" in arg:
@@ -140,7 +159,7 @@ def main():
 			noiseRate = float(arg.split("=")[1])	
 	
 	noiser = LogNoiser()
-	noiser.AddNoise1(logPath,outPath,noiseRate)
+	noiser.AddNoise1(inputLog, outputLog, noiseRate)
 
 if __name__ == "__main__":
 	main()
