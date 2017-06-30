@@ -78,16 +78,22 @@ class LogCompressor(object):
 		ofile = open(outPath, "wb+") #the b and encode() notation below are just to force linux line endings
 
 		for sub in subs:
+			isValidSub = True #This check reflects a critical failure; if the messages below are detected, results are invalid, and fixes are needed upstream
 			if len(sub.vs) == 0:
 				print("ERROR empty sub detected  Edges: "+str(len(sub.es)))
+				isValidSub = False
 			if len(sub.vs) == 1:
 				print("WARNING single-vertex sub detected.  Edges: "+str(len(sub.es)))
-		
-			xpNo = sub["header"][sub["header"].rfind(" ")+1:]
-			#print("MAPPING "+xpNo+" -> "+str(i))
-			#a hack required by gbad: "xp" declarations must be sequential
-			sub["header"] = sub["header"][0:sub["header"].rfind(" ")]+" "+str(sub["newXpId"])
-			ofile.write((self._sub2GFormatString(sub)+"\n").encode())
+			if len(sub.es) == 0:
+				print("ERROR zero edge substructure detected: "+sub["header"])
+				isValidSub = False
+
+			if isValidSub:
+				xpNo = sub["header"][sub["header"].rfind(" ")+1:]
+				#print("MAPPING "+xpNo+" -> "+str(i))
+				#a hack required by gbad: "xp" declarations must be sequential
+				sub["header"] = sub["header"][0:sub["header"].rfind(" ")]+" "+str(sub["newXpId"])
+				ofile.write((self._sub2GFormatString(sub)+"\n").encode())
 
 		ofile.close()
 
@@ -464,6 +470,7 @@ class LogCompressor(object):
 
 		return compressedSubs, deletedSubs, connectingEdgeFreqs
 		
+
 	"""
 	Given a .g log formatted as input to gbad/subdue, builds a 
 	Note that this will disregard comments in the log.
@@ -473,56 +480,33 @@ class LogCompressor(object):
 	Returns: A list of subgraphs representing all traces in the log, as igraph.Graphs. The vertices of the
 	subgraphs preserve the gbad input vertex ids in the vertex "subdueId" attribute (eg, g.vs[1]["subdueId"])
 	"""
-	def _buildAllTraces_Obsolete(self,logPath):
-		logFile = open(logPath,"r")
-		subgList = []
-		
-		i = 0
-		lines = logFile.readlines()
-		while i < len(lines):
-			line = lines[i]
-			#start of subgraph, so spool and consume its contents
-			if "XP" == line[0:2]:
-				header = line.rstrip()
-				i += 1
-				tempLines = []
-				while i < len(lines) and lines[i][0:2] != "XP":
-					tempLines.append(lines[i].rstrip())
-					i+=1
-				if i < len(lines):
-					i-=1
-
-				if len(tempLines) == 0: #just detects a defect I was having with empty traces
-					print("WARNING tempLines empty in SubdueLogCompressor._buildAllTraces(), output graph will be empty")
-
-				subsStr = ""
-				for ln in tempLines:
-					subsStr += (ln.rstrip()+"~")
-				subsStr += "~" #one extra tilde, per the requirement in the _subDeclarationToGraph() header
-				#print("subs in: "+subsStr)
-				sub = self._subDeclarationToGraph(subsStr)
-				sub["header"] = header
-				sub["oldXpId"] = header.split("#")[1].strip()
-				#print("SUB OUT:\n"+sub["header"]+"\n"+str(sub))
-				tempLines = []
-				subgList.append(sub)
-			else:
-				i+=1
-
-		return subgList
-		
-	def _buildAllTraces(self,logPath):
+	def _buildAllTraces(self, logPath):
 			logFile = open(logPath,"r")
 			subgList = []
 			
 			i = 0
-			fileStr = logFile.read().strip()
+			lines = [line.strip() for line in logFile.readlines()]
+			logFile.close()
+			
+			#chop header string, if there is one
+			if lines[0][0:2] != "XP":
+				lines = lines[1:]
+			fileStr = "\n".join(lines)
+			#print("FILESTR: "+fileStr)
+			
 			if "~" in fileStr:
 				print("ERROR tilde used as special anchor in _buildAllTrace. File may not contain tildes.")
-			#NOTE: This requires tilde ~ is not a character already in file
-			xpTokens = fileStr.replace("XP","~XP").split("~")
+
+			xpTokens = ["XP "+token.strip() for token in fileStr.split("XP")]
+			xpTokens = [token.replace("\n","~") for token in xpTokens]
+			
+			#xpTokens = [token.replace("\n","~").replace("~~","~") for token in fileStr.replace("XP","~XP").split("~") if len(token.strip()) > 0]
+			for token in xpTokens:
+				print(token)
+			exit()
 			#convert all 'XP' strings to subgraphs
-			subgList = [_subDeclarationToGraph(xpToken) for xpToken in xpTokens]
+			#print("BuildAll ("+logPath+"): "+xpTokens[0])
+			subgList = [self._subDeclarationToGraph(xpToken) for xpToken in xpTokens]
 
 			return subgList
 
@@ -559,7 +543,7 @@ class LogCompressor(object):
 		#find the precise start of the vertex declarations
 		subsRaw = subsRaw[ subsRaw.find("    v ") : ]
 		#print("subs raw: "+subsRaw)
-		sub = self._subDeclarationToGraph(subsRaw)
+		sub = self._subDeclarationToGraph(subsRaw,hasXpHeader=False)
 		#store additional data in the graph
 		sub["instances"] = int(subCt)
 		sub["compValue"] = compValue
@@ -571,21 +555,32 @@ class LogCompressor(object):
 
 	@subStr: The substructure string starting with 'XP' and newlines replaced with tilde
 	but with all newlines replaced by tilde (just a parsing trick).
-
+	@hasXpHeader: Whether or not @subStr begins with 'XP # 123'. The gbad output of the best substructure doesn't have this.
+	
 	Returns: The igraph.Graph structure representing this substructure, having node "name"/"label" attributes
 	that coincide with the declared vertex names.
 	"""
-	def _subDeclarationToGraph(self, subStr):
+	def _subDeclarationToGraph(self, subStr, hasXpHeader=True):
 		substructure = igraph.Graph(directed=True)
 		vertexDict = {}
 		edges = []
+		
+		#print("HasXpHeader: "+str(hasXpHeader))
+		#print("SUBSTR: "+subStr)
 		
 		lineTokens = subStr.split("~")
-		substructure["header"] = lineTokens[0]
-		substructure["oldXpId"] = lineTokens[0].split("#")[1].strip()
-		
+
+		#utilitarian logic for this function, just facilitates parsing logic via @tokenBegin
+		if hasXpHeader:
+			#print("HERE: "+str(lineTokens))
+			substructure["header"] = lineTokens[0]
+			substructure["oldXpId"] = lineTokens[0].split("#")[1].strip()
+			tokenBegin = 1
+		else:
+			tokenBegin = 0
+			
 		#within the string, find all the "v" and "d" (edge) declarations
-		for line in lineTokens[1:]:
+		for line in lineTokens[tokenBegin:]:
 			ln = line.strip()
 			if len(ln) > 2:
 				#parse a vertex declaration
@@ -627,63 +622,6 @@ class LogCompressor(object):
 				
 		return substructure
 
-		
-	"""
-	Converts a substructure (subgraph) declaration string in .g format to an igraph.Graph structure.
-
-	@subStr: The substructure string (starting with the first "v 1 "node1" and ending with the last edge-declaration),
-	but with all newlines replaced by tilde (just a parsing trick).
-
-	Returns: The igraph.Graph structure representing this substructure, having node "name"/"label" attributes
-	that coincide with the declared vertex names.
-	"""
-	def _subDeclarationToGraph_Obsolete(self, subStr):
-		substructure = igraph.Graph(directed=True)
-		vertexDict = {}
-		edges = []
-		
-		#within the string, find all the "v" and "d" (edge) declarations
-		for line in subStr.split("~"):
-			ln = line.strip()
-			if len(ln) > 2:
-				#parse a vertex declaration
-				if "v " == ln[0:2]:
-					vName = ln.split("\"")[1]
-					vId = int(ln.split(" ")[1])
-					vertexDict[vId] = vName
-				#parse an edge declaration (the labels are meaningless; and all are assumed DIRECTED)
-				elif "d "== ln[0:2]:
-					e = (int(ln.split(" ")[1]), int(ln.split(" ")[2]))
-					edges.append(e)
-
-		#print(str(edges))
-		#print(str(vertexDict))
-		
-		#add all of the vertices
-		#substructure.add_vertices(vertexDict.values())
-		#add all of the edges (by name)
-		edges = [(vertexDict[e[0]], vertexDict[e[1]]) for e in edges]
-		vertices = []
-		for e in edges:
-			vertices.append(e[0])
-			vertices.append(e[1])
-		vertices = list(set(vertices))
-		#print("adding vertices: "+str(vertices))
-		substructure.add_vertices(vertices)
-		#preserve the subdue vertex id's as strings (it may be useful to preserve these)
-		for v in substructure.vs:
-			for k in vertexDict.keys():
-				if vertexDict[k] == v["name"]:
-					v["subdueId"] = str(k)
-		
-		#copy name as label attributes of vertices for display
-		for v in substructure.vs:
-			v["label"] = v["name"]
-		
-		#print("adding edges: "+str(edges))
-		substructure.add_edges(edges)
-				
-		return substructure
 				
 def usage():
 	print("usage: python SubdueLogCompressor.py [subgraph .g file] [substructure prototype file (subdue/gbad text output)] [output path for new compressed .g log] [optional: name=name of compressed structure]")

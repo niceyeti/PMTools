@@ -61,10 +61,6 @@
       <string key="Activity" value="l"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="E"/>
       <string key="Activity" value="E"/>
     </event>
@@ -83,10 +79,6 @@
     <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
-    </event>
-    <event>
-      <string key="concept:name" value="V"/>
-      <string key="Activity" value="V"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
@@ -217,10 +209,6 @@
       <string key="Activity" value="l"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="E"/>
       <string key="Activity" value="E"/>
     </event>
@@ -235,10 +223,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
     </event>
     <event>
       <string key="concept:name" value="6"/>
@@ -303,10 +287,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="6"/>
-      <string key="Activity" value="6"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -453,10 +433,6 @@
       <string key="Activity" value="6"/>
     </event>
     <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
-    </event>
-    <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
     </event>
@@ -559,10 +535,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -753,10 +725,6 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
     </event>
@@ -873,10 +841,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
@@ -903,10 +867,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -975,10 +935,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -1099,10 +1055,6 @@
     <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Q"/>
-      <string key="Activity" value="Q"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
@@ -1265,10 +1217,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
@@ -1337,10 +1285,6 @@
       <string key="Activity" value="6"/>
     </event>
     <event>
-      <string key="concept:name" value="6"/>
-      <string key="Activity" value="6"/>
-    </event>
-    <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
     </event>
@@ -1359,10 +1303,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
     </event>
     <event>
       <string key="concept:name" value="X"/>
@@ -1473,10 +1413,6 @@
       <string key="Activity" value="l"/>
     </event>
     <event>
-      <string key="concept:name" value="Q"/>
-      <string key="Activity" value="Q"/>
-    </event>
-    <event>
       <string key="concept:name" value="E"/>
       <string key="Activity" value="E"/>
     </event>
@@ -1499,10 +1435,6 @@
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -1621,16 +1553,8 @@
       <string key="Activity" value="B"/>
     </event>
     <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -1743,10 +1667,6 @@
     <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="q"/>
@@ -1863,10 +1783,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -2121,10 +2037,6 @@
       <string key="Activity" value="p"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -2371,10 +2283,6 @@
     <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
-    </event>
-    <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
@@ -2761,10 +2669,6 @@
       <string key="Activity" value="j"/>
     </event>
     <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -2805,10 +2709,6 @@
       <string key="Activity" value="R"/>
     </event>
     <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
-    </event>
-    <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
     </event>
@@ -2819,10 +2719,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -2859,10 +2755,6 @@
     <event>
       <string key="concept:name" value="o"/>
       <string key="Activity" value="o"/>
-    </event>
-    <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -3185,10 +3077,6 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
     </event>
@@ -3501,10 +3389,6 @@
       <string key="Activity" value="o"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -3749,10 +3633,6 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
-    </event>
-    <event>
       <string key="concept:name" value="d"/>
       <string key="Activity" value="d"/>
     </event>
@@ -3823,10 +3703,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -3977,10 +3853,6 @@
       <string key="Activity" value="V"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
     </event>
@@ -3997,20 +3869,12 @@
       <string key="Activity" value="B"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -4081,10 +3945,6 @@
       <string key="Activity" value="a"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
     </event>
@@ -4111,10 +3971,6 @@
     <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="u"/>
@@ -4205,10 +4061,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -4247,10 +4099,6 @@
     <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
-    </event>
-    <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
     </event>
     <event>
       <string key="concept:name" value="o"/>
@@ -4339,10 +4187,6 @@
     <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
-    </event>
-    <event>
-      <string key="concept:name" value="V"/>
-      <string key="Activity" value="V"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
@@ -4439,10 +4283,6 @@
     <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
-    </event>
-    <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
     </event>
     <event>
       <string key="concept:name" value="n"/>
@@ -4625,10 +4465,6 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
-    </event>
-    <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
     </event>
@@ -4655,10 +4491,6 @@
     <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
-    </event>
-    <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
@@ -4733,10 +4565,6 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
     </event>
@@ -4771,10 +4599,6 @@
     <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="a"/>
@@ -4939,10 +4763,6 @@
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -5121,10 +4941,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -5157,16 +4973,8 @@
       <string key="Activity" value="z"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="T"/>
       <string key="Activity" value="T"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="g"/>
@@ -5227,10 +5035,6 @@
     <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
-    </event>
-    <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -5373,10 +5177,6 @@
       <string key="Activity" value="6"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
     </event>
@@ -5437,10 +5237,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
-    </event>
-    <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
     </event>
@@ -5497,10 +5293,6 @@
       <string key="Activity" value="o"/>
     </event>
     <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -5543,10 +5335,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -5599,14 +5387,6 @@
     <event>
       <string key="concept:name" value="T"/>
       <string key="Activity" value="T"/>
-    </event>
-    <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="g"/>
@@ -5725,10 +5505,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -5751,10 +5527,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
@@ -5819,10 +5591,6 @@
     <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="l"/>
@@ -5907,10 +5675,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -6021,10 +5785,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -6069,10 +5829,6 @@
       <string key="Activity" value="V"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
     </event>
@@ -6111,10 +5867,6 @@
     <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
-    </event>
-    <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -6289,20 +6041,12 @@
       <string key="Activity" value="y"/>
     </event>
     <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
-    </event>
-    <event>
       <string key="concept:name" value="f"/>
       <string key="Activity" value="f"/>
     </event>
     <event>
       <string key="concept:name" value="p"/>
       <string key="Activity" value="p"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -6381,16 +6125,8 @@
       <string key="Activity" value="V"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="C"/>
@@ -6457,10 +6193,6 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
-    </event>
-    <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
     </event>
@@ -6503,10 +6235,6 @@
     <event>
       <string key="concept:name" value="n"/>
       <string key="Activity" value="n"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -6989,10 +6717,6 @@
       <string key="Activity" value="C"/>
     </event>
     <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
-    </event>
-    <event>
       <string key="concept:name" value="n"/>
       <string key="Activity" value="n"/>
     </event>
@@ -7011,10 +6735,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -7063,10 +6783,6 @@
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -7119,10 +6835,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
     </event>
     <event>
       <string key="concept:name" value="6"/>
@@ -7229,10 +6941,6 @@
       <string key="Activity" value="n"/>
     </event>
     <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -7297,10 +7005,6 @@
       <string key="Activity" value="V"/>
     </event>
     <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
-    </event>
-    <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
     </event>
@@ -7363,10 +7067,6 @@
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -7479,10 +7179,6 @@
     <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Q"/>
-      <string key="Activity" value="Q"/>
     </event>
     <event>
       <string key="concept:name" value="o"/>
@@ -7849,10 +7545,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
@@ -7945,10 +7637,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="6"/>
-      <string key="Activity" value="6"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -7985,10 +7673,6 @@
       <string key="Activity" value="B"/>
     </event>
     <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -8023,10 +7707,6 @@
     <event>
       <string key="concept:name" value="t"/>
       <string key="Activity" value="t"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
     </event>
     <event>
       <string key="concept:name" value="Y"/>
@@ -8193,10 +7873,6 @@
       <string key="Activity" value="T"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
     </event>
@@ -8211,10 +7887,6 @@
     <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
@@ -8243,10 +7915,6 @@
     <event>
       <string key="concept:name" value="M"/>
       <string key="Activity" value="M"/>
-    </event>
-    <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -8349,10 +8017,6 @@
       <string key="Activity" value="W"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
     </event>
@@ -8403,10 +8067,6 @@
     <event>
       <string key="concept:name" value="o"/>
       <string key="Activity" value="o"/>
-    </event>
-    <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -8529,10 +8189,6 @@
       <string key="Activity" value="a"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
     </event>
@@ -8547,10 +8203,6 @@
     <event>
       <string key="concept:name" value="y"/>
       <string key="Activity" value="y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
     </event>
     <event>
       <string key="concept:name" value="M"/>
@@ -8633,10 +8285,6 @@
       <string key="Activity" value="V"/>
     </event>
     <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
-    </event>
-    <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
     </event>
@@ -8659,10 +8307,6 @@
     <event>
       <string key="concept:name" value="f"/>
       <string key="Activity" value="f"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="p"/>
@@ -8917,10 +8561,6 @@
       <string key="Activity" value="M"/>
     </event>
     <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -8963,10 +8603,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
     </event>
     <event>
       <string key="concept:name" value="6"/>
@@ -9049,10 +8685,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -9115,10 +8747,6 @@
     <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="n"/>
@@ -9581,10 +9209,6 @@
       <string key="Activity" value="l"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="E"/>
       <string key="Activity" value="E"/>
     </event>
@@ -9653,10 +9277,6 @@
       <string key="Activity" value="y"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="M"/>
       <string key="Activity" value="M"/>
     </event>
@@ -9707,10 +9327,6 @@
     <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
@@ -9845,10 +9461,6 @@
       <string key="Activity" value="B"/>
     </event>
     <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -9925,10 +9537,6 @@
       <string key="Activity" value="a"/>
     </event>
     <event>
-      <string key="concept:name" value="6"/>
-      <string key="Activity" value="6"/>
-    </event>
-    <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
     </event>
@@ -9963,10 +9571,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -10029,10 +9633,6 @@
       <string key="Activity" value="n"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -10089,20 +9689,12 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="a"/>
@@ -10143,10 +9735,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -10223,10 +9811,6 @@
     <event>
       <string key="concept:name" value="p"/>
       <string key="Activity" value="p"/>
-    </event>
-    <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -10317,10 +9901,6 @@
       <string key="Activity" value="M"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -10365,20 +9945,12 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
-    </event>
-    <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -10395,10 +9967,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="X"/>
@@ -10513,10 +10081,6 @@
       <string key="Activity" value="B"/>
     </event>
     <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
     </event>
@@ -10557,16 +10121,8 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
-    </event>
-    <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
@@ -10599,10 +10155,6 @@
     <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
-    </event>
-    <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="C"/>
@@ -10695,10 +10247,6 @@
     <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
     </event>
     <event>
       <string key="concept:name" value="n"/>
@@ -10885,10 +10433,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -11035,10 +10579,6 @@
     <event>
       <string key="concept:name" value="o"/>
       <string key="Activity" value="o"/>
-    </event>
-    <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -11421,16 +10961,8 @@
       <string key="Activity" value="o"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
     </event>
     <event>
       <string key="concept:name" value="X"/>
@@ -11467,10 +10999,6 @@
     <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -11541,10 +11069,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -11611,10 +11135,6 @@
     <event>
       <string key="concept:name" value="t"/>
       <string key="Activity" value="t"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="Y"/>
@@ -11723,10 +11243,6 @@
     <event>
       <string key="concept:name" value="f"/>
       <string key="Activity" value="f"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="p"/>
@@ -11909,10 +11425,6 @@
       <string key="Activity" value="n"/>
     </event>
     <event>
-      <string key="concept:name" value="V"/>
-      <string key="Activity" value="V"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -11997,10 +11509,6 @@
       <string key="Activity" value="C"/>
     </event>
     <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
-    </event>
-    <event>
       <string key="concept:name" value="n"/>
       <string key="Activity" value="n"/>
     </event>
@@ -12077,10 +11585,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -12103,10 +11607,6 @@
     <event>
       <string key="concept:name" value="y"/>
       <string key="Activity" value="y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="M"/>
@@ -12169,10 +11669,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="f"/>
-      <string key="Activity" value="f"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
@@ -12191,10 +11687,6 @@
     <event>
       <string key="concept:name" value="n"/>
       <string key="Activity" value="n"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -12225,10 +11717,6 @@
       <string key="Activity" value="R"/>
     </event>
     <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
-    </event>
-    <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
     </event>
@@ -12253,10 +11741,6 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
     </event>
@@ -12273,16 +11757,8 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
@@ -12331,10 +11807,6 @@
     <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="q"/>
@@ -12367,10 +11839,6 @@
     <event>
       <string key="concept:name" value="6"/>
       <string key="Activity" value="6"/>
-    </event>
-    <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
     </event>
     <event>
       <string key="concept:name" value="z"/>
@@ -12513,10 +11981,6 @@
       <string key="Activity" value="f"/>
     </event>
     <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
-    </event>
-    <event>
       <string key="concept:name" value="p"/>
       <string key="Activity" value="p"/>
     </event>
@@ -12571,10 +12035,6 @@
     <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
-    </event>
-    <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
     </event>
     <event>
       <string key="concept:name" value="T"/>
@@ -12797,20 +12257,12 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="B"/>
@@ -12879,10 +12331,6 @@
     <event>
       <string key="concept:name" value="T"/>
       <string key="Activity" value="T"/>
-    </event>
-    <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
     </event>
     <event>
       <string key="concept:name" value="g"/>
@@ -13009,10 +12457,6 @@
       <string key="Activity" value="Y"/>
     </event>
     <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
-    </event>
-    <event>
       <string key="concept:name" value="d"/>
       <string key="Activity" value="d"/>
     </event>
@@ -13035,10 +12479,6 @@
     <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="C"/>
@@ -13121,10 +12561,6 @@
       <string key="Activity" value="T"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
     </event>
@@ -13177,10 +12613,6 @@
       <string key="Activity" value="6"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="z"/>
       <string key="Activity" value="z"/>
     </event>
@@ -13211,10 +12643,6 @@
     <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
     </event>
     <event>
       <string key="concept:name" value="u"/>
@@ -13279,10 +12707,6 @@
     <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
-    </event>
-    <event>
-      <string key="concept:name" value="6"/>
-      <string key="Activity" value="6"/>
     </event>
     <event>
       <string key="concept:name" value="n"/>
@@ -13399,10 +12823,6 @@
     <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
-    </event>
-    <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -13657,10 +13077,6 @@
       <string key="Activity" value="C"/>
     </event>
     <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
-    </event>
-    <event>
       <string key="concept:name" value="n"/>
       <string key="Activity" value="n"/>
     </event>
@@ -13767,10 +13183,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
     </event>
     <event>
       <string key="concept:name" value="6"/>
@@ -13885,10 +13297,6 @@
       <string key="Activity" value="a"/>
     </event>
     <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
-    </event>
-    <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
     </event>
@@ -13903,10 +13311,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
@@ -13983,10 +13387,6 @@
     <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="n"/>
@@ -14149,10 +13549,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
     </event>
@@ -14301,10 +13697,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="Q"/>
-      <string key="Activity" value="Q"/>
-    </event>
-    <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
     </event>
@@ -14323,10 +13715,6 @@
     <event>
       <string key="concept:name" value="l"/>
       <string key="Activity" value="l"/>
-    </event>
-    <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
     </event>
     <event>
       <string key="concept:name" value="E"/>
@@ -14355,10 +13743,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="o"/>
-      <string key="Activity" value="o"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
@@ -14677,10 +14061,6 @@
       <string key="Activity" value="g"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="o"/>
       <string key="Activity" value="o"/>
     </event>
@@ -14765,10 +14145,6 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
     </event>
@@ -14833,10 +14209,6 @@
       <string key="Activity" value="W"/>
     </event>
     <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
-    </event>
-    <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
     </event>
@@ -14867,10 +14239,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
     </event>
     <event>
       <string key="concept:name" value="d"/>
@@ -14989,10 +14357,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="u"/>
-      <string key="Activity" value="u"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -15091,10 +14455,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
     </event>
     <event>
       <string key="concept:name" value="X"/>
@@ -15213,10 +14573,6 @@
       <string key="Activity" value="y"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="M"/>
       <string key="Activity" value="M"/>
     </event>
@@ -15233,16 +14589,8 @@
       <string key="Activity" value="R"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="q"/>
@@ -15569,10 +14917,6 @@
       <string key="Activity" value="d"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="j"/>
       <string key="Activity" value="j"/>
     </event>
@@ -15675,10 +15019,6 @@
     <event>
       <string key="concept:name" value="o"/>
       <string key="Activity" value="o"/>
-    </event>
-    <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
     </event>
     <event>
       <string key="concept:name" value="Q"/>
@@ -15965,10 +15305,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="n"/>
-      <string key="Activity" value="n"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -16157,10 +15493,6 @@
       <string key="Activity" value="d"/>
     </event>
     <event>
-      <string key="concept:name" value="B"/>
-      <string key="Activity" value="B"/>
-    </event>
-    <event>
       <string key="concept:name" value="j"/>
       <string key="Activity" value="j"/>
     </event>
@@ -16195,10 +15527,6 @@
     <event>
       <string key="concept:name" value="y"/>
       <string key="Activity" value="y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="q"/>
-      <string key="Activity" value="q"/>
     </event>
     <event>
       <string key="concept:name" value="M"/>
@@ -16285,10 +15613,6 @@
       <string key="Activity" value="a"/>
     </event>
     <event>
-      <string key="concept:name" value="f"/>
-      <string key="Activity" value="f"/>
-    </event>
-    <event>
       <string key="concept:name" value="C"/>
       <string key="Activity" value="C"/>
     </event>
@@ -16363,10 +15687,6 @@
     <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
-    </event>
-    <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
     </event>
     <event>
       <string key="concept:name" value="C"/>
@@ -16489,10 +15809,6 @@
       <string key="Activity" value="R"/>
     </event>
     <event>
-      <string key="concept:name" value="l"/>
-      <string key="Activity" value="l"/>
-    </event>
-    <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
     </event>
@@ -16579,10 +15895,6 @@
     <event>
       <string key="concept:name" value="W"/>
       <string key="Activity" value="W"/>
-    </event>
-    <event>
-      <string key="concept:name" value="R"/>
-      <string key="Activity" value="R"/>
     </event>
     <event>
       <string key="concept:name" value="R"/>
@@ -16733,10 +16045,6 @@
       <string key="Activity" value="T"/>
     </event>
     <event>
-      <string key="concept:name" value="y"/>
-      <string key="Activity" value="y"/>
-    </event>
-    <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
     </event>
@@ -16755,10 +16063,6 @@
     <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
-    </event>
-    <event>
-      <string key="concept:name" value="g"/>
-      <string key="Activity" value="g"/>
     </event>
     <event>
       <string key="concept:name" value="a"/>
@@ -16855,10 +16159,6 @@
     <event>
       <string key="concept:name" value="y"/>
       <string key="Activity" value="y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="f"/>
@@ -17065,10 +16365,6 @@
       <string key="Activity" value="Q"/>
     </event>
     <event>
-      <string key="concept:name" value="a"/>
-      <string key="Activity" value="a"/>
-    </event>
-    <event>
       <string key="concept:name" value="X"/>
       <string key="Activity" value="X"/>
     </event>
@@ -17079,10 +16375,6 @@
     <event>
       <string key="concept:name" value="a"/>
       <string key="Activity" value="a"/>
-    </event>
-    <event>
-      <string key="concept:name" value="z"/>
-      <string key="Activity" value="z"/>
     </event>
     <event>
       <string key="concept:name" value="C"/>
@@ -17107,10 +16399,6 @@
     <event>
       <string key="concept:name" value="R"/>
       <string key="Activity" value="R"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="q"/>
@@ -17211,10 +16499,6 @@
     <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
     </event>
     <event>
       <string key="concept:name" value="u"/>
@@ -17341,10 +16625,6 @@
       <string key="Activity" value="T"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
     </event>
@@ -17421,10 +16701,6 @@
       <string key="Activity" value="l"/>
     </event>
     <event>
-      <string key="concept:name" value="M"/>
-      <string key="Activity" value="M"/>
-    </event>
-    <event>
       <string key="concept:name" value="E"/>
       <string key="Activity" value="E"/>
     </event>
@@ -17439,10 +16715,6 @@
     <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="X"/>
-      <string key="Activity" value="X"/>
     </event>
     <event>
       <string key="concept:name" value="d"/>
@@ -17483,10 +16755,6 @@
     <event>
       <string key="concept:name" value="Q"/>
       <string key="Activity" value="Q"/>
-    </event>
-    <event>
-      <string key="concept:name" value="W"/>
-      <string key="Activity" value="W"/>
     </event>
     <event>
       <string key="concept:name" value="W"/>
@@ -17553,10 +16821,6 @@
       <string key="Activity" value="X"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="V"/>
       <string key="Activity" value="V"/>
     </event>
@@ -17613,16 +16877,8 @@
       <string key="Activity" value="t"/>
     </event>
     <event>
-      <string key="concept:name" value="p"/>
-      <string key="Activity" value="p"/>
-    </event>
-    <event>
       <string key="concept:name" value="Y"/>
       <string key="Activity" value="Y"/>
-    </event>
-    <event>
-      <string key="concept:name" value="T"/>
-      <string key="Activity" value="T"/>
     </event>
     <event>
       <string key="concept:name" value="6"/>
@@ -17681,10 +16937,6 @@
       <string key="Activity" value="M"/>
     </event>
     <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
-    </event>
-    <event>
       <string key="concept:name" value="B"/>
       <string key="Activity" value="B"/>
     </event>
@@ -17701,20 +16953,12 @@
       <string key="Activity" value="R"/>
     </event>
     <event>
-      <string key="concept:name" value="j"/>
-      <string key="Activity" value="j"/>
-    </event>
-    <event>
       <string key="concept:name" value="q"/>
       <string key="Activity" value="q"/>
     </event>
     <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
-    </event>
-    <event>
-      <string key="concept:name" value="C"/>
-      <string key="Activity" value="C"/>
     </event>
     <event>
       <string key="concept:name" value="l"/>
@@ -17813,10 +17057,6 @@
       <string key="Activity" value="q"/>
     </event>
     <event>
-      <string key="concept:name" value="d"/>
-      <string key="Activity" value="d"/>
-    </event>
-    <event>
       <string key="concept:name" value="u"/>
       <string key="Activity" value="u"/>
     </event>
@@ -17855,10 +17095,6 @@
     <event>
       <string key="concept:name" value="g"/>
       <string key="Activity" value="g"/>
-    </event>
-    <event>
-      <string key="concept:name" value="Y"/>
-      <string key="Activity" value="Y"/>
     </event>
     <event>
       <string key="concept:name" value="o"/>
