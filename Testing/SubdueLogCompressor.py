@@ -497,13 +497,13 @@ class LogCompressor(object):
 			if "~" in fileStr:
 				print("ERROR tilde used as special anchor in _buildAllTrace. File may not contain tildes.")
 
-			xpTokens = ["XP "+token.strip() for token in fileStr.split("XP")]
+			xpTokens = ["XP "+token.strip() for token in fileStr.split("XP") if len(token.strip()) > 0]
 			xpTokens = [token.replace("\n","~") for token in xpTokens]
 			
 			#xpTokens = [token.replace("\n","~").replace("~~","~") for token in fileStr.replace("XP","~XP").split("~") if len(token.strip()) > 0]
-			for token in xpTokens:
-				print(token)
-			exit()
+			#for token in xpTokens:
+			#	print(token)
+			#exit()
 			#convert all 'XP' strings to subgraphs
 			#print("BuildAll ("+logPath+"): "+xpTokens[0])
 			subgList = [self._subDeclarationToGraph(xpToken) for xpToken in xpTokens]
@@ -572,8 +572,14 @@ class LogCompressor(object):
 
 		#utilitarian logic for this function, just facilitates parsing logic via @tokenBegin
 		if hasXpHeader:
-			#print("HERE: "+str(lineTokens))
+			#print("HERE: "+str(lineTokens[0]))
 			substructure["header"] = lineTokens[0]
+			
+			if "#" not in lineTokens[0]:
+				print("DEAD: ")
+				for token in lineTokens:
+					print("tok: "+token)
+			
 			substructure["oldXpId"] = lineTokens[0].split("#")[1].strip()
 			tokenBegin = 1
 		else:
