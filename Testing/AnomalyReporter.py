@@ -245,17 +245,17 @@ class AnomalyReporter(object):
 		return edgeDist
 		
 	"""
-	A recursive searh procedure for retrieving a child of the current level.
+	A recursive search procedure for retrieving a child of a level (substructure) in the dendrogram.
 	
 	In some level Li for substructure Si, there is some compressed id ID. We wish to find the next child
 	sub into which it is further mapped into some compressing substructure further below.
 	
-	@level: The current level within which to check for this id
+	@level: The integer index of the level within which to check for this id
 	@id: An active id in @level
 	
 	Returns: Integer index of this nodes next compressing substructure in the dendrogram
 	"""
-	def _getChild(self,dendrogram,level,id):
+	def _getChild(self, dendrogram, level, id):
 		#one base case: if id == -1, this is the most compressing sub
 		if id == "-1":
 			return level - 1
@@ -274,7 +274,7 @@ class AnomalyReporter(object):
 	of this substructure/level, which is valid since some others compressed by this level will not be maximally compressed but are
 	nonetheless siblings.
 	
-	Returns: freqDist, a list of dictionaries GUARANTEED to be ordered by lines in the dendrogram file, and hence by compression order and topo-graph order.
+	Returns: freqDist, a list of dictionaries GUARANTEED to be ordered by lines in the dendrogram file, and hence by compression order and topological order.
 	"""
 	def _getDendrogramDistribution(self,dendrogram):
 		dictList = []
@@ -437,10 +437,15 @@ class AnomalyReporter(object):
 
 	"""
 	Analyzes the edge/node and other distribution measures comparing the 
-	child substructures with the distributions of the overall graph. 
+	child substructures with various distributions of the overall graph. 
 	
 	The general approach is simply to compare the distribution of edges/nodes/substructures with the distribution
-	given by the overall graph. This provides a measure of things seeming unusual (divergent) in the context of a pattern.
+	given by the overall graph. This provides a potential measure of things seeming unusual (divergent) in the context of a pattern.
+	
+	Currently this is not well-defined, for a range of reasons: reflexive connections (include these in dists or not?), disconnected
+	graphs (a frequent case) yielding zero edge/markovian probability connecting substructures, etc. The biggest flaw in this
+	method is simply that it lacks an objective; however, the framework seems highly useful, however distributions and analytics
+	are defined.
 	
 	Method: Given a dendrogram, proceed top down, analyzing divergence of each child wrt the distribution of the overall graph
 	given by self._markovModel. 
@@ -454,7 +459,8 @@ class AnomalyReporter(object):
 	
 		#friendly verification reminder
 		print("Running child sub distribution analysis with traceCount="+str(self._traceCount))
-
+		print("Note that child sub distribution analysis has not been evaluated nor defined (many distributions could be defined)")
+		
 		#get the distribution of children under each level
 		childDists = self._getDendrogramDistribution(dendrogram)
 	
@@ -595,16 +601,19 @@ class AnomalyReporter(object):
 		for edge in edges:
 			edgeCount += self._markovModel[edge]
 				
+		if self._traceCount == 0: #sanity check
+			print("ERROR div-zero in _GetMarkovianEdgeProb, hosed...")
+				
 		return float(edgeCount) / float(self._traceCount)
 
 	"""
 	TODO: This is very dangerous, since it assumes any link between the two vertex sets is an edge connecting the substructures.
 	If metrics confirm this method is useful, then this needs to be re-written to get the edges directly, by storing them during the compression process.
 	
-	Method: given sv1 and sv2, two sets of vertices by name str, gets all the edges connecting them via the passed markovModel, a list of edge-frequency tuples.	
+	Method: given sv1 and sv2, two sets of vertices by name str's, gets all the edges connecting them via the passed markovModel, a list of edge-frequency tuples.	
 	
 	Returns: all edges in the passed markovian model, for which src/dest node are in complementary sets sv1 or sv2. In short, returns all edges in either direction, 
-	connecting sv1 to sv2 or vice versa.
+	connecting sv1 to sv2 or sv2 to sv1.
 	"""
 	def _getConnectingEdges(self, sv1, sv2, markovModel):
 		connectingEdges = []

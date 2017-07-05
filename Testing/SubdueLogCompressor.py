@@ -488,16 +488,21 @@ class LogCompressor(object):
 			lines = [line.strip() for line in logFile.readlines()]
 			logFile.close()
 			
-			#chop header string, if there is one
+			#chop header string, if there is one 
 			if lines[0][0:2] != "XP":
 				lines = lines[1:]
 			fileStr = "\n".join(lines)
 			#print("FILESTR: "+fileStr)
 			
+			if len(lines) < 5: #sanity check
+				print("WARNING len(lines) < 5 in SubdueLogCompressor._buildAllTraces()")
+			
+			
 			if "~" in fileStr:
 				print("ERROR tilde used as special anchor in _buildAllTrace. File may not contain tildes.")
 
-			xpTokens = ["XP "+token.strip() for token in fileStr.split("XP") if len(token.strip()) > 0]
+			#format the line tokens into a list of strings, each representing a .g subgraph definition, but with newlines replaced by tilde
+			xpTokens = ["XP "+token.strip() for token in fileStr.split("XP") if len(token.strip()) > 3]
 			xpTokens = [token.replace("\n","~") for token in xpTokens]
 			
 			#xpTokens = [token.replace("\n","~").replace("~~","~") for token in fileStr.replace("XP","~XP").split("~") if len(token.strip()) > 0]
@@ -539,10 +544,10 @@ class LogCompressor(object):
 		open("gbadThresh.txt","w+").write(str(gbadThreshold))
 		#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		#print("start: "+str(start))
-		subsRaw = subsRaw[start : subsRaw.find("~~",start)] #gets the "Normative Pattern.*\n\n" string
+		subsRaw = subsRaw[start : subsRaw.find("~~", start)] #gets the "Normative Pattern.*\n\n" string
 		#find the precise start of the vertex declarations
 		subsRaw = subsRaw[ subsRaw.find("    v ") : ]
-		#print("subs raw: "+subsRaw)
+		print("subs raw: "+subsRaw)
 		sub = self._subDeclarationToGraph(subsRaw,hasXpHeader=False)
 		#store additional data in the graph
 		sub["instances"] = int(subCt)
