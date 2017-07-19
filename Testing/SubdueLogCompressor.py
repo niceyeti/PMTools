@@ -57,7 +57,7 @@ class LogCompressor(object):
 			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
 			compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
 			#append to the dendrogram file
-			self._appendToDendrogram(bestSub,compSubName, compressedSubs, deletedSubs, edgeFreqs)
+			self._appendToDendrogram(bestSub, compSubName, compressedSubs, deletedSubs, edgeFreqs)
 			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
 			self._writeSubs(compressedSubs, outPath)
 		else:
@@ -417,7 +417,7 @@ class LogCompressor(object):
 
 
 	"""
-	Given a list of traces subgraphs, and an instance of the best substructure found by subdue/gbad,
+	Given a list of traces' subgraphs, and an instance of the best substructure found by subdue/gbad,
 	this compresses all subgraphs wrt the best substructure. If the trace does not contain the substructure,
 	the trace is preserved in its current form. If the trace does contain the substructure, then the entire
 	substructure is replaced with a single node "SUB1", and all in/out edges to/from the structure are woven

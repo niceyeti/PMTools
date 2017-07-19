@@ -259,6 +259,11 @@ class AnomalyReporter(object):
 		#one base case: if id == -1, this is the most compressing sub
 		if id == "-1":
 			return level - 1
+			
+		if level >= len(dendrogram):
+			print("ERROR: no child found for id/level: "+str(id)+"/"+str(level)+".  This can occur if --recurse parameter set too low, and further compression could have had with more iterations.")
+			return level - 1
+			
 		if id in dendrogram[level].CompressedIds:
 			return level
 		#recurse
@@ -278,6 +283,13 @@ class AnomalyReporter(object):
 	"""
 	def _getDendrogramDistribution(self,dendrogram):
 		dictList = []
+
+		"""
+		print("DENDROGRAM: ")
+		for record in dendrogram:
+			print(str(record))
+		print("END")
+        """
 		
 		for level in range(0,len(dendrogram)-1):
 			freqDist = {}
@@ -285,7 +297,7 @@ class AnomalyReporter(object):
 			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
 			if len(cl.MaxCompressedIds) > 0:
 				freqDist = {cl.SubName:len(cl.MaxCompressedIds)}
-			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructures
+			#get immediate child substructures of this level: look across all ids mapped in all lower layers for next compressing substructure
 			for id in cl.CompressedIds:
 				if id not in cl.MaxCompressedIds: #see above: already accounted for child/max compressed id's
 					childLevel = self._getChild(dendrogram, level+1, cl.IdMap[id])

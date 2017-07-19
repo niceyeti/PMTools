@@ -215,10 +215,9 @@ fi
 cat $mdlResult > $gbadResult
 cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
-#cat $fsmResult >> $gbadResult
-
 
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
 
+#dont delete this: copy-paste this to re-run anomaly detection manually from cmd line
 #python ./AnomalyReporter.py -gbadResult=../TestResults/gbadResult.txt -logFile=../SyntheticData/testTraces.log -resultFile=../TestResults/anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=../SyntheticData/markovModel.py -traceGraphs=../SyntheticData/traceGraphs.py
 
