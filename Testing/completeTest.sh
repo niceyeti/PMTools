@@ -164,7 +164,12 @@ if [ $recursiveIterations -gt 0 ]; then
 	cp $mdlResult lastMdlResult.txt
 	#compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
 	python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB_init --deleteSubs=$deleteSubstructures #--showSub
-	for i in $(seq 0 $recursiveIterations); do
+	i="0"
+	#test for completion; this is kludgy, but completion is detected when the compressedLog is empty or iterations exhausted.
+	#BEWARE of exiting before compression is completed
+	while [[ $i -lt $recursiveIterations && -s $compressedLog ]] ; do
+	#while [ $i -lt $recursiveIterations ]; do
+	#for i in $(seq 0 $recursiveIterations); do
 		echo Compression iteration $i
 #compress the best substructure and re-run; all gbad versions should output the same best-substructure, so using mdlResult.txt's ought to be fine
 #python $logCompressor $subdueLogPath lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures --showSub
@@ -182,6 +187,8 @@ if [ $recursiveIterations -gt 0 ]; then
 		#$gbadMdlPath -prob 2 $compressedLog >> $probResult
 		#recompress the best substructure and re-run, using the previous compressed log as input and then outputting to it as well
 		python $logCompressor $compressedLog lastMdlResult.txt $compressedLog name=SUB$i --deleteSubs=$deleteSubstructures #--showSub
+		#increment
+		i=$[$i+1]
 	done
 fi
 

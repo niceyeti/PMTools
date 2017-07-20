@@ -249,6 +249,8 @@ class AnomalyReporter(object):
 	
 	In some level Li for substructure Si, there is some compressed id ID. We wish to find the next child
 	sub into which it is further mapped into some compressing substructure further below.
+	BEWARE that if the dendrogram does not represent a fully compressed log, this method will bottom out early for traces which
+	did not reach full compression.
 	
 	@level: The integer index of the level within which to check for this id
 	@id: An active id in @level

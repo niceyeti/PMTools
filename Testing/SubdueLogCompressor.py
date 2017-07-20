@@ -374,7 +374,10 @@ class LogCompressor(object):
 		mstr = "{"
 		for sub in compressedSubs:   #the traces that will be preserved in the next iteration
 			#FAILING HERE??? Don't forget to pass --deleteSubs
-			mstr += (str(sub["oldXpId"]) + ":" + str(sub["newXpId"]) + ",")
+			try:
+				mstr += (str(sub["oldXpId"]) + ":" + str(sub["newXpId"]) + ",")
+			except:
+				print("Exception thrown in SubdueLogCompressor. Likely due to missing --deleteSubs parameter")
 		if len(deletedSubs) > 0:	
 			for sub in deletedSubs: #the traces that were removed on this iteration; these will point to -1 to indicate their removal
 				mstr += (str(sub["oldXpId"]) + ":-1,")
@@ -470,7 +473,7 @@ class LogCompressor(object):
 					#bug check
 					if len(sub.vs) == 0:
 						print("ERROR empty sub detected  Edges: "+str(len(sub.es)))
-					if len(sub.vs) == 1:
+					if len(sub.vs) == 1:377
 						print("WARNING single-vertex sub detected.  Edges: "+str(len(sub.es)))
 					"""
 					sub["oldXpId"]  = trace["oldXpId"]
