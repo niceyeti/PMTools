@@ -12,6 +12,14 @@ SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
 
+TestResults/gbadResult.txt
+TestResults/mdlResult.txt
+Testing/dendrogram.graphml
+Testing/dendrogram.png
+Testing/dendrogram.txt
+Testing/gbad-mdl.exe.stackdump
+Testing/lastMdlResult.txt
+
 RealData/*graphml
 RealData/*pnml
 RealData/*stackdump
