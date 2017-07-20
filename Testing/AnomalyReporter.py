@@ -350,6 +350,14 @@ class AnomalyReporter(object):
 			if v["name"] == rootName:
 				rootId = v.index
 
+		#calculate the pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
+		g.vs["reversePagerank"] = g.pagerank()
+		rpr = sorted([(v["name"],v["reversePagerank"]) for v in g.vs], key=lambda t: t[1])
+		print("Reverse pagerank values: ")
+		for tup in rpr:
+			print("\t"+str(tup))
+		print("end")
+		
 		return g
 		
 	"""
