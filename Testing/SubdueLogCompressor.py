@@ -632,9 +632,14 @@ class LogCompressor(object):
 		#add all of the edges (by name)
 		edges = [(vertexDict[e[0]], vertexDict[e[1]]) for e in edges]
 		vertices = []
+		#add vertices noted in the edge list
 		for e in edges:
 			vertices.append(e[0])
 			vertices.append(e[1])
+		#add vertices parsed separately; this is redundant, but the uniquify step below resolve potential repetition. The step is necessary for single vertex, no edge subgraphs, a degenerate case of subdue output
+		for v in vertexDict.keys()
+			vertices.append(v)
+		#uniquify the vertex set
 		vertices = list(set(vertices))
 		#print("adding vertices: "+str(vertices))
 		substructure.add_vertices(vertices)
