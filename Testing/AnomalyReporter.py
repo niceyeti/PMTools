@@ -314,16 +314,23 @@ class AnomalyReporter(object):
 
 		return dictList
 
-	def _visualizeDendrogram(self, freqDictList):
-		#build the edge list in memory
+	"""
+	Utility for converting a freqDictList (per _getDendrogramDistribution) to an igraph object, for plotting and analysis.
+	The nodes are connected according to the relationships given by @freqDictList, and the edges store the frequencies in their
+	"weight" attribute, for analyses.
+	
+	Returns: igraph object description of the freqDictList
+	"""
+	def _getFreqDistGraph(self, freqDictList):
+		#build the edge list locally
 		es = []
 		rootName = freqDictList[0][1]
-		#print("ROOT: "+rootName)
+		print("ROOT: "+rootName)
 		for fd in freqDictList:
 			nodeName = fd[1]
 			#add the edges for this layer to all lower ones
 			for key in fd[0].keys():
-				es.append((nodeName,key))
+				es.append((nodeName,key,fd[0][key]))
 		#es populate, now use it to build set of unique vertex names
 		vs = set()
 		for edge in es:
@@ -332,13 +339,27 @@ class AnomalyReporter(object):
 		#print("VS: "+str(vs))
 		g = igraph.Graph(directed=True)
 		g.add_vertices(list(vs))
-		g.add_edges(es)
+		edgeList = [(edge[0],edge[1]) for edge in es]
+		edgeWeights = [edge[2] for edge in es]
+		g.add_edges(edgeList)
+		g.es["weight"] = edgeWeights
+		g.es["label"] = [str(weight) for weight in edgeWeights]
 		
 		for v in g.vs:
 			v["label"] = v["name"]
 			if v["name"] == rootName:
 				rootId = v.index
+
+		return g
 		
+	"""
+	@freqDictList: A list of frequency distribution dictionaries  per _getDendrogramDistribution
+	
+	Returns: Igraph description of frequency distribution.
+	"""
+	def _visualizeDendrogram(self, freqDictList):
+		g = self._getFreqDistGraph(freqDictList)
+
 		#layout = igraph.Graph.layout_reingold_tilford(mode="out",root=rootId)
 		layout = g.layout("sugiyama")
 		#layout = g.layout_sugiyama()
@@ -349,6 +370,8 @@ class AnomalyReporter(object):
 		#layout = graph.layout("reingold")
 		#igraph.plot(g,layout = layout.reingold.tilford(g, root = rootName))
 		g.write_graphml("dendrogram.graphml")
+		
+		return g
 		
 	"""
 	An experiment to see if entropy metrics distinguish anomalies/noise: score each substructure according to the
