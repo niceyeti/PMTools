@@ -25,7 +25,7 @@ class LogCompressor(object):
 	def __init__(self):
 		self._compressedTraceIds = []
 		#self._dendrogramFile = open("dendrogram.txt","a+")
-		self._maxCompressedSubs = []
+		self._maxCompressedSubs = set()
 		self._compressedSubs = []
 		self._nonCompressedSubs = []
 		self._deletedSubs = []
@@ -34,7 +34,7 @@ class LogCompressor(object):
 	"""
 	Note this currently only takes the top substructure listed in the .g file.
 
-	@logPath: The path to some .g log to be compressed
+	@logPath: The path to some .g log to be compressed, over which subdue/gbad have been run
 	@subsPath: The path to some gbad/subdue output text file containing best substructure prototypes (only the best substructure will be used)
 	@outPath: The output path for the compressed log
 	@compSubName: The name for the compressed substructure (eg, SUB1, SUB2... SUBi, where i may denote the number of recursive compressions so far)
@@ -54,8 +54,13 @@ class LogCompressor(object):
 			bestSub.write_graphml(bestSub["name"]+".graphml")
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
-			#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-			compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
+			if len(subgraphs) == 1: #exception case: sometimes subdue likes to loop over a single graph input, causing infinite recursion on the last graph in some log
+				compressedSubs = subgraphs
+				deletedSubs = subgraphs
+				self._maxCompressedSubs.add(subgraphs[0]["oldXpId"])
+			else:
+				#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
+				compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
 			#append to the dendrogram file
 			self._appendToDendrogram(bestSub, compSubName, compressedSubs, deletedSubs, edgeFreqs)
 			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
@@ -66,6 +71,19 @@ class LogCompressor(object):
 			ofile = open(outPath,"w+")
 			ofile.close()
 
+	"""
+	Handles the exceptions case of 'compressing' two or fewer graphs, which is a terminal case. As such, the compressed .g
+	log is simply erased.
+
+	def _compressTwoOrFewer(self, subgraphs, bestSub):
+		
+		
+		#output empty log to outPath
+		ofile = open(outPath,"w+")
+		ofile.close()
+	"""
+			
+			
 	"""
 	Given a list of sub-graphs stored in igraph.Graph structures, write each one
 	to a new output file, suitable as input to subdue/gbad. The graphs are newly labelled
@@ -164,7 +182,7 @@ class LogCompressor(object):
 			self._compressedSubs.append(traceSub["oldXpId"])
 			#trace equals subgraph, so entire trace should be deleted: set result to None and return
 			if self._traceEqualsSubgraph(traceSub,compSub):
-				self._maxCompressedSubs.append(traceSub["oldXpId"])
+				self._maxCompressedSubs.add(traceSub["oldXpId"])
 				#print("EQUALITY")
 				delSub = None
 			else:
@@ -238,7 +256,7 @@ class LogCompressor(object):
 			self._compressedSubs.append(traceSub["oldXpId"])
 			#see header: return the compressing substructure with one reflexive loop
 			if self._traceEqualsSubgraph(traceSub, compSub) and len(compSub.vs) == 1:
-				self._maxCompressedSubs.append(traceSub["oldXpId"])
+				self._maxCompressedSubs.add(traceSub["oldXpId"])
 				print("MAX COMPRESSION")
 				#just copy the sub and add a reflexive loop
 				compressed = igraph.Graph(directed=True)
@@ -333,7 +351,7 @@ class LogCompressor(object):
 		#add the max compressed ids
 		if len(self._maxCompressedSubs) > 0:
 			s += "["
-			for name in self._maxCompressedSubs:
+			for name in sorted(list(self._maxCompressedSubs)):
 				s += str(name+",")
 			s = s[:-1] #snip the last comma
 			s += "]"
@@ -446,23 +464,22 @@ class LogCompressor(object):
 					else:
 						connectingEdgeFreqs[edge] = 1
 
-				#if sub is None (entire subgraph was deleted), just ignore it
-				if sub is not None:
-				
+				#if sub is None or a single vertex (entire subgraph was deleted), just ignore it
+				if sub is not None and len(sub.vs) > 1:
+					"""
 					#bug check
 					if len(sub.vs) == 0:
 						print("ERROR empty sub detected  Edges: "+str(len(sub.es)))
 					if len(sub.vs) == 1:
 						print("WARNING single-vertex sub detected.  Edges: "+str(len(sub.es)))
-				
-				
-				
+					"""
 					sub["oldXpId"]  = trace["oldXpId"]
 					sub["newXpId"] = self._newXpIdCtr
 					self._newXpIdCtr += 1
 					compressedSubs.append(sub)
-					#print("appended: "+str(sub))
 				else:
+					#print("DELETED >>>>>>>>>>>>>")
+					self._maxCompressedSubs.add(trace["oldXpId"])
 					deletedSubs.append(trace)
 			else:
 				sub = self._compressTraceSub(trace, bestSub)
