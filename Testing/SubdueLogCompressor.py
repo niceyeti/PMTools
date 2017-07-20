@@ -637,7 +637,7 @@ class LogCompressor(object):
 			vertices.append(e[0])
 			vertices.append(e[1])
 		#add vertices parsed separately; this is redundant, but the uniquify step below resolve potential repetition. The step is necessary for single vertex, no edge subgraphs, a degenerate case of subdue output
-		for v in vertexDict.keys()
+		for v in vertexDict.values():
 			vertices.append(v)
 		#uniquify the vertex set
 		vertices = list(set(vertices))
