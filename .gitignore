@@ -12,6 +12,11 @@ SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
 
+SyntheticData/compressed.g
+SyntheticData/noisedTraces.log
+SyntheticData/testTraces.xes
+TestResults/anomalyResult.txt
+
 TestResults/gbadResult.txt
 TestResults/mdlResult.txt
 Testing/dendrogram.graphml

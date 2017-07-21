@@ -60,6 +60,8 @@ class LogCompressor(object):
 	!! NOTE: The handling of this case is important, as effectively several iterations are executed at once: the subgraphs
 	are all written to the dendrogram, and effectively the recurrent compression process is done.
 	
+	The responsibility of this method is to output all remaining subgraphs on their own line in the dendrogram, following the dendrogram scheme.
+	
 	Method: all of @subgraphs are written to the dendrogram on a separate line, per the dendrogram construction.
 	
 	"""
@@ -73,10 +75,10 @@ class LogCompressor(object):
 			g = subgraphs[i]
 			curId = g["oldXpId"]
 			
-			s = "(["+curId+"]"+curId+":"+"SUB_Degen_"+str(i)+":1:1.0)"+
+			s = "(["+str(curId)+"]"+str(curId)+":"+"SUB_Degen_"+str(i)+":1:1.0)"
 			
 			#get the list of subs remaining to be compressed (may be empty)
-			remaining = [rem["oldXpId"] for rem in subgraphs[i+1:]]
+			remaining = [str(rem["oldXpId"]) for rem in subgraphs[i+1:]]
 			s += ",".join(remaining)
 			
 			idDict = dict()
