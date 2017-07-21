@@ -30,7 +30,31 @@ class LogCompressor(object):
 		self._nonCompressedSubs = []
 		self._deletedSubs = []
 		self._newXpIdCtr = 1
-		
+	
+	"""
+	A degenerate case (for both deleteSubs and non-deleteSubs paths) occurs when the remainder of the input log consists of
+	only unique graphs with no shared vertices (and hence no shared edges).
+	
+	@subgraphs: A list of igraph Graph objects describing components of the process
+	"""
+	def _isDegenerateSet(self, subgraphs):
+		isDegenerate = False
+		if len(subgraphs) <= 20: #dont worry about this being evaluated too often/inefficiently: either the condition is detected and terminated, or usually a compressing substructure will knock out the log faster, not one at a time
+			"""Lemma: A set of distinct graphs can be detected if they have no shared vertices, since we don't allow hanging edges, for instance.
+				Hence, a linear test (not quadratic comparison) works: loop over the graphs, add their vertices v' to set V''; if at any time any of v' are in V'' before adding, the graphs are not distinct
+			"""
+			uniqVertices = set()
+			isDegenerate = True #set to true, then the loop below attempts to find/disprove uniqueness of the graph set
+			for g in subgraphs:
+				vNames = [v["name"] for v in g.vs]
+				for v in vNames:
+					if v in uniqVertices:
+						isDegenerate = False
+						break
+					uniqVertices.add(v)
+
+		return isDegenerate
+
 	"""
 	Note this currently only takes the top substructure listed in the .g file.
 
@@ -54,17 +78,25 @@ class LogCompressor(object):
 			bestSub.write_graphml(bestSub["name"]+".graphml")
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
-			if len(subgraphs) == 1: #exception case: sometimes subdue likes to loop over a single graph input, causing infinite recursion on the last graph in some log
-				compressedSubs = subgraphs
-				deletedSubs = subgraphs
-				self._maxCompressedSubs.add(subgraphs[0]["oldXpId"])
+			#detects degenerate case when no further compression can occur: log consists of only a set of graphs sharing no vertices or edges
+			if self._isDegenerateSet(subgraphs):
+				#degenerate case detected: write out all subgraphs to dendrogram as unique graphs
+				self._degenerateCase(subgraphs)
+				#all subgraphs effectively compressed, so clear the log to signal completion
+				ofile = open(outPath,"w+")
+				ofile.close()
 			else:
-				#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
-				compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
-			#append to the dendrogram file
-			self._appendToDendrogram(bestSub, compSubName, compressedSubs, deletedSubs, edgeFreqs)
-			#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
-			self._writeSubs(compressedSubs, outPath)
+				if len(subgraphs) == 1: #exception case: sometimes subdue likes to loop over a single graph input, causing infinite recursion on the last graph in some log
+					compressedSubs = subgraphs
+					deletedSubs = subgraphs
+					self._maxCompressedSubs.add(subgraphs[0]["oldXpId"])
+				else:
+					#print("subgraphs:\n"+str(subgraphs)+"\nend subgraphs")
+					compressedSubs, deletedSubs, edgeFreqs = self._compressAllTraces(subgraphs, bestSub, deleteSubs)
+				#append to the dendrogram file
+				self._appendToDendrogram(bestSub, compSubName, compressedSubs, deletedSubs, edgeFreqs)
+				#print("compressed: "+str(compressedSubs)+"\nend compress subgraphs")
+				self._writeSubs(compressedSubs, outPath)
 		else:
 			print("Compressor exiting with no compression")
 			#output empty log to outPath
