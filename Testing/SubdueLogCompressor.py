@@ -56,6 +56,58 @@ class LogCompressor(object):
 		return isDegenerate
 
 	"""
+	A degenerate case occurs when the log contains only unique, non-compressible graphs.
+	!! NOTE: The handling of this case is important, as effectively several iterations are executed at once: the subgraphs
+	are all written to the dendrogram, and effectively the recurrent compression process is done.
+	
+	Method: all of @subgraphs are written to the dendrogram on a separate line, per the dendrogram construction.
+	
+	"""
+	def _degenerateCase(self, subgraphs):
+	
+		f = open("dendrogram.txt","a+")
+		#store the oldXpIds, which are modified below; there's probably no use restoring them, but might as well preserve things
+		oldXpIds = [g["oldXpId"] for g in subgraphs]
+
+		for i in range(len(subgraphs)):
+			g = subgraphs[i]
+			curId = g["oldXpId"]
+			
+			s = "(["+curId+"]"+curId+":"+"SUB_Degen_"+str(i)+":1:1.0)"+
+			
+			#get the list of subs remaining to be compressed (may be empty)
+			remaining = [rem["oldXpId"] for rem in subgraphs[i+1:]]
+			s += ",".join(remaining)
+			
+			idDict = dict()
+			idDict[curId] = "-1"
+			j = 1
+			for rem in subgraphs[i+1:]:
+				idDict[rem["oldXpId"]] = j
+				rem["oldXpId"] = j #update the id's of the remaining substructures
+				j += 1
+				
+			s += "{"
+			for pair in idDict.items():
+				s += str(pair[0])+":"+str(pair[1])+","
+			s = s[0:-1] #chop trailing comma
+			s += "}"
+			
+			#output the graph description of this subgraph
+			s += "#"
+			s += str(list(self._getEdgeSet(g)))
+			#add empty edge distribution; empty since this case is degenerate and all subgraphs are assumed disconnected
+			s += "#{}"
+
+			f.write(s+"\n")
+			
+		for i in range(len(subgraphs)):
+			subgraphs[i] = oldXpIds[i]
+
+		f.close()
+
+		
+	"""
 	Note this currently only takes the top substructure listed in the .g file.
 
 	@logPath: The path to some .g log to be compressed, over which subdue/gbad have been run
@@ -102,19 +154,6 @@ class LogCompressor(object):
 			#output empty log to outPath
 			ofile = open(outPath,"w+")
 			ofile.close()
-
-	"""
-	Handles the exceptions case of 'compressing' two or fewer graphs, which is a terminal case. As such, the compressed .g
-	log is simply erased.
-
-	def _compressTwoOrFewer(self, subgraphs, bestSub):
-		
-		
-		#output empty log to outPath
-		ofile = open(outPath,"w+")
-		ofile.close()
-	"""
-			
 			
 	"""
 	Given a list of sub-graphs stored in igraph.Graph structures, write each one
