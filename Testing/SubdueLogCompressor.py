@@ -186,6 +186,8 @@ class LogCompressor(object):
 				#a hack required by gbad: "xp" declarations must be sequential
 				sub["header"] = sub["header"][0:sub["header"].rfind(" ")]+" "+str(sub["newXpId"])
 				ofile.write((self._sub2GFormatString(sub)+"\n").encode())
+			else:
+				print("See previous error line. Error occurred in SubdueLogCompressor._writeSubs")
 
 		ofile.close()
 
@@ -425,22 +427,22 @@ class LogCompressor(object):
 		#add the max compressed ids
 		if len(self._maxCompressedSubs) > 0:
 			s += "["
-			for name in sorted(list(self._maxCompressedSubs)):
-				s += str(name+",")
+			for name in sorted([int(id) for id in self._maxCompressedSubs]):
+				s += str(name)+","
 			s = s[:-1] #snip the last comma
 			s += "]"
 		else:
 			s += "[]"
 		#add the rest of the compressed ids
-		for name in sorted(self._compressedSubs):
-			s += str(name+",")
+		for name in sorted([int(id) for id in self._compressedSubs]):
+			s += str(name)+","
 		s = s[:-1]    #snip the last comma
 		#s += (":" + compSubName + ")") #add sub info
 		s += (":" + compSubName + ":"+str(compSub["instances"])+":"+str(compSub["compValue"])+")") #add sub info
 		#add the noncompressed trace ids
 		if len(self._nonCompressedSubs) > 0:
-			for name in self._nonCompressedSubs:
-				s += (name+",")
+			for name in sorted([int(id) for id in self._nonCompressedSubs]):
+				s += str(name)+","
 			#snip the last comma
 			s = s[:-1]
 

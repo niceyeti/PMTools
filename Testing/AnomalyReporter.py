@@ -293,7 +293,7 @@ class AnomalyReporter(object):
 		print("END")
         """
 		
-		for level in range(len(dendrogram)-1):
+		for level in range(len(dendrogram)):
 			freqDist = {}
 			cl = dendrogram[level]
 			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
