@@ -53,9 +53,9 @@ class CompressionLevel(object):
 		line = line.split("#")[0]
 
 		self._buildSubGraph(graphLine)
-		self.MaxCompressedIds = [id for id in line.split("[")[1].split("]")[0].split(",") if len(id) > 0] #magic prevents empty max-comp list '[]' from becoming [''] (one item list of empty str)
-		self.CompressedIds = line.split("]")[1].split(":")[0].split(",")
-		self.UncompressedIds = [id for id in line.split(")")[1].split("{")[0].split(",") if len(id) > 0]
+		self.MaxCompressedIds = sorted([id for id in line.split("[")[1].split("]")[0].split(",") if len(id) > 0]) #magic prevents empty max-comp list '[]' from becoming [''] (one item list of empty str)
+		self.CompressedIds = sorted(line.split("]")[1].split(":")[0].split(","))
+		self.UncompressedIds = sorted([id for id in line.split(")")[1].split("{")[0].split(",") if len(id) > 0])
 		self.NumInstances = int(line.split(")")[0].split(":")[-2])
 		self.CompressionFactor = float(line.split(")")[0].split(":")[-1])
 		self.SubName = line.split(")")[0].split(":")[-3]

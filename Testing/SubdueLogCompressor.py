@@ -142,6 +142,7 @@ class LogCompressor(object):
 			else:
 				if len(subgraphs) == 1: #exception case: sometimes subdue likes to loop over a single graph input, causing infinite recursion on the last graph in some log
 					compressedSubs = subgraphs
+					self._compressedSubs.append(subgraphs[0])
 					deletedSubs = subgraphs
 					self._maxCompressedSubs.add(subgraphs[0]["oldXpId"])
 				else:
@@ -431,7 +432,7 @@ class LogCompressor(object):
 		else:
 			s += "[]"
 		#add the rest of the compressed ids
-		for name in self._compressedSubs:
+		for name in sorted(self._compressedSubs):
 			s += str(name+",")
 		s = s[:-1]    #snip the last comma
 		#s += (":" + compSubName + ")") #add sub info
