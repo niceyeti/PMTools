@@ -328,7 +328,7 @@ class AnomalyReporter(object):
 		print("ROOT: "+rootName)
 		for fd in freqDictList:
 			nodeName = fd[1]
-			#add the edges for this layer to all lower ones
+			#add the edges for this layer to all lower ones, with their frequency/weight
 			for key in fd[0].keys():
 				es.append((nodeName,key,fd[0][key]))
 		#es populate, now use it to build set of unique vertex names
@@ -352,6 +352,7 @@ class AnomalyReporter(object):
 
 		#calculate the pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
 		g.vs["reversePagerank"] = g.pagerank()
+		#print em (this is just for viewing, as it doesn't connect the values to traces)
 		rpr = sorted([(v["name"],v["reversePagerank"]) for v in g.vs], key=lambda t: t[1])
 		print("Reverse pagerank values: ")
 		for tup in rpr:
@@ -465,6 +466,27 @@ class AnomalyReporter(object):
 
 		return cumEntMap
 
+	"""
+	Convenience wrapper of _getSubTraceIds using a name parameter instead.
+	
+	@subName: substructure name in dendrogram whose ids we want
+	"""
+	def _getSubTraceIdsByName(self, dendrogram, subName):
+		index = -1
+		ids = []
+		
+		for level in range(len(dendrogram)):
+			if subName.lower() == dendrogram[level].SubName.lower():
+				index = level
+				break
+				
+		if index == -1:
+			print("ERROR in _getSubTraceIdsByName: index not found for sub name: "+subName)
+		else:
+			ids = self._getSubTraceIds(dendrogram, index)
+		
+		return ids
+		
 	"""
 	Given an index in the dendrogram representing a substructure, recovers the original trace ids of those id's compressed
 	by that sub. Note ought to be part of a Dendrogram api.
@@ -771,8 +793,15 @@ class AnomalyReporter(object):
 		
 		
 		
-		#use the frequency distribution list to visualize the dendrogram
-		self._visualizeDendrogram(freqDist)
+		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
+		dendrogramGraph = self._visualizeDendrogram(freqDist)
+		#print the pagerank values per substructure
+		print("PageRank Substructure Analysis:")
+		for pair in sorted([(v["name"],v["reversePagerank"]) for v in dendrogramGraph.vs], key=lambda t: t[1], reverse=True):
+			#get the traces from the substructure name
+			traceIDs = self._getSubTraceIdsByName(dendrogram, pair[0])
+			print(pair[0]+"  "+str(pair[1])+str(traceIDs))
+		
 		#maps substructure indices in the dendrogram (ints) to 
 		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
 		[print(str(item)) for item in entMap.items()]
@@ -784,7 +813,7 @@ class AnomalyReporter(object):
 		
 		for i in range(0,len(dendrogram)):
 			ids = self._getSubTraceIds(dendrogram, i)
-			print(dendrogram[i].SubName+" ids:  "+str(ids))
+			print(dendrogram[i].SubName+" ids:  "+str(ids)+"\tReverse PageRank: "+str())
 
 		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
 		self._analyzeEdgeConnectivityDivergence(dendrogram)
