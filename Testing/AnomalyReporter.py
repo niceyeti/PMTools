@@ -452,7 +452,7 @@ class AnomalyReporter(object):
 	def _getCumulativeSubstructureEntropyMap(self, freqDist, subEntMap):
 		cumEntMap = {}
 		i = len(freqDist) - 1
-		#walk up, using the subEntMap to map all of a substructure's ancestors to their entropy values
+		#walk up, using the subEntMap to map a substructure's ancestors to their entropy values
 		while i >= 0:
 			subName = freqDist[i][1]
 			#build the ancestor set for this node
@@ -485,7 +485,7 @@ class AnomalyReporter(object):
 
 			i -= 1
 			
-		print("Cumulative Entropies: "+str(cumEntMap))
+		print("Cumulative Entropies:")
 		for tup in sorted(cumEntMap.items(), key=lambda tup:tup[1], reverse=True):
 			print("\t"+str(tup))
 
@@ -809,7 +809,7 @@ class AnomalyReporter(object):
 				break
 			i += 1
 
-		print("id map: "+str(dendrogram[0].IdMap))
+		#print("id map: "+str(dendrogram[0].IdMap))
 
 		#Gets the distribution of a dendrogram, as a list of dictionaries
 		freqDist = self._getDendrogramDistribution(dendrogram)
