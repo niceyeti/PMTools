@@ -222,8 +222,11 @@ class AnomalyReporter(object):
 		
 		return dendrogram
 
-	#Builds the edge distribution for a given substructure in a-priori fashion, using the trace graphs populated prior.
-	#NOTE: this requires self._traceGraphs was populated before
+	"""
+	Builds the edge distribution for a given substructure in a-priori fashion, using the trace graphs populated prior.
+	NOTE: this requires self._traceGraphs was populated before
+	
+	"""
 	def _buildSubstructureEdgeDist(self, dendrogram, level):
 		sub = dendrogram[level]
 		#populate the first level / root-ids for this substructure in the dendrogram; these are used to pull the original traces from the tracegraph file
@@ -397,6 +400,13 @@ class AnomalyReporter(object):
 	"""
 	An experiment to see if entropy metrics distinguish anomalies/noise: score each substructure according to the
 	distribution of substructures in all of its ancestors, by including and excluding this substructures ancestors.
+	This is very interesting, though not well-defined. Is there a more defined method? Eg, one that determines something
+	like the information gain given by various substructures, or another method for discriminating between the highest/least
+	informative components of the dendrogram. This lends itself to more formal graphical methods.
+	
+	Method: for each of substructure's ancestor's, compute the entropy of the ancestor's child distribution with and without that node. The difference
+	of these two entropies, summed over all ancestors, gives this substructure's score. Negative values occur if omitting some substructure leads to an increase
+	in entropy.
 	
 	NOTE: This sums over all ancestors in which a particular substructure appears, so its entropy may be a sum over multiple distributions.
 	
@@ -412,6 +422,7 @@ class AnomalyReporter(object):
 			levelName = freqDist[i][1]
 			sumEnt = 0.0
 			j = i - 1
+			#sum entropy up the ancestry path
 			while j >= 0:
 				#calculate the difference in entropy with and without this substructure in the current distribution
 				if levelName in freqDist[j][0].keys():
@@ -432,10 +443,10 @@ class AnomalyReporter(object):
 		return subMap
 
 	"""
-	Given the sub-ent-map, we can also examine the cumulative entropy of a substructures ancestors.
+	Given the sub-ent-map, we can also examine the cumulative entropy over a substructure and it's ancestors.
 	This may be useful, may be not, but is worth looking at.
 	
-	@freqDist: Used to look up all paths from this substructure to the root
+	@freqDist: Used to derive all paths from this substructure to the root
 	@subEntMap: mapping from substructure names to their associated sum entropy over all parent distributions in which they occur.
 	"""
 	def _getCumulativeSubstructureEntropyMap(self, freqDist, subEntMap):
@@ -475,6 +486,8 @@ class AnomalyReporter(object):
 			i -= 1
 			
 		print("Cumulative Entropies: "+str(cumEntMap))
+		for tup in sorted(cumEntMap.items(), key=lambda tup:tup[1], reverse=True):
+			print("\t"+str(tup))
 
 		return cumEntMap
 
@@ -522,12 +535,15 @@ class AnomalyReporter(object):
 	given by the overall graph. This provides a potential measure of things seeming unusual (divergent) in the context of a pattern.
 	
 	Currently this is not well-defined, for a range of reasons: reflexive connections (include these in dists or not?), disconnected
-	graphs (a frequent case) yielding zero edge/markovian probability connecting substructures, etc. The biggest flaw in this
-	method is simply that it lacks an objective; however, the framework seems highly useful, however distributions and analytics
+	graphs (a frequent case) yielding >>> zero edge/markovian probability connecting substructures <<< etc. The biggest flaw in this
+	method is simply that it lacks a clear objective. However, the framework seems very useful, however distributions and analytics
 	are defined.
 	
 	Method: Given a dendrogram, proceed top down, analyzing divergence of each child wrt the distribution of the overall graph
-	given by self._markovModel. 
+	given by self._markovModel. Again, this is NOT well-defined, since links from parent to child may not occur as a result of edges between
+	these two substructures. For example, say a simple trace A-B-C-D-E-F-G-H-I includes the structure-1 A-B-C. This substructure is deleted,
+	and another substructure found, G-H-I, and this is deleted. The two substructures are not linked directly, hence their distributions wrt eachother
+	must be defined some other way.
 	
 	Returns: A dict of dicts. The key in the outer dict is a particular substructure. Within this dict, the keys are the names of its children (which may
 	include itself), and the values are another dict of attributes for that child substructure
@@ -544,7 +560,7 @@ class AnomalyReporter(object):
 		childDists = self._getDendrogramDistribution(dendrogram)
 	
 		#analyze each level's child distribution wrt the edge distribution of the overall graph
-		for i in range(0,len(childDists)):
+		for i in range(len(childDists)):
 			dist = childDists[i]  #returns distributions as : [({"SUB_1":3, "SELF":4},"NAME OF THIS NODE"),({...},"NAME OF NEXT NODE")]
 			parentName = dist[1]
 			parentLevel = self._getDendrogramLevelByName(dendrogram, dist[1])
@@ -588,6 +604,8 @@ class AnomalyReporter(object):
 
 	"""
 	Measures the edge divergence of edges connecting to a substructure wrt the edge distribution in the overall graph. 
+	This is well-defined, but may not work without lots and lots of data to generate estimates of either distribution.
+	
 	This is a metric of "in the context of a normative pattern, something unusual occurs" in the sense that we are looking for divergence
 	between the frequency of edges in this context vs. its frequency in the complete graph. The assumption being that the
 	recursive compression process places unusual behavior in the edges connecting substructures and at the leaves.
@@ -811,12 +829,14 @@ class AnomalyReporter(object):
 		print("Reverse PageRank Substructure Analysis:")
 		for pair in sorted([(v["name"],v["reversePagerank"]) for v in dendrogramGraph.vs], key=lambda t: t[1], reverse=True):
 			#get the traces from the substructure name
-			traceIDs = self._getSubTraceIdsByName(dendrogram, pair[0])
+			traceIDs = sorted(self._getSubTraceIdsByName(dendrogram, pair[0]))
 			print(pair[0]+"  "+str(pair[1])[0:6]+"\t"+str(traceIDs))
 		
 		#maps substructure indices in the dendrogram (ints) to 
 		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
-		[print(str(item)) for item in entMap.items()]
+		print("Substructure entropy scores (net entropy increase):")
+		for item in sorted(entMap.items(), key=lambda tup: tup[1], reverse=True):
+			print("\t"+str(item)) 
 		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 		
 		#conditional probability based analysis
@@ -824,7 +844,7 @@ class AnomalyReporter(object):
 		print("Child distributions: "+str(childDists))
 		
 		for i in range(0,len(dendrogram)):
-			ids = self._getSubTraceIds(dendrogram, i)
+			ids = sorted(self._getSubTraceIds(dendrogram, i))
 			print(dendrogram[i].SubName+" ids:  "+str(ids))
 
 		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
@@ -1108,7 +1128,7 @@ def main():
 		usage()
 		exit()
 
-	print("MARKOV: "+markovPath)
+	#print("MARKOV: "+markovPath)
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold, traceGraphPath)
 	reporter.CompileResults()
 
