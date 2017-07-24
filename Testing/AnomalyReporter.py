@@ -361,6 +361,15 @@ class AnomalyReporter(object):
 		for tup in rpr:
 			print("\t"+str(tup))
 		print("end")
+		#calculate the WEIGHTED pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
+		g.vs["reverseWeightedPagerank"] = g.pagerank(weights="weight")
+		#print em (this is just for viewing, as it doesn't connect the values to traces)
+		rwpr = sorted([(v["name"],v["reverseWeightedPagerank"]) for v in g.vs], key=lambda t: t[1])
+		print("Reverse, weighted pagerank values: ")
+		for tup in rwpr:
+			print("\t"+str(tup))
+		print("end")
+		
 		
 		return g
 		
