@@ -281,6 +281,9 @@ class AnomalyReporter(object):
 	of this substructure/level, which is valid since some others compressed by this level will not be maximally compressed but are
 	nonetheless siblings.
 	
+	Also note that this may occasionally output a disconnected set of substructures, most often for the "SUB_init" for substructure compressed. This is
+	correct, and results when the first substructure compressed consists of only maximally-compressed traces, looping it to itself, but giving it no children.
+	
 	Returns: freqDist, a list of dictionaries GUARANTEED to be ordered by lines in the dendrogram file, and hence by compression order and topological order.
 	"""
 	def _getDendrogramDistribution(self,dendrogram):
