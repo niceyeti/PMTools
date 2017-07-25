@@ -217,7 +217,7 @@ fi
 #grep "transaction containing anomalous structure" $fsmResult | uniq | sort #> $fsmTemp
 
 ##Concat the gbad results into a single file so they are easier to analyze at once
-cat $mdlResult > $gbadResult
+cat $mdlResult >    $gbadResult
 cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 

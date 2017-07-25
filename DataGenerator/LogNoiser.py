@@ -14,8 +14,10 @@ class LogNoiser(object):
 	"""
 	This version of adding noise proceeds through the symbol sequence of a trace in the log, 
 	and with probability @noiseRate, adds a randomly selected activity from the complete activity
-	set expressed in the log at each transition. This adds 'noise' under a criterion of completely random transitions, making
-	the graph more real world like, supposedly.
+	set expressed in the log at each transition. This adds 'noise' under a criterion of uniform random transitions (insertions), making
+	the graph more real world like, supposedly. This is amenable to creating edge distributions with greater variance, thus allowing
+	better KL metrics with respect to the regular structural patterns in the data; without this noise, the KL div is usually zero. But
+	it isn't clear how much such variance is required to create global edge distributions with more variance, at the expense of poorer dendrograms.
 	"""
 	def AddNoise1(self, logPath, outPath="noisedLog.log", noiseRate=0.1):
 		activities = self._getLogActivities(logPath)
@@ -40,7 +42,7 @@ class LogNoiser(object):
 				#CONSTRAINT ADDED: This allows noise only after the first activity, and prior to the end activity, thus preserving the endpoints
 				#This is actually a defect wrt to the mined pnml model description, for which there is no a priori way to determine the beginning
 				#acitivity/ies without this upstream constraint on the noise generation, such that the generated logs always have only one
-				#activity with no inlinks (begin) and one with no outlinks (end). This condition is required by Pnml2Graphml; the requirement for this
+				#activity with no inlinks (begin) and one with no outlinks (end). This condition is required by Pnml2Graphml; the upstream requirement for this
 				#condition is the real bug/defect.
 				end = partialOrdering[-1]
 				begin = partialOrdering[0]
