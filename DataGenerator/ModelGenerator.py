@@ -66,6 +66,7 @@ class ModelGenerator(object):
 		self._abnormalLoopProbRange = (-1.0,-1.0)
 		self._normalLoopProbRange = (-1.0,-1.0)
 		self._requiredAnomalies = -1
+		self._maxAnomalousEdges = 9999
 	
 		config = open(configPath,"r")
 		for line in config.readlines():
@@ -87,6 +88,8 @@ class ModelGenerator(object):
 				self._normalLoopProbRange = (float(vals[0]),float(vals[1]))
 			if "NumAnomalies=" in line:
 				self._requiredAnomalies = int(line.split("=")[1])
+			if "MaxAnomalousEdges=" in line:
+				self._maxAnomalousEdges = int(line.split("=")[1])
 				
 		if self._requiredAnomalies < 0:
 			print("ERROR config did not contain NumAnomalies")
@@ -98,6 +101,7 @@ class ModelGenerator(object):
 			print("ERROR config did not contain AbnormalLoopProbRange")
 		if self._normalLoopProbRange[0] < 0.0:
 			print("ERROR config did not contain NormalLoopProbRange")
+		
 		
 	"""
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
@@ -274,7 +278,7 @@ class ModelGenerator(object):
 	####### End of the grammar rules
 
 	"""
-	Resets the object state such that we're redy to create a fresh model
+	Resets the object state such that we're ready to create a fresh model
 	"""
 	def _reset(self):
 		self._model = ""
@@ -306,9 +310,10 @@ class ModelGenerator(object):
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
 				self._pathCount = self._graphicalModel["PathCount"]
-				isValidModel = self._isBezerraValidModel(self._graphicalModel)
+				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel)
 				if isValidModel and showPlot:
 					#only show valid model
+					print("Model anomalous edges: "+str(self._graphicalModel["numAnomalousEdges"]))
 					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot=True)
 
 		return self._graphicalModel
@@ -327,7 +332,7 @@ class ModelGenerator(object):
 				ct += 1
 			i += 1
 
-		print(str(ct)+" total activities, "+str(self._pathCount)+" unique paths, "+str(self._anomalyCount)+" anomalies")
+		print(str(ct)+" total activities, "+str(self._pathCount)+" unique paths, "+str(self._anomalyCount)+" anomalies, "+str(self._graphicalModel["numAnomalousEdges"])+" anomalous edges")
 
 	"""
 	Verifies a generated graph is valid under Bezerra's definition, such that the graph has at least k
@@ -341,6 +346,9 @@ class ModelGenerator(object):
 		k = len(g.vs)
 		return p >= 10 and k >= 9
 
+	def _meetsAnomalyRequirements(self, g):
+		return self._maxAnomalousEdges >= g["numAnomalousEdges"]
+		
 	"""
 	THIS IS NOT A FULL CHECK FOR BEZERRA-VALIDITY. This only checks the model string for basic validity,
 	such that we can discard trivially invalid model strings before running the converter to derive their graph. 
@@ -390,7 +398,7 @@ class ModelGenerator(object):
 		#check for consecutive empty transitions: ^^, but treat these as a warning
 		if self._model.find("^^") >= 0:
 			print("ERROR model string contains consecutive empty branches: "+self._model)
-			
+
 		return True
 
 	"""

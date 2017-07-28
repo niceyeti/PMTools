@@ -1,6 +1,10 @@
 """
 Given a log in the .log format, this script adds noise/variance to the log according to a few parameters.
 
+Questions linger over how to contrive noise, and its effect on results. Here's just a few notes:
+	-should anomalous activities be included in the set of activities from which noise will be drawn?
+	-should selection of activities as noise be performed under uniform dist, or according to activity frequency for instance?
+
 """
 from __future__ import print_function
 import math
@@ -18,11 +22,20 @@ class LogNoiser(object):
 	the graph more real world like, supposedly. This is amenable to creating edge distributions with greater variance, thus allowing
 	better KL metrics with respect to the regular structural patterns in the data; without this noise, the KL div is usually zero. But
 	it isn't clear how much such variance is required to create global edge distributions with more variance, at the expense of poorer dendrograms.
+	
+	NOTE: Currently the anomalous activities, if any, are excluded from the noise selection. Should this be the case or not???
 	"""
 	def AddNoise1(self, logPath, outPath="noisedLog.log", noiseRate=0.1):
 		activities = self._getLogActivities(logPath)
-		
+		anomalousActivities = self._getAnomalousActivities(logPath)
+		print("REGULAR ACTIVITIES: "+str(sorted(activities)))
+		print("ANOMALOUS ACTIVITIES: "+str(sorted(anomalousActivities)))
+		activities = activities.difference(anomalousActivities)
+		print("SELECTED ACTIVITIES, AFTER ANOMALY REMOVAL: "+str(sorted(activities)))
+		exit()
 		print("Generating type 1 noise, noise rate "+str(noiseRate))
+		
+		activities = list(activities)
 		
 		log = open(logPath,"r")
 		traces = [line.strip() for line in log.readlines()]
@@ -73,6 +86,8 @@ class LogNoiser(object):
 
 	"""
 	Utility for reading a log and returning all the unique activities within it, as a list.
+	This is kept simple on purpose. The anomalies and their handling is done separate since it may vary;
+	but note that this will return an activity set that will include any anomalous activities not part of normal behavior.
 	"""
 	def _getLogActivities(self, logPath):
 		log = open(logPath,"r")
@@ -82,15 +97,41 @@ class LogNoiser(object):
 		#get the complete activity set expressed by the log, as a list
 		availableActivities = set()
 		for trace in traces:
-			partialOrdering = trace.split(",")[2]
+			cols = trace.split(",")		
+			partialOrdering = cols[2]
 			for activity in partialOrdering:
-				if activity not in availableActivities:
-					availableActivities.add(activity)
-		availableActivities = list(availableActivities)
+				availableActivities.add(activity)
+
+		#availableActivities = list(availableActivities)
 		
 		return availableActivities
 		
+	"""
+	Given a log, extracts the anomalous activities from the anomalous ('+') traces in the log.
+	This is defined as the set of activitie in the anomalous traces minus the non-anomalous activities.
+	
+	Returns: A set of anomalous activities as defined, which may be empty.
+	"""
+	def _getAnomalousActivities(self, logPath):
+		anomalousActivities = set()
+		nonAnomalousActivities = set()
 		
+		with open(logPath,"r") as log:
+			traces = [trace.strip() for trace in log.readlines()]
+
+		#get the complete activity sets in anomalous and non-anomalous traces expressed by the log, as a list
+		for trace in traces:
+			cols = trace.split(",")
+			partialOrdering = cols[2]
+			isAnomalous = cols[1].strip() == "+"
+			for activity in partialOrdering:
+				if isAnomalous:
+					anomalousActivities.add(activity)
+				else:
+					nonAnomalousActivities.add(activity)
+
+		return anomalousActivities.difference(nonAnomalousActivities)
+
 	"""
 	Currently just targets a single activity to replace with up to k different activities or the target activity itself.
 	This has the effect of creating a split in the process model, whereby the target (and its in/out-edges) has

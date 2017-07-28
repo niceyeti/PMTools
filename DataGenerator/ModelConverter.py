@@ -390,6 +390,8 @@ class ModelConverter(object):
 		self._graph["PathCount"] = self._countPaths(self._graph, "START", "END", 2)
 		#print("START: "+str(startNodes)+"  END: "+str(endNodes))
 
+		self._graph["numAnomalousEdges"] = self._countAnomalousEdges(self._graph)
+		
 		if showPlot:
 			self.Plot(self._graph)
 		
@@ -400,6 +402,47 @@ class ModelConverter(object):
 		#self._graph.write_graphml(graphPath)
 
 		return self._graph
+		
+	"""
+	Given a graph with edges with bool 'isAnomalous', counts the number of anomalous edges in anomalous substructures.
+	Note that this is not just the number of isAnomalous edges, since these only signal the start of an anomaly, which may contain further
+	substructure before merging back into non-anomalous parts of the graph. Thus a traversal is needed to count the number of 
+	anomalous edges involved in anomalies.
+	
+	This also updates the edges and color with their appropriate label.
+	"""
+	def _countAnomalousEdges(self, graph):
+		#get start node to begin traversal
+		startNode = graph.vs.select(name="START")[0]
+		q = [startNode]
+		visited = set([startNode.index])
+
+		graph.es["visited"] = False
+
+		# dye "visited" edges on all non-anomalous paths
+		while len(q) > 0:
+			#pop q
+			v = q[0]
+			q = q[1:]
+
+			#enque non-anomalous out-edges of this vertex
+			for edge in graph.es.select(_source=v.index):
+				if not edge["isAnomalous"]:
+					edge["visited"] = True
+					if edge.target not in visited:
+						visited.add(edge.target)
+						q.append(graph.vs[edge.target])
+
+		anomalousEdgeCount = 0
+		for edge in graph.es:
+			if not edge["visited"]: #this is an anomalous edge, since not visited in bfs above
+				anomalousEdgeCount += 1
+				#Only the initial anomalous edge is marked as anomalous on model-conversion/creation;
+				#This marks the subsequent edges as anomalous as well, those which as internal to the anomalous substructure (if any)
+				edge["isAnomalous"] = True
+				edge["color"] = self._anomalyColor
+
+		return anomalousEdgeCount
 
 	def _getOutNeighbors(self, g, node):
 		return [e.target for e in g.es[g.incident(node,mode="OUT")]]
