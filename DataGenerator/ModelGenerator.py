@@ -51,6 +51,7 @@ class ModelGenerator(object):
 		self._anomalousLoopProb=0.0
 		self._anomalyCount = 0
 		self._requiredAnomalies = 999
+		self._minShortestPathLength = 9999
 		self._parseConfig(configPath)
 		self._modelConverter = ModelConverter()
 
@@ -67,6 +68,7 @@ class ModelGenerator(object):
 		self._normalLoopProbRange = (-1.0,-1.0)
 		self._requiredAnomalies = -1
 		self._maxAnomalousEdges = 9999
+		self._minShortestPathLength = 9999
 	
 		config = open(configPath,"r")
 		for line in config.readlines():
@@ -90,7 +92,10 @@ class ModelGenerator(object):
 				self._requiredAnomalies = int(line.split("=")[1])
 			if "MaxAnomalousEdges=" in line:
 				self._maxAnomalousEdges = int(line.split("=")[1])
+			if "MinShortestPathLength=" in line:
+				self._minShortestPathLength = int(line.split("=")[1])
 				
+		print("MIN PATH LENGTH: "+str(self._minShortestPathLength))
 		if self._requiredAnomalies < 0:
 			print("ERROR config did not contain NumAnomalies")
 		if self._abnormalOrProbRange[0] < 0.0:
@@ -101,8 +106,7 @@ class ModelGenerator(object):
 			print("ERROR config did not contain AbnormalLoopProbRange")
 		if self._normalLoopProbRange[0] < 0.0:
 			print("ERROR config did not contain NormalLoopProbRange")
-		
-		
+
 	"""
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
 	"""
@@ -310,10 +314,11 @@ class ModelGenerator(object):
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
 				self._pathCount = self._graphicalModel["PathCount"]
-				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel)
+				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel) and self._meetsMinPathLengthRequirements(self._graphicalModel)
 				if isValidModel and showPlot:
 					#only show valid model
 					print("Model anomalous edges: "+str(self._graphicalModel["numAnomalousEdges"]))
+					print("Model shortest path length from START to END: "+str(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0]))
 					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot=True)
 
 		return self._graphicalModel
@@ -348,6 +353,9 @@ class ModelGenerator(object):
 
 	def _meetsAnomalyRequirements(self, g):
 		return self._maxAnomalousEdges >= g["numAnomalousEdges"]
+		
+	def _meetsMinPathLengthRequirements(self, g):
+		return self._minShortestPathLength <= len(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0])
 		
 	"""
 	THIS IS NOT A FULL CHECK FOR BEZERRA-VALIDITY. This only checks the model string for basic validity,
@@ -446,7 +454,7 @@ class ModelGenerator(object):
 	@preventLoop: Whether or not this call of _createModel should be allowed to create a loop. Preventing loops for this recursive call
 	is just a structural constraint imposed at certain points, such as preventing OR branches from starting with a loop.
 	"""
-	def _createModel(self,n,preventLoop=False):
+	def _createModel(self, n, preventLoop=False):
 		#print("n="+str(n)+" preventLoop="+str(preventLoop))
 		#print("model: "+self._model)
 	

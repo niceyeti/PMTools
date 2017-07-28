@@ -24,6 +24,8 @@ import random
 import igraph
 import sys
 import math
+import os
+import matplotlib.pyplot as plt
 
 class DataGenerator(object):
 	def __init__(self):
@@ -454,13 +456,13 @@ class DataGenerator(object):
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputFile="syntheticTraces.log"):
+	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log"):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
 	
 		print("Generating traces...")
-		ofile = open(outputFile, "w+")
+		ofile = open(outputPath, "w+")
 		self._buildGraph(graphmlPath)
 		#NOTE: starting at 1 is not arbitrary. Ultimately this guarantees the trace-no labels span 1-n, which is a requirement for GBAD/SUBDUE input files later on
 		i = 1
@@ -472,8 +474,37 @@ class DataGenerator(object):
 			self._writeTrace(i, trace, ofile)
 			self._reset()
 			i += 1
-		print("Trace generation completed and output to "+outputFile+".")
+		print("Trace generation completed and output to "+outputPath+".")
 		ofile.close()
+		
+		self._analyzeLog(outputPath)
+
+	"""
+	Performs and stores basic log statistics.
+	"""
+	def _analyzeLog(self, logPath):
+		with open(logPath,"r") as logFile:
+			traceDist = {} #dict mapping trace strings (partial orderings) to their respective frequencies
+			for line in logFile.readlines():
+				partialOrdering = line.split(",")[2].strip()
+				if partialOrdering in traceDist.keys():
+					traceDist[partialOrdering] += 1
+				else:
+					traceDist[partialOrdering] = 1
+				
+			traceDist = sorted(traceDist.items(), key=lambda tup: tup[1], reverse=True)
+			ys = [tup[1] for tup in traceDist]
+			xs = [i for i in range(len(ys))]
+			xlabels = [tup[0][0:10] for tup in traceDist]
+			
+			baseFolder = os.path.dirname(logPath)
+			#plt.xticks(xs, xlabels, rotation="vertical")
+			plt.title("Trace Frequency Distribution")
+			plt.ylabel("Count")
+			plt.xlabel("Trace")
+			plt.plot(xs, ys)
+			plt.savefig(baseFolder+os.sep+"traceDistribution.png")
+			plt.show()
 
 def usage():
 	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
