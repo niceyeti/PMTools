@@ -501,10 +501,10 @@ class DataGenerator(object):
 			#plt.xticks(xs, xlabels, rotation="vertical")
 			plt.title("Trace Frequency Distribution")
 			plt.ylabel("Count")
-			plt.xlabel("Trace")
+			plt.xlabel("Partial Orderings")
 			plt.plot(xs, ys)
 			plt.savefig(baseFolder+os.sep+"traceDistribution.png")
-			plt.show()
+			#plt.show()
 
 def usage():
 	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")

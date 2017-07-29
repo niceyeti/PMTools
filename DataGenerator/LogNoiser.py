@@ -28,11 +28,10 @@ class LogNoiser(object):
 	def AddNoise1(self, logPath, outPath="noisedLog.log", noiseRate=0.1):
 		activities = self._getLogActivities(logPath)
 		anomalousActivities = self._getAnomalousActivities(logPath)
-		print("REGULAR ACTIVITIES: "+str(sorted(activities)))
-		print("ANOMALOUS ACTIVITIES: "+str(sorted(anomalousActivities)))
+		#print("REGULAR ACTIVITIES: "+str(sorted(activities)))
+		#print("ANOMALOUS ACTIVITIES: "+str(sorted(anomalousActivities)))
 		activities = activities.difference(anomalousActivities)
-		print("SELECTED ACTIVITIES, AFTER ANOMALY REMOVAL: "+str(sorted(activities)))
-		exit()
+		#print("SELECTED ACTIVITIES, AFTER ANOMALY REMOVAL: "+str(sorted(activities)))
 		print("Generating type 1 noise, noise rate "+str(noiseRate))
 		
 		activities = list(activities)

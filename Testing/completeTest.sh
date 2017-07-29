@@ -87,8 +87,6 @@ if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric co
 	echo Log path reset to $logPath after adding noise...
 fi
 
-exit
-
 echo $logPath
 #convert synthetic data to xes format for process mining
 python SynData2Xes.py -ifile=$logPath -ofile=$xesPath

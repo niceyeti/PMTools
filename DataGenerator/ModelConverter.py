@@ -43,7 +43,7 @@ class ModelConverter(object):
 
 	def _generateUniqueEmptyNodeLabel(self):
 		self._emptyBranchCtr += 1
-		vLabel = "^_"+str(self._emptyBranchCtr)				
+		vLabel = "^_"+str(self._emptyBranchCtr)		
 		return vLabel
 
 	"""
