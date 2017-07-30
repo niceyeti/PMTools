@@ -967,7 +967,7 @@ class AnomalyReporter(object):
 		#get the total number of traces from the size of the first id-map
 		numTraces = len(compressionLevels[0].keys())
 		#march forward in compression levels until we reach the subset of traces whose size is less than some anomalousness threshold;
-		#all these traces are anomalies. Once we have them, backtrack to their original id's.
+		#all these traces are anomalies, outliers, or anomaly candidates. Once we have them, backtrack to their original id's.
 		i = 0
 		while i < len(compressionLevels) and float(len(compressionLevels[i])) / float(numTraces) > threshold:
 			print("ratio: "+str(float(len(compressionLevels[i])) / float(numTraces)))
