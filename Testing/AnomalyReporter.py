@@ -329,7 +329,7 @@ class AnomalyReporter(object):
 	"""
 	def _getFreqDistGraph(self, dendrogram):
 		#build the frequency distribution of parent-child relationships
-		freqDist = self._getDendrogramDistribution(dendrogram)
+		freqDictList = self._getDendrogramDistribution(dendrogram)
 	
 		#build the edge list locally
 		es = []
@@ -363,9 +363,14 @@ class AnomalyReporter(object):
 		for level in range(len(dendrogram)):
 			sub = dendrogram[level]
 			#select this node in the graphical description of the dendrogram
-			subNode = g.vs.select(name=sub.SubName)
+			subNode = g.vs.select(name=sub.SubName)[0]
 			subNode["NumInstances"] = sub.NumInstances
-			if subNode["NumInstances"] != sum([edge["weight"] for edge in g.es.select(target=subNode.index)]):
+			#get inlink weights, the frequencies over all this node's parents
+			for item in g.es.select(_target=subNode.index):
+				print("item: "+str(item))
+			inlinkFreqs = [edge["weight"] for edge in g.es.select(_target=subNode.index)]
+			print("INLINK FREQS: "+str(inlinkFreqs))
+			if subNode["NumInstances"] != sum(inlinkFreqs):
 				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(subNode["NumInstances"]))
 			print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
 
@@ -864,7 +869,7 @@ class AnomalyReporter(object):
 		
 		
 		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
-		dendrogramGraph = self._visualizeDendrogram(freqDist)
+		dendrogramGraph = self._visualizeDendrogram(dendrogram)
 		#print the pagerank values per substructure
 		print("Reverse PageRank Substructure Analysis:")
 		for pair in sorted([(v["name"],v["reversePagerank"]) for v in dendrogramGraph.vs], key=lambda t: t[1], reverse=True):
