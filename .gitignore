@@ -12,6 +12,8 @@ SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
 
+Junk/*
+
 SyntheticData/compressed.g
 SyntheticData/noisedTraces.log
 SyntheticData/testTraces.xes

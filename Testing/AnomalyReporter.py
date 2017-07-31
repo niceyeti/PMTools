@@ -327,7 +327,10 @@ class AnomalyReporter(object):
 	
 	Returns: igraph object description of the freqDictList
 	"""
-	def _getFreqDistGraph(self, freqDictList):
+	def _getFreqDistGraph(self, dendrogram):
+		#build the frequency distribution of parent-child relationships
+		freqDist = self._getDendrogramDistribution(dendrogram)
+	
 		#build the edge list locally
 		es = []
 		rootName = freqDictList[0][1]
@@ -356,6 +359,16 @@ class AnomalyReporter(object):
 			if v["name"] == rootName:
 				rootId = v.index
 
+		#add individual frequency info; this also helps error check onsistency of counts in the freqDist and the NumInstances of substructures
+		for level in range(len(dendrogram)):
+			sub = dendrogram[level]
+			#select this node in the graphical description of the dendrogram
+			subNode = g.vs.select(name=sub.SubName)
+			subNode["NumInstances"] = sub.NumInstances
+			if subNode["NumInstances"] != sum([edge["weight"] for edge in g.es.select(target=subNode.index)]):
+				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(subNode["NumInstances"]))
+			print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
+
 		#calculate the pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
 		g.vs["reversePagerank"] = g.pagerank()
 		#print em (this is just for viewing, as it doesn't connect the values to traces)
@@ -381,8 +394,8 @@ class AnomalyReporter(object):
 	
 	Returns: Igraph description of frequency distribution.
 	"""
-	def _visualizeDendrogram(self, freqDictList):
-		g = self._getFreqDistGraph(freqDictList)
+	def _visualizeDendrogram(self, dendrogram):
+		g = self._getFreqDistGraph(dendrogram)
 
 		#layout = igraph.Graph.layout_reingold_tilford(mode="out",root=rootId)
 		layout = g.layout("sugiyama")
@@ -633,13 +646,14 @@ class AnomalyReporter(object):
 				
 				#keys are tuples of node names: ('c','b')
 				for key in level.EdgeDist.keys():
-					#get the edge probability in context of this substructure
+					#get the edge probability in the context of this substructure
 					pLocal = float(level.EdgeDist[key]) / float(level.NumInstances)
 					#pLocal = float(level.EdgeDist[key]) / float(sum(level.EdgeDist.values())) 
 					pLocal = max(0.0001, min(0.9999,pLocal)) #clamp probs to range [0.001-0.999] to prevent zero/one problems in KL calculations
 
 					#get the global edge probability; checking first for markov-model and edge-dist consistency
 					if key not in self._markovModel.keys():
+						#This is a true implementation error, if reached
 						print("\n\n>>> ERROR: local edge from dendrogram not in markovModel in _analyzeEdgeConnectivityDivergence")
 						print("MARKOV: "+str(self._markovModel))
 						print("Edge dist: "+str(level.EdgeDist))
@@ -682,6 +696,32 @@ class AnomalyReporter(object):
 		for level in dendrogram:
 			print(level.SubName+"    pq: "+str(level.Attrib["EDGE_KL_PQ"])+"    qp: "+str(level.Attrib["EDGE_KL_PQ"]))
 
+	"""
+	Given the dendrogram, analyzes the structural frequencies based on whatever constructions of bayes rule I can devise that may
+	work. This is motivated by the observation that often times anomalies occur at low-frequency in the context of higher-frequency parents.
+	This, defining p(child | parents) maybe provide a good discriminant for anomalies vs. noise.
+
+	Simplest probabilistic, bayesian construction: p(child | parent) = p(parent | child) * p(child) / p(parent)
+	Directly via Bayes' rule. Note that the definition of the event "parent" and hence p(parent) can be defined multiple ways.
+	The basic motivation here is that hopefully the low probability of anomalies wrt the higher probabilities of their parents will generate a good anomaly discriminant.
+	Random noise tends to occur only in the tail, as a child of smaller or other low-frequency structures and noise.
+	"""
+	def _bayesianDendrogramAnomalyAnalysis(self, dendrogram):
+		#build the graph based on the freq dists, with frequencies as edge weights
+		g = self._getFreqDistGraph(dendrogram)
+		
+		g.vs["bayesProb"] = -1.0
+		
+		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node)
+		for level in range(1,len(dendrogram)):
+			sub = dendrogram[level]
+			#get this child in the graphical description
+			childNode = g.vs.select(name=sub.SubName)
+			#get child probability as its frequency divided by total number of traces
+			pChild = float(sub.NumInstances) / float(self._numTraces)
+			#get probs which depend on parents; the event definition 'parent' allows multiple definition of p(parent)
+			
+		
 		
 	"""
 	Gets the TRACE-probability of an edge, which is defined as the count of that edge divided
