@@ -364,15 +364,15 @@ class AnomalyReporter(object):
 			sub = dendrogram[level]
 			#select this node in the graphical description of the dendrogram
 			subNode = g.vs.select(name=sub.SubName)[0]
-			subNode["NumInstances"] = sub.NumInstances
+			subNode["NumInstances"] = int(sub.NumInstances)
 			#get inlink weights, the frequencies over all this node's parents
-			for item in g.es.select(_target=subNode.index):
-				print("item: "+str(item))
-			inlinkFreqs = [edge["weight"] for edge in g.es.select(_target=subNode.index)]
-			print("INLINK FREQS: "+str(inlinkFreqs))
-			if subNode["NumInstances"] != sum(inlinkFreqs):
-				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(subNode["NumInstances"]))
-			print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
+			#for item in g.es.select(_target=subNode.index):
+			#	print("item: "+str(item))
+			inlinkFreqs = [edge["weight"] for edge in g.es.select(_target=subNode.index) if edge.target != edge.source] #check prevents double counting reflexive edges
+			#print("INLINK FREQS: "+str(inlinkFreqs)+"  sum="+str(sum(inlinkFreqs)))
+			if int(subNode["NumInstances"]) != int(sum(inlinkFreqs)):
+				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(int(sum(inlinkFreqs))))
+			#print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
 
 		#calculate the pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
 		g.vs["reversePagerank"] = g.pagerank()
@@ -714,20 +714,50 @@ class AnomalyReporter(object):
 	def _bayesianDendrogramAnomalyAnalysis(self, dendrogram):
 		#build the graph based on the freq dists, with frequencies as edge weights
 		g = self._getFreqDistGraph(dendrogram)
+
+		g.vs["bayesProb"] = -1.0 #assign invalid prob to  all nodes; SUB_init will retain this value since it has no parents
+		for sub in dendrogram:
+			sub.Attrib["bayesProb"] = -1.0
 		
-		g.vs["bayesProb"] = -1.0
+		print("Bayesian prob analysis: ")
 		
 		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node)
 		for level in range(1,len(dendrogram)):
 			sub = dendrogram[level]
 			#get this child in the graphical description
-			childNode = g.vs.select(name=sub.SubName)
+			childNode = g.vs.select(name=sub.SubName)[0]
 			#get child probability as its frequency divided by total number of traces
 			pChild = float(sub.NumInstances) / float(self._numTraces)
-			#get probs which depend on parents; the event definition 'parent' allows multiple definition of p(parent)
+			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
+			parentEdges = self._getParentEdges(childNode,g)
+			pChildGivenParent = 0.0
+			for edge in parentEdges: #sum over parent probs
+				parentFreq = g.vs[edge.source]["NumInstances"]
+				pParent = float(parentFreq) / float(self._numTraces)
+				pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))  #basically, the proportion of times this is parent of child, given all the child's parents
+				pChildGivenParent += (pChild * pParentGivenChild / pParent)
+
+			childNode["bayesProb"] = pChildGivenParent
+			sub.Attrib["bayesProb"] = pChildGivenParent
+			print("\t"+sub.SubName+"  "+str(pChildGivenParent))
+		
 			
-		
-		
+	"""
+	Utility for grabbing parents of a vertex, given the vertex object and its igraph graph
+	
+	@includeReflexive: Whether or not to follow reflexive edges
+	"""
+	def _getParentEdges(self, vertex, g, includeReflexive=False):
+		#select all edges incident to this node
+		if not includeReflexive:
+			incidentEdges = [edge for edge in g.es.select(_target=vertex.index) if edge.source != vertex.index]
+		else:
+			incidentEdges = [edge for edge in g.es.select(_target=vertex.index)] #no reflextivity check
+			
+		return incidentEdges
+			
+			
+
 	"""
 	Gets the TRACE-probability of an edge, which is defined as the count of that edge divided
 	by the number of traces. The number of traces is necessarily contained by the sum over
@@ -866,7 +896,7 @@ class AnomalyReporter(object):
 		#just happens to be the point when we have the information to restore the upstream edge distribution information.
 		#self._amendDendrogramEdgeDists(dendrogram, freqDist)
 		
-		
+		self._bayesianDendrogramAnomalyAnalysis(dendrogram)
 		
 		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
 		dendrogramGraph = self._visualizeDendrogram(dendrogram)
