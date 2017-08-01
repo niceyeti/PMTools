@@ -918,9 +918,11 @@ class AnomalyReporter(object):
 		childDists = self._analyzeChildSubDistributions(dendrogram)
 		print("Child distributions: "+str(childDists))
 		
-		for i in range(0,len(dendrogram)):
+		for i in range(len(dendrogram)):
 			ids = sorted(self._getSubTraceIds(dendrogram, i))
 			print(dendrogram[i].SubName+" ids:  "+str(ids))
+			
+			
 
 		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
 		self._analyzeEdgeConnectivityDivergence(dendrogram)
@@ -969,6 +971,9 @@ class AnomalyReporter(object):
 			#all (if any) ancestor level-indices appended to ancestry, so just add this list for this id
 			ancestryDict[curId] = (ancestry,cumulativeCompression)
 
+		#print the anomaly ids' substructure relationships for readability
+		self._printAnomalyDerivations(dendrogram)
+			
 		#print, just to observe traits of anomalies
 		print("Candidate-id Ancestry")
 		print(str([(str(k),ancestryDict[str(k)]) for k in sorted([int(sk) for sk in ancestryDict.keys()])]))
@@ -990,6 +995,23 @@ class AnomalyReporter(object):
 			j -= 1
 		print("Ancestors: "+str(ancestors))
 		
+	#Just for readability and navigating the output: prints the substructures names, in order, of the anomalous traces
+	def _printAnomalyDerivations(self, dendrogram):
+		anomalyIds = set()
+		for trace in self._logAnomalies:
+			anomalyIds.add(trace[0])
+			
+		print("Anomalous substructure derivations, for anomalies "+str([int(t[0]) for t in self._logAnomalies])+":  ")
+		if len(anomalyIds) == 0:
+			print("[NONE, no anomalies]")
+		else:		
+			for i in range(len(dendrogram)):
+				print(dendrogram[i].SubName+": ", end="")
+				ids = sorted(self._getSubTraceIds(dendrogram, i))
+				for id in ids:
+					if id in anomalyIds:
+						print(str(id)+"  ", end="")
+				print(" ")
 	
 	"""
 	Given a substructure, crawls up through the dendrogram and returns a list of ancestor structures.
