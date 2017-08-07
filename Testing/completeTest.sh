@@ -77,7 +77,7 @@ cd "../DataGenerator"
 if [ $generateData = "true" ]; then
 	###############################################################################
 	##Generate a model containing appr. 20 activities, and generate 1000 traces from it.
-	sh ./generate.sh 30 200 $logPath $syntheticGraphmlPath
+	sh ./generate.sh 30 1000 $logPath $syntheticGraphmlPath
 fi
 
 #add noise to original/synthetic log as requested, before mining the new model

@@ -370,7 +370,7 @@ class AnomalyReporter(object):
 			#	print("item: "+str(item))
 			inlinkFreqs = [edge["weight"] for edge in g.es.select(_target=subNode.index) if edge.target != edge.source] #check prevents double counting reflexive edges
 			#print("INLINK FREQS: "+str(inlinkFreqs)+"  sum="+str(sum(inlinkFreqs)))
-			if int(subNode["NumInstances"]) != int(sum(inlinkFreqs)):
+			if int(subNode["NumInstances"]) != int(sum(inlinkFreqs)) and "SUB_init" not in sub.SubName: #sub_init ignored, since it is the only node with node in-links
 				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(int(sum(inlinkFreqs))))
 			#print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
 
