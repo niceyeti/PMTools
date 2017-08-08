@@ -302,6 +302,10 @@ class AnomalyReporter(object):
 		for level in range(len(dendrogram)):
 			freqDist = {}
 			cl = dendrogram[level]
+			
+			#if cl.SubName == "SUB0":
+			#	print(">>>> SUB0 compress ids: "+str(len(cl.CompressedIds)))
+				
 			#check if level has maximally compressed some subs; otherwise this level doesn't have any of its elements as its own children
 			if len(cl.MaxCompressedIds) > 0:
 				freqDist = {cl.SubName:len(cl.MaxCompressedIds)}
@@ -372,6 +376,7 @@ class AnomalyReporter(object):
 			#print("INLINK FREQS: "+str(inlinkFreqs)+"  sum="+str(sum(inlinkFreqs)))
 			if int(subNode["NumInstances"]) != int(sum(inlinkFreqs)) and "SUB_init" not in sub.SubName: #sub_init ignored, since it is the only node with node in-links
 				print("WARNING: _getFreqDistGraph inconsistent node frequencies detected:  "+sub.SubName+"  "+str(sub.NumInstances)+"  "+str(int(sum(inlinkFreqs))))
+				print("Note that this is okay, if SUB_init does not compress all traces, and subsequent children compress new traces not previously compressed by any parent.")
 			#print("NODE freq: "+sub.SubName+"  "+str(subNode["NumInstances"]))
 
 		#calculate the pagerank values; this is reverse pagerank, since the parent subs point to their child substructures
@@ -1006,12 +1011,17 @@ class AnomalyReporter(object):
 			print("[NONE, no anomalies]")
 		else:		
 			for i in range(len(dendrogram)):
-				print(dendrogram[i].SubName+": ", end="")
+				output = ""
 				ids = sorted(self._getSubTraceIds(dendrogram, i))
+				numAnomalies = 0
 				for id in ids:
 					if id in anomalyIds:
-						print(str(id)+"  ", end="")
-				print(" ")
+						output += str(id)+", "
+						numAnomalies += 1
+				if numAnomalies > 0:
+					output = output[:-2]
+				output = dendrogram[i].SubName+" ("+str(numAnomalies)+"/"+str(dendrogram[i].NumInstances)+"): " + output
+				print(output)
 	
 	"""
 	Given a substructure, crawls up through the dendrogram and returns a list of ancestor structures.
