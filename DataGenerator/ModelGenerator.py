@@ -488,7 +488,7 @@ class ModelGenerator(object):
 						n1,n2 = self._rndSplit(n)  #left arg was n-1 in Bezerra's (see header comment)
 						model = self._or(n1, n2)
 
-				#Taken with prob 0.2 insert a LOOP, which shall always be prepended with an acitvity so we don't end up with loops configured to the end of multiple outputs: ((A|B)|(C|D))[ABC].
+				#Taken with prob 0.2 insert a LOOP, which shall always be prepended with an activity so we don't end up with loops configured to the end of multiple outputs: ((A|B)|(C|D))[ABC].
 				#They can, however, occur multiply just before an AND/OR, such as AB[C](F|G), resulting in > 2 output edges on B
 				elif r >= 11 and r <= 30 and not preventLoop:
 					r = random.randint(1,100)
