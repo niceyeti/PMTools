@@ -315,11 +315,11 @@ class ModelGenerator(object):
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
 				self._pathCount = self._graphicalModel["PathCount"]
 				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel) and self._meetsMinPathLengthRequirements(self._graphicalModel)
-				if isValidModel and showPlot:
+				if isValidModel:
 					#only show valid model
 					print("Model anomalous edges: "+str(self._graphicalModel["numAnomalousEdges"]))
 					print("Model shortest path length from START to END: "+str(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0]))
-					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot=True)
+					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot)
 
 		return self._graphicalModel
 		

@@ -14,7 +14,7 @@ graphmlPath=$4
 
 echo Building process model with appr $numActivites activities...
 #build the model, using Bezerra's algorithm
-python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt -graph=$graphmlPath
+python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=model.txt -graph=$graphmlPath -quiet
 #convert the generated model to transferrable graphml
 #python ModelConverter.py model.txt $graphmlPath
 #generate stochastic walk data from the model
