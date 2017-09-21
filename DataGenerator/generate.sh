@@ -1,6 +1,5 @@
 #This is the complete script for generating a model, converting it to something usable, and then
-#generating data from it. In all likelihood only components will be used for research, re-testing
-#models instead of generating new ones for every test.
+#generating data from it.
 
 if [ $# -lt 4 ]; then
 	echo "ERROR: Insufficient number of parameters passed to generate.sh"
@@ -12,7 +11,6 @@ numActivites=$1
 numTraces=$2
 logPath=$3
 graphmlPath=$4
-addNoise="false"
 
 echo Building process model with appr $numActivites activities...
 #build the model, using Bezerra's algorithm
@@ -21,4 +19,3 @@ python ModelGenerator.py -n=$numActivites -a=1 -config=generator.config -file=mo
 #python ModelConverter.py model.txt $graphmlPath
 #generate stochastic walk data from the model
 python DataGenerator.py $graphmlPath -n=$numTraces -ofile=$logPath
-
