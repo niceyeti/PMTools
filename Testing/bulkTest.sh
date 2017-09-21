@@ -1,9 +1,49 @@
 #Executes the test suite for various input parameters (noise, etc) over the same input datasets
 #This is intended to be as automated as possible.
 
+THIS IS OBSOLETE
+
+
+
 dataDir="../Datasets/Sep21/"
 noiseRate="0.0"
-xesPath=
+xesPath="../SyntheticData/testTraces.xes"
+
+minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
+miningWrapper="miningWrapper.py"
+minerPath="../scripts/PromTools/miner.sh"
+classifierString="Activity"
+
+logCompressor="./SubdueLogCompressor.py"
+pnmlPath="../SyntheticData/testModel.pnml"
+pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
+minedGraphmlPath="../SyntheticData/minedModel.graphml"
+markovModelPath="../SyntheticData/markovModel.py"
+subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
+subdueLogPath="../SyntheticData/test.g"
+traceGraphPath="../SyntheticData/traceGraphs.py"
+compressedLog="../SyntheticData/compressed.g"
+gbadFsmLogPath="../SyntheticData/test_fsm.g"
+
+#gbad/subdue experimental parameters. these may become bloated, so I may need to manage them elsewhere, eg a config file
+#gbadMdlParam="0.50"
+
+#set the path to the gbad and subdue executables depending on which os we're running under
+gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl.exe"
+gbadFsmPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-fsm.exe"
+subduePath="../../subdue-5.2.2/subdue-5.2.2/src/subdue.exe"
+subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/subdue.exe"
+osName=$(uname)
+platform="$osName"
+#echo OS name $platform
+if [ "$platform" = "Linux" ]; then	#reset paths if running linux
+	echo resetting paths for $platform
+	gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-mdl_linux"
+	#gbadMdlPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad"
+	gbadFsmPath="../../gbad-tool-kit_3.2/gbad-tool-kit_3.2/bin/gbad-fsm_linux"
+	subduePath="../../subdue-5.2.2/subdue-5.2.2/src/subdue_linux"
+	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
+fi
 
 
 

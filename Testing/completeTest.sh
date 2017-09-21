@@ -1,11 +1,12 @@
 #!/bin/sh
 
+dataDir="../SyntheticData"
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
-logPath="../SyntheticData/testTraces.log"
-noisedLog="../SyntheticData/noisedTraces.log"
-xesPath="../SyntheticData/testTraces.xes"
-syntheticGraphmlPath="../SyntheticData/syntheticModel.graphml"
+logPath="$dataDir/testTraces.log"
+noisedLog="$dataDir/noisedTraces.log"
+xesPath="$dataDir/testTraces.xes"
+syntheticGraphmlPath="$dataDir/syntheticModel.graphml"
 
 minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
@@ -13,15 +14,15 @@ minerPath="../scripts/PromTools/miner.sh"
 classifierString="Activity"
 
 logCompressor="./SubdueLogCompressor.py"
-pnmlPath="../SyntheticData/testModel.pnml"
+pnmlPath="$dataDir/testModel.pnml"
 pnmlConverterPath="../ConversionScripts/Pnml2Graphml.py"
-minedGraphmlPath="../SyntheticData/minedModel.graphml"
-markovModelPath="../SyntheticData/markovModel.py"
+minedGraphmlPath="$dataDir/minedModel.graphml"
+markovModelPath="$dataDir/markovModel.py"
 subgraphGeneratorPath="./GenerateTraceSubgraphs.py"
-subdueLogPath="../SyntheticData/test.g"
-traceGraphPath="../SyntheticData/traceGraphs.py"
-compressedLog="../SyntheticData/compressed.g"
-gbadFsmLogPath="../SyntheticData/test_fsm.g"
+subdueLogPath="$dataDir/test.g"
+traceGraphPath="$dataDir/traceGraphs.py"
+compressedLog="$dataDir/compressed.g"
+gbadFsmLogPath="$dataDir/test_fsm.g"
 
 #gbad/subdue experimental parameters. these may become bloated, so I may need to manage them elsewhere, eg a config file
 #gbadMdlParam="0.50"
@@ -66,6 +67,22 @@ for var in "$@"; do
 	#get the number of recursive iterations, if any
 	if [[ $var == "--noiseRate="* ]]; then
 		noiseRate=$(echo $var | cut -f2 -d=)
+	fi
+
+	#redirects data input, for automated testing; stored artifacts are also sent to this dir
+	if [[ $var == "--dataDir="* ]]; then
+		dataDir=$(echo $var | cut -f2 -d=)
+		logPath="$dataDir/testTraces.log"
+		noisedLog="$dataDir/noisedTraces.log"
+		xesPath="$dataDir/testTraces.xes"
+		syntheticGraphmlPath="$dataDir/syntheticModel.graphml"
+		pnmlPath="$dataDir/testModel.pnml"
+		minedGraphmlPath="$dataDir/minedModel.graphml"
+		markovModelPath="$dataDir/markovModel.py"
+		subdueLogPath="$dataDir/test.g"
+		traceGraphPath="$dataDir/traceGraphs.py"
+		compressedLog="$dataDir/compressed.g"
+		gbadFsmLogPath="$dataDir/test_fsm.g"
 	fi
 done
 
