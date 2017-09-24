@@ -44,6 +44,11 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
 fi
 
+
+echo --dataDir param MUST be relative to the context of the completeTest script: $(pwd)
+echo Also, it must NOT end with slash
+sleep 1
+
 #noise rates
 noiseRate="0.0"
 
@@ -128,11 +133,13 @@ cp ./miner.sh ../../ProM/miner.sh
 cd "../../ProM"
 sh ./miner.sh -f $minerScript
 #copy the mined model back to the SyntheticData folder
-cp ./testModel.pnml ../scripts/SyntheticData/testModel.pnml
+#return to test script environment
 cd "../scripts/Testing"
+cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
+#return to test script environment
+#cd "../scripts/Testing"
 #Convert the mined pnml model to graphml
 python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-
 
 ################################################################################
 ##anomalize the model further???
