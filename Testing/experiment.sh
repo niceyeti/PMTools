@@ -1,7 +1,6 @@
 #!/bin/sh
 
 for i in {1..60}; do
-	resultDir=../Experiment/Model$i
-	mkdir $resultDir
-	sh recursiveSubdue.sh --generate --recurse=20 --deleteSubs --resultDest=$resultDir
+	testDir=../Datasets/Sep21/T$i
+	sh completeTest.sh --deleteSubs --recurse=100 --dataDir=$testDir
 done
