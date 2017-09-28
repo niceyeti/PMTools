@@ -153,20 +153,29 @@ python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath -
 ##############################################################################
 #Call gbad on the generated traces (note: gbad-prob->insertions, gbad-mdl->modifications/substitutions, gbad-mps->deletions)
 #GBAD-FSM: mps param: closer the value to 0.0, the less change one is willing to accept as anomalous. mst: minimum support thresh, best structure must be included in at least *mst* XP transactions
-mdlResult="../TestResults/mdlResult.txt"
-mpsResult="../TestResults/mpsResult.txt"
-probResult="../TestResults/probResult.txt"
-fsmResult="../TestResults/fsmResult.txt"
-#fsmTemp="../TestResults/fsmPostProced.txt"
-gbadResult="../TestResults/gbadResult.txt"
-anomalyFile="../TestResults/anomalyResult.txt"
+##mdlResult="../TestResults/mdlResult.txt"
+##mpsResult="../TestResults/mpsResult.txt"
+##probResult="../TestResults/probResult.txt"
+##fsmResult="../TestResults/fsmResult.txt"
+###fsmTemp="../TestResults/fsmPostProced.txt"
+##gbadResult="../TestResults/gbadResult.txt"
+##anomalyFile="../TestResults/anomalyResult.txt"
 
-##clear any previous results
-#cat /dev/null > $mdlResult
-#cat /dev/null > $mpsResult
-#cat /dev/null > $probResult
-#cat /dev/null > $fsmResult
-#
+mdlResult="$dataDir/mdlResult.txt"
+mpsResult="$dataDir/mpsResult.txt"
+probResult="$dataDir/probResult.txt"
+fsmResult="$dataDir/fsmResult.txt"
+#fsmTemp="../TestResults/fsmPostProced.txt"
+gbadResult="$dataDir/gbadResult.txt"
+anomalyFile="$dataDir/anomalyResult.txt"
+
+
+#clear any previous results
+cat /dev/null > $mdlResult
+cat /dev/null > $mpsResult
+cat /dev/null > $probResult
+cat /dev/null > $fsmResult
+
 
 cat /dev/null > dendrogram.txt
 
@@ -245,7 +254,11 @@ cat $mdlResult >    $gbadResult
 cat $mpsResult >> $gbadResult
 cat $probResult >> $gbadResult
 
-python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
+#TODO: The dendrogram.txt is about the last file hardcoded within any scripts, such that it exists only in ./. This could be changed if needed; this call is just a bandaid.
+cp dendrogram.txt $dataDir/dendrogram.txt
+
+
+python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=$dataDir/dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
 
 #dont delete this: copy-paste this to re-run anomaly detection manually from cmd line
 #python ./AnomalyReporter.py -gbadResult=../TestResults/gbadResult.txt -logFile=../SyntheticData/testTraces.log -resultFile=../TestResults/anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=../SyntheticData/markovModel.py -traceGraphs=../SyntheticData/traceGraphs.py

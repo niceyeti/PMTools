@@ -16,6 +16,7 @@ import sys
 from Dendrogram import *
 import igraph
 import math
+import os
 
 class AnomalyReporter(object):
 	def __init__(self, gbadPath, logPath, resultPath, markovPath, dendrogramPath=None, dendrogramThreshold=0.05, traceGraphPath="../SyntheticData/traceGraphs.py"):
@@ -407,16 +408,20 @@ class AnomalyReporter(object):
 	def _visualizeDendrogram(self, dendrogram):
 		g = self._getFreqDistGraph(dendrogram)
 
+		outdir = "./"
+		if self._dendrogramPath is not None:
+			outdir = os.path.dirname(self._dendrogramPath)
+		
 		#layout = igraph.Graph.layout_reingold_tilford(mode="out",root=rootId)
 		layout = g.layout("sugiyama")
 		#layout = g.layout_sugiyama()
 		#layout = g.layout_reingold_tilford(mode="in", root=[rootId])
 		outputPlot = igraph.plot(g, layout = layout, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
-		outputPlot.save("dendrogram.png")
+		outputPlot.save(outdir+os.sep+"dendrogram.png")
 		#igraph.plot(g, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
 		#layout = graph.layout("reingold")
 		#igraph.plot(g,layout = layout.reingold.tilford(g, root = rootName))
-		g.write_graphml("dendrogram.graphml")
+		g.write_graphml(outdir+os.sep+"dendrogram.graphml")
 		
 		return g
 		
@@ -734,18 +739,55 @@ class AnomalyReporter(object):
 			#get child probability as its frequency divided by total number of traces
 			pChild = float(sub.NumInstances) / float(self._numTraces)
 			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
-			parentEdges = self._getParentEdges(childNode,g)
+			parentEdges = self._getParentEdges(childNode,g, includeReflexive=False)
 			pChildGivenParent = 0.0
 			for edge in parentEdges: #sum over parent probs
 				parentFreq = g.vs[edge.source]["NumInstances"]
 				pParent = float(parentFreq) / float(self._numTraces)
-				pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))  #basically, the proportion of times this is parent of child, given all the child's parents
+				#basically, the proportion of times this is parent of child, given all the child's parents
+				#pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
+				pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
+				#note this uses the summation definition, assuming independence of parents
 				pChildGivenParent += (pChild * pParentGivenChild / pParent)
 
 			childNode["bayesProb"] = pChildGivenParent
 			sub.Attrib["bayesProb"] = pChildGivenParent
 			print("\t"+sub.SubName+"  "+str(pChildGivenParent))
 		
+	def _directChildProbabilityAnalysis(self, dendrogram):
+		#build the graph based on the freq dists, with frequencies as edge weights
+		g = self._getFreqDistGraph(dendrogram)
+
+		g.vs["bayesProb"] = -1.0 #assign invalid prob to  all nodes; SUB_init will retain this value since it has no parents
+		for sub in dendrogram:
+			sub.Attrib["bayesProb"] = -1.0
+		
+		print("Bayesian prob analysis: ")
+		
+		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node)
+		for level in range(1,len(dendrogram)):
+			sub = dendrogram[level]
+			#get this child in the graphical description
+			childNode = g.vs.select(name=sub.SubName)[0]
+			#get child probability as its frequency divided by total number of traces
+			pChild = float(sub.NumInstances) / float(self._numTraces)
+			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
+			parentEdges = self._getParentEdges(childNode,g, includeReflexive=False)
+			pChildGivenParent = 0.0
+			for edge in parentEdges: #sum over parent probs
+				parentFreq = g.vs[edge.source]["NumInstances"]
+				pParent = float(parentFreq) / float(self._numTraces)
+				#basically, the proportion of times this is parent of child, given all the child's parents
+				#pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
+				pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
+				#note this uses the summation definition, assuming independence of parents
+				pChildGivenParent += (pChild * pParentGivenChild / pParent)
+
+			childNode["bayesProb"] = pChildGivenParent
+			sub.Attrib["bayesProb"] = pChildGivenParent
+			print("\t"+sub.SubName+"  "+str(pChildGivenParent))
+	
+			
 			
 	"""
 	Utility for grabbing parents of a vertex, given the vertex object and its igraph graph
@@ -902,6 +944,7 @@ class AnomalyReporter(object):
 		#self._amendDendrogramEdgeDists(dendrogram, freqDist)
 		
 		self._bayesianDendrogramAnomalyAnalysis(dendrogram)
+		self._directChildProbabilityAnalysis(dendrogram)
 		
 		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
 		dendrogramGraph = self._visualizeDendrogram(dendrogram)
