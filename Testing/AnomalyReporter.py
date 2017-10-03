@@ -740,55 +740,67 @@ class AnomalyReporter(object):
 			pChild = float(sub.NumInstances) / float(self._numTraces)
 			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
 			parentEdges = self._getParentEdges(childNode,g, includeReflexive=False)
-			pChildGivenParent = 0.0
+			pChildGivenParents = 0.0
 			for edge in parentEdges: #sum over parent probs
 				parentFreq = g.vs[edge.source]["NumInstances"]
 				pParent = float(parentFreq) / float(self._numTraces)
 				#basically, the proportion of times this is parent of child, given all the child's parents
-				#pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
-				pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
+				pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
+				#pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
 				#note this uses the summation definition, assuming independence of parents
-				pChildGivenParent += (pChild * pParentGivenChild / pParent)
+				pChildGivenParents += (pChild * pParentGivenChild / pParent)
 
-			childNode["bayesProb"] = pChildGivenParent
-			sub.Attrib["bayesProb"] = pChildGivenParent
-			print("\t"+sub.SubName+"  "+str(pChildGivenParent))
+			childNode["bayesProb"] = pChildGivenParents
+			sub.Attrib["bayesProb"] = pChildGivenParents
+			print("\t"+sub.SubName+"  "+str(pChildGivenParents))
 		
+	"""
+	The bayesian definition of p(child|parent) is a bit wonky. This instead directly evaluates p(child|parent)
+	over all of a node's parents, according to the edges from parent to child. Let 'P-C' signify an edge between a given
+	parent and child, and '#P-C' signify its frequency.  Then p(child|parent) via edge frequencies can be defined simply
+	as, for a given parent i and child j, #Pi-Cj / SumOverAllChildrenJofPi(#Pi-Cj). Then sum over all parents to get the
+	total probability of p(c|p).
+	
+	Note that p(Ci|P), where Ci is a fixed child, and P represents all of its parents {P0..Pk}, then P(Ci|P) is just the
+	joint distribution P(Ci|P0,P1...Pk) like any other directed model, where Pi are binary variables.
+	Thus p(Ci|Pj) is P(Ci-Pj|Ci)*P(Ci|Pj). The latter is given by the parent's child-edge distribution, and the former is
+	simply a proportionality weighting for each parent of child-i to make it a proper probability distribution.
+	
+	"""
 	def _directChildProbabilityAnalysis(self, dendrogram):
 		#build the graph based on the freq dists, with frequencies as edge weights
 		g = self._getFreqDistGraph(dendrogram)
 
-		g.vs["bayesProb"] = -1.0 #assign invalid prob to  all nodes; SUB_init will retain this value since it has no parents
+		g.vs["directChildProbAnalysis"] = -1.0 #assign invalid prob to all nodes; SUB_init will retain this value since it has no parents
 		for sub in dendrogram:
-			sub.Attrib["bayesProb"] = -1.0
+			sub.Attrib["directChildProbAnalysis"] = -1.0
 		
-		print("Bayesian prob analysis: ")
-		
-		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node)
+		print("Direct Child Prob Analysis: ")
+		#derive child probabilities defined in header, for all children in the graph (all but the top most node)
 		for level in range(1,len(dendrogram)):
 			sub = dendrogram[level]
 			#get this child in the graphical description
 			childNode = g.vs.select(name=sub.SubName)[0]
-			#get child probability as its frequency divided by total number of traces
-			pChild = float(sub.NumInstances) / float(self._numTraces)
-			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
-			parentEdges = self._getParentEdges(childNode,g, includeReflexive=False)
-			pChildGivenParent = 0.0
-			for edge in parentEdges: #sum over parent probs
-				parentFreq = g.vs[edge.source]["NumInstances"]
-				pParent = float(parentFreq) / float(self._numTraces)
-				#basically, the proportion of times this is parent of child, given all the child's parents
-				#pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
-				pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
-				#note this uses the summation definition, assuming independence of parents
-				pChildGivenParent += (pChild * pParentGivenChild / pParent)
+			parents = self._getParentVertices(childNode, g, includeReflexive=False)
+			probChild = 0.0
+			#sum over the probability of this child in each parent's edge set
+			for parent in parents:
+				#TODO: Evaluate whether or not to include reflexive parent edges?
+				#zParent = sum([edge["weight"] for edge in g.es.select(_source=parent.index) if edge.source != edge.target])
+				#Note this normalization includes the reflexive/ground edge weights for this parent, lowering probs of child continuations for parent's with ground/reflexive edges
+				zParent = sum([edge["weight"] for edge in g.es.select(_source=parent.index)])
+				parentChildEdgeFreq = g.es.select(_target=childNode.index, _source=parent.index)[0]["weight"]
+				#The probability of the child in the parent's child distribution. Note this must be weighted over multiple parents, per below.
+				pChildGivenParent = float(parentChildEdgeFreq) / float(zParent)
+				#Get the amount by which this prob must be weighted, eg, P(Ci-Pj | Ci)
+				zAllChildParentEdges = sum([g.es.select(_target=childNode.index, _source=parent.index)[0]["weight"] for parent in parents])
+				pParentChildEdgeGivenChild = float(parentChildEdgeFreq) / float(zAllChildParentEdges)
+				probChild += (pParentChildEdgeGivenChild * pChildGivenParent)
 
-			childNode["bayesProb"] = pChildGivenParent
-			sub.Attrib["bayesProb"] = pChildGivenParent
-			print("\t"+sub.SubName+"  "+str(pChildGivenParent))
-	
-			
-			
+			childNode["directChildProbAnalysis"] = probChild
+			sub.Attrib["directChildProbAnalysis"] = probChild
+			print("\t"+sub.SubName+"  "+str(probChild))
+
 	"""
 	Utility for grabbing parents of a vertex, given the vertex object and its igraph graph
 	
@@ -799,11 +811,15 @@ class AnomalyReporter(object):
 		if not includeReflexive:
 			incidentEdges = [edge for edge in g.es.select(_target=vertex.index) if edge.source != vertex.index]
 		else:
-			incidentEdges = [edge for edge in g.es.select(_target=vertex.index)] #no reflextivity check
+			incidentEdges = [edge for edge in g.es.select(_target=vertex.index)] #no reflexivity check
 			
 		return incidentEdges
-			
-			
+		
+	#Get the parent vertices of a node via its incident edges
+	def _getParentVertices(self, vertex, g, includeReflexive=False):
+		edges = self._getParentEdges(vertex, g, includeReflexive)
+		
+		return [g.vs[edge.source] for edge in edges]
 
 	"""
 	Gets the TRACE-probability of an edge, which is defined as the count of that edge divided

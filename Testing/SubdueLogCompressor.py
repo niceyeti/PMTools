@@ -755,7 +755,7 @@ if __name__ == "__main__":
 
 	inputLog = sys.argv[1]
 	subsFile = sys.argv[2]
-	outputLog = sys.argv[3]
+	outputLogPath = sys.argv[3]
 	if len(sys.argv) > 4 and "name=" in sys.argv[4]:
 		compSubName = sys.argv[4].split("=")[1]
 	else:
@@ -765,4 +765,4 @@ if __name__ == "__main__":
 	showSub = "--showSub" in sys.argv
 	
 	compressor = LogCompressor()
-	compressor.Compress(inputLog, subsFile, outputLog, compSubName, showSub, deleteSub)
+	compressor.Compress(inputLog, subsFile, outputLogPath, compSubName, showSub, deleteSub)
