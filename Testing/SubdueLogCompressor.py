@@ -127,9 +127,10 @@ class LogCompressor(object):
 				layout = bestSub.layout("sugiyama")
 				igraph.plot(bestSub, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 			
+			outDir = os.path.dirname(outPath)
 			bestSub["name"] = compSubName
 			#save the substructure
-			bestSub.write_graphml(bestSub["name"]+".graphml")
+			bestSub.write_graphml(outDir+os.sep+bestSub["name"]+".graphml")
 			#print(str(bestSub))
 			subgraphs = self._buildAllTraces(logPath)
 			#detects degenerate case when no further compression can occur: log consists of only a set of graphs sharing no vertices or edges
