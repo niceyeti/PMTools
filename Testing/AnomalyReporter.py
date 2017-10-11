@@ -748,8 +748,9 @@ class AnomalyReporter(object):
 				pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
 				#pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
 				#note this uses the summation definition, assuming independence of parents
-				pChildGivenParents += (pChild * pParentGivenChild / pParent)
-
+				pChildGivenParents += (pChild * pParentGivenChild**2 / pParent)
+				#pChildGivenParents += (pChild * pParentGivenChild / pParent) #old version; not valid, see whiteboardings
+				
 			childNode["bayesProb"] = pChildGivenParents
 			sub.Attrib["bayesProb"] = pChildGivenParents
 			print("\t"+sub.SubName+"  "+str(pChildGivenParents))
