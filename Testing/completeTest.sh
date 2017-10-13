@@ -55,6 +55,7 @@ noiseRate="0.0"
 #get the command line arg switches, if any
 generateData="false"
 deleteSubstructures="false"
+prettyPnlm="false"
 recursiveIterations="0"
 for var in "$@"; do
 	#detect the data generation bool
@@ -74,6 +75,11 @@ for var in "$@"; do
 		noiseRate=$(echo $var | cut -f2 -d=)
 	fi
 
+	#get the number of recursive iterations, if any
+	if [[ $var == "--prettyPnml" ]]; then
+		prettyPnml="true"
+	fi
+	
 	#redirects data input, for automated testing; stored artifacts are also sent to this dir
 	if [[ $var == "--dataDir="* ]]; then
 		dataDir=$(echo $var | cut -f2 -d=)
@@ -138,9 +144,11 @@ cd "../scripts/Testing"
 cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
 #return to test script environment
 #cd "../scripts/Testing"
+
+
+
 #Convert the mined pnml model to graphml
 python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
-
 ################################################################################
 ##anomalize the model further???
 #

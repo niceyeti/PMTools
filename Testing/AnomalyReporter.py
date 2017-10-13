@@ -411,12 +411,18 @@ class AnomalyReporter(object):
 		outdir = "./"
 		if self._dendrogramPath is not None:
 			outdir = os.path.dirname(self._dendrogramPath)
+			if len(outdir) == 0:
+				outdir = "./"
+		#no paths from root '/', which happens for some reasons
+		if outdir[0] == os.sep:
+			outdir = "."+outdir
 		
 		#layout = igraph.Graph.layout_reingold_tilford(mode="out",root=rootId)
 		layout = g.layout("sugiyama")
 		#layout = g.layout_sugiyama()
 		#layout = g.layout_reingold_tilford(mode="in", root=[rootId])
 		outputPlot = igraph.plot(g, layout = layout, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
+		print(outdir+os.sep+"dendrogram.png")
 		outputPlot.save(outdir+os.sep+"dendrogram.png")
 		#igraph.plot(g, bbox = (1000,1000), vertex_size=50, vertex_label_size=15)
 		#layout = graph.layout("reingold")
@@ -731,7 +737,7 @@ class AnomalyReporter(object):
 		
 		print("Bayesian prob analysis: ")
 		
-		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node)
+		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node, or other nodes with no parent)
 		for level in range(1,len(dendrogram)):
 			sub = dendrogram[level]
 			#get this child in the graphical description
@@ -740,20 +746,27 @@ class AnomalyReporter(object):
 			pChild = float(sub.NumInstances) / float(self._numTraces)
 			#get probs which depend on parents by summing over all parents; the event definition 'parent' allows multiple definition of p(parent)
 			parentEdges = self._getParentEdges(childNode,g, includeReflexive=False)
-			pChildGivenParents = 0.0
-			for edge in parentEdges: #sum over parent probs
-				parentFreq = g.vs[edge.source]["NumInstances"]
-				pParent = float(parentFreq) / float(self._numTraces)
-				#basically, the proportion of times this is parent of child, given all the child's parents
-				pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
-				#pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
-				#note this uses the summation definition, assuming independence of parents
-				pChildGivenParents += (pChild * pParentGivenChild**2 / pParent)
-				#pChildGivenParents += (pChild * pParentGivenChild / pParent) #old version; not valid, see whiteboardings
+			#There is an exception, whereby some nodes are original, and lack any parents; this is expected, and these nodes are set to their raw probability, which
+			#is valid, since there is nothing to sum over.
+			if len(parentEdges) == 0:
+				print("WARNING>>>>>> NO PARENT EDGES FOR: "+sub.SubName+"  Instances: "+str(sub.NumInstances))
+				childNode["bayesProb"] = pChild
+				sub.Attrib["bayesProb"] = pChild
+			else:
+				pChildGivenParents = 0.0
+				for edge in parentEdges: #sum over parent probs
+					parentFreq = g.vs[edge.source]["NumInstances"]
+					pParent = float(parentFreq) / float(self._numTraces)
+					#basically, the proportion of times this is parent of child, given all the child's parents
+					pParentGivenChild = float(edge["weight"]) / float(sum([edge["weight"] for edge in parentEdges]))
+					#pParentGivenChild = float(edge["weight"]) / float(self._numTraces)
+					#note this uses the summation definition, assuming independence of parents
+					pChildGivenParents += (pChild * pParentGivenChild**2 / pParent)
+					#pChildGivenParents += (pChild * pParentGivenChild / pParent) #old version; not valid, see whiteboardings
 				
-			childNode["bayesProb"] = pChildGivenParents
-			sub.Attrib["bayesProb"] = pChildGivenParents
-			print("\t"+sub.SubName+"  "+str(pChildGivenParents))
+				childNode["bayesProb"] = pChildGivenParents
+				sub.Attrib["bayesProb"] = pChildGivenParents
+			print("\t"+sub.SubName+"  "+str(sub.Attrib["bayesProb"]))
 		
 	"""
 	The bayesian definition of p(child|parent) is a bit wonky. This instead directly evaluates p(child|parent)

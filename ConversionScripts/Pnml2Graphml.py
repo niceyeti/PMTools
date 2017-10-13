@@ -48,6 +48,44 @@ def _resolveEdges(arcs, vertexDict, filterString):
 	return arcs
 	
 """
+A recursive utility for getting all activities attached to a given set of outlinks.
+
+An outlink leads to a place, tau-split, or an activity node. So think of an outlink as a graph
+edge that can split at multiple points, like branches to flowers. The flowers are the activities.
+Hence this retrieves all activities at the end of some branch, also detecting cycles (should not happen).
+
+Cycles should not occur, since our process-graph definition does not allow self-loops, and this only
+goes to the first set of nodes.
+
+@outLinks: The immediate outlinks of a node
+@arcs: List of tuples representing node ids
+@vertexDict: the dict of id keys and string vertex names
+@d: current call depth, for bounding search if cycling
+
+Returns: The ids of the activities at the terminal points of these outlinks
+"""
+def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
+	activities = []
+	
+	#recursion depth check: probably cycling
+	if d > 40:
+		print("WARNING Recursive depth-bound of 20 struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
+		return []
+	
+	#get all activities at the terminal points of these outlinks
+	for outLink in outLinks:
+		#if this link leads to a place or a tau node, get the outlinks from that node and recurse on them
+		if "TAU_" in vertexDict[outLink[1]] or "PLACE_" in vertexDict[outLink[1]]:
+			#get all the outlinks of this successor, and recurse on them
+			successorLinks = [arc for arc in arcs if arc[0] == outLink[1]]
+			activities += _getSuccessorActivityIds(successorLinks, arcs, vertexDict,d+1)
+		#else the success is just a regular place, so add it to list
+		else:
+			activities.append(outLink[1])
+
+	return activities
+	
+"""
 Utility for converting pnml format file into a graphml structure for easier transmission and storage.
 
 @pnmlPath: Path to a pnml file
@@ -65,7 +103,7 @@ def Convert(pnmlPath):
 	places = {} #places are stored as vertices; they are only stored for the purposes of factoring them out of the final graph
 	arcs = [] #pnml arcs are stored as a list of tuples, (sourceId<string>, targetId<string>)
 	edges = [] #the output edge list for the igraph object
-
+	
 	#store the transitions, which will be a mix of 'tau' constructs and actual activities (eg, "register patient", "discharge patient", etc)
 	for t in root.findall('./net/page/transition'):
 		vId = t.get('id')
@@ -87,6 +125,7 @@ def Convert(pnmlPath):
 		arcs.append((source,target))
 		
 	#get the start node id (a source: vertex with no in-links)
+	""" #This method fails
 	startIds = []
 	inlinks = [arc[1] for arc in arcs]
 	for vId in vertexDict:
@@ -95,22 +134,48 @@ def Convert(pnmlPath):
 	if len(startIds) != 1:
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happen
 		print("WARNING len(startIds) != 1, is "+str(len(startIds))+" in Pnml2Graphml. See code. "+str(startIds))
-		"""
+		
 		This warning is a result of a defect with the pnml format, or rather with my relying on it (is there another graph format we could use as output of the process miner?)
-		Pnml files have provide no topological description of the start node in a process; they only have a graphically 'leftmost' node.
+		Pnml files have provide no topological description of the start node in a process; they only have a visually 'leftmost' node.
 		As a result, the graphs (especially if noise is added to a log) must always contain a defined start/end node.
 		Consider multiple paths to resolve:
 			1) pnml parsing logic (not clear how, since the pnml format doesn't provide a definition of start/end node)
 			2) change to a different process output file type (dont know which exist)
-		"""
-	startNodeId = startIds[0]
-	
-	#get the end node id (a sink: vertex with no outlinks)
+
+	#get the end node ids (a sink: vertex with no outlinks)
 	endIds = []
 	outlinks = [arc[0] for arc in arcs]
 	for vId in vertexDict:
 		if vId not in outlinks:
 			endIds.append(vId)
+	if len(endIds) != 1:
+		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
+		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.")
+	endNodeId = endIds[0]
+	"""
+	#gets the start node a priori, from the <initialMarking> pnml tag, of which I'm assuming there is always just one for my models
+	startIds = []
+	for p in root.findall('./net/page/place'):
+		imChild = p.find("./initialMarking/text")
+		if imChild is not None and "1" in imChild.text:
+			print("FOUND INITIAL MARKER NODE: "+p.attrib["id"])
+			startIds.append(p.attrib["id"])
+	if len(startIds) != 1:
+		print("ERROR len startIds != 1 in  Pnml2Graphml: "+str(len(startIds)))
+	startNodeId = startIds[0]
+	
+	#warn of unexpected structure: if detected, this is serious, and at least needs to be evaluated by looking at the pnml file and understanding why there is more than one finalmarkings tag
+	markingCt = len(root.findall('./net/finalmarkings'))
+	if markingCt > 1:
+		print("WARNING: finalmarkings len "+str(markingCt))
+	
+	#get the end node id from the finalMarkings collection
+	endIds = []
+	for p in root.findall('./net/finalmarkings/marking/place'):
+		imChild = p.find("./text")
+		if imChild is not None and "1" in imChild.text:
+			print("FOUND FINAL MARKER NODE: "+p.attrib["idref"])
+			endIds.append(p.attrib["idref"])
 	if len(endIds) != 1:
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
 		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.")
@@ -178,43 +243,6 @@ def Convert(pnmlPath):
 	
 	return graph	
 	
-"""
-A recursive utility for getting all activities attached to a given set of outlinks.
-
-An outlink leads to a place, tau-split, or an activity node. So think of an outlink as a graph
-edge that can split at multiple points, like branches to flowers. The flowers are the activities.
-Hence this retrieves all activities at the end of some branch, also detecting cycles (should not happen).
-
-Cycles should not occur, since our process-graph definition does not allow self-loops, and this only
-goes to the first set of nodes.
-
-@outLinks: The immediate outlinks of a node
-@arcs: List of tuples representing node ids
-@vertexDict: the dict of id keys and string vertex names
-@d: current call depth, for bounding search if cycling
-
-Returns: The ids of the activities at the terminal points of these outlinks
-"""
-def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
-	activities = []
-	
-	#recursion depth check: probably cycling
-	if d > 40:
-		print("WARNING Recursive depth-bound of 20 struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
-		return []
-	
-	#get all activities at the terminal points of these outlinks
-	for outLink in outLinks:
-		#if this link leads to a place or a tau node, get the outlinks from that node and recurse on them
-		if "TAU_" in vertexDict[outLink[1]] or "PLACE_" in vertexDict[outLink[1]]:
-			#get all the outlinks of this successor, and recurse on them
-			successorLinks = [arc for arc in arcs if arc[0] == outLink[1]]
-			activities += _getSuccessorActivityIds(successorLinks, arcs, vertexDict,d+1)
-		#else the success is just a regular place, so add it to list
-		else:
-			activities.append(outLink[1])
-
-	return activities
 
 """
 Plotting, for visual analysis.
