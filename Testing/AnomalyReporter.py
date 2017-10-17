@@ -129,8 +129,9 @@ class AnomalyReporter(object):
 	"""
 	Keep this clean and easy to parse.
 	"""
-	def _displayResults(self):	
-		output = "Statistics for log parsed from "+self._logPath+", anomalies detected\n"
+	def _displayResults(self):
+		output = "Statistics for log parsed from "+self._logPath
+		#output += ", anomalies detected\n"
 		#output += "True positives:  \t"+str(len(self._truePositives))+"\t"+str(self._truePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 		#output += "False positives:  \t"+str(len(self._falsePositives))+"\t"+str(self._falsePositives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
 		#output += "True negatives: \t"+str(len(self._trueNegatives))+"\t"+str(self._trueNegatives).replace("set(","{").replace("{{","{").replace(")","}}").replace("}}","}")+"\n"
@@ -220,7 +221,7 @@ class AnomalyReporter(object):
 		for level in range(len(dendrogram)):
 			sub = dendrogram[level]
 			sub.EdgeDist = self._buildSubstructureEdgeDist(dendrogram, level)
-		
+
 		return dendrogram
 
 	"""
@@ -738,6 +739,7 @@ class AnomalyReporter(object):
 		print("Bayesian prob analysis: ")
 		
 		#derive bayesian probabilities defined in header, for all children in the graph (all but the top most node, or other nodes with no parent)
+		#Adds @bayesProb result to each substructure in the dendrogram
 		for level in range(1,len(dendrogram)):
 			sub = dendrogram[level]
 			#get this child in the graphical description
@@ -780,6 +782,9 @@ class AnomalyReporter(object):
 	Thus p(Ci|Pj) is P(Ci-Pj|Ci)*P(Ci|Pj). The latter is given by the parent's child-edge distribution, and the former is
 	simply a proportionality weighting for each parent of child-i to make it a proper probability distribution.
 	
+	Keep in mind the nature of the parent-child relationships in the dendrogram has only to do with the order
+	in which substructures were disovered, and may even be disconnected in the traces in which they occur. But from
+	the 'normative' behavior perspective, they are related, through some sense of decreasing information.
 	"""
 	def _directChildProbabilityAnalysis(self, dendrogram):
 		#build the graph based on the freq dists, with frequencies as edge weights
@@ -1199,9 +1204,12 @@ class AnomalyReporter(object):
 	def CompileResults(self):
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
-			self._dendrogramAnalysis(self._dendrogramPath)
+			dendrogram = self._dendrogramAnalysis(self._dendrogramPath)
 			self._compileDendrogramResult(self._dendrogramThreshold)
 
+		#report anomalies detected using the Bayesian metrics
+		self._reportBayesianAnomalies()
+			
 		#soon to be dead code: report recursive-gbad results
 		self._reportRecursiveAnomalies()
 		
