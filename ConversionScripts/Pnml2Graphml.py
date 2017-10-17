@@ -158,7 +158,7 @@ def Convert(pnmlPath):
 	for p in root.findall('./net/page/place'):
 		imChild = p.find("./initialMarking/text")
 		if imChild is not None and "1" in imChild.text:
-			print("FOUND INITIAL MARKER NODE: "+p.attrib["id"])
+			#print("FOUND INITIAL MARKER NODE: "+p.attrib["id"])
 			startIds.append(p.attrib["id"])
 	if len(startIds) != 1:
 		print("ERROR len startIds != 1 in  Pnml2Graphml: "+str(len(startIds)))
@@ -174,7 +174,7 @@ def Convert(pnmlPath):
 	for p in root.findall('./net/finalmarkings/marking/place'):
 		imChild = p.find("./text")
 		if imChild is not None and "1" in imChild.text:
-			print("FOUND FINAL MARKER NODE: "+p.attrib["idref"])
+			#print("FOUND FINAL MARKER NODE: "+p.attrib["idref"])
 			endIds.append(p.attrib["idref"])
 	if len(endIds) != 1:
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend

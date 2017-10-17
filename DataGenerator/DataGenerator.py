@@ -505,6 +505,10 @@ class DataGenerator(object):
 			plt.plot(xs, ys)
 			plt.savefig(baseFolder+os.sep+"traceDistribution.png")
 			#plt.show()
+			
+			with open(baseFolder+os.sep+"traceDistribution.py", "w+") as traceDistFile: #also stores the raw number values, if needed for evaluation later
+				traceDistFile.write(str(xs))
+				traceDistFile.write(str(ys))
 
 def usage():
 	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")

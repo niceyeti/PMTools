@@ -328,7 +328,7 @@ class AnomalyReporter(object):
 	"""
 	Utility for converting a freqDictList (per _getDendrogramDistribution) to an igraph object, for plotting and analysis.
 	The nodes are connected according to the relationships given by @freqDictList, and the edges store the frequencies in their
-	"weight" attribute, for analyses.
+	"weight" attribute, for analysis.
 	
 	Returns: igraph object description of the freqDictList
 	"""
