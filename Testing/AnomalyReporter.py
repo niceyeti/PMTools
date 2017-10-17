@@ -23,7 +23,7 @@ class AnomalyReporter(object):
 		self._gbadPath = gbadPath
 		self._logPath = logPath
 		logFile = open(self._logPath, "r")
-		self._parseLogAnomalies(logFile)
+		self._parseLog(logFile)
 		self._numTraces = len(self._logTraces)
 		
 		self._resultPath = resultPath
@@ -111,7 +111,7 @@ class AnomalyReporter(object):
 	
 	@self._anomalies: a list of anomalous traces (tokenized by comma)
 	"""
-	def _parseLogAnomalies(self,logFile):
+	def _parseLog(self,logFile):
 		#maintain traces internally as a list of <traceNo,+/-,trace> string 3-ples
 		self._logTraces = [trace.split(",") for trace in logFile.readlines() if len(trace.strip()) > 0]
 		#get the subset of the traces which are anomalies
@@ -769,6 +769,63 @@ class AnomalyReporter(object):
 				childNode["bayesProb"] = pChildGivenParents
 				sub.Attrib["bayesProb"] = pChildGivenParents
 			print("\t"+sub.SubName+"  "+str(sub.Attrib["bayesProb"]))
+
+		self._writeBayesianResult(dendrogram)
+			
+	# @dendrogram: A list of substructures/levels, assumed to have "bayesProb" defined in each substructure
+	def _writeBayesianResult(self, dendrogram, threshold):
+		trueAnomalies = self._getAnomalyIdSet()
+		logIds = self._getTraceIdSet(dendrogram)
+		
+		reportedAnomalyIds = set()
+		#Gather all trace ids below @threshold, the bayesian anomaly threshold
+		for level in len(dendrogram):
+			sub = dendrogram[level]
+			if sub.Attrib["bayesProb"] < threshold:
+				ids = self._getSubTraceIds(dendrogram, level)
+				for id in ids:
+					reportedAnomalyIds.add(int(id))
+		
+		truePositives = reportedAnomalyIds.intersect(trueAnomalies)
+		falsePositives = reportedAnomalyIds.difference(trueAnomalies)
+		falseNegatives = trueAnomalies.difference(reportedAnomalyIds)
+		#cheating: true negatives can be derived from the three values above, using some set math: TN = AllIds - (all other categories: TP, FP, FN), hence TN = ALL - FP - FN - TP
+		trueNegatives = logIds.difference( reportedAnomalyIds.union(trueAnomalies) )
+		
+		#calculate recall, preision, etc
+		self._errorRate = float(len(falseNegatives) + len(falsePositives)) / float(self._numTraces) #error rate = (FP + FN) / N = 1 - accuracy
+		self._accuracy =  float(len(trueNegatives) + len(truePositives)) / float(self._numTraces) # accuracy = (TN + TP) / N = 1 - error rate
+
+		#calculate precision: TP / (FP + TP)
+		denom = float(len(self._falsePositives) + len(self._truePositives))
+		if denom > 0.0:
+			self._precision =  float(len(self._truePositives)) / denom
+		else:
+			self._precision = 0.0
+		
+		#calculate recall: TP / (TP + FN)
+		denom = float(len(self._truePositives) + len(self._falseNegatives))
+		if denom > 0.0:
+			self._recall = float(len(self._truePositives)) / denom
+		else:
+			self._recall = 0.0
+
+		
+		
+		
+		
+		#simple output for easy parsing
+		with open(self._resultPath, "w+") as ofile:
+			ofile.write("truePositives:"+str(len(truePositives))+":"+str(truePositives))
+			ofile.write("trueNegatives:"+str(len(trueNegatives))+":"+str(trueNegatives))
+			ofile.write("falsePositives:"+str(len(falsePositives))+":"+str(falsePositives))
+			ofile.write("falseNegatives:"+str(len(falseNegatives))+":"+str(falseNegatives))
+			
+			
+			
+			ofile.close()
+		
+		
 		
 	"""
 	The bayesian definition of p(child|parent) is a bit wonky. This instead directly evaluates p(child|parent)
@@ -1067,8 +1124,7 @@ class AnomalyReporter(object):
 				ancestorSubs.add(id)
 
 		print("Ancestry set: "+str(ancestorSubs))
-		
-		
+
 		#now, rather than searching over candidate ids, search over the space of anomalous substructures below candidate threshold
 		j  = len(dendrogram) - 1
 		ancestors = set()
@@ -1077,12 +1133,25 @@ class AnomalyReporter(object):
 			ancestors |= self._getAncestorSet(j,dendrogram)
 			j -= 1
 		print("Ancestors: "+str(ancestors))
+
+	def _getTraceIdSet(self):
+		ids = set()
+		for trace in self._logTraces:
+			id = int(trace[0])
+			ids.add(id)
+
+		return ids
+
+	def _getAnomalyIdSet(self):
+		ids = set()
+		for trace in self._logAnomalies:
+			ids.add(int(trace[0]))
+			
+		return ids
 		
 	#Just for readability and navigating the output: prints the substructures names, in order, of the anomalous traces
 	def _printAnomalyDerivations(self, dendrogram):
-		anomalyIds = set()
-		for trace in self._logAnomalies:
-			anomalyIds.add(trace[0])
+		anomalyIds = self._getAnomalyIdSet()
 			
 		print("Anomalous substructure derivations, for anomalies "+str([int(t[0]) for t in self._logAnomalies])+":  ")
 		if len(anomalyIds) == 0:
@@ -1224,7 +1293,6 @@ class AnomalyReporter(object):
 	def _outputResults(self, anomalies):
 		#MOVED TO CTOR
 		#logFile = open(self._logPath, "r")
-		#self._parseLogAnomalies(logFile)
 		self._detectedAnomalyIds = anomalies
 		
 		#create the true anomaly and detected anomaly sets via the trace-id numbers
