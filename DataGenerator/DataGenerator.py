@@ -501,7 +501,7 @@ class DataGenerator(object):
 			#plt.xticks(xs, xlabels, rotation="vertical")
 			plt.title("Trace Frequency Distribution")
 			plt.ylabel("Count")
-			plt.xlabel("Partial Orderings")
+			plt.xlabel("Partial Ordering Ids")
 			plt.plot(xs, ys)
 			plt.savefig(baseFolder+os.sep+"traceDistribution.png")
 			#plt.show()

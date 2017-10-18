@@ -728,10 +728,10 @@ class AnomalyReporter(object):
 	The basic motivation here is that hopefully the low probability of anomalies wrt the higher probabilities of their parents will generate a good anomaly discriminant.
 	Random noise tends to occur only in the tail, as a child of smaller or other low-frequency structures and noise.
 	"""
-	def _bayesianDendrogramAnomalyAnalysis(self, dendrogram):
+	def _bayesianDendrogramAnomalyAnalysis(self, dendrogram, threshold=0.07):
 		#build the graph based on the freq dists, with frequencies as edge weights
 		g = self._getFreqDistGraph(dendrogram)
-
+		
 		g.vs["bayesProb"] = -1.0 #assign invalid prob to  all nodes; SUB_init will retain this value since it has no parents
 		for sub in dendrogram:
 			sub.Attrib["bayesProb"] = -1.0
@@ -770,60 +770,73 @@ class AnomalyReporter(object):
 				sub.Attrib["bayesProb"] = pChildGivenParents
 			print("\t"+sub.SubName+"  "+str(sub.Attrib["bayesProb"]))
 
-		self._writeBayesianResult(dendrogram)
+		self._writeBayesianResult(dendrogram, threshold)
 			
 	# @dendrogram: A list of substructures/levels, assumed to have "bayesProb" defined in each substructure
 	def _writeBayesianResult(self, dendrogram, threshold):
 		trueAnomalies = self._getAnomalyIdSet()
-		logIds = self._getTraceIdSet(dendrogram)
+		logIds = self._getTraceIdSet()
 		
 		reportedAnomalyIds = set()
 		#Gather all trace ids below @threshold, the bayesian anomaly threshold
-		for level in len(dendrogram):
+		for level in range(len(dendrogram)):
 			sub = dendrogram[level]
-			if sub.Attrib["bayesProb"] < threshold:
+			if sub.Attrib["bayesProb"] < threshold and sub.Attrib["bayesProb"] > 0.0:
 				ids = self._getSubTraceIds(dendrogram, level)
 				for id in ids:
 					reportedAnomalyIds.add(int(id))
 		
-		truePositives = reportedAnomalyIds.intersect(trueAnomalies)
+		truePositives = reportedAnomalyIds.intersection(trueAnomalies)
 		falsePositives = reportedAnomalyIds.difference(trueAnomalies)
 		falseNegatives = trueAnomalies.difference(reportedAnomalyIds)
 		#cheating: true negatives can be derived from the three values above, using some set math: TN = AllIds - (all other categories: TP, FP, FN), hence TN = ALL - FP - FN - TP
 		trueNegatives = logIds.difference( reportedAnomalyIds.union(trueAnomalies) )
 		
 		#calculate recall, preision, etc
-		self._errorRate = float(len(falseNegatives) + len(falsePositives)) / float(self._numTraces) #error rate = (FP + FN) / N = 1 - accuracy
-		self._accuracy =  float(len(trueNegatives) + len(truePositives)) / float(self._numTraces) # accuracy = (TN + TP) / N = 1 - error rate
+		errorRate = float(len(falseNegatives) + len(falsePositives)) / float(self._numTraces) #error rate = (FP + FN) / N = 1 - accuracy
+		accuracy =  float(len(trueNegatives) + len(truePositives)) / float(self._numTraces) # accuracy = (TN + TP) / N = 1 - error rate
 
 		#calculate precision: TP / (FP + TP)
-		denom = float(len(self._falsePositives) + len(self._truePositives))
+		denom = float(len(falsePositives) + len(truePositives))
 		if denom > 0.0:
-			self._precision =  float(len(self._truePositives)) / denom
+			precision =  float(len(truePositives)) / denom
 		else:
-			self._precision = 0.0
+			precision = 0.0
 		
 		#calculate recall: TP / (TP + FN)
-		denom = float(len(self._truePositives) + len(self._falseNegatives))
+		denom = float(len(truePositives) + len(falseNegatives))
 		if denom > 0.0:
-			self._recall = float(len(self._truePositives)) / denom
+			recall = float(len(truePositives)) / denom
 		else:
-			self._recall = 0.0
+			recall = 0.0
 
-		
-		
-		
+		#f -measure
+		denom = precision + recall
+		if denom > 0.0:
+			fMeasure = precision * recall * 2 / (precision + recall)
+		else:
+			fMeasure = 0.0
 		
 		#simple output for easy parsing
-		with open(self._resultPath, "w+") as ofile:
-			ofile.write("truePositives:"+str(len(truePositives))+":"+str(truePositives))
-			ofile.write("trueNegatives:"+str(len(trueNegatives))+":"+str(trueNegatives))
-			ofile.write("falsePositives:"+str(len(falsePositives))+":"+str(falsePositives))
-			ofile.write("falseNegatives:"+str(len(falseNegatives))+":"+str(falseNegatives))
-			
-			
-			
-			ofile.close()
+		resultPath = os.path.dirname(self._resultPath)
+		if resultPath[-1] != os.sep:
+			resultPath += os.sep
+		resultPath += "bayesResult.txt"
+	
+
+	
+		with open(resultPath, "w+") as ofile:
+			ofile.write("truePositives:"+str(len(truePositives))+":"+str(truePositives).replace("set()","{}")+"\n")
+			ofile.write("trueNegatives:"+str(len(trueNegatives))+":"+str(trueNegatives).replace("set()","{}")+"\n")
+			ofile.write("falsePositives:"+str(len(falsePositives))+":"+str(falsePositives).replace("set()","{}")+"\n")
+			ofile.write("falseNegatives:"+str(len(falseNegatives))+":"+str(falseNegatives).replace("set()","{}")+"\n")
+			ofile.write("precision:"+str(precision)+"\n")
+			ofile.write("recall:"+str(recall)+"\n")
+			ofile.write("error:"+str(errorRate)+"\n")
+			ofile.write("accuracy:"+str(accuracy)+"\n")
+			ofile.write("trueAnomalies:"+str(trueAnomalies).replace("set()","{}")+"\n")
+			ofile.write("reportedAnomalyIds:"+str(reportedAnomalyIds).replace("set()","{}")+"\n")
+			ofile.write("fMeasure:"+str(fMeasure))
 		
 		
 		
@@ -1275,9 +1288,6 @@ class AnomalyReporter(object):
 		if self._dendrogramPath != None:
 			dendrogram = self._dendrogramAnalysis(self._dendrogramPath)
 			self._compileDendrogramResult(self._dendrogramThreshold)
-
-		#report anomalies detected using the Bayesian metrics
-		self._reportBayesianAnomalies()
 			
 		#soon to be dead code: report recursive-gbad results
 		self._reportRecursiveAnomalies()
