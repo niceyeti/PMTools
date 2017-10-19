@@ -768,10 +768,10 @@ class AnomalyReporter(object):
 				
 				childNode["bayesProb"] = pChildGivenParents
 				sub.Attrib["bayesProb"] = pChildGivenParents
-			print("\t"+sub.SubName+"  "+str(sub.Attrib["bayesProb"]))
+			print("\t"+sub.SubName+"\t"+str(sub.NumInstances)+"\t"+str(sub.Attrib["bayesProb"]))
 
 		self._writeBayesianResult(dendrogram, threshold)
-			
+
 	# @dendrogram: A list of substructures/levels, assumed to have "bayesProb" defined in each substructure
 	def _writeBayesianResult(self, dendrogram, threshold):
 		trueAnomalies = self._getAnomalyIdSet()
