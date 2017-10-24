@@ -34,6 +34,11 @@ ABC(E+F)[AB]:<>
 
 Any structure with a ":<>" parameter is tagged with "Anomaly=True/False", such as (ABC|DEF):<0.2/False,0.8/True>
 
+This component only generates models and embeds probabilities on each branch, using a regular expression, parsing embedded
+parameters from a .config file. For the embedded parameters, a value less than zero can be used as a placeholder signal value,
+such as to indicate that params will be determined later. This allows generating expressions, then embedding different values
+of the same parameter into the same model and generating traces for each such value, for experimental testing.
+
 """
 
 class ModelGenerator(object):
@@ -47,8 +52,8 @@ class ModelGenerator(object):
 		self._normalOrProbRange = (-1.0,-1.0)
 		self._abnormalLoopProbRange = (-1.0,-1.0)
 		self._normalLoopProbRange = (-1.0,-1.0)
-		self._anomalousOrBranchProb = 0.0
-		self._anomalousLoopProb=0.0
+		self._anomalousOrBranchProb = 0.0   #the probability of *producing* an anomalous OR branch, whose parameters will be set to by self._abnormalOrProbRange
+		self._anomalousLoopProb=0.0   #the probability of *producing* an anomalous LOOP, whose parameters will be set to by self._abnormalLoopProbRange
 		self._anomalyCount = 0
 		self._requiredAnomalies = 999
 		self._minShortestPathLength = 9999
@@ -72,6 +77,8 @@ class ModelGenerator(object):
 	
 		config = open(configPath,"r")
 		for line in config.readlines():
+			line = line.split("#")[0]
+		
 			if "AnomalousLoopProb=" in line:
 				self._anomalousLoopProb = float(line.split("=")[1])
 			if "AnomalousOrBranchProb=" in line:
@@ -100,12 +107,14 @@ class ModelGenerator(object):
 			print("ERROR config did not contain NumAnomalies")
 		if self._abnormalOrProbRange[0] < 0.0:
 			print("ERROR config did not contain AbnormalOrProbRange")
-		if self._normalOrProbRange[0] < 0.0:
-			print("ERROR config did not contain NormalOrProbRange")
 		if self._abnormalLoopProbRange[0] < 0.0:
 			print("ERROR config did not contain AbnormalLoopProbRange")
-		if self._normalLoopProbRange[0] < 0.0:
-			print("ERROR config did not contain NormalLoopProbRange")
+			
+		#These checks are now obsolete, since -1.0 can be used a a placeholder/signal value for these parameters
+		#if self._normalLoopProbRange[0] < 0.0:
+		#	print("ERROR config did not contain NormalLoopProbRange")
+		#if self._normalOrProbRange[0] < 0.0:
+		#	print("ERROR config did not contain NormalOrProbRange")
 
 	"""
 	Returns a random activity from the activity set. The activity is then deleted from the available activity set, so they may only be used once.
@@ -193,6 +202,9 @@ class ModelGenerator(object):
 	"""
 	Builds and returns a probability expression string, given a probability and whether or not this is an anomalous event.
 	
+	HACK 10/23/17: If p is
+	
+	
 	Given: 0.2, True, returns "0.2/True"
 	"""
 	def _buildProbExpr(self,p,isAnomalous):
@@ -230,7 +242,7 @@ class ModelGenerator(object):
 		#first, determine whether or not a branch should be anomalous, and assign branch probabilities
 		isLeftBranchAnomalous = False
 		isRightBranchAnomalous = False
-		#declare an anomalous branch with prob 0.30
+		#declare an anomalous branch with prob self._anomalousOrBranchProb
 		if (float(random.randint(1,100)) / 100.0) <= self._anomalousOrBranchProb and self._anomalyCount < self._requiredAnomalies:
 			self._anomalyCount += 1
 			#flip a coin to choose the anomalous branch

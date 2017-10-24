@@ -5,7 +5,10 @@ graph.
 
 The graphml file is expected to contain a graph defined by the output of ModelConverter.py, which outputs
 a (possibly cyclic) left to right graph with probability distribution parameters on all edges (although only
-the parameters at LOOP and OR nodes are meaningful, since all other edge probabiliies are 1.0).
+the parameters at LOOP and OR nodes are meaningful, since all other edge probabiliies are 1.0). The probabilities
+in the graphml may be negative, in which case a passed value --ThetaTraces may be set and used instead.
+
+If --thetaTrace= is passed, then this value is written over all negative @probability values in the stored graph.
 
 Output: A number of traces of the graph, labelled +/-1 to demark whether or not a particular walk traversed any
 anomalous edge one or more times. Output format (this was defined by the needs to the client):
@@ -437,6 +440,14 @@ class DataGenerator(object):
 		self._graph.es["isTraversed"] = False #in igraph, this assignmnet is applied to all edges
 		
 	"""
+	This goofy operation allows paramerizing the graphml model with different passed values of thetaTraces, for experimentation.
+	"""
+	def _setThetaTrace(self, thetaTrace):
+		for edge in self._graph.es:
+			if edge["probability"] < 0.0:
+				edge["probability"] = thetaTrace
+
+	"""
 	Main driver for generating traces.
 	
 	A trace is a unordered list of <i-graph edges, int> pairs, representing a single walk on a process graph from start
@@ -455,8 +466,9 @@ class DataGenerator(object):
 	the order of the model isn't leaking into the output because of a stable sort applied to some sort of regularity in the generated
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
+	@thetaTrace: A value between 0.0 and 1.0. If passed, this parameter will overwrite all negative @probability values in the graph.
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log"):
+	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log", thetaTrace=None):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -464,6 +476,10 @@ class DataGenerator(object):
 		print("Generating traces...")
 		ofile = open(outputPath, "w+")
 		self._buildGraph(graphmlPath)
+		
+		if thetaTrace is not None:
+			self._setThetaTrace(thetaTrace)
+		
 		#NOTE: starting at 1 is not arbitrary. Ultimately this guarantees the trace-no labels span 1-n, which is a requirement for GBAD/SUBDUE input files later on
 		i = 1
 		while i <= n:
@@ -512,7 +528,7 @@ class DataGenerator(object):
 
 def usage():
 	print("python ./DataGenerator\n\t[path to graphml file]\n\t-n=[integer number of traces]\n\t[-ofile=(path to output file; defaults to ./syntheticTraces.log if not passed)]")
-	
+	print("Optional: --traceTheta=[float]  This parameter, if passed, will overwrite all negative @probability values\n(for OR and LOOP only presumaby) for transitions stored in the graphml")
 """
 
 """
@@ -532,13 +548,21 @@ def main():
 		print("ERROR n too small.")
 		usage()
 		exit()
-		
+
+	thetaTrace = None
+	for arg in sys.argv:
+		if "--thetaTrace=" in arg:
+			thetaTrace = float(arg.split("=")[1])
+			if thetaTrace <= 0.0 or thetaTrace >= 1.0:
+				print("ERROR thetaTrace otu of range (0.0,1.0): "+str(thetaTrace))
+				thetaTrace = None
+
 	ofile = "./syntheticTraces.log"
 	if len(sys.argv) >= 4 and "-ofile=" in sys.argv[3]:
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
-	generator.GenerateTraces(graphFile, n, ofile)
+	generator.GenerateTraces(graphFile, n, ofile, thetaTrace)
 
 if __name__ == "__main__":
 	main()

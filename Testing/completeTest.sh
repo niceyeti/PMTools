@@ -7,6 +7,7 @@ logPath="$dataDir/testTraces.log"
 noisedLog="$dataDir/noisedTraces.log"
 xesPath="$dataDir/testTraces.xes"
 syntheticGraphmlPath="$dataDir/syntheticModel.graphml"
+syntheticModelPath="$dataDir/model.txt"
 
 minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
@@ -86,6 +87,7 @@ for var in "$@"; do
 		logPath="$dataDir/testTraces.log"
 		noisedLog="$dataDir/noisedTraces.log"
 		xesPath="$dataDir/testTraces.xes"
+		syntheticModelPath="$dataDir/model.txt"
 		syntheticGraphmlPath="$dataDir/syntheticModel.graphml"
 		pnmlPath="$dataDir/testModel.pnml"
 		minedGraphmlPath="$dataDir/minedModel.graphml"
@@ -105,9 +107,9 @@ cd "../DataGenerator"
 if [ $generateData = "true" ]; then
 	###############################################################################
 	##Generate a model containing appr. 30 activities, and generate 1000 traces from it.
-	sh ./generate.sh 30 1000 $logPath $syntheticGraphmlPath
+	sh ./generate.sh 30 1000 $logPath $syntheticGraphmlPath $syntheticModelPath
 fi
-
+exit
 #add noise to original/synthetic log as requested, before mining the new model
 if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric comparison
 	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
