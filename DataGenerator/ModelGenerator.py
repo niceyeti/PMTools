@@ -181,7 +181,14 @@ class ModelGenerator(object):
 	Normal here is therefore some just bounded somehow to higher entropy values, such as lying between 0.2 and 0.8
 	"""
 	def _getNormalOrProb(self):
-		#generate a random probability number in range 0.2 to 0.8
+		
+		#return signal values, if either in range is a signal (a value less than zero)
+		if self._normalOrProbRange[0] < 0:
+			return self._normalOrProbRange[0]
+		if self._normalOrProbRange[1] < 0:
+			return self._normalOrProbRange[1]
+	
+		#generate a random probability number in a range
 		return self._getRandomProb(self._normalOrProbRange[0], self._normalOrProbRange[1] )
 
 	"""
@@ -192,8 +199,15 @@ class ModelGenerator(object):
 		
 	"""
 	Returns the probability of traversing some sub-loop, under normal (non-anomalous) behavioral conditions for the model. 
+	
+	Return signal value from prob ranges if either is a signal (Less than zero)
 	"""
 	def _getNormalLoopProb(self):
+		if self._normalLoopProbRange[0] < 0:
+			return self._normalLoopProbRange[0]
+		if self._normalLoopProbRange[1] < 0:
+			return self._normalLoopProbRange[1]
+	
 		return self._getRandomProb( self._normalLoopProbRange[0], self._normalLoopProbRange[1] )
 		
 	def _getAbnormalLoopProb(self):

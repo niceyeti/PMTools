@@ -444,8 +444,11 @@ class DataGenerator(object):
 	"""
 	def _setThetaTrace(self, thetaTrace):
 		for edge in self._graph.es:
-			if edge["probability"] < 0.0:
+			if edge["probability"] <= 0.0:
+				print("RESETTING THETA TO : "+str(thetaTrace))
 				edge["probability"] = thetaTrace
+			if edge["probability"] > 1.0:
+				print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))
 
 	"""
 	Main driver for generating traces.
