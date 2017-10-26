@@ -149,6 +149,7 @@ class DataGenerator(object):
 					#detect and notify if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
 					if math.fabs((pLeft + pRight) - 1.0) > 0.01:
 						print("In OR WARNING possibly invalid probabilities detected. Edge probabilities do not sum to 1.0: "+str(pLeft)+" "+str(pRight)+"    Node: "+curNode["label"])
+						print("Out edges (MUST BE ONLY 2): "+str(outEdges))
 
 					#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
 					if r < pLeft: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right

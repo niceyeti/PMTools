@@ -256,7 +256,8 @@ class ModelGenerator(object):
 		#first, determine whether or not a branch should be anomalous, and assign branch probabilities
 		isLeftBranchAnomalous = False
 		isRightBranchAnomalous = False
-		#declare an anomalous branch with prob self._anomalousOrBranchProb
+		
+		#declare an anomalous branch with probability self._anomalousOrBranchProb
 		if (float(random.randint(1,100)) / 100.0) <= self._anomalousOrBranchProb and self._anomalyCount < self._requiredAnomalies:
 			self._anomalyCount += 1
 			#flip a coin to choose the anomalous branch
@@ -267,8 +268,17 @@ class ModelGenerator(object):
 
 		if not (isLeftBranchAnomalous or isRightBranchAnomalous):
 			p = self._getNormalOrProb()
-			leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
-			rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
+			#p may be a signal value, such as -1.0, allowing client to insert/vary these parameters later; this handles that logic
+			if p > 0:
+				leftProb = p
+				rightProb = 1.0-p
+			else:
+				leftProb = p
+				rightProb = p
+			print("LEFT: "+str(leftProb))
+			print("RIGHT: "+str(rightProb))
+			leftProbExpr = self._buildProbExpr(leftProb, isLeftBranchAnomalous)
+			rightProbExpr = self._buildProbExpr(rightProb, isRightBranchAnomalous)
 		else:
 			p = self._getAbnormalOrProb()
 			if isRightBranchAnomalous:
@@ -297,6 +307,7 @@ class ModelGenerator(object):
 			self._anomalyCount += 1
 		### End of TODO
 	
+		#NOTE: This function handles the case if p is a signal value, since 1.0-p isn't required for loops, as it is for _or()
 		if isAnomalousLoop:
 			p = self._getAbnormalLoopProb()
 		else:
@@ -326,7 +337,7 @@ class ModelGenerator(object):
 	"""
 	def CreateModel(self, n, a, graphmlPath, showPlot):
 		if a > 3:
-			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate")
+			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate for low-probability anomalies")
 
 		#while invalid models are generated, or models without enough anomalies, create and test a new one
 		isValidModel = False

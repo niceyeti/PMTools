@@ -34,6 +34,6 @@ for i in $(seq 2); do
 	done
 	
 	cd ..
-	exit
+
 	pwd
 done

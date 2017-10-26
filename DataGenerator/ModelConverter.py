@@ -13,6 +13,8 @@ Given a process-model string as output by ModelGenerator.py, this builds a graph
 the process-model using the igraph api. igraph is a powerful api for building, maintaining, traversing,
 and serializing graphs.
 
+NOTE: The converter is coded to handle probability signal values such as -1.0, which re used as placeholders so these values can be varied later
+
 Input: a process-model string as described by ModelGenerator.py
 Ouput: a directed, edge-weighted graph in graphML. Such a graph can then be transferred to any
 other object for generating data.
