@@ -17,7 +17,7 @@ modelPath="model.txt"
 
 cd $rootFolder
 
-for i in $(seq 2); do
+for i in $(seq 60); do
 	thisDir="T$i"
 	mkdir $thisDir
 	cd ../../DataGenerator
@@ -25,7 +25,7 @@ for i in $(seq 2); do
 	sh generate.sh 30 1000 ../Datasets/$rootFolder/$thisDir/$logPath ../Datasets/$rootFolder/$thisDir/$syntheticGraphmlPath ../Datasets/$rootFolder/$thisDir/$modelPath --noGen #Note no xes references; the xes logs are generated later, after possible addition of noise to the base log
 	cd ../Datasets/$rootFolder/$thisDir
 	#make the logs at various theta-trace values, in increments of 0.1
-	for thetaIncrement in $(seq 5 7); do
+	for thetaIncrement in $(seq 5 9); do
 		newDir=theta_$thetaIncrement
 		mkdir $newDir
 		thetaLog="$newDir/theta_$thetaIncrement.log"

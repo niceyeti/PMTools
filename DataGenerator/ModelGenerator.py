@@ -222,7 +222,7 @@ class ModelGenerator(object):
 	Given: 0.2, True, returns "0.2/True"
 	"""
 	def _buildProbExpr(self,p,isAnomalous):
-		return str(p)+"/"+str(isAnomalous)	
+		return str(p)+"/"+str(isAnomalous)
 		
 	###### The grammar rules. Note the ones that are always prepended with a non-empty activity, as a requirement.
 	"""
@@ -275,19 +275,19 @@ class ModelGenerator(object):
 			else:
 				leftProb = p
 				rightProb = p
-			print("LEFT: "+str(leftProb))
-			print("RIGHT: "+str(rightProb))
+			#print("LEFT: "+str(leftProb))
+			#print("RIGHT: "+str(rightProb))
 			leftProbExpr = self._buildProbExpr(leftProb, isLeftBranchAnomalous)
 			rightProbExpr = self._buildProbExpr(rightProb, isRightBranchAnomalous)
 		else:
 			p = self._getAbnormalOrProb()
 			if isRightBranchAnomalous:
 				 p = 1.0 - p
-			leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
-			rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
+			leftProbExpr = self._buildProbExpr(p, isLeftBranchAnomalous)
+			rightProbExpr = self._buildProbExpr(1.0 - p, isRightBranchAnomalous)
 		
-		leftProbExpr = self._buildProbExpr(p,isLeftBranchAnomalous)
-		rightProbExpr = self._buildProbExpr(1.0-p,isRightBranchAnomalous)
+		#leftProbExpr = self._buildProbExpr(leftProbExpr, isLeftBranchAnomalous)
+		#rightProbExpr = self._buildProbExpr(rightProbExpr, isRightBranchAnomalous)
 		probExpr = ":<"+leftProbExpr+","+rightProbExpr+">"
 		
 		if n2 > 0:

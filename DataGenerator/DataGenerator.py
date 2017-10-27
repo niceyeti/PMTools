@@ -442,14 +442,46 @@ class DataGenerator(object):
 		
 	"""
 	This goofy operation allows paramerizing the graphml model with different passed values of thetaTraces, for experimentation.
+	The iteration is weird since thetaTrace is a bifurcation value p, such that we take one branch with probability p, the other with 1.0 - p.
+	Hence you have to iterate all nodes and detect splits along their outgoing edges (choice behavior), and set their outgoing edges (max of
+	two) to p and 1.0 - p. Note its therefore critical that no node contain more than two outgoing edges, but this can likely be handled by 
+	simply setting each -1.0 probability trace; if only one remains, then only set it to p and don't worry about 1.0 - p.
+	
+	Multiple signal values will be required if thetaTrace is to be set with more granularity.
 	"""
 	def _setThetaTrace(self, thetaTrace):
-		for edge in self._graph.es:
-			if edge["probability"] <= 0.0:
-				print("RESETTING THETA TO : "+str(thetaTrace))
-				edge["probability"] = thetaTrace
-			if edge["probability"] > 1.0:
-				print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))
+		if thetaTrace < 0 or thetaTrace > 1.0:
+			print("ERROR _setThetaTrace not in range [0.0,1.0]: "+str(thetaTrace))	
+	
+		#see header; must iterate edges per nodes
+		for node in self._graph.vs:
+			#get this node's out-edges
+			edges = self._graph.es.select(_source=node.index)
+			if len(edges) > 0:
+				#This algorithm should cover the node transition probs regardless of the number of outputs, setting two to p and 1-p, or only one to p, if only one output remaining
+
+				#set at least one edge
+				for edge in edges:
+					if edge["probability"] < 0:
+						edge["probability"] = thetaTrace
+						break
+				#one edge set, look for another, set it to 1 - thetaTrace
+				for edge in edges:
+					if edge["probability"] < 0:
+						edge["probability"] = 1.0 - thetaTrace
+						break
+				
+				#set any remaining negative probs to thetaTrace
+				for edge in edges:
+					if edge["probability"] < 0:
+						edge["probability"] = thetaTrace
+						break
+				
+				#likely obsolete, but can catch unexpected prob settings
+				for edge in edges:
+					if edge["probability"] > 1.0:
+						print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))				
+
 
 	"""
 	Main driver for generating traces.
