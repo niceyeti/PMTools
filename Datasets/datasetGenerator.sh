@@ -17,7 +17,9 @@ modelPath="model.txt"
 
 cd $rootFolder
 
-for i in $(seq 60); do
+modelCount=60
+
+for i in $(seq $modelCount); do
 	thisDir="T$i"
 	mkdir $thisDir
 	cd ../../DataGenerator
@@ -28,7 +30,7 @@ for i in $(seq 60); do
 	for thetaIncrement in $(seq 5 9); do
 		newDir=theta_$thetaIncrement
 		mkdir $newDir
-		thetaLog="$newDir/theta_$thetaIncrement.log"
+		thetaLog="$newDir/$logPath"
 		echo making $thetaLog in $(pwd)
 		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement
 	done

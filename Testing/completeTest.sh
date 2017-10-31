@@ -45,7 +45,6 @@ if [ "$platform" = "Linux" ]; then	#reset paths if running linux
 	subdueFolder="../../subdue-5.2.2/subdue-5.2.2/src/"
 fi
 
-
 echo --dataDir param MUST be relative to the context of the completeTest script: $(pwd)
 echo Also, it must NOT end with slash
 sleep 1
@@ -80,7 +79,7 @@ for var in "$@"; do
 	if [[ $var == "--prettyPnml" ]]; then
 		prettyPnml="true"
 	fi
-	
+
 	#redirects data input, for automated testing; stored artifacts are also sent to this dir
 	if [[ $var == "--dataDir="* ]]; then
 		dataDir=$(echo $var | cut -f2 -d=)
@@ -109,7 +108,7 @@ if [ $generateData = "true" ]; then
 	##Generate a model containing appr. 30 activities, and generate 1000 traces from it.
 	sh ./generate.sh 30 1000 $logPath $syntheticGraphmlPath $syntheticModelPath
 fi
-exit
+
 #add noise to original/synthetic log as requested, before mining the new model
 if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric comparison
 	python LogNoiser.py -inputLog=$logPath -outputLog=$noisedLog -noiseRate=$noiseRate
@@ -117,14 +116,12 @@ if [ $noiseRate != "0.0" ]; then #note this is string comparison, not numeric co
 	echo Log path reset to $logPath after adding noise...
 fi
 
-echo $logPath
 #convert synthetic data to xes format for process mining
 python SynData2Xes.py -ifile=$logPath -ofile=$xesPath
 ##############################################################################
 
-
 #mine the process model given by the log
-###############################################################################
+##############################################################################
 ##Prep the java script to be passed to the ProM java cli; note the path parameters to the miningWrapper are relative to the ProM directory
 cd "../PromTools"
 #Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
@@ -150,7 +147,7 @@ cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
 
 
 #Convert the mined pnml model to graphml
-python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath #--show
 ################################################################################
 ##anomalize the model further???
 #

@@ -802,6 +802,9 @@ class AnomalyReporter(object):
 			precision =  float(len(truePositives)) / denom
 		else:
 			precision = 0.0
+		#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
+		#normal definition, but logically they are 1.0.
+			
 		
 		#calculate recall: TP / (TP + FN)
 		denom = float(len(truePositives) + len(falseNegatives))
