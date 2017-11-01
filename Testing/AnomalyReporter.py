@@ -822,12 +822,16 @@ class AnomalyReporter(object):
 		
 		#simple output for easy parsing
 		resultPath = os.path.dirname(self._resultPath)
-		if resultPath[-1] != os.sep:
+		print("Result path: >"+resultPath+"<")
+		if len(resultPath) == 0:
+			resultPath = "./"
+		elif resultPath[-1] != os.sep:
 			resultPath += os.sep
 		thresholdStr = str.format("{:.2f}",threshold)[2:]
 		resultPath += "bayesResult_"+thresholdStr+".txt"
 
 		with open(resultPath, "w+") as ofile:
+			trueAnomalies = sorted(list(trueAnomalies))
 			ofile.write("truePositives:"+str(len(truePositives))+":"+str(truePositives).replace("set()","{}")+"\n")
 			ofile.write("trueNegatives:"+str(len(trueNegatives))+":"+str(trueNegatives).replace("set()","{}")+"\n")
 			ofile.write("falsePositives:"+str(len(falsePositives))+":"+str(falsePositives).replace("set()","{}")+"\n")
@@ -836,7 +840,7 @@ class AnomalyReporter(object):
 			ofile.write("recall:"+str(recall)+"\n")
 			ofile.write("error:"+str(errorRate)+"\n")
 			ofile.write("accuracy:"+str(accuracy)+"\n")
-			ofile.write("trueAnomalies:"+str(trueAnomalies).replace("set()","{}")+"\n")
+			ofile.write("trueAnomalies:"+str(trueAnomalies)+"\n")
 			ofile.write("reportedAnomalyIds:"+str(reportedAnomalyIds).replace("set()","{}")+"\n")
 			ofile.write("fMeasure:"+str(fMeasure))
 
@@ -1024,7 +1028,7 @@ class AnomalyReporter(object):
 	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
 	@bayesThreshold: The bayesian metric threshold
 	"""
-	def _analyzeDendrogram(self, dendrogram, bayesThreshold):
+	def _analyzeDendrogram(self, dendrogram, bayesThreshold, bayesOnly=False):
 		threshold = 0.18
 		numTraces = float(len(dendrogram[0].IdMap.keys()))
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
@@ -1040,8 +1044,9 @@ class AnomalyReporter(object):
 		#print("id map: "+str(dendrogram[0].IdMap))
 
 		#Gets the distribution of a dendrogram, as a list of dictionaries
-		freqDist = self._getDendrogramDistribution(dendrogram)
-		print("FREQ DIST: "+str(freqDist))
+		if not bayesOnly:
+			freqDist = self._getDendrogramDistribution(dendrogram)
+			print("FREQ DIST: "+str(freqDist))
 		
 		#CRITICAL: The timing of this is arbitrary and represents the bad coupling in this code:
 		#At each compression iteration, edges are deleted; however edges incident to some substructure
@@ -1050,103 +1055,105 @@ class AnomalyReporter(object):
 		#self._amendDendrogramEdgeDists(dendrogram, freqDist)
 		
 		self._bayesianDendrogramAnomalyAnalysis(dendrogram, bayesThreshold)
-		self._directChildProbabilityAnalysis(dendrogram)
 		
-		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
-		dendrogramGraph = self._visualizeDendrogram(dendrogram)
-		#print the pagerank values per substructure
-		print("Reverse PageRank Substructure Analysis:")
-		for pair in sorted([(v["name"],v["reversePagerank"]) for v in dendrogramGraph.vs], key=lambda t: t[1], reverse=True):
-			#get the traces from the substructure name
-			traceIDs = sorted(self._getSubTraceIdsByName(dendrogram, pair[0]))
-			print(pair[0]+"  "+str(pair[1])[0:6]+"\t"+str(traceIDs))
-		
-		#maps substructure indices in the dendrogram (ints) to 
-		entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
-		print("Substructure entropy scores (net entropy increase):")
-		for item in sorted(entMap.items(), key=lambda tup: tup[1], reverse=True):
-			print("\t"+str(item)) 
-		cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
-		
-		#conditional probability based analysis
-		childDists = self._analyzeChildSubDistributions(dendrogram)
-		print("Child distributions: "+str(childDists))
-		
-		for i in range(len(dendrogram)):
-			ids = sorted(self._getSubTraceIds(dendrogram, i))
-			print(dendrogram[i].SubName+" ids:  "+str(ids))
+		if not bayesOnly:
+			self._directChildProbabilityAnalysis(dendrogram)
 			
+			#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
+			dendrogramGraph = self._visualizeDendrogram(dendrogram)
+			#print the pagerank values per substructure
+			print("Reverse PageRank Substructure Analysis:")
+			for pair in sorted([(v["name"],v["reversePagerank"]) for v in dendrogramGraph.vs], key=lambda t: t[1], reverse=True):
+				#get the traces from the substructure name
+				traceIDs = sorted(self._getSubTraceIdsByName(dendrogram, pair[0]))
+				print(pair[0]+"  "+str(pair[1])[0:6]+"\t"+str(traceIDs))
 			
-
-		#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
-		self._analyzeEdgeConnectivityDivergence(dendrogram)
-
-		#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
-		ancestryDict = {}
-		candidateLevel = dendrogram[candidateIndex]
-		candidateIds = candidateLevel.IdMap.keys()
-		candidateIdSubMap = {} #the mapping from candidateIds to their respective elementary substructure at or below the candidate level; that is, binds the candidateIds to the most-compression substructure
-		#build the candidate id-sub map, of ids to their most-compressing substructure (an index into the dendrogram levels)
-		for id in candidateIds:
-			level = int(candidateIndex)
-			nextId = str(id)
-			maxSubLevel = -1
-			#print("id: "+nextId+" maxcomps: "+str(dendrogram[level].MaxCompressedIds))
-			while level < len(dendrogram):
-				if nextId in dendrogram[level].MaxCompressedIds:
-					maxSubLevel = int(level)
-					break
-				else:
-					nextId = dendrogram[level].IdMap[nextId]
-				level += 1
-			candidateIdSubMap[id] = maxSubLevel
-		#the values of candidateIdSubMap, as a set, define the unique structures over which to search for anomalies and noise
-		print("Candidate Id Base Substructure map: "+str(candidateIdSubMap))
-		print("Candidate index: "+str(candidateIndex))
-		
-		#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
-		print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold)+" from level "+str(candidateIndex))
-		for id in candidateIds:
-			#backtrack through the layers, showing the ancestry of this id, along with compression stats
-			ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
-			cumulativeCompression = 0.0
-			i = candidateIndex - 1
-			curId = id #watch your py shallow copy...
-			while i >= 0:
-				curLevel = dendrogram[i]
-				#print("level: "+curLevel.Line)
-				curId = curLevel.ReverseIdMap[curId]
-				#check if id was in the compressed set on this iteration/level; if so, append it to ancestry with other statistical measures
-				if curId in curLevel.CompressedIds:
-					#calculate simple KL divergence
-					ancestry.append(i)
-					cumulativeCompression += curLevel.CompressionFactor
-				i -= 1
-			#all (if any) ancestor level-indices appended to ancestry, so just add this list for this id
-			ancestryDict[curId] = (ancestry,cumulativeCompression)
-
-		#print the anomaly ids' substructure relationships for readability
-		self._printAnomalyDerivations(dendrogram)
+			#maps substructure indices in the dendrogram (ints) to 
+			entMap = self._getSubstructureEntropyMap(dendrogram,freqDist)
+			print("Substructure entropy scores (net entropy increase):")
+			for item in sorted(entMap.items(), key=lambda tup: tup[1], reverse=True):
+				print("\t"+str(item)) 
+			cumEntMap = self._getCumulativeSubstructureEntropyMap(freqDist, entMap)
 			
-		#print, just to observe traits of anomalies
-		print("Candidate-id Ancestry")
-		print(str([(str(k),ancestryDict[str(k)]) for k in sorted([int(sk) for sk in ancestryDict.keys()])]))
+			#conditional probability based analysis
+			childDists = self._analyzeChildSubDistributions(dendrogram)
+			print("Child distributions: "+str(childDists))
+			
+			for i in range(len(dendrogram)):
+				ids = sorted(self._getSubTraceIds(dendrogram, i))
+				print(dendrogram[i].SubName+" ids:  "+str(ids))
+				
+				
 
-		ancestorSubs = set()
-		for pair in ancestryDict.items():
-			for id in pair[1][0]:
-				ancestorSubs.add(id)
+			#analyze the connectivity of edges surrounding substructures vs. the overall graph distribution
+			self._analyzeEdgeConnectivityDivergence(dendrogram)
 
-		print("Ancestry set: "+str(ancestorSubs))
+			#now build the ancestry dict, mapping each id in the anomaly set to a tuple containing a list of compressing substructure ids higher in the hierarchy, and the cumulative compression value
+			ancestryDict = {}
+			candidateLevel = dendrogram[candidateIndex]
+			candidateIds = candidateLevel.IdMap.keys()
+			candidateIdSubMap = {} #the mapping from candidateIds to their respective elementary substructure at or below the candidate level; that is, binds the candidateIds to the most-compression substructure
+			#build the candidate id-sub map, of ids to their most-compressing substructure (an index into the dendrogram levels)
+			for id in candidateIds:
+				level = int(candidateIndex)
+				nextId = str(id)
+				maxSubLevel = -1
+				#print("id: "+nextId+" maxcomps: "+str(dendrogram[level].MaxCompressedIds))
+				while level < len(dendrogram):
+					if nextId in dendrogram[level].MaxCompressedIds:
+						maxSubLevel = int(level)
+						break
+					else:
+						nextId = dendrogram[level].IdMap[nextId]
+					level += 1
+				candidateIdSubMap[id] = maxSubLevel
+			#the values of candidateIdSubMap, as a set, define the unique structures over which to search for anomalies and noise
+			print("Candidate Id Base Substructure map: "+str(candidateIdSubMap))
+			print("Candidate index: "+str(candidateIndex))
+			
+			#for each id among the candidates (outliers and anomalies), show their ancestry, rather their derivation in the dendrogram, if any
+			print("candidate ids: "+str(sorted(candidateIds))+" for threshold "+str(threshold)+" from level "+str(candidateIndex))
+			for id in candidateIds:
+				#backtrack through the layers, showing the ancestry of this id, along with compression stats
+				ancestry = [] #tuples of the form (SUB:numInstances:compFactor)
+				cumulativeCompression = 0.0
+				i = candidateIndex - 1
+				curId = id #watch your py shallow copy...
+				while i >= 0:
+					curLevel = dendrogram[i]
+					#print("level: "+curLevel.Line)
+					curId = curLevel.ReverseIdMap[curId]
+					#check if id was in the compressed set on this iteration/level; if so, append it to ancestry with other statistical measures
+					if curId in curLevel.CompressedIds:
+						#calculate simple KL divergence
+						ancestry.append(i)
+						cumulativeCompression += curLevel.CompressionFactor
+					i -= 1
+				#all (if any) ancestor level-indices appended to ancestry, so just add this list for this id
+				ancestryDict[curId] = (ancestry,cumulativeCompression)
 
-		#now, rather than searching over candidate ids, search over the space of anomalous substructures below candidate threshold
-		j  = len(dendrogram) - 1
-		ancestors = set()
-		while j > i:
-			#crawl up through dendrogram for all ancestors of this substructure
-			ancestors |= self._getAncestorSet(j,dendrogram)
-			j -= 1
-		print("Ancestors: "+str(ancestors))
+			#print the anomaly ids' substructure relationships for readability
+			self._printAnomalyDerivations(dendrogram)
+				
+			#print, just to observe traits of anomalies
+			print("Candidate-id Ancestry")
+			print(str([(str(k),ancestryDict[str(k)]) for k in sorted([int(sk) for sk in ancestryDict.keys()])]))
+
+			ancestorSubs = set()
+			for pair in ancestryDict.items():
+				for id in pair[1][0]:
+					ancestorSubs.add(id)
+
+			print("Ancestry set: "+str(ancestorSubs))
+
+			#now, rather than searching over candidate ids, search over the space of anomalous substructures below candidate threshold
+			j  = len(dendrogram) - 1
+			ancestors = set()
+			while j > i:
+				#crawl up through dendrogram for all ancestors of this substructure
+				ancestors |= self._getAncestorSet(j,dendrogram)
+				j -= 1
+			print("Ancestors: "+str(ancestors))
 
 	def _getTraceIdSet(self):
 		ids = set()
@@ -1208,9 +1215,9 @@ class AnomalyReporter(object):
 		return ancestors
 		
 	#Just a wrapper for building and then analyzing the dendrogram, for research
-	def _dendrogramAnalysis(self, path, bayesThreshold):
+	def _dendrogramAnalysis(self, path, bayesThreshold, bayesOnly):
 		dendrogram = self._buildDendrogram(path)
-		self._analyzeDendrogram(dendrogram, bayesThreshold)
+		self._analyzeDendrogram(dendrogram, bayesThreshold, bayesOnly)
 	
 	"""
 	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > threshold (eg 5%)
@@ -1284,11 +1291,12 @@ class AnomalyReporter(object):
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
 	"""
-	def CompileResults(self, bayesThreshold=0.07):
+	def CompileResults(self, bayesThreshold=0.07, bayesOnly=False):
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
-			dendrogram = self._dendrogramAnalysis(self._dendrogramPath, bayesThreshold)
-			self._compileDendrogramResult(self._dendrogramThreshold)
+			dendrogram = self._dendrogramAnalysis(self._dendrogramPath, bayesThreshold, bayesOnly)
+			if not bayesOnly:
+				self._compileDendrogramResult(self._dendrogramThreshold)
 			
 		#soon to be dead code: report recursive-gbad results
 		self._reportRecursiveAnomalies()
@@ -1380,6 +1388,7 @@ def main():
 	resultPath = sys.argv[3].split("=")[1]
 	dendrogramPath=None
 	bayesThreshold = 0.07
+	bayesOnly = False
 	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
 
@@ -1394,13 +1403,16 @@ def main():
 			traceGraphPath = arg.split("=")[1]
 		if "-bayesThreshold=" in arg:
 			bayesThreshold = float(arg.split("=")[1])
+		if "--bayesOnly" in arg:
+			bayesOnly = True
+			
 	if markovPath == "" or traceGraphPath == "":
 		usage()
 		exit()
 
 	#print("MARKOV: "+markovPath)
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold, traceGraphPath)
-	reporter.CompileResults(bayesThreshold)
+	reporter.CompileResults(bayesThreshold, bayesOnly)
 
 if __name__ == "__main__":
 	main()
