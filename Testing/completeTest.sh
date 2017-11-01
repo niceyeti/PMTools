@@ -263,7 +263,7 @@ cat $probResult >> $gbadResult
 #TODO: The dendrogram.txt is about the last file hardcoded within any scripts, such that it exists only in ./. This could be changed if needed; this call is just a bandaid.
 cp dendrogram.txt $dataDir/dendrogram.txt
 
-
+#could loop here, for different parameters, like bayesThreshold
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=$dataDir/dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
 
 #dont delete this: copy-paste this to re-run anomaly detection manually from cmd line

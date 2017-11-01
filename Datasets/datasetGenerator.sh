@@ -17,7 +17,7 @@ modelPath="model.txt"
 
 cd $rootFolder
 
-modelCount=60
+modelCount=3
 
 for i in $(seq $modelCount); do
 	thisDir="T$i"

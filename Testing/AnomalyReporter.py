@@ -824,10 +824,9 @@ class AnomalyReporter(object):
 		resultPath = os.path.dirname(self._resultPath)
 		if resultPath[-1] != os.sep:
 			resultPath += os.sep
-		resultPath += "bayesResult.txt"
-	
+		thresholdStr = str.format("{:.2f}",threshold)[2:]
+		resultPath += "bayesResult_"+thresholdStr+".txt"
 
-	
 		with open(resultPath, "w+") as ofile:
 			ofile.write("truePositives:"+str(len(truePositives))+":"+str(truePositives).replace("set()","{}")+"\n")
 			ofile.write("trueNegatives:"+str(len(trueNegatives))+":"+str(trueNegatives).replace("set()","{}")+"\n")
@@ -840,9 +839,7 @@ class AnomalyReporter(object):
 			ofile.write("trueAnomalies:"+str(trueAnomalies).replace("set()","{}")+"\n")
 			ofile.write("reportedAnomalyIds:"+str(reportedAnomalyIds).replace("set()","{}")+"\n")
 			ofile.write("fMeasure:"+str(fMeasure))
-		
-		
-		
+
 	"""
 	The bayesian definition of p(child|parent) is a bit wonky. This instead directly evaluates p(child|parent)
 	over all of a node's parents, according to the edges from parent to child. Let 'P-C' signify an edge between a given
@@ -1025,8 +1022,9 @@ class AnomalyReporter(object):
 	sort of "normal" behavior. Think of having to identify anomalies using no threshold in terms of the size-reduction of compression levels.
 	
 	@dendrogram: Simply a list of CompressionLevels, with the last item representing the lowest trace/subs in the dendrogram
+	@bayesThreshold: The bayesian metric threshold
 	"""
-	def _analyzeDendrogram(self, dendrogram):
+	def _analyzeDendrogram(self, dendrogram, bayesThreshold):
 		threshold = 0.18
 		numTraces = float(len(dendrogram[0].IdMap.keys()))
 		#for now, just look at the least 10% or so of compressing traces, without parsing trace-graphs for graph comparison
@@ -1051,7 +1049,7 @@ class AnomalyReporter(object):
 		#just happens to be the point when we have the information to restore the upstream edge distribution information.
 		#self._amendDendrogramEdgeDists(dendrogram, freqDist)
 		
-		self._bayesianDendrogramAnomalyAnalysis(dendrogram)
+		self._bayesianDendrogramAnomalyAnalysis(dendrogram, bayesThreshold)
 		self._directChildProbabilityAnalysis(dendrogram)
 		
 		#use the frequency distribution list to visualize the dendrogram as a graph (this embeds pageranks as well)
@@ -1210,9 +1208,9 @@ class AnomalyReporter(object):
 		return ancestors
 		
 	#Just a wrapper for building and then analyzing the dendrogram, for research
-	def _dendrogramAnalysis(self, path):
+	def _dendrogramAnalysis(self, path, bayesThreshold):
 		dendrogram = self._buildDendrogram(path)
-		self._analyzeDendrogram(dendrogram)
+		self._analyzeDendrogram(dendrogram, bayesThreshold)
 	
 	"""
 	For now, this is without much nuance. Given a dendrogram, backtrack until the size of the trace subset is > threshold (eg 5%)
@@ -1286,10 +1284,10 @@ class AnomalyReporter(object):
 	Opens traces and gbad output, parses the anomalies and other data from them, necessary
 	to compute false/true positives/negatives and then output them to file.
 	"""
-	def CompileResults(self):
+	def CompileResults(self, bayesThreshold=0.07):
 		#compile and report the dendrogram results separately; this is sufficient for determining if the dendrogram-based methods even work
 		if self._dendrogramPath != None:
-			dendrogram = self._dendrogramAnalysis(self._dendrogramPath)
+			dendrogram = self._dendrogramAnalysis(self._dendrogramPath, bayesThreshold)
 			self._compileDendrogramResult(self._dendrogramThreshold)
 			
 		#soon to be dead code: report recursive-gbad results
@@ -1381,6 +1379,7 @@ def main():
 	logPath = sys.argv[2].split("=")[1]
 	resultPath = sys.argv[3].split("=")[1]
 	dendrogramPath=None
+	bayesThreshold = 0.07
 	if len(sys.argv) >= 5 and "--dendrogram=" in sys.argv[4]:
 		dendrogramPath = sys.argv[4].split("=")[1]
 
@@ -1393,13 +1392,15 @@ def main():
 			markovPath = arg.split("=")[1]
 		if "-traceGraphs=" in arg:
 			traceGraphPath = arg.split("=")[1]
+		if "-bayesThreshold=" in arg:
+			bayesThreshold = float(arg.split("=")[1])
 	if markovPath == "" or traceGraphPath == "":
 		usage()
 		exit()
 
 	#print("MARKOV: "+markovPath)
 	reporter = AnomalyReporter(gbadPath, logPath, resultPath, markovPath, dendrogramPath, dendrogramThreshold, traceGraphPath)
-	reporter.CompileResults()
+	reporter.CompileResults(bayesThreshold)
 
 if __name__ == "__main__":
 	main()

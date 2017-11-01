@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for i in {1..60}; do
+for i in {51..52}; do
 	modelDir=../Datasets/Test/T$i
 	for j in {5..9}; do
 		testDir="$modelDir/theta_$j"
