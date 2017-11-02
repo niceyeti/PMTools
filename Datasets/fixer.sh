@@ -13,8 +13,7 @@ for i in $(seq 60); do
 		newDir=theta_$thetaIncrement
 		cd $newDir
 		#mv "theta_$thetaIncrement.log" testTraces.log
-		rm bayesResult.txt
-		rm bayesResult_07.txt
+		rm bayesResult*
 		cd ..
 	done
 	cd ..

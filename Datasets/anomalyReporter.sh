@@ -12,7 +12,7 @@ for i in $(seq 60); do
 	for thetaIncrement in $(seq 5 9); do
 		thetaDir=theta_$thetaIncrement
 		cd $thetaDir
-		for increment in $(seq 5 5 20); do
+		for increment in $(seq 2 2 20); do
 			threshold=$(awk "BEGIN {print $increment / 100}")
 			echo "threshold: $threshold"
 			python ../../../../Testing/AnomalyReporter.py -gbadResult=gbadResult.txt -logFile=testTraces.log -resultFile=anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=markovModel.py -traceGraphs=traceGraphs.py -bayesThreshold=$threshold --bayesOnly

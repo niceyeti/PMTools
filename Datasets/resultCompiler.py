@@ -33,15 +33,15 @@ def _getMetricMeans(resultDict, metric):
 	print("xyz dim: "+str(xyz.shape))
 	
 	row = 0
-	for theta in resultDict.keys():
+	for theta in sorted(resultDict.keys()):
 		col = 0
-		for bayesThreshold in resultDict[theta].keys():
+		for bayesThreshold in sorted(resultDict[theta].keys()):
 			vals = [result[metric] for result in resultDict[theta][bayesThreshold]]
 			mean = float(sum(vals)) / float(len(vals))
 			xyz[row,col] = mean
 			col += 1
 		row += 1
-			
+
 	return xyz
 	
 """
@@ -53,7 +53,13 @@ def plot3dMetric(resultDict, metric):
 	
 	xyz = _getMetricMeans(resultDict, metric)
 	xs = [i for i in range(len(resultDict.keys()))]
+	xlabels = [str(f) for f in sorted([float(key.split("_")[1])/10.0 for key in resultDict.keys()])]
 	ys = [i for i in range(len(list(resultDict.items())[0][1].keys()))]
+	ylabels = [str(f) for f in sorted([float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()])]
+	
+	#print(str(xlabels))
+	#print(str(ylabels))
+	#exit()
 	#xs = [float(key.split("_")[1]) / 10.0 for key in resultDict.keys()]
 	#ys = [float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()]	
 	#xs = [x for x in range(xyz.shape[0])]
@@ -71,9 +77,44 @@ def plot3dMetric(resultDict, metric):
 	#		Z[row,col] = xyz[row,col]
 	
 	ax.plot_surface(X, Y, xyz.T, rstride=1, cstride=1)
-	
-	print(str(xyz))
+	ax.set_zlabel(metric[0].upper()+metric[1:])
+	plt.xticks(xs, xlabels, rotation=60)
+	plt.yticks(ys, ylabels, rotation=60)
+	ax.set_xlabel('Theta Trace',labelpad=10)
+	ax.set_ylabel('Bayes Threshold', labelpad=12)
+	#print(str(xyz))
 	plt.show()
+	
+"""
+The results of this experiment are three dimensional, since we have two parameters
+to vary: theta_trace and alpha_bayes. This plots a performance metric wrt only one of these
+parameters, collapsing/summing the other.
+
+For a given metric (recall, precision, accuracy), this plots that metric on
+the y axis, and the wrt the xaxis (theta_trace or bayes_threshold).
+
+@resultDict: The results dictionary, with theta trace first keys, bayes threshold second keys
+@metric: "recall", "precision", "accuracy", or "fMeasure"
+@xaxis: The parameter to use as an input, such that @metric is a function of this. Valid values are only "thetaTrace" and "bayesThreshold".
+"""
+def plot2DMetric(resultDict, metric, xaxis):
+	pass
+	#ys = []
+	#if "trace" in xaxis.lower():
+	#	
+	#elif "bayes" in xaxis.lower():
+	#	
+	#else:
+	#	print("ERROR xaxis not found in plt2DMetric:"+xaxis)
+		
+		
+		
+
+
+
+
+
+
 	
 """
 Hard-coded iteration of the data, and results therein.
@@ -95,7 +136,7 @@ def IterateBayesianResults(rootDir="Test"):
 	
 	#iterate all the models
 	for modelNumber in range(1,60):
-		modelDir = rootDir + os.sep + "T"+str(modelNumber)
+		modelDir = rootDir + os.sep + "T" + str(modelNumber)
 		#iterate the theta_trace values for this model
 		for fname in os.listdir(modelDir):
 			if "theta_" in fname:
@@ -119,6 +160,9 @@ def IterateBayesianResults(rootDir="Test"):
 results = IterateBayesianResults()
 
 plot3dMetric(results, "accuracy")
+plot3dMetric(results, "fMeasure")
+plot3dMetric(results, "recall")
+plot3dMetric(results, "precision")
 
 
 
