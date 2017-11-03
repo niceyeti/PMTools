@@ -84,38 +84,7 @@ def plot3dMetric(resultDict, metric):
 	ax.set_ylabel('Bayes Threshold', labelpad=12)
 	#print(str(xyz))
 	plt.show()
-	
-"""
-The results of this experiment are three dimensional, since we have two parameters
-to vary: theta_trace and alpha_bayes. This plots a performance metric wrt only one of these
-parameters, collapsing/summing the other.
 
-For a given metric (recall, precision, accuracy), this plots that metric on
-the y axis, and the wrt the xaxis (theta_trace or bayes_threshold).
-
-@resultDict: The results dictionary, with theta trace first keys, bayes threshold second keys
-@metric: "recall", "precision", "accuracy", or "fMeasure"
-@xaxis: The parameter to use as an input, such that @metric is a function of this. Valid values are only "thetaTrace" and "bayesThreshold".
-"""
-def plot2DMetric(resultDict, metric, xaxis):
-	pass
-	#ys = []
-	#if "trace" in xaxis.lower():
-	#	
-	#elif "bayes" in xaxis.lower():
-	#	
-	#else:
-	#	print("ERROR xaxis not found in plt2DMetric:"+xaxis)
-		
-		
-		
-
-
-
-
-
-
-	
 """
 Hard-coded iteration of the data, and results therein.
 
@@ -157,13 +126,67 @@ def IterateBayesianResults(rootDir="Test"):
 
 	return results
 
+"""
+It is useful to examine the variance of a metric, for a particular bayesThreshold and fixed theta_trace.
+Hence, fix theta_trace, and plot the 2d slice at that value, with variance bars at each bayesThreshold point,
+over all 60 models.
+"""
+def plot2DVariance(statDict, metric):
+	#plot variance for highest and least theta trace value
+	
+	highestTheta = sorted(statDict.keys())[-1]
+	lowestTheta = sorted(statDict.keys())[0]
+	
+	ysHighMu = [statDict[highestTheta][key][metric+"_mu"] for key in sorted(statDict[highestTheta].keys())]
+	ysLowMu = [statDict[lowestTheta][key][metric+"_mu"] for key in sorted(statDict[lowestTheta].keys())]
+	ysHighVar = [statDict[highestTheta][key][metric+"_var"] for key in sorted(statDict[highestTheta].keys())]
+	ysLowVar = [statDict[lowestTheta][key][metric+"_var"] for key in sorted(statDict[lowestTheta].keys())]
+	xs = [i for i in range(len(ysHighMu))]
+	xlabels = ["0."+key.split("_")[1].replace(".txt","") for key in sorted(statDict[highestTheta].keys())]
+	#plt.plot(xs, ysHigh, color="r")
+	#plt.plot(xs, ysLow, color="b")
+	plt.errorbar(xs, ysHighMu, yerr=ysHighVar, color="r")
+	plt.errorbar(xs, ysLowMu, yerr=ysLowVar, color="b")
+	plt.xticks(xs, xlabels)
+	plt.title(metric[0].upper()+metric[1:]+" Variance")
+	plt.legend(["theta_trace 0."+highestTheta.split("_")[-1], "theta_trace 0."+lowestTheta.split("_")[-1]], loc="best")
+	plt.show()
+	
+	
+"""
+The results dict has outer keys thetaTraces and inner keys bayesThreshold, and values are the 60 or so Result objects for that
+fixed thetaTrace and bayesThreshold value. This calculates the variance of these values at each fixed point, which is simply
+the variance over all 60 results (and for each metric). These are stored in a new dictionary with the same outer key structure
+as @results, but with keys for each metric: accuracy_var, recall_var, etc.
+"""
+def CalculateResultBayesStatDict(results):
+	metrics = ["recall", "precision", "accuracy", "fMeasure"]
+	statDict = dict()
+	
+	for thetaTrace in sorted(results.keys()):
+		statDict[thetaTrace] = dict()
+		for bayesThreshold in sorted(results[thetaTrace].keys()):
+			statDict[thetaTrace][bayesThreshold] = dict()
+			ptResults = results[thetaTrace][bayesThreshold]
+			for metric in metrics:
+				mean = sum([result[metric] for result in ptResults]) / float(len(ptResults))
+				variance = sum([float(result[metric] - mean)**2 for result in ptResults]) / float(len(ptResults))
+				statDict[thetaTrace][bayesThreshold][metric+"_var"] = variance
+				statDict[thetaTrace][bayesThreshold][metric+"_mu"] = mean
+				
+	return statDict
+	
 results = IterateBayesianResults()
+statDict = CalculateResultBayesStatDict(results)
 
 plot3dMetric(results, "accuracy")
-plot3dMetric(results, "fMeasure")
 plot3dMetric(results, "recall")
 plot3dMetric(results, "precision")
-
+plot3dMetric(results, "fMeasure")
+plot2DVariance(statDict, "accuracy")
+plot2DVariance(statDict, "precision")
+plot2DVariance(statDict, "recall")
+plot2DVariance(statDict, "fMeasure")
 
 
 

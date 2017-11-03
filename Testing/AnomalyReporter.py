@@ -816,7 +816,7 @@ class AnomalyReporter(object):
 		#f -measure
 		denom = precision + recall
 		if denom > 0.0:
-			fMeasure = precision * recall * 2 / (precision + recall)
+			fMeasure = (precision * recall * 2) / denom
 		else:
 			fMeasure = 0.0
 		
