@@ -8,9 +8,12 @@ import sys
 import numpy as np
 
 
+#Reads a single result file and returns a dict of ("metric":value) pairs
 def _readResultFile(resultPath):
 	result = dict()
 	targets = ["precision:","recall:", "accuracy:", "error:", "fMeasure:"]
+	fpCt = 0
+	tnCt = 0
 	
 	with open(resultPath, "r") as resultFile:
 		for line in resultFile:
@@ -18,9 +21,23 @@ def _readResultFile(resultPath):
 				param = line.split(":")[0]
 				value = float(line.split(":")[1])
 				result[param] = value
+			#derives fpr from other reported values in the file
+			if "falsepositives:" in line.lower():
+				fpCt = float(line.split(":")[1])
+			if "truenegatives:" in line.lower():
+				tnCt = float(line.split(":")[1])
 				
+	if fpCt > 0 or tnCt > 0:
+		result["fpr"] = fpCt / (fpCt + tnCt)
+	else:
+		#this shouldn't ever happen, since it requires the outcome that all predictions be true-positives and/or false-negatives
+		print("WARN fpCt and tnCt == 0 in _readResultFile for result: "+resultPath)
+		result["fpr"] = 0.0
+
 	return result
 
+
+	
 """
 Utility for getting the x, y, z values, averaged over all models, for a particular metric, such as "fMeasure".
 The z values are averaged over the list of Result objects for a particular x/y index.
@@ -151,6 +168,38 @@ def plot2DVariance(statDict, metric):
 	plt.title(metric[0].upper()+metric[1:]+" Variance")
 	plt.legend(["theta_trace 0."+highestTheta.split("_")[-1], "theta_trace 0."+lowestTheta.split("_")[-1]], loc="best")
 	plt.show()
+
+"""
+Evaluates the TPR and FPR at each value of bayes_threshold in the @result dict keys.
+
+"""
+def plotROCCurve(results):
+	
+	print("WARNING plotROCCurve may modify @results dict; leaving this warning as a reminder")
+	#get TPR and FPR for every value of bayes threshold in @results dict inner keys over all theta values
+	rocDict = dict()
+	
+	bayesThresholdResults = dict() #dict containing all results lists for all theta values and all 60 models
+	for theta in sorted(results.keys()):
+		for bayesThreshold in sorted(results[theta].keys()):
+			if bayesThreshold not in rocDict.keys():
+				rocDict[bayesThreshold] = []
+			
+			#append Results
+			rocDict[bayesThreshold] += results[theta][bayesThreshold]
+
+	xs = []	#fpr averages
+	ys = []	#tpr averages
+	for key in sorted(rocDict.keys()):
+		threshResults = rocDict[key] #get Results for this threshold level
+		print("Result count: "+str(len(threshResults)))
+		avgFpr = sum([result["fpr"] for result in threshResults]) / float(len(threshResults))
+		xs.append(avgFpr)
+		avgTpr = sum([result["recall"] for result in threshResults]) / float(len(threshResults))
+		ys.append(avgTpr)
+	
+	plt.plot(xs, ys, marker = 'o')
+	plt.show()
 	
 	
 """
@@ -178,17 +227,17 @@ def CalculateResultBayesStatDict(results):
 	
 results = IterateBayesianResults()
 statDict = CalculateResultBayesStatDict(results)
-
-plot3dMetric(results, "accuracy")
-plot3dMetric(results, "recall")
-plot3dMetric(results, "precision")
-plot3dMetric(results, "fMeasure")
+#
+#plot3dMetric(results, "accuracy")
+#plot3dMetric(results, "recall")
+#plot3dMetric(results, "precision")
+#plot3dMetric(results, "fMeasure")
 plot2DVariance(statDict, "accuracy")
 plot2DVariance(statDict, "precision")
 plot2DVariance(statDict, "recall")
 plot2DVariance(statDict, "fMeasure")
 
-
+plotROCCurve(results)
 
 					
 					

@@ -805,6 +805,12 @@ class AnomalyReporter(object):
 		#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
 		#normal definition, but logically they are 1.0.
 			
+		#false positive rate; needed for doing roc curves
+		#denom = float(len(falsePositives) + len(trueNegatives))
+		#if denom > 0:
+		#	fpr = float(len(falsePositives)) / denom
+		#else:
+		#	fpr = 0.0
 		
 		#calculate recall: TP / (TP + FN)
 		denom = float(len(truePositives) + len(falseNegatives))
