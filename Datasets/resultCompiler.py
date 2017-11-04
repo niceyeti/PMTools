@@ -44,10 +44,10 @@ The z values are averaged over the list of Result objects for a particular x/y i
 """
 def _getMetricMeans(resultDict, metric):
 	xdim = len(resultDict.keys())
-	print(">>>: "+list(resultDict)[0])
+	#print(">>>: "+list(resultDict)[0])
 	ydim = len(list(resultDict.items())[0][1].keys())
 	xyz = np.zeros(shape=(xdim, ydim), dtype=np.float32)
-	print("xyz dim: "+str(xyz.shape))
+	#print("xyz dim: "+str(xyz.shape))
 	
 	row = 0
 	for theta in sorted(resultDict.keys()):
@@ -60,6 +60,26 @@ def _getMetricMeans(resultDict, metric):
 		row += 1
 
 	return xyz
+
+"""
+Plotting labels is a nuisance when they get too dense. This utility slices and returns
+the xs and labels at the sliced indices.
+"""
+def _sliceLabels(xs, labels):
+	step = int(len(xs) / 10)
+	if step > 1:
+		slicedLabels = []
+		slicedXs = []
+		for i in range(len(labels)):
+			if i % step == 0:
+				slicedLabels.append(labels[i])
+				slicedXs.append(xs[i])
+	else:
+		slicedXs = xs
+		slicedLabels = labels
+				
+	return slicedXs, slicedLabels
+
 	
 """
 Plots a particular metric, such as "accuracy" or "fMeasure", over all models.
@@ -67,40 +87,63 @@ Plots a particular metric, such as "accuracy" or "fMeasure", over all models.
 def plot3dMetric(resultDict, metric):
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection="3d")
-	
 	xyz = _getMetricMeans(resultDict, metric)
+	#make the labels, max of 10 so they aren't crowded; these xs are not plotted, they are just for indexing the labels
 	xs = [i for i in range(len(resultDict.keys()))]
 	xlabels = [str(f) for f in sorted([float(key.split("_")[1])/10.0 for key in resultDict.keys()])]
 	ys = [i for i in range(len(list(resultDict.items())[0][1].keys()))]
 	ylabels = [str(f) for f in sorted([float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()])]
-	
-	#print(str(xlabels))
-	#print(str(ylabels))
-	#exit()
-	#xs = [float(key.split("_")[1]) / 10.0 for key in resultDict.keys()]
-	#ys = [float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()]	
-	#xs = [x for x in range(xyz.shape[0])]
-	#ys = [y for y in range(xyz.shape[1])]
-	X, Y = np.meshgrid(xs, ys)
-	
+	X, Y = np.meshgrid(xs, ys)	
 	Z = np.zeros(shape=(X.shape[0], Y.shape[1]))
+
+	if len(xs) > 10:
+		xs, xlabels = _sliceLabels(xs, xlabels)
+	if len(ys) > 10:
+		ys, ylabels = _sliceLabels(ys, ylabels)
+		#step = int(len(ylabels) / 10)
+		#if step > 1:
+		#	slicedYLabels = []
+		#	slicedYs = []
+		#	for i in range(int(len(ylabels) / step)):
+		#		index = i * step
+		#		if index < len(ylabels):
+		#			slicedYLabels.append(ylabels[index])
+		#			slicedYs.append(ys[index])
+		#	ylabels = slicedYLabels
+		#	ys = slicedYs
+
 	print("X shape: "+str(X.shape)+" xs len: "+str(len(xs))+"\n"+str(X))
 	print("Y shape: "+str(Y.shape)+" ys len: "+str(len(ys))+"\n"+str(Y))
 	print("xyz shape: "+str(xyz.shape))
 	print("Z shape: "+str(Z.shape))
-	
-	#for row in range(xyz.shape[0]):
-	#	for col in range(xyz.shape[1]):
-	#		Z[row,col] = xyz[row,col]
+	print("xlabels: "+str(xlabels)+"xs: "+str(xs))
+	print("ylabels: "+str(ylabels)+"ys: "+str(ys))
 	
 	ax.plot_surface(X, Y, xyz.T, rstride=1, cstride=1)
 	ax.set_zlabel(metric[0].upper()+metric[1:])
 	plt.xticks(xs, xlabels, rotation=60)
 	plt.yticks(ys, ylabels, rotation=60)
+	title = metric[0].upper()+metric[1:].lower()
+	if "fmeasure" in title.lower():
+		title = title.replace("measure", "-measure")
+	plt.title(title)
 	ax.set_xlabel('Theta Trace',labelpad=10)
 	ax.set_ylabel('Bayes Threshold', labelpad=12)
 	#print(str(xyz))
+	plt.savefig(metric+"_3d.png")
 	plt.show()
+	
+	with open(metric+"_3d.txt", "w+") as of:
+		varDict = dict()
+		varDict["xs"] = X
+		varDict["ys"] = Y
+		varDict["zs"] = xyz.T
+		varDict["xticks"] = {"xs":xs, "xlabels":xlabels}
+		varDict["yticks"] = {"ys":ys, "ylabels":ylabels}
+		varDict["xlabel"] = "Theta Trace"
+		varDict["ylabel"] = "Bayes Threshold"
+		varDict["title"] = title
+		of.write(str(varDict))
 
 """
 Hard-coded iteration of the data, and results therein.
@@ -164,10 +207,26 @@ def plot2DVariance(statDict, metric):
 	#plt.plot(xs, ysLow, color="b")
 	plt.errorbar(xs, ysHighMu, yerr=ysHighVar, color="r")
 	plt.errorbar(xs, ysLowMu, yerr=ysLowVar, color="b")
+	xs, xlabels = _sliceLabels(xs, xlabels)
 	plt.xticks(xs, xlabels)
-	plt.title(metric[0].upper()+metric[1:]+" Variance")
-	plt.legend(["theta_trace 0."+highestTheta.split("_")[-1], "theta_trace 0."+lowestTheta.split("_")[-1]], loc="best")
+	title = metric[0].upper()+metric[1:]+" Variance"
+	plt.title(title)
+	legendList = ["theta_trace 0."+highestTheta.split("_")[-1], "theta_trace 0."+lowestTheta.split("_")[-1]]
+	plt.legend(legendList, loc="best")
+	plt.savefig(metric+"_2dVariance.png")
 	plt.show()
+
+	with open(metric+"_2dVariance.txt", "w+") as of:
+		varDict = dict()
+		varDict["xs"] = xs
+		varDict["ysHighMu"] = ysHighMu
+		varDict["ysHighVar"] = ysHighVar
+		varDict["ysLowMu"] = ysLowMu
+		varDict["ysLowVar"] = ysLowVar
+		varDict["xlabels"] = xlabels
+		varDict["title"] = title
+		varDict["legendList"] = legendList
+		of.write(str(varDict))
 
 """
 Evaluates the TPR and FPR at each value of bayes_threshold in the @result dict keys.
@@ -192,14 +251,22 @@ def plotROCCurve(results):
 	ys = []	#tpr averages
 	for key in sorted(rocDict.keys()):
 		threshResults = rocDict[key] #get Results for this threshold level
-		print("Result count: "+str(len(threshResults)))
+		#print("Result count: "+str(len(threshResults)))
 		avgFpr = sum([result["fpr"] for result in threshResults]) / float(len(threshResults))
 		xs.append(avgFpr)
 		avgTpr = sum([result["recall"] for result in threshResults]) / float(len(threshResults))
 		ys.append(avgTpr)
 	
+	plt.title("Receiver Operating Characteristic Curve")
 	plt.plot(xs, ys, marker = 'o')
+	plt.savefig("roc.png")
 	plt.show()
+	
+	with open("roc.txt", "w+") as of:
+		varDict = dict()
+		varDict["xs"] = xs
+		varDict["ys"] = ys
+		of.write(str(varDict))
 	
 	
 """
@@ -227,11 +294,11 @@ def CalculateResultBayesStatDict(results):
 	
 results = IterateBayesianResults()
 statDict = CalculateResultBayesStatDict(results)
-#
-#plot3dMetric(results, "accuracy")
-#plot3dMetric(results, "recall")
-#plot3dMetric(results, "precision")
-#plot3dMetric(results, "fMeasure")
+
+plot3dMetric(results, "accuracy")
+plot3dMetric(results, "recall")
+plot3dMetric(results, "precision")
+plot3dMetric(results, "fMeasure")
 plot2DVariance(statDict, "accuracy")
 plot2DVariance(statDict, "precision")
 plot2DVariance(statDict, "recall")
