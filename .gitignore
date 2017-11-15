@@ -12,7 +12,8 @@ SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
 
-Datasets/Test/
+Datasets/Test_0/
+Datesets/Test_1/
 Datasets/Temp/
 ~*
 Junk/*

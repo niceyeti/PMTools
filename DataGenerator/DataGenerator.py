@@ -83,13 +83,14 @@ class DataGenerator(object):
 				if not loopEdge["isTraversed"]:
 					loopEdge["isTraversed"] = True #mark the loop edge as traversed; this is only required on loop edges, to prevent endless recursion
 					pLoop = float(loopEdge["probability"])
-					r = float(random.randint(1,100)) / 100.0
-					if r <= pLoop:
-						transitionList.append((loopEdge, currentTime))
-						if "^_" not in curNode["label"]: # only update time step for non-empty transitions
-							currentTime += 1
-						curNode = self._graph.vs[loopEdge.target]
-						loopTaken = True
+					if pLoop > 0.0:
+						r = float(random.randint(1,100)) / 100.0
+						if r <= pLoop:
+							transitionList.append((loopEdge, currentTime))
+							if "^_" not in curNode["label"]: # only update time step for non-empty transitions
+								currentTime += 1
+							curNode = self._graph.vs[loopEdge.target]
+							loopTaken = True
 			#continue
 			
 			if not loopTaken:
@@ -146,16 +147,20 @@ class DataGenerator(object):
 					r = float(random.randint(1,100)) / 100.0 #generates a random float in range 0.01-1.00
 					pLeft = float(outEdges[0]["probability"])
 					pRight = float(outEdges[1]["probability"])
-					#detect and notify if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
-					if math.fabs((pLeft + pRight) - 1.0) > 0.01:
-						print("In OR WARNING possibly invalid probabilities detected. Edge probabilities do not sum to 1.0: "+str(pLeft)+" "+str(pRight)+"    Node: "+curNode["label"])
-						print("Out edges (MUST BE ONLY 2): "+str(outEdges))
+					pLeft = pLeft / (pLeft + pRight) #normalize probs; this can occur for instance if a given node has two outgoing OR edges, and one outgoing LOOP that has been traversed
+					pRight = pRight / (pRight + pLeft)
+					#OBSOLETE AFTER NORMALIZATION ABOVE: detect and notify if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
+					#if math.fabs((pLeft + pRight) - 1.0) > 0.01:
+					#	print("In OR WARNING possibly invalid probabilities detected. Edge probabilities do not sum to 1.0 +/- 0.01: "+str(pLeft)+" "+str(pRight)+"    Node: "+curNode["label"])
+					#	print("Out edges (MUST BE ONLY 2): "+str(outEdges))
 
 					#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
-					if r < pLeft: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
+					if r <= pLeft and pLeft > 0.0: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
 						randomEdge = outEdges[0]
-					else:
+					elif pRight > 0.0:
 						randomEdge = outEdges[1]
+					else:
+						randomEdge = outEdges[0]
 						
 					transitionList.append((randomEdge,currentTime))
 					if "^_" not in curNode["label"]: # only update time step for non-empty transitions
@@ -186,7 +191,6 @@ class DataGenerator(object):
 	Builds the graph and stores some of its basic info for querying.
 	"""
 	def _buildGraph(self, graphmlPath):
-	
 		self._graph = igraph.Graph.Read(graphmlPath)
 		#find and store the start and end nodes, so we don't have to look them up constantly
 		for v in self._graph.vs:
@@ -457,32 +461,85 @@ class DataGenerator(object):
 		for node in self._graph.vs:
 			#get this node's out-edges
 			edges = self._graph.es.select(_source=node.index)
-			if len(edges) > 0:
-				#This algorithm should cover the node transition probs regardless of the number of outputs, setting two to p and 1-p, or only one to p, if only one output remaining
 
-				#set at least one edge
-				for edge in edges:
-					if edge["probability"] < 0:
-						edge["probability"] = thetaTrace
-						break
-				#one edge set, look for another, set it to 1 - thetaTrace
-				for edge in edges:
-					if edge["probability"] < 0:
-						edge["probability"] = 1.0 - thetaTrace
-						break
+			#set all theta edges
+			for edge in edges:
+				if edge["probability"] < 0:
+					edge["probability"] = thetaTrace
+					
+			#normalize all edge probs
+			normal = float(sum(edge["probability"] for edge in edges))
+			for edge in edges:
+				edge["probability"] /= normal
+			
+			#likely obsolete, but can catch unexpected prob settings
+			for edge in edges:
+				if edge["probability"] > 1.0:
+					print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))				
+
+	"""
+	Sets the probability of all anomalous edges, which is trivial, since they are marked as such.
+	"""
+	def _setThetaAnomaly(self, thetaAnomaly):
+		if thetaAnomaly < 0 or thetaAnomaly > 1.0:
+			print("ERROR _setThetaAnomaly not in range [0.0,1.0]: "+str(thetaAnomaly))
+	
+		#see header; must iterate edges per nodes
+		for node in self._graph.vs:
+			#get this node's out-edges
+			edges = self._graph.es.select(_source=node.index)
+			if sum([1 for edge in edges if edge["isAnomalous"]]) > 0:  #only update if there is at least one anomalous edge; else this will overwrite thetaTrace values
+				if len(edges) == 1 and edges[0]["isAnomalous"]:
+					edges[0]["probability"] = 1.0 #an exception case: only one outgoing edge, so its probability is 1.0
+				else:
+					#if len(edges) > 1 and not edges[0]["isAnomalous"] and edges[1]["isAnomalous"]: #if a node has only one out-edge and is anomalous, it is just a sequential sub-acitivity of an existing anomaly, so setting its probability (1.0) is unnecessary
+					#This algorithm should cover the node transition probs regardless of the number of outputs, setting two to p and 1-p, or only one to p, if only one output remaining
+					#print("Edge Count: "+str(len(edges)))
+					#these calcs evenly portion probs over an arbitrary number of edges
+					for edge in edges:
+						if edge["isAnomalous"]:
+							edge["probability"] = thetaAnomaly	#normalization, below, works out the cases for multiple anomalous/non-anomalous edges for all cases
+						else:
+							edge["probability"] = 1.0 - thetaAnomaly
+
+					#normalize the probs
+					normal = float(sum([edge["probability"] for edge in edges]))
+					#print("Probs: "+str([edge["probability"] for edge in edges]))
+					if normal > 0:
+						for edge in edges:
+							edge["probability"] /= normal
+					
+					"""
+					anomCount = sum([1 for edge in edges if edge["isAnomalous"]])
+					if anomCount > 0:
+						pAnom = thetaAnomaly / float(anomCount)
+					else:
+						pAnom = thetaAnomaly
+
+					if anomCount > 0: #edge probs are only set if there is at least one anomaly
+						nonAnomCount = sum([1 for edge in edges if not edge["isAnomalous"]])
+						if nonAnomCount > 0:
+							pNotAnom = (1.0 - thetaAnomaly) / float(nonAnomCount)
+						else:
+							pNotAnom = 0.0
+							
+						for edge in edges:
+							if edge["isAnomalous"]:
+								edge["probability"] = pAnom
+							else:
+								edge["probability"] = pNotAnom
+								
+
+						#print(">>Probs: "+str([edge["probability"] for edge in edges]))
+								
+					#this should be unreachable, but I want to detect it anyway, as a sanity check.
+					#The code above handles two-outedges for anomaly/non-anomalous paths, but not for out-edges >= 3
+					#For this case, all that would need to be fixed would be to set anomalous branch to thetaAnomaly, then equally portion out non-anomalous edges with 1.0 - thetaAnomaly
+					#if setTheta and len(edges) >= 3:
+					#	print("WARNING: out-edges for anomalous branch >= 3 in len. See code. Need to handle this case; only bifurcations currently supported.")
+					"""
 				
-				#set any remaining negative probs to thetaTrace
-				for edge in edges:
-					if edge["probability"] < 0:
-						edge["probability"] = thetaTrace
-						break
-				
-				#likely obsolete, but can catch unexpected prob settings
-				for edge in edges:
-					if edge["probability"] > 1.0:
-						print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))				
-
-
+		#exit()
 	"""
 	Main driver for generating traces.
 	
@@ -504,7 +561,7 @@ class DataGenerator(object):
 	
 	@thetaTrace: A value between 0.0 and 1.0. If passed, this parameter will overwrite all negative @probability values in the graph.
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log", thetaTrace=None):
+	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log", thetaTrace=None, thetaAnomaly=None):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -514,7 +571,12 @@ class DataGenerator(object):
 		self._buildGraph(graphmlPath)
 		
 		if thetaTrace is not None:
-			self._setThetaTrace(thetaTrace)
+			self._setThetaTrace(thetaTrace) #must be done before thetaAnomaly is written
+			
+		if thetaAnomaly is not None:
+			self._setThetaAnomaly(thetaAnomaly)		
+		
+		#self._normalizeProbs()
 		
 		#NOTE: starting at 1 is not arbitrary. Ultimately this guarantees the trace-no labels span 1-n, which is a requirement for GBAD/SUBDUE input files later on
 		i = 1
@@ -586,19 +648,25 @@ def main():
 		exit()
 
 	thetaTrace = None
+	thetaAnomaly = None
 	for arg in sys.argv:
 		if "--thetaTrace=" in arg:
 			thetaTrace = float(arg.split("=")[1])
-			if thetaTrace <= 0.0 or thetaTrace >= 1.0:
-				print("ERROR thetaTrace otu of range (0.0,1.0): "+str(thetaTrace))
+			if thetaTrace <= 0.0 or thetaTrace > 1.0:
+				print("ERROR thetaTrace out of range (0.0,1.0): "+str(thetaTrace))
 				thetaTrace = None
+		if "--thetaAnomaly=" in arg:
+			thetaAnomaly = float(arg.split("=")[1])
+			if thetaAnomaly < 0.0 or thetaAnomaly > 1.0:
+				print("ERROR thetaAnomaly out of range (0.0,1.0): "+str(thetaAnomaly))
+				thetaAnomaly = None
 
 	ofile = "./syntheticTraces.log"
 	if len(sys.argv) >= 4 and "-ofile=" in sys.argv[3]:
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
-	generator.GenerateTraces(graphFile, n, ofile, thetaTrace)
+	generator.GenerateTraces(graphFile, n, ofile, thetaTrace, thetaAnomaly)
 
 if __name__ == "__main__":
 	main()

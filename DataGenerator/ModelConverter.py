@@ -102,7 +102,7 @@ class ModelConverter(object):
 			print("ERROR v2Id < 0 in _addEdge()")
 			
 		#only add a directed edge if it doesn't already exist. Note this prevents multigraphs.
-		if not self._edgeExists(v1Id,v2Id):
+		if not self._edgeExists(v1Id, v2Id):
 			if isAnomalousEdge:
 				color = self._anomalyColor
 			else:

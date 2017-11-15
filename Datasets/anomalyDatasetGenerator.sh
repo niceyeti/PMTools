@@ -19,17 +19,16 @@ modelCount=60
 
 for i in $(seq $modelCount); do
 	thisDir="T$i"
-	cd ../Datasets/$rootFolder/$thisDir
+	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.2
 	for thetaIncrement in $(seq 0 2 20); do
-		newDir=anomaly_theta_$thetaIncrement
-		mkdir $newDir
+		newDir=anomaly_$thetaIncrement
+		#mkdir $newDir
 		thetaLog="$newDir/$logPath"
-		echo making $thetaLog in $(pwd)
-		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --anomalyTheta=0.$thetaIncrement
+		anomalyTheta=$(awk "BEGIN {print $thetaIncrement / 100}")
+		echo making $thetaLog in $(pwd) and anomaly theta $anomalyTheta
+		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaAnomaly=$anomalyTheta --thetaTrace=0.50
 	done
-
 	cd ..
-
 	pwd
 done
