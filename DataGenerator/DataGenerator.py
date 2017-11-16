@@ -476,7 +476,7 @@ class DataGenerator(object):
 			for edge in edges:
 				if edge["probability"] > 1.0:
 					print("WARNING PROB > 1.0 DETECT IN _setThetaTrace: " +str(edge["probability"]))				
-
+					
 	"""
 	Sets the probability of all anomalous edges, which is trivial, since they are marked as such.
 	"""
@@ -508,38 +508,37 @@ class DataGenerator(object):
 					if normal > 0:
 						for edge in edges:
 							edge["probability"] /= normal
-					
-					"""
-					anomCount = sum([1 for edge in edges if edge["isAnomalous"]])
-					if anomCount > 0:
-						pAnom = thetaAnomaly / float(anomCount)
-					else:
-						pAnom = thetaAnomaly
 
-					if anomCount > 0: #edge probs are only set if there is at least one anomaly
-						nonAnomCount = sum([1 for edge in edges if not edge["isAnomalous"]])
-						if nonAnomCount > 0:
-							pNotAnom = (1.0 - thetaAnomaly) / float(nonAnomCount)
-						else:
-							pNotAnom = 0.0
+	#A node is not anomalous if it has only anomalous incoming edges
+	def _isAnomalousNode(self, node):
+		edges = self._graph.es.select(_target=node.index)
+		
+		return node["name"] != "START" and sum([1 for edge in edges if edge["isAnomalous"]]) == len(edges)
 							
-						for edge in edges:
-							if edge["isAnomalous"]:
-								edge["probability"] = pAnom
-							else:
-								edge["probability"] = pNotAnom
-								
-
-						#print(">>Probs: "+str([edge["probability"] for edge in edges]))
-								
-					#this should be unreachable, but I want to detect it anyway, as a sanity check.
-					#The code above handles two-outedges for anomaly/non-anomalous paths, but not for out-edges >= 3
-					#For this case, all that would need to be fixed would be to set anomalous branch to thetaAnomaly, then equally portion out non-anomalous edges with 1.0 - thetaAnomaly
-					#if setTheta and len(edges) >= 3:
-					#	print("WARNING: out-edges for anomalous branch >= 3 in len. See code. Need to handle this case; only bifurcations currently supported.")
-					"""
+	"""
+	Overwrites anomalous nodes in the model with the labels/names of non-anomalous nodes.
+	Note that since this is done to the model, this is upstream of trace generation, and these new labels are fixed.
+	"""
+	def _makeAnomaliesNonUniq(self):
+		anomalousActivities = set()
+		nonAnomalousActivities = set()
+		
+		#get the anomalous and non-anomalous node sets
+		for node in self._graph.vs:
+			if self._isAnomalousNode(node):
+				anomalousActivities.add(node["label"])
+			else:
+				nonAnomalousActivities.add(node["label"])
 				
-		#exit()
+		nonAnomalousActivities = list(nonAnomalousActivities)
+		print("ANOMALOUS ACTIVITIES: "+str(anomalousActivities))
+		print("NON ANOMALOUS ACTIVITIES: "+str(nonAnomalousActivities))
+		
+		for node in self._graph.vs:
+			if self._isAnomalousNode(node):
+				node["label"] = nonAnomalousActivities[ random.randint(0,len(nonAnomalousActivities)-1) ]
+				node["name"] = node["label"]
+
 	"""
 	Main driver for generating traces.
 	
@@ -560,8 +559,11 @@ class DataGenerator(object):
 	traces. *****From a research perspective, this is a very important disclosure*****
 	
 	@thetaTrace: A value between 0.0 and 1.0. If passed, this parameter will overwrite all negative @probability values in the graph.
+	@thetaAnomaly: Overwrites anomalous edge probabilities, which are known because edges are labeled with isAnomalous values
+	@useNonUniqAnomalies: If true, anomalous activities in the model will be overwritten (before data generation) with non-anomalous activities, forcing SUBDUE to look
+	for structural anomalies, not just potentially trivial-to-find uniquely labeled anomalies
 	"""
-	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log", thetaTrace=None, thetaAnomaly=None):
+	def GenerateTraces(self, graphmlPath, n, outputPath="./syntheticTraces.log", thetaTrace=None, thetaAnomaly=None, useNonUniqAnomalies=False):
 		if not graphmlPath.endswith(".graphml"):
 			print("ERROR graphml path is not a graphml file. Path must end with '.graphml'.")
 			return
@@ -575,7 +577,10 @@ class DataGenerator(object):
 			
 		if thetaAnomaly is not None:
 			self._setThetaAnomaly(thetaAnomaly)		
-		
+
+		if useNonUniqAnomalies:
+			self._makeAnomaliesNonUniq()
+			
 		#self._normalizeProbs()
 		
 		#NOTE: starting at 1 is not arbitrary. Ultimately this guarantees the trace-no labels span 1-n, which is a requirement for GBAD/SUBDUE input files later on
@@ -647,6 +652,7 @@ def main():
 		usage()
 		exit()
 
+	useNonUniqAnomalies = False
 	thetaTrace = None
 	thetaAnomaly = None
 	for arg in sys.argv:
@@ -660,13 +666,15 @@ def main():
 			if thetaAnomaly < 0.0 or thetaAnomaly > 1.0:
 				print("ERROR thetaAnomaly out of range (0.0,1.0): "+str(thetaAnomaly))
 				thetaAnomaly = None
+		if "--useNonUniqAnomalies" in arg: #the models contain uniq anomaly labels; this directs that anomalous vertices be overwritten in the model with non-anomalous activities, randomly selected
+			useNonUniqAnomalies = True				
 
 	ofile = "./syntheticTraces.log"
 	if len(sys.argv) >= 4 and "-ofile=" in sys.argv[3]:
 		ofile = sys.argv[3].split("=")[1]
 
 	generator = DataGenerator()
-	generator.GenerateTraces(graphFile, n, ofile, thetaTrace, thetaAnomaly)
+	generator.GenerateTraces(graphFile, n, ofile, thetaTrace, thetaAnomaly, useNonUniqAnomalies)
 
 if __name__ == "__main__":
 	main()

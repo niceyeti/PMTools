@@ -17,22 +17,23 @@ modelPath="model.txt"
 
 cd $rootFolder
 
-modelCount=3
+modelCount=60
 
-for i in $(seq $modelCount); do
+for i in $(seq 51 1 51); do
 	thisDir="T$i"
-	mkdir $thisDir
-	cd ../../DataGenerator
+	#mkdir $thisDir
+	#cd ../../DataGenerator
 	#loop and create sixty datasets, each in their own folder
-	sh generate.sh 30 1000 ../Datasets/$rootFolder/$thisDir/$logPath ../Datasets/$rootFolder/$thisDir/$syntheticGraphmlPath ../Datasets/$rootFolder/$thisDir/$modelPath --noGen #Note no xes references; the xes logs are generated later, after possible addition of noise to the base log
-	cd ../Datasets/$rootFolder/$thisDir
+	#sh generate.sh 30 1000 ../Datasets/$rootFolder/$thisDir/$logPath ../Datasets/$rootFolder/$thisDir/$syntheticGraphmlPath ../Datasets/$rootFolder/$thisDir/$modelPath --noGen #Note no xes references; the xes logs are generated later, after possible addition of noise to the base log
+	#cd ../Datasets/$rootFolder/$thisDir
+	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.1
 	for thetaIncrement in $(seq 5 9); do
 		newDir=theta_$thetaIncrement
-		mkdir $newDir
+		#mkdir $newDir
 		thetaLog="$newDir/$logPath"
 		echo making $thetaLog in $(pwd)
-		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement
+		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement --useNonUniqAnomalies
 	done
 	
 	cd ..

@@ -17,7 +17,7 @@ cd $rootFolder
 
 modelCount=60
 
-for i in $(seq $modelCount); do
+for i in $(seq 45 1 45); do
 	thisDir="T$i"
 	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.2
@@ -27,7 +27,7 @@ for i in $(seq $modelCount); do
 		thetaLog="$newDir/$logPath"
 		anomalyTheta=$(awk "BEGIN {print $thetaIncrement / 100}")
 		echo making $thetaLog in $(pwd) and anomaly theta $anomalyTheta
-		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaAnomaly=$anomalyTheta --thetaTrace=0.50
+		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaAnomaly=$anomalyTheta --thetaTrace=0.50 --useNonUniqAnomalies
 	done
 	cd ..
 	pwd
