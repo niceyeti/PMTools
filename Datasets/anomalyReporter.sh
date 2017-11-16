@@ -5,7 +5,7 @@
 rootFolder="Test_0"
 cd $rootFolder
 
-for i in $(seq 60); do
+for i in $(seq 17 60); do
 	thisDir="T$i"
 	cd $thisDir
 	
