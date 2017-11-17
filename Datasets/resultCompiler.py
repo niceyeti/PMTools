@@ -8,6 +8,7 @@ import sys
 import numpy as np
 
 
+
 #Reads a single result file and returns a dict of ("metric":value) pairs
 def _readResultFile(resultPath):
 	result = dict()
@@ -80,20 +81,22 @@ def _sliceLabels(xs, labels):
 				
 	return slicedXs, slicedLabels
 
-	
 """
 Plots a particular metric, such as "accuracy" or "fMeasure", over all models.
 """
-def plot3dMetric(resultDict, metric):
+def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection="3d")
 	xyz = _getMetricMeans(resultDict, metric)
 	#make the labels, max of 10 so they aren't crowded; these xs are not plotted, they are just for indexing the labels
 	xs = [i for i in range(len(resultDict.keys()))]
-	xlabels = [str(f) for f in sorted([float(key.split("_")[1])/10.0 for key in resultDict.keys()])]
+	if "anomaly" in xlabel.lower():
+		xlabels = [str(f) for f in sorted([float(key.split("_")[1])/100.0 for key in resultDict.keys()])]
+	else:
+		xlabels = [str(f) for f in sorted([float(key.split("_")[1])/10.0 for key in resultDict.keys()])]
 	ys = [i for i in range(len(list(resultDict.items())[0][1].keys()))]
 	ylabels = [str(f) for f in sorted([float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()])]
-	X, Y = np.meshgrid(xs, ys)	
+	X, Y = np.meshgrid(xs, ys)
 	Z = np.zeros(shape=(X.shape[0], Y.shape[1]))
 
 	if len(xs) > 10:
@@ -119,6 +122,10 @@ def plot3dMetric(resultDict, metric):
 	print("xlabels: "+str(xlabels)+"xs: "+str(xs))
 	print("ylabels: "+str(ylabels)+"ys: "+str(ys))
 	
+	#force plot to 0.0 to 1.0 static z-range
+	axes = plt.gca()
+	axes.set_zlim([0.0,1.0])
+	
 	ax.plot_surface(X, Y, xyz.T, rstride=1, cstride=1)
 	ax.set_zlabel(metric[0].upper()+metric[1:])
 	plt.xticks(xs, xlabels, rotation=60)
@@ -127,21 +134,23 @@ def plot3dMetric(resultDict, metric):
 	if "fmeasure" in title.lower():
 		title = title.replace("measure", "-measure")
 	plt.title(title)
-	ax.set_xlabel('Theta Trace',labelpad=10)
-	ax.set_ylabel('Bayes Threshold', labelpad=12)
+	ax.set_xlabel(xlabel,labelpad=10)
+	ax.set_ylabel(ylabel, labelpad=12)
 	#print(str(xyz))
-	plt.savefig(metric+"_3d.png")
+	if resultDir[-1] != os.sep:
+		resultDir += os.sep
+	plt.savefig(resultDir+metric+"_3d.png")
 	plt.show()
 	
-	with open(metric+"_3d.txt", "w+") as of:
+	with open(resultDir+metric+"_3d.txt", "w+") as of:
 		varDict = dict()
 		varDict["xs"] = X
 		varDict["ys"] = Y
 		varDict["zs"] = xyz.T
 		varDict["xticks"] = {"xs":xs, "xlabels":xlabels}
 		varDict["yticks"] = {"ys":ys, "ylabels":ylabels}
-		varDict["xlabel"] = "Theta Trace"
-		varDict["ylabel"] = "Bayes Threshold"
+		varDict["xlabel"] = xlabel
+		varDict["ylabel"] = ylabel
 		varDict["title"] = title
 		of.write(str(varDict))
 
@@ -160,7 +169,7 @@ values, this returns a double dictionary of lists: first key = theta value, seco
 theta+bayesThreshold key. A "Result" object is nothing more than a dictionary of key-value pairs like "recall":0.23... as defined in each
 bayesResult.txt file.
 """
-def IterateBayesianResults(rootDir="Test"):
+def IterateBayesianResults(rootDir="Test", thetaFolderPrefix="theta_"):
 	results = dict()
 	
 	#iterate all the models
@@ -168,7 +177,7 @@ def IterateBayesianResults(rootDir="Test"):
 		modelDir = rootDir + os.sep + "T" + str(modelNumber)
 		#iterate the theta_trace values for this model
 		for fname in os.listdir(modelDir):
-			if "theta_" in fname:
+			if thetaFolderPrefix in fname:
 				thetaDir = modelDir + os.sep + fname
 				if fname not in results.keys():
 					results[fname] = dict()
@@ -191,7 +200,7 @@ It is useful to examine the variance of a metric, for a particular bayesThreshol
 Hence, fix theta_trace, and plot the 2d slice at that value, with variance bars at each bayesThreshold point,
 over all 60 models.
 """
-def plot2DVariance(statDict, metric):
+def plot2DVariance(statDict, metric, resultDir):
 	#plot variance for highest and least theta trace value
 	
 	highestTheta = sorted(statDict.keys())[-1]
@@ -213,10 +222,12 @@ def plot2DVariance(statDict, metric):
 	plt.title(title)
 	legendList = ["theta_trace 0."+highestTheta.split("_")[-1], "theta_trace 0."+lowestTheta.split("_")[-1]]
 	plt.legend(legendList, loc="best")
-	plt.savefig(metric+"_2dVariance.png")
+	if resultDir[-1] != os.sep:
+		resultDir += os.sep
+	plt.savefig(resultDir+metric+"_2dVariance.png")
 	plt.show()
 
-	with open(metric+"_2dVariance.txt", "w+") as of:
+	with open(resultDir+metric+"_2dVariance.txt", "w+") as of:
 		varDict = dict()
 		varDict["xs"] = xs
 		varDict["ysHighMu"] = ysHighMu
@@ -232,7 +243,10 @@ def plot2DVariance(statDict, metric):
 Evaluates the TPR and FPR at each value of bayes_threshold in the @result dict keys.
 
 """
-def plotROCCurve(results):
+def plotROCCurve(results, resultDir):
+	
+	if resultDir[-1] != os.sep:
+		resultDir += os.sep
 	
 	print("WARNING plotROCCurve may modify @results dict; leaving this warning as a reminder")
 	#get TPR and FPR for every value of bayes threshold in @results dict inner keys over all theta values
@@ -247,8 +261,9 @@ def plotROCCurve(results):
 			#append Results
 			rocDict[bayesThreshold] += results[theta][bayesThreshold]
 
-	xs = []	#fpr averages
-	ys = []	#tpr averages
+	# the [0.0,1.0] are to shove in the endpoints of an ROC curve, just for plotting
+	xs = [0.0,1.0]	#fpr averages
+	ys = [0.0,1.0]	#tpr averages
 	for key in sorted(rocDict.keys()):
 		threshResults = rocDict[key] #get Results for this threshold level
 		#print("Result count: "+str(len(threshResults)))
@@ -257,17 +272,30 @@ def plotROCCurve(results):
 		avgTpr = sum([result["recall"] for result in threshResults]) / float(len(threshResults))
 		ys.append(avgTpr)
 	
-	plt.title("Receiver Operating Characteristic Curve")
+	xyTuples = [(xs[i], ys[i]) for i in range(len(xs))]
+	xyTuples = sorted(xyTuples, key=lambda tup: tup[1])
+	xs = [xyTuples[i][0] for i in range(len(xyTuples))]
+	ys = [xyTuples[i][1] for i in range(len(xyTuples))]
+	
+	#force plot 0.0 to 1.0 range
+	axes = plt.gca()
+	axes.set_xlim([0.0,1.0])
+	axes.set_ylim([0.0,1.0])
+	
+	plt.title("ROC Curve")
 	plt.plot(xs, ys, marker = 'o')
-	plt.savefig("roc.png")
+	#the reference line
+	xs = [0.0, 1.0]
+	ys = [0.0, 1.0]
+	plt.plot(xs, ys, '--',color='orange')
+	plt.savefig(resultDir+"roc.png")
 	plt.show()
 	
-	with open("roc.txt", "w+") as of:
+	with open(resultDir+"roc.txt", "w+") as of:
 		varDict = dict()
 		varDict["xs"] = xs
 		varDict["ys"] = ys
 		of.write(str(varDict))
-	
 	
 """
 The results dict has outer keys thetaTraces and inner keys bayesThreshold, and values are the 60 or so Result objects for that
@@ -292,19 +320,43 @@ def CalculateResultBayesStatDict(results):
 				
 	return statDict
 	
-results = IterateBayesianResults()
+	
+if len(sys.argv) < 1:
+	print("Insufficient arguments passed. Need --rootDir=")
+
+thetaFolderPrefix = "theta_"
+rootDir = "Test"
+for arg in sys.argv:
+	if "--rootDir=" in arg:
+		rootDir = arg.split("=")[1]
+	if "--thetaFolderPrefix=" in arg:
+		thetaFolderPrefix = arg.split("=")[1]
+
+if "anomaly" in thetaFolderPrefix.lower():
+	xlabel = "Theta-Anomaly"
+	resultDir = rootDir+"_AnomalyTheta_Results"+os.sep
+else:
+	xlabel = "Theta-Trace"
+	resultDir = rootDir+"_ThetaTrace_Results"+os.sep
+ylabel = "Bayes Threshold"
+
+if not os.path.exists(resultDir):
+	os.mkdir(resultDir)
+
+results = IterateBayesianResults(rootDir, thetaFolderPrefix)
 statDict = CalculateResultBayesStatDict(results)
 
-plot3dMetric(results, "accuracy")
-plot3dMetric(results, "recall")
-plot3dMetric(results, "precision")
-plot3dMetric(results, "fMeasure")
-plot2DVariance(statDict, "accuracy")
-plot2DVariance(statDict, "precision")
-plot2DVariance(statDict, "recall")
-plot2DVariance(statDict, "fMeasure")
 
-plotROCCurve(results)
+plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
+plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
+plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
+plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
+plot2DVariance(statDict, "accuracy", resultDir)
+plot2DVariance(statDict, "precision", resultDir)
+plot2DVariance(statDict, "recall", resultDir)
+plot2DVariance(statDict, "fMeasure", resultDir)
+
+plotROCCurve(results, resultDir)
 
 					
 					

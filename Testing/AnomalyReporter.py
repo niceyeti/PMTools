@@ -801,6 +801,7 @@ class AnomalyReporter(object):
 		if denom > 0.0:
 			precision =  float(len(truePositives)) / denom
 		else:
+			print("WARNING: precision denominator is zero in AnomalyReporter.py")
 			precision = 0.0
 		#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
 		#normal definition, but logically they are 1.0.
@@ -817,6 +818,7 @@ class AnomalyReporter(object):
 		if denom > 0.0:
 			recall = float(len(truePositives)) / denom
 		else:
+			print("WARNING: recall denominator is zero in AnomalyReporter.py")
 			recall = 0.0
 
 		#f -measure
@@ -828,11 +830,11 @@ class AnomalyReporter(object):
 		
 		#simple output for easy parsing
 		resultPath = os.path.dirname(self._resultPath)
-		print("Result path: >"+resultPath+"<")
 		if len(resultPath) == 0:
 			resultPath = "./"
 		elif resultPath[-1] != os.sep:
 			resultPath += os.sep
+		print("Result path: >"+resultPath+"<")
 		thresholdStr = str.format("{:.2f}",threshold)[2:]
 		resultPath += "bayesResult_"+thresholdStr+".txt"
 
@@ -1341,14 +1343,18 @@ class AnomalyReporter(object):
 
 		#calculate precision: TP / (FP + TP)
 		denom = float(len(self._falsePositives) + len(self._truePositives))
-		if denom > 0.0:
+		if self._truePositives == 0:
+			self._precision = 0.0
+		elif denom > 0.0:
 			self._precision =  float(len(self._truePositives)) / denom
 		else:
 			self._precision = 0.0
 		
 		#calculate recall: TP / (TP + FN)
 		denom = float(len(self._truePositives) + len(self._falseNegatives))
-		if denom > 0.0:
+		if self._truePositives == 0:
+			self._recall = 0.0
+		elif denom > 0.0:
 			self._recall = float(len(self._truePositives)) / denom
 		else:
 			self._recall = 0.0

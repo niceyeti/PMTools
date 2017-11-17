@@ -183,7 +183,6 @@ cat /dev/null > $mpsResult
 cat /dev/null > $probResult
 cat /dev/null > $fsmResult
 
-
 cat /dev/null > dendrogram.txt
 
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
