@@ -244,7 +244,7 @@ class Retracer(object):
 	according to the graph.
 
 	NOTE: The graph (mined process model) may be incomplete or inaccurate, depending on the mining algorithm that generated it. Hence
-	the sequence may not be a valid walk! I detect and warn about these case because it isn't yet clear how to handle them. For now,
+	the sequence may not be a valid walk! I detect and warn about these cases because it isn't yet clear how to handle them. For now,
 	search across the vertices for the dest vertex of a broken walk; if not found, advance to the next suffix and repeat the search. Continue 
 	until we find a valid re-entry point, or the sequence is exhausted. If the symbol is not an activity in the graph activities, consider this an insertion-anomaly,
 	and output an edge to it, and continue.
