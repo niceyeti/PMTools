@@ -14,6 +14,9 @@ Testing/SUB*
 
 Datasets/Test_0/
 Datasets/Test_1/
+Datasets/Test_2/
+Datasets/Test_0_ThetaTrace_Results/
+Datasets/Test_1_ThetaTrace_Results/
 Datasets/Test_0_AnomalyTheta_Results/
 Datasets/Test_1_AnomalyTheta_Results/
 Datasets/Test_0_TraceTheta_Results/
