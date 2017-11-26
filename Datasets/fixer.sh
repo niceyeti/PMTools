@@ -14,7 +14,8 @@ for i in $(seq 60); do
 		cd $newDir
 		#echo $newDir
 		#mv "theta_$thetaIncrement.log" testTraces.log
-		rm *
+		rm bayesResult_07.txt
+		pwd
 		cd ..
 	done
 	
@@ -22,12 +23,13 @@ for i in $(seq 60); do
 		newDir=anomaly_$thetaIncrement
 		cd $newDir
 		#mv "theta_$thetaIncrement.log" testTraces.log
-		rm *
+		rm bayesResult_07.txt
 		#echo $newDir
+		pwd
 		cd ..
 	done
 
 	cd ..
 
-	pwd
+	#pwd
 done

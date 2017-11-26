@@ -17,13 +17,14 @@ cd $rootFolder
 
 modelCount=60
 
-for i in $(seq 45 1 45); do
+for i in $(seq 57 1 57); do
 	thisDir="T$i"
+	#mkdir $thisDir
 	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.2
 	for thetaIncrement in $(seq 0 2 20); do
 		newDir=anomaly_$thetaIncrement
-		#mkdir $newDir
+		mkdir $newDir
 		thetaLog="$newDir/$logPath"
 		anomalyTheta=$(awk "BEGIN {print $thetaIncrement / 100}")
 		echo making $thetaLog in $(pwd) and anomaly theta $anomalyTheta
