@@ -31,7 +31,7 @@ and a filter string, this removes all edges connected to vertices containing the
 The resolution procedure then sutures all input edges and output edges from the removed nodes. So logically
 is A,B,C have in-links to D, and D has outlinks to E,F,G, and if the filter-string is 'D', then D will be removed
 and replaced by direct links from A,B,C to E,F,G.
-"""
+
 def _resolveEdges(arcs, vertexDict, filterString):
 	placeIds = [pId for pId in vertexDict if filterString in vertexDict[pId]]
 	for pId in placeIds:
@@ -46,8 +46,10 @@ def _resolveEdges(arcs, vertexDict, filterString):
 			for inNode in inLinkNodes:
 				arcs.append((inNode,outNode))
 	return arcs
-	
+"""	
 """
+OBSOLETE: converted to bfs, below, for more safety
+
 A recursive utility for getting all activities attached to a given set of outlinks.
 
 An outlink leads to a place, tau-split, or an activity node. So think of an outlink as a graph
@@ -63,13 +65,14 @@ goes to the first set of nodes.
 @d: current call depth, for bounding search if cycling
 
 Returns: The ids of the activities at the terminal points of these outlinks
-"""
+
 def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
 	activities = []
+	bound = 40
 	
 	#recursion depth check: probably cycling
-	if d > 40:
-		print("WARNING Recursive depth-bound of 20 struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
+	if d > bound:
+		print("WARNING Recursive depth-bound of "+str(bound)+" struck in _getSuccessorActivityIds() of Pnml2Graphml.py!")
 		return []
 	
 	#get all activities at the terminal points of these outlinks
@@ -84,9 +87,56 @@ def _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0):
 			activities.append(outLink[1])
 
 	return activities
+"""
+"""
+BFS version of prior function, which is much safer/clearer vs recursion. 
+This relies on distinguishing activity nodes from places/transitions, which is done
+by checking for 'TAU' or "PLACE" in the node name.
+
+Returns: The activity names of all activities immediately reachable from some node, given its outLinks. Graphs
+are cyclic, so note that 'reachable' may include upstream nodes. This function basically just dissolves the place/transition
+junk in between activities.
+
+@outLinks: The outlinks of a given node
+@arcs: The full set of links given by the pnml model
+@vertexDict: the dict of id keys and string vertex names
+"""
+def _getSuccessorActivityIdsBFS(outLinks, arcs, vertexDict):
+
+	successorIds = set()
+	frontier = [arc[1] for arc in outLinks]
+	visitedIds = set()
+	
+	while len(frontier) > 0:
+		#pop front
+		curId = frontier[0]
+		frontier = frontier[1:]
+
+		nodeName = vertexDict[curId]
+		#if this id represents a place or tau construct, add dest ids of its outlinks to q, if not visited
+		if "TAU_" in nodeName or "PLACE_" in nodeName:
+			#get all dest ids of this node's outlinks
+			outLinkIds = [arc[1] for arc in arcs if arc[0] == curId]
+			#filter visited id's
+			outLinkIds = [id for id in outLinkIds if id not in visitedIds]
+			#add any ids to frontier
+			if len(outLinkIds) > 0:
+				frontier = frontier + outLinkIds			
+		else: #else this is a base successor (activity node), so add the id to activities, and ignore its successors
+			successorIds.add(curId)
+			
+		#add this id to visited set
+		visitedIds.add(curId)
+	
+	return successorIds
+
+
 	
 """
 Utility for converting pnml format file into a graphml structure for easier transmission and storage.
+
+See pnml.jpg in this directory for an example visual of the relationship between taus, places, transitions, etc,
+upon which this code is based.
 
 @pnmlPath: Path to a pnml file
 @opath: Path to the output location for the graphml representation of the pnml
@@ -182,7 +232,7 @@ def Convert(pnmlPath):
 	endNodeId = endIds[0]
 	
 	#re-mark the end and start node text; currently they are TAU_ or PLACE_ typed
-	#start with a critical error check; this algorithm REQUIRES the final node detected above is not an activity, hence only a tansition or a place.
+	#start with a critical error check; this algorithm REQUIRES the final node detected above is not an activity, hence only a transition or a place.
 	if "TAU_" not in vertexDict[startNodeId] and "PLACE_" not in vertexDict[startNodeId]:
 		print("ERROR start node not TAU or PLACE see code")
 	if "TAU_" not in vertexDict[endNodeId] and "PLACE_" not in vertexDict[endNodeId]:
@@ -202,7 +252,7 @@ def Convert(pnmlPath):
 	while len(frontier) > 0:
 		#pop first node on frontier list
 		curNodeId = frontier[0]
-		if len(frontier) <= 1: #pop
+		if len(frontier) <= 1: #pop front
 			frontier = []
 		else:
 			frontier = frontier[1:]
@@ -211,13 +261,15 @@ def Convert(pnmlPath):
 			#get all immediate outlinks from this node
 			outLinks = [arc for arc in arcs if arc[0] == curNodeId]
 			#recursively get all activity node ids to which these outlinks point (following all intermediate taus, places, etc)
-			successors = _getSuccessorActivityIds(outLinks,arcs,vertexDict,d=0)
+			#successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict, d=0)
+			#bfs successor getter
+			successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict)
 			#print(str(successors))
 			
 			for successor in successors:
 				#expand frontier with unvisited nodes
 				if successor not in visited:
-					frontier.append(successor)
+					frontier.append(successor)  #note, frontier is only appended with activity ids
 				#add link between nodes
 				edgeList.append((vertexDict[curNodeId], vertexDict[successor]))
 
