@@ -250,12 +250,10 @@ def Convert(pnmlPath):
 	visited = []
 	frontier = [startNodeId]
 	while len(frontier) > 0:
+		print("HERE")
 		#pop first node on frontier list
 		curNodeId = frontier[0]
-		if len(frontier) <= 1: #pop front
-			frontier = []
-		else:
-			frontier = frontier[1:]
+		frontier = frontier[1:]
 
 		if curNodeId not in visited:
 			#get all immediate outlinks from this node
@@ -264,7 +262,7 @@ def Convert(pnmlPath):
 			#successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict, d=0)
 			#bfs successor getter
 			successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict)
-			#print(str(successors))
+			print(str(successors))
 			
 			for successor in successors:
 				#expand frontier with unvisited nodes
@@ -302,7 +300,7 @@ Plotting, for visual analysis.
 def ShowGraph(graph,opath):
 	#the sugiyama layout tends to have the best layout for a cyclic, left-to-right graph, if imperfect
 	layout = graph.layout("sugiyama")
-	#layout = self._graph.layout("kk") #options: kk, fr, tree, rt
+	layout = graph.layout("kk") #options: kk, fr, tree, rt
 	#see: http://stackoverflow.com/questions/24597523/how-can-one-set-the-size-of-an-igraph-plot
 	igraph.plot(graph, opath.replace(".graphml",".png"), layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
 	igraph.plot(graph, layout = layout, bbox = (1000,1000), vertex_size=35, vertex_label_size=15)
@@ -311,6 +309,7 @@ def ShowGraph(graph,opath):
 def usage():
 	print("Usage: python Pnml2Graphml.py [input file] [output path for graphml file] [optional: --show to show the graph]")
 
+#print(str(sys.argv))
 if len(sys.argv) < 3:
 	print("ERROR incorrect number of arguments passed to Pnml2Graphml.py. Exiting.")
 	usage()
