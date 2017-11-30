@@ -23,6 +23,8 @@ import os
 """
 Returns a very simple list of traces, with the traces formatted as:
 	['3', [['Pete', 'register request'], ['Mike', 'examine casually'], ...
+	
+Leave all the print statements in here. They are useful for spotting out-of-memory areas for very large logs (>~250mb)
 """
 def ReadXes(path, activityKey=None):
 	traceKey = "concept:name"
@@ -31,7 +33,9 @@ def ReadXes(path, activityKey=None):
 	resourceKey = "org:resource"
 	traces = []
 	
+	print("Parsing xes...")
 	tree = ET.parse(path)
+	print("Parse complete. Getting root...")
 	root = tree.getroot()
 	#get the namespace prefix; this nuisance has to be prepended to all xpath clauses, as in "{namespace}actor/{namespace}actor/...", but the dict can be passed instead
 	ns = ""
@@ -39,8 +43,12 @@ def ReadXes(path, activityKey=None):
 		print("setting namespace to: "+str(root.tag)[0:root.tag.find("}")+1])
 		ns = str(root.tag)[0:root.tag.find("}")+1]
 
+	print("Using xes namespace (empty string is okay): >"+ns+"<")
+	print("Getting trace nodes...")
+	traceNodes = root.findall(ns+'trace')
+	print("Found "+str(len(traceNodes))+" trace nodes to process.")
 	#just grab the traces/events directly; keep it simple
-	for trace in root.findall(ns+'trace'):
+	for trace in traceNodes:
 		#print("TRACE: "+str(trace))
 		#get the name of this trace
 		for item in trace.findall(ns+"string"):
@@ -51,9 +59,11 @@ def ReadXes(path, activityKey=None):
 		for event in trace.findall(ns+"event"):
 			#print("EVENT: "+str(event))
 			#gets the data defining this event
+			eventResource = "" #may be overlooked, in xes files for which event resourceKey isn't defined
 			for item in event.findall(ns+"string"):
 				#print("STRS: "+str(event))
 				if "key" in item.attrib:
+					#print("keys"+str(item.attrib))
 					#get the resource (typically a person or staff title)
 					if item.attrib["key"] == resourceKey:
 						eventResource = item.attrib["value"]
@@ -196,6 +206,7 @@ def main():
 		open(xesPath,"r").close()
 		open(outputPath,"w+").close()
 		#get the traces as a list
+		print("Reading xes file from "+xesPath)
 		traces = ReadXes(xesPath, activityKey)
 		print(str(traces)[0:1000])
 		WriteTraces(traces, outputPath)

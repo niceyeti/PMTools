@@ -1,6 +1,9 @@
 #!/bin/sh
 
 #For passing an xes file with some real-world data: --xesPath=[path]
+#Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes"
+
+
 
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
@@ -48,12 +51,12 @@ echo --dataDir param MUST be relative to the context of the completeTest script:
 echo Also, it must NOT end with slash
 sleep 1
 
-
 #get the command line arg switches, if any
 deleteSubstructures="false"
 recursiveIterations="0"
 xesPath="empty"
 dataDir="../RealData/results"
+
 for var in "$@"; do
 
 	#get the number of recursive iterations, if any
@@ -74,7 +77,6 @@ for var in "$@"; do
 	if [[ $var == "--dataDir="* ]]; then
 		dataDir=$(echo $var | cut -f2 -d=)
 		logPath="$dataDir/testTraces.log"
-		#xesPath="$dataDir/testTraces.xes"
 		syntheticModelPath="$dataDir/model.txt"
 		syntheticGraphmlPath="$dataDir/syntheticModel.graphml"
 		pnmlPath="$dataDir/testModel.pnml"
@@ -91,10 +93,6 @@ if [ "$var" = "empty" ]; then
 	echo No xesPath passed. Exiting
 	exit
 fi
-
-#convert synthetic data to xes format for process mining
-#python ../DataGenerator/SynData2Xes.py -ifile=$logPath -ofile=$xesPath
-##############################################################################
 
 #mine the process model given by the log
 ##############################################################################
@@ -119,9 +117,12 @@ cd "../scripts/Testing"
 cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
 
 #Convert the mined pnml model to graphml
-python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
+python $pnmlConverterPath $pnmlPath $minedGraphmlPath #--show   #dont show for super huge graphs, common for real data
 
-exit
+echo "XES PATH $xesPath    LOG PATH $logPath"
+python ../ConversionScripts/xes2log.py $xesPath $logPath --activityKey=concept:name
+
+
 ################################################################################
 ##Generate sub-graphs from the mined graphml model
 python $subgraphGeneratorPath --graphml=$minedGraphmlPath --tracePath=$logPath --outputPath=$subdueLogPath --traceGraphs=$traceGraphPath --gbad
@@ -158,7 +159,7 @@ cat /dev/null > dendrogram.txt
 
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
-limit="50"   #The default value is computed based on the input graph as |Edges| / 2. 
+limit="100"   #The default value is computed based on the input graph as |Edges| / 2. 
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.

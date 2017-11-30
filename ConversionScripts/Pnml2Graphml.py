@@ -250,7 +250,6 @@ def Convert(pnmlPath):
 	visited = []
 	frontier = [startNodeId]
 	while len(frontier) > 0:
-		print("HERE")
 		#pop first node on frontier list
 		curNodeId = frontier[0]
 		frontier = frontier[1:]
@@ -262,7 +261,7 @@ def Convert(pnmlPath):
 			#successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict, d=0)
 			#bfs successor getter
 			successors = _getSuccessorActivityIdsBFS(outLinks,arcs,vertexDict)
-			print(str(successors))
+			#print(str(successors))
 			
 			for successor in successors:
 				#expand frontier with unvisited nodes

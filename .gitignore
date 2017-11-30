@@ -25,6 +25,12 @@ Datasets/Temp/
 ~*
 Junk/*
 
+RealData/results/*
+RealData/dc_training_logs_2017/*
+RealData/BPI Challenge 2017.xes
+RealData/BPI Challenge 2017.xes.gz
+RealData/JUnit 4.12 Software Event Log.xes
+Testing/activityDict.txt
 SyntheticData/compressed.g
 SyntheticData/noisedTraces.log
 SyntheticData/testTraces.xes
