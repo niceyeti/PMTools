@@ -12,6 +12,10 @@ SyntheticData/testTraces.log
 SyntheticData/testTraces.xes
 Testing/SUB*
 
+Datasets/Test_0_Retest/*
+Datasets/Test_0_Retest_ThetaTrace_Results/*
+
+
 Datasets/Test_0/
 Datasets/Test_1/
 Datasets/Test_2/

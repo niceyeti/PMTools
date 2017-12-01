@@ -359,16 +359,3 @@ plot2DVariance(statDict, "fMeasure", resultDir)
 
 plotROCCurve(results, resultDir)
 
-					
-					
-					
-
-
-
-
-
-
-
-
-
-
