@@ -3,5 +3,11 @@ Notes:
 -Varying theta-anomaly in the trace generation can generate 0-40 or so anomalies for 0.0-0.20, or 0-200. The outcome depends on the model.
 So variance in metrics is likely due to this variance in the models, since some models may bury an anomaly, whereas others generate them smoothly.
 
-Model 57 is broken, trivializes logs.
+
+
+-Look for other broken models, re-generate and replace them with good ones
+-Review substitution-anomaly code, where anomalies are replaced with existing activities; make sure anomalies are not "^" transitions, and that the replacement activities are not normal in that context
+-Why is recall not 100% for bayes threshold 1.0???
+-Why is precision lower for substitution results??
+
 

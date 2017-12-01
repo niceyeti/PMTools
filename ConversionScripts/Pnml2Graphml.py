@@ -211,7 +211,7 @@ def Convert(pnmlPath):
 			#print("FOUND INITIAL MARKER NODE: "+p.attrib["id"])
 			startIds.append(p.attrib["id"])
 	if len(startIds) != 1:
-		print("ERROR len startIds != 1 in  Pnml2Graphml: "+str(len(startIds)))
+		print("ERROR len startIds != 1 in  Pnml2Graphml: "+str(len(startIds))+" ids: "+str(startIds))
 	startNodeId = startIds[0]
 	
 	#warn of unexpected structure: if detected, this is serious, and at least needs to be evaluated by looking at the pnml file and understanding why there is more than one finalmarkings tag
@@ -228,7 +228,7 @@ def Convert(pnmlPath):
 			endIds.append(p.attrib["idref"])
 	if len(endIds) != 1:
 		#detect if more than one start node, which is a structurally defective graph/pnml, and should never happend
-		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.")
+		print("WARNING len(endIds) != 1, is "+str(len(endIds))+" in Pnml2Graphml. See code.  Ids: "+str(endIds))
 	endNodeId = endIds[0]
 	
 	#re-mark the end and start node text; currently they are TAU_ or PLACE_ typed

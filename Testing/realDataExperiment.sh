@@ -2,7 +2,7 @@
 
 #For passing an xes file with some real-world data: --xesPath=[path]
 #Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes"
-
+#
 
 
 generatorFolder="../DataGenerator"
@@ -50,6 +50,8 @@ fi
 echo --dataDir param MUST be relative to the context of the completeTest script: $(pwd)
 echo Also, it must NOT end with slash
 sleep 1
+echo Also be aware of effect of real-world data with multi-letter process names. Code was written for single-letter activities.
+sleep 2
 
 #get the command line arg switches, if any
 deleteSubstructures="false"
@@ -120,7 +122,7 @@ cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
 python $pnmlConverterPath $pnmlPath $minedGraphmlPath #--show   #dont show for super huge graphs, common for real data
 
 echo "XES PATH $xesPath    LOG PATH $logPath"
-python ../ConversionScripts/xes2log.py $xesPath $logPath --activityKey=concept:name
+python ../ConversionScripts/xes2log.py $xesPath $logPath --activityKey=concept:name --NoReplacement
 
 
 ################################################################################

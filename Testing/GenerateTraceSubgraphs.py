@@ -58,7 +58,7 @@ class Retracer(object):
 	allows us to reproduce the ground-truth edge relations representing sequential activities (or the best that the mining algorithm provided).
 
 	TODO: Its quite possible that certain process discovery algorithms and heuristics may generate an incomplete model, such
-	that some trace may not be replayed on that model. Not quite clear yet how to handle this.
+	that some trace may not be replayabe that model. Not quite clear yet how to handle this.
 
 	@graphPath: Path to a graphml path representing the mined process model
 	@tracePath: Path to some .log file containing traces in the form [integer],[anomaly status],[observed sequence]. For example, "123,+,ABCD".
@@ -283,7 +283,7 @@ class Retracer(object):
 		#See the header for this search routines' assumptions. Searches forward for first successor; this is necessarily the next edge
 		i = 0
 		while i < len(sequence) - 1:
-			#handles inserton anomalies: for which the log contains an activity not in the model
+			#handles insertion anomalies: for which the log contains an activity not in the model
 			if sequence[i] not in activitySet:
 				#arbitrarily attach sequence[i] activity to immediately-previous activity
 				if i == 0:
@@ -299,6 +299,12 @@ class Retracer(object):
 					edge = self._getEdge(sequence[i], sequence[j])
 					#edge = self._getEdge(sequence[i], sequence[j], graph)
 					j += 1
+
+				#Above loop only looks for links up to end of sequence, but excluding END. If we've reached end of sequence w/out finding
+				#an edge, it may be because this activity links directly to END. This if-stmt handles this case
+				if j == len(sequence) and edge == None and self._getEdge(sequence[i], "END") is not None:
+					#activity links to END node
+					edge = self._getEdge(sequence[i], "END")
 
 				if edge != None:
 					e = self._edgeToActivityTuple(edge)

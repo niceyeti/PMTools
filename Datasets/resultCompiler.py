@@ -321,8 +321,9 @@ def CalculateResultBayesStatDict(results):
 	return statDict
 	
 	
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
 	print("Insufficient arguments passed. Need --rootDir= and --thetaFolderPrefix=")
+	exit()
 
 thetaFolderPrefix = "theta_"
 rootDir = "Test"
