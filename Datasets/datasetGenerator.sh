@@ -22,10 +22,10 @@ modelCount=60
 for i in $(seq 60); do
 	thisDir="T$i"
 	#mkdir $thisDir
-	cd ../../DataGenerator
+	#cd ../../DataGenerator
 	#loop and create sixty datasets, each in their own folder
 	#sh generate.sh 30 1000 ../Datasets/$rootFolder/$thisDir/$logPath ../Datasets/$rootFolder/$thisDir/$syntheticGraphmlPath ../Datasets/$rootFolder/$thisDir/$modelPath --noGen #Note no xes references; the xes logs are generated later, after possible addition of noise to the base log
-	cd ../Datasets/$rootFolder/$thisDir
+	#cd ../Datasets/$rootFolder/$thisDir
 	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.1
 	for thetaIncrement in $(seq 5 9); do

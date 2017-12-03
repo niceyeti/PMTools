@@ -157,6 +157,9 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 """
 Hard-coded iteration of the data, and results therein.
 
+	theta-dirname -> bayes-fname              -> [60 results in T1-T60]
+	"anomaly_35" -> "bayesResults_08.txt" -> [result1, result2, ...]
+	
 	T*
 		---->	theta_*
 					------>	bayes_05.txt
@@ -172,19 +175,22 @@ bayesResult.txt file.
 def IterateBayesianResults(rootDir="Test", thetaFolderPrefix="theta_"):
 	results = dict()
 	
+	print("Compiling bayesian results...        >>>>excluding bayesResult_07.txt<<<<  ...")
+	
 	#iterate all the models
 	for modelNumber in range(1,60):
 		modelDir = rootDir + os.sep + "T" + str(modelNumber)
-		#iterate the theta_trace values for this model
+		
+		#iterate the theta_trace of anomaly_theta values for this model
 		for fname in os.listdir(modelDir):
 			if thetaFolderPrefix in fname:
 				thetaDir = modelDir + os.sep + fname
 				if fname not in results.keys():
 					results[fname] = dict()
 
-				#iterate the bayes
+				#iterate the bayes parameter results
 				for resultFname in os.listdir(thetaDir):
-					if "bayesResult" in resultFname:
+					if "bayesResult" in resultFname and resultFname.lower() != "bayesresult_07.txt":
 						if resultFname not in results[fname].keys():
 							results[fname][resultFname] = []
 					
@@ -252,7 +258,7 @@ def plotROCCurve(results, resultDir):
 	#get TPR and FPR for every value of bayes threshold in @results dict inner keys over all theta values
 	rocDict = dict()
 	
-	bayesThresholdResults = dict() #dict containing all results lists for all theta values and all 60 models
+	bayesThresholdResults = dict() #dict containing all results lists for all theta values and all 60 models: 
 	for theta in sorted(results.keys()):
 		for bayesThreshold in sorted(results[theta].keys()):
 			if bayesThreshold not in rocDict.keys():
@@ -305,11 +311,11 @@ as @results, but with keys for each metric: accuracy_var, recall_var, etc.
 """
 def CalculateResultBayesStatDict(results):
 	metrics = ["recall", "precision", "accuracy", "fMeasure"]
-	statDict = dict()
+	statDict = dict()  # triple dict: theta -> threshold -> metric -> value     e.g., "anomaly_2" -> "bayesResult_08.txt" -> 
 	
-	for thetaTrace in sorted(results.keys()):
+	for thetaTrace in sorted(results.keys()): #sorts the strings, "anomaly_35" or "theta_5", where the numbers are assumed div 100
 		statDict[thetaTrace] = dict()
-		for bayesThreshold in sorted(results[thetaTrace].keys()):
+		for bayesThreshold in sorted(results[thetaTrace].keys()):  #sorts the bayesian fnames; bayesResults_00.txt thru bayesResults_98.txt
 			statDict[thetaTrace][bayesThreshold] = dict()
 			ptResults = results[thetaTrace][bayesThreshold]
 			for metric in metrics:

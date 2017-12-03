@@ -1,8 +1,7 @@
 #!/bin/sh
-
 #single purpose script for fixing a file naming issue in the dataset generator: need to call all .log files "testTraces.log"
 
-rootFolder="Test_1"
+rootFolder="Test_0_Retest"
 cd $rootFolder
 
 for i in $(seq 60); do
@@ -12,24 +11,26 @@ for i in $(seq 60); do
 	for thetaIncrement in $(seq 5 9); do
 		newDir=theta_$thetaIncrement
 		cd $newDir
-		#echo $newDir
 		#mv "theta_$thetaIncrement.log" testTraces.log
-		rm bayesResult_07.txt
+		#rm bayesResult_07.txt
+		rm *
 		pwd
 		cd ..
+		#rmdir $newDir
 	done
 	
 	for thetaIncrement in $(seq 0 2 20); do
 		newDir=anomaly_$thetaIncrement
 		cd $newDir
 		#mv "theta_$thetaIncrement.log" testTraces.log
-		rm bayesResult_07.txt
+		#rm bayesResult_07.txt
 		#echo $newDir
+		rm *
 		pwd
 		cd ..
+		#rmdir $newDir		
 	done
 
 	cd ..
-
 	#pwd
 done
