@@ -19,7 +19,7 @@ cd $rootFolder
 
 modelCount=60
 
-for i in $(seq 60); do
+for i in $(seq 45 1 45); do
 	thisDir="T$i"
 	#mkdir $thisDir
 	#cd ../../DataGenerator
@@ -28,13 +28,13 @@ for i in $(seq 60); do
 	#cd ../Datasets/$rootFolder/$thisDir
 	cd $thisDir
 	#make the logs at various theta-trace values, in increments of 0.1
-	for thetaIncrement in $(seq 5 9); do
+	for thetaIncrement in $(seq 8 1 8); do
 		newDir=theta_$thetaIncrement
 		#mkdir $newDir
 		thetaLog="$newDir/$logPath"
 		echo making $thetaLog in $(pwd)
-		#python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement --useNonUniqAnomalies
-		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement
+		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement --useNonUniqAnomalies
+		#python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$thetaLog --thetaTrace=0.$thetaIncrement
 	done
 	
 	cd ..

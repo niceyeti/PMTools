@@ -51,9 +51,9 @@ def _getMetricMeans(resultDict, metric):
 	#print("xyz dim: "+str(xyz.shape))
 	
 	row = 0
-	for theta in sorted(resultDict.keys()):
+	for theta in sorted(resultDict.keys(), key=lambda s: float(s.split("_")[1])):
 		col = 0
-		for bayesThreshold in sorted(resultDict[theta].keys()):
+		for bayesThreshold in sorted(resultDict[theta].keys(), key=lambda s: float(s.replace(".txt","").split("_")[1])):
 			vals = [result[metric] for result in resultDict[theta][bayesThreshold]]
 			mean = float(sum(vals)) / float(len(vals))
 			xyz[row,col] = mean
@@ -89,12 +89,16 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	ax = fig.add_subplot(111, projection="3d")
 	xyz = _getMetricMeans(resultDict, metric)
 	#make the labels, max of 10 so they aren't crowded; these xs are not plotted, they are just for indexing the labels
-	xs = [i for i in range(len(resultDict.keys()))]
+	sortedKeys = sorted(resultDict.keys(), key=lambda s: float(s.split("_")[1]))
+	print("SORTED KEYS: "+str(sortedKeys))
+	xs = [i for i in range(len(sortedKeys))]
 	if "anomaly" in xlabel.lower():
-		xlabels = [str(f) for f in sorted([float(key.split("_")[1])/100.0 for key in resultDict.keys()])]
+		xlabels = [str(f) for f in [float(key.split("_")[1])/100.0 for key in sortedKeys]]
 	else:
-		xlabels = [str(f) for f in sorted([float(key.split("_")[1])/10.0 for key in resultDict.keys()])]
+		xlabels = [str(f) for f in [float(key.split("_")[1])/10.0 for key in sortedKeys]]
 	ys = [i for i in range(len(list(resultDict.items())[0][1].keys()))]
+	#ys = [i for i in range(len([(key,resultDict[key]) for key in sortedKeys])[0][1].keys()))]
+	
 	ylabels = [str(f) for f in sorted([float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()])]
 	X, Y = np.meshgrid(xs, ys)
 	Z = np.zeros(shape=(X.shape[0], Y.shape[1]))
@@ -134,7 +138,7 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	if "fmeasure" in title.lower():
 		title = title.replace("measure", "-measure")
 	plt.title(title)
-	ax.set_xlabel(xlabel,labelpad=10)
+	ax.set_xlabel(xlabel,labelpad=12)
 	ax.set_ylabel(ylabel, labelpad=12)
 	#print(str(xyz))
 	if resultDir[-1] != os.sep:
@@ -313,7 +317,7 @@ def CalculateResultBayesStatDict(results):
 	metrics = ["recall", "precision", "accuracy", "fMeasure"]
 	statDict = dict()  # triple dict: theta -> threshold -> metric -> value     e.g., "anomaly_2" -> "bayesResult_08.txt" -> 
 	
-	for thetaTrace in sorted(results.keys()): #sorts the strings, "anomaly_35" or "theta_5", where the numbers are assumed div 100
+	for thetaTrace in sorted(results.keys()): #sorts the strings, "anomaly_35" or "theta_5", where the numbers are assumed div 100; note that this is not a good sort, as anomaly_2 and anomaly_25 will be adjacet, but the output dict are not ordered
 		statDict[thetaTrace] = dict()
 		for bayesThreshold in sorted(results[thetaTrace].keys()):  #sorts the bayesian fnames; bayesResults_00.txt thru bayesResults_98.txt
 			statDict[thetaTrace][bayesThreshold] = dict()

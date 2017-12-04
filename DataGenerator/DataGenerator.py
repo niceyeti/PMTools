@@ -535,7 +535,7 @@ class DataGenerator(object):
 		print("NON ANOMALOUS ACTIVITIES: "+str(nonAnomalousActivities))
 		
 		for node in self._graph.vs:
-			if self._isAnomalousNode(node):
+			if self._isAnomalousNode(node) and "^" not in node["label"]:
 				node["label"] = nonAnomalousActivities[ random.randint(0,len(nonAnomalousActivities)-1) ]
 				node["name"] = node["label"]
 
