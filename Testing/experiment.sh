@@ -3,7 +3,7 @@
 #Loops over the models folders (Txx) and runs the compression method on each of the anomaly_x folder's logs.
 
 #for i in {1..60}; do
-for i in $(seq 21 1 60); do
+for i in $(seq 32 1 60); do
 	modelDir=../Datasets/Test_1_Retest/T$i
 	#testDir="$modelDir/anomaly_0"
 	#echo $testDir
