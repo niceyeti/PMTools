@@ -8,7 +8,7 @@ echo executing from $rootFolder
 
 cd $rootFolder
 
-for i in $(seq 13 1 60); do
+for i in $(seq 33 1 60); do
 	thisDir="T$i"
 	cd $thisDir
 	
