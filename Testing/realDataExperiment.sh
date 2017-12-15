@@ -256,6 +256,4 @@ cp dendrogram.txt $dataDir/dendrogram.txt
 #could loop here, for different parameters, like bayesThreshold
 python ./AnomalyReporter.py -gbadResult=$gbadResult -logFile=$logPath -resultFile=$anomalyFile --dendrogram=$dataDir/dendrogram.txt --dendrogramThreshold=0.18 -markovPath=$markovModelPath -traceGraphs=$traceGraphPath
 
-#dont delete this: copy-paste this to re-run anomaly detection manually from cmd line
-#python ./AnomalyReporter.py -gbadResult=../TestResults/gbadResult.txt -logFile=../SyntheticData/testTraces.log -resultFile=../TestResults/anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=../SyntheticData/markovModel.py -traceGraphs=../SyntheticData/traceGraphs.py
-#python ./AnomalyReporter.py -gbadResult=../Datasets/Sep21/T1/gbadResult.txt -logFile=../Datasets/Sep21/T1/testTraces.log -resultFile=../Datasets/Sep21/T1/anomalyResult.txt --dendrogram=../Datasets/Sep21/T1/dendrogram.txt --dendrogramThreshold=0.18 -markovPath=../Datasets/Sep21/T1/markovModel.py -traceGraphs=../Datasets/Sep21/T1/traceGraphs.py
+#python ./AnomalyReporter.py -gbadResult=../RealData/results/gbadResult.txt -logFile=../RealData/results/testTraces.log -resultFile=../RealData/results/anomalyResult.txt --dendrogram=../RealData/results/dendrogram.txt --bayesThreshold=0.07 --bayesOnly -markovPath=../RealData/results/markovModel.py -traceGraphs=../RealData/results/traceGraphs.py
