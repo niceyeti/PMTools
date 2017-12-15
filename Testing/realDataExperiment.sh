@@ -2,8 +2,7 @@
 
 #For passing an xes file with some real-world data: --xesPath=[path]
 #Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes"
-#
-
+#Or: sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --xesPath="..\RealData\NASA_CEV_2017\data\nasa-cev-complete-splitted.xes" --Singleize
 
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
@@ -15,6 +14,9 @@ minerName="inductive" #the chosen miner: inductive, alpha, or heuristic
 miningWrapper="miningWrapper.py"
 minerPath="../scripts/PromTools/miner.sh"
 classifierString="Activity"
+
+#eg, use  '--Singleize':
+singleize="" #The flag indicating whether or not to replace activities in the input xes with single-letter representations; this is done after model mining, in conversion to .log format
 
 logCompressor="./SubdueLogCompressor.py"
 pnmlPath="$dataDir/testModel.pnml"
@@ -52,6 +54,8 @@ echo Also, it must NOT end with slash
 sleep 1
 echo Also be aware of effect of real-world data with multi-letter process names. Code was written for single-letter activities.
 sleep 2
+echo AND NO SPACES IN XES PATHS
+sleep 2
 
 #get the command line arg switches, if any
 deleteSubstructures="false"
@@ -60,7 +64,6 @@ xesPath="empty"
 dataDir="../RealData/results"
 
 for var in "$@"; do
-
 	#get the number of recursive iterations, if any
 	if [[ $var == "--recurse="* ]]; then
 		recursiveIterations=$(echo $var | cut -f2 -d=)
@@ -73,8 +76,17 @@ for var in "$@"; do
 	#get the number of recursive iterations, if any
 	if [[ $var == "--xesPath="* ]]; then
 		xesPath=$(echo $var | cut -f2 -d=)
+		#encloses path in double quotes if no passed with any, since often there are spaces in paths
+		if [[ $xesPath != *"\""* ]]; then
+			xesPath="$xesPath"
+		fi
 	fi
 
+	#get the number of recursive iterations, if any
+	if [[ $var == "--Singleize" ]]; then
+		singleize="--Singleize"
+	fi
+	
 	#redirects data input, for automated testing; stored artifacts are also sent to this dir
 	if [[ $var == "--dataDir="* ]]; then
 		dataDir=$(echo $var | cut -f2 -d=)
@@ -91,7 +103,7 @@ for var in "$@"; do
 	fi
 done
 
-if [ "$var" = "empty" ]; then
+if [[ "$var" == "empty" ]]; then
 	echo No xesPath passed. Exiting
 	exit
 fi
@@ -122,8 +134,14 @@ cp ../../ProM/testModel.pnml $dataDir/testModel.pnml
 python $pnmlConverterPath $pnmlPath $minedGraphmlPath #--show   #dont show for super huge graphs, common for real data
 
 echo "XES PATH $xesPath    LOG PATH $logPath"
-python ../ConversionScripts/xes2log.py $xesPath $logPath --activityKey=concept:name --NoReplacement
+python ../ConversionScripts/xes2log.py $xesPath $logPath --activityKey=concept:name $singleize
 
+#convert mined model labels to their single-letter counterparts if replacement was done
+if [[ $singleize == "--Singleize" ]]; then
+	echo calling model converter...
+	python ../ConversionScripts/convertModelActivities.py	--minedGraphmlPath=$minedGraphmlPath --activityDictPath=activityDict.txt
+	echo  model converter complete
+fi
 
 ################################################################################
 ##Generate sub-graphs from the mined graphml model
@@ -150,7 +168,6 @@ fsmResult="$dataDir/fsmResult.txt"
 gbadResult="$dataDir/gbadResult.txt"
 anomalyFile="$dataDir/anomalyResult.txt"
 
-
 #clear any previous results
 cat /dev/null > $mdlResult
 cat /dev/null > $mpsResult
@@ -161,7 +178,7 @@ cat /dev/null > dendrogram.txt
 
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
-limit="30"   #The default value is computed based on the input graph as |Edges| / 2. 
+limit="70"   #The default value is computed based on the input graph as |Edges| / 2. 
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.

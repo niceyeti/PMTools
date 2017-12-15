@@ -15,6 +15,10 @@ Testing/SUB*
 RealData/Dataset files (3.2 MB).zip
 RealData/Dataset files (3.2 MB)/
 
+RealData/ApacheCrypto/
+RealData/Dataset files (2.5 MB)_NASA_CEV.zip
+RealData/NASA_CEV_2017/
+
 Datasets/Test_0_Retest/*
 Datasets/Test_1_Retest/*
 Datasets/Test_0_Retest_ThetaTrace_Results/*

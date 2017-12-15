@@ -149,10 +149,10 @@ mappings in the activityDict.
 Outputs traces to .log format. Also outputs the mapping from .log activity symbols to activity names, to activityDict.txt.
 
 @traces: A list of traces formatted as <traceName, [<activityName>]>. Eg., ['3', [['Pete', 'register request'], ['Mike', 'examine casually'], ...
-@noReplacement: If true, activities will be replaced with single character representations (up to 64 activities is supported), and dict mapping
+@singleize: If true, activities will be replaced with single character representations (up to 64 activities is supported), and a dict mapping
 these back will be output to reverse the mapping. If false, the activities in the source xes will be preserved.
 """		
-def WriteTraces(traces, outputPath, noReplacement=True):
+def WriteTraces(traces, outputPath, singleize=False):
 	sep = "\n"
 	outputFile = open(outputPath,"w+")
 	delim = " "
@@ -161,7 +161,7 @@ def WriteTraces(traces, outputPath, noReplacement=True):
 	activityDict = {}
 
 	#If @replaceActivities is false, a clever way to handle it is to initialize the activity dict such that every activity maps to itself
-	if noReplacement:
+	if not singleize:
 		for trace in traces:
 			for event in trace[1]:
 				eventName = event[1]
@@ -201,7 +201,7 @@ def WriteTraces(traces, outputPath, noReplacement=True):
 
 def usage():
 	print("Usage: python ./xes2log.py [path to .xes input file] [path to output .log file] --activityKey=[the xes activity tag eg, 'concept:name']")
-	print("Optional: --NoReplacement: whether or not to replace activities in xes with single-letter representations. Mapping dict provided as output.")
+	print("Optional: --Singleize: whether or not to replace activities in xes with single-letter representations. Mapping dict provided as output.")
 
 def main():
 	#check the params
@@ -210,7 +210,8 @@ def main():
 		return 0
 
 	try:
-		noReplacement = "--NoReplacement" in sys.argv
+		singleize = "--Singleize" in sys.argv
+		print(str([arg for arg in sys.argv]))
 		xesPath = sys.argv[1]
 		outputPath = sys.argv[2]
 		activityKey = sys.argv[3].split("=")[1]
@@ -220,7 +221,7 @@ def main():
 		print("Reading xes file from "+xesPath)
 		traces = ReadXes(xesPath, activityKey)
 		print(str(traces)[0:1000])
-		WriteTraces(traces, outputPath, noReplacement)
+		WriteTraces(traces, outputPath, singleize)
 		"""
 
 		if "-dbg" in sys.argv:
