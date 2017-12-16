@@ -2,7 +2,7 @@
 
 #For passing an xes file with some real-world data: --xesPath=[path]
 #Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes"
-#Or: sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --xesPath="..\RealData\NASA_CEV_2017\data\nasa-cev-complete-splitted.xes" --Singleize
+#Or: sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --Singleize --xesPath=..\RealData\NASA_CEV_2017\data\nasa-cev-complete-splitted.xes
 
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
@@ -177,8 +177,7 @@ cat /dev/null > $fsmResult
 cat /dev/null > dendrogram.txt
 
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
-numTraces="200"
-limit="70"   #The default value is computed based on the input graph as |Edges| / 2. 
+limit="100"   #The default value is computed based on the input graph as |Edges| / 2. 
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.

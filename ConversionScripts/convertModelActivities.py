@@ -28,8 +28,13 @@ def main():
 		usage()
 		exit()	
 
+	#show the graph, because its pretty
 	graph = igraph.Graph.Read(minedGraphmlPath)
-	igraph.plot(graph)
+	graph.write_graphml(minedGraphmlPath.replace(".graphml","_original.graphml"))
+	for v in graph.vs:
+		v["color"] = "blue"
+	plt = igraph.plot(graph)
+	plt.save(minedGraphmlPath.replace(".graphml",".png"))
 
 	try:
 		activityDict = eval(open(activityDictPath, "r").read())
@@ -63,7 +68,9 @@ def main():
 			v["name"] = activityDict[v["name"]]
 			v["label"] = v["name"]
 
-	graph.write(minedGraphmlPath)
+	graph.write_graphml(minedGraphmlPath)
+	#show the modified graph
+	plt = igraph.plot(graph)
 	#graph.write_graphml(minedGraphmlPath.replace(".graphml","_REPLACED.graphml"))
 
 def usage():
