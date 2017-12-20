@@ -3,9 +3,10 @@
 Executes a single run of the Sampling algorithm from Bezerra, outputting results to ./sampleTest/ within the test log directory,
 using a bunch of processes.
 
+Runtime context: This directory (/Datasets/)
+
 Input: A directory path to the folder containing the source testTraces.log file
 Output: ./sampleTest/ a directory with the runtime artifacts of the test, and the result file, results.txt
-
 
 """
 
@@ -17,7 +18,8 @@ import traceback
 import igraph
 
 #fix these
-import SynData2Xes
+import SampleAlgoUtilities.SynData2Xes
+
 
 
 def usage():
@@ -27,7 +29,8 @@ def usage():
 class SampleAlgoRunner(object):
 
 	def __init__(self):
-		pass
+		self._inputDir = ""
+		self._runtimeFolder = ""
 
 	#Returns a .log process log as a list of threeples, (isAnomalous "+"/"-", traceNumber, traceString)	
 	def _getLog(self, logPath):
@@ -36,7 +39,6 @@ class SampleAlgoRunner(object):
 			exit()
 		
 		log = []
-		
 		with open(logPath, "r") as logFile:
 			for line in logFile.readlines():
 				tup = tuple(line.strip().split(","))
@@ -103,51 +105,64 @@ class SampleAlgoRunner(object):
 		return graphmlProcessModel
 
 
-	def _outputTempLog(self, log):
-		with open("temp.log","w+") as logFile:
+	def _outputTempLog(self, log, logPath):
+		with open(logPath,"w+") as logFile:
 			for trace in log:
 				logFile.write(",".join(trace)+"\n")
-		
-	def RunSampleTest(self, indir, xesConverterPath="../.."):
-		
-		xesConverterPath = 
 
-
-
-		self._makeTestDir(indir)
-		
+	#establishes runtime context
+	def _initialize(self, indir):
+		initializationSucceeded = True
 		if indir[-1] != os.sep:
 			indir = indir + os.sep
+		self._inputDir = indir
+		self._runtimeFolder = self._inputDir+"sampleAlgoTest"+os.sep
+		#make the running artifacts directory
+		if not os.path.exists(self._runtimeFolder):
+			os.mkdir(self._runtimeFolder)
 		
-		log = self._getLog(indir+"testTraces.log")
-		#get the 
-		lowFrequencyTraces = self._getLowFrequencyTraces(log)
-		
-		print("Testing "+str(len(lowFrequencyTraces))+" ")
-		for trace in lowFrequencyTraces:
-			#remove this trace from the log
-			reducedLog = self._getFilteredLog(trace)
-			#output the new log
-			self._outputTempLog(reducedLog)
-			#convert temp log 
-			self._convertLogToXes("temp.log")
-			#mine the model
-			graphmlModel = _mineProcessModel(logPath)
-			if not _isReplayableTrace(trace, graphmlModel):
-				anomalousTraces.append(trace)
+		self._sourceLogPath = self._inputDir+"testTraces.log"
+		if not os.path.exists(self._sourceLogPath):
+			print("ERROR test log file not found at: "+self._sourceLogPath)
+			initializationSucceeded = False
+
+		return initializationSucceeded
 			
-		_recordResults(log, anomalousTraces)
+
+	def RunSampleTest(self, indir):
 		
+		if self._initialize(indir):
+			tempLogPath = self._runtimeFolder+"temp.log"
+			tempXesPath = self._runtimeFolder+"temp.xes"
+			
+			log = self._getLog(self._sourceLogPath)
+			#get the low frequency traces; < 0.02 by Bezerra's work on anomaly detection
+			lowFrequencyTraces = self._getLowFrequencyTraces(log)
+			anomalousTraces = []
+			
+			print("Testing "+str(len(lowFrequencyTraces))+" ")
+			for trace in lowFrequencyTraces:
+				#remove this trace from the log
+				reducedLog = self._getFilteredLog(trace)
+				#output the new log
+				self._outputTempLog(reducedLog, tempLogPath)
+				#convert temp log 
+				self._convertLogToXes(tempLogPath, tempXesPath)
+				#mine the model
+				#graphmlModel = _mineProcessModel(logPath)
+				#if not _isReplayableTrace(trace, graphmlModel):
+				#	anomalousTraces.append(trace)
+				
+			#_recordResults(log, anomalousTraces)
 		
-		#algorithm: given the log, extract all traces with frequency < 2%, mine model, replay trace on model; if not replayable, the trace is added to anomaly set
 		
 	#Ripped the definition from the traceReplayer
 	def _isReplayableTrace(self, traceStr, model):
+		pass
 		
-		
-	def _convertLogToXes(self, logPath="temp.log"):
+	def _convertLogToXes(self, logPath="temp.log", xesPath="temp.xes"):
 		#call the converter
-		SynData2Xes.ToXes(logPath,"temp.xes")
+		SynData2Xes.ToXes(logPath,xesPath)
 
 	"""
 	Given a log in the form of threeples (+/-,123, advbdsf), this removes all threeples matching @traceStr.
@@ -268,11 +283,6 @@ class SampleAlgoRunner(object):
 			#ofile.write("trueAnomalies:"+str(trueAnomalies)+"\n")
 			#ofile.write("reportedAnomalyIds:"+str(reportedAnomalyIds).replace("set()","{}")+"\n")
 			ofile.write("fMeasure:"+str(fMeasure))
-
-
-	def makeTestDir(self):
-		if not os.path.exists("./sampleTest"):
-			os.mkdir("sampleTest")
 
 def main():
 
