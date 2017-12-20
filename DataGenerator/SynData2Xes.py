@@ -127,21 +127,27 @@ def ToXes(ipath,opath):
 def usage():
 	print("Usage: python ./SynData2Xes.py -ifile=[path to input file of synthetic data] -ofile=[output path for xes log file]")	
 
-if len(sys.argv) < 3:
-	print("ERROR insufficient parameters")
-	usage()
-	exit()
+def main():
+	if len(sys.argv) < 3:
+		print("ERROR insufficient parameters")
+		usage()
+		exit()
+		
+	if "-ifile=" not in sys.argv[1]:
+		print("ERROR not input file parameters passed")
+		usage()
+		exit()
+	if "-ofile=" not in sys.argv[2]:
+		print("ERROR no output file parameter passed")
+		usage()
+		exit()
+
+	ipath = sys.argv[1].split("=")[1]
+	opath = sys.argv[2].split("=")[1]
+
+	ToXes(ipath,opath)
+
+if "__name__" == "__main__":
+	main()
 	
-if "-ifile=" not in sys.argv[1]:
-	print("ERROR not input file parameters passed")
-	usage()
-	exit()
-if "-ofile=" not in sys.argv[2]:
-	print("ERROR no output file parameter passed")
-	usage()
-	exit()
-
-ipath = sys.argv[1].split("=")[1]
-opath = sys.argv[2].split("=")[1]
-
-ToXes(ipath,opath)
+	
