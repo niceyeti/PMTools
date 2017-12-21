@@ -18,6 +18,7 @@ import traceback
 import igraph
 
 #fix these
+#from SampleAlgoUtilities.SynData2Xes import ToXes
 import SampleAlgoUtilities.SynData2Xes
 
 
@@ -65,20 +66,29 @@ class SampleAlgoRunner(object):
 				outliers.add( trace[2] )
 
 		return outliers
-		
-	#End to end wrapper script for mining a model, copying the resulting .pnml over to running directory, and converting it to graphml
-	def _mineProcessModel(self, xesPath, minerName="alpha"):
+	"""
+	End to end wrapper script for mining a model, copying the resulting .pnml over
+	to running directory, and converting it to graphml.
 	
-		subprocess.execute("sh SampleAlgoArtifacts/mine.sh "+xesPath+" "+minerName)
+	@xesPath: path to temp xes file, relative to /Datasets
+	"""
+	def _mineProcessModel(self, xesPath, minerName="alpha"):
+		xesPath = xesPath.replace("\\\\","\\").replace("\\","/")
+		xesPath = "../Datasets/"+xesPath
+	
+		#subprocess.execute("sh SampleAlgoArtifacts/mine.sh "+xesPath+" "+minerName)
+		print("XES PATH: "+xesPath)
 		script = """sh -c  "cd ../PromTools
-		pnmlPath=testModel.pnml
+		pnmlFname=testModel.pnml
+		pnmlPath=SampleAlgoUtilities/$pnmlFname
 		pnmlConverterPath=../ConversionScripts/Pnml2Graphml.py
-		minedGraphmlPath=minedModel.graphml
+		minedGraphmlPath=SampleAlgoUtilities/minedModel.graphml
+		xesPath="""+xesPath+"""
 		
 		#Note that the literal ifile/ofile params (testTraces.txt and testModel.pnml) are correct; these are the string params to the mining script generator, not actual file params. 
 		python miningWrapper.py -miner=alpha -ifile=testTraces.xes -ofile=testModel.pnml -classifierString=Activity
 		#Copy everything over to the ProM environment; simpler to run everything from there.
-		minerScript=alphaMiner.js
+		minerScript="""+minerName+"""Miner.js
 		promMinerPath=../../ProM/$minerScript
 		cp $minerScript $promMinerPath
 		cp $xesPath ../../ProM/testTraces.xes
@@ -91,7 +101,7 @@ class SampleAlgoRunner(object):
 		#copy the mined model back to the SyntheticData folder
 		#return to test script environment
 		cd ../scripts/Datasets
-		cp ../../ProM/testModel.pnml SampleAlgoArtifacts/testModel.pnml
+		cp ../../ProM/testModel.pnml $pnmlPath
 
 		#Convert the mined pnml model to graphml
 		python $pnmlConverterPath $pnmlPath $minedGraphmlPath --show
@@ -100,7 +110,7 @@ class SampleAlgoRunner(object):
 
 		subprocess.call(script)
 		
-		graphmlProcessModel = igraph.Graph.Read("SampleAlgoArtifacts/minedModel.graphml")
+		graphmlProcessModel = igraph.Graph.Read("SampleAlgoUtilities/minedModel.graphml")
 		
 		return graphmlProcessModel
 
@@ -130,26 +140,26 @@ class SampleAlgoRunner(object):
 			
 
 	def RunSampleTest(self, indir):
-		
 		if self._initialize(indir):
 			tempLogPath = self._runtimeFolder+"temp.log"
 			tempXesPath = self._runtimeFolder+"temp.xes"
 			
 			log = self._getLog(self._sourceLogPath)
 			#get the low frequency traces; < 0.02 by Bezerra's work on anomaly detection
-			lowFrequencyTraces = self._getLowFrequencyTraces(log)
+			lowFrequencyTraces = self._getLowFrequencyTraceStrings(log)
 			anomalousTraces = []
 			
-			print("Testing "+str(len(lowFrequencyTraces))+" ")
+			print("Testing "+str(len(lowFrequencyTraces))+" low frequency traces: "+str(lowFrequencyTraces))
+			
 			for trace in lowFrequencyTraces:
 				#remove this trace from the log
-				reducedLog = self._getFilteredLog(trace)
+				reducedLog = self._getFilteredLog(log, trace)
 				#output the new log
 				self._outputTempLog(reducedLog, tempLogPath)
 				#convert temp log 
 				self._convertLogToXes(tempLogPath, tempXesPath)
 				#mine the model
-				#graphmlModel = _mineProcessModel(logPath)
+				graphmlModel = self._mineProcessModel(tempXesPath, minerName="inductive")
 				#if not _isReplayableTrace(trace, graphmlModel):
 				#	anomalousTraces.append(trace)
 				
@@ -162,7 +172,7 @@ class SampleAlgoRunner(object):
 		
 	def _convertLogToXes(self, logPath="temp.log", xesPath="temp.xes"):
 		#call the converter
-		SynData2Xes.ToXes(logPath,xesPath)
+		SampleAlgoUtilities.SynData2Xes.ToXes(logPath,xesPath)
 
 	"""
 	Given a log in the form of threeples (+/-,123, advbdsf), this removes all threeples matching @traceStr.
@@ -192,10 +202,10 @@ class SampleAlgoRunner(object):
 	"""
 	Just the list-of-trace-string version of the above
 	"""
-	def _getTracesFromTraceStrings(self, log, traceStrings)
+	def _getTracesFromTraceStrings(self, log, traceStrings):
 		traces = []
 		for traceString in traceStrings:
-			traces += _getTracesFromTraceString(log, traceString)
+			traces += self._getTracesFromTraceString(log, traceString)
 
 		return traces
 		
@@ -219,7 +229,7 @@ class SampleAlgoRunner(object):
 		print("Log contains "+str(totalPositives)+" of "+str(n)+" traces")
 		
 		#get all original trace tuples from the anomalous trace strings 
-		anomalousTraces = _getTracesFromTraceStrings(anomalousTraceStrings)
+		anomalousTraces = self._getTracesFromTraceStrings(anomalousTraceStrings)
 		print("GOT "+str(len(anomalousTraces))+" ORIGINAL TRACES")
 		for trace in anomalousTraces:
 			print(str(trace))
@@ -286,7 +296,7 @@ class SampleAlgoRunner(object):
 
 def main():
 
-	if len(sys.agv) < 2:
+	if len(sys.argv) < 2:
 		usage()
 		exit()
 	
@@ -299,8 +309,8 @@ def main():
 		exit()
 
 	if indir[-1] != os.sep:
-		indir = indir + o.sep
-		
+		indir = indir + os.sep
+
 	if not os.path.exists(indir+"testTraces.log"):
 		print("ERROR no testTraces.log found in ")
 

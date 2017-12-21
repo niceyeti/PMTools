@@ -24,6 +24,7 @@ import igraph
 import platform
 import sys
 import xml.etree.ElementTree as ET
+import os
 
 """
 Given a list of arcs in the form (src<int>, dest<int>) and a vertexDict of <int,string>,
@@ -317,7 +318,7 @@ if len(sys.argv) < 3:
 ipath = sys.argv[1]
 opath= sys.argv[2]
 
-print("Converting pnml at "+ipath+" to output graphml at "+opath)
+print("Converting pnml at "+ipath+" to output graphml at "+opath+" from pwd "+os.getcwd())
 transitionGraph = Convert(ipath)
 
 if "--show" in sys.argv:
