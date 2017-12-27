@@ -8,6 +8,8 @@ Runtime context: This directory (/Datasets/). The SampleAlgoUtilities path is ha
 Input: A directory path to the folder containing the source testTraces.log file
 Output: ./sampleTest/ a directory with the runtime artifacts of the test, and the result file, results.txt
 
+Test: 
+
 """
 
 from __future__ import print_function
@@ -160,7 +162,8 @@ class SampleAlgoRunner(object):
 				self._convertLogToXes(tempLogPath, tempXesPath)
 				#mine the model
 				graphmlModel = self._mineProcessModel(tempXesPath, minerName="inductive")
-				if not _isReplayableTrace(trace, graphmlModel):
+				if not self._isReplayableTrace(trace, graphmlModel):
+					print("Trace not replayable, flagging as anomalous: "+trace)
 					anomalousTraces.append(trace)
 
 			self._recordResults(log, anomalousTraces)
@@ -176,8 +179,6 @@ class SampleAlgoRunner(object):
 	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
 	"""
 	def _isReplayableTrace(self, traceStr, model):
-		isReplayable = False
-	
 		modelActivities = set([v["name"] for v in model.vs])
 		traceActivities = set([c for c in traceStr]+["START","END"]) #START and END are added because they are placeholders in the model, but not in .log files
 		
@@ -187,25 +188,21 @@ class SampleAlgoRunner(object):
 				print("Trace activity "+traceActivity+" not found in modelActivities, trace flagged as anomalous: "+traceStr)
 				return False
 
-		initialEdge = self._getEdge(model, "START", sequence[0])
+		initialEdge = self._getEdge(model, "START", traceStr[0])
 		#Another trivial case: if no edge from START to first activity, trace is not replayable
 		if initialEdge == None:
 			print("No edge found from START to trace beginning, flagged as anomalous: "+traceStr)
 			return False
 
 		#The actual search procedure
-		self._isModelConsistentTrace(traceStr, traceActivities, model)
-		#The actual search procedure
-		for i in range(len(traceStr)):
-			activity = traceStr[i]
-			if not self._isReachableActivity(activity, traceActivities, model):
-				return False
+		if not self._isModelConsistentTrace(traceStr, traceActivities, model):
+			return False
 
 		return True
 		
 	def _getEdge(self, model, srcName, dstName):
 		for edge in model.es:
-			if model.vs[e.source]["name"] == srcName and model.vs[e.target]["name"] == dstName:
+			if model.vs[edge.source]["name"] == srcName and model.vs[edge.target]["name"] == dstName:
 				return edge
 		return None
 		
@@ -251,9 +248,17 @@ class SampleAlgoRunner(object):
 				return False
 
 		return True
-		
+
+	#Returns neighbors reachable from @activity ia its outgoing edges
+	def _getOutneighbors(self, activity, model):
+		#gets the neighbors by name
+		neighborNames = model.neighbors(activity, mode="out")
+		outNeighbors = [vertex for vertex in model.vs if vertex["name"] in neighborNames]
+		return outNeighbors
+
 	"""
-	Recursively-defined utilitiy for _isModelConsistentTrace.
+	Recursively-defined utility for _isModelConsistentTrace. Note that out-neighbors are
+	only marked as reachable if they are in the traceActivitySet, an important but subtle potential mistake if not checked.
 	"""
 	def _isReachableActivity(self, activity, traceActivitySet, model):
 		#if activity was not marked "reachable" via a previous activity (including START), return False
@@ -271,7 +276,6 @@ class SampleAlgoRunner(object):
 			return False
 
 		return True
-		
 		
 	def _convertLogToXes(self, logPath="temp.log", xesPath="temp.xes"):
 		#call the converter
@@ -314,7 +318,7 @@ class SampleAlgoRunner(object):
 		
 	"""
 	@log: The log, as a list of string threeples ("+"/"-", traceId, traceStr)
-	@anomalousTraces: The trace strings marked as anomalous
+	@anomalousTraceStrings: The trace strings marked as anomalous
 	"""
 	def _recordResults(self, log, anomalousTraceStrings):
 		
@@ -332,8 +336,8 @@ class SampleAlgoRunner(object):
 		print("Log contains "+str(totalPositives)+" of "+str(n)+" traces")
 		
 		#get all original trace tuples from the anomalous trace strings 
-		anomalousTraces = self._getTracesFromTraceStrings(anomalousTraceStrings)
-		print("GOT "+str(len(anomalousTraces))+" ORIGINAL TRACES")
+		anomalousTraces = self._getTracesFromTraceStrings(log, anomalousTraceStrings)
+		print("GOT "+str(len(anomalousTraces))+" ORIGINAL TRACES FROM "+str(len(anomalousTraceStrings))+" ANOMALOUS TRACE STRINGS")
 		for trace in anomalousTraces:
 			print(str(trace))
 			if "+" in trace[0]:
