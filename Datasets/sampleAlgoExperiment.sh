@@ -4,12 +4,12 @@ rootFolder="Test_1_Retest"
 cd $rootFolder
 
 for i in $(seq 60); do
-	thisDir="T$i"
-	cd $thisDir
+	modelDir="T$i"
+	#cd $modelDir
 	#test the sampling algorithm at different theta values
 	for thetaIncrement in $(seq 5 9); do
 		newDir=theta_$thetaIncrement
-		python SampleAlgoTest.py $newDir
+		python SampleAlgoTest.py --indir=$modelDir/$newDir #SampleAlgoTest.py must be run from /Datasets/
 	done
 
 	#for thetaIncrement in $(seq 0 2 20); do

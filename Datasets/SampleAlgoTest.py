@@ -1,9 +1,9 @@
 
 """
-Executes a single run of the Sampling algorithm from Bezerra, outputting results to ./sampleTest/ within the test log directory,
-using a bunch of processes.
+Executes a single run of the Sampling algorithm from Bezerra, outputting results to ./sampleTest/ within the test log directory
+parameter given by --indir, using a bunch of processes.
 
-Runtime context: This directory (/Datasets/)
+Runtime context: This directory (/Datasets/). The SampleAlgoUtilities path is hardcoded to here.
 
 Input: A directory path to the folder containing the source testTraces.log file
 Output: ./sampleTest/ a directory with the runtime artifacts of the test, and the result file, results.txt
@@ -20,7 +20,6 @@ import igraph
 #fix these
 #from SampleAlgoUtilities.SynData2Xes import ToXes
 import SampleAlgoUtilities.SynData2Xes
-
 
 
 def usage():
@@ -136,8 +135,9 @@ class SampleAlgoRunner(object):
 			print("ERROR test log file not found at: "+self._sourceLogPath)
 			initializationSucceeded = False
 
-		return initializationSucceeded
+		self._modelGraphmlPath = "SampleAlgoUtilities/minedModel.graphml"
 			
+		return initializationSucceeded
 
 	def RunSampleTest(self, indir):
 		if self._initialize(indir):
@@ -146,12 +146,12 @@ class SampleAlgoRunner(object):
 			
 			log = self._getLog(self._sourceLogPath)
 			#get the low frequency traces; < 0.02 by Bezerra's work on anomaly detection
-			lowFrequencyTraces = self._getLowFrequencyTraceStrings(log)
+			lowFrequencyTraceStrings = self._getLowFrequencyTraceStrings(log)
 			anomalousTraces = []
 			
-			print("Testing "+str(len(lowFrequencyTraces))+" low frequency traces: "+str(lowFrequencyTraces))
+			print("Testing "+str(len(lowFrequencyTraceStrings))+" low frequency traces: "+str(lowFrequencyTraceStrings))
 			
-			for trace in lowFrequencyTraces:
+			for trace in lowFrequencyTraceStrings:
 				#remove this trace from the log
 				reducedLog = self._getFilteredLog(log, trace)
 				#output the new log
@@ -160,15 +160,118 @@ class SampleAlgoRunner(object):
 				self._convertLogToXes(tempLogPath, tempXesPath)
 				#mine the model
 				graphmlModel = self._mineProcessModel(tempXesPath, minerName="inductive")
-				#if not _isReplayableTrace(trace, graphmlModel):
-				#	anomalousTraces.append(trace)
-				
-			#_recordResults(log, anomalousTraces)
+				if not _isReplayableTrace(trace, graphmlModel):
+					anomalousTraces.append(trace)
+
+			self._recordResults(log, anomalousTraces)
 		
 		
 	#Ripped the definition from the traceReplayer
+	"""
+	Given a partially-ordered sequence and a graph (process model) on which to replay the sequence, we replay them to derive
+	the ground-truth edge transitions (the real ordering) according the given process model. Returns the walk represented by @sequence
+	according to the graph.
+
+	@sequence: a sequence of characters representing single activities, partially-ordered
+	@graph: the igraph on which to 'replay' the partial-ordered sequence, thereby generating the ordered sequence to return
+	"""
 	def _isReplayableTrace(self, traceStr, model):
-		pass
+		isReplayable = False
+	
+		modelActivities = set([v["name"] for v in model.vs])
+		traceActivities = set([c for c in traceStr]+["START","END"]) #START and END are added because they are placeholders in the model, but not in .log files
+		
+		#A trivial case: verify all trace activities are in model's activities. (The reverse need not be verified: a trace consists of a subset of the model, so all model activities need not be included in trace)
+		for traceActivity in traceActivities:
+			if traceActivity not in modelActivities:
+				print("Trace activity "+traceActivity+" not found in modelActivities, trace flagged as anomalous: "+traceStr)
+				return False
+
+		initialEdge = self._getEdge(model, "START", sequence[0])
+		#Another trivial case: if no edge from START to first activity, trace is not replayable
+		if initialEdge == None:
+			print("No edge found from START to trace beginning, flagged as anomalous: "+traceStr)
+			return False
+
+		#The actual search procedure
+		self._isModelConsistentTrace(traceStr, traceActivities, model)
+		#The actual search procedure
+		for i in range(len(traceStr)):
+			activity = traceStr[i]
+			if not self._isReachableActivity(activity, traceActivities, model):
+				return False
+
+		return True
+		
+	def _getEdge(self, model, srcName, dstName):
+		for edge in model.es:
+			if model.vs[e.source]["name"] == srcName and model.vs[e.target]["name"] == dstName:
+				return edge
+		return None
+		
+	def _getVertex(self, activity, model):
+		for v in model.vs:
+			if v["name"] == activity:
+				return v
+		#This MUST be unreachable; _getVertex must always be called in a context when it can return a value
+		print("ERROR activity "+activity+" not found in model!")
+		return None
+	
+	"""
+	The search proc for detecting if a partially-ordered trace string is consistent with a model,
+	returning true if traceStr is a valid walk on the model, false otherwise. This is complicated
+	by the fact that trace strings are partially ordered, hence you cant just consume their symbols
+	sequentially and walk a graph from START to END.
+	
+	This is a proof-based method. First, mark first activity from START to traceStr[0] (first activity)
+	as reachable, iff there is such an edge. Get its out-neighbors, and mark them as "reachable".
+	Repeat for all nodes in traceStr sequentially. If any vertex is read from @traceStr and has not
+	been marked "reachable", then the trace is not consistent with @model, eg, is not replayable.
+
+	Note that there is a flaw in this algorithm, in that reachability is defined without respect to when the event
+	occurred. That is, nodes are simply marked "reachable", and remain so indefinitely. For instance, imagine a model
+	with temporal constraints such as only allowing k traversals of a loop; this algorithm would be insensitive
+	to the timing of such walks. The assumpton of this project's test data is that we do not have such
+	constraints, and that non-replayability can be sufficiently detected via structural inconsistencies.
+	"""
+	def _isModelConsistentTrace(self, traceStr, traceActivities, model):
+		model.vs["isReachable"] = False #mark all vertices as unreachable, initially
+	
+		startEdge = self._getEdge(model, "START", traceStr[0])
+		if startEdge is None:  #already checked in the main _isReplayableTrace function, but still a responsibility of this function too
+			print("No edge from START to "+traceStr[0]+". Trace flagged as non-model consistent: "+traceStr)
+			return False
+
+		#mark initial node as reachable to begin replay search
+		model.vs[startEdge.target]["isReachable"] = True
+			
+		for i in range(len(traceStr)):
+			activity = traceStr[i]
+			if not self._isReachableActivity(activity, traceActivities, model):
+				return False
+
+		return True
+		
+	"""
+	Recursively-defined utilitiy for _isModelConsistentTrace.
+	"""
+	def _isReachableActivity(self, activity, traceActivitySet, model):
+		#if activity was not marked "reachable" via a previous activity (including START), return False
+		if self._getVertex(activity, model)["isReachable"] == False:
+				return False
+		#get all out neighbors: all activities to which this activity may traverse in one time step
+		outNeighbors = self._getOutneighbors(activity, model)
+		#mark all out-neighbors "reachable" that are also in traceActivity set
+		for neighbor in outNeighbors:
+			if neighbor["name"] in traceActivitySet:
+				neighbor["isReachable"] = True
+		#if "reachable" neighbors >= 1, proceed. If == 0, return False (no downstream activities from this vertex)
+		numReachable = sum([1 for neighbor in outNeighbors if neighbor["isReachable"]])
+		if len(outNeighbors) == 0 or numReachable == 0:
+			return False
+
+		return True
+		
 		
 	def _convertLogToXes(self, logPath="temp.log", xesPath="temp.xes"):
 		#call the converter
