@@ -18,6 +18,7 @@ import subprocess
 import os
 import traceback
 import igraph
+import random
 
 #fix these
 #from SampleAlgoUtilities.SynData2Xes import ToXes
@@ -48,8 +49,11 @@ class SampleAlgoRunner(object):
 
 		return log
 
+	#Given a log, gets the traces with frequency < k, k in [0.0,1.0]
 	#@freqThreshold: All traces below @freqThreshold will be returned, as their tuples (+/-,123,asdfdsce)
-	#Returns: set of trace-strings below @freqThreshold
+	#Returns: set of trace-strings below @freqThreshold, where trace strings are identified by unique partial-orderings.
+	#Hence, ABCD and ACBD would be treated as distinct trace strings for the graph A->B, A->C, B->D, C->D, even though
+	#the traces are equivalent if you have a model. The assumption is that we do not have a model by which to disambiguate traces.
 	def _getLowFrequencyTraceStrings(self, log, freqThreshold=0.02):
 		histogram = dict() #trace string -> int frequency
 		outliers = set()
@@ -63,7 +67,7 @@ class SampleAlgoRunner(object):
 				
 		n = float(len(log))
 		for trace in log:
-			if (float(histogram[trace[2]]) / n) <= 0.02:
+			if (float(histogram[trace[2]]) / n) <= freqThreshold:
 				outliers.add( trace[2] )
 
 		return outliers
@@ -116,10 +120,16 @@ class SampleAlgoRunner(object):
 		return graphmlProcessModel
 
 
+	"""
+	Outputs the temp log. Note this function destroys the original trace id's,
+	to maintain an incrementing sequence of trace id's from 1 to n.
+	"""
 	def _outputTempLog(self, log, logPath):
 		with open(logPath,"w+") as logFile:
+			i = 0
 			for trace in log:
-				logFile.write(",".join(trace)+"\n")
+				logFile.write(str(i)+","+trace[1]+","+trace[2]+"\n")
+				i+=1
 
 	#establishes runtime context
 	def _initialize(self, indir):
@@ -130,6 +140,7 @@ class SampleAlgoRunner(object):
 		self._runtimeFolder = self._inputDir+"sampleAlgoTest"+os.sep
 		#make the running artifacts directory
 		if not os.path.exists(self._runtimeFolder):
+			print("Making runtime folder: "+self._runtimeFolder)
 			os.mkdir(self._runtimeFolder)
 		
 		self._sourceLogPath = self._inputDir+"testTraces.log"
@@ -145,17 +156,23 @@ class SampleAlgoRunner(object):
 		if self._initialize(indir):
 			tempLogPath = self._runtimeFolder+"temp.log"
 			tempXesPath = self._runtimeFolder+"temp.xes"
+			#algorithmic parameters
+			samplingFactor = 0.70 #This is from Bezerra
+			frequencyThreshold = 0.02
 			
 			log = self._getLog(self._sourceLogPath)
 			#get the low frequency traces; < 0.02 by Bezerra's work on anomaly detection
-			lowFrequencyTraceStrings = self._getLowFrequencyTraceStrings(log)
-			anomalousTraces = []
+			lowFrequencyTraceStrings = self._getLowFrequencyTraceStrings(log, frequencyThreshold)
+			anomalousTraceStrings = []
 			
 			print("Testing "+str(len(lowFrequencyTraceStrings))+" low frequency traces: "+str(lowFrequencyTraceStrings))
-			
+			i = 0
 			for trace in lowFrequencyTraceStrings:
+				print("Iteration: "+str(i)+" of "+str(len(lowFrequencyTraceStrings))+", trace: "+trace)
 				#remove this trace from the log
-				reducedLog = self._getFilteredLog(log, trace)
+				#reducedLog = self._getFilteredLog(log, trace)
+				#select only n * @samplingFactor traces, per the Bezerra model
+				reducedLog = self._sampleLog(log, samplingFactor)
 				#output the new log
 				self._outputTempLog(reducedLog, tempLogPath)
 				#convert temp log 
@@ -164,10 +181,32 @@ class SampleAlgoRunner(object):
 				graphmlModel = self._mineProcessModel(tempXesPath, minerName="inductive")
 				if not self._isReplayableTrace(trace, graphmlModel):
 					print("Trace not replayable, flagging as anomalous: "+trace)
-					anomalousTraces.append(trace)
+					anomalousTraceStrings.append(trace)
+				i+=1
 
-			self._recordResults(log, anomalousTraces)
+			self._recordResults(log, anomalousTraceStrings)
 		
+	"""
+	Given a log, samples only a random subset of the n * @samplingFacts traces and returns these.
+	@samplingFactor: A float in (0.0,1.0] representing how many of the original traces to retain; eg,
+	if @sampleFactor = 0.7, then only 70% of the traces will be chosen.
+	
+	This method is not precise, but selects traces at random, with an expectation of selection equal to 
+	@sampleFactor as n goes to infinity.
+	"""
+	def _sampleLog(self, log, samplingFactor):
+		sampledTraces = []
+		
+		if samplingFactor <= 0.0 or samplingFactor > 1.0:
+			print("ERROR sampling factor invalid in _sampleLog: "+str(samplingFactor))
+			print("Crashing, unrecoverably.")
+			exit()
+
+		for trace in log:
+			if (float(random.randint(0,1000)) / 1000.0) < samplingFactor:
+				sampledTraces.append(trace)
+				
+		return sampledTraces
 		
 	#Ripped the definition from the traceReplayer
 	"""
@@ -321,29 +360,40 @@ class SampleAlgoRunner(object):
 	@anomalousTraceStrings: The trace strings marked as anomalous
 	"""
 	def _recordResults(self, log, anomalousTraceStrings):
-		
 		falsePositives = 0
 		falseNegatives = 0
 		truePositives = 0
 		trueNegatives = 0
+		totalPositives = 0 #original positive and negatives
+		totalNegatives = 0
 		
-		totalPositives = sum([1 for trace in log if "+" in trace[0]])
+		for trace in log:
+			if "+" in trace[1]:
+				totalPositives += 1
+			elif "-" in trace[1]:
+				totalNegatives += 1
+			else:
+				print("ERROR no +/- label found in trace: "+str(trace))
+		
 		n = len(log)
-		totalNegatives = sum([1 for trace in log if "-" in trace[0]])
+		#totalPositives = sum([1 for trace in log if "+" in trace[0]])
+		#totalNegatives = sum([1 for trace in log if "-" in trace[0]])
 		if (totalPositives + totalNegatives) != n:
-			print("ERROR totalPositives="+str(totalPositives)+" totalNegatives="+str(totalNegatives)+" sum != n: "+str(n))
+			print("ERROR totalPositives="+str(totalPositives)+" totalNegatives="+str(totalNegatives)+" sum !=  n="+str(n))
 		
-		print("Log contains "+str(totalPositives)+" of "+str(n)+" traces")
+		print("Log contains "+str(totalPositives)+" true anomalies of "+str(n)+" traces")
 		
 		#get all original trace tuples from the anomalous trace strings 
 		anomalousTraces = self._getTracesFromTraceStrings(log, anomalousTraceStrings)
 		print("GOT "+str(len(anomalousTraces))+" ORIGINAL TRACES FROM "+str(len(anomalousTraceStrings))+" ANOMALOUS TRACE STRINGS")
 		for trace in anomalousTraces:
 			print(str(trace))
-			if "+" in trace[0]:
+			if "+" in trace[1]:
 				truePositives += 1
-			if "-" in trace[0]:
+			elif "-" in trace[1]:
 				falsePositives += 1
+			else:
+				print("ERROR neither +/- in trace: "+str(trace))
 		
 		falseNegatives = totalPositives - truePositives  #trueAnomalies.difference(reportedAnomalyIds)
 		#cheating: true negatives can be derived from the three values above TN = N - FP - FN - TP
@@ -355,39 +405,44 @@ class SampleAlgoRunner(object):
 		errorRate = float(falseNegatives + falsePositives) / float(n) #error rate = (FP + FN) / N = 1 - accuracy
 		accuracy =  float(trueNegatives + truePositives) / float(n) # accuracy = (TN + TP) / N = 1 - error rate
 
-		#calculate precision: TP / (FP + TP)
-		denom = float(falsePositives + truePositives)
-		if denom > 0.0:
-			precision =  float(truePositives) / denom
+		if accuracy >= 1.0:
+			precision = 1.0
+			recall = 1.0
+			fMeasure = 1.0
 		else:
-			print("WARNING: precision denominator is zero in AnomalyReporter.py")
-			precision = 0.0
-		#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
-		#normal definition, but logically they are 1.0.
+			#calculate precision: TP / (FP + TP)
+			denom = float(falsePositives + truePositives)
+			if denom > 0.0:
+				precision =  float(truePositives) / denom
+			else:
+				print("WARNING: precision denominator is zero in AnomalyReporter.py")
+				precision = 0.0
+			#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
+			#normal definition, but logically they are 1.0.
+				
+			#false positive rate; needed for doing roc curves
+			#denom = float(len(falsePositives) + len(trueNegatives))
+			#if denom > 0:
+			#	fpr = float(len(falsePositives)) / denom
+			#else:
+			#	fpr = 0.0
 			
-		#false positive rate; needed for doing roc curves
-		#denom = float(len(falsePositives) + len(trueNegatives))
-		#if denom > 0:
-		#	fpr = float(len(falsePositives)) / denom
-		#else:
-		#	fpr = 0.0
-		
-		#calculate recall: TP / (TP + FN)
-		denom = float(truePositives + falseNegatives)
-		if denom > 0.0:
-			recall = float(truePositives) / denom
-		else:
-			print("WARNING: recall denominator is zero in AnomalyReporter.py")
-			recall = 0.0
+			#calculate recall: TP / (TP + FN)
+			denom = float(truePositives + falseNegatives)
+			if denom > 0.0:
+				recall = float(truePositives) / denom
+			else:
+				print("WARNING: recall denominator is zero in AnomalyReporter.py")
+				recall = 0.0
 
-		#f -measure
-		denom = precision + recall
-		if denom > 0.0:
-			fMeasure = (precision * recall * 2) / denom
-		else:
-			fMeasure = 0.0
-		
-		with open("sampleResult.txt", "w+") as ofile:
+			#f -measure
+			denom = precision + recall
+			if denom > 0.0:
+				fMeasure = (precision * recall * 2) / denom
+			else:
+				fMeasure = 0.0
+
+		with open(self._runtimeFolder+"sampleResult.txt", "w+") as ofile:
 			#trueAnomalies = sorted(list(trueAnomalies))
 			ofile.write("truePositives:"+str(truePositives)+"\n")
 			ofile.write("trueNegatives:"+str(trueNegatives)+"\n")
@@ -419,7 +474,7 @@ def main():
 		indir = indir + os.sep
 
 	if not os.path.exists(indir+"testTraces.log"):
-		print("ERROR no testTraces.log found in ")
+		print("ERROR no testTraces.log file found in >"+indir+"<")
 
 	runner = SampleAlgoRunner()
 	runner.RunSampleTest(indir)
