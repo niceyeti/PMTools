@@ -38,7 +38,6 @@ def _readResultFile(resultPath):
 	return result
 
 
-	
 """
 Utility for getting the x, y, z values, averaged over all models, for a particular metric, such as "fMeasure".
 The z values are averaged over the list of Result objects for a particular x/y index.
@@ -101,7 +100,7 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	
 	ylabels = [str(f) for f in sorted([float(key.split("_")[1].replace(".txt","")) / 100.0 for key in list(resultDict.items())[0][1].keys()])]
 	X, Y = np.meshgrid(xs, ys)
-	Z = np.zeros(shape=(X.shape[0], Y.shape[1]))
+	#Z = np.zeros(shape=(X.shape[0], Y.shape[1]))
 
 	if len(xs) > 10:
 		xs, xlabels = _sliceLabels(xs, xlabels)
@@ -122,7 +121,7 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	print("X shape: "+str(X.shape)+" xs len: "+str(len(xs))+"\n"+str(X))
 	print("Y shape: "+str(Y.shape)+" ys len: "+str(len(ys))+"\n"+str(Y))
 	print("xyz shape: "+str(xyz.shape))
-	print("Z shape: "+str(Z.shape))
+	#print("Z shape: "+str(Z.shape))
 	print("xlabels: "+str(xlabels)+"xs: "+str(xs))
 	print("ylabels: "+str(ylabels)+"ys: "+str(ys))
 	
@@ -205,6 +204,82 @@ def IterateBayesianResults(rootDir="Test", thetaFolderPrefix="theta_"):
 
 	return results
 
+"""
+Iteration of the sampling-algorithm results, the algorithm with which my method is being compared.
+The sampling algorithm places a sampleAlgoTest folder in each log directory, within which there is a 
+sampleResult.txt file formatted exactly as per the bayesian result files. The algorithm took so long to run,
+there was no parameter tuning of evaluation parameters, as for the bayesion method.
+
+So this just returns a dicitonary of lists of result objects: ["theta_5"] -> [result1, result2, ...]
+The dict key is the model parameter ("theta_x" or "anomaly_x"), and the list should be of the length of the
+number of models successfully tested.
+"""
+def IterateSampleAlgorithm2dResults(rootDir="Test", thetaFolderPrefix="theta_"):
+	results = dict()
+	
+	print("Compiling sample algorithm results...   ")
+	
+	#iterate all the models
+	for modelNumber in range(1,30):
+		modelDir = rootDir + os.sep + "T" + str(modelNumber)
+		
+		#iterate the theta_trace or anomaly_theta values for this model
+		for fname in os.listdir(modelDir):
+			if thetaFolderPrefix in fname:
+				thetaDir = modelDir + os.sep + fname
+				if fname not in results.keys():
+					results[fname] = list()
+
+				#There are no parameters to iterate for these results; the algorithm was run for fixed parameters once for each model
+				resultPath = thetaDir+os.sep+"sampleAlgoTest/sampleResult.txt"
+				if os.path.exists(resultPath):
+					result = _readResultFile(resultPath)
+					results[fname].append(result)
+				else:
+					print("ERROR no result path found for: "+resultPath)
+
+	return results
+
+"""
+Plots a set of results with @metric on the y axis and the keys of @resultDict on the x axis. These keys refer to lists of
+result objects, which are averaged for the passed @metric to derive each y value at that point.
+
+NOTE: This is currently just written for theta_x testing, not anomaly_x, since that would require differentiation the "x" label values
+more precisely than here.
+
+
+@resultDict: A dictionary expected to have a single outer key and a list of result objects per each model (so sixty or so). key: "theta_5" -> [result1, result2, ...]
+
+"""
+def plot2DMetric(resultDict, metric, resultDir, xlabel, ylabel):
+	xs = [i for i in range(len(resultDict.keys()))]
+	ys = []
+	xLabels = []
+	
+	for outerKey in sorted(resultDict.keys()):
+		xLabels.append("0.0"+outerKey.split("_")[-1])
+		mu = sum([float(resultDict[metric]) for resultDict in resultDict[outerKey]]) / float(len(resultDict[outerKey]))
+		ys.append(mu)
+		
+	print("ys: "+str(ys))
+	print("xs: "+str(xs))
+	#force plot 0.0 to 1.0 range
+	axes = plt.gca()
+	#axes.set_xlim([0.0,1.0])
+	axes.set_ylim([0.0,1.0])
+	
+	if "fmeasure" not in metric.lower():
+		title = metric[0].upper()+metric[1:]
+	else:
+		title = "F1-Measure"
+	plt.title(title)
+	
+	plt.xticks(xs, xLabels)
+	plt.xlabel(xlabel)
+	plt.ylabel(ylabel)
+	plt.plot(xs, ys)
+	plt.show()
+	
 """
 It is useful to examine the variance of a metric, for a particular bayesThreshold and fixed theta_trace.
 Hence, fix theta_trace, and plot the 2d slice at that value, with variance bars at each bayesThreshold point,
@@ -309,11 +384,11 @@ def plotROCCurve(results, resultDir):
 	
 """
 The results dict has outer keys thetaTraces and inner keys bayesThreshold, and values are the 60 or so Result objects for that
-fixed thetaTrace and bayesThreshold value. This calculates the variance of these values at each fixed point, which is simply
+fixed thetaTrace and bayesThreshold value. This calculates the variance and mean of these values at each fixed point, which is simply
 the variance over all 60 results (and for each metric). These are stored in a new dictionary with the same outer key structure
 as @results, but with keys for each metric: accuracy_var, recall_var, etc.
 """
-def CalculateResultBayesStatDict(results):
+def CalculateBayesResultStatDict(results):
 	metrics = ["recall", "precision", "accuracy", "fMeasure"]
 	statDict = dict()  # triple dict: theta -> threshold -> metric -> value     e.g., "anomaly_2" -> "bayesResult_08.txt" -> 
 	
@@ -329,6 +404,28 @@ def CalculateResultBayesStatDict(results):
 				statDict[thetaTrace][bayesThreshold][metric+"_mu"] = mean
 				
 	return statDict
+"""
+Similar to prior, but the @results dict for the sample-algorithm is only a dict of lists of result objects,
+since the algorithm was run on only a single set of given parameters per log.
+
+
+"""
+def CalculateSampleAlgoResultStatDict(results):
+	metrics = ["recall", "precision", "accuracy", "fMeasure"]
+	statDict = dict()  # double dict: theta -> metric -> value
+	
+	for thetaTrace in sorted(results.keys()): #sorts the strings, "anomaly_35" or "theta_5", where the numbers are assumed div 100; note that this is not a good sort, as anomaly_2 and anomaly_25 will be adjacet, but the output dict are not ordered
+		statDict[thetaTrace] = dict()
+
+		ptResults = results[thetaTrace]
+		for metric in metrics:
+			mean = sum([result[metric] for result in ptResults]) / float(len(ptResults))
+			variance = sum([float(result[metric] - mean)**2 for result in ptResults]) / float(len(ptResults))
+			statDict[thetaTrace][metric+"_var"] = variance
+			statDict[thetaTrace][metric+"_mu"] = mean
+
+	return statDict
+
 	
 	
 if len(sys.argv) < 3:
@@ -337,35 +434,57 @@ if len(sys.argv) < 3:
 
 thetaFolderPrefix = "theta_"
 rootDir = "Test"
+sampleAlgo = False
 for arg in sys.argv:
 	if "--rootDir=" in arg:
 		rootDir = arg.split("=")[1]
 	if "--thetaFolderPrefix=" in arg:
 		thetaFolderPrefix = arg.split("=")[1]
-
+	if "--sampleAlgo" in arg:
+		sampleAlgo = True
+		
 if "anomaly" in thetaFolderPrefix.lower():
 	xlabel = "Theta-Anomaly"
 	resultDir = rootDir+"_AnomalyTheta_Results"+os.sep
-else:
+elif "theta_" in thetaFolderPrefix.lower():
 	xlabel = "Theta-Trace"
 	resultDir = rootDir+"_ThetaTrace_Results"+os.sep
-ylabel = "Bayes Threshold"
+	
+if sampleAlgo:
+	ylabel = "Performance"
+else:
+	ylabel = "Bayes Threshold"
 
 if not os.path.exists(resultDir):
 	os.mkdir(resultDir)
 
-results = IterateBayesianResults(rootDir, thetaFolderPrefix)
-statDict = CalculateResultBayesStatDict(results)
+if sampleAlgo: #compile sample-algorithm results
+	results = IterateSampleAlgorithm2dResults(rootDir, thetaFolderPrefix)
+	statDict = CalculateSampleAlgoResultStatDict(results)
 
+	plot2DMetric(results, "accuracy", resultDir, xlabel, ylabel)
+	plot2DMetric(results, "recall", resultDir, xlabel, ylabel)
+	plot2DMetric(results, "precision", resultDir, xlabel, ylabel)
+	plot2DMetric(results, "fMeasure", resultDir, xlabel, ylabel)
+	#plot2DVariance(statDict, "accuracy", resultDir)
+	#plot2DVariance(statDict, "precision", resultDir)
+	#plot2DVariance(statDict, "recall", resultDir)
+	#plot2DVariance(statDict, "fMeasure", resultDir)
 
-plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
-plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
-plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
-plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
-plot2DVariance(statDict, "accuracy", resultDir)
-plot2DVariance(statDict, "precision", resultDir)
-plot2DVariance(statDict, "recall", resultDir)
-plot2DVariance(statDict, "fMeasure", resultDir)
+	#plotROCCurve(results, resultDir)
+	
+else: #run/build bayesian results
+	results = IterateBayesianResults(rootDir, thetaFolderPrefix)
+	statDict = CalculateBayesResultStatDict(results)
 
-plotROCCurve(results, resultDir)
+	plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
+	plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
+	plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
+	plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
+	plot2DVariance(statDict, "accuracy", resultDir)
+	plot2DVariance(statDict, "precision", resultDir)
+	plot2DVariance(statDict, "recall", resultDir)
+	plot2DVariance(statDict, "fMeasure", resultDir)
+
+	plotROCCurve(results, resultDir)
 
