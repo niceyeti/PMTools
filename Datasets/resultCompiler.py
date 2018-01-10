@@ -181,7 +181,7 @@ def IterateBayesianResults(rootDir="Test", thetaFolderPrefix="theta_"):
 	print("Compiling bayesian results...        >>>>excluding bayesResult_07.txt<<<<  ...")
 	
 	#iterate all the models
-	for modelNumber in range(1,60):
+	for modelNumber in range(1,31):
 		modelDir = rootDir + os.sep + "T" + str(modelNumber)
 		
 		#iterate the theta_trace of anomaly_theta values for this model
@@ -203,7 +203,51 @@ def IterateBayesianResults(rootDir="Test", thetaFolderPrefix="theta_"):
 						results[fname][resultFname].append(result)
 
 	return results
+	
+"""
+Interactively slices results for a particular bayes parameter value input by the user.
 
+This could encompass 2D plotting of performance metrics at that slice, but command line output
+is fine as far as gathering results for the paper.
+
+@results: A result dict per IterateBayesianResults, outer keys like "theta_x" and inner keys as "bayesResult_xx.txt"
+"""
+def sliceBayesResults(results):
+	
+	metrics = ["accuracy","recall", "fMeasure", "precision"]
+	
+	#python 2/3 hack
+	try:
+		my_scanf = raw_input
+	except:
+		my_scanf = input
+		
+	validInput = False
+	
+	while not validInput:
+		paramString = my_scanf("Enter bayes parameter xx, per 'bayesResult_xx.txt' along which to slice results: ")
+		validInput = len(paramString) == 2 and paramString[0] in "0123456789" and paramString[1] in "0123456789"
+		if validInput:
+			for metric in metrics:
+				ys = [] #one y-value per outer parameter: anomaly_xx or theta_x
+				
+				#eg, for "anomaly_xx" in result.keys()
+				for param in results.keys():
+					paramDict = results[param]
+					for bayesFile in paramDict.keys():
+						if "bayesResult_"+paramString in bayesFile:
+							paramResults = [result[metric] for result in paramDict[bayesFile]]
+							param_y_bar = float(sum(paramResults)) / len(paramResults)
+							ys.append(param_y_bar) #the y/performance value for this fixed point parameter value: theta_5, anomaly_35, or what have you
+							
+				print(metric+" ys: "+str(ys)+"   y_avg: "+str(sum(ys)/float(len(ys))))
+			
+			my_scanf("Enter anything to continue")
+		else:
+			print("Incorrect input. Retry")
+	
+	
+	
 """
 Iteration of the sampling-algorithm results, the algorithm with which my method is being compared.
 The sampling algorithm places a sampleAlgoTest folder in each log directory, within which there is a 
@@ -261,7 +305,7 @@ def plot2DMetric(resultDict, metric, resultDir, xlabel, ylabel):
 		mu = sum([float(resultDict[metric]) for resultDict in resultDict[outerKey]]) / float(len(resultDict[outerKey]))
 		ys.append(mu)
 		
-	print("ys: "+str(ys))
+	print("ys: "+str(ys)+"  ybar: "+str(float(sum(ys)) / float(len(ys))))
 	print("xs: "+str(xs))
 	#force plot 0.0 to 1.0 range
 	axes = plt.gca()
@@ -430,6 +474,7 @@ def CalculateSampleAlgoResultStatDict(results):
 	
 if len(sys.argv) < 3:
 	print("Insufficient arguments passed. Need --rootDir= and --thetaFolderPrefix=")
+	print("Pass --sampleAlgo to run sample-algorithm results compilation from sampleAlgoTest/ folders within target test folders")
 	exit()
 
 thetaFolderPrefix = "theta_"
@@ -477,6 +522,8 @@ else: #run/build bayesian results
 	results = IterateBayesianResults(rootDir, thetaFolderPrefix)
 	statDict = CalculateBayesResultStatDict(results)
 
+	sliceBayesResults(results)
+	
 	plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
 	plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
 	plot3dMetric(results, "precision", resultDir, xlabel, ylabel)

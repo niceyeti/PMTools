@@ -1,8 +1,8 @@
 #Single purpose script for verifying all result files are in place, checking integrity
 
-rootFolder="Test_1_Retest"
+rootFolder="Test_0_Retest"
 
-for i in $(seq 60); do
+for i in $(seq 19 19); do
 	modelDir="T$i"
 	#cd $modelDir
 	#test the sampling algorithm at different theta values
