@@ -301,7 +301,7 @@ def plot2DMetric(resultDict, metric, resultDir, xlabel, ylabel):
 	xLabels = []
 	
 	for outerKey in sorted(resultDict.keys()):
-		xLabels.append("0.0"+outerKey.split("_")[-1])
+		xLabels.append("0."+outerKey.split("_")[-1])
 		mu = sum([float(resultDict[metric]) for resultDict in resultDict[outerKey]]) / float(len(resultDict[outerKey]))
 		ys.append(mu)
 		
