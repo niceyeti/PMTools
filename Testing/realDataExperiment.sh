@@ -1,8 +1,11 @@
 #!/bin/sh
 
 #For passing an xes file with some real-world data: --xesPath=[path]
-#Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes"
-#Or: sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --Singleize --xesPath=..\RealData\NASA_CEV_2017\data\nasa-cev-complete-splitted.xes
+#
+#Run as: sh realDataExperiment.sh --deleteSubs --recurse=200 --dataDir=../RealData/results --xesPath="../../../Data/BPI_2015/JUnit 4.12 Software Event Log.xes" --Singleize
+#Or (better): sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --Singleize --xesPath=..\RealData\NASA_CEV_2017\data\nasa-cev-complete-splitted.xes
+#sh realDataExperiment.sh --dataDir=../RealData/results --recurse=200 --deleteSubs --classifier=concept:name --Singleize --xesPath=..\RealData\BPIC15_5.xes
+
 
 generatorFolder="../DataGenerator"
 generatorPath="../DataGenerator/generate.sh"
