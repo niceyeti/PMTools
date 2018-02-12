@@ -6,7 +6,7 @@ from ModelConverter import ModelConverter
 
 """
 Randomly generates process models according to Algorithm 4, in Bezerra's paper on process-mining anomaly detection.
-Using that algorithm, this script randomly generates process models which can subsequently be used to generates
+Using that algorithm, this script randomly generates process models which can subsequently be used to generate
 trace data based on the probabilities embedded in the models themselves.
 
 Hence, this model-generator produces models in a probabilistic fashion as Bezerra's work, but also embeds probabilities
@@ -39,6 +39,14 @@ parameters from a .config file. For the embedded parameters, a value less than z
 such as to indicate that params will be determined later. This allows generating expressions, then embedding different values
 of the same parameter into the same model and generating traces for each such value, for experimental testing.
 
+
+
+Optional: --loopUntilKAnomalies. If passed, the model generator will generate models until one is found with k (the -a parameter)
+anomalies. This is done by searching over the pAnom parameters AnomalousLoopProb/AnomalousOrBranchProb by increasing/decreasing
+both of these if a generated model is under/over the target number of anomalies. If passed, then @MaxAnomalousEdges is ignored.
+The loop search is basic, generating a bunch of models and taking the max number of anomalies, while less than @MaxAnomalousEdges,
+then manually adds random anomalies to the process graph from ModelConverter.
+
 """
 
 class ModelGenerator(object):
@@ -58,6 +66,7 @@ class ModelGenerator(object):
 		self._requiredAnomalies = 999
 		self._minShortestPathLength = 9999
 		self._parseConfig(configPath)
+		self._loopUntilKAnomalies = False
 		self._modelConverter = ModelConverter()
 
 	"""
@@ -334,22 +343,29 @@ class ModelGenerator(object):
 	@n: number of activities
 	@a: num anomalies to generate with model
 	@graphmlPath: Relative path of current execution context to which graphml and graph .png will be saved
+	@loopUntilKAnomalies: boolean, whether or not to generate models with 
 	"""
-	def CreateModel(self, n, a, graphmlPath, showPlot):
+	def CreateModel(self, n, a, graphmlPath, showPlot, loopUntilKAnomalies):
 		if a > 3:
 			print("WARNING generating "+str(a)+" anomalies, or more than about 3, may take too long for generator to terminate for low-probability anomalies")
-
+			
+		self._loopUntilKAnomalies = loopUntilKAnomalies
+			
 		#while invalid models are generated, or models without enough anomalies, create and test a new one
 		isValidModel = False
-		while self._anomalyCount != a or not isValidModel:
+		while not isValidModel:
 			self._reset()
 			self._model = self._createModel(n, preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
 			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr(self._model)
+
 			if isValidModelStr:
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
+				if self._loopUntilKAnomalies: #The model string is verified to include at least 4 anomalies, but more than that need to be added manually to the graph
+					self._addAnomalies(a)
+				
 				self._pathCount = self._graphicalModel["PathCount"]
 				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel) and self._meetsMinPathLengthRequirements(self._graphicalModel)
 				if isValidModel:
@@ -359,6 +375,36 @@ class ModelGenerator(object):
 					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot)
 
 		return self._graphicalModel
+		
+	"""
+	Given a graphical model has been built, and @numAnomalies, the required number of anomalies,
+	this adds more anomalies manually until the model is satisfactory.
+	
+	@numAnomalies: Exact number of anomalies required of the model; could be 
+	Returns: True if all additional anomalies could be added to exact number required, false otherwise.
+	"""
+	def _addAnomalies(self, numAnomalies):
+
+		if self._anomalyCount > numAnomalies: #too many anomalies already; they cannot be removed, so toss this model and regenerate
+			return False
+
+		if self._countNonAnomalousEdges() < (numAnomalies - self._anomalyCount):
+			return False #not enough splittable edges remaining to add anomalies too
+			
+		while self._anomalyCount < numAnomalies:
+			if not self._addAnomaly():
+				return False
+		
+	"""
+	Utility for adding a single anomaly manually.
+	
+	This is the most important function for the experiment testing multiple anomalies.
+	Anomalies are added by finding edges with 1.0 probability, indicating they can be split
+	
+	Returns: False if an anomaly could not be added to the current graphical model.
+	"""
+	def _addAnomaly(self):
+		
 		
 	def PrintModel(self):
 		print("Model:\n"+self._model)
@@ -389,7 +435,10 @@ class ModelGenerator(object):
 		return p >= 10 and k >= 9
 
 	def _meetsAnomalyRequirements(self, g):
-		return self._maxAnomalousEdges >= g["numAnomalousEdges"]
+		if self._loopUntilKAnomalies:
+			return g[ ]
+		else:
+			return self._maxAnomalousEdges >= g["numAnomalousEdges"]
 		
 	def _meetsMinPathLengthRequirements(self, g):
 		return self._minShortestPathLength <= len(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0])
@@ -413,7 +462,7 @@ class ModelGenerator(object):
 	For post-validation, checks that the model string is valid: not empty, doesn't contain null clauses and
 	other bad structures.
 	"""
-	def _isValidModelStr(self):
+	def _isValidModelStr(self, requiredAnomalies):
 		#check for an approximate minimum valid length
 		if len(self._model) < 3:
 			print("ERROR model length too small: "+self._model)
@@ -444,7 +493,14 @@ class ModelGenerator(object):
 		if self._model.find("^^") >= 0:
 			print("ERROR model string contains consecutive empty branches: "+self._model)
 
-		return True
+		#if not loopUntilKAnomalies, then exact match required number of anomalies
+		if not self._loopUntilKAnomalies:
+			isValid = self._anomalyCount == requiredAnomalies
+		#else, make sure there are at least 4 anomalous structures, and any remaining required will be added later manually
+		else:
+			isValid = self._anomalyCount >= min(requiredAnomalies,4)
+
+		return isValid
 
 	"""
 	Cleans up model string after construction. Any potential errors should be fixed
@@ -546,7 +602,8 @@ class ModelGenerator(object):
 
 def usage():
 	print("python ./ModelGenerator -n=(some +integer <= 60) -a=(number of anomalies to include) -config=configPath [-file=(path to output file)] [-graph=graphml save location] [-quiet dont show graph]")
-
+	print("Optional: --loopUntilKAnomalies    If passed, models will be generated until one with k (-a) anomalies is generated, using a parameter search over pAnom.")
+	
 def main():
 	if len(sys.argv) < 4:
 		print("ERROR insufficient number of parameters")
@@ -566,10 +623,13 @@ def main():
 			print(arg)
 		usage()
 		exit()
+
+	loopUntilKAnomalies = "--loopUntilKAnomalies" in sys.argv
+
 	configPath = sys.argv[3].split("=")[1].strip()
 	
 	a = int(sys.argv[2].split("=")[1])
-		
+
 	#get n, the approximate number of activities to generate
 	n = int(sys.argv[1].split("=")[1])
 	#verify no more than 62 activities are specified; this constraint only exists because I'm using single-char, alphanumeric activity id's.
@@ -591,7 +651,7 @@ def main():
 	showPlot = "-quiet" not in sys.argv
 
 	generator = ModelGenerator(configPath)
-	generator.CreateModel(n, a, graphPath, showPlot)
+	generator.CreateModel(n, a, graphPath, showPlot, loopUntilKAnomalies)
 	generator.PrintModel()
 
 	if ofile != None:
