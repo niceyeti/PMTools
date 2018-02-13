@@ -470,7 +470,22 @@ class ModelGenerator(object):
 			vertex["pathCountHits"] = 0 #meaningless at this point in data generation
 		
 		return vertex
-				
+
+	#This utility is for generating a new vertex with an existing vertex label. This is so that
+	#we can add anomalous behavior to the model, but constrain the exit conditions when we reach
+	#the node, which would not be possible if we simply selected the node itself.
+	def _cloneExistingVertex(self):
+		vertex = None
+		vnames = [v["name"] for v in g.vs]
+		clonedName = vnames[random.randint(0,len(vnames)-1)]+"_CLONE" #adding '_CLONE' is just a temporary handle for getting the vertex after adding it
+		self._model.add_vertex(clonedName)
+		vertex = [v for v in self._model.vs if v["name"] == clonedName][0]
+		vertex["name"] = vertex["name"].replace("_CLONE","") #remove _CLONE temporary handle
+		vertex["label"] = vertex["name"]
+		vertex["pathCountHits"] = 0 #meaningless at this point in data generation
+		
+		return vertex
+		
 	def _normalizeOutEdges(self, v):
 		outEdges = [edge for edge in self._model if edge.source == v.index]
 		z = float(sum([edge["probability"] for edge in outEdges]))
@@ -491,7 +506,7 @@ class ModelGenerator(object):
 		#get a vertex to which an anomaly can be affixed
 		vId = self._getNonAnomalousVertex()
 		if vId is not None:
-			#get a new vertex for the additional 
+			#get a new vertex for the additional
 			vertex = self._getNewVertex()
 			if vertex is not None:
 				#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
@@ -504,6 +519,19 @@ class ModelGenerator(object):
 
 		return success
 
+	"""
+	Null transitions and loops are fairly straightforward to insert. OR anomalies require a little more
+	insight. With probability 0.5, the OR branch will branch to a new vertex label and return to the model
+	somewhere downstream; this is an insertion anomaly.
+	But to encompass substitution anomalies, we must transition to a new vertex that has an existing vertex
+	label from the model. There is a very low probability that the selected vertex could be the same as the model
+	behavior bypassed by the OR branch, but this will almost never occur. A NEW VERTEX IS ADDED TO THE MODEL
+	but with an existing label/vertex name; this is just an important implementation note, since vertices are
+	no longer unique by name/label. The reason we cant link to some randomly selected vertex in the model, is that
+	the OR branch must return after reaching this node; but the data generator is a one-step decision process, so in most
+	cases if the anomalous branch was executed (taking us to an existing model node), then from that regular node we would
+	do regular stuff, and not return via the anomalous branch as desired.
+	"""
 	def _addOrAnomaly(self):
 		success = False
 		#get a vertex to which an anomaly can be affixed
@@ -512,8 +540,13 @@ class ModelGenerator(object):
 			#get a downstream vertex at which to join back
 			downstreamId = self._getRandomDownstreamVertex(vId)
 			if downstreamId is not None:
-				#get a new vertex for the additional 
-				vertex = self._getNewVertex()
+				#with probability 0.5, get a new vertex for the OR branch (an insertion anomaly)
+				if random.randint(0,99) < 50:
+					vertex = self._getNewVertex()
+				#else select an existing vertex name at random, and link to a new vertex with that label.
+				else:
+					vertex = self._cloneExistingVertex()
+
 				if vertex is not None:
 					#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
 					self._addEdge(vId, vertex.index, CONFIG PROB, True, False, "OR", "orange")
@@ -542,7 +575,7 @@ class ModelGenerator(object):
 			success = self._addNullTransitionAnomaly()
 		elif randInt < 65: #add LOOP anomaly
 			success = self._addLoopAnomaly()
-		else: #add OR with non-null activities (insertion anomaly)
+		else: #add OR with non-null activities: new (insertions) or cloned existing vertices (substitutions)
 			success = self._addOrAnomaly()
 
 		return success
