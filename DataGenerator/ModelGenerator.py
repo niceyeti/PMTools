@@ -395,17 +395,158 @@ class ModelGenerator(object):
 			if not self._addAnomaly():
 				return False
 		
+	#Vertex is treated as anomalous if some anomalous edge points to it, and no others
+	def _isAnomalousVertex(self, vId):
+		anomalousTargets = set([edge.target for edge in self._model.es if edge["isAnomalous"]])
+		regularTargets =  set([edge.target for edge in self._model.es if not edge["isAnomalous"]])
+		return vId in anomalousTargets and vId not in regularTargets
+		
+	#Utility for adding anomalies: returns a vertex with no incoming edges marked anomalous. I originally
+	#required outdegree==1, but this constraint seems needless. The only constraint is that the node is
+	#not adjacent to END, such that there is one intervening node to jump over and join back with for branches.
+	#Returns: a non-anomalous vertex, or None if none remaining.
+	def _getNonAnomalousVertex(self):
+		#build non-anomalous vertices: not anomalous and not END
+		vertices = [v.index for v in g.vs if self._isAnomalousVertex(v.index) and v["name"] != "END"]
+
+		if len(vertices) == 0:
+			return None
+
+		return vertices[ random.randint(0,len(vertices)-1) ]
+	
+	def _getDownstreamVertices(self, vId, visited, radius):
+		if radius <= 0:
+			return
+
+		for neighborId in self._model.neighbors(vId, mode="out"):
+			if neighborId not in visited:
+				visited.add(neighborId)
+				if radius >= 0:
+					self._getDownstreamVertices(neighborId, visited, radius-1)
+
+	#Searches a random vertex downstream of (but not adjacent to) some vertex v. @visited stores downstream nodes. @radius controls search-depth bound.
+	#Returns None if no vertex found
+	def _getRandomDownstreamVertex(self, vId):
+		vertices = set()
+		neighbors = self._model.neighbors(vId, mode="out")
+		self._getDownstreamVertices(vId, vertices, 5)
+		vertices = [vId for vId in vertices if vId not in neighbors]
+
+		if len(vertices) == 0:
+			return None
+		
+		return vertices[random.randint(0,len(vertices)-1)]
+		
+	#Essentially, a deletion anomaly
+	def _addNullTransitionAnomaly(self):
+		success = False
+		#get a vertex to which an anomaly can be affixed
+		vId = self._getNonAnomalousVertex()
+		if vId is not None:
+			#get a downstream vertex at which to join back
+			downstreamId = self._getRandomDownstreamVertex(vId)
+			if downstreamId is not None:
+				#add the edge between these two vertices
+				self._model.add_edge((vId, downstreamId))
+				self._normalizeOutEdges(vId)
+				success = True
+				
+		return success
+
+	def _getNewVertex(self):
+		vertex = None
+		vnames = [v["name"] for v in g.vs]
+		newName = None
+		for c in self._remainingActivities:
+			if c not in vnames:
+				newName = c
+				break
+				
+		if newName is not None:
+			self._remainingActivities = self._remainingActivities.replace(newName,"")
+			self._model.add_vertex(newName)
+			vertex = [v for v in self._model.vs if v["name"] == newName][0]
+			vertex["label"] = vertex["name"]
+			vertex["pathCountHits"] = 0 #meaningless at this point in data generation
+		
+		return vertex
+				
+	def _normalizeOutEdges(self, v):
+		outEdges = [edge for edge in self._model if edge.source == v.index]
+		z = float(sum([edge["probability"] for edge in outEdges]))
+		for edge in outEdges:
+			edge["probability"] = float(edge["probability"]) / z
+
+	def _addEdge(self, srcVertex, destVertex, prob, isAnomalous, isVisited, edgeType, color):
+		self._model.add_edge((srcVertex, destVertex))
+		edge = self._model.es.select(_source=srcVertex, _target=destVertex)
+		edge["probability"] = prob
+		edge["visited"] = isVisited
+		edge["color"] = color
+		edge["type"] = edgeType
+		edge["isAnomalous"] = isAnomalous
+
+	def _addLoopAnomaly(self):
+		success = False
+		#get a vertex to which an anomaly can be affixed
+		vId = self._getNonAnomalousVertex()
+		if vId is not None:
+			#get a new vertex for the additional 
+			vertex = self._getNewVertex()
+			if vertex is not None:
+				#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
+				self._addEdge(vId, vertex.index, CONFIG PROB, True, False, "LOOP", "orange")
+				#Normalize the probs of this node
+				self._normalizeOutEdges(vId)
+				#add the exit edge, which rejoins the model somewhere random downstream
+				self._addEdge(vertex.index, vId, 1.0, True, False, "LOOP", "orange")
+				success = True
+
+		return success
+
+	def _addOrAnomaly(self):
+		success = False
+		#get a vertex to which an anomaly can be affixed
+		vId = self._getNonAnomalousVertex()
+		if vId is not None:
+			#get a downstream vertex at which to join back
+			downstreamId = self._getRandomDownstreamVertex(vId)
+			if downstreamId is not None:
+				#get a new vertex for the additional 
+				vertex = self._getNewVertex()
+				if vertex is not None:
+					#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
+					self._addEdge(vId, vertex.index, CONFIG PROB, True, False, "OR", "orange")
+					#Normalize the probs of this node
+					self._normalizeOutEdges(vId)
+					#add the exit edge, which rejoins the model somewhere random downstream
+					self._addEdge(vertex.index, downstreamId, 1.0, True, False, "OR", "orange")
+					success = True
+
+		return success
+
 	"""
 	Utility for adding a single anomaly manually.
 	
 	This is the most important function for the experiment testing multiple anomalies.
-	Anomalies are added by finding edges with 1.0 probability, indicating they can be split
+	Anomalies are added by finding edges with 1.0 probability, indicating they can be split.
+	
+	The anomalies are chosen as: OR, LOOP with equal probability. LOOP cannot contain null
+	edges, but OR can with probability 0.25, effectively giving deletion behavior (bypassing model components).
 	
 	Returns: False if an anomaly could not be added to the current graphical model.
 	"""
 	def _addAnomaly(self):
-		
-		
+		randInt = random.randint(0,98): #randint includes parameter endpoints (a,b)
+		if randInt < 32: #add OR anomaly consisting of a null transition (deletion anomaly)
+			success = self._addNullTransitionAnomaly()
+		elif randInt < 65: #add LOOP anomaly
+			success = self._addLoopAnomaly()
+		else: #add OR with non-null activities (insertion anomaly)
+			success = self._addOrAnomaly()
+
+		return success
+
 	def PrintModel(self):
 		print("Model:\n"+self._model)
 		ct = 0
