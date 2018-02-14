@@ -101,16 +101,18 @@ class DataGenerator(object):
 				choiceEdges = [edge for edge in outEdges if edge["type"] != "LOOP"]
 				probs = [edge["probability"] for edge in choiceEdges]
 				zNorm = sum(probs)
-				probs = [probs/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
+				probs = [prob/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
 				bins = []
 				pSum = 0.0
 				for i in range(0,len(probs)):
 					bins.append((pSum,pSum+probs[i],i))
+					pSum+=probs[i]
 				r = float(random.randint(1,1000)) / 1000.0 #generates a random float in range 0.001-1.0
 				for bin in bins:
 					if r >= bin[0] and r <= bin[1]:
 						targetIndex = bin[2]
-				edgeType = choiceEdges[targetIndex]["edgeType"]
+				edgeType = choiceEdges[targetIndex]["type"]
+				#print("BINS: "+str(bins))
 			
 				#after loops, outgoing edges are exclusively AND or OR or SEQ
 				if edgeType == "AND":
@@ -165,11 +167,12 @@ class DataGenerator(object):
 					orEdges = [edge for edge in outEdges if edge["type"] == "OR"]
 					probs = [edge["probability"] for edge in orEdges]
 					zNorm = sum(probs)
-					probs = [probs/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
+					probs = [prob/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
 					bins = []
 					pSum = 0.0
 					for i in range(0,len(probs)):
 						bins.append((pSum, pSum+probs[i],i))
+						pSum+=probs[i]
 					r = float(random.randint(1,1000)) / 1000.0 #generates a random float in range 0.001-1.0
 					for bin in bins:
 						if r >= bin[0] and r <= bin[1]:
