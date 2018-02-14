@@ -357,7 +357,7 @@ class ModelConverter(object):
 	Given a model string, this parses it and converts it into an igraph graph. The graph is returned but also stored
 	in the object itself.
 	
-	@modelString: the paraseable model string
+	@modelString: the parseable model string
 	@showPlot: Whether or not to show the graph to the user
 	"""
 	def ConvertModel(self, modelString, showPlot=True):

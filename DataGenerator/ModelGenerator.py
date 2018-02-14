@@ -415,14 +415,15 @@ class ModelGenerator(object):
 		#return vId in anomalousTargets and vId not in regularTargets
 		
 	#Utility for adding anomalies: returns a vertex with no incoming edges marked anomalous. I originally
-	#required outdegree==1, but this constraint seems needless. The only constraint is that the node is
+	#required outdegree==1, but this constraint seems needless. The constraints are that the node is
 	#not adjacent to END, such that there is one intervening node to jump over and join back with for branches.
+	#The node must also not contain "^" indicating it is a null transition node.
 	#Returns: a non-anomalous vertex, or None if none remaining.
 	def _getNonAnomalousVertex(self):
 		#build non-anomalous vertices: not anomalous and not END or within one-step of END
-		endNodes = set([self._graphicalModel.vs[index]["name"] for index in self._graphicalModel.neighbors("END",mode="in")])
-		endNodes.add("END")
-		vertices = [v.index for v in self._graphicalModel.vs if not self._isAnomalousVertex(v.index) and v["name"] not in endNodes]
+		prohibitedNodes = set([self._graphicalModel.vs[index]["name"] for index in self._graphicalModel.neighbors("END",mode="in")])
+		prohibitedNodes.add("END")
+		vertices = [v.index for v in self._graphicalModel.vs if not self._isAnomalousVertex(v.index) and v["name"] not in prohibitedNodes and "^" not in v["name"]]
 
 		if len(vertices) == 0:
 			return None

@@ -94,8 +94,25 @@ class DataGenerator(object):
 			#continue
 			
 			if not loopTaken:
+				#select edge type probabilistically; this must be done now that we add random structure to existing nodes (AND, OR, LOOP)
+				#To resolve this, I probabilistically choose which type of structural edges to traverse, then handle them separately
+				edgeType = outEdges[0]["type"]
+				#create a vector of bins, inclusive of all edges/types, by which to select an edge TYPE based on its probability
+				probs = [edge["probability"] for edge in outEdges]
+				zNorm = sum(probs)
+				probs = [probs/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
+				bins = []
+				pSum = 0.0
+				for i in range(0,len(probs)):
+					bins.append((pSum,pSum+probs[i],i))
+				r = float(random.randint(1,1000)) / 1000.0 #generates a random float in range 0.001-1.0
+				for bin in bins:
+					if r >= bin[0] and r <= bin[1]:
+						targetIndex = bin[2]
+				edgeType = outEdges[targetIndex]["edgeType"]
+			
 				#after loops, outgoing edges are exclusively AND or OR or SEQ
-				if "AND" in edgeTypes:
+				if edgeType == "AND":
 					outEdges = [edge for edge in outEdges if edge["type"] == "AND"]
 					if len(outEdges) < 2: #unrecoverable; all AND splits must have two or more outgoing edges, or something is broken in the model
 						print("ERROR out edges for split node < 2: "+str(outEdges)+" model: "+self._model)
@@ -141,26 +158,22 @@ class DataGenerator(object):
 					if not matchFound:
 						print("ERROR not matchFound in _generate() for AND. "+str(matchFound)+"  node: "+curNode["label"])
 				
-				#OR split detected, so stochastically choose an edge to follow
-				elif "OR" in edgeTypes:
-					outEdges = [edge for edge in outEdges if edge["type"] == "OR"]
-					r = float(random.randint(1,100)) / 100.0 #generates a random float in range 0.01-1.00
-					pLeft = float(outEdges[0]["probability"])
-					pRight = float(outEdges[1]["probability"])
-					pLeft = pLeft / (pLeft + pRight) #normalize probs; this can occur for instance if a given node has two outgoing OR edges, and one outgoing LOOP that has been traversed
-					pRight = pRight / (pRight + pLeft)
-					#OBSOLETE AFTER NORMALIZATION ABOVE: detect and notify if probability labels are indeed valid probs; that is, they sum to 1.0, within a tolerance of 0.01
-					#if math.fabs((pLeft + pRight) - 1.0) > 0.01:
-					#	print("In OR WARNING possibly invalid probabilities detected. Edge probabilities do not sum to 1.0 +/- 0.01: "+str(pLeft)+" "+str(pRight)+"    Node: "+curNode["label"])
-					#	print("Out edges (MUST BE ONLY 2): "+str(outEdges))
-
-					#select an edge at random, according to the probability labels of each edge. Selection is uniform-random for now.
-					if r <= pLeft and pLeft > 0.0: #Let pLeft, pRight fill the region from 0.0-1.0. If r in pLeft (the lower portion of the interval), choose left; else choose right
-						randomEdge = outEdges[0]
-					elif pRight > 0.0:
-						randomEdge = outEdges[1]
-					else:
-						randomEdge = outEdges[0]
+				#OR split detected, so stochastically choose ANY of available edges to follow based on their probability
+				elif edgeType == "OR":
+					#create a vector of bins, inclusive of all edges (some could be non-OR type), by which to select an edge based on its probability
+					orEdges = [edge for edge in outEdges if edge["type"] == "OR"]
+					probs = [edge["probability"] for edge in orEdges]
+					zNorm = sum(probs)
+					probs = [probs/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
+					bins = []
+					pSum = 0.0
+					for i in range(0,len(probs)):
+						bins.append((pSum, pSum+probs[i],i))
+					r = float(random.randint(1,1000)) / 1000.0 #generates a random float in range 0.001-1.0
+					for bin in bins:
+						if r >= bin[0] and r <= bin[1]:
+							targetIndex = bin[2]
+					randomEdge = orEdges[targetIndex]
 						
 					transitionList.append((randomEdge,currentTime))
 					if "^_" not in curNode["label"]: # only update time step for non-empty transitions
@@ -168,7 +181,7 @@ class DataGenerator(object):
 					curNode = self._graph.vs[randomEdge.target]
 
 				#lastly, only one option left: current node has only one outgoing "SEQ edge"
-				elif "SEQ" in edgeTypes:
+				elif edgeType == "SEQ":
 					outEdges = [edge for edge in outEdges if edge["type"] == "SEQ"]
 					#detect and notify of more than one SEQ out-edge for a particular node, which is an invalid topology
 					if len(outEdges) > 1:

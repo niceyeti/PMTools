@@ -22,6 +22,8 @@ RealData/ApacheCrypto/
 RealData/Dataset files (2.5 MB)_NASA_CEV.zip
 RealData/NASA_CEV_2017/
 
+*pyc
+
 Datasets/sampleResult.txt
 Datasets/Test_0_Retest/*
 Datasets/Test_1_Retest/*
