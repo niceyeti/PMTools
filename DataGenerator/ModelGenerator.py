@@ -358,21 +358,25 @@ class ModelGenerator(object):
 			self._model = self._createModel(n, preventLoop=True) #On the first call preventLoop is set, since the outermost expr as a loop make no sense
 			#print('Before post-processing, model is: \n'+self._model)
 			self._postProcessing() # a bandaid
-			isValidModelStr = self._isValidModelStr() and self._isBezerraValidModelStr(self._model)
-
+			isValidModelStr = self._isValidModelStr(a) and self._isBezerraValidModelStr(self._model)
+			#print(self._model)
 			if isValidModelStr:
 				#preliminary checks passed; so build the in-memory graph, and then check graph validation metrics
 				self._graphicalModel = self._modelConverter.ConvertModel(self._model, False)
 				if self._loopUntilKAnomalies: #The model string is verified to include at least 4 anomalies, but more than that need to be added manually to the graph
-					self._addAnomalies(a)
-				
+					isValidModel = self._addAnomalies(a)
+
 				self._pathCount = self._graphicalModel["PathCount"]
-				isValidModel = self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel) and self._meetsMinPathLengthRequirements(self._graphicalModel)
+				isValidModel = isValidModel and self._isBezerraValidModel(self._graphicalModel) and self._meetsAnomalyRequirements(self._graphicalModel) and self._meetsMinPathLengthRequirements(self._graphicalModel)
 				if isValidModel:
 					#only show valid model
 					print("Model anomalous edges: "+str(self._graphicalModel["numAnomalousEdges"]))
 					print("Model shortest path length from START to END: "+str(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0]))
 					self._modelConverter.Save(self._graphicalModel, graphmlPath, showPlot)
+				else:
+					print("INVALID graphical model")
+			else:
+				print("INVALID MODEL STR")
 
 		return self._graphicalModel
 		
@@ -384,30 +388,41 @@ class ModelGenerator(object):
 	Returns: True if all additional anomalies could be added to exact number required, false otherwise.
 	"""
 	def _addAnomalies(self, numAnomalies):
-
+		print("Adding anomalies to model...")
+	
 		if self._anomalyCount > numAnomalies: #too many anomalies already; they cannot be removed, so toss this model and regenerate
+			print("ERROR anomaly count already too high: "+str(self._anomalyCount)+"    "+str(numAnomalies))
 			return False
 
-		if self._countNonAnomalousEdges() < (numAnomalies - self._anomalyCount):
-			return False #not enough splittable edges remaining to add anomalies too
-			
+		#if self._countNonAnomalousEdges() < (numAnomalies - self._anomalyCount):
+		#	return False #not enough splittable edges remaining to add anomalies too
+		i = 1
 		while self._anomalyCount < numAnomalies:
 			if not self._addAnomaly():
+				print("ERROR: could not add anomaly "+str(i)+"     aCount="+str(self._anomalyCount)+"     "+str(numAnomalies))
 				return False
+			else:
+				self._anomalyCount += 1
+				i += 1
+				
+		return True
 		
-	#Vertex is treated as anomalous if some anomalous edge points to it, and no others
+	#Vertex is treated as anomalous if only anomalous edge points to it
 	def _isAnomalousVertex(self, vId):
-		anomalousTargets = set([edge.target for edge in self._model.es if edge["isAnomalous"]])
-		regularTargets =  set([edge.target for edge in self._model.es if not edge["isAnomalous"]])
-		return vId in anomalousTargets and vId not in regularTargets
+		return True in [edge["isAnomalous"] for edge in self._graphicalModel.es.select(_target=vId)]
+		#anomalousTargets = set([edge.target for edge in self._graphicalModel.es if edge["isAnomalous"]])
+		#regularTargets =  set([edge.target for edge in self._graphicalModel.es if not edge["isAnomalous"]])
+		#return vId in anomalousTargets and vId not in regularTargets
 		
 	#Utility for adding anomalies: returns a vertex with no incoming edges marked anomalous. I originally
 	#required outdegree==1, but this constraint seems needless. The only constraint is that the node is
 	#not adjacent to END, such that there is one intervening node to jump over and join back with for branches.
 	#Returns: a non-anomalous vertex, or None if none remaining.
 	def _getNonAnomalousVertex(self):
-		#build non-anomalous vertices: not anomalous and not END
-		vertices = [v.index for v in g.vs if self._isAnomalousVertex(v.index) and v["name"] != "END"]
+		#build non-anomalous vertices: not anomalous and not END or within one-step of END
+		endNodes = set([self._graphicalModel.vs[index]["name"] for index in self._graphicalModel.neighbors("END",mode="in")])
+		endNodes.add("END")
+		vertices = [v.index for v in self._graphicalModel.vs if not self._isAnomalousVertex(v.index) and v["name"] not in endNodes]
 
 		if len(vertices) == 0:
 			return None
@@ -418,17 +433,16 @@ class ModelGenerator(object):
 		if radius <= 0:
 			return
 
-		for neighborId in self._model.neighbors(vId, mode="out"):
+		for neighborId in self._graphicalModel.neighbors(vId, mode="out"):
 			if neighborId not in visited:
 				visited.add(neighborId)
-				if radius >= 0:
-					self._getDownstreamVertices(neighborId, visited, radius-1)
+				self._getDownstreamVertices(neighborId, visited, radius-1)
 
 	#Searches a random vertex downstream of (but not adjacent to) some vertex v. @visited stores downstream nodes. @radius controls search-depth bound.
 	#Returns None if no vertex found
 	def _getRandomDownstreamVertex(self, vId):
 		vertices = set()
-		neighbors = self._model.neighbors(vId, mode="out")
+		neighbors = self._graphicalModel.neighbors(vId, mode="out")
 		self._getDownstreamVertices(vId, vertices, 5)
 		vertices = [vId for vId in vertices if vId not in neighbors]
 
@@ -447,7 +461,8 @@ class ModelGenerator(object):
 			downstreamId = self._getRandomDownstreamVertex(vId)
 			if downstreamId is not None:
 				#add the edge between these two vertices
-				self._model.add_edge((vId, downstreamId))
+				self._addEdge(vId, downstreamId, 0.05, True, False, "OR", "orange")
+				#self._graphicalModel.add_edge(source=vId, target=downstreamId)
 				self._normalizeOutEdges(vId)
 				success = True
 				
@@ -455,7 +470,7 @@ class ModelGenerator(object):
 
 	def _getNewVertex(self):
 		vertex = None
-		vnames = [v["name"] for v in g.vs]
+		vnames = [v["name"] for v in self._graphicalModel.vs]
 		newName = None
 		for c in self._remainingActivities:
 			if c not in vnames:
@@ -464,8 +479,8 @@ class ModelGenerator(object):
 				
 		if newName is not None:
 			self._remainingActivities = self._remainingActivities.replace(newName,"")
-			self._model.add_vertex(newName)
-			vertex = [v for v in self._model.vs if v["name"] == newName][0]
+			self._graphicalModel.add_vertex(newName)
+			vertex = [v for v in self._graphicalModel.vs if v["name"] == newName][0]
 			vertex["label"] = vertex["name"]
 			vertex["pathCountHits"] = 0 #meaningless at this point in data generation
 		
@@ -476,25 +491,25 @@ class ModelGenerator(object):
 	#the node, which would not be possible if we simply selected the node itself.
 	def _cloneExistingVertex(self):
 		vertex = None
-		vnames = [v["name"] for v in g.vs]
+		vnames = [v["name"] for v in self._graphicalModel.vs]
 		clonedName = vnames[random.randint(0,len(vnames)-1)]+"_CLONE" #adding '_CLONE' is just a temporary handle for getting the vertex after adding it
-		self._model.add_vertex(clonedName)
-		vertex = [v for v in self._model.vs if v["name"] == clonedName][0]
+		self._graphicalModel.add_vertex(clonedName)
+		vertex = [v for v in self._graphicalModel.vs if v["name"] == clonedName][0]
 		vertex["name"] = vertex["name"].replace("_CLONE","") #remove _CLONE temporary handle
 		vertex["label"] = vertex["name"]
 		vertex["pathCountHits"] = 0 #meaningless at this point in data generation
 		
 		return vertex
 		
-	def _normalizeOutEdges(self, v):
-		outEdges = [edge for edge in self._model if edge.source == v.index]
+	def _normalizeOutEdges(self, vId):
+		outEdges = [edge for edge in self._graphicalModel.es if edge.source == vId]
 		z = float(sum([edge["probability"] for edge in outEdges]))
 		for edge in outEdges:
 			edge["probability"] = float(edge["probability"]) / z
 
 	def _addEdge(self, srcVertex, destVertex, prob, isAnomalous, isVisited, edgeType, color):
-		self._model.add_edge((srcVertex, destVertex))
-		edge = self._model.es.select(_source=srcVertex, _target=destVertex)
+		self._graphicalModel.add_edge(source=srcVertex, target=destVertex)
+		edge = self._graphicalModel.es.select(_source=srcVertex, _target=destVertex)
 		edge["probability"] = prob
 		edge["visited"] = isVisited
 		edge["color"] = color
@@ -510,11 +525,11 @@ class ModelGenerator(object):
 			vertex = self._getNewVertex()
 			if vertex is not None:
 				#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
-				self._addEdge(vId, vertex.index, CONFIG PROB, True, False, "LOOP", "orange")
+				self._addEdge(vId, vertex.index, 0.05, True, False, "LOOP", "orange")
 				#Normalize the probs of this node
 				self._normalizeOutEdges(vId)
 				#add the exit edge, which rejoins the model somewhere random downstream
-				self._addEdge(vertex.index, vId, 1.0, True, False, "LOOP", "orange")
+				self._addEdge(vertex.index, vId, 1.0, True, False, "SEQ", "orange")
 				success = True
 
 		return success
@@ -549,11 +564,11 @@ class ModelGenerator(object):
 
 				if vertex is not None:
 					#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
-					self._addEdge(vId, vertex.index, CONFIG PROB, True, False, "OR", "orange")
+					self._addEdge(vId, vertex.index, 0.05, True, False, "OR", "orange")
 					#Normalize the probs of this node
 					self._normalizeOutEdges(vId)
 					#add the exit edge, which rejoins the model somewhere random downstream
-					self._addEdge(vertex.index, downstreamId, 1.0, True, False, "OR", "orange")
+					self._addEdge(vertex.index, downstreamId, 1.0, True, False, "SEQ", "orange")
 					success = True
 
 		return success
@@ -567,10 +582,13 @@ class ModelGenerator(object):
 	The anomalies are chosen as: OR, LOOP with equal probability. LOOP cannot contain null
 	edges, but OR can with probability 0.25, effectively giving deletion behavior (bypassing model components).
 	
+	NOTE: This was written such that this function should never return False, or I've made a logical error, or perhaps
+	a model has some poor structure or other. Keep it this way: try to ensure this always succeeds except for rare exceptions.
+	
 	Returns: False if an anomaly could not be added to the current graphical model.
 	"""
 	def _addAnomaly(self):
-		randInt = random.randint(0,98): #randint includes parameter endpoints (a,b)
+		randInt = random.randint(0,98) #randint includes parameter endpoints (a,b)
 		if randInt < 32: #add OR anomaly consisting of a null transition (deletion anomaly)
 			success = self._addNullTransitionAnomaly()
 		elif randInt < 65: #add LOOP anomaly
@@ -606,17 +624,23 @@ class ModelGenerator(object):
 		print("Validating model under Bezerra's requirements: pathct >= 10 and 9 <= numActivities <= 29.")
 		p = g["PathCount"]
 		k = len(g.vs)
-		return p >= 10 and k >= 9
+		isValid = p >= 10 and k >= 9
+		if not isValid:
+			print("INVALID MODEL: contains too few paths, or too few activities: p="+str(p)+"    "+str(k))
+		return isValid
 
 	def _meetsAnomalyRequirements(self, g):
 		if self._loopUntilKAnomalies:
-			return g[ ]
+			return True #checks on model are performed during anomaly addition
 		else:
-			return self._maxAnomalousEdges >= g["numAnomalousEdges"]
+			return g["numAnomalousEdges"] <= self._maxAnomalousEdges
 		
 	def _meetsMinPathLengthRequirements(self, g):
-		return self._minShortestPathLength <= len(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0])
-		
+		isValid = self._minShortestPathLength <= len(self._graphicalModel.get_shortest_paths("START",to="END",mode="OUT",output='vpath')[0])
+		if not isValid:
+			print("INVALID MODEL: min path length requirement not met: "+str(self._minShortestPathLength))
+		return isValid
+
 	"""
 	THIS IS NOT A FULL CHECK FOR BEZERRA-VALIDITY. This only checks the model string for basic validity,
 	such that we can discard trivially invalid model strings before running the converter to derive their graph. 
@@ -659,9 +683,11 @@ class ModelGenerator(object):
 			closingIndex = self._model.rfind(")")
 			#check if left expression is of the form '(^|A)' or '(^&A)'
 			if self._model[0:3] in ["(^|", "(^&"]:
+				print("BAD EXPR")
 				return False
 			#check if right expression is of the form '&^)' or '|^)'
 			if self._model[closingIndex-2:closingIndex+1] in ["&^)","|^)"]:
+				print("BAD EXPR")
 				return False
 		#check for consecutive empty transitions: ^^, but treat these as a warning
 		if self._model.find("^^") >= 0:
@@ -670,9 +696,12 @@ class ModelGenerator(object):
 		#if not loopUntilKAnomalies, then exact match required number of anomalies
 		if not self._loopUntilKAnomalies:
 			isValid = self._anomalyCount == requiredAnomalies
-		#else, make sure there are at least 4 anomalous structures, and any remaining required will be added later manually
+			if not isValid:
+				print("Incorrect number of anomalies: "+str(self._anomalyCount)+"  "+str(requiredAnomalies))
+		#else, make sure there are max(4,requiredAnomalies) anomalous structures, and any remaining required will be added later manually
 		else:
-			isValid = self._anomalyCount >= min(requiredAnomalies,4)
+			#isValid = self._anomalyCount >= min(requiredAnomalies,4)
+			isValid = True
 
 		return isValid
 

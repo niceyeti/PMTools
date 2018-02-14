@@ -616,7 +616,10 @@ class DataGenerator(object):
 			xs = [i for i in range(len(ys))]
 			xlabels = [tup[0][0:10] for tup in traceDist]
 			
-			baseFolder = os.path.dirname(logPath)
+			baseFolder = os.path.dirname(logPath).strip()
+			if len(baseFolder) == 0:
+				baseFolder = "."
+			print("BASE: >"+baseFolder+"<")
 			#plt.xticks(xs, xlabels, rotation="vertical")
 			plt.title("Trace Frequency Distribution")
 			plt.ylabel("Count")
