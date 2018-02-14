@@ -17,23 +17,27 @@ modelPath="model.txt"
 
 cd $rootFolder
 
-modelCount=2
+modelCount=1
 anomalyTheta=0.05
 thetaTrace=0.50
 
 #for numAnomalies in {0,1,2,4,8,16}; do
-for numAnomalies in {0,1}; do
-	thisDir="A$numAnomalies"
-	#mkdir $thisDir
-	cd $thisDir
+for numAnomalies in {0,1,2,4,8,16}; do
+	anomDir="A$numAnomalies"
+	mkdir $anomDir
+	cd $anomDir
 	
 	#make the logs at various theta-trace values, in increments of 0.2
-	for numAnomalies in $(seq $modelCount); do
+	for modelNumber in $(seq $modelCount); do
+		modelDir="T$modelNumber"
+		mkdir $modelDir
+		cd $modelDir
 		echo making $logPath in $(pwd) and anomaly theta $anomalyTheta
-		python ../../../DataGenerator/ModelGenerator.py -n=$numActivities -a=$numAnomalies -config=../anomalousModelExpt.config -file=$modelPath -graph=$syntheticGraphmlPath -quiet --loopUntilKAnomalies
-		python ../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$logPath --thetaAnomaly=$anomalyTheta --thetaTrace=$thetaTrace
+		python ../../../../DataGenerator/ModelGenerator.py -n=$numActivities -a=$numAnomalies -config=../../anomalousModelExpt.config -file=$modelPath -graph=$syntheticGraphmlPath -quiet --loopUntilKAnomalies
+		python ../../../../DataGenerator/DataGenerator.py $syntheticGraphmlPath -n=$numTraces -ofile=$logPath --thetaAnomaly=$anomalyTheta --thetaTrace=$thetaTrace
+		chmod ugo+w .
+		cd ..
 	done
-
+	chmod ugo+w .
 	cd ..
-	pwd
 done
