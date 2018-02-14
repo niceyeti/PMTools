@@ -96,9 +96,10 @@ class DataGenerator(object):
 			if not loopTaken:
 				#select edge type probabilistically; this must be done now that we add random structure to existing nodes (AND, OR, LOOP)
 				#To resolve this, I probabilistically choose which type of structural edges to traverse, then handle them separately
-				edgeType = outEdges[0]["type"]
+				edgeType = None
 				#create a vector of bins, inclusive of all edges/types, by which to select an edge TYPE based on its probability
-				probs = [edge["probability"] for edge in outEdges]
+				choiceEdges = [edge for edge in outEdges if edge["type"] != "LOOP"]
+				probs = [edge["probability"] for edge in choiceEdges]
 				zNorm = sum(probs)
 				probs = [probs/zNorm for prob in probs] #make sure distribution is proper, s.t. all sum to 1.0
 				bins = []
@@ -109,7 +110,7 @@ class DataGenerator(object):
 				for bin in bins:
 					if r >= bin[0] and r <= bin[1]:
 						targetIndex = bin[2]
-				edgeType = outEdges[targetIndex]["edgeType"]
+				edgeType = choiceEdges[targetIndex]["edgeType"]
 			
 				#after loops, outgoing edges are exclusively AND or OR or SEQ
 				if edgeType == "AND":
