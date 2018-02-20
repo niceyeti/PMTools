@@ -1343,7 +1343,9 @@ class AnomalyReporter(object):
 
 		#calculate precision: TP / (FP + TP)
 		denom = float(len(self._falsePositives) + len(self._truePositives))
-		if self._truePositives == 0:
+		if self._truePositives == 0 and self._falsePositives == 0:
+			self._precision = 1.0 #This is actually an exception case, as tp/fp approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
+		elif self._truePositives == 0:
 			self._precision = 0.0
 		elif denom > 0.0:
 			self._precision =  float(len(self._truePositives)) / denom
@@ -1352,12 +1354,17 @@ class AnomalyReporter(object):
 		
 		#calculate recall: TP / (TP + FN)
 		denom = float(len(self._truePositives) + len(self._falseNegatives))
-		if self._truePositives == 0:
+		if self._truePositives == 0 and self._falseNegatives == 0:
+			self._recall = 1.0  #This is actually an exception case, as tp/fn approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
+		elif self._truePositives == 0:
 			self._recall = 0.0
 		elif denom > 0.0:
 			self._recall = float(len(self._truePositives)) / denom
 		else:
 			self._recall = 0.0
+		
+			
+			
 		
 		#convert all sets to sorted lists
 		self._truePositives = sorted(list(self._truePositives))

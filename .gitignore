@@ -29,6 +29,7 @@ Datasets/Test_0_Retest/*
 Datasets/Test_1_Retest/*
 Datasets/Test_0_Retest_ThetaTrace_Results/*
 Datasets/Test_0_Retest_AnomalyTheta_Results/*
+Datasets/Multiple_Anomaly_Experiment_ThetaTrace_Results/*
 
 Datasets/Test_0/
 Datasets/Test_1/

@@ -423,6 +423,7 @@ class ModelGenerator(object):
 		#build non-anomalous vertices: not anomalous and not END or within one-step of END
 		prohibitedNodes = set([self._graphicalModel.vs[index]["name"] for index in self._graphicalModel.neighbors("END",mode="in")])
 		prohibitedNodes.add("END")
+		prohibitedNodes.add("START")
 		vertices = [v.index for v in self._graphicalModel.vs if not self._isAnomalousVertex(v.index) and v["name"] not in prohibitedNodes and "^" not in v["name"]]
 
 		if len(vertices) == 0:
@@ -471,7 +472,7 @@ class ModelGenerator(object):
 
 	def _getNewVertex(self):
 		vertex = None
-		vnames = [v["name"] for v in self._graphicalModel.vs]
+		vnames = [v["name"] for v in self._graphicalModel.vs if v["name"].lower() != "start"]
 		newName = None
 		for c in self._remainingActivities:
 			if c not in vnames:
@@ -492,7 +493,7 @@ class ModelGenerator(object):
 	#the node, which would not be possible if we simply selected the node itself.
 	def _cloneExistingVertex(self):
 		vertex = None
-		vnames = [v["name"] for v in self._graphicalModel.vs]
+		vnames = [v["name"] for v in self._graphicalModel.vs if v["name"].lower() != "start"]
 		clonedName = vnames[random.randint(0,len(vnames)-1)]+"_CLONE" #adding '_CLONE' is just a temporary handle for getting the vertex after adding it
 		self._graphicalModel.add_vertex(clonedName)
 		vertex = [v for v in self._graphicalModel.vs if v["name"] == clonedName][0]
@@ -522,7 +523,7 @@ class ModelGenerator(object):
 		#get a vertex to which an anomaly can be affixed
 		vId = self._getNonAnomalousVertex()
 		if vId is not None:
-			#get a new vertex for the additional
+			#get a new vertex for the additional loop
 			vertex = self._getNewVertex()
 			if vertex is not None:
 				#add the edges creating the OR structure, decorating the edge attributes as well: ['visited', 'color', 'type', 'isAnomalous', 'probability']
