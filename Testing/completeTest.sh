@@ -187,7 +187,7 @@ cat /dev/null > dendrogram.txt
 
 gbadThreshold="0.1" #the best performance always seems to be about 0.3; I need to justify this
 numTraces="200"
-limit="40"   #The default value is computed based on the input graph as |Edges| / 2. 
+limit="50"   #The default value is computed based on the input graph as |Edges| / 2.
 
 echo Running gbad-mdl from $gbadMdlPath
 #numerical params: for both mdl and mps, 0.2 to 0.5 have worked well, at least for a log with 9/200 anomalous rates. Values of 0.4 or greater risk extemely long running times.

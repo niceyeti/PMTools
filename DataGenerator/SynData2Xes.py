@@ -132,7 +132,7 @@ def main():
 		print("ERROR insufficient parameters")
 		usage()
 		exit()
-		
+
 	if "-ifile=" not in sys.argv[1]:
 		print("ERROR not input file parameters passed")
 		usage()
@@ -147,7 +147,6 @@ def main():
 
 	ToXes(ipath,opath)
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
 	main()
-	
 	
