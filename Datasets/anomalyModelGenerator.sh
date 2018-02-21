@@ -22,7 +22,7 @@ anomalyTheta=0.05
 thetaTrace=0.50
 
 #for numAnomalies in {0,1,2,4,8,16}; do
-for numAnomalies in {0,1,2,4,8,16}; do
+for numAnomalies in {0,1,2,4,8,16,32}; do
 	anomDir="A$numAnomalies"
 	#mkdir $anomDir
 	#chmod ugo+rwx $anomDir

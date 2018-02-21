@@ -7,12 +7,12 @@ echo executing from $rootFolder
 
 cd $rootFolder
 
-#for i in {0,1,2,4,8,16}; do
-for i in {8,16}; do
+for i in {0,1,2,4,8,16,32}; do
+#for i in {8,16}; do
 	thisDir="A$i"
 	cd $thisDir
 	
-	for j in $(seq 14 15); do
+	for j in $(seq 1 30); do
 		testDir="T$j"
 		cd $testDir
 

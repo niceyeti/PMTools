@@ -235,14 +235,14 @@ values, this returns a double dictionary of lists: first key = theta value, seco
 theta+bayesThreshold key. A "Result" object is nothing more than a dictionary of key-value pairs like "recall":0.23... as defined in each
 bayesResult.txt file.
 """
-def IterateMultipleAnomalyResults(rootDir="Multiple_Anomaly_Experiment"):
+def IterateMultipleAnomalyResults(rootDir="Multiple_Anomaly_Rerun"):
 	results = dict()
 	if rootDir[-1] != os.sep:
 		rootDir=rootDir+os.sep
 	
 	print("Compiling bayesian results for multiple anomalous structure experiment...        >>>>excluding bayesResult_07.txt<<<<  ...")
 	
-	for anomModel in [0,1,2,4,8,16]:
+	for anomModel in [0,1,2,4,8,16,32]:
 		anomModelKey = "A_"+str(anomModel)
 		if anomModelKey not in results.keys():
 			results[anomModelKey] = dict()
@@ -630,7 +630,7 @@ elif multipleAnomModels:
 	statDict = CalculateBayesResultStatDict(results)
 
 	#sliceBayesResults(results)
-	xlabels = [str(i) for i in [0,1,2,4,8,16]]
+	xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
 	plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel, xlabels=xlabels)
 	plot3dMetric(results, "recall", resultDir, xlabel, ylabel, xlabels=xlabels)
 	plot3dMetric(results, "precision", resultDir, xlabel, ylabel, xlabels=xlabels)

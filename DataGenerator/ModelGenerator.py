@@ -407,9 +407,9 @@ class ModelGenerator(object):
 				
 		return True
 		
-	#Vertex is treated as anomalous if only anomalous edge points to it
+	#Vertex is treated as anomalous if no non-anomalous edge points to it
 	def _isAnomalousVertex(self, vId):
-		return True in [edge["isAnomalous"] for edge in self._graphicalModel.es.select(_target=vId)]
+		return not any([not edge["isAnomalous"] for edge in self._graphicalModel.es.select(_target=vId)])
 		#anomalousTargets = set([edge.target for edge in self._graphicalModel.es if edge["isAnomalous"]])
 		#regularTargets =  set([edge.target for edge in self._graphicalModel.es if not edge["isAnomalous"]])
 		#return vId in anomalousTargets and vId not in regularTargets
