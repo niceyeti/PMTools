@@ -12,8 +12,10 @@ import numpy as np
 def _readResultFile(resultPath):
 	result = dict()
 	targets = ["precision:","recall:", "accuracy:", "error:", "fMeasure:"]
+	tpCt = 0
 	fpCt = 0
 	tnCt = 0
+	fnCt = 0
 	
 	with open(resultPath, "r") as resultFile:
 		for line in resultFile:
@@ -26,14 +28,20 @@ def _readResultFile(resultPath):
 				fpCt = float(line.split(":")[1])
 			if "truenegatives:" in line.lower():
 				tnCt = float(line.split(":")[1])
+			if "truepositives:" in line.lower():
+				tpCt = float(line.split(":")[1])
+			if "falsenegatives:" in line.lower():
+				fnCt = float(line.split(":")[1])
 
+	#Precision = TP / (TP + FP)
+	#Recall = TP / (TP + FN)
 	#Left a corner case in result files: there is an edge case when all traces are negatives, and all predictions are true
 	#In this case, precision and recall are 1.0, which results from reasoning their value as TP/FN/FP approach zero.
 	#Also, it is vacuously true that for 100% negatives and no positive predictions, then the method found "100% of the positives", which is none.	
 	#TODO: This should really be fixed in AnomalyReporter.py, the source of the result files
-	if result["accuracy"] == 1.0 and result["precision"] == 0.0:
+	if  tpCt == 0 and fpCt == 0 and result["precision"] == 0.0:
 		result["precision"] = 1.0  #follows from def precision
-	if result["accuracy"] == 1.0 and result["recall"] == 0.0:
+	if tpCt == 0 and fnCt == 0 and result["recall"] == 0.0:
 		result["recall"] = 1.0	      #follows from def recall
 	
 	if fpCt > 0 or tnCt > 0:
@@ -252,7 +260,7 @@ def IterateMultipleAnomalyResults(rootDir="Multiple_Anomaly_Rerun"):
 			modelDir = rootDir + "A{}{}T{}".format(anomModel, os.sep, modelNumber)
 			#iterate the bayes parameter results
 			for resultFname in os.listdir(modelDir):
-				if "bayesResult" in resultFname and resultFname.lower() != "bayesresult_07.txt":
+				if "bayesResult" in resultFname and resultFname.lower() != "bayesresult_07.txt": # and int(resultFname.split("_")[-1].replace(".txt","")) <= 20:
 					if resultFname not in results[anomModelKey].keys():
 						results[anomModelKey][resultFname] = []
 				
