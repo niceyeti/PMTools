@@ -800,6 +800,8 @@ class AnomalyReporter(object):
 		denom = float(len(falsePositives) + len(truePositives))
 		if denom > 0.0:
 			precision =  float(len(truePositives)) / denom
+		elif len(falsePositives) == 0 and len(truePositives) == 0:
+			precision = 1.0  #this is an exception case: it is vacuously true that precision is 1 when there are no anomalies and we didn't predict any
 		else:
 			print("WARNING: precision denominator is zero in AnomalyReporter.py")
 			precision = 0.0
@@ -817,6 +819,8 @@ class AnomalyReporter(object):
 		denom = float(len(truePositives) + len(falseNegatives))
 		if denom > 0.0:
 			recall = float(len(truePositives)) / denom
+		elif len(truePositives) == 0 and len(falseNegatives) == 0:
+			recall = 1.0 #this is an exception case: it is vacuously true that precision is 1 when there are no anomalies and we didn't incorrectly predict any
 		else:
 			print("WARNING: recall denominator is zero in AnomalyReporter.py")
 			recall = 0.0

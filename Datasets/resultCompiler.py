@@ -17,7 +17,7 @@ def _readResultFile(resultPath):
 	tnCt = 0
 	fnCt = 0
 	
-	with open(resultPath, "r") as resultFile:
+	with open(resultPath,"r") as resultFile:
 		for line in resultFile:
 			if any(target in line for target in targets):
 				param = line.split(":")[0]
@@ -26,15 +26,20 @@ def _readResultFile(resultPath):
 			#derives fpr from other reported values in the file
 			if "falsepositives:" in line.lower():
 				fpCt = float(line.split(":")[1])
+				result["fpCt"] = fpCt
 			if "truenegatives:" in line.lower():
 				tnCt = float(line.split(":")[1])
+				result["tnCt"] = tnCt
 			if "truepositives:" in line.lower():
 				tpCt = float(line.split(":")[1])
+				result["tpCt"] = tpCt
 			if "falsenegatives:" in line.lower():
 				fnCt = float(line.split(":")[1])
+				result["fnCt"] = fnCt
 
 	#Precision = TP / (TP + FP)
 	#Recall = TP / (TP + FN)
+	#F1-measure = 2 * (recall * precision) / (recall + precision)
 	#Left a corner case in result files: there is an edge case when all traces are negatives, and all predictions are true
 	#In this case, precision and recall are 1.0, which results from reasoning their value as TP/FN/FP approach zero.
 	#Also, it is vacuously true that for 100% negatives and no positive predictions, then the method found "100% of the positives", which is none.	
@@ -43,6 +48,8 @@ def _readResultFile(resultPath):
 		result["precision"] = 1.0  #follows from def precision
 	if tpCt == 0 and fnCt == 0 and result["recall"] == 0.0:
 		result["recall"] = 1.0	      #follows from def recall
+	if tpCt == 0 and fnCt == 0 and fpCt == 0 and result["fMeasure"] == 0.0:
+		result["fMeasure"] = 1.0
 	
 	if fpCt > 0 or tnCt > 0:
 		result["fpr"] = fpCt / (fpCt + tnCt)
@@ -76,7 +83,7 @@ def _getMetricMeans(resultDict, metric):
 		row += 1
 
 	return xyz
-
+	
 """
 Plotting labels is a nuisance when they get too dense. This utility slices and returns
 the xs and labels at the sliced indices.
@@ -143,17 +150,18 @@ def plot3dMetric(resultDict, metric, resultDir, xlabel, ylabel,xlabels=None,ylab
 	print("xlabels: "+str(xlabels)+"xs: "+str(xs))
 	print("ylabels: "+str(ylabels)+"ys: "+str(ys))
 	
-	#force plot to 0.0 to 1.0 static z-range
-	axes = plt.gca()
-	axes.set_zlim([0.0,1.0])
+	#force plot to 0.0 to 1.0 static z-range, but only if the z values are bounded by 1.0 (2.0 for safety)
+	#if xyz.max() > 2.0:
+	#	axes = plt.gca()
+	#	axes.set_zlim([0.0,1.0])
 	
 	ax.plot_surface(X, Y, xyz.T, rstride=1, cstride=1)
-	ax.set_zlabel(metric[0].upper()+metric[1:])
+	#ax.set_zlabel(metric[0].upper()+metric[1:])
 	plt.xticks(xs, xlabels, rotation=60)
 	plt.yticks(ys, ylabels, rotation=60)
 	title = metric[0].upper()+metric[1:].lower()
 	if "fmeasure" in title.lower():
-		title = title.replace("measure", "-measure")
+		title = title.replace("measure", "1-measure")
 	plt.title(title)
 	ax.set_xlabel(xlabel,labelpad=12)
 	ax.set_ylabel(ylabel, labelpad=12)
@@ -230,12 +238,6 @@ Hard-coded iteration of the data, and results therein for the experiment using m
 
 	A[k] -> bayes-fname              -> [30 results in T1-T30]
 	"A0" -> "bayesResults_08.txt" -> [result1, result2, ...result30]
-	
-	A*
-		---->	T*
-					------>	bayes_04.txt
-								bayes_06.txt
-								...
 								
 For each test instance, there is a bayesianResult.txt file containing values for precision, recall, accuracy, etc, just for that test case.
 The unique keys for test cases are the theta_trace value and the bayesThreshold value. Hence to support statistical queries along these
@@ -279,27 +281,27 @@ is fine as far as gathering results for the paper.
 
 @results: A result dict per IterateBayesianResults, outer keys like "theta_x" and inner keys as "bayesResult_xx.txt"
 """
-def sliceBayesResults(results):
-	
+def sliceBayesResults(results, xAxisLabel=None):
+	metricResults = dict() # key=metric, value=[ys] plottable
 	metrics = ["accuracy","recall", "fMeasure", "precision"]
-	
+
 	#python 2/3 hack
 	try:
-		my_scanf = raw_input
+		my_input = raw_input
 	except:
-		my_scanf = input
+		my_input = input
 		
 	validInput = False
-	
+
 	while not validInput:
-		paramString = my_scanf("Enter bayes parameter xx, per 'bayesResult_xx.txt' along which to slice results: ")
+		paramString = my_input("Enter bayes parameter xx, per 'bayesResult_xx.txt' along which to slice results: ")
 		validInput = len(paramString) == 2 and paramString[0] in "0123456789" and paramString[1] in "0123456789"
 		if validInput:
 			for metric in metrics:
 				ys = [] #one y-value per outer parameter: anomaly_xx or theta_x
 				
 				#eg, for "anomaly_xx" in result.keys()
-				for param in results.keys():
+				for param in sorted(results.keys(), key=lambda p: int(p.split("_")[-1])):
 					paramDict = results[param]
 					for bayesFile in paramDict.keys():
 						if "bayesResult_"+paramString in bayesFile:
@@ -308,8 +310,32 @@ def sliceBayesResults(results):
 							ys.append(param_y_bar) #the y/performance value for this fixed point parameter value: theta_5, anomaly_35, or what have you
 							
 				print(metric+" ys: "+str(ys)+"   y_avg: "+str(sum(ys)/float(len(ys))))
-			
-			my_scanf("Enter anything to continue")
+				metricResults[metric] = ys
+				xs = [i for i in range(len(ys))]
+				xlabels = [str(label) for label in sorted([int(param.split("_")[-1])  for param in results.keys()])]
+				#plot in whatever scale the labels were organized
+				plt.xticks(xs, xlabels)
+				if xAxisLabel is None:
+					xAxisLabel = my_input("Enter x-axis label: ")
+				plt.xlabel(xAxisLabel)
+				plt.title(metric.capitalize())
+				plt.ylim(0,1.0)
+				plt.xlim(min(xs),max(xs))
+				plt.plot(xs,ys)
+				plt.show()
+				#plot in linear scale, if the xs values were not linear: 0,1,2,4,8,16,32
+				xs = [int(x) for x in xlabels]
+				plt.xticks(xs, xlabels)
+				if xAxisLabel is None:
+					xAxisLabel = my_input("Enter x-axis label: ")
+				plt.xlabel(xAxisLabel)
+				plt.title(metric.capitalize()+", Linear Scale")
+				plt.ylim(0,1.0)
+				plt.xlim(min(xs),max(xs))
+				plt.plot(xs,ys)
+				plt.show()
+				
+			my_input("Enter anything to continue")
 		else:
 			print("Incorrect input. Retry")
 	
@@ -637,12 +663,13 @@ elif multipleAnomModels:
 	results = IterateMultipleAnomalyResults(rootDir)
 	statDict = CalculateBayesResultStatDict(results)
 
-	#sliceBayesResults(results)
 	xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
-	plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel, xlabels=xlabels)
-	plot3dMetric(results, "recall", resultDir, xlabel, ylabel, xlabels=xlabels)
-	plot3dMetric(results, "precision", resultDir, xlabel, ylabel, xlabels=xlabels)
-	plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel, xlabels=xlabels)
+	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
+	for metric in metrics:
+		plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
+
+	sliceBayesResults(results, "Anomalous Structures")
+	
 	#plot2DVariance(statDict, "accuracy", resultDir)
 	#plot2DVariance(statDict, "precision", resultDir)
 	#plot2DVariance(statDict, "recall", resultDir)
