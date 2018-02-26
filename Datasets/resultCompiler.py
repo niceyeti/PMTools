@@ -7,6 +7,12 @@ import os
 import sys
 import numpy as np
 
+#python 2/3 hack
+try:
+	my_input = raw_input
+except:
+	my_input = input
+
 
 #Reads a single result file and returns a dict of ("metric":value) pairs
 def _readResultFile(resultPath):
@@ -273,6 +279,69 @@ def IterateMultipleAnomalyResults(rootDir="Multiple_Anomaly_Rerun"):
 
 	return results
 	
+#The results dict contains both calculated precision, recall, accuracy, and f1measure values,
+#as well as the raw fp, tn, fn, tp counts from which these were derived. I just want to confirm
+#the metric numbers are valid for a particular slice of the bayes anomaly threshold, for verification.
+def _verifyResults(results):
+	validInput = False
+	while not validInput:
+		paramString = my_input("Enter bayes parameter xx, per 'bayesResult_xx.txt' along which to slice results: ")
+		validInput = len(paramString) == 2 and paramString[0] in "0123456789" and paramString[1] in "0123456789"
+
+	#dict for a given bayes parameter value
+	xlabels = [str(label) for label in sorted([int(param.split("_")[-1])  for param in results.keys()])]
+	bayesDict = dict() #key = metric, value = [floats]
+	metrics = ["accuracy","recall", "fMeasure", "precision", "fpCt", "tnCt", "fnCt", "tpCt"]
+
+	#build the bayes dict
+	for metric in metrics:
+		ys = [] #one y-value per outer parameter: anomaly_xx or theta_x
+		
+		#eg, for "anomaly_xx" in result.keys()
+		for param in sorted(results.keys(), key=lambda p: int(p.split("_")[-1])):
+			paramDict = results[param]
+			for bayesFile in paramDict.keys():
+				if "bayesResult_"+paramString in bayesFile:
+					paramResults = [result[metric] for result in paramDict[bayesFile]]
+					param_y_bar = float(sum(paramResults)) / len(paramResults)
+					ys.append(param_y_bar) #the y/performance value for this fixed point parameter value: theta_5, anomaly_35, or what have you
+					
+		print(metric+" ys: "+str(ys)+"   y_avg: "+str(sum(ys)/float(len(ys))))
+		bayesDict[metric] = ys
+
+	#verify the values of the bayes dict: for example, verify that precision at 32 anomalous structures is approximately equal to the derived value from the TP and FP counts at 32
+	for i in range(len(xlabels)):  #iterate the number of anomalous structures: 0, 1, 2, 4, 8, 16, 32
+		precision = bayesDict["precision"][i]
+		recall = bayesDict["recall"][i]
+		fmeasure = bayesDict["fMeasure"][i]
+		accuracy = bayesDict["accuracy"][i]
+		#get the derived precision, recall, etc values from tp, fp, tn, fn
+		tp = bayesDict["tpCt"][i]
+		fp = bayesDict["fpCt"][i]
+		tn = bayesDict["tnCt"][i]
+		fn = bayesDict["fnCt"][i]
+		denom = float(tp + fp)
+		if denom > 0:
+			my_precision = float(tp) / denom
+		else:
+			my_precision = 1.0
+			
+		denom = float(tp + fn)
+		if denom > 0:
+			my_recall = float(tp) / denom
+		else:
+			my_recall = 1.0
+
+		my_fmeasure = 2 * my_precision * my_recall / (my_precision + my_recall)
+		my_accuracy = float(tp+tn) / float(tp + tn + fp + fn)
+		print("Values for "+xlabels[i]+", verify these are approximately equal:")
+		print("precision="+str(precision)+"  <?>  "+str(my_precision))
+		print("recall="+str(recall)+"  <?>  "+str(my_recall))
+		print("precision="+str(fmeasure)+"  <?>  "+str(my_fmeasure))
+		print("accuracy="+str(accuracy)+"  <?>  "+str(my_accuracy))
+	
+	
+	
 """
 Interactively slices results for a particular bayes parameter value input by the user.
 
@@ -283,13 +352,7 @@ is fine as far as gathering results for the paper.
 """
 def sliceBayesResults(results, xAxisLabel=None):
 	metricResults = dict() # key=metric, value=[ys] plottable
-	metrics = ["accuracy","recall", "fMeasure", "precision"]
-
-	#python 2/3 hack
-	try:
-		my_input = raw_input
-	except:
-		my_input = input
+	metrics = ["accuracy","recall", "fMeasure", "precision", "fpCt", "tnCt", "fnCt", "tpCt"]
 		
 	validInput = False
 
@@ -319,10 +382,14 @@ def sliceBayesResults(results, xAxisLabel=None):
 					xAxisLabel = my_input("Enter x-axis label: ")
 				plt.xlabel(xAxisLabel)
 				plt.title(metric.capitalize())
-				plt.ylim(0,1.0)
+				if "Ct" not in metric:
+					plt.ylim(0,1.0)
+				else:
+					plt.ylim(0,1000)
 				plt.xlim(min(xs),max(xs))
 				plt.plot(xs,ys)
-				plt.show()
+				plt.clf()
+				#plt.show()
 				#plot in linear scale, if the xs values were not linear: 0,1,2,4,8,16,32
 				xs = [int(x) for x in xlabels]
 				plt.xticks(xs, xlabels)
@@ -330,16 +397,21 @@ def sliceBayesResults(results, xAxisLabel=None):
 					xAxisLabel = my_input("Enter x-axis label: ")
 				plt.xlabel(xAxisLabel)
 				plt.title(metric.capitalize()+", Linear Scale")
-				plt.ylim(0,1.0)
+				if "Ct" not in metric:
+					plt.ylim(0,1.0)
+				else:
+					plt.ylim(0,1000)
 				plt.xlim(min(xs),max(xs))
 				plt.plot(xs,ys)
-				plt.show()
+				plt.clf()
+				#plt.show()
 				
 			my_input("Enter anything to continue")
 		else:
 			print("Incorrect input. Retry")
 	
-	
+		#gotta double check my maths; this is only for the multiple-anomaly model experiment, not sure if it will work for the others
+		_verifyResults(results)
 	
 """
 Iteration of the sampling-algorithm results, the algorithm with which my method is being compared.
@@ -661,12 +733,12 @@ elif normalAlgo:  #run/build bayesian results
 	plotROCCurve(results, resultDir)
 elif multipleAnomModels:
 	results = IterateMultipleAnomalyResults(rootDir)
-	statDict = CalculateBayesResultStatDict(results)
+	#statDict = CalculateBayesResultStatDict(results)
 
-	xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
-	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
-	for metric in metrics:
-		plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
+	#xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
+	#metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
+	#for metric in metrics:
+	#	plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
 
 	sliceBayesResults(results, "Anomalous Structures")
 	

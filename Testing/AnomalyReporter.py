@@ -807,7 +807,7 @@ class AnomalyReporter(object):
 			precision = 0.0
 		#exception case: If there are no anomalies in the data, and the algorithm doesn't score any false positives, then precision and recall are zero by their
 		#normal definition, but logically they are 1.0.
-			
+		
 		#false positive rate; needed for doing roc curves
 		#denom = float(len(falsePositives) + len(trueNegatives))
 		#if denom > 0:
@@ -1347,9 +1347,9 @@ class AnomalyReporter(object):
 
 		#calculate precision: TP / (FP + TP)
 		denom = float(len(self._falsePositives) + len(self._truePositives))
-		if self._truePositives == 0 and self._falsePositives == 0:
-			self._precision = 1.0 #This is actually an exception case, as tp/fp approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
-		elif self._truePositives == 0:
+		if denom == 0.0:
+			self._precision = 1.0 #This is an exception case, as tp/fp approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
+		elif len(self._truePositives) == 0:
 			self._precision = 0.0
 		elif denom > 0.0:
 			self._precision =  float(len(self._truePositives)) / denom
@@ -1358,9 +1358,9 @@ class AnomalyReporter(object):
 		
 		#calculate recall: TP / (TP + FN)
 		denom = float(len(self._truePositives) + len(self._falseNegatives))
-		if self._truePositives == 0 and self._falseNegatives == 0:
-			self._recall = 1.0  #This is actually an exception case, as tp/fn approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
-		elif self._truePositives == 0:
+		if denom == 0.0:
+			self._recall = 1.0  #This is an exception case, as tp/fn approach zero; or rather, it is vacuously true that we recalled all results when there are no positives
+		elif len(self._truePositives) == 0:
 			self._recall = 0.0
 		elif denom > 0.0:
 			self._recall = float(len(self._truePositives)) / denom
