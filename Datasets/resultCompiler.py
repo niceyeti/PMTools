@@ -735,10 +735,10 @@ elif multipleAnomModels:
 	results = IterateMultipleAnomalyResults(rootDir)
 	#statDict = CalculateBayesResultStatDict(results)
 
-	#xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
-	#metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
-	#for metric in metrics:
-	#	plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
+	xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
+	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
+	for metric in metrics:
+		plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
 
 	sliceBayesResults(results, "Anomalous Structures")
 	

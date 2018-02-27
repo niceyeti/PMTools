@@ -12,19 +12,18 @@ for i in $(seq 1 60); do
 	thisDir="T$i"
 	cd $thisDir
 	
-	###make the logs at various theta-trace values, in increments of 0.1
-	#for thetaIncrement in $(seq 5 9); do
-	#	thetaDir=theta_$thetaIncrement
-	#	cd $thetaDir
-	#	#Toggle this line in and out to re-run bayes param value of 0.0; this is needed because 1.0 in the loop below wraps to 0.0 (just in file-naming)
-	#	#python ../../../../Testing/AnomalyReporter.py -gbadResult=gbadResult.txt -logFile=testTraces.log -resultFile=anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=markovModel.py -traceGraphs=traceGraphs.py -bayesThreshold=0.0 --bayesOnly
-	#	for increment in $(seq 0 2 98); do
-	#		threshold=$(awk "BEGIN {print $increment / 100}")
-	#		echo "threshold: $threshold"
-	#		python ../../../../Testing/AnomalyReporter.py -gbadResult=gbadResult.txt -logFile=testTraces.log -resultFile=anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=markovModel.py -traceGraphs=traceGraphs.py -bayesThreshold=$threshold --bayesOnly
-	#	done
-	#	cd ..
-	#done
+	for thetaIncrement in $(seq 5 9); do
+		thetaDir=theta_$thetaIncrement
+		cd $thetaDir
+		#Toggle this line in and out to re-run bayes param value of 0.0; this is needed because 1.0 in the loop below wraps to 0.0 (just in file-naming)
+		#python ../../../../Testing/AnomalyReporter.py -gbadResult=gbadResult.txt -logFile=testTraces.log -resultFile=anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=markovModel.py -traceGraphs=traceGraphs.py -bayesThreshold=0.0 --bayesOnly
+		for increment in $(seq 0 2 98); do
+			threshold=$(awk "BEGIN {print $increment / 100}")
+			echo "threshold: $threshold"
+			python ../../../../Testing/AnomalyReporter.py -gbadResult=gbadResult.txt -logFile=testTraces.log -resultFile=anomalyResult.txt --dendrogram=dendrogram.txt --dendrogramThreshold=0.18 -markovPath=markovModel.py -traceGraphs=traceGraphs.py -bayesThreshold=$threshold --bayesOnly
+		done
+		cd ..
+	done
 
 	#make the logs at various theta-trace values, in increments of 0.1
 	for thetaIncrement in $(seq 0 2 20); do
