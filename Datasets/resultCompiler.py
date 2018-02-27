@@ -388,8 +388,8 @@ def sliceBayesResults(results, xAxisLabel=None):
 					plt.ylim(0,1000)
 				plt.xlim(min(xs),max(xs))
 				plt.plot(xs,ys)
-				plt.clf()
-				#plt.show()
+				#plt.clf()
+				plt.show()
 				#plot in linear scale, if the xs values were not linear: 0,1,2,4,8,16,32
 				xs = [int(x) for x in xlabels]
 				plt.xticks(xs, xlabels)
@@ -403,8 +403,8 @@ def sliceBayesResults(results, xAxisLabel=None):
 					plt.ylim(0,1000)
 				plt.xlim(min(xs),max(xs))
 				plt.plot(xs,ys)
-				plt.clf()
-				#plt.show()
+				#plt.clf()
+				plt.show()
 				
 			my_input("Enter anything to continue")
 		else:
@@ -720,11 +720,15 @@ elif normalAlgo:  #run/build bayesian results
 	statDict = CalculateBayesResultStatDict(results)
 
 	sliceBayesResults(results)
+
+	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
+	for metric in metrics:
+		plot3dMetric(results, metric, resultDir, xlabel, ylabel)
+	#plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
+	#plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
+	#plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
+	#plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
 	
-	plot3dMetric(results, "accuracy", resultDir, xlabel, ylabel)
-	plot3dMetric(results, "recall", resultDir, xlabel, ylabel)
-	plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
-	plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
 	plot2DVariance(statDict, "accuracy", resultDir)
 	plot2DVariance(statDict, "precision", resultDir)
 	plot2DVariance(statDict, "recall", resultDir)
@@ -733,15 +737,16 @@ elif normalAlgo:  #run/build bayesian results
 	plotROCCurve(results, resultDir)
 elif multipleAnomModels:
 	results = IterateMultipleAnomalyResults(rootDir)
-	#statDict = CalculateBayesResultStatDict(results)
+	statDict = CalculateBayesResultStatDict(results)
 
 	xlabels = [str(i) for i in [0,1,2,4,8,16,32]]
 	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
 	for metric in metrics:
 		plot3dMetric(results, metric, resultDir, xlabel, ylabel, xlabels=xlabels)
-
+    
 	sliceBayesResults(results, "Anomalous Structures")
 	
+	#WARN: these plot across different theta values, so this is not valid for multipleAnomModels, which needs to be plotted across k anomaly range instead.
 	#plot2DVariance(statDict, "accuracy", resultDir)
 	#plot2DVariance(statDict, "precision", resultDir)
 	#plot2DVariance(statDict, "recall", resultDir)
