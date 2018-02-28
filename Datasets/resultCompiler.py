@@ -719,7 +719,7 @@ elif normalAlgo:  #run/build bayesian results
 	results = IterateBayesianResults(rootDir, thetaFolderPrefix)
 	statDict = CalculateBayesResultStatDict(results)
 
-	sliceBayesResults(results)
+	#sliceBayesResults(results)
 
 	metrics = ["accuracy", "recall", "precision", "fMeasure", "fpCt", "tpCt", "fnCt", "tnCt"]
 	for metric in metrics:
@@ -729,10 +729,10 @@ elif normalAlgo:  #run/build bayesian results
 	#plot3dMetric(results, "precision", resultDir, xlabel, ylabel)
 	#plot3dMetric(results, "fMeasure", resultDir, xlabel, ylabel)
 	
-	plot2DVariance(statDict, "accuracy", resultDir)
-	plot2DVariance(statDict, "precision", resultDir)
-	plot2DVariance(statDict, "recall", resultDir)
-	plot2DVariance(statDict, "fMeasure", resultDir)
+	#plot2DVariance(statDict, "accuracy", resultDir)
+	#plot2DVariance(statDict, "precision", resultDir)
+	#plot2DVariance(statDict, "recall", resultDir)
+	#plot2DVariance(statDict, "fMeasure", resultDir)
 
 	plotROCCurve(results, resultDir)
 elif multipleAnomModels:
